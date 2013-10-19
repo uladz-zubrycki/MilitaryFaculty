@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{605451BC-3748-4D32-8B5F-20915719894C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MilitaryFaculty.Presentation</RootNamespace>
+    <AssemblyName>MilitaryFaculty.Presentation</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.1.1\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MilitaryFaculty.DataAccess\MilitaryFaculty.DataAccess\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Custom\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Custom\GlobalCommands\ApplicationCommands\BookAppCommandsModule.cs" />
+    <Compile Include="Custom\GlobalCommands\ApplicationCommands\ConferenceAppCommandsModule.cs" />
+    <Compile Include="Custom\GlobalCommands\ApplicationCommands\ProfessorAppCommandsModule.cs" />
+    <Compile Include="Custom\GlobalCommands\GlobalAppCommands.cs" />
+    <Compile Include="Infrastructure\Commands\Command.cs" />
+    <Compile Include="Infrastructure\Commands\ICommandSinkModule.cs" />
+    <Compile Include="Custom\GlobalCommands\NavigationCommands\BookNavCommandsModule.cs" />
+    <Compile Include="Custom\GlobalCommands\NavigationCommands\ConferenceNavCommandsModule.cs" />
+    <Compile Include="Custom\GlobalCommands\NavigationCommands\CommonNavCommandsModule.cs" />
+    <Compile Include="Custom\GlobalCommands\NavigationCommands\AbstractNavCommandsModule.cs" />
+    <Compile Include="Custom\GlobalCommands\NavigationCommands\ProfessorNavCommandsModule.cs" />
+    <Compile Include="Custom\UICommandsPackages\EditViewMode.cs" />
+    <Compile Include="Custom\GlobalCommands\GlobalNavCommands.cs" />
+    <Compile Include="Infrastructure\Injection\InjectionConfig.cs" />
+    <Compile Include="Infrastructure\ViewModels\ComplexViewModel.cs" />
+    <Compile Include="Infrastructure\Commands\IUICommandPackage.cs" />
+    <Compile Include="Infrastructure\ViewModels\CommandViewModel.cs" />
+    <Compile Include="Custom\UICommandsPackages\EditUICommandsPackage.cs" />
+    <Compile Include="Infrastructure\ViewModels\ViewModel{T}.cs" />
+    <Compile Include="Infrastructure\Commands\Command{T}.cs" />
+    <Compile Include="Infrastructure\Commands\CommandContainer.cs" />
+    <Compile Include="Infrastructure\Commands\CommandContainerBinding.cs" />
+    <Compile Include="Infrastructure\Commands\ICommandContainer.cs" />
+    <Compile Include="ViewModels\Book\BookAddViewModel.cs" />
+    <Compile Include="ViewModels\Book\BookInfoViewModel.cs" />
+    <Compile Include="ViewModels\Book\BookListItemViewModel.cs" />
+    <Compile Include="ViewModels\Book\BookExtraInfoViewModel.cs" />
+    <Compile Include="ViewModels\Book\BookViewModel.cs" />
+    <Compile Include="ViewModels\Conference\ConferenceAddViewModel.cs" />
+    <Compile Include="ViewModels\Conference\ConferenceInfoViewModel.cs" />
+    <Compile Include="ViewModels\Conference\ConferenceListItemViewModel.cs" />
+    <Compile Include="ViewModels\Conference\ConferenceViewModel.cs" />
+    <Compile Include="ViewModels\Conference\ConferenceReportViewModel.cs" />
+    <Compile Include="ViewModels\ImagedCommandViewModel.cs" />
+    <Compile Include="ViewModels\Professor\ProfessorBooksViewModel.cs" />
+    <Compile Include="ViewModels\Professor\ProfessorInfoViewModel.cs" />
+    <Compile Include="ViewModels\Professor\ProfessorExtraInfoViewModel.cs" />
+    <Compile Include="ViewModels\Professor\ProfessorViewModel.cs" />
+    <Compile Include="ViewModels\Professor\ProfessorConferencesViewModel.cs" />
+    <Compile Include="ViewModels\StartupViewModel.cs" />
+    <Compile Include="ViewModels\TreeView\Contract\ITreeItemViewModel.cs" />
+    <Compile Include="ViewModels\TreeView\Contract\ITreeViewModel.cs" />
+    <Compile Include="ViewModels\TreeView\Events\SelectedChangedEventArgs.cs" />
+    <Compile Include="ViewModels\TreeView\TreeViewModel.cs" />
+    <Compile Include="ViewModels\Main\WorkWindowChangedEventArgs.cs" />
+    <Compile Include="Views\Book\BookExtraInfoEditView.xaml.cs">
+      <DependentUpon>BookExtraInfoEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Book\BookExtraInfoView.xaml.cs">
+      <DependentUpon>BookExtraInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Book\BookView.xaml.cs">
+      <DependentUpon>BookView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cathedra\CathedraView.xaml.cs">
+      <DependentUpon>CathedraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Conference\ConferenceAddView.xaml.cs">
+      <DependentUpon>ConferenceAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Conference\ConferenceListItemView.xaml.cs">
+      <DependentUpon>ConferenceListItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Conference\ConferenceReportEditView.xaml.cs">
+      <DependentUpon>ConferenceReportEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Conference\ConferenceInfoView.xaml.cs">
+      <DependentUpon>ConferenceInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Conference\ConferenceInfoEditView.xaml.cs">
+      <DependentUpon>ConferenceInfoEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Conference\ConferenceReportView.xaml.cs">
+      <DependentUpon>ConferenceReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Conference\ConferenceView.xaml.cs">
+      <DependentUpon>ConferenceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Book\BookAddView.xaml.cs">
+      <DependentUpon>BookAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Book\BookInfoEditView.xaml.cs">
+      <DependentUpon>BookInfoEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Book\BookInfoView.xaml.cs">
+      <DependentUpon>BookInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Book\BookListItemView.xaml.cs">
+      <DependentUpon>BookListItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImagedCommandView.xaml.cs">
+      <DependentUpon>ImagedCommandView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorBooksView.xaml.cs">
+      <DependentUpon>ProfessorBooksView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorExtraInfoEditView.xaml.cs">
+      <DependentUpon>ProfessorExtraInfoEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorInfoEditView.xaml.cs">
+      <DependentUpon>ProfessorInfoEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorInfoView.xaml.cs">
+      <DependentUpon>ProfessorInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorConferencesView.xaml.cs">
+      <DependentUpon>ProfessorConferencesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorExtraInfoView.xaml.cs">
+      <DependentUpon>ProfessorExtraInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorView.xaml.cs">
+      <DependentUpon>ProfessorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StartupView.xaml.cs">
+      <DependentUpon>StartupView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resources\CathedraResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ConferenceResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\BookResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FacultyTreeResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\CommonResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\MainWindowRecources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ProfessorResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Book\BookExtraInfoEditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Book\BookExtraInfoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Book\BookView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Conference\ConferenceAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Conference\ConferenceListItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Conference\ConferenceReportEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Conference\ConferenceInfoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Conference\ConferenceInfoEditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Conference\ConferenceReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Conference\ConferenceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Book\BookAddView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Book\BookInfoEditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Book\BookInfoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Book\BookListItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImagedCommandView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Professor\ProfessorBooksView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Cathedra\CathedraView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FacultyTree\FacultyTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModels\Professor\ProfessorAddViewModel.cs" />
+    <Compile Include="ViewModels\Cathedra\CathedraViewModel.cs" />
+    <Compile Include="Infrastructure\ViewModels\ViewModel.cs" />
+    <Compile Include="ViewModels\Main\MainViewModel.cs" />
+    <Compile Include="ViewModels\FacultyTree\CathedraTreeItemViewModel.cs" />
+    <Compile Include="ViewModels\FacultyTree\FacultyTreeViewModel.cs" />
+    <Compile Include="ViewModels\FacultyTree\ProfessorTreeItemViewModel.cs" />
+    <Compile Include="ViewModels\TreeView\TreeItemViewModel.cs" />
+    <Compile Include="Views\Professor\ProfessorAddView.xaml.cs">
+      <DependentUpon>ProfessorAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FacultyTree\FacultyTreeView.xaml.cs">
+      <DependentUpon>FacultyTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\Professor\ProfessorExtraInfoEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Professor\ProfessorInfoEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Professor\ProfessorInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Professor\ProfessorConferencesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorExtraInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Professor\ProfessorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StartupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MilitaryFaculty.Common\MilitaryFaculty.Common.Extensions\MilitaryFaculty.Common.Extensions.csproj">
+      <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
+      <Name>MilitaryFaculty.Common.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.DataAccess\MilitaryFaculty.DataAccess.Contract\MilitaryFaculty.DataAccess.Contract.csproj">
+      <Project>{1F3C691F-2E66-4A98-AD58-1FC5B752317D}</Project>
+      <Name>MilitaryFaculty.DataAccess.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.DataAccess\MilitaryFaculty.DataAccess\MilitaryFaculty.DataAccess.csproj">
+      <Project>{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}</Project>
+      <Name>MilitaryFaculty.DataAccess %28MilitaryFaculty.DataAccess\MilitaryFaculty.DataAccess%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.Contract\MilitaryFaculty.Domain.Contract.csproj">
+      <Project>{10E40656-D44B-46CE-9FED-0496F71554B7}</Project>
+      <Name>MilitaryFaculty.Domain.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
+      <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
+      <Name>MilitaryFaculty.Domain %28MilitaryFaculty.Domain\MilitaryFaculty.Domain%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\add.png" />
+    <Resource Include="Content\cancel.png" />
+    <Resource Include="Content\edit.png" />
+    <Resource Include="Content\ok.png" />
+    <Resource Include="Content\remove.png" />
+    <Resource Include="Content\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\add-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\back.png" />
+    <Resource Include="Content\forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\details.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

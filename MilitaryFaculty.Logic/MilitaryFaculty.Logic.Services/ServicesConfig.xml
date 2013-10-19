@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Formulas>
+  
+  <Formula name ="LevelOfOrganization.1.2.1"
+           expression = "a1 + a2 / (coef1 + a3) * coef2"
+           text = "Общая формула">
+    <Arguments>
+      <arg name="a1" text="Сумма результатов формулы 1.2.2"/>
+      <arg name="a2" text="Результат формулы 1.2.3"/>
+      <arg name="a3" text="Количество проведенных мероприятий"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="4"/>
+      <coeff name="coeff2" value="20"/>
+    </Coefficients>
+  </Formula>
+  
+  <Formula name ="LevelOfOrganization.1.2.2"
+           expression = "a1 + a2 + a3 + a4"
+           text = "Формула для суммы">
+    <Arguments>
+      <arg name="a1" text="Актуальность тематики i-го мероприятия"/>
+      <arg name="a2" text="Правильность организации i-го мероприятия"/>
+      <arg name="a3" text="Наличие отчетных материалов i-го мероприятия"/>
+      <arg name="a4" text="Внедрение результатов i-го мероприятия"/>
+    </Arguments>
+    <Coefficients>
+    </Coefficients>
+  </Formula>
+  
+  <Formula name ="LevelOfOrganization.1.2.3"
+           expression = "a1 * coeff1 + a2 * coeff2 + a3 *coeff3 + a4 * coeff4 + a5"
+           text = "Параметр, учитывающий количество проведенных мероприятий">
+    <Arguments>
+      <arg name="a1" text="Количество международных конференций"/>
+      <arg name="a2" text="Количество республиканских конференций"/>
+      <arg name="a3" text="Количество вузовских конференций"/>
+      <arg name="a4" text="Количество республиканских семинаров"/>
+      <arg name="a5" text="Количество вузовских семинаров"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="2.5"/>
+      <coeff name="coeff2" value="2"/>
+      <coeff name="coeff3" value="1.5"/>
+      <coeff name="coeff4" value="1.5"/>
+    </Coefficients>
+  </Formula>
+  
+</Formulas>

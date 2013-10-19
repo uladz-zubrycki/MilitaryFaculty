@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="MilitaryFaculty.Presentation.Views.ConferenceReportEditView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Theme actuality-->
+        <TextBlock 
+                Grid.Column="0"
+                Grid.Row ="0"
+                Style="{StaticResource LabelTextBlock}"
+                Text="Актуальность тематики:"/>
+        <ComboBox
+                Grid.Column="1"
+                Grid.Row="0"
+                Style="{StaticResource ValueComboBox}"
+                ItemsSource="{Binding Path=AccordanceLevelList}"
+                SelectedValue="{Binding Path=ThemeActuality,
+                                        Mode=TwoWay}"
+                SelectedValuePath="Item1"
+                DisplayMemberPath="Item2"/>
+
+        <!--Organization Correctness-->
+        <TextBlock 
+                Grid.Column="0"
+                Grid.Row ="1"
+                Style="{StaticResource LabelTextBlock}"
+                Text="Правильность организации:"/>
+        <ComboBox
+                Grid.Column="1"
+                Grid.Row="1"
+                Style="{StaticResource ValueComboBox}"
+                ItemsSource="{Binding Path=AccordanceLevelList}"
+                SelectedValue="{Binding Path=OrganizationCorrectness,
+                                        Mode=TwoWay}"
+                SelectedValuePath="Item1"
+                DisplayMemberPath="Item2"/>
+
+        <!--Report Materials-->
+        <TextBlock 
+                Grid.Column="0"
+                Grid.Row ="2"
+                Style="{StaticResource LabelTextBlock}"
+                Text="Наличие отчётных материалов:"/>
+        <ComboBox
+                Grid.Column="1"
+                Grid.Row="2"
+                Style="{StaticResource ValueComboBox}"
+                ItemsSource="{Binding Path=AccordanceLevelList}"
+                SelectedValue="{Binding Path=ReportMaterials,
+                                        Mode=TwoWay}"
+                SelectedValuePath="Item1"
+                DisplayMemberPath="Item2"/>
+
+        <!--Results Usage-->
+        <TextBlock 
+                Grid.Column="0"
+                Grid.Row ="3"
+                Style="{StaticResource LabelTextBlock}"
+                Text="Внедрение результатов:"/>
+        <ComboBox
+                Grid.Column="1"
+                Grid.Row="3"
+                Style="{StaticResource ValueComboBox}"
+                ItemsSource="{Binding Path=AccordanceLevelList}"
+                SelectedValue="{Binding Path=ResultsUsage,
+                                        Mode=TwoWay}"
+                SelectedValuePath="Item1"
+                DisplayMemberPath="Item2"/>
+    </Grid>
+</UserControl>

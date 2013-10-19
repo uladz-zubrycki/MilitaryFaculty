@@ -1,0 +1,119 @@
+﻿<Window x:Class="MilitaryFaculty.Presentation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:MilitaryFaculty.Presentation.Infrastructure"
+        xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
+        Title="Научный рейтинг" Height="550" Width="830"
+        WindowStartupLocation="CenterScreen"
+        i:CommandContainerBinding.CommandContainer ="{Binding CommandContainer}">
+    <Window.Resources>
+        <ResourceDictionary Source="Resources\MainWindowRecources.xaml"/>
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <!--Application commands-->
+        <i:CommandContainerBinding Command="c:GlobalAppCommands.AddProfessor"/>
+        <i:CommandContainerBinding Command="c:GlobalAppCommands.UpdateProfessor"/>
+        <i:CommandContainerBinding Command="c:GlobalAppCommands.RemoveProfessor"/>
+        
+        <i:CommandContainerBinding Command="c:GlobalAppCommands.AddConference"/>
+        <i:CommandContainerBinding Command="c:GlobalAppCommands.UpdateConference"/>
+        <i:CommandContainerBinding Command="c:GlobalAppCommands.RemoveConference"/>
+        
+        <i:CommandContainerBinding Command="c:GlobalAppCommands.AddBook"/>
+        <i:CommandContainerBinding Command="c:GlobalAppCommands.UpdateBook"/>
+        <i:CommandContainerBinding Command="c:GlobalAppCommands.RemoveBook"/>
+
+        <!--Common navigation commands-->
+        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseBack"/>
+        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseForward"/>
+
+        <!--Professor navigation commands-->
+        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseProfessorAdd"/>
+
+        <!--Conference navigation commands-->
+        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseConferenceAdd"/>
+        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseConferenceDetails"/>
+
+        <!--Book navigation commands-->
+        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseBookAdd"/>
+        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseBookDetails"/>
+    </Window.CommandBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Menu ItemContainerStyle="{StaticResource ImageMenuItem}"
+              Grid.Row="0"
+              Padding="10, 2"
+              Grid.ColumnSpan="2"
+              BorderThickness="0">
+            <Button Style="{StaticResource ImagedButtonStyle}"
+                    Command="c:GlobalNavCommands.BrowseBack">
+                <Image Style="{StaticResource NavigationImageStyle}"
+                       Source="/Content/back.png"/>
+            </Button>
+
+            <Button Style="{StaticResource ImagedButtonStyle}"
+                    Command="c:GlobalNavCommands.BrowseForward">
+                <Image Style="{StaticResource NavigationImageStyle}"
+                       Source="/Content/forward.png"/>
+            </Button>
+        </Menu>
+
+        <!--Faculty Tree-->
+        <Border Grid.Column="0"
+                Grid.Row="1"
+                Style="{StaticResource SimpleBorder}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock  
+                        Grid.Row="0"
+                        Style="{StaticResource H1TextBlock}"
+                        Text="Структура факультета:"/>
+
+                <ContentControl  
+                        Grid.Row="1"
+                        Content="{Binding Path=FacultyTree, 
+                                          Mode=OneWay}"/>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1"
+                Grid.Column="1"
+                Style="{StaticResource SimpleBorder}"
+                Padding="0 0 0 0">
+            <ScrollViewer
+                    VerticalScrollBarVisibility="Auto">
+                <ScrollViewer.Style>
+                    <Style TargetType="ScrollViewer">
+                        <Setter Property="Padding" Value="22 10"/>
+                        <Style.Triggers>
+                            <Trigger Property="ComputedVerticalScrollBarVisibility" Value="Visible">
+                                <Setter Property="Padding" Value="22 10 5 10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ScrollViewer.Style>
+                <ContentControl 
+                        Grid.Row="1"
+                        Content="{Binding Path=WorkWindow, 
+                                          Mode=OneWay}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

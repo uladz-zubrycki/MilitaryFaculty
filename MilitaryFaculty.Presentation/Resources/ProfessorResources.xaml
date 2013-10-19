@@ -1,0 +1,63 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:MilitaryFaculty.Presentation.ViewModels"
+                    xmlns:views="clr-namespace:MilitaryFaculty.Presentation.Views"
+                    xmlns:custom="clr-namespace:MilitaryFaculty.Presentation.Custom">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="CommonResources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type viewModels:ProfessorViewModel}">
+        <views:ProfessorView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:ProfessorAddViewModel}">
+        <views:ProfessorAddView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:ProfessorInfoViewModel}">
+        <!--Display mode-->
+        <ContentPresenter x:Name="ProfessorInfoPresenter">
+            <ContentPresenter.Content>
+                <views:ProfessorInfoView/>
+            </ContentPresenter.Content>
+        </ContentPresenter>
+        <!--Edit mode-->
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=Tag}" Value="{x:Static custom:EditViewMode.Edit}">
+                <Setter TargetName="ProfessorInfoPresenter" Property="Content">
+                    <Setter.Value>
+                        <views:ProfessorInfoEditView/>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:ProfessorExtraInfoViewModel}">
+        <!--Display mode-->
+        <ContentPresenter x:Name="ProfessorExtraInfoPresenter">
+            <ContentPresenter.Content>
+                <views:ProfessorExtraInfoView/>
+            </ContentPresenter.Content>
+        </ContentPresenter>
+        <!--Edit mode-->
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=Tag}" Value="{x:Static custom:EditViewMode.Edit}">
+                <Setter TargetName="ProfessorExtraInfoPresenter" Property="Content">
+                    <Setter.Value>
+                        <views:ProfessorExtraInfoEditView/>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:ProfessorConferencesViewModel}">
+        <views:ProfessorConferencesView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:ProfessorBooksViewModel}">
+        <views:ProfessorBooksView/>
+    </DataTemplate>
+</ResourceDictionary>

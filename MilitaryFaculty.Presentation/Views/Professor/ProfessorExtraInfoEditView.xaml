@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="MilitaryFaculty.Presentation.Views.ProfessorExtraInfoEditView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--Job position-->
+        <TextBlock 
+                Grid.Column="0"
+                Grid.Row ="0"
+                Style="{StaticResource LabelTextBlock}"
+                Text="Занимаемая должность:"/>
+
+        <ComboBox
+                Grid.Column="1"
+                Grid.Row="0"
+                Style="{StaticResource ValueComboBox}"
+                ItemsSource="{Binding Path=JobPositionList}"
+                SelectedValue="{Binding Path=JobPosition,
+                                        Mode=TwoWay}"
+                SelectedValuePath="Item1"
+                DisplayMemberPath="Item2"/>
+
+        <!--Academic rank-->
+        <TextBlock 
+                Grid.Column="0"
+                Grid.Row ="1"
+                Style="{StaticResource LabelTextBlock}"
+                Text="Учёная степень:"/>
+        <ComboBox
+                Grid.Column="1"
+                Grid.Row="1"
+                Style="{StaticResource ValueComboBox}"
+                ItemsSource="{Binding Path=AcademicRankList}"
+                SelectedValue="{Binding Path=AcademicRank,
+                                        Mode=TwoWay}"
+                SelectedValuePath="Item1"
+                DisplayMemberPath="Item2"/>
+
+        <!--Academic degree-->
+        <TextBlock 
+                Grid.Column="0"
+                Grid.Row ="2"
+                Style="{StaticResource LabelTextBlock}"
+                Text="Учёное звание:"/>
+        <ComboBox 
+                Grid.Column="1"
+                Grid.Row="2"
+                Style="{StaticResource ValueComboBox}"
+                ItemsSource="{Binding Path=AcademicDegreeList}"
+                SelectedValue="{Binding Path=AcademicDegree,
+                                        Mode=TwoWay}"
+                SelectedValuePath="Item1"
+                DisplayMemberPath="Item2"/>
+    </Grid>
+</UserControl>

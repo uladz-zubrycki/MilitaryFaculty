@@ -1,0 +1,59 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:MilitaryFaculty.Presentation.ViewModels"
+                    xmlns:views="clr-namespace:MilitaryFaculty.Presentation.Views"
+                    xmlns:custom="clr-namespace:MilitaryFaculty.Presentation.Custom">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="CommonResources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type viewModels:BookViewModel}">
+        <views:BookView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:BookListItemViewModel}">
+        <views:BookListItemView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:BookAddViewModel}">
+        <views:BookAddView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:BookInfoViewModel}">
+        <!--Display mode-->
+        <ContentPresenter x:Name="BookInfoPresenter">
+            <ContentPresenter.Content>
+                <views:BookInfoView/>
+            </ContentPresenter.Content>
+        </ContentPresenter>
+        <!--Edit mode-->
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=Tag}" Value="{x:Static custom:EditViewMode.Edit}">
+                <Setter  TargetName="BookInfoPresenter" Property="Content">
+                    <Setter.Value>
+                        <views:BookInfoEditView/>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:BookExtraInfoViewModel}">
+        <!--Display mode-->
+        <ContentPresenter x:Name="BookExtraInfoPresenter">
+            <ContentPresenter.Content>
+                <views:BookExtraInfoView/>
+            </ContentPresenter.Content>
+        </ContentPresenter>
+        <!--Edit mode-->
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=Tag}" Value="{x:Static custom:EditViewMode.Edit}">
+                <Setter  TargetName="BookExtraInfoPresenter" Property="Content">
+                    <Setter.Value>
+                        <views:BookExtraInfoEditView/>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>

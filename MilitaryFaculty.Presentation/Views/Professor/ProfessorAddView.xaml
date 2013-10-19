@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="MilitaryFaculty.Presentation.Views.ProfessorAddView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:custom="clr-namespace:MilitaryFaculty.Presentation.Custom"
+             Background="White">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Resources/ProfessorResources.xaml"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+                Grid.Row="0"
+                Style="{StaticResource H1TextBlock}"
+                Text="{Binding Path=Title}"/>
+
+        <ItemsControl 
+                Grid.Row="1"
+                Style="{StaticResource ItemStyle}"
+                ItemsSource="{Binding Path=ViewModels}">
+        </ItemsControl>
+
+        <Button Grid.Row="3"
+                Content="Добавить"
+                Style="{StaticResource SimpleButton}"
+                Command="custom:GlobalAppCommands.AddProfessor"
+                CommandParameter="{Binding Model}"/>
+    </Grid>
+</UserControl>
