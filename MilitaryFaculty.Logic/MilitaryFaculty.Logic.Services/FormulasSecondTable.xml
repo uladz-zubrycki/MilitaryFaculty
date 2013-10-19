@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Formulas>
+
+  <Formula	name = "2.1 Степень участия ППС в проведении НИР"
+				id = "Id21"
+				expression = "a1 / a2 * coeff1">
+    <Arguments>
+      <arg name="a1" text="количество ППС, участвующих во всех НИР"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "2.3.1 Издано: учебников с графами Министерства образования, Министерства обороны"
+				id = "Id231"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество условно-печатных листов изданных учебников"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="2"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "2.3.2 Издано: учебных пособий с графами Министерства образования, Министерства обороны"
+				id = "Id232"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество условно-печатных листов изданных учебных пособий"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="1,5"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "2.5 Степень участия ППС в работе по проведению научной экспертизы уставных документов, учебников и учебных пособий"
+				id = "Id25"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="Количество ППС, участвующих в работе по проведению научной экспертизы"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="5"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+</Formulas>

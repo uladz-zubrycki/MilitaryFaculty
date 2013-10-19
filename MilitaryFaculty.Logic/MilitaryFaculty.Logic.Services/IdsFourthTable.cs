@@ -1,0 +1,30 @@
+﻿namespace MilitaryFaculty.Logic.Services
+{
+    public enum IdsFourthTable
+    {
+        Id411,
+        Id412,
+        Id413,
+        Id414,
+        Id415,
+        Id421,
+        Id422,
+        Id423,
+        Id424,
+        Id431,
+        Id432,
+        Id433,
+        Id434,
+        Id441,
+        Id442,
+        Id443,
+        Id444,
+        Id445,
+        Id446,
+        Id447,
+        Id448,
+        Id449,
+        Id4410,
+        Id4411
+    }
+}

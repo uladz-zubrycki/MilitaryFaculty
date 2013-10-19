@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Formulas>
+
+  <Formula	name = "4.1.1 Удельный вес: докторантов"
+				id = "Id411"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество докторантов"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="10"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.1.2 Удельный вес: адьюнктов очной формы обучения"
+				id = "Id412"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество адъюнктов"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="7"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.1.3 Удельный вес: адьюнктов заочной формы обучения"
+				id = "Id413"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество адъюнктов"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="6"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.1.4 Удельный вес: соискателей ученой степени доктора наук"
+				id = "Id414"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество соискателей ученой степени доктора наук"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="9"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.1.5 Удельный вес: соискателей ученой степени кандидата наук"
+				id = "Id415"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество соискателей ученой степени кандидата наук"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="5"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.2.1 Защищено диссертаций: докторских"
+				id = "Id421"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество ППС, которым присвоена ученая степень доктора наук"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="50"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.2.2 Защищено диссертаций: кандидатских"
+				id = "Id422"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество ППС, которым присвоена ученая степень кандидата наук"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="25"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.2.3 Присвоено ученое звание: профессора"
+      id = "Id423"
+      expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество ППС, которым присвоена ученое звание профессора"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="30"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.2.4 Присвоено ученое звание: доцента"
+				id = "Id424"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество ППС, которым присвоена ученое звание доцента"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="15"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.3.1 Укомплектованность должностей подлежащих замещению профессорами"
+				id = "Id431"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество профессоров"/>
+      <arg name="a2" text="количество должностей подлежащих замещению профессорами"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="1"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.3.2 Укомплектованность должностей подлежащих замещению доцентами"
+				id = "Id432"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество доцектов"/>
+      <arg name="a2" text="количество должностей подлежащих замещению доцентами"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="1"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.3.3 Удельный вес докторов наук"
+				id = "Id433"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество докторов наук"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="10"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.3.4 Удельный вес кандидатов наук"
+				id = "Id434"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество докторов наук"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="5"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.4.1 Подготовлено экспертных заключений по диссертациям: докторским"
+				id = "Id441"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество экспертных заключений"/>
+      <arg name="a2" text="количество докторов наук из числа ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="2,5"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.4.2 Подготовлено экспертных заключений по диссертациям: кандидатским"
+				id = "Id442"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество экспертных заключений"/>
+      <arg name="a2" text="количество докторов и кандидатов наук из числа ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="2"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.4.3 Отзывов на авторефераты диссертаций: докторских"
+				id = "Id443"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество отзывов"/>
+      <arg name="a2" text="количество докторов наук из числа ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="3"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.4.4 Отзывов на авторефераты диссертаций: кандидатских"
+				id = "Id444"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество отзывов"/>
+      <arg name="a2" text="количество докторов и кандидатов наук из числа ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="2"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.4.5 Степень участия научных работников высшей квалификации из числа ППС в научном руководстве: соискателей ученой степени доктора наук"
+				id = "Id445"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество научных работников высшей квалификации из числа ППС, осуществляющих научное консультирование"/>
+      <arg name="a2" text="количество докторов наук из числа ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="4"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.4.6 Степень участия научных работников высшей квалификации из числа ППС в научном руководстве: соискателей ученой степени кандидата наук"
+				id = "Id446"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество научных работников высшей квалификации из числа ППС, осуществляющих научное консультирование"/>
+      <arg name="a2" text="количество докторов и кандидатов наук ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="3"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.4.7 Степень участия научных работников высшей квалификации из числа ППС в научном руководстве: соискателей магистерской степени"
+				id = "Id447"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество ППС, осуществляющих научное руководство"/>
+      <arg name="a2" text="общее количество ППС"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="2"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.4.8 Степень участия научных работников ысшей квалификации из числа ППС в составе экспертных советов ВАК Беларусь"
+				id = "Id448"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество научных работников высшей квалификации из числа ППС, участвующих в работе экспертных советов ВАК Беларуси"/>
+      <arg name="a2" text="общее количество научных работников высшей квалификации"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="3"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.4.9 Степень участия научных работников ысшей квалификации из числа ППС в составе специальных советов по защите диссертаций"
+				id = "Id449"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество научных работников высшей квалификации из числа ППС, участвующих в работе специализированных советов по защите диссертаций"/>
+      <arg name="a2" text="общее количество научных работников высшей квалификации"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="2,5"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.4.10 Степень участия научных работников ысшей квалификации из числа ППС в составе военно-научных и научно-технических советов вуза"
+				id = "Id4410"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество научных работников высшей квалификации из числа ППС, участвующих в работе научных советов вуза"/>
+      <arg name="a2" text="общее количество научных работников высшей квалификации"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="2"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+  <Formula	name = "4.4.11 Степень участия научных работников ысшей квалификации из числа ППС в составе редакционных коллегий научных изданий"
+				id = "Id4411"
+				expression = "a1 / a2 * coeff1 * coeff2">
+    <Arguments>
+      <arg name="a1" text="количество научных работников высшей квалификации из числа ППС, участвующих в работе редакционных коллегий научных изданий"/>
+      <arg name="a2" text="общее количество научных работников высшей квалификации"/>
+    </Arguments>
+    <Coefficients>
+      <coeff name="coeff1" value="1,5"/>
+      <coeff name="coeff2" value="100"/>
+    </Coefficients>
+  </Formula>
+
+</Formulas>
