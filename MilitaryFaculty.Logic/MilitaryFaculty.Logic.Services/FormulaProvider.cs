@@ -6,21 +6,28 @@ namespace MilitaryFaculty.Logic.Services
 {
     public static class FormulaProvider
     {
+        public static Formula GetFormula(IdsFirstTable id)
+        {
+            //AppDomain.CurrentDomain.BaseDirectory
+            var xmlDoc = XDocument.Load("FormulasFirstTable.xml");
+            return ReturnFormula(xmlDoc, id.ToString());
+        }
+
         public static Formula GetFormula(IdsSecondTable id)
         {
-            var xmlDoc = XDocument.Load("SecondTable.xml");
+            var xmlDoc = XDocument.Load("FormulasSecondTable.xml");
             return ReturnFormula(xmlDoc, id.ToString());
         }
 
         public static Formula GetFormula(IdsThirdTable id)
         {
-            var xmlDoc = XDocument.Load("ThirdTable.xml");
+            var xmlDoc = XDocument.Load("FormulasThirdTable.xml");
             return ReturnFormula(xmlDoc, id.ToString());
         }
 
         public static Formula GetFormula(IdsFourthTable id)
         {
-            var xmlDoc = XDocument.Load("FourthTable.xml");
+            var xmlDoc = XDocument.Load("FormulasFourthTable.xml");
             return ReturnFormula(xmlDoc, id.ToString());
         }
 
