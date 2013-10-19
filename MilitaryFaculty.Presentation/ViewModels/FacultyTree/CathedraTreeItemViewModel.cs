@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using MilitaryFaculty.Common.Extensions;
-using MilitaryFaculty.DataAccess.Contract;
+using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
 
 namespace MilitaryFaculty.Presentation.ViewModels

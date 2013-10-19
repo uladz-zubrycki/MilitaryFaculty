@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Common.Extensions;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
 

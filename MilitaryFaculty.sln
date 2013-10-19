@@ -3,15 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MilitaryFaculty.Domain", "MilitaryFaculty.Domain", "{8BD1E61E-7CAD-4566-9D5B-9C98DBC495C1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MilitaryFaculty.DataAccess", "MilitaryFaculty.DataAccess", "{CF87E20A-6752-4BBF-AB2E-A22CE904A277}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MilitaryFaculty.Data", "MilitaryFaculty.Data", "{CF87E20A-6752-4BBF-AB2E-A22CE904A277}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MilitaryFaculty.Logic", "MilitaryFaculty.Logic", "{731F0277-7B54-4A16-9575-B662FAA56BDB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MilitaryFaculty.Presentation", "MilitaryFaculty.Presentation", "{8CAEFDE1-33E6-4FF5-A246-DE3C5F44AEB2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.DataAccess", "MilitaryFaculty.DataAccess\MilitaryFaculty.DataAccess\MilitaryFaculty.DataAccess.csproj", "{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.DataAccess.Contract", "MilitaryFaculty.DataAccess\MilitaryFaculty.DataAccess.Contract\MilitaryFaculty.DataAccess.Contract.csproj", "{1F3C691F-2E66-4A98-AD58-1FC5B752317D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Domain", "MilitaryFaculty.Domain\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj", "{6D238556-9B46-46DE-BDC9-0BB085627089}"
 EndProject
@@ -27,7 +23,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Tests", "_Tests", "{63B782
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MilitaryFaculty.Common", "MilitaryFaculty.Common", "{DCA4EE3D-8A72-4430-90FB-6B70DA2FB058}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Common.Extensions", "MilitaryFaculty.Common\MilitaryFaculty.Common.Extensions\MilitaryFaculty.Common.Extensions.csproj", "{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Extensions", "MilitaryFaculty.Common\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj", "{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Data", "MilitaryFaculty.Data\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj", "{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Data.Contract", "MilitaryFaculty.Data\MilitaryFaculty.Data.Contract\MilitaryFaculty.Data.Contract.csproj", "{1F3C691F-2E66-4A98-AD58-1FC5B752317D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6E3DB0BF-7190-4D52-861B-B6464C382F23}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +42,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F3C691F-2E66-4A98-AD58-1FC5B752317D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F3C691F-2E66-4A98-AD58-1FC5B752317D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F3C691F-2E66-4A98-AD58-1FC5B752317D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F3C691F-2E66-4A98-AD58-1FC5B752317D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6D238556-9B46-46DE-BDC9-0BB085627089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6D238556-9B46-46DE-BDC9-0BB085627089}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D238556-9B46-46DE-BDC9-0BB085627089}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,6 +66,14 @@ Global
 		{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F3C691F-2E66-4A98-AD58-1FC5B752317D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F3C691F-2E66-4A98-AD58-1FC5B752317D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F3C691F-2E66-4A98-AD58-1FC5B752317D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F3C691F-2E66-4A98-AD58-1FC5B752317D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

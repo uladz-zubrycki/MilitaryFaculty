@@ -1,6 +1,6 @@
 ﻿using System;
 using Autofac;
-using MilitaryFaculty.DataAccess.Contract;
+using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;

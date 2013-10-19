@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using MilitaryFaculty.Common.Extensions;
-using MilitaryFaculty.DataAccess.Contract;
+using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
 

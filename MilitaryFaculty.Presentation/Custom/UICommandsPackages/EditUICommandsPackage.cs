@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
-using MilitaryFaculty.Common.Extensions;
 using MilitaryFaculty.Domain.Contract;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Infrastructure;
 using MilitaryFaculty.Presentation.ViewModels;
 

@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Threading;
 using Autofac;
-using MilitaryFaculty.DataAccess;
+using MilitaryFaculty.Data;
 using MilitaryFaculty.Presentation.Infrastructure;
 using MilitaryFaculty.Presentation.ViewModels;
 

@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using MilitaryFaculty.Common.Extensions;
 using MilitaryFaculty.Domain.Contract;
+using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {

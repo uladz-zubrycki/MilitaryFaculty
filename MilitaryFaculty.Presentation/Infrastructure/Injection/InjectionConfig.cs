@@ -1,7 +1,6 @@
 ﻿using System.Configuration;
 using Autofac;
-using Autofac.Core;
-using MilitaryFaculty.DataAccess;
+using MilitaryFaculty.Data;
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {

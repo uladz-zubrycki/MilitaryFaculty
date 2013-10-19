@@ -1,6 +1,6 @@
 ﻿using System;
-using MilitaryFaculty.Common.Extensions;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
 

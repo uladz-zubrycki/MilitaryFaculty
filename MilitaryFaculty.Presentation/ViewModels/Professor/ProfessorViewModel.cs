@@ -1,5 +1,5 @@
 ﻿using System;
-using MilitaryFaculty.DataAccess.Contract;
+using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Presentation.Infrastructure;
 using MilitaryFaculty.Domain;
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using MilitaryFaculty.DataAccess.Contract;
+using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Infrastructure;
 
