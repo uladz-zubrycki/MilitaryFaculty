@@ -14,11 +14,9 @@ namespace MilitaryFaculty.Logic.Services
 
         public Formula(string expression, params string[] variables)
         {
-            
             if (expression == null) throw new ArgumentNullException();
             if (String.IsNullOrEmpty(expression.Trim())) throw new ArgumentException();
             if (variables == null) throw new ArgumentNullException("variables");
-            
 
             funcStr = expression.Replace(" ", "");
             if (funcStr == String.Empty)
@@ -37,10 +35,8 @@ namespace MilitaryFaculty.Logic.Services
 
         public double Calculate(params double[] values)
         {
-            
             if (values == null) throw new ArgumentNullException();
             if (values.Length != variables.Length) throw new ArgumentException();
-            
 
             var localVariables = Enumerable.Range(0, variables.Length)
                                       .Select(i => new VariableValue(values[i], variables[i]))

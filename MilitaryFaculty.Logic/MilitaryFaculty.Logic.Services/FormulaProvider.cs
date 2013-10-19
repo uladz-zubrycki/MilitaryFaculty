@@ -4,21 +4,32 @@ using System.Xml.Linq;
 
 namespace MilitaryFaculty.Logic.Services
 {
-    public class FormulaProvider
+    public static class FormulaProvider
     {
-        public Formula GetFormula(string formula)
+        public static Formula GetFormula(IdsSecondTable id)
         {
-            
-            if (formula == null) throw new ArgumentNullException();
-            if (String.IsNullOrEmpty(formula.Trim())) throw new ArgumentException();
-            
+            var xmlDoc = XDocument.Load("SecondTable.xml");
+            return ReturnFormula(xmlDoc, id.ToString());
+        }
 
-            var xmlDoc = XDocument.Load("ServicesConfig.xml");
+        public static Formula GetFormula(IdsThirdTable id)
+        {
+            var xmlDoc = XDocument.Load("ThirdTable.xml");
+            return ReturnFormula(xmlDoc, id.ToString());
+        }
 
+        public static Formula GetFormula(IdsFourthTable id)
+        {
+            var xmlDoc = XDocument.Load("FourthTable.xml");
+            return ReturnFormula(xmlDoc, id.ToString());
+        }
+
+        private static Formula ReturnFormula(XDocument xmlDoc, string formulaId)
+        {
             if (xmlDoc.Root == null)
                 throw new Exception();
 
-            var xmlFormula = xmlDoc.Root.Elements().Single(x => x.Attribute("name").Value == formula);
+            var xmlFormula = xmlDoc.Root.Elements().Single(x => x.Attribute("id").Value == formulaId);
             var xmlArguments = xmlFormula.Element("Arguments");
             var xmlCoefficients = xmlFormula.Element("Coefficients");
 
@@ -28,11 +39,11 @@ namespace MilitaryFaculty.Logic.Services
                 throw new Exception();
 
             var expression = xmlFormula.Attribute("expression").Value;
-            
+
             var variables = xmlArguments.Elements()
                                      .Select(e => e.Attribute("name").Value)
                                      .ToArray();
-            
+
             var coefficients = xmlCoefficients.Elements()
                                        .Select(e => e.Attribute("name").Value)
                                        .ToArray();
