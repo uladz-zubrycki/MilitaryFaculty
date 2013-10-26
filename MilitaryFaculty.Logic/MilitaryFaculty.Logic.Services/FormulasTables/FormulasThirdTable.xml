@@ -5,7 +5,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество выступающих ППС"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="1"/>
@@ -18,7 +18,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество выступающих курсантов, студентов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="0,1"/>
@@ -31,7 +31,7 @@
       expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество выступающих ППС"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="2"/>
@@ -44,7 +44,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество выступающих курсантов, студентов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="0,2"/>
@@ -57,7 +57,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество выступающих ППС"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="3"/>
@@ -70,7 +70,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество выступающих курсантов, студентов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="0,5"/>
@@ -83,7 +83,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество дипломов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="3"/>
@@ -96,7 +96,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество дипломов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="2,5"/>
@@ -109,7 +109,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество дипломов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="2"/>
@@ -122,7 +122,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество дипломов, грамот"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="1"/>
@@ -135,7 +135,7 @@
       expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество дипломов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="4"/>
@@ -148,7 +148,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество дипломов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="3,5"/>
@@ -161,7 +161,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество дипломов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="3"/>
@@ -174,7 +174,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество дипломов, грамот"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="2"/>
@@ -187,7 +187,7 @@
     expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество дипломов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="5"/>
@@ -200,7 +200,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество дипломов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="4,5"/>
@@ -213,7 +213,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество дипломов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="4"/>
@@ -226,7 +226,7 @@
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
       <arg name="a1" text="Количество дипломов, грамот"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="3"/>
@@ -238,8 +238,8 @@
 				id = "Id331"
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
-      <arg name="a1" text="количество условно-печатных листов изданных монографий"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a1" text="Количество условно-печатных листов изданных монографий"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="3"/>
@@ -251,8 +251,8 @@
 				id = "Id332"
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
-      <arg name="a1" text="количество статей"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a1" text="Количество статей"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="3"/>
@@ -264,8 +264,8 @@
 				id = "Id333"
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
-      <arg name="a1" text="количество статей"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a1" text="Количество статей"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="1"/>
@@ -277,8 +277,8 @@
 				id = "Id334"
 				expression = "a1 / a2 * coeff1 * coeff2">
     <Arguments>
-      <arg name="a1" text="количество докладов"/>
-      <arg name="a2" text="общее количество ППС"/>
+      <arg name="a1" text="Количество докладов"/>
+      <arg name="a2" text="Общее количество ППС"/>
     </Arguments>
     <Coefficients>
       <coeff name="coeff1" value="1"/>
@@ -286,4 +286,14 @@
     </Coefficients>
   </Formula>
 
+  <Formula	name = "3.4 Другие частные показатели, характеризующие апробацию результатов научных исследований"
+      id = "Id34"
+      expression = "a1">
+    <Arguments>
+      <arg name="a1" text="Показатель (до 50 баллов)"/>
+    </Arguments>
+    <Coefficients>
+    </Coefficients>
+  </Formula>
+  
 </Formulas>

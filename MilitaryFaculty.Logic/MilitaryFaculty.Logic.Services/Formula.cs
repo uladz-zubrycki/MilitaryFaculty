@@ -8,6 +8,7 @@ namespace MilitaryFaculty.Logic.Services
 {
     public class Formula //: IFormula
     {
+            //TODO: InRange
         private readonly string funcStr;
         private readonly CompiledExpression compiledExpression;
         private readonly string[] variables;
