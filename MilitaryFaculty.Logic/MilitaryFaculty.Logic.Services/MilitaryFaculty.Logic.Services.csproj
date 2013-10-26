@@ -42,20 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FacultyRatingServices\FacultyRatingServiceFirst.cs" />
-    <Compile Include="FacultyRatingServices\FacultyRatingServiceFourth.cs" />
-    <Compile Include="FacultyRatingServices\FacultyRatingServiceSecond.cs" />
-    <Compile Include="FacultyRatingServices\FacultyRatingServiceThird.cs" />
-    <Compile Include="Formula.cs" />
-    <Compile Include="FormulaProvider.cs" />
-    <Compile Include="FormulasIds\IdsFirstTable.cs" />
-    <Compile Include="FormulasIds\IdsFourthTable.cs" />
-    <Compile Include="FormulasIds\IdsSecondTable.cs" />
-    <Compile Include="FormulasIds\IdsThirdTable.cs" />
-    <Compile Include="ProfessorRatingServices\ProfessorsRatingServiceFirst.cs" />
-    <Compile Include="ProfessorRatingServices\ProfessorsRatingServiceFourth.cs" />
-    <Compile Include="ProfessorRatingServices\ProfessorsRatingServiceSecond.cs" />
-    <Compile Include="ProfessorRatingServices\ProfessorsRatingServiceThird.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,10 +63,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FormulasTables\FormulasFirstTable.xml" />
-    <Content Include="FormulasTables\FormulasFourthTable.xml" />
-    <Content Include="FormulasTables\FormulasSecondTable.xml" />
-    <Content Include="FormulasTables\FormulasThirdTable.xml" />
+    <Content Include="XmlTables\FirstTablesInfo.xml" />
+    <Content Include="XmlTables\FirstTableFormulas.xml" />
+    <Content Include="XmlTables\FourthTableFormulas.xml" />
+    <Content Include="XmlTables\SecondTableFormulas.xml" />
+    <Content Include="XmlTables\ThirdTableFormulas.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
