@@ -96,6 +96,7 @@
     <Compile Include="ViewModels\Book\BookListItemViewModel.cs" />
     <Compile Include="ViewModels\Book\BookExtraInfoViewModel.cs" />
     <Compile Include="ViewModels\Book\BookViewModel.cs" />
+    <Compile Include="ViewModels\Cathedra\CathedraInfoViewModel.cs" />
     <Compile Include="ViewModels\Conference\ConferenceAddViewModel.cs" />
     <Compile Include="ViewModels\Conference\ConferenceInfoViewModel.cs" />
     <Compile Include="ViewModels\Conference\ConferenceListItemViewModel.cs" />
@@ -121,6 +122,9 @@
     </Compile>
     <Compile Include="Views\Book\BookView.xaml.cs">
       <DependentUpon>BookView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cathedra\CathedraInfoView.xaml.cs">
+      <DependentUpon>CathedraInfoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Cathedra\CathedraView.xaml.cs">
       <DependentUpon>CathedraView.xaml</DependentUpon>
@@ -222,6 +226,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Book\BookView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Cathedra\CathedraInfoView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

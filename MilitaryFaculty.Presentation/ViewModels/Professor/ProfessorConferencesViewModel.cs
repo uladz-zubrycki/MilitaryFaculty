@@ -66,7 +66,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #endregion // Class Constructors
 
-        #region Class Protected Methods
+        #region Class Private Methods
 
         private ImagedCommandViewModel CreateAddConferenceCommand()
         {
@@ -77,7 +77,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
                                               Model, tooltip, imageSource);
         }
 
-        protected void InitConferences()
+        private void InitConferences()
         {
             var converter = ConferenceListItemViewModel.FromModel();
             var items = Model.Conferences.Select(converter);
@@ -89,9 +89,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
                                              };
         }
 
-        #endregion // Class Protected Methods
-
-        #region Class Private Methods
 
         private void OnConferenceCreated(object sender, ModifiedEntityEventArgs<Conference> e)
         {

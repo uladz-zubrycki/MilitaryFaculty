@@ -56,7 +56,6 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("professor");
             }
 
-
             professorRepository.Create(professor);
             GlobalNavCommands.BrowseBack.Execute(null, null);
         }

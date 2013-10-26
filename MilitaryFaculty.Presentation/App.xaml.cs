@@ -1,8 +1,5 @@
-﻿using System.Data.Entity;
-using System.Windows;
-using System.Windows.Threading;
+﻿using System.Windows;
 using Autofac;
-using MilitaryFaculty.Data;
 using MilitaryFaculty.Presentation.Infrastructure;
 using MilitaryFaculty.Presentation.ViewModels;
 
@@ -15,8 +12,7 @@ namespace MilitaryFaculty.Presentation
     {
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            var container = InjectionConfig.Init(new ContainerBuilder());
-            Database.SetInitializer(new DropCreateDatabaseAlways<EntityContext>());
+            var container = InjectionConfig.Register(new ContainerBuilder());
 
             var view = new MainWindow
                 {
@@ -24,11 +20,6 @@ namespace MilitaryFaculty.Presentation
                 };
 
             view.Show();
-        }
-
-        private void App_OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            MessageBox.Show(e.Exception.Message);
         }
     }
 }

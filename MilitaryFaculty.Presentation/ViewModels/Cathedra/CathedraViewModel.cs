@@ -3,16 +3,35 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class CathedraViewModel : ViewModel<Cathedra>
+    public class CathedraViewModel : ComplexViewModel<Cathedra>
     {
         #region Class Constructors
 
-        public CathedraViewModel(Cathedra cathedra)
-            : base(cathedra)
+        public CathedraViewModel(Cathedra model)
+            : base(model)
         {
-            Title = Model.Name;
+            InitViewModels();
         }
 
         #endregion // Class Constructors
+
+        #region Class Properties
+
+        public CathedraInfoViewModel InfoViewModel { get; private set; }
+
+        #endregion // Class Properties
+
+        #region Class Private Methods
+
+        private void InitViewModels()
+        {
+            InfoViewModel = new CathedraInfoViewModel(Model);
+
+            ViewModels.Add(InfoViewModel);
+            ViewModels.Add(InfoViewModel);
+            ViewModels.Add(InfoViewModel);
+        }
+        
+        #endregion // Class Private Methods
     }
 }

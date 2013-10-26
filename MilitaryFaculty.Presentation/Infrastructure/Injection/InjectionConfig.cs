@@ -6,7 +6,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 {
     public static class InjectionConfig
     {
-        public static IContainer Init(ContainerBuilder builder)
+        public static IContainer Register(ContainerBuilder builder)
         {
             RegisterRepositories(builder);
             RegisterEntityContext(builder);
