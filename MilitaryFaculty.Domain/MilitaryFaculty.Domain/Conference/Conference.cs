@@ -9,7 +9,7 @@ namespace MilitaryFaculty.Domain
     {
         #region Class Constants
 
-        public const int NameMaxLength = 100;
+        public const int NameMaxLength = 200;
 
         #endregion // Class Constants
 

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using MilitaryFaculty.Domain.Contract;
 using MilitaryFaculty.Extensions;
 
@@ -81,7 +83,6 @@ namespace MilitaryFaculty.Domain
             }
         }
 
-
         #endregion // Class Properties
 
         #region Class Constructors
@@ -93,8 +94,12 @@ namespace MilitaryFaculty.Domain
             academicDegree = AcademicDegree.None;
             academicRank = AcademicRank.None;
             jobPosition = JobPosition.Teacher;
+
             FullName = new FullName();
             Cathedra = null;
+            Conferences = new Collection<Conference>();
+            Books = new Collection<Book>();
+
         }
 
         public Professor(Professor other)
