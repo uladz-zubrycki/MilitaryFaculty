@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FirstTable name ="Первая таблица">
+  <Part1 name="Полнота...">
+    <id name="id11"/>
+  </Part1>
+  <Part2 name="Полнота...">
+    <id name="id12"/>
+  </Part2>
+  <Part3 name="Полнота...">
+    <id name="id13"/>
+  </Part3>
+  <Part4 name="Полнота...">
+    <id name="id14"/>
+  </Part4>
+  <Part5 name="Полнота...">
+    <id name="id15"/>
+  </Part5>
+  <Part6 name="Полнота...">
+    <id name="id16"/>
+  </Part6>
+</FirstTable>
