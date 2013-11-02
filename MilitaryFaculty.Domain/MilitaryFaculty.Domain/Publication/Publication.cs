@@ -5,11 +5,11 @@ using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
-    public class Book : UniqueEntity, IImitator<Book>
+    public class Publication : UniqueEntity, IImitator<Publication>
     {
         #region Class Fields
 
-        private BookType bookType;
+        private PublicationType publicationType;
 
         #endregion // Class Fields
 
@@ -19,9 +19,9 @@ namespace MilitaryFaculty.Domain
         public virtual string Name { get; set; }
         public virtual int PagesCount { get; set; }
 
-        public virtual BookType BookType
+        public virtual PublicationType PublicationType
         {
-            get { return bookType; }
+            get { return publicationType; }
             set
             {
                 if (!value.IsDefined())
@@ -29,7 +29,7 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                bookType = value;
+                publicationType = value;
             }
         }
 
@@ -37,15 +37,15 @@ namespace MilitaryFaculty.Domain
 
         #region Class Constructors
 
-        public Book()
+        public Publication()
         {
             Id = Guid.Empty;
             Name = String.Empty;
             PagesCount = 0;
-            bookType = BookType.Schoolbook;
+            publicationType = PublicationType.Monograph;
         }
 
-        public Book(Book other)
+        public Publication(Publication other)
         {
             Imitate(other);
         }
@@ -54,7 +54,7 @@ namespace MilitaryFaculty.Domain
 
         #region Class Public Methods
 
-        public void Imitate(Book other)
+        public void Imitate(Publication other)
         {
             if (other == null)
             {
@@ -65,7 +65,7 @@ namespace MilitaryFaculty.Domain
             Name = other.Name;
             PagesCount = other.PagesCount;
             Author = other.Author;
-            BookType = other.BookType;
+            PublicationType = other.PublicationType;
         }
 
         #endregion // Class Public Methods

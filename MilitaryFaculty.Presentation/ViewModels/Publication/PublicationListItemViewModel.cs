@@ -6,27 +6,27 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class BookListItemViewModel : ViewModel<Book>
+    public class PublicationListItemViewModel : ViewModel<Publication>
     {
         #region Type Static Members
 
-        public static Func<Book, BookListItemViewModel> FromModel()
+        public static Func<Publication, PublicationListItemViewModel> FromModel()
         {
-            return book => new BookListItemViewModel(book);
+            return book => new PublicationListItemViewModel(book);
         }  
 
         #endregion // Type Static Members
 
         #region Class Properties
 
-        public BookInfoViewModel InfoViewModel { get; private set; }
-        public BookExtraInfoViewModel ExtraInfoViewModel { get; private set; }
+        public PublicationInfoViewModel InfoViewModel { get; private set; }
+        public PublicationExtraInfoViewModel ExtraInfoViewModel { get; private set; }
 
         #endregion // Class Properties
 
         #region Class Constructors
 
-        public BookListItemViewModel(Book model)
+        public PublicationListItemViewModel(Publication model)
             : base(model)
         {
             InitViewModels();
@@ -39,34 +39,34 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         private void InitViewModels()
         {
-            InfoViewModel = new BookInfoViewModel(Model);
-            ExtraInfoViewModel = new BookExtraInfoViewModel(Model);
+            InfoViewModel = new PublicationInfoViewModel(Model);
+            ExtraInfoViewModel = new PublicationExtraInfoViewModel(Model);
         }
 
         private void InitCommands()
         {
             Commands.AddRange(new[]
                               {
-                                  CreateBrowseBookCommand(),
-                                  CreateRemoveBookCommand(),
+                                  CreateBrowsePublicationCommand(),
+                                  CreateRemovePublicationCommand(),
                               });
         }
 
-        private ImagedCommandViewModel CreateRemoveBookCommand()
+        private ImagedCommandViewModel CreateRemovePublicationCommand()
         {
-            const string tooltip = "Удалить книгу";
+            const string tooltip = "Удалить публикацию";
             const string imageSource = @"..\Content\remove.png";
 
-            return new ImagedCommandViewModel(GlobalAppCommands.RemoveBook,
+            return new ImagedCommandViewModel(ApplicationCommands.RemovePublication,
                                               Model, tooltip, imageSource);
         }
 
-        private ImagedCommandViewModel CreateBrowseBookCommand()
+        private ImagedCommandViewModel CreateBrowsePublicationCommand()
         {
             const string tooltip = "Подробно";
             const string imageSource = @"..\..\Content\details.png";
 
-            return new ImagedCommandViewModel(GlobalNavCommands.BrowseBookDetails,
+            return new ImagedCommandViewModel(NavigationCommands.BrowsePublicationDetails,
                                               Model, tooltip, imageSource);
         }
 

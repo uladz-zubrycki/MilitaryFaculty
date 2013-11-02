@@ -5,7 +5,7 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class BookInfoViewModel : ViewModel<Book>
+    public class PublicationInfoViewModel : ViewModel<Publication>
     {
         #region Class Properties
 
@@ -49,20 +49,20 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Constructors
 
-        public BookInfoViewModel(Book model)
-            : this(model, EditViewMode.Display)
+        public PublicationInfoViewModel(Publication model)
+            : this(model, EditableViewMode.Display)
         {
             // Empty
         }
 
-        public BookInfoViewModel(Book model, EditViewMode mode)
+        public PublicationInfoViewModel(Publication model, EditableViewMode mode)
             : base(model)
         {
             const string title = "Основная информация";
             
             Title = title;
 
-            var editCommands = new EditUICommandsPackage<Book>(GlobalAppCommands.UpdateBook, Model);
+            var editCommands = new EditableViewBehaviour<Publication>(ApplicationCommands.UpdatePublication, Model);
             editCommands.Inject(this, mode);
         }
 

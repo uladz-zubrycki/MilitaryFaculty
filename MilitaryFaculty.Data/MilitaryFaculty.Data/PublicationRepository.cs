@@ -3,9 +3,9 @@ using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Data
 {
-    public class BookRepository : BaseRepository<Book>, IBookRepository
+    public class PublicationRepository : BaseRepository<Publication>, IPublicationRepository
     {
-        public BookRepository(EntityContext context) 
+        public PublicationRepository(EntityContext context) 
             : base(context)
         {
             // Empty

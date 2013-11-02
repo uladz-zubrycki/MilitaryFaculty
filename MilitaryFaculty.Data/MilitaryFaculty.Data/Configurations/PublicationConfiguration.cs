@@ -4,17 +4,17 @@ using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Data
 {
-    internal class BookConfiguration : EntityTypeConfiguration<Book>
+    internal class PublicationConfiguration : EntityTypeConfiguration<Publication>
     {
-        public BookConfiguration()
+        public PublicationConfiguration()
         {
             HasKey(m => m.Id);
             Property(m => m.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(m => m.BookType).IsRequired();
+            Property(m => m.PublicationType).IsRequired();
             Property(m => m.Name).IsRequired();
             Property(m => m.PagesCount).IsRequired();
 
-            HasRequired(m => m.Author).WithMany(p => p.Books);
+            HasRequired(m => m.Author).WithMany(p => p.Publications);
         }
     }
 }

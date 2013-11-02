@@ -4,24 +4,24 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class BookAddViewModel : ComplexViewModel<Book>
+    public class PublicationAddViewModel : ComplexViewModel<Publication>
     {
         #region Class Properties
 
-        public BookViewModel BookViewModel { get; private set; }
+        public PublicationViewModel PublicationViewModel { get; private set; }
 
         #endregion // Class Properties
 
         #region Class Constructors
 
-        public BookAddViewModel(Book model)
+        public PublicationAddViewModel(Publication model)
             : base(model)
         {
-            const string title = "Добавить учебник";
+            const string title = "Добавить публикацию";
             
             this.Title = title;
 
-            BookViewModel = new BookViewModel(Model, EditViewMode.Edit);
+            PublicationViewModel = new PublicationViewModel(Model, EditableViewMode.Edit);
         }
 
         #endregion // Class Constructors

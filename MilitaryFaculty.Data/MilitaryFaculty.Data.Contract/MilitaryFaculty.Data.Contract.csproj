@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\DatabaseNotFoundException.cs" />
     <Compile Include="IConferenceRepository.cs" />
-    <Compile Include="IBookRepository.cs" />
+    <Compile Include="IPublicationRepository.cs" />
     <Compile Include="ICathedraRepository.cs" />
     <Compile Include="IProfessorRepository.cs" />
     <Compile Include="IRepository.cs" />

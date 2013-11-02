@@ -5,9 +5,9 @@ namespace MilitaryFaculty.Presentation.Views
     /// <summary>
     /// Interaction logic for ConferenceAddView.xaml
     /// </summary>
-    public partial class BookExtraInfoEditView : UserControl
+    public partial class PublicationAddView : UserControl
     {
-        public BookExtraInfoEditView()
+        public PublicationAddView()
         {
             InitializeComponent();
         }

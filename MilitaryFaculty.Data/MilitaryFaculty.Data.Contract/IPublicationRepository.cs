@@ -2,7 +2,7 @@
 
 namespace MilitaryFaculty.Data.Contract
 {
-    public interface IBookRepository : IRepository<Book>
+    public interface IPublicationRepository : IRepository<Publication>
     {
     }
 }

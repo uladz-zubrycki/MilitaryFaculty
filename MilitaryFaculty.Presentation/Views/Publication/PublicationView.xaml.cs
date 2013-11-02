@@ -3,11 +3,11 @@
 namespace MilitaryFaculty.Presentation.Views
 {
     /// <summary>
-    /// Interaction logic for ConferenceAddView.xaml
+    /// Interaction logic for ConferenceListItemView.xaml
     /// </summary>
-    public partial class BookExtraInfoView : UserControl
+    public partial class PublicationView : UserControl
     {
-        public BookExtraInfoView()
+        public PublicationView()
         {
             InitializeComponent();
         }

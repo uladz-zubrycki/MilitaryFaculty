@@ -9,28 +9,28 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class BookExtraInfoViewModel : ViewModel<Book>
+    public class PublicationExtraInfoViewModel : ViewModel<Publication>
     {
         #region Class Properties
 
-        public string BookTypeString
+        public string PublicationTypeString
         {
-            get { return Model.BookType.GetName(); }
+            get { return Model.PublicationType.GetName(); }
         }
 
-        public IEnumerable<Tuple<BookType, string>> BookTypeList
+        public IEnumerable<Tuple<PublicationType, string>> PublicationTypeList
         {
             get
             {
-                return Enum.GetValues(typeof (BookType))
-                           .Cast<BookType>()
-                           .Select(val => new Tuple<BookType, string>(val, val.GetName()));
+                return Enum.GetValues(typeof(PublicationType))
+                           .Cast<PublicationType>()
+                           .Select(val => new Tuple<PublicationType, string>(val, val.GetName()));
             }
         }
 
-        public BookType BookType
+        public PublicationType PublicationType
         {
-            get { return Model.BookType; }
+            get { return Model.PublicationType; }
             set
             {
                 if (!value.IsDefined())
@@ -38,14 +38,14 @@ namespace MilitaryFaculty.Presentation.ViewModels
                     throw new InvalidEnumArgumentException();
                 }
                 
-                if (value == BookType)
+                if (value == PublicationType)
                 {
                     return;
                 }
 
-                Model.BookType = value;
+                Model.PublicationType = value;
                 OnPropertyChanged();
-                OnPropertyChanged("BookTypeString");
+                OnPropertyChanged("PublicationTypeString");
             }
         }
 
@@ -53,20 +53,20 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Constructors
 
-        public BookExtraInfoViewModel(Book model)
-            : this(model, EditViewMode.Display)
+        public PublicationExtraInfoViewModel(Publication model)
+            : this(model, EditableViewMode.Display)
         {
             // Empty
         }
 
-        public BookExtraInfoViewModel(Book model, EditViewMode mode)
+        public PublicationExtraInfoViewModel(Publication model, EditableViewMode mode)
             : base(model)
         {
             const string title = "Дополнительная информация";
 
             Title = title;
 
-            var editCommands = new EditUICommandsPackage<Book>(GlobalAppCommands.UpdateBook, Model);
+            var editCommands = new EditableViewBehaviour<Publication>(ApplicationCommands.UpdatePublication, Model);
             editCommands.Inject(this, mode);
         }
 
