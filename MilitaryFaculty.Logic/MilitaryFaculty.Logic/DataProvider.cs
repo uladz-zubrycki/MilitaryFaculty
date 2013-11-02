@@ -5,6 +5,8 @@ using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Logic
 {
+    #region Class Public Methods
+
     public delegate int InfoMethod();
 
     public static class DataProvider
@@ -16,17 +18,22 @@ namespace MilitaryFaculty.Logic
                 throw new ArgumentNullException("value");
             }
 
-            var typeInfo = typeof (DataProvider);
-            var method = typeInfo.GetMethods().First(m => ((FormulaArgumentAttribute)
-                                                           m.GetCustomAttribute(typeof (FormulaArgumentAttribute)))
-                                                              .Name == value);
-            return ((InfoMethod) method.CreateDelegate(typeof (InfoMethod)))();
+
+            var method = typeof (DataProvider).GetMethods()
+                                              .FirstOrDefault(m =>
+                                                  {
+                                                      var attr = m.GetCustomAttribute<FormulaArgumentAttribute>();
+                                                      return attr != null && attr.Name == value;
+                                                  });
+            return method != null ? (int)method.Invoke(null, null) : 0;
         }
 
         [FormulaArgument("ProfsCount")]
-        private static int ProfessorsCount()
+        public static int ProfessorsCount()
         {
             return 5;
         }
+
+        #endregion // Class Public Methods
     }
 }

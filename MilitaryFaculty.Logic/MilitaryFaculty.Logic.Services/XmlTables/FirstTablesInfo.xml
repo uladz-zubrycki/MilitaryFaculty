@@ -1,21 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<FirstTable name ="Первая таблица">
-  <Part1 name="Полнота...">
-    <id name="id11"/>
-  </Part1>
-  <Part2 name="Полнота...">
-    <id name="id12"/>
-  </Part2>
-  <Part3 name="Полнота...">
-    <id name="id13"/>
-  </Part3>
-  <Part4 name="Полнота...">
-    <id name="id14"/>
-  </Part4>
-  <Part5 name="Полнота...">
-    <id name="id15"/>
-  </Part5>
-  <Part6 name="Полнота...">
-    <id name="id16"/>
-  </Part6>
-</FirstTable>
+<TableInfo name ="Первая таблица" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TableParts>
+    <TablePart name="Полнота...">
+      <Identifiers>
+        <string>id11</string>
+      </Identifiers>
+    </TablePart>
+    <TablePart name="Полнота...">
+      <Identifiers>
+        <string>id12</string>
+      </Identifiers>
+    </TablePart>
+    <TablePart name="Полнота...">
+      <Identifiers>
+        <string>id13</string>
+      </Identifiers>
+    </TablePart>
+    <TablePart name="Полнота...">
+      <Identifiers>
+        <string>id14</string>
+      </Identifiers>
+    </TablePart>
+    <TablePart name="Полнота...">
+      <Identifiers>
+        <string>id15</string>
+      </Identifiers>
+    </TablePart>
+    <TablePart name="Полнота...">
+      <Identifiers>
+        <string>id16</string>
+      </Identifiers>
+    </TablePart>
+  </TableParts>  
+</TableInfo>

@@ -5,33 +5,33 @@ namespace MilitaryFaculty.Logic
 {
     public class FormulaInfo
     {
-        private string formula;
-
         #region Class Fields
+        private string expression;
+        #endregion // Class Fields
 
-        public string Formula
+        #region Class Properties
+        public ICollection<string> Arguments { get; set; }
+        public IDictionary<string, double> Coefficients { get; set; }
+
+        public string Expression
         {
-            get { return formula; }
+            get { return expression; }
             set
             {
                 if (value == null) throw new ArgumentNullException();
                 if (String.IsNullOrEmpty(value.Trim())) throw new ArgumentException();
                 if (value == null) throw new ArgumentNullException("variables");
                 
-                formula = value.Replace(" ", "");
+                expression = value.Replace(" ", "");
 
-                if (formula == String.Empty)
+                if (expression == String.Empty)
                 {
-                    throw new ArgumentException("formulaCore");
+                    throw new ArgumentException("expression");
                 }
 
-                formula = formula.ToLower();
+                expression = expression.ToLower();
             }
         }
-
-        public ICollection<string> Arguments { get; set; }
-        public IDictionary<string, double> Coefficients { get; set; }
-
-        #endregion // Class Fields
+        #endregion // Class Properties
     }
 }

@@ -21,7 +21,7 @@ namespace MilitaryFaculty.Logic
 
         public Characteristic(FormulaInfo formulaInfo)
         {
-            formulaCore = formulaInfo.Formula;
+            formulaCore = formulaInfo.Expression;
 
             foreach (var coeff in formulaInfo.Coefficients)
             {
@@ -38,7 +38,7 @@ namespace MilitaryFaculty.Logic
         #endregion // Class Constructors
 
         #region Class Public Methods
-        
+
         public int Evaluate()
         {
             var localVariables = arguments.Select(arg => new VariableValue(DataProvider.GetValue(arg), arg)).ToList();

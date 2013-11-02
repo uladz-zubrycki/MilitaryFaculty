@@ -1,48 +1,47 @@
-﻿using System;
-using System.Linq;
-using System.Xml.Linq;
+﻿using System.Linq;
+using MilitaryFaculty.Logic.XmlFormulasDomain;
+using MilitaryFaculty.Logic.XmlInfoDomain;
 
 namespace MilitaryFaculty.Logic
 {
 
     public class DataContainer
     {
-        private XDocument xmlFormulas;
-        private XDocument xmlInfo;
+        #region Class Fields
+        private readonly string formulasPath;
+        private readonly string infoPath;
+        #endregion // Class Fields
 
-        public DataContainer(XDocument XmlFormulas, XDocument XmlInfo)
-        {
-            xmlFormulas = XmlFormulas;
-            xmlInfo = XmlInfo;
-        }
-
-        public void FormExcel(/*excel sheet*/)
+        #region Class Public Methods
+        public DataContainer(string formulasFileName, string infoFileName)
         {
             //AppDomain.CurrentDomain.BaseDirectory
             //var xmlDoc = XDocument.Load("FormulasFourthTable.xml");
 
-            if (xmlInfo.Root == null)
-                throw new Exception();
+            formulasPath = formulasFileName;
+            infoPath = infoFileName;
+        }
 
-            var parts = xmlInfo.Root.Elements();
-            foreach (var part in parts)
+        public void GenerateToExcel(/*excel sheet*/)
+        {
+            var tableInfo = TableInfo.Deserialize(infoPath);
+            var tableFormulas = TableFormulas.Deserialize(formulasPath);
+
+            foreach (var part in tableInfo.TableParts)
             {
-                var ids = part.Elements();
-                foreach (var id in ids)
+                foreach (var id in part.Identifiers)
                 {
-                    //TODO: Formuls Calculations
-                    var idName = id.Attribute("name");
+                    var formulaInfo = tableFormulas.Formulas.First(f => f.Id == id).ToFormulaInfo();
+                    var characteristic = new Characteristic(formulaInfo);
+                    characteristic.Evaluate();
                 }
             }
-
-            //var xmlFormula = xmlDoc.Root.Elements().Single(x => x.Attribute("id").Value == formulaId);
-            //var xmlArguments = xmlFormula.Element("Arguments");
-            //var xmlCoefficients = xmlFormula.Element("Coefficients");
         }
 
         private static int GetResult()
         {
             return 0;
         }
+        #endregion // Class Public Methods
     }
 }

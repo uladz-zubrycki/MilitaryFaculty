@@ -63,7 +63,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="XmlTables\FirstTablesInfo.xml" />
+    <Content Include="XmlTables\FirstTablesInfo.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="XmlTables\FirstTableFormulas.xml" />
     <Content Include="XmlTables\FourthTableFormulas.xml" />
     <Content Include="XmlTables\SecondTableFormulas.xml" />
