@@ -4,7 +4,7 @@ using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public abstract class BaseNavCommandsModule : ICommandContainerModule
+    public abstract class BaseNavigationCommands : ICommandContainerModule
     {
         #region Class Fields
 
@@ -14,7 +14,7 @@ namespace MilitaryFaculty.Presentation.Custom
 
         #region Class Constructors
 
-        protected BaseNavCommandsModule(MainViewModel viewModel)
+        protected BaseNavigationCommands(MainViewModel viewModel)
         {
             if (viewModel == null)
             {

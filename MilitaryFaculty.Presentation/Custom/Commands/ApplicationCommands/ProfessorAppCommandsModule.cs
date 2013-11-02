@@ -33,15 +33,15 @@ namespace MilitaryFaculty.Presentation.Custom
 
         public void RegisterModule(CommandContainer container)
         {
-            container.RegisterCommand<Professor>(GlobalAppCommands.AddProfessor,
+            container.RegisterCommand<Professor>(ApplicationCommands.AddProfessor,
                                                  OnAddProfessor,
                                                  CanAddProfessor);
 
-            container.RegisterCommand<Professor>(GlobalAppCommands.UpdateProfessor,
+            container.RegisterCommand<Professor>(ApplicationCommands.UpdateProfessor,
                                                  OnUpdateProfessor,
                                                  CanUpdateProfessor);
 
-            container.RegisterCommand<Professor>(GlobalAppCommands.RemoveProfessor,
+            container.RegisterCommand<Professor>(ApplicationCommands.RemoveProfessor,
                                                  OnRemoveProfessor);
         }
 
@@ -57,7 +57,7 @@ namespace MilitaryFaculty.Presentation.Custom
             }
 
             professorRepository.Create(professor);
-            GlobalNavCommands.BrowseBack.Execute(null, null);
+            NavigationCommands.BrowseBack.Execute(null, null);
         }
 
         private bool CanAddProfessor(Professor professor)

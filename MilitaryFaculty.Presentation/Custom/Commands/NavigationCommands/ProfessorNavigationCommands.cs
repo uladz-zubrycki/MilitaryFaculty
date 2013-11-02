@@ -5,11 +5,11 @@ using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class ProfessorNavCommandsModule : BaseNavCommandsModule
+    public class ProfessorNavigationCommands : BaseNavigationCommands
     {
         #region Class Constructors
 
-        public ProfessorNavCommandsModule(MainViewModel viewModel)
+        public ProfessorNavigationCommands(MainViewModel viewModel)
             : base(viewModel)
         {
             // Empty
@@ -21,7 +21,7 @@ namespace MilitaryFaculty.Presentation.Custom
 
         public override void RegisterModule(CommandContainer container)
         {
-            container.RegisterCommand<Cathedra>(GlobalNavCommands.BrowseProfessorAdd,
+            container.RegisterCommand<Cathedra>(NavigationCommands.BrowseProfessorAdd,
                                                 OnBrowseProfessorAdd);
         }
 

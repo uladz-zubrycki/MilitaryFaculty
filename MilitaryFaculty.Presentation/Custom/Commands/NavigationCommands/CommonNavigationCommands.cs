@@ -5,7 +5,7 @@ using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class CommonNavCommandsModule : BaseNavCommandsModule
+    public class CommonNavigationCommands : BaseNavigationCommands
     {
         #region Class Constants
 
@@ -22,7 +22,7 @@ namespace MilitaryFaculty.Presentation.Custom
 
         #region Class Constructors
 
-        public CommonNavCommandsModule(MainViewModel viewModel)
+        public CommonNavigationCommands(MainViewModel viewModel)
             : base(viewModel)
         {
             backHistory = new LinkedList<ViewModel>();
@@ -42,10 +42,10 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("sink");
             }
 
-            container.RegisterCommand(GlobalNavCommands.BrowseBack,
+            container.RegisterCommand(NavigationCommands.BrowseBack,
                                       OnBrowseBack,
                                       CanBrowseBack);
-            container.RegisterCommand(GlobalNavCommands.BrowseForward,
+            container.RegisterCommand(NavigationCommands.BrowseForward,
                                       OnBrowseForward,
                                       CanBrowseForward);
         }
@@ -62,7 +62,7 @@ namespace MilitaryFaculty.Presentation.Custom
                 return;
             }
 
-            //WorkWIndow cahnged by BrowseForwardCommand
+            //WorkWIndow changed by BrowseForwardCommand
             if (forwardHistory.First != null && e.NewValue == forwardHistory.First.Value)
             {
                 return;

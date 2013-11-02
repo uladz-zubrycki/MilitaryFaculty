@@ -5,11 +5,11 @@ using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class BookNavCommandsModule : BaseNavCommandsModule
+    public class PublicationNavigationCommands : BaseNavigationCommands
     {
         #region Class Constructors
 
-        public BookNavCommandsModule(MainViewModel viewModel)
+        public PublicationNavigationCommands(MainViewModel viewModel)
             : base(viewModel)
         {
             // Empty
@@ -26,8 +26,8 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("sink");
             }
 
-            container.RegisterCommand<Professor>(GlobalNavCommands.BrowseBookAdd, OnBrowseBookAdd);
-            container.RegisterCommand<Book>(GlobalNavCommands.BrowseBookDetails, OnBrowseBookDetails);
+            container.RegisterCommand<Professor>(NavigationCommands.BrowsePublicationAdd, OnBrowseBookAdd);
+            container.RegisterCommand<Publication>(NavigationCommands.BrowsePublicationDetails, OnBrowseBookDetails);
         }
 
         #endregion // Class Public Methods
@@ -41,22 +41,22 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("author");
             }
 
-            var model = new Book
+            var model = new Publication
                         {
                             Author = author
                         };
 
-            ViewModel.WorkWindow = new BookAddViewModel(model);
+            ViewModel.WorkWindow = new PublicationAddViewModel(model);
         }
 
-        private void OnBrowseBookDetails(Book book)
+        private void OnBrowseBookDetails(Publication publication)
         {
-            if (book == null)
+            if (publication == null)
             {
-                throw new ArgumentNullException("book");
+                throw new ArgumentNullException("publication");
             }
 
-            ViewModel.WorkWindow = new BookViewModel(book);
+            ViewModel.WorkWindow = new PublicationViewModel(publication);
         }
 
         #endregion // Class Private Methods

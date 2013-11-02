@@ -5,11 +5,11 @@ using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class ConferenceNavCommandsModule : BaseNavCommandsModule
+    public class ConferenceNavigationCommands : BaseNavigationCommands
     {
         #region Class Constructors
 
-        public ConferenceNavCommandsModule(MainViewModel viewModel)
+        public ConferenceNavigationCommands(MainViewModel viewModel)
             : base(viewModel)
         {
             // Empty
@@ -26,10 +26,10 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("sink");
             }
 
-            container.RegisterCommand<Professor>(GlobalNavCommands.BrowseConferenceAdd,
+            container.RegisterCommand<Professor>(NavigationCommands.BrowseConferenceAdd,
                                                  OnBrowseConferenceAdd);
 
-            container.RegisterCommand<Conference>(GlobalNavCommands.BrowseConferenceDetails,
+            container.RegisterCommand<Conference>(NavigationCommands.BrowseConferenceDetails,
                                                   OnBrowseConferenceDetails);
         }
 
