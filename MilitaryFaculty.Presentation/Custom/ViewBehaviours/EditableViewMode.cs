@@ -1,6 +1,6 @@
 ﻿namespace MilitaryFaculty.Presentation.Custom
 {
-    public enum EditViewMode
+    public enum EditableViewMode
     {
         Display,
         Edit
