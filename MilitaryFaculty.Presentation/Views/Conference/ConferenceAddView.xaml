@@ -39,14 +39,14 @@
                 Grid.Column="0"
                 Content="Добавить"
                 Style="{StaticResource SimpleButton}"
-                Command="c:GlobalAppCommands.AddConference"
+                Command="c:ApplicationCommands.AddConference"
                 CommandParameter="{Binding Model}"/>
 
             <Button
                 Grid.Column="1"
                 Content="Отмена"
                 Style="{StaticResource SimpleButton}"
-                Command="c:GlobalNavCommands.BrowseBack"
+                Command="c:NavigationCommands.BrowseBack"
                 CommandParameter="{Binding Model}" />
         </Grid>
     </Grid>

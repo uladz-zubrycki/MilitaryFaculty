@@ -20,12 +20,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #endregion // Type Static Members
 
-        #region Class Fields
-
-        private readonly IRepository<Professor> professorRepository;
-
-        #endregion // Class Fields
-
         #region Class Properties
 
         protected FacultyTreeViewModel FacultyTree
@@ -47,8 +41,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             {
                 throw new ArgumentNullException("professorRepository");
             }
-
-            this.professorRepository = professorRepository;
 
             professorRepository.EntityCreated += OnProfessorCreated;
             professorRepository.EntityDeleted += OnProfessorDeleted;
@@ -78,7 +70,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Добавить преподавателя";
             const string imageSource = @"..\Content\add-user.png";
 
-            return new ImagedCommandViewModel(GlobalNavCommands.BrowseProfessorAdd,
+            return new ImagedCommandViewModel(NavigationCommands.BrowseProfessorAdd,
                                               Model, tooltip, imageSource);
         }
 

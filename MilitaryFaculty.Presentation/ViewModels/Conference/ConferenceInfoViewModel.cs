@@ -15,22 +15,22 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         public string ConferenceTypeString
         {
-            get { return Model.ConferenceType.GetName(); }
+            get { return Model.EventLevel.GetName(); }
         }
 
-        public IEnumerable<Tuple<ConferenceType, string>> ConferenceTypeList
+        public IEnumerable<Tuple<EventLevel, string>> ConferenceTypeList
         {
             get
             {
-                return Enum.GetValues(typeof (ConferenceType))
-                           .Cast<ConferenceType>()
-                           .Select(val => new Tuple<ConferenceType, string>(val, val.GetName()));
+                return Enum.GetValues(typeof(EventLevel))
+                           .Cast<EventLevel>()
+                           .Select(val => new Tuple<EventLevel, string>(val, val.GetName()));
             }
         }
 
-        public ConferenceType ConferenceType
+        public EventLevel ConferenceType
         {
-            get { return Model.ConferenceType; }
+            get { return Model.EventLevel; }
             set
             {
                 if (!value.IsDefined())
@@ -43,7 +43,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
                     return;
                 }
 
-                Model.ConferenceType = value;
+                Model.EventLevel = value;
                 OnPropertyChanged();
                 OnPropertyChanged("ConferenceTypeString");
             }
@@ -88,20 +88,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Constructors
 
-        public ConferenceInfoViewModel(Conference model)
-            : this(model, EditViewMode.Display)
-        {
-            // Empty
-        }
-
-        public ConferenceInfoViewModel(Conference model, EditViewMode mode)
+        public ConferenceInfoViewModel(Conference model, EditableViewMode mode = EditableViewMode.Display)
             : base(model)
         {
-            const string title = "Базовая информация";
-            
-            Title = title;
+            Title = "Базовая информация"; ;
 
-            var editCommands = new EditUICommandsPackage<Conference>(GlobalAppCommands.UpdateConference, Model);
+            var editCommands = new EditableViewBehaviour<Conference>(ApplicationCommands.UpdateConference,
+                                                                     Model);
             editCommands.Inject(this, mode);
         }
 

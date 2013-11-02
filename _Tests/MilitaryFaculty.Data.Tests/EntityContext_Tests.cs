@@ -116,7 +116,7 @@ namespace MilitaryFaculty.Data.Tests
                                                  "военно-морского десанта Республики Беларусь",
                                           Date = DateTime.Parse("01.07.1993"),
                                           Curator = professor1,
-                                          ConferenceType = ConferenceType.University,
+                                          EventLevel = EventLevel.University,
                                           ConferenceReport = new ConferenceReport()
                                                              {
                                                                  OrganizationCorrectness = AccordanceLevel.Fully,
@@ -130,7 +130,7 @@ namespace MilitaryFaculty.Data.Tests
                                           Name = "Военно-научная конференция, посвященная 56-летию Великой Победы",
                                           Date = DateTime.Parse("11.09.2001"),
                                           Curator = professor1,
-                                          ConferenceType = ConferenceType.University,
+                                          EventLevel = EventLevel.University,
                                           ConferenceReport = new ConferenceReport()
                                                              {
                                                                  OrganizationCorrectness = AccordanceLevel.Fully,
@@ -144,7 +144,7 @@ namespace MilitaryFaculty.Data.Tests
                                           Name = "Вторая международная конференция",
                                           Date = DateTime.Parse("13.08.2007"),
                                           Curator = professor2,
-                                          ConferenceType = ConferenceType.University,
+                                          EventLevel = EventLevel.University,
                                           ConferenceReport = new ConferenceReport()
                                                              {
                                                                  OrganizationCorrectness = AccordanceLevel.Fully,
@@ -175,28 +175,28 @@ namespace MilitaryFaculty.Data.Tests
 
             var books = new[]
                             {
-                                new Book
+                                new Publication
                                 {
                                     Name = "Учебник по специальной подготовке",
                                     PagesCount = 228,
-                                    BookType = BookType.Schoolbook,
+                                    PublicationType = PublicationType.Article,
                                     Author = professor1,
                                 },
-                                new Book
+                                new Publication
                                 {
                                     Name = "Учебник по тактической подготовке",
                                     PagesCount = 141,
-                                    BookType = BookType.Schoolbook,
+                                    PublicationType = PublicationType.Article,
                                     Author = professor1,
                                 },
-                                new Book
+                                new Publication
                                 {
                                     Name = "Как стать младшим офицером, " +
                                            "начальником радиостанций коротковолновых " +
                                            "малой мощности Р142-Н, Р145-БН за 21 день " +
                                            "или курс молодого связиста для чайников",
                                     PagesCount = 1309,
-                                    BookType = BookType.Tutorial,
+                                    PublicationType = PublicationType.Article,
                                     Author = professor2,
                                 },
                             };

@@ -45,6 +45,7 @@ namespace MilitaryFaculty.Presentation.Custom
             container.RegisterCommand(NavigationCommands.BrowseBack,
                                       OnBrowseBack,
                                       CanBrowseBack);
+
             container.RegisterCommand(NavigationCommands.BrowseForward,
                                       OnBrowseForward,
                                       CanBrowseForward);
@@ -56,14 +57,12 @@ namespace MilitaryFaculty.Presentation.Custom
 
         private void ViewModelOnWorkWindowChanged(object sender, WorkWindowChangedEventArgs e)
         {
-            // WorkWindow changed by BrowseBackCommand 
-            if (backHistory.First != null && e.NewValue == backHistory.First.Value)
+            if (IsChangedByBrowseBack(e))
             {
                 return;
             }
 
-            //WorkWIndow changed by BrowseForwardCommand
-            if (forwardHistory.First != null && e.NewValue == forwardHistory.First.Value)
+            if (IsChangedByBrowseForward(e))
             {
                 return;
             }
@@ -127,6 +126,16 @@ namespace MilitaryFaculty.Presentation.Custom
             }
 
             forwardHistory.AddFirst(viewModel);
+        }
+
+        private bool IsChangedByBrowseForward(WorkWindowChangedEventArgs e)
+        {
+            return forwardHistory.First != null && e.NewValue == forwardHistory.First.Value;
+        }
+
+        private bool IsChangedByBrowseBack(WorkWindowChangedEventArgs e)
+        {
+            return backHistory.First != null && e.NewValue == backHistory.First.Value;
         }
 
         #endregion // Class Private Methods

@@ -6,7 +6,7 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class BookAppCommandsModule : ICommandContainerModule
+    public class BookApplicationCommands : ICommandContainerModule
     {
         #region Class Fields
 
@@ -16,7 +16,7 @@ namespace MilitaryFaculty.Presentation.Custom
 
         #region Class Constructors
 
-        public BookAppCommandsModule(IRepository<Publication> bookRepository)
+        public BookApplicationCommands(IRepository<Publication> bookRepository)
         {
             if (bookRepository == null)
             {

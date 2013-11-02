@@ -7,8 +7,6 @@ using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Infrastructure;
 using MilitaryFaculty.Presentation.ViewModels;
 
-// ReSharper disable InconsistentNaming
-
 namespace MilitaryFaculty.Presentation.Custom
 {
     public class EditableViewBehaviour<T> : IViewBehaviour
@@ -79,7 +77,7 @@ namespace MilitaryFaculty.Presentation.Custom
 
         #endregion // Class Public Methods
 
-        #region Implementation of IUICommandPackage
+        #region Implementation of IViewBehaviour
 
         void IViewBehaviour.Inject(ViewModel viewModel)
         {
@@ -91,7 +89,7 @@ namespace MilitaryFaculty.Presentation.Custom
             Inject(viewModel as ViewModel<T>, (EditableViewMode)defaultTag);
         }
 
-        #endregion // Implementation of IUICommandPackage
+        #endregion // Implementation of IViewBehaviour
 
         #region Class Private Methods
 
@@ -184,5 +182,3 @@ namespace MilitaryFaculty.Presentation.Custom
         #endregion // Class Private Methods
     }
 }
-
-// ReSharper restore InconsistentNaming

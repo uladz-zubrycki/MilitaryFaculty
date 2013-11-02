@@ -4,7 +4,7 @@
                     xmlns:views="clr-namespace:MilitaryFaculty.Presentation.Views">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="CathedraResources.xaml"/>
-        <ResourceDictionary Source="BookResources.xaml"/>
+        <ResourceDictionary Source="PublicationResources.xaml"/>
         <ResourceDictionary Source="ConferenceResources.xaml"/>
         <ResourceDictionary Source="FacultyTreeResources.xaml"/>
         <ResourceDictionary Source="ProfessorResources.xaml"/>

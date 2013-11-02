@@ -59,7 +59,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Удалить конференцию";
             const string imageSource = @"..\Content\remove.png";
 
-            return new ImagedCommandViewModel(GlobalAppCommands.RemoveConference,
+            return new ImagedCommandViewModel(ApplicationCommands.RemoveConference,
                                               Model, tooltip, imageSource);
         }
 
@@ -68,7 +68,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Подробно";
             const string imageSource = @"..\..\Content\details.png";
 
-            return new ImagedCommandViewModel(GlobalNavCommands.BrowseConferenceDetails,
+            return new ImagedCommandViewModel(NavigationCommands.BrowseConferenceDetails,
                                               Model, tooltip, imageSource);
         }
 

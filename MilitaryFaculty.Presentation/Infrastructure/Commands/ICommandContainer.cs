@@ -11,7 +11,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
     public interface ICommandContainer
     {
         /// <summary>
-        /// Returns true if the specified command can be executed by the command sink.
+        /// Returns true if the specified command can be executed by the command container.
         /// </summary>
         /// <param name="command">
         /// The command whose execution status is being queried.
@@ -22,7 +22,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         /// <param name="handled">
         /// Set to true if there is no need to continue querying for an execution status.
         /// </param>
-        bool CanExecuteCommand(ICommand command, object parameter, out bool handled);
+        bool CanExecuteCommand(RoutedCommand command, object parameter, out bool handled);
 
         /// <summary>
         /// Executes the specified command.
@@ -36,6 +36,6 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         /// <param name="handled">
         /// Set to true if the command has been executed and there is no need for others to respond.
         /// </param>
-        void ExecuteCommand(ICommand command, object parameter, out bool handled);
+        void ExecuteCommand(RoutedCommand command, object parameter, out bool handled);
     }
 }

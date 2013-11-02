@@ -24,8 +24,10 @@ namespace MilitaryFaculty.Domain
 
         public virtual FullName FullName { get; set; }
         public virtual Cathedra Cathedra { get; set; }
-        public virtual ICollection<Book> Books { get; set; }
-        public virtual ICollection<Conference> Conferences { get; set; } 
+
+        public virtual ICollection<Publication> Publications { get; set; }
+        public virtual ICollection<Conference> Conferences { get; set; }
+        public virtual ICollection<Exhibition> Exhibitions { get; set; } 
 
         public virtual MilitaryRank MilitaryRank
         {
@@ -98,7 +100,8 @@ namespace MilitaryFaculty.Domain
             FullName = new FullName();
             Cathedra = null;
             Conferences = new Collection<Conference>();
-            Books = new Collection<Book>();
+            Publications = new Collection<Publication>();
+            Exhibitions = new Collection<Exhibition>();
 
         }
 

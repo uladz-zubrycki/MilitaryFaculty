@@ -6,7 +6,7 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class ProfessorAppCommandsModule : ICommandContainerModule
+    public class ProfessorApplicationCommands : ICommandContainerModule
     {
         #region Class Fields
 
@@ -16,13 +16,12 @@ namespace MilitaryFaculty.Presentation.Custom
 
         #region Class Constructors
 
-        public ProfessorAppCommandsModule(IRepository<Professor> professorRepository)
+        public ProfessorApplicationCommands(IRepository<Professor> professorRepository)
         {
             if (professorRepository == null)
             {
                 throw new ArgumentNullException("professorRepository");
             }
-
 
             this.professorRepository = professorRepository;
         }

@@ -31,8 +31,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         protected void InitViewModels()
         {
-            InfoViewModel = new ProfessorInfoViewModel(Model, EditViewMode.Edit);
-            ExtraInfoViewModel = new ProfessorExtraInfoViewModel(Model, EditViewMode.Edit);
+            InfoViewModel = new ProfessorInfoViewModel(Model, EditableViewMode.Edit);
+            ExtraInfoViewModel = new ProfessorExtraInfoViewModel(Model, EditableViewMode.Edit);
 
             ViewModels.Add(InfoViewModel);
             ViewModels.Add(ExtraInfoViewModel);

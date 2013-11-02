@@ -2,6 +2,10 @@
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
+    /// <summary>
+    /// Strong-typed base ViewModel class.
+    /// </summary>
+    /// <typeparam name="T">Contained model type.</typeparam>
     public abstract class ViewModel<T> : ViewModel
         where T : class
     {

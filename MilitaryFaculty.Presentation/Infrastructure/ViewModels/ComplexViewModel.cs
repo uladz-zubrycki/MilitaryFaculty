@@ -26,6 +26,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 
                 return tags.Single();
             }
+
             set
             {
                 if (value.Equals(Tag))

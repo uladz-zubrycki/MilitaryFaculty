@@ -105,19 +105,19 @@ namespace MilitaryFaculty.Presentation.ViewModels
         #region Class Constructors
 
         public ProfessorInfoViewModel(Professor model)
-            : this(model, EditViewMode.Display)
+            : this(model, EditableViewMode.Display)
         {
             // Empty
         }
 
-        public ProfessorInfoViewModel(Professor model, EditViewMode mode)
+        public ProfessorInfoViewModel(Professor model, EditableViewMode mode)
             : base(model)
         {
             const string title = "Базовая информация";
            
             Title = title;
 
-            var editCommands = new EditUICommandsPackage<Professor>(GlobalAppCommands.UpdateProfessor, Model);
+            var editCommands = new EditableViewBehaviour<Professor>(ApplicationCommands.UpdateProfessor, Model);
             editCommands.Inject(this, mode);
         }
 

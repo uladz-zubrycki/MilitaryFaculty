@@ -28,8 +28,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             InfoViewModel = new CathedraInfoViewModel(Model);
 
             ViewModels.Add(InfoViewModel);
-            ViewModels.Add(InfoViewModel);
-            ViewModels.Add(InfoViewModel);
         }
         
         #endregion // Class Private Methods

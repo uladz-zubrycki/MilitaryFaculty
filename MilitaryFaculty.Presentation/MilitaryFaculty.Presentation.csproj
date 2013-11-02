@@ -68,34 +68,34 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Custom\Converters\BoolToVisibilityConverter.cs" />
-    <Compile Include="Custom\GlobalCommands\ApplicationCommands\BookAppCommandsModule.cs" />
-    <Compile Include="Custom\GlobalCommands\ApplicationCommands\ConferenceAppCommandsModule.cs" />
-    <Compile Include="Custom\GlobalCommands\ApplicationCommands\ProfessorAppCommandsModule.cs" />
-    <Compile Include="Custom\GlobalCommands\GlobalAppCommands.cs" />
+    <Compile Include="Custom\Commands\ApplicationCommands\BookApplicationCommands.cs" />
+    <Compile Include="Custom\Commands\ApplicationCommands\ConferenceApplicationCommands.cs" />
+    <Compile Include="Custom\Commands\ApplicationCommands\ProfessorApplicationCommands.cs" />
+    <Compile Include="Custom\Commands\ApplicationCommands.cs" />
     <Compile Include="Infrastructure\Commands\Command.cs" />
-    <Compile Include="Infrastructure\Commands\ICommandSinkModule.cs" />
-    <Compile Include="Custom\GlobalCommands\NavigationCommands\BookNavCommandsModule.cs" />
-    <Compile Include="Custom\GlobalCommands\NavigationCommands\ConferenceNavCommandsModule.cs" />
-    <Compile Include="Custom\GlobalCommands\NavigationCommands\CommonNavCommandsModule.cs" />
-    <Compile Include="Custom\GlobalCommands\NavigationCommands\AbstractNavCommandsModule.cs" />
-    <Compile Include="Custom\GlobalCommands\NavigationCommands\ProfessorNavCommandsModule.cs" />
-    <Compile Include="Custom\UICommandsPackages\EditViewMode.cs" />
-    <Compile Include="Custom\GlobalCommands\GlobalNavCommands.cs" />
+    <Compile Include="Infrastructure\Commands\ICommandContainerModule.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands\PublicationNavigationCommands.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands\ConferenceNavigationCommands.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands\CommonNavigationCommands.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands\BaseNavigationCommands.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands\ProfessorNavigationCommands.cs" />
+    <Compile Include="Custom\ViewBehaviours\EditableViewMode.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands.cs" />
     <Compile Include="Infrastructure\Injection\InjectionConfig.cs" />
     <Compile Include="Infrastructure\ViewModels\ComplexViewModel.cs" />
-    <Compile Include="Infrastructure\Commands\IUICommandPackage.cs" />
+    <Compile Include="Infrastructure\Commands\IViewBehaviour.cs" />
     <Compile Include="Infrastructure\ViewModels\CommandViewModel.cs" />
-    <Compile Include="Custom\UICommandsPackages\EditUICommandsPackage.cs" />
+    <Compile Include="Custom\ViewBehaviours\EditableViewBehaviour.cs" />
     <Compile Include="Infrastructure\ViewModels\ViewModel{T}.cs" />
     <Compile Include="Infrastructure\Commands\Command{T}.cs" />
     <Compile Include="Infrastructure\Commands\CommandContainer.cs" />
     <Compile Include="Infrastructure\Commands\CommandContainerBinding.cs" />
     <Compile Include="Infrastructure\Commands\ICommandContainer.cs" />
-    <Compile Include="ViewModels\Book\BookAddViewModel.cs" />
-    <Compile Include="ViewModels\Book\BookInfoViewModel.cs" />
-    <Compile Include="ViewModels\Book\BookListItemViewModel.cs" />
-    <Compile Include="ViewModels\Book\BookExtraInfoViewModel.cs" />
-    <Compile Include="ViewModels\Book\BookViewModel.cs" />
+    <Compile Include="ViewModels\Publication\PublicationAddViewModel.cs" />
+    <Compile Include="ViewModels\Publication\PublicationInfoViewModel.cs" />
+    <Compile Include="ViewModels\Publication\PublicationListItemViewModel.cs" />
+    <Compile Include="ViewModels\Publication\PublicationExtraInfoViewModel.cs" />
+    <Compile Include="ViewModels\Publication\PublicationViewModel.cs" />
     <Compile Include="ViewModels\Cathedra\CathedraInfoViewModel.cs" />
     <Compile Include="ViewModels\Conference\ConferenceAddViewModel.cs" />
     <Compile Include="ViewModels\Conference\ConferenceInfoViewModel.cs" />
@@ -103,7 +103,7 @@
     <Compile Include="ViewModels\Conference\ConferenceViewModel.cs" />
     <Compile Include="ViewModels\Conference\ConferenceReportViewModel.cs" />
     <Compile Include="ViewModels\ImagedCommandViewModel.cs" />
-    <Compile Include="ViewModels\Professor\ProfessorBooksViewModel.cs" />
+    <Compile Include="ViewModels\Professor\ProfessorPublicationsViewModel.cs" />
     <Compile Include="ViewModels\Professor\ProfessorInfoViewModel.cs" />
     <Compile Include="ViewModels\Professor\ProfessorExtraInfoViewModel.cs" />
     <Compile Include="ViewModels\Professor\ProfessorViewModel.cs" />
@@ -114,14 +114,14 @@
     <Compile Include="ViewModels\TreeView\Events\SelectedChangedEventArgs.cs" />
     <Compile Include="ViewModels\TreeView\TreeViewModel.cs" />
     <Compile Include="ViewModels\Main\WorkWindowChangedEventArgs.cs" />
-    <Compile Include="Views\Book\BookExtraInfoEditView.xaml.cs">
-      <DependentUpon>BookExtraInfoEditView.xaml</DependentUpon>
+    <Compile Include="Views\Publication\PublicationExtraInfoEditView.xaml.cs">
+      <DependentUpon>PublicationExtraInfoEditView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Book\BookExtraInfoView.xaml.cs">
-      <DependentUpon>BookExtraInfoView.xaml</DependentUpon>
+    <Compile Include="Views\Publication\PublicationExtraInfoView.xaml.cs">
+      <DependentUpon>PublicationExtraInfoView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Book\BookView.xaml.cs">
-      <DependentUpon>BookView.xaml</DependentUpon>
+    <Compile Include="Views\Publication\PublicationView.xaml.cs">
+      <DependentUpon>PublicationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Cathedra\CathedraInfoView.xaml.cs">
       <DependentUpon>CathedraInfoView.xaml</DependentUpon>
@@ -150,23 +150,23 @@
     <Compile Include="Views\Conference\ConferenceView.xaml.cs">
       <DependentUpon>ConferenceView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Book\BookAddView.xaml.cs">
-      <DependentUpon>BookAddView.xaml</DependentUpon>
+    <Compile Include="Views\Publication\PublicationAddView.xaml.cs">
+      <DependentUpon>PublicationAddView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Book\BookInfoEditView.xaml.cs">
-      <DependentUpon>BookInfoEditView.xaml</DependentUpon>
+    <Compile Include="Views\Publication\PublicationInfoEditView.xaml.cs">
+      <DependentUpon>PublicationInfoEditView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Book\BookInfoView.xaml.cs">
-      <DependentUpon>BookInfoView.xaml</DependentUpon>
+    <Compile Include="Views\Publication\PublicationInfoView.xaml.cs">
+      <DependentUpon>PublicationInfoView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Book\BookListItemView.xaml.cs">
-      <DependentUpon>BookListItemView.xaml</DependentUpon>
+    <Compile Include="Views\Publication\PublicationListItemView.xaml.cs">
+      <DependentUpon>PublicationListItemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ImagedCommandView.xaml.cs">
       <DependentUpon>ImagedCommandView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorBooksView.xaml.cs">
-      <DependentUpon>ProfessorBooksView.xaml</DependentUpon>
+    <Compile Include="Views\Professor\ProfessorPublicationsView.xaml.cs">
+      <DependentUpon>ProfessorPublicationsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Professor\ProfessorExtraInfoEditView.xaml.cs">
       <DependentUpon>ProfessorExtraInfoEditView.xaml</DependentUpon>
@@ -197,7 +197,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\BookResources.xaml">
+    <Page Include="Resources\PublicationResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -209,7 +209,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\MainWindowRecources.xaml">
+    <Page Include="Resources\MainWindowResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -217,15 +217,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Book\BookExtraInfoEditView.xaml">
+    <Page Include="Views\Publication\PublicationExtraInfoEditView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Book\BookExtraInfoView.xaml">
+    <Page Include="Views\Publication\PublicationExtraInfoView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Book\BookView.xaml">
+    <Page Include="Views\Publication\PublicationView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -261,19 +261,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Book\BookAddView.xaml">
+    <Page Include="Views\Publication\PublicationAddView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Book\BookInfoEditView.xaml">
+    <Page Include="Views\Publication\PublicationInfoEditView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Book\BookInfoView.xaml">
+    <Page Include="Views\Publication\PublicationInfoView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Book\BookListItemView.xaml">
+    <Page Include="Views\Publication\PublicationListItemView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -281,7 +281,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Professor\ProfessorBooksView.xaml">
+    <Page Include="Views\Professor\ProfessorPublicationsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

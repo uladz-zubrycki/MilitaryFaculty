@@ -7,16 +7,16 @@ namespace MilitaryFaculty.Presentation.Infrastructure
     /// <summary>
     /// A CommandBinding subclass that will attach its
     /// CanExecute and Executed events to the event handling
-    /// methods on the object referenced by its CommandSink property.  
-    /// Set the attached CommandSink property on the element 
-    /// whose CommandBindings collection contain CommandSinkBindings.
+    /// methods on the object referenced by its CommandContainer property.  
+    /// Set the attached CommandContainer property on the element 
+    /// whose CommandBindings collection contain CommandContainerBindings.
     /// If you dynamically create an instance of this class and add it 
     /// to the CommandBindings of an element, you must explicitly set
-    /// its CommandSink property.
+    /// its CommandContainer property.
     /// </summary>
     public class CommandContainerBinding : CommandBinding
     {
-        #region CommandSink [instance property]
+        #region CommandContainer [instance property]
 
         private ICommandContainer commandContainer;
 
@@ -29,6 +29,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                 {
                     throw new ArgumentNullException();
                 }
+
                 if (commandContainer != null)
                 {
                     throw new InvalidOperationException("Cannot set CommandContainer more than once.");
@@ -38,23 +39,35 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 
                 CanExecute += (s, e) =>
                               {
+                                  var command = e.Command as RoutedCommand;
+                                  if (command == null)
+                                  {
+                                      throw new InvalidOperationException("Only routed commands can be used inside CommandContainerBinding.");
+                                  }
+
                                   bool handled;
-                                  e.CanExecute = commandContainer.CanExecuteCommand(e.Command, e.Parameter, out handled);
+                                  e.CanExecute = commandContainer.CanExecuteCommand(command, e.Parameter, out handled);
                                   e.Handled = handled;
                               };
 
                 Executed += (s, e) =>
                             {
+                                var command = e.Command as RoutedCommand;
+                                if (command == null)
+                                {
+                                    throw new InvalidOperationException("Only routed commands can be used inside CommandContainerBinding.");
+                                }
+
                                 bool handled;
-                                commandContainer.ExecuteCommand(e.Command, e.Parameter, out handled);
+                                commandContainer.ExecuteCommand(command, e.Parameter, out handled);
                                 e.Handled = handled;
                             };
             }
         }
 
-        #endregion // CommandSink [instance property]
+        #endregion // CommandContainer [instance property]
 
-        #region CommandSink [attached property]
+        #region CommandContainer [attached property]
 
         public static ICommandContainer GetCommandContainer(DependencyObject obj)
         {
@@ -83,7 +96,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
             }
         }
 
-        // This method is necessary when the CommandSink attached property is set on an element 
+        // This method is necessary when the CommandConatiner attached property is set on an element 
         // in a template, or any other situation in which the element's CommandBindings have not 
         // yet had a chance to be created and added to its CommandBindings collection.
         private static bool ConfigureDelayedProcessing(DependencyObject depObj, ICommandContainer commandContainer)
@@ -99,6 +112,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                               elem.Loaded -= handler;
                               ProcessCommandContainerChanged(depObj, commandContainer);
                           };
+
                 elem.Loaded += handler;
                 isDelayed = true;
             }
@@ -109,6 +123,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         private static void ProcessCommandContainerChanged(DependencyObject depObj, ICommandContainer commandContainer)
         {
             CommandBindingCollection cmdBindings = GetCommandBindings(depObj);
+           
             if (cmdBindings == null)
             {
                 throw new ArgumentException(

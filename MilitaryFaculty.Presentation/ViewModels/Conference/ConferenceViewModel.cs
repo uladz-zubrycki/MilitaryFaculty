@@ -15,13 +15,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Constructors
 
-        public ConferenceViewModel(Conference model)
-            : this(model, EditViewMode.Display)
-        {
-            // Empty
-        }
-
-        public ConferenceViewModel(Conference model, EditViewMode mode)
+        public ConferenceViewModel(Conference model, EditableViewMode mode = EditableViewMode.Display)
             : base(model)
         {
             Title = "Информация о конференции";
@@ -32,7 +26,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Protected Methods
 
-        protected void InitViewModels(EditViewMode mode)
+        protected void InitViewModels(EditableViewMode mode)
         {
             InfoViewModel = new ConferenceInfoViewModel(Model, mode);
             ReportViewModel = new ConferenceReportViewModel(Model, mode);

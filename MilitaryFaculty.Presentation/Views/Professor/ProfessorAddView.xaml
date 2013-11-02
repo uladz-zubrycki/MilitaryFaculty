@@ -34,14 +34,14 @@
                 Grid.Column="0"
                 Content="Добавить"
                 Style="{StaticResource SimpleButton}"
-                Command="c:GlobalAppCommands.AddProfessor"
+                Command="c:ApplicationCommands.AddProfessor"
                 CommandParameter="{Binding Model}" />
 
             <Button
                 Grid.Column="1"
                 Content="Отмена"
                 Style="{StaticResource SimpleButton}"
-                Command="c:GlobalNavCommands.BrowseBack"
+                Command="c:NavigationCommands.BrowseBack"
                 CommandParameter="{Binding Model}" />
         </Grid>
 

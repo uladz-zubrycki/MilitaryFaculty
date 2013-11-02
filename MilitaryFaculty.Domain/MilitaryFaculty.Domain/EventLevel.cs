@@ -2,7 +2,7 @@
 
 namespace MilitaryFaculty.Domain
 {
-    public enum ConferenceType : byte
+    public enum EventLevel : byte
     {
         [EnumName("Вузовская")]
         University,

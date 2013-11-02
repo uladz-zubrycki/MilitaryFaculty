@@ -17,10 +17,9 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ConferenceAddViewModel(Conference model)
             : base(model)
         {
-            const string title = "Добавить конференцию";
-            Title = title;
+            Title = "Добавить конференцию";
 
-            ConferenceViewModel = new ConferenceViewModel(Model, EditViewMode.Edit);
+            ConferenceViewModel = new ConferenceViewModel(Model, EditableViewMode.Edit);
         }
 
         #endregion // Class Constructors

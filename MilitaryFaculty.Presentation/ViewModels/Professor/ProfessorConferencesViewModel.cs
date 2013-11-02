@@ -73,7 +73,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Добавить конференцию";
             const string imageSource = @"..\Content\add.png";
 
-            return new ImagedCommandViewModel(GlobalNavCommands.BrowseConferenceAdd,
+            return new ImagedCommandViewModel(NavigationCommands.BrowseConferenceAdd,
                                               Model, tooltip, imageSource);
         }
 

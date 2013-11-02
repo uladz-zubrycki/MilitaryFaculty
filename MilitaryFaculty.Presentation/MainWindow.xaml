@@ -7,37 +7,37 @@
         WindowStartupLocation="CenterScreen"
         i:CommandContainerBinding.CommandContainer ="{Binding CommandContainer}">
     <Window.Resources>
-        <ResourceDictionary Source="Resources\MainWindowRecources.xaml"/>
+        <ResourceDictionary Source="Resources\MainWindowResources.xaml"/>
     </Window.Resources>
 
     <Window.CommandBindings>
         <!--Application commands-->
-        <i:CommandContainerBinding Command="c:GlobalAppCommands.AddProfessor"/>
-        <i:CommandContainerBinding Command="c:GlobalAppCommands.UpdateProfessor"/>
-        <i:CommandContainerBinding Command="c:GlobalAppCommands.RemoveProfessor"/>
+        <i:CommandContainerBinding Command="c:ApplicationCommands.AddProfessor"/>
+        <i:CommandContainerBinding Command="c:ApplicationCommands.UpdateProfessor"/>
+        <i:CommandContainerBinding Command="c:ApplicationCommands.RemoveProfessor"/>
         
-        <i:CommandContainerBinding Command="c:GlobalAppCommands.AddConference"/>
-        <i:CommandContainerBinding Command="c:GlobalAppCommands.UpdateConference"/>
-        <i:CommandContainerBinding Command="c:GlobalAppCommands.RemoveConference"/>
+        <i:CommandContainerBinding Command="c:ApplicationCommands.AddConference"/>
+        <i:CommandContainerBinding Command="c:ApplicationCommands.UpdateConference"/>
+        <i:CommandContainerBinding Command="c:ApplicationCommands.RemoveConference"/>
         
-        <i:CommandContainerBinding Command="c:GlobalAppCommands.AddBook"/>
-        <i:CommandContainerBinding Command="c:GlobalAppCommands.UpdateBook"/>
-        <i:CommandContainerBinding Command="c:GlobalAppCommands.RemoveBook"/>
+        <i:CommandContainerBinding Command="c:ApplicationCommands.AddPublication"/>
+        <i:CommandContainerBinding Command="c:ApplicationCommands.UpdatePublication"/>
+        <i:CommandContainerBinding Command="c:ApplicationCommands.RemovePublication"/>
 
         <!--Common navigation commands-->
-        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseBack"/>
-        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseForward"/>
+        <i:CommandContainerBinding Command="c:NavigationCommands.BrowseBack"/>
+        <i:CommandContainerBinding Command="c:NavigationCommands.BrowseForward"/>
 
         <!--Professor navigation commands-->
-        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseProfessorAdd"/>
+        <i:CommandContainerBinding Command="c:NavigationCommands.BrowseProfessorAdd"/>
 
         <!--Conference navigation commands-->
-        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseConferenceAdd"/>
-        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseConferenceDetails"/>
+        <i:CommandContainerBinding Command="c:NavigationCommands.BrowseConferenceAdd"/>
+        <i:CommandContainerBinding Command="c:NavigationCommands.BrowseConferenceDetails"/>
 
         <!--Book navigation commands-->
-        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseBookAdd"/>
-        <i:CommandContainerBinding Command="c:GlobalNavCommands.BrowseBookDetails"/>
+        <i:CommandContainerBinding Command="c:NavigationCommands.BrowsePublicationAdd"/>
+        <i:CommandContainerBinding Command="c:NavigationCommands.BrowsePublicationDetails"/>
     </Window.CommandBindings>
 
     <Grid>
@@ -57,13 +57,13 @@
               Grid.ColumnSpan="2"
               BorderThickness="0">
             <Button Style="{StaticResource ImagedButtonStyle}"
-                    Command="c:GlobalNavCommands.BrowseBack">
+                    Command="c:NavigationCommands.BrowseBack">
                 <Image Style="{StaticResource NavigationImageStyle}"
                        Source="/Content/back.png"/>
             </Button>
 
             <Button Style="{StaticResource ImagedButtonStyle}"
-                    Command="c:GlobalNavCommands.BrowseForward">
+                    Command="c:NavigationCommands.BrowseForward">
                 <Image Style="{StaticResource NavigationImageStyle}"
                        Source="/Content/forward.png"/>
             </Button>

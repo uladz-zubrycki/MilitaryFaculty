@@ -125,14 +125,14 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Constructors
 
-        public ProfessorExtraInfoViewModel(Professor model, EditViewMode mode = EditViewMode.Display)
+        public ProfessorExtraInfoViewModel(Professor model, EditableViewMode mode = EditableViewMode.Display)
             : base(model)
         {
             const string title = "Дополнительная информация";
             
             Title = title;
 
-            var editCommands = new EditUICommandsPackage<Professor>(GlobalAppCommands.UpdateProfessor, Model);
+            var editCommands = new EditableViewBehaviour<Professor>(ApplicationCommands.UpdateProfessor, Model);
             editCommands.Inject(this, mode);
         }
 

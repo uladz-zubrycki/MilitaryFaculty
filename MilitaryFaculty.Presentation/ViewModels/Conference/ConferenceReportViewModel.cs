@@ -139,14 +139,14 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Constructors
 
-        public ConferenceReportViewModel(Conference model, EditViewMode mode = EditViewMode.Display)
+        public ConferenceReportViewModel(Conference model, EditableViewMode mode = EditableViewMode.Display)
             : base(model)
         {
-            const string title = "Отчёт о конференции";
-           
-            Title = title;
+            Title = "Отчёт о конференции";
+            
+            var editCommands = new EditableViewBehaviour<Conference>(ApplicationCommands.UpdateConference,
+                                                                     Model);
 
-            var editCommands = new EditUICommandsPackage<Conference>(GlobalAppCommands.UpdateConference, Model);
             editCommands.Inject(this, mode);
         }
 

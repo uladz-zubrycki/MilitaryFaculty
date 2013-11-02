@@ -43,7 +43,9 @@
     <Compile Include="Conference\AccordanceLevel.cs" />
     <Compile Include="Conference\Conference.cs" />
     <Compile Include="Conference\ConferenceReport.cs" />
-    <Compile Include="Conference\ConferenceType.cs" />
+    <Compile Include="EventLevel.cs" />
+    <Compile Include="Exhibition\AwardType.cs" />
+    <Compile Include="Exhibition\Exhibition.cs" />
     <Compile Include="Professor\AcademicDegree.cs" />
     <Compile Include="Professor\AcademicRank.cs" />
     <Compile Include="Professor\FullName.cs" />
@@ -53,8 +55,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cathedra\Cathedra.cs" />
     <Compile Include="UniqueEntity.cs" />
-    <Compile Include="Book\Book.cs" />
-    <Compile Include="Book\BookType.cs" />
+    <Compile Include="Publication\Publication.cs" />
+    <Compile Include="Publication\PublicationType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MilitaryFaculty.Common\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">

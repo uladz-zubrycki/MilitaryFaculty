@@ -6,7 +6,7 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class ConferenceAppCommandsModule : ICommandContainerModule
+    public class ConferenceApplicationCommands : ICommandContainerModule
     {
         #region Class Fields
 
@@ -16,7 +16,7 @@ namespace MilitaryFaculty.Presentation.Custom
 
         #region Class Constructors
 
-        public ConferenceAppCommandsModule(IRepository<Conference> conferenceRepository)
+        public ConferenceApplicationCommands(IRepository<Conference> conferenceRepository)
         {
             if (conferenceRepository == null)
             {

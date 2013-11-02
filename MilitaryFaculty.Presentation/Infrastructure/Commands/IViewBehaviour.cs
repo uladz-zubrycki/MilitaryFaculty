@@ -1,4 +1,3 @@
-// ReSharper disable InconsistentNaming
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
     public interface IViewBehaviour
@@ -7,4 +6,3 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         void Inject(ViewModel viewModel, object defaultTag);
     }
 }
-// ReSharper restore InconsistentNaming

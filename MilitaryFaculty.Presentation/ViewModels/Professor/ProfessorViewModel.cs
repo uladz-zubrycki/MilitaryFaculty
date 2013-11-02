@@ -10,7 +10,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         #region Class Fields
 
         private readonly IConferenceRepository conferenceRepository;
-        private readonly IBookRepository bookRepository;
+        private readonly IPublicationRepository publicationRepository;
 
         #endregion // Class Fields
 
@@ -19,7 +19,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ProfessorInfoViewModel InfoViewModel { get; private set; }
         public ProfessorExtraInfoViewModel ExtraInfoViewModel { get; private set; }
         public ProfessorConferencesViewModel ConferencesViewModel { get; private set; }
-        public ProfessorBooksViewModel BooksViewModel { get; private set; }
+        public ProfessorPublicationsViewModel BooksViewModel { get; private set; }
 
         #endregion // Class Properties
 
@@ -27,7 +27,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         public ProfessorViewModel(Professor model,
                                   IConferenceRepository conferenceRepository,
-                                  IBookRepository bookRepository)
+                                  IPublicationRepository publicationRepository)
             : base(model)
         {
             if (conferenceRepository == null)
@@ -35,13 +35,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 throw new ArgumentNullException("conferenceRepository");
             }
             
-            if (bookRepository == null)
+            if (publicationRepository == null)
             {
                 throw new ArgumentNullException("booksRepository");
             }
 
             this.conferenceRepository = conferenceRepository;
-            this.bookRepository = bookRepository;
+            this.publicationRepository = publicationRepository;
 
             InitViewModels();
         }
@@ -55,7 +55,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             InfoViewModel = new ProfessorInfoViewModel(Model);
             ExtraInfoViewModel = new ProfessorExtraInfoViewModel(Model);
             ConferencesViewModel = new ProfessorConferencesViewModel(Model, conferenceRepository);
-            BooksViewModel = new ProfessorBooksViewModel(Model, bookRepository);
+            BooksViewModel = new ProfessorPublicationsViewModel(Model, publicationRepository);
 
             ViewModels.Add(ExtraInfoViewModel);
             ViewModels.Add(ConferencesViewModel);

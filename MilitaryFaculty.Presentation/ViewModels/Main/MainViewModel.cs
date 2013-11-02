@@ -16,7 +16,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         private readonly IProfessorRepository professorRepository;
         private readonly ICathedraRepository cathedraRepository;
         private readonly IConferenceRepository conferenceRepository;
-        private readonly IBookRepository bookRepository;
+        private readonly IPublicationRepository bookRepository;
 
         #endregion // Class Fields
 
@@ -63,7 +63,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             professorRepository = container.Resolve<IProfessorRepository>();
             cathedraRepository = container.Resolve<ICathedraRepository>();
             conferenceRepository = container.Resolve<IConferenceRepository>();
-            bookRepository = container.Resolve<IBookRepository>();
+            bookRepository = container.Resolve<IPublicationRepository>();
 
             workWindow = new StartupViewModel();
 
@@ -115,13 +115,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
             var modules = new ICommandContainerModule[]
                           {
-                              new ProfessorAppCommandsModule(professorRepository),
-                              new BookAppCommandsModule(bookRepository),
-                              new ConferenceAppCommandsModule(conferenceRepository),
-                              new CommonNavCommandsModule(this),
-                              new BookNavCommandsModule(this),
-                              new ProfessorNavCommandsModule(this),
-                              new ConferenceNavCommandsModule(this)
+                              new ProfessorApplicationCommands(professorRepository),
+                              new BookApplicationCommands(bookRepository),
+                              new ConferenceApplicationCommands(conferenceRepository),
+                              new CommonNavigationCommands(this),
+                              new PublicationNavigationCommands(this),
+                              new ProfessorNavigationCommands(this),
+                              new ConferenceNavigationCommands(this)
                           };
 
             foreach (var module in modules)

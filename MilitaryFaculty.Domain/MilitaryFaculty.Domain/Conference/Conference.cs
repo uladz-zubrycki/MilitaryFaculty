@@ -15,7 +15,7 @@ namespace MilitaryFaculty.Domain
 
         #region Class Fields
 
-        private ConferenceType conferenceType;
+        private EventLevel eventLevel;
 
         #endregion // Class Fields
 
@@ -26,9 +26,9 @@ namespace MilitaryFaculty.Domain
         public virtual Professor Curator { get; set; }
         public virtual ConferenceReport ConferenceReport { get; set; }
 
-        public virtual ConferenceType ConferenceType
+        public virtual EventLevel EventLevel
         {
-            get { return conferenceType; }
+            get { return eventLevel; }
             set
             {
                 if (!value.IsDefined())
@@ -36,7 +36,7 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                conferenceType = value;
+                eventLevel = value;
             }
         }
 
@@ -74,7 +74,7 @@ namespace MilitaryFaculty.Domain
             Name = other.Name;
             Date = other.Date;
             Curator = other.Curator;
-            ConferenceType = other.ConferenceType;
+            EventLevel = other.EventLevel;
             ConferenceReport.Imitate(other.ConferenceReport);
         }
 
