@@ -38,6 +38,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6E3DB0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Data.Tests", "_Tests\MilitaryFaculty.Data.Tests\MilitaryFaculty.Data.Tests.csproj", "{6E68E327-B0D0-483A-878A-C72E0FE03F13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Logic.Tests", "_Tests\MilitaryFaculty.Logic.Tests\MilitaryFaculty.Logic.Tests.csproj", "{10B84C81-F792-49C3-882D-59D8AF3D0A4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +82,10 @@ Global
 		{6E68E327-B0D0-483A-878A-C72E0FE03F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E68E327-B0D0-483A-878A-C72E0FE03F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E68E327-B0D0-483A-878A-C72E0FE03F13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10B84C81-F792-49C3-882D-59D8AF3D0A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10B84C81-F792-49C3-882D-59D8AF3D0A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10B84C81-F792-49C3-882D-59D8AF3D0A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10B84C81-F792-49C3-882D-59D8AF3D0A4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +99,7 @@ Global
 		{74DE6247-CC90-4EA8-BD45-C51C3ED32EF2} = {731F0277-7B54-4A16-9575-B662FAA56BDB}
 		{605451BC-3748-4D32-8B5F-20915719894C} = {8CAEFDE1-33E6-4FF5-A246-DE3C5F44AEB2}
 		{6E68E327-B0D0-483A-878A-C72E0FE03F13} = {63B78265-6160-4D37-A24B-AA82A217F781}
+		{10B84C81-F792-49C3-882D-59D8AF3D0A4B} = {63B78265-6160-4D37-A24B-AA82A217F781}
 		{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB} = {DCA4EE3D-8A72-4430-90FB-6B70DA2FB058}
 	EndGlobalSection
 EndGlobal
