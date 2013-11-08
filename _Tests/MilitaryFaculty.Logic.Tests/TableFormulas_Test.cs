@@ -18,8 +18,9 @@ namespace MilitaryFaculty.Logic.Tests
         {
             var basePath = AppDomain.CurrentDomain.BaseDirectory;
 
-            path = "d:\\Other\\git_projects\\MilitaryFaculty\\MilitaryFaculty.Logic\\MilitaryFaculty.Logic.Services\\XmlTables\\";
-            path += "FirstTableFormulas.xml";
+            //path = "d:\\Other\\git_projects\\MilitaryFaculty\\MilitaryFaculty.Logic\\MilitaryFaculty.Logic.Services\\XmlTables\\";
+            path = "d:\\Other\\git\\MilitaryFaculty\\MilitaryFaculty.Logic\\MilitaryFaculty.Logic.Services\\XmlTables\\";
+            path += "SecondTableFormulas.xml";
         }
 
         [Test]
