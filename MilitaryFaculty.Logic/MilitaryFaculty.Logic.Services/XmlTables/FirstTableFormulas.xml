@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TableFormulas>
   <Formulas>
+
     <Formula	name = "1.1 Полнота разработки планирующих документов"
               id = "Id11"
               expression = "a1 * Coefficient1 + a2 * Coefficient2 + a3 * Coefficient3">
@@ -17,8 +18,8 @@
     </Formula>
 
     <Formula	name = "1.2 Уровень организации и проведения: научных (научно-практических) конференций, научных семинаров"
-            id = "Id12"
-            expression = "a1 * Coefficient1 + a2 * Coefficient2 + a3 * Coefficient3 + a4 * Coefficient4 + a5 * Coefficient5">
+              id = "Id12"
+              expression = "a1 * Coefficient1 + a2 * Coefficient2 + a3 * Coefficient3 + a4 * Coefficient4 + a5 * Coefficient5">
       <Arguments>
         <Argument name="a1" text="Международных конференций"/>
         <Argument name="a2" text="Республиканских конференций"/>
@@ -83,5 +84,6 @@
       <Coefficients>
       </Coefficients>
     </Formula>
+
   </Formulas>
 </TableFormulas>

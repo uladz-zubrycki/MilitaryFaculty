@@ -1,97 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Formulas>
+<TableFormulas>
+  <Formulas>
+    
+    <Formula	name = "2.1 Степень участия ППС в проведении НИР"
+          id = "Id21"
+          expression = "a1 / a2 * Coefficient1">
+      <Arguments>
+        <Argument name="a1" text="Количество ППС, участвующих во всех НИР"/>
+        <Argument name="a2" text="Общее количество ППС"/>
+      </Arguments>
+      <Coefficients>
+        <Coefficient name="Coefficient1" value="100"/>
+      </Coefficients>
+    </Formula>
 
-  <Formula	name = "2.1 Степень участия ППС в проведении НИР"
-				id = "Id21"
-				expression = "a1 / a2 * coeff1">
-    <Arguments>
-      <arg name="a1" text="Количество ППС, участвующих во всех НИР"/>
-      <arg name="a2" text="Общее количество ППС"/>
-    </Arguments>
-    <Coefficients>
-      <coeff name="coeff1" value="100"/>
-    </Coefficients>
-  </Formula>
+    <Formula	name = "2.2 Результативность выполненных НИР"
+        id = "Id22"
+        expression = "a1 * Coefficient1 + a2 * Coefficient2">
+      <Arguments>
+        <Argument name="a1" text="За каждую выполненную НИР"/>
+        <Argument name="a2" text="За каждое проведенное военно-научное сопровождение"/>
+      </Arguments>
+      <Coefficients>
+        <Coefficient name="Coefficient1" value="100"/>
+        <Coefficient name="Coefficient1" value="20"/>
+      </Coefficients>
+    </Formula>
 
-  <Formula	name = "2.2 Результативность выполненных НИР"
-      id = "Id22"
-      expression = "a1 * coeff1 + a2 * coeff2">
-    <Arguments>
-      <arg name="a1" text="За каждую выполненную НИР"/>
-      <arg name="a2" text="За каждое проведенное военно-научное сопровождение"/>
-    </Arguments>
-    <Coefficients>
-      <coeff name="coeff1" value="100"/>
-      <coeff name="coeff1" value="20"/>
-    </Coefficients>
-  </Formula>
+    <Formula	name = "2.3.1 Издано: учебников с графами Министерства образования, Министерства обороны"
+          id = "Id231"
+          expression = "a1 / a2 * Coefficient1 * Coefficient2">
+      <Arguments>
+        <Argument name="a1" text="Количество условно-печатных листов изданных учебников"/>
+        <Argument name="a2" text="Общее количество ППС"/>
+      </Arguments>
+      <Coefficients>
+        <Coefficient name="Coefficient1" value="2"/>
+        <Coefficient name="Coefficient2" value="100"/>
+      </Coefficients>
+    </Formula>
 
-  <Formula	name = "2.3.1 Издано: учебников с графами Министерства образования, Министерства обороны"
-				id = "Id231"
-				expression = "a1 / a2 * coeff1 * coeff2">
-    <Arguments>
-      <arg name="a1" text="Количество условно-печатных листов изданных учебников"/>
-      <arg name="a2" text="Общее количество ППС"/>
-    </Arguments>
-    <Coefficients>
-      <coeff name="coeff1" value="2"/>
-      <coeff name="coeff2" value="100"/>
-    </Coefficients>
-  </Formula>
+    <Formula	name = "2.3.2 Издано: учебных пособий с графами Министерства образования, Министерства обороны"
+          id = "Id232"
+          expression = "a1 / a2 * Coefficient1 * Coefficient2">
+      <Arguments>
+        <Argument name="a1" text="Количество условно-печатных листов изданных учебных пособий"/>
+        <Argument name="a2" text="Общее количество ППС"/>
+      </Arguments>
+      <Coefficients>
+        <Coefficient name="Coefficient1" value="1.5"/>
+        <Coefficient name="Coefficient2" value="100"/>
+      </Coefficients>
+    </Formula>
 
-  <Formula	name = "2.3.2 Издано: учебных пособий с графами Министерства образования, Министерства обороны"
-				id = "Id232"
-				expression = "a1 / a2 * coeff1 * coeff2">
-    <Arguments>
-      <arg name="a1" text="Количество условно-печатных листов изданных учебных пособий"/>
-      <arg name="a2" text="Общее количество ППС"/>
-    </Arguments>
-    <Coefficients>
-      <coeff name="coeff1" value="1,5"/>
-      <coeff name="coeff2" value="100"/>
-    </Coefficients>
-  </Formula>
+    <Formula	name = "2.4 Степень участия ППС в изобретательской работе"
+      id = "Id24"
+      expression = "a1 * Coefficient1 + a2 * Coefficient2 + a3 * Coefficient3 + a4 * Coefficient4 + a5 * Coefficient5">
+      <Arguments>
+        <Argument name="a1" text="За каждую заявку на изобретение"/>
+        <Argument name="a2" text="За каждую заявку на полезную модель"/>
+        <Argument name="a3" text="За каждый положительный ответ на заявку на изобретение"/>
+        <Argument name="a4" text="За каждый положительный ответ на завку на полезную модель"/>
+        <Argument name="a5" text="За кажое принятое рационализаторское предложение"/>
+      </Arguments>
+      <Coefficients>
+        <Coefficient name="Coefficient1" value="20"/>
+        <Coefficient name="Coefficient2" value="10"/>
+        <Coefficient name="Coefficient3" value="50"/>
+        <Coefficient name="Coefficient4" value="30"/>
+        <Coefficient name="Coefficient5" value="10"/>
+      </Coefficients>
+    </Formula>
 
-  <Formula	name = "2.4 Степень участия ППС в изобретательской работе"
-    id = "Id24"
-    expression = "a1 * coeff1 + a2 * coeff2 + a3 * coeff3 + a4 * coeff4 + a5 * coeff5">
-    <Arguments>
-      <arg name="a1" text="За каждую заявку на изобретение"/>
-      <arg name="a2" text="За каждую заявку на полезную модель"/>
-      <arg name="a3" text="За каждый положительный ответ на заявку на изобретение"/>
-      <arg name="a4" text="За каждый положительный ответ на завку на полезную модель"/>
-      <arg name="a5" text="За кажое принятое рационализаторское предложение"/>
-    </Arguments>
-    <Coefficients>
-      <coeff name="coeff1" value="20"/>
-      <coeff name="coeff2" value="10"/>
-      <coeff name="coeff3" value="50"/>
-      <coeff name="coeff4" value="30"/>
-      <coeff name="coeff5" value="10"/>
-    </Coefficients>
-  </Formula>
+    <Formula	name = "2.5 Степень участия ППС в работе по проведению научной экспертизы уставных документов, учебников и учебных пособий"
+          id = "Id25"
+          expression = "a1 / a2 * Coefficient1 * Coefficient2">
+      <Arguments>
+        <Argument name="a1" text="Количество ППС, участвующих в работе по проведению научной экспертизы"/>
+        <Argument name="a2" text="Общее количество ППС"/>
+      </Arguments>
+      <Coefficients>
+        <Coefficient name="Coefficient1" value="5"/>
+        <Coefficient name="Coefficient2" value="100"/>
+      </Coefficients>
+    </Formula>
 
-  <Formula	name = "2.5 Степень участия ППС в работе по проведению научной экспертизы уставных документов, учебников и учебных пособий"
-				id = "Id25"
-				expression = "a1 / a2 * coeff1 * coeff2">
-    <Arguments>
-      <arg name="a1" text="Количество ППС, участвующих в работе по проведению научной экспертизы"/>
-      <arg name="a2" text="Общее количество ППС"/>
-    </Arguments>
-    <Coefficients>
-      <coeff name="coeff1" value="5"/>
-      <coeff name="coeff2" value="100"/>
-    </Coefficients>
-  </Formula>
-
-  <Formula	name = "2.6 Другие частные показатели, характеризующие проведение наунчых исследований"
-      id = "Id26"
-      expression = "a1">
-    <Arguments>
-      <arg name="a1" text="Показатель (до 50 баллов)"/>
-    </Arguments>
-    <Coefficients>
-    </Coefficients>
-  </Formula>
-
-</Formulas>
+    <Formula	name = "2.6 Другие частные показатели, характеризующие проведение наунчых исследований"
+        id = "Id26"
+        expression = "a1">
+      <Arguments>
+        <Argument name="a1" text="Показатель (до 50 баллов)"/>
+      </Arguments>
+      <Coefficients>
+      </Coefficients>
+    </Formula>
+    
+  </Formulas>
+</TableFormulas>

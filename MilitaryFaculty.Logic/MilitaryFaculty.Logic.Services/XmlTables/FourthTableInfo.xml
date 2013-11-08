@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TableInfo name ="Первая таблица">
+  <TableParts>
+    <TablePart name="1. Полнота разработки планирующих документов">
+      <Identifiers>
+        <string>id11</string>
+      </Identifiers>
+    </TablePart>
+    <TablePart name="2. Уровень организации и проведения: научных (научно-практических) конференций, научных семинаров">
+      <Identifiers>
+        <string>id12</string>
+      </Identifiers>
+    </TablePart>
+    <TablePart name="3. Уровень организации подготовки научно-педагогических работников высшей квалификации">
+      <Identifiers>
+        <string>id13</string>
+      </Identifiers>
+    </TablePart>
+    <TablePart name="4. Уровень организации военно-исторической работы">
+      <Identifiers>
+        <string>id14</string>
+      </Identifiers>
+    </TablePart>
+    <TablePart name="5. Уровень организации работы научных кружков слушателей, курсантов (студентов)">
+      <Identifiers>
+        <string>id15</string>
+      </Identifiers>
+    </TablePart>
+    <TablePart name="6. Другие частные показатели, характеризующие качество организации научной работы">
+      <Identifiers>
+        <string>id16</string>
+      </Identifiers>
+    </TablePart>
+  </TableParts>  
+</TableInfo>

@@ -63,13 +63,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="XmlTables\FirstTablesInfo.xml">
+    <Content Include="XmlTables\FirstTableInfo.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="XmlTables\FirstTableFormulas.xml" />
     <Content Include="XmlTables\FourthTableFormulas.xml" />
+    <Content Include="XmlTables\FourthTableInfo.xml" />
     <Content Include="XmlTables\SecondTableFormulas.xml" />
+    <Content Include="XmlTables\SecondTableInfo.xml" />
     <Content Include="XmlTables\ThirdTableFormulas.xml" />
+    <Content Include="XmlTables\ThirdTableInfo.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
