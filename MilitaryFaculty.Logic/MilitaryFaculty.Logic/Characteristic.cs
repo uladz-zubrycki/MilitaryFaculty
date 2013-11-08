@@ -39,11 +39,11 @@ namespace MilitaryFaculty.Logic
 
         #region Class Public Methods
 
-        public int Evaluate()
+        public double Evaluate()
         {
             var localVariables = arguments.Select(arg => new VariableValue(DataProvider.GetValue(arg), arg)).ToList();
 
-            return Convert.ToInt32(ToolsHelper.Calculator.Calculate(compiledExpression, localVariables));
+            return ToolsHelper.Calculator.Calculate(compiledExpression, localVariables);
         }
 
         #endregion // Class Public Methods

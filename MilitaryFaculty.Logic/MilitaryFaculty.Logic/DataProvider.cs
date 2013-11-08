@@ -11,7 +11,7 @@ namespace MilitaryFaculty.Logic
 
     public static class DataProvider
     {
-        public static int GetValue(string value)
+        public static double GetValue(string value)
         {
             if (value == null)
             {
@@ -25,11 +25,11 @@ namespace MilitaryFaculty.Logic
                                                       var attr = m.GetCustomAttribute<FormulaArgumentAttribute>();
                                                       return attr != null && attr.Name == value;
                                                   });
-            return method != null ? (int)method.Invoke(null, null) : 0;
+            return method != null ? (double)method.Invoke(null, null) : 0;
         }
 
         [FormulaArgument("ProfsCount")]
-        public static int ProfessorsCount()
+        public static double ProfessorsCount()
         {
             return 5;
         }
