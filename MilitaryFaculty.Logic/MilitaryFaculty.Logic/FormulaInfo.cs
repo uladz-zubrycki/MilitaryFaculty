@@ -7,6 +7,7 @@ namespace MilitaryFaculty.Logic
     {
         #region Class Fields
         private string expression;
+        private string name;
         #endregion // Class Fields
 
         #region Class Properties
@@ -20,7 +21,6 @@ namespace MilitaryFaculty.Logic
             {
                 if (value == null) throw new ArgumentNullException();
                 if (String.IsNullOrEmpty(value.Trim())) throw new ArgumentException();
-                if (value == null) throw new ArgumentNullException("variables");
                 
                 expression = value.Replace(" ", "");
 
@@ -28,8 +28,18 @@ namespace MilitaryFaculty.Logic
                 {
                     throw new ArgumentException("expression");
                 }
+            }
+        }
 
-                expression = expression.ToLower();
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (value == null) throw new ArgumentNullException();
+                if (String.IsNullOrEmpty(value.Trim())) throw new ArgumentException();
+
+                name = value;
             }
         }
         #endregion // Class Properties

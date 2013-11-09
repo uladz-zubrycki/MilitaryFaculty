@@ -30,7 +30,8 @@ namespace MilitaryFaculty.Logic.XmlFormulasDomain
                 Coefficients = this.Coefficients.ToDictionary(c => c.Name,
                                                               c => c.Value),
                 Arguments = this.Arguments.Select(a => a.Name).ToList(),
-                Expression = this.Expression
+                Expression = this.Expression,
+                Name = this.Name
             };
         }
 
