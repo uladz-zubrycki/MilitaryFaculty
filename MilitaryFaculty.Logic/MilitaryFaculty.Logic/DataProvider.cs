@@ -1,24 +1,47 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Logic
 {
 
-    #region Class Public Methods
+
 
     public delegate int InfoMethod();
 
-    public static class DataProvider
+    public class DataProvider
     {
-        public static double GetValue(string value)
+        #region Class Fields
+        private readonly Professor professor;
+        #endregion Class Fields
+
+        #region Class Constructors
+
+        public DataProvider()
+        {
+            professor = null;
+        }
+
+        public DataProvider(Professor professor)
+        {
+            this.professor = professor;
+        }
+
+        #endregion Class Constructors
+
+        #region Class Public Methods
+
+        public double GetValue(string value)
         {
             if (value == null)
             {
                 throw new ArgumentNullException("value");
             }
 
+            if (professor != null)
+                value += "Prof";
 
             var method = typeof (DataProvider).GetMethods()
                                               .FirstOrDefault(m =>
@@ -28,6 +51,10 @@ namespace MilitaryFaculty.Logic
                                                   });
             return method != null ? (double) method.Invoke(null, null) : 0;
         }
+
+        #endregion // Class Public Methods
+
+        #region Class Public Argument Methods
 
         [FormulaArgument("a1")]
         public static double Pc1()
@@ -59,6 +86,6 @@ namespace MilitaryFaculty.Logic
             return 5;
         }
 
-        #endregion // Class Public Methods
+        #endregion Class Public Argument Methods
     }
 }
