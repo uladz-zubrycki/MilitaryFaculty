@@ -35,15 +35,18 @@ namespace MilitaryFaculty.Logic
             var firstLine = xlWorkSheet.UsedRange.Rows.Count + 1;
             var curLine = firstLine;
 
-            var xlRange = xlWorkSheet.Range["b" + curLine, "d" + (curLine + 1)];
-            XlStyle.SetTableNameStyle(xlRange, tableInfo.Name);
+            double totalRating = 0;
+            double totalMaxRating = 0;
+
+            var xlRange = xlWorkSheet.Range["b" + curLine, "e" + (curLine + 1)];
+            XlStyle.SetNameStyle(xlRange, tableInfo.Name);
 
             curLine += 2;
 
             foreach (var part in tableInfo.TableParts)
             {
-                xlRange = xlWorkSheet.Range["b" + curLine, "d" + curLine];
-                XlStyle.SetTableSubNameStyle(xlRange, part.Name);
+                xlRange = xlWorkSheet.Range["b" + curLine, "e" + curLine];
+                XlStyle.SetSubNameStyle(xlRange, part.Name);
                 curLine++;
 
                 foreach (var id in part.Identifiers)
@@ -54,12 +57,21 @@ namespace MilitaryFaculty.Logic
 
                     xlWorkSheet.Cells[curLine, 3] = formulaInfo.Name;
                     xlWorkSheet.Cells[curLine, 4] = val.ToString("G0");
+                    xlWorkSheet.Cells[curLine, 5] = Math.Abs(formulaInfo.MaxValue - 0) < 0.001
+                                                        ? "-"
+                                                        : formulaInfo.MaxValue.ToString("G0");
+                    totalRating += val;
+                    totalMaxRating += formulaInfo.MaxValue;
                     curLine++;
                 }
             }
 
-            XlStyle.SetTableStyle(xlWorkSheet.Range["b" + firstLine, "d" + (curLine - 1)]);
-            XlStyle.SetSheetStyle(xlWorkSheet, 3);
+            XlStyle.SetNameStyle(xlWorkSheet.Range["b" + curLine, "c" + curLine], "Итог");
+            xlWorkSheet.Cells[curLine, 4] = totalRating.ToString("G0");
+            xlWorkSheet.Cells[curLine, 5] = totalMaxRating.ToString("G0");
+
+            XlStyle.SetTableStyle(xlWorkSheet.Range["b" + firstLine, "e" + (curLine)]);
+            XlStyle.SetSheetStyle(xlWorkSheet, 3, 4, 5);
         }
 
         #endregion // Class Public Methods

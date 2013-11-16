@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using ELW.Library.Math;
 using ELW.Library.Math.Expressions;
@@ -28,7 +29,7 @@ namespace MilitaryFaculty.Logic
 
             foreach (var coeff in formulaInfo.Coefficients)
             {
-                formulaCore = formulaCore.Replace(coeff.Key, coeff.Value.ToString());
+                formulaCore = formulaCore.Replace(coeff.Key, coeff.Value.ToString(CultureInfo.InvariantCulture));
             }
 
             arguments = formulaInfo.Arguments;

@@ -7,7 +7,7 @@ namespace MilitaryFaculty.Logic
     {
         #region Class Public Methods
 
-        public static void SetTableNameStyle(Range xlRange, string name)
+        public static void SetNameStyle(Range xlRange, string name)
         {
             xlRange.Merge(false);
             xlRange.FormulaR1C1 = name;
@@ -15,7 +15,7 @@ namespace MilitaryFaculty.Logic
             xlRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
         }
 
-        public static void SetTableSubNameStyle(Range xlRange, string name)
+        public static void SetSubNameStyle(Range xlRange, string name)
         {
             xlRange.Merge(false);
             xlRange.FormulaR1C1 = name;
@@ -33,10 +33,13 @@ namespace MilitaryFaculty.Logic
             xlRange.WrapText = true;
         }
 
-        public static void SetSheetStyle(Worksheet xlWorkSheet, int nameColumn)
+        public static void SetSheetStyle(Worksheet xlWorkSheet, int nameColumn, int totalRationColumn, int maxRatingColumn)
         {
-            ((Range)xlWorkSheet.Columns[nameColumn, Type.Missing]).EntireColumn.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+            ((Range)xlWorkSheet.Columns[1, Type.Missing]).EntireColumn.ColumnWidth = 2.5; // ~23px
             ((Range)xlWorkSheet.Columns[nameColumn, Type.Missing]).EntireColumn.ColumnWidth = 70; // ~500px
+            ((Range)xlWorkSheet.Columns[nameColumn, Type.Missing]).EntireColumn.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+            ((Range)xlWorkSheet.Columns[totalRationColumn, Type.Missing]).EntireColumn.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+            ((Range)xlWorkSheet.Columns[maxRatingColumn, Type.Missing]).EntireColumn.HorizontalAlignment = XlHAlign.xlHAlignCenter;
         }
 
         #endregion // Class Public Methods

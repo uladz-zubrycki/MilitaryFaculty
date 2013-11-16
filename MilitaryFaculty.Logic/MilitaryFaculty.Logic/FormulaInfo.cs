@@ -8,6 +8,7 @@ namespace MilitaryFaculty.Logic
         #region Class Fields
         private string expression;
         private string name;
+        private double maxValue;
         #endregion // Class Fields
 
         #region Class Properties
@@ -40,6 +41,20 @@ namespace MilitaryFaculty.Logic
                 if (String.IsNullOrEmpty(value.Trim())) throw new ArgumentException();
 
                 name = value;
+            }
+        }
+
+        public double MaxValue
+        {
+            get { return maxValue; }
+            set
+            {
+                if (maxValue < 0)
+                {
+                    throw new ArgumentException();
+
+                }
+                maxValue = value;
             }
         }
         #endregion // Class Properties
