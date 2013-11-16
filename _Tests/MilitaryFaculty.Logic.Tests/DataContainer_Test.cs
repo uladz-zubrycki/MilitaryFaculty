@@ -18,13 +18,13 @@ namespace MilitaryFaculty.Logic.Tests
         [SetUp]
         public void SetUp()
         {
-            var basePath = AppDomain.CurrentDomain.BaseDirectory;
+            //var basePath = AppDomain.CurrentDomain.BaseDirectory;
             savePath = @"d:\Other\git_projects\MilitaryFaculty\_Tests\";
             savePath += @"csharp-test-Excel.xls";
             pathFormulas = @"d:\Other\git_projects\MilitaryFaculty\MilitaryFaculty.Logic\MilitaryFaculty.Logic.Services\XmlTables\";
-            pathFormulas += @"FirstTableFormulas.xml";
+            //pathFormulas += @"SecondTableFormulas.xml";
             pathInfo = @"d:\Other\git_projects\MilitaryFaculty\MilitaryFaculty.Logic\MilitaryFaculty.Logic.Services\XmlTables\";
-            pathInfo += @"FirstTableInfo.xml";
+            //pathInfo += @"SecondTableInfo.xml";
         }
 
         [Test]
@@ -34,7 +34,11 @@ namespace MilitaryFaculty.Logic.Tests
             xlWorkBook = xlApp.Workbooks.Add(misValue);
             xlWorkSheet = (Excel.Worksheet) xlWorkBook.Worksheets.Item[1];
 
-            var dc = new DataContainer(pathFormulas, pathInfo);
+            var dc = new DataContainer(pathFormulas + @"FirstTableFormulas.xml", pathInfo + @"FirstTableInfo.xml");
+            dc.GenerateExcelSheet(xlWorkSheet);
+            dc = new DataContainer(pathFormulas + @"SecondTableFormulas.xml", pathInfo + @"SecondTableInfo.xml");
+            dc.GenerateExcelSheet(xlWorkSheet);
+            dc = new DataContainer(pathFormulas + @"ThirdTableFormulas.xml", pathInfo + @"ThirdTableInfo.xml");
             dc.GenerateExcelSheet(xlWorkSheet);
 
             xlWorkBook.SaveAs(savePath, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue,
@@ -53,12 +57,10 @@ namespace MilitaryFaculty.Logic.Tests
             try
             {
                 System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-                obj = null;
             }
             catch (Exception ex)
             {
-                obj = null;
-                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+                MessageBox.Show("Exception Occured while releasing object " + ex);
             }
             finally
             {

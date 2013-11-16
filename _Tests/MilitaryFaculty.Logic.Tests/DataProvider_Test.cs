@@ -12,7 +12,7 @@ namespace MilitaryFaculty.Logic.Tests
         [SetUp]
         public void SetUp()
         {
-            atrName = "ProfsCount";
+            atrName = "PlanDocsOrg";
         }
 
         [Test]

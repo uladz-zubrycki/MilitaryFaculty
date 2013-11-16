@@ -50,6 +50,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.Contract\MilitaryFaculty.Domain.Contract.csproj">
+      <Project>{10E40656-D44B-46CE-9FED-0496F71554B7}</Project>
+      <Name>MilitaryFaculty.Domain.Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MilitaryFaculty.Domain\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
       <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
       <Name>MilitaryFaculty.Domain %28MilitaryFaculty.Domain\MilitaryFaculty.Domain%29</Name>
