@@ -49,7 +49,7 @@ namespace MilitaryFaculty.Logic
 
         public double Evaluate()
         {
-            var dataProvider = professor == null ? new DataProvider() : new DataProvider(professor);
+            var dataProvider = professor == null ? new DataProvider(new Cathedra()) : new DataProvider(professor);
 
             var localVariables = arguments.Select(arg => new VariableValue(dataProvider.GetValue(arg), arg)).ToList();
 

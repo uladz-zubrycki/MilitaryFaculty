@@ -59,7 +59,7 @@ namespace MilitaryFaculty.Logic
             }
 
             XlStyle.SetTableStyle(xlWorkSheet.Range["b" + firstLine, "d" + (curLine - 1)]);
-            XlStyle.SetSheetStyle(xlWorkSheet);
+            XlStyle.SetSheetStyle(xlWorkSheet, 3);
         }
 
         #endregion // Class Public Methods

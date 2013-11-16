@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using MilitaryFaculty.Domain;
@@ -15,18 +16,45 @@ namespace MilitaryFaculty.Logic
     {
         #region Class Fields
         private readonly Professor professor;
+        private readonly List<Cathedra> cathedras;
         #endregion Class Fields
 
         #region Class Constructors
 
-        public DataProvider()
+        private DataProvider()
         {
             professor = null;
+            cathedras = null;
         }
 
-        public DataProvider(Professor professor)
+        public DataProvider(Professor professor) : this()
         {
+            if (professor == null)
+            {
+                throw new ArgumentNullException("professor");
+            }
+
             this.professor = professor;
+        }
+
+        public DataProvider(Cathedra cathedra) : this()
+        {
+            if (cathedra == null)
+            {
+                throw new ArgumentNullException("cathedra");
+            }
+
+            this.cathedras = new List<Cathedra>() {cathedra};
+        }
+
+        public DataProvider(List<Cathedra> cathedras) : this()
+        {
+            if (cathedras == null)
+            {
+                throw new ArgumentNullException("cathedras");
+            }
+
+            this.cathedras = cathedras;
         }
 
         #endregion Class Constructors

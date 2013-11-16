@@ -33,10 +33,10 @@ namespace MilitaryFaculty.Logic
             xlRange.WrapText = true;
         }
 
-        public static void SetSheetStyle(Worksheet xlWorkSheet)
+        public static void SetSheetStyle(Worksheet xlWorkSheet, int nameColumn)
         {
-            ((Range)xlWorkSheet.Columns[3, Type.Missing]).EntireColumn.HorizontalAlignment = XlHAlign.xlHAlignCenter;
-            ((Range)xlWorkSheet.Columns[3, Type.Missing]).EntireColumn.ColumnWidth = 70; // ~500px
+            ((Range)xlWorkSheet.Columns[nameColumn, Type.Missing]).EntireColumn.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+            ((Range)xlWorkSheet.Columns[nameColumn, Type.Missing]).EntireColumn.ColumnWidth = 70; // ~500px
         }
 
         #endregion // Class Public Methods

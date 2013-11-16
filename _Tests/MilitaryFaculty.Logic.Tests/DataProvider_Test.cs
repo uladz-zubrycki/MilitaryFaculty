@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using MilitaryFaculty.Domain;
+using NUnit.Framework;
 
 namespace MilitaryFaculty.Logic.Tests
 {
@@ -17,7 +18,8 @@ namespace MilitaryFaculty.Logic.Tests
         [Test]
         public void TestXml()
         {
-            var i = DataProvider.GetValue(atrName);
+            var dataProvider = new DataProvider(new Cathedra());
+            var i = dataProvider.GetValue(atrName);
         }
     }
     // ReSharper restore InconsistentNaming
