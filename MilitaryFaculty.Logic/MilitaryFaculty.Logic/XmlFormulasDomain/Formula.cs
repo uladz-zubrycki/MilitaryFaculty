@@ -16,6 +16,8 @@ namespace MilitaryFaculty.Logic.XmlFormulasDomain
         public string Id { get; set; }
         [XmlAttribute("expression")]
         public string Expression { get; set; }
+        [XmlAttribute("maxValue")]
+        public double MaxValue { get; set; }
         public List<Argument> Arguments { get; set; }
         public List<Coefficient> Coefficients { get; set; }
 
@@ -31,7 +33,8 @@ namespace MilitaryFaculty.Logic.XmlFormulasDomain
                                                               c => c.Value),
                 Arguments = this.Arguments.Select(a => a.Name).ToList(),
                 Expression = this.Expression,
-                Name = this.Name
+                Name = this.Name,
+                MaxValue = this.MaxValue
             };
         }
 

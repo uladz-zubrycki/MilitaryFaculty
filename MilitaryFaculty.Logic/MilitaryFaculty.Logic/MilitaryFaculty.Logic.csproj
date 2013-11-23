@@ -47,6 +47,7 @@
     <Compile Include="DataContainer.cs" />
     <Compile Include="FormulaInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XlStyle.cs" />
     <Compile Include="XmlFormulasDomain\Argument.cs" />
     <Compile Include="XmlFormulasDomain\Coefficient.cs" />
     <Compile Include="XmlFormulasDomain\Formula.cs" />
@@ -58,6 +59,14 @@
     <ProjectReference Include="..\..\MilitaryFaculty.Common\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">
       <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
       <Name>MilitaryFaculty.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.Contract\MilitaryFaculty.Domain.Contract.csproj">
+      <Project>{10E40656-D44B-46CE-9FED-0496F71554B7}</Project>
+      <Name>MilitaryFaculty.Domain.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MilitaryFaculty.Domain\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
+      <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
+      <Name>MilitaryFaculty.Domain %28MilitaryFaculty.Domain\MilitaryFaculty.Domain%29</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +97,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
