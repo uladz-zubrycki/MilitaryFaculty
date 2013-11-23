@@ -15,7 +15,7 @@ namespace MilitaryFaculty.Domain
 
         #region Class Fields
 
-        private AwardType award;
+        private AwardType awardType;
 
         #endregion // Class Fields
 
@@ -25,9 +25,9 @@ namespace MilitaryFaculty.Domain
         public DateTime Date { get;set; }
         public Professor Participant { get; set; }
 
-        public AwardType Award
+        public AwardType AwardType
         {
-            get { return award; }
+            get { return awardType; }
             set
             {
                 if (!value.IsDefined())
@@ -35,7 +35,7 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                award = value;
+                awardType = value;
             }
         }
 
@@ -50,7 +50,7 @@ namespace MilitaryFaculty.Domain
                 throw new ArgumentNullException("other");
             }
 
-            this.Award = other.Award;
+            this.AwardType = other.AwardType;
             this.Date = other.Date;
             this.Name = other.Name;
             this.Participant = other.Participant;

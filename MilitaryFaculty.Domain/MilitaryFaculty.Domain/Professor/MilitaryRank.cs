@@ -22,7 +22,7 @@ namespace MilitaryFaculty.Domain
         [EnumName("Подполковник")]
         LieutenantColonel,       
 
-        [EnumName("Полковник ")]
+        [EnumName("Полковник")]
         Colonel,                 
 
         //[EnumName("Генерал-майор")]
