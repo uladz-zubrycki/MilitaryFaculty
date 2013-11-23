@@ -28,7 +28,7 @@
                 Grid.Row="0"
                 Grid.Column="1"
                 Style="{StaticResource ValueMultilineTextblock}"
-                Text="{Binding Path=Name}"/>
+                Text="{Binding Name}"/>
 
         <!--Date-->
         <TextBlock 
@@ -40,7 +40,7 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding Path=DateString}"/>
+                Text="{Binding DateString}"/>
 
         <!--Conference Type-->
         <TextBlock
@@ -52,6 +52,6 @@
                 Grid.Row="2"
                 Grid.Column="1"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding Path=ConferenceTypeString}"/>
+                Text="{Binding ConferenceTypeString}"/>
     </Grid>
 </UserControl>

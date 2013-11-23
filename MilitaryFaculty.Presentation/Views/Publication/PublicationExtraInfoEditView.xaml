@@ -24,10 +24,9 @@
                 Text="Тип:"/>
         <ComboBox 
                 Grid.Column="1"
-                Grid.Row="2"
                 Style="{StaticResource ValueComboBox}"
-                ItemsSource="{Binding Path=PublicationTypeList}"
-                SelectedValue="{Binding Path=PublicationType,
+                ItemsSource="{Binding PublicationTypeList}"
+                SelectedValue="{Binding PublicationType,
                                         Mode=TwoWay}"
                 SelectedValuePath="Item1"
                 DisplayMemberPath="Item2"/>

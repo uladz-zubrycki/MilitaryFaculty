@@ -28,7 +28,7 @@
                 Grid.Column="1"
                 Grid.Row="0"
                 Style="{StaticResource ValueMultilineTextbox}"
-                Text="{Binding Path=Name}"/>
+                Text="{Binding Name}"/>
 
         <!--Date-->
         <TextBlock 
@@ -62,8 +62,8 @@
                 Grid.Column="1"
                 Grid.Row="2"
                 Style="{StaticResource ValueComboBox}"
-                ItemsSource="{Binding Path=ConferenceTypeList}"
-                SelectedValue="{Binding Path=ConferenceType,
+                ItemsSource="{Binding ConferenceTypeList}"
+                SelectedValue="{Binding ConferenceType,
                                         Mode=TwoWay}"
                 SelectedValuePath="Item1"
                 DisplayMemberPath="Item2"/>

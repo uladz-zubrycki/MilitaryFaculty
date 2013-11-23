@@ -6,7 +6,7 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class ConferenceApplicationCommands : ICommandContainerModule
+    public class ConferenceCommandModule : ICommandContainerModule
     {
         #region Class Fields
 
@@ -16,7 +16,7 @@ namespace MilitaryFaculty.Presentation.Custom
 
         #region Class Constructors
 
-        public ConferenceApplicationCommands(IRepository<Conference> conferenceRepository)
+        public ConferenceCommandModule(IRepository<Conference> conferenceRepository)
         {
             if (conferenceRepository == null)
             {
@@ -34,19 +34,18 @@ namespace MilitaryFaculty.Presentation.Custom
         {
             if (container == null)
             {
-                throw new ArgumentNullException("sink");
+                throw new ArgumentNullException("container");
             }
 
-
-            container.RegisterCommand<Conference>(ApplicationCommands.AddConference,
+            container.RegisterCommand<Conference>(Do.Conference.Add,
                                                   OnAddConference,
                                                   CanAddConference);
 
-            container.RegisterCommand<Conference>(ApplicationCommands.UpdateConference,
+            container.RegisterCommand<Conference>(Do.Conference.Update,
                                                   OnUpdateConference,
                                                   CanUpdateConference);
 
-            container.RegisterCommand<Conference>(ApplicationCommands.RemoveConference,
+            container.RegisterCommand<Conference>(Do.Conference.Remove,
                                                   OnRemoveConference);
         }
 
@@ -62,7 +61,7 @@ namespace MilitaryFaculty.Presentation.Custom
             }
 
             conferenceRepository.Create(conference);
-            NavigationCommands.BrowseBack.Execute(null, null);
+            Browse.Back.Execute(null, null);
         }
 
         private bool CanAddConference(Conference conference)

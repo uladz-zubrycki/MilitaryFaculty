@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
@@ -33,8 +32,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         public CathedraTreeItemViewModel(Cathedra cathedra, TreeViewModel owner,
                                          ITreeItemViewModel parent,
-                                         IRepository<Professor> professorRepository
-            )
+                                         IRepository<Professor> professorRepository)
             : base(cathedra, owner, parent, true)
         {
             if (professorRepository == null)
@@ -57,7 +55,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         protected override IEnumerable<ITreeItemViewModel> LoadChildren()
         {
             var converter = ProfessorTreeItemViewModel.FromModel(Owner, this);
-
+            
             return Model.Professors.Select(converter);
         }
 
@@ -70,7 +68,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Добавить преподавателя";
             const string imageSource = @"..\Content\add-user.png";
 
-            return new ImagedCommandViewModel(NavigationCommands.BrowseProfessorAdd,
+            return new ImagedCommandViewModel(Browse.Professor.Add,
                                               Model, tooltip, imageSource);
         }
 

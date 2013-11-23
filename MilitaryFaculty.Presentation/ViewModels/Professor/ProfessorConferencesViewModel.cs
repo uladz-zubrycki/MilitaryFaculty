@@ -13,7 +13,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         #region Class Fields
 
-        private readonly IConferenceRepository conferenceRepository;
         private ObservableCollection<ConferenceListItemViewModel> conferences;
 
         #endregion // Class Fields
@@ -56,7 +55,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string title = "Участие в конференциях";
 
             this.Title = title;
-            this.conferenceRepository = conferenceRepository;
 
             conferenceRepository.EntityCreated += OnConferenceCreated;
             conferenceRepository.EntityDeleted += OnConferenceDeleted;
@@ -73,7 +71,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Добавить конференцию";
             const string imageSource = @"..\Content\add.png";
 
-            return new ImagedCommandViewModel(NavigationCommands.BrowseConferenceAdd,
+            return new ImagedCommandViewModel(Browse.Conference.Add,
                                               Model, tooltip, imageSource);
         }
 

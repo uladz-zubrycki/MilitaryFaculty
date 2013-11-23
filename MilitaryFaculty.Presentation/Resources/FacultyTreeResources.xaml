@@ -28,16 +28,16 @@
     <!--Common tree item template-->
     <HierarchicalDataTemplate 
                 x:Key="TreeItemTemplate"
-                ItemsSource="{Binding Path=Children}">
+                ItemsSource="{Binding Children}">
         <TextBlock 
                 Style="{StaticResource TreeViewItemTextBlockStyle}"
-                Text="{Binding Path=Title}"/>
+                Text="{Binding Title}"/>
     </HierarchicalDataTemplate>
 
     <!--Selected item template-->
     <HierarchicalDataTemplate 
             x:Key="SelectedTreeItemTemplate"
-            ItemsSource="{Binding Path=Children}">
+            ItemsSource="{Binding Children}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -46,20 +46,21 @@
             <TextBlock 
                     Grid.Column="0" 
                     Style="{StaticResource TreeViewItemTextBlockStyle}"
-                    Text="{Binding Path=Title}"/>
+                    Text="{Binding Title}"/>
             <ItemsControl 
                     Grid.Column="1" 
-                    ItemsSource="{Binding Path=Commands}"
-                    Style="{StaticResource CommandsItemControlStyle}"/>
+                    ItemsSource="{Binding Commands}"
+                    Style="{StaticResource CommandsItemControlStyle}"
+                    Background="White"/>
         </Grid>
     </HierarchicalDataTemplate>
 
     <Style x:Key="TreeItemStyle" 
            TargetType="TreeViewItem">
         <Setter Property="IsExpanded" 
-                Value="{Binding Path=IsExpanded, Mode=TwoWay}"/>
+                Value="{Binding IsExpanded, Mode=TwoWay}"/>
         <Setter Property="IsSelected" 
-                Value="{Binding Path=IsSelected, Mode=TwoWay}"/>
+                Value="{Binding IsSelected, Mode=TwoWay}"/>
         <Setter Property="HeaderTemplate" 
                 Value="{StaticResource TreeItemTemplate}"/>
         <Style.Triggers>

@@ -58,11 +58,9 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public PublicationInfoViewModel(Publication model, EditableViewMode mode)
             : base(model)
         {
-            const string title = "Основная информация";
-            
-            Title = title;
+            Title = "Основная информация";
 
-            var editCommands = new EditableViewBehaviour<Publication>(ApplicationCommands.UpdatePublication, Model);
+            var editCommands = new EditableViewBehaviour<Publication>(Do.Publication.Update, Model);
             editCommands.Inject(this, mode);
         }
 

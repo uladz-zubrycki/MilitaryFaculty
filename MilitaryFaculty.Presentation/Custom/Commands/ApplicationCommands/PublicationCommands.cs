@@ -6,24 +6,24 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class BookApplicationCommands : ICommandContainerModule
+    public class PublicationCommandModule : ICommandContainerModule
     {
         #region Class Fields
 
-        private readonly IRepository<Publication> bookRepository;
+        private readonly IRepository<Publication> publicationRepository;
 
         #endregion // Class Fields
 
         #region Class Constructors
 
-        public BookApplicationCommands(IRepository<Publication> bookRepository)
+        public PublicationCommandModule(IRepository<Publication> publicationRepository)
         {
-            if (bookRepository == null)
+            if (publicationRepository == null)
             {
                 throw new ArgumentNullException("professorRepository");
             }
 
-            this.bookRepository = bookRepository;
+            this.publicationRepository = publicationRepository;
         }
 
         #endregion // Class Constructors
@@ -37,71 +37,71 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("sink");
             }
 
-            container.RegisterCommand<Publication>(ApplicationCommands.AddPublication,
-                                            OnAddBook,
-                                            CanAddBook);
+            container.RegisterCommand<Publication>(Do.Publication.Add,
+                                            OnAddPublication,
+                                            CanAddPublication);
 
-            container.RegisterCommand<Publication>(ApplicationCommands.UpdatePublication,
-                                            OnUpdateBook,
-                                            CanUpdateBook);
+            container.RegisterCommand<Publication>(Do.Publication.Update,
+                                            OnUpdatePublication,
+                                            CanUpdatePublication);
 
-            container.RegisterCommand<Publication>(ApplicationCommands.RemovePublication,
-                                            OnRemoveBook);
+            container.RegisterCommand<Publication>(Do.Publication.Remove,
+                                            OnRemovePublication);
         }
 
         #endregion // Class Public Methods
 
         #region Class Private Methods
 
-        private void OnAddBook(Publication publication)
+        private void OnAddPublication(Publication publication)
         {
             if (publication == null)
             {
                 throw new ArgumentNullException("book");
             }
 
-            bookRepository.Create(publication);
+            publicationRepository.Create(publication);
 
-            NavigationCommands.BrowseBack.Execute(null, null);
+            Browse.Back.Execute(null, null);
         }
 
-        private bool CanAddBook(Publication publication)
+        private bool CanAddPublication(Publication publication)
         {
             // TODO: Validation here
             return true;
         }
 
-        private void OnUpdateBook(Publication publication)
+        private void OnUpdatePublication(Publication publication)
         {
             if (publication == null)
             {
                 throw new ArgumentNullException("book");
             }
 
-            bookRepository.Update(publication);
+            publicationRepository.Update(publication);
         }
 
-        private bool CanUpdateBook(Publication publication)
+        private bool CanUpdatePublication(Publication publication)
         {
             // TODO: Validation here
             return true;
         }
 
-        private void OnRemoveBook(Publication publication)
+        private void OnRemovePublication(Publication publication)
         {
             if (publication == null)
             {
                 throw new ArgumentNullException("book");
             }
 
-            const string message = "Вы действительно хотите удалить учебник? Все данные будут утеряны.";
+            const string message = "Вы действительно хотите удалить публикацию? Все данные будут утеряны.";
             const string title = "Подтверждение удаления";
 
             var userInput = MessageBox.Show(message, title, MessageBoxButton.OKCancel);
 
             if (userInput != MessageBoxResult.Cancel)
             {
-                bookRepository.Delete(publication.Id);
+                publicationRepository.Delete(publication.Id);
             }
         }
 

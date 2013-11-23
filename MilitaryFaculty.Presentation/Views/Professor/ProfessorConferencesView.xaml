@@ -32,13 +32,13 @@
                 Grid.Row="0"
                 Grid.Column="1"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding Path=ConferencesCount}"/>
+                Text="{Binding ConferencesCount}"/>
         
          <ListBox
              Grid.Row="1" Grid.ColumnSpan="2"
              BorderThickness="0"
              HorizontalAlignment="Stretch"
-             ItemsSource="{Binding Path=Conferences}"
+             ItemsSource="{Binding Conferences}"
              ItemContainerStyle="{StaticResource ListBoxItemStyle}"
              ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
     </Grid>

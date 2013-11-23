@@ -19,12 +19,12 @@
         <TextBlock 
             Grid.Row="0"
             Style="{StaticResource H1TextBlock}"
-            Text="{Binding Path=Title}"/>
+            Text="{Binding Title}"/>
         
         <ItemsControl 
                 Grid.Row="1"
                 Style="{StaticResource ExpandItemStyle}"
-                ItemsSource="{Binding Path=ViewModels}">
+                ItemsSource="{Binding ViewModels}">
         </ItemsControl>
     </Grid>
 </UserControl>

@@ -68,19 +68,24 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Custom\Converters\BoolToVisibilityConverter.cs" />
-    <Compile Include="Custom\Commands\ApplicationCommands\BookApplicationCommands.cs" />
-    <Compile Include="Custom\Commands\ApplicationCommands\ConferenceApplicationCommands.cs" />
-    <Compile Include="Custom\Commands\ApplicationCommands\ProfessorApplicationCommands.cs" />
-    <Compile Include="Custom\Commands\ApplicationCommands.cs" />
+    <Compile Include="Custom\Commands\ApplicationCommands\PublicationCommands.cs" />
+    <Compile Include="Custom\Commands\ApplicationCommands\ConferenceCommandModule.cs" />
+    <Compile Include="Custom\Commands\ApplicationCommands\ProfessorCommandModule.cs" />
+    <Compile Include="Custom\Commands\Do.cs" />
+    <Compile Include="Custom\Converters\EnumToNameConverter.cs" />
+    <Compile Include="Custom\Converters\EnumToValuesConverter.cs" />
+    <Compile Include="Custom\MarkupExtensions\Command.cs" />
     <Compile Include="Infrastructure\Commands\Command.cs" />
     <Compile Include="Infrastructure\Commands\ICommandContainerModule.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands\PublicationNavigationCommands.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands\ConferenceNavigationCommands.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands\CommonNavigationCommands.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands\BaseNavigationCommands.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands\ProfessorNavigationCommands.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands\PublicationNavigationModule.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands\ConferenceNavigationModule.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands\CommonNavigationModule.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands\BaseNavigationModule.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands\ProfessorNavigationModule.cs" />
     <Compile Include="Custom\ViewBehaviours\EditableViewMode.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands.cs" />
+    <Compile Include="Custom\Commands\Browse.cs" />
+    <Compile Include="Infrastructure\Converters\Converter.cs" />
+    <Compile Include="Infrastructure\Converters\ParametrizedConverter.cs" />
     <Compile Include="Infrastructure\Injection\InjectionConfig.cs" />
     <Compile Include="Infrastructure\ViewModels\ComplexViewModel.cs" />
     <Compile Include="Infrastructure\Commands\IViewBehaviour.cs" />
@@ -91,6 +96,11 @@
     <Compile Include="Infrastructure\Commands\CommandContainer.cs" />
     <Compile Include="Infrastructure\Commands\CommandContainerBinding.cs" />
     <Compile Include="Infrastructure\Commands\ICommandContainer.cs" />
+    <Compile Include="ViewModels\Exhibition\ExhibitionAddViewModel.cs" />
+    <Compile Include="ViewModels\Exhibition\ExhibitionInfoViewModel.cs" />
+    <Compile Include="ViewModels\Exhibition\ExhibitionListItemViewModel.cs" />
+    <Compile Include="ViewModels\Exhibition\ExhibitionViewModel.cs" />
+    <Compile Include="ViewModels\Professor\ProfessorExhibitionViewModel.cs" />
     <Compile Include="ViewModels\Publication\PublicationAddViewModel.cs" />
     <Compile Include="ViewModels\Publication\PublicationInfoViewModel.cs" />
     <Compile Include="ViewModels\Publication\PublicationListItemViewModel.cs" />

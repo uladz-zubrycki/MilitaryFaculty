@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq.Expressions;
+using System.Reflection;
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
@@ -33,5 +35,30 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         }
 
         #endregion // Class Constructors
+
+        #region Class Protected Methods
+
+        protected void SetModelProperty<TProperty>(Expression<Func<T, TProperty>> evaluator, TProperty value)
+        {
+            if (evaluator == null)
+            {
+                throw new ArgumentNullException("evaluator");
+            }
+
+            var body = (MemberExpression) evaluator.Body;
+            var propInfo = (PropertyInfo) body.Member;
+
+            var oldValue = (TProperty) propInfo.GetValue(Model);
+            
+            if (value.Equals(oldValue))
+            {
+                return;
+            }
+
+            propInfo.SetValue(Model, value);
+            OnPropertyChanged(propInfo.Name);
+        }
+
+        #endregion // Class Protected Methods
     }
 }

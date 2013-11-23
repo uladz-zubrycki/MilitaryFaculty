@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
+             xmlns:m="clr-namespace:MilitaryFaculty.Presentation.Custom.MarkupExtensions"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -21,12 +22,12 @@
         <TextBlock
                 Grid.Row="0"
                 Style="{StaticResource H1TextBlock}"
-                Text="{Binding Path=Title}"/>
+                Text="{Binding Title}"/>
 
         <ItemsControl 
                 Grid.Row="1"
                 Style="{StaticResource ItemStyle}"
-                ItemsSource="{Binding Path=ConferenceViewModel.ViewModels}">
+                ItemsSource="{Binding ConferenceViewModel.ViewModels}">
         </ItemsControl>
 
         <Grid Grid.Row="3">
@@ -39,14 +40,14 @@
                 Grid.Column="0"
                 Content="Добавить"
                 Style="{StaticResource SimpleButton}"
-                Command="c:ApplicationCommands.AddConference"
+                Command="{m:Command c:Do.Conference.Add}"
                 CommandParameter="{Binding Model}"/>
 
             <Button
                 Grid.Column="1"
                 Content="Отмена"
                 Style="{StaticResource SimpleButton}"
-                Command="c:NavigationCommands.BrowseBack"
+                Command="{m:Command c:Browse.Back}"
                 CommandParameter="{Binding Model}" />
         </Grid>
     </Grid>

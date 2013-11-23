@@ -16,12 +16,12 @@
         <TextBlock
             Grid.Row="0"
             Style="{StaticResource H1TextBlock}"
-            Text="{Binding Path=FullName}"/>
+            Text="{Binding FullName}"/>
 
         <!--Military rank-->
         <TextBlock
             Grid.Row="1"
             Style="{StaticResource H2TextBlock}"
-            Text="{Binding Path=MilitaryRankString}"/>
+            Text="{Binding MilitaryRankString}"/>
     </Grid>
 </UserControl>

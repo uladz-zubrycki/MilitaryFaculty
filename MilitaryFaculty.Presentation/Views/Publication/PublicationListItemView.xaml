@@ -20,13 +20,13 @@
         <TextBlock
             Grid.Column="0"
             Style="{StaticResource ValueMultilineTextblock}"
-            Text="{Binding Path=InfoViewModel.Name}"/>
+            Text="{Binding InfoViewModel.Name}"/>
 
         <!--Pages count-->
         <TextBlock
             Grid.Column="1"
             Style="{StaticResource ValueTextBlock}"
-            Text="{Binding Path=InfoViewModel.PagesCountString}"/>
+            Text="{Binding InfoViewModel.PagesCountString}"/>
 
         <Grid.ToolTip>
             <ToolTip Placement="Bottom" 

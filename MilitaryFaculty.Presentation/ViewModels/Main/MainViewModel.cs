@@ -115,13 +115,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
             var modules = new ICommandContainerModule[]
                           {
-                              new ProfessorApplicationCommands(professorRepository),
-                              new BookApplicationCommands(bookRepository),
-                              new ConferenceApplicationCommands(conferenceRepository),
-                              new CommonNavigationCommands(this),
-                              new PublicationNavigationCommands(this),
-                              new ProfessorNavigationCommands(this),
-                              new ConferenceNavigationCommands(this)
+                              new ProfessorCommandModule(professorRepository),
+                              new PublicationCommandModule(bookRepository),
+                              new ConferenceCommandModule(conferenceRepository),
+                              new CommonNavigationModule(this),
+                              new PublicationNavigationModule(this),
+                              new ProfessorNavigationModule(this),
+                              new ConferenceNavigationModule(this)
                           };
 
             foreach (var module in modules)

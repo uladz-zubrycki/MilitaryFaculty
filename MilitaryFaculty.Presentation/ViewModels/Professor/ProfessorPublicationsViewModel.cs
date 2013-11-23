@@ -25,7 +25,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             {
                 if (publications == null)
                 {
-                    InitBooks();
+                    InitPublications();
                 }
 
                 return publications;
@@ -94,11 +94,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Добавить публикацию";
             const string imageSource = @"..\Content\add.png";
 
-            return new ImagedCommandViewModel(NavigationCommands.BrowsePublicationAdd,
+            return new ImagedCommandViewModel(Browse.Publication.Add,
                                               Model, tooltip, imageSource);
         }
 
-        private void InitBooks()
+        private void InitPublications()
         {
             var converter = PublicationListItemViewModel.FromModel();
             var items = Model.Publications.Select(converter);

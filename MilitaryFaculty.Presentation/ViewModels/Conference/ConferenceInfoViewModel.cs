@@ -15,7 +15,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         public string ConferenceTypeString
         {
-            get { return Model.EventLevel.GetName(); }
+            get { return ConferenceType.GetName(); }
         }
 
         public IEnumerable<Tuple<EventLevel, string>> ConferenceTypeList
@@ -30,21 +30,10 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         public EventLevel ConferenceType
         {
-            get { return Model.EventLevel; }
+            get { return Model.ConferenceType; }
             set
             {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                if (value == ConferenceType)
-                {
-                    return;
-                }
-
-                Model.EventLevel = value;
-                OnPropertyChanged();
+                SetModelProperty(m => m.ConferenceType, value);
                 OnPropertyChanged("ConferenceTypeString");
             }
         }
@@ -54,13 +43,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.Name; }
             set
             {
-                if (value == Name)
-                {
-                    return;
-                }
-
-                Model.Name = value;
-                OnPropertyChanged();
+                SetModelProperty(m => m.Name, value);
             }
         }
 
@@ -74,13 +57,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.Date; }
             set
             {
-                if (value == Date)
-                {
-                    return;
-                }
-
-                Model.Date = value;
-                OnPropertyChanged();
+               SetModelProperty(m => m.Date, value);
             }
         }
 
@@ -91,10 +68,9 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ConferenceInfoViewModel(Conference model, EditableViewMode mode = EditableViewMode.Display)
             : base(model)
         {
-            Title = "Базовая информация"; ;
+            Title = "Базовая информация";
 
-            var editCommands = new EditableViewBehaviour<Conference>(ApplicationCommands.UpdateConference,
-                                                                     Model);
+            var editCommands = new EditableViewBehaviour<Conference>(Do.Conference.Update, Model);
             editCommands.Inject(this, mode);
         }
 

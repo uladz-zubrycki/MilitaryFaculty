@@ -25,6 +25,6 @@
         <TextBlock
                 Grid.Column="1"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding Path=PublicationTypeString}"/>
+                Text="{Binding PublicationTypeString}"/>
     </Grid>
 </UserControl>

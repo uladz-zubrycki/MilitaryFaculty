@@ -31,7 +31,7 @@
                 Grid.Row="0"
                 Grid.Column="1"
                 Style="{StaticResource ValueMultilineTextblock}"
-                Text="{Binding Path=Name}"/>
+                Text="{Binding Name}"/>
 
         <!--Pages Count-->
         <TextBlock 
@@ -43,6 +43,6 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding Path=PagesCount}"/>
+                Text="{Binding PagesCount}"/>
     </Grid>
 </UserControl>

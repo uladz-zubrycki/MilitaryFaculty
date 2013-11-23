@@ -36,18 +36,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.ConferenceReport.ThemeActuality; }
             set
             {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                if (value == ThemeActuality)
-                {
-                    return;
-                }
-
-                Model.ConferenceReport.ThemeActuality = value;
-                OnPropertyChanged();
+               SetModelProperty(m => m.ConferenceReport.ThemeActuality, value);
             }
         }
 
@@ -64,18 +53,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.ConferenceReport.OrganizationCorrectness; }
             set
             {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                if (value == OrganizationCorrectness)
-                {
-                    return;
-                }
-
-                Model.ConferenceReport.OrganizationCorrectness = value;
-                OnPropertyChanged();
+               SetModelProperty(m => m.ConferenceReport.OrganizationCorrectness, value);
             }
         }
 
@@ -92,18 +70,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.ConferenceReport.ReportMaterials; }
             set
             {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                if (value == ReportMaterials)
-                {
-                    return;
-                }
-
-                Model.ConferenceReport.ReportMaterials = value;
-                OnPropertyChanged();
+               SetModelProperty(m => m.ConferenceReport.ReportMaterials, value);
             }
         }
 
@@ -120,18 +87,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.ConferenceReport.ResultsUsage; }
             set
             {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                if (value == ResultsUsage)
-                {
-                    return;
-                }
-
-                Model.ConferenceReport.ResultsUsage = value;
-                OnPropertyChanged();
+                SetModelProperty(m => m.ConferenceReport.ResultsUsage, value);
             }
         }
 
@@ -143,10 +99,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
             : base(model)
         {
             Title = "Отчёт о конференции";
-            
-            var editCommands = new EditableViewBehaviour<Conference>(ApplicationCommands.UpdateConference,
-                                                                     Model);
 
+            var editCommands = new EditableViewBehaviour<Conference>(Do.Conference.Update, Model);
             editCommands.Inject(this, mode);
         }
 

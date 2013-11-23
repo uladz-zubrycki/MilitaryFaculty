@@ -5,11 +5,11 @@ using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class PublicationNavigationCommands : BaseNavigationCommands
+    public class PublicationNavigationModule : BaseNavigationModule
     {
         #region Class Constructors
 
-        public PublicationNavigationCommands(MainViewModel viewModel)
+        public PublicationNavigationModule(MainViewModel viewModel)
             : base(viewModel)
         {
             // Empty
@@ -26,8 +26,8 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("sink");
             }
 
-            container.RegisterCommand<Professor>(NavigationCommands.BrowsePublicationAdd, OnBrowseBookAdd);
-            container.RegisterCommand<Publication>(NavigationCommands.BrowsePublicationDetails, OnBrowseBookDetails);
+            container.RegisterCommand<Professor>(Browse.Publication.Add, OnBrowseBookAdd);
+            container.RegisterCommand<Publication>(Browse.Publication.Details, OnBrowseBookDetails);
         }
 
         #endregion // Class Public Methods

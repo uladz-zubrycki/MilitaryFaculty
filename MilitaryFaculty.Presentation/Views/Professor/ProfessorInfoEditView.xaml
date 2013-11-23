@@ -28,8 +28,7 @@
                 Grid.Column="1"
                 Grid.Row="0"
                 Style="{StaticResource ValueTextBox}"
-                Text="{Binding Path=FirstName, 
-                                Mode=TwoWay}"/>
+                Text="{Binding FirstName, Mode=TwoWay}"/>
         <!--LastName-->
         <TextBlock 
                 Grid.Column="0"
@@ -40,8 +39,7 @@
                 Grid.Column="1"
                 Grid.Row="1"
                 Style="{StaticResource ValueTextBox}"
-                Text="{Binding Path=LastName, 
-                                Mode=TwoWay}"/>
+                Text="{Binding LastName, Mode=TwoWay}"/>
 
         <!--MiddleName-->
         <TextBlock 
@@ -53,8 +51,7 @@
                 Grid.Column="1"
                 Grid.Row="2"
                 Style="{StaticResource ValueTextBox}"
-                Text="{Binding Path=MiddleName, 
-                                Mode=TwoWay}"/>
+                Text="{Binding MiddleName, Mode=TwoWay}"/>
 
         <!--Military rank-->
         <TextBlock 
@@ -66,9 +63,8 @@
                 Grid.Column="1"
                 Grid.Row="3"
                 Style="{StaticResource ValueComboBox}"
-                ItemsSource="{Binding Path=MilitaryRankList}"
-                SelectedValue="{Binding Path=MilitaryRank,
-                                        Mode=TwoWay}"
+                ItemsSource="{Binding MilitaryRankList}"
+                SelectedValue="{Binding MilitaryRank, Mode=TwoWay}"
                 SelectedValuePath="Item1"
                 DisplayMemberPath="Item2"/>
     </Grid>

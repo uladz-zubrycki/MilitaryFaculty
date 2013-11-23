@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
@@ -33,18 +32,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.JobPosition; }
             set
             {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                if (value == JobPosition)
-                {
-                    return;
-                }
-
-                Model.JobPosition = value;
-                OnPropertyChanged();
+                SetModelProperty(m => m.JobPosition, value);
                 OnPropertyChanged("JobPositionString");
             }
         }
@@ -69,18 +57,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.AcademicDegree; }
             set
             {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                if (value == AcademicDegree)
-                {
-                    return;
-                }
-
-                Model.AcademicDegree = value;
-                OnPropertyChanged();
+                SetModelProperty(m => m.AcademicDegree, value);
                 OnPropertyChanged("AcademicDegreeString");
             }
         }
@@ -105,19 +82,9 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.AcademicRank; }
             set
             {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
+                SetModelProperty(m => m.AcademicRank, value);
 
-                if (value == AcademicRank)
-                {
-                    return;
-                }
-
-                Model.AcademicRank = value;
-                OnPropertyChanged();
-                OnPropertyChanged("AcademicRankString");
+                //OnPropertyChanged("AcademicRankString");
             }
         }
 
@@ -128,11 +95,9 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ProfessorExtraInfoViewModel(Professor model, EditableViewMode mode = EditableViewMode.Display)
             : base(model)
         {
-            const string title = "Дополнительная информация";
-            
-            Title = title;
+            Title = "Дополнительная информация";
 
-            var editCommands = new EditableViewBehaviour<Professor>(ApplicationCommands.UpdateProfessor, Model);
+            var editCommands = new EditableViewBehaviour<Professor>(Do.Professor.Update, Model);
             editCommands.Inject(this, mode);
         }
 

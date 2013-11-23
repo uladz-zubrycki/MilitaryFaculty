@@ -29,7 +29,7 @@
         </ContentPresenter>
         <!--Edit mode-->
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=Tag}" Value="{x:Static c:EditableViewMode.Edit}">
+            <DataTrigger Binding="{Binding Tag}" Value="{x:Static c:EditableViewMode.Edit}">
                 <Setter  TargetName="ConferenceInfoPresenter" Property="Content">
                     <Setter.Value>
                         <v:ConferenceInfoEditView/>
@@ -48,7 +48,7 @@
         </ContentPresenter>
         <!--Edit mode-->
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=Tag}" Value="{x:Static c:EditableViewMode.Edit}">
+            <DataTrigger Binding="{Binding Tag}" Value="{x:Static c:EditableViewMode.Edit}">
                 <Setter TargetName="ConferenceReportPresenter" Property="Content">
                     <Setter.Value>
                         <v:ConferenceReportEditView/>

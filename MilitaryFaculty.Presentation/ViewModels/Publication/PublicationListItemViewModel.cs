@@ -57,7 +57,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Удалить публикацию";
             const string imageSource = @"..\Content\remove.png";
 
-            return new ImagedCommandViewModel(ApplicationCommands.RemovePublication,
+            return new ImagedCommandViewModel(Do.Publication.Remove,
                                               Model, tooltip, imageSource);
         }
 
@@ -66,7 +66,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Подробно";
             const string imageSource = @"..\..\Content\details.png";
 
-            return new ImagedCommandViewModel(NavigationCommands.BrowsePublicationDetails,
+            return new ImagedCommandViewModel(Browse.Publication.Details,
                                               Model, tooltip, imageSource);
         }
 

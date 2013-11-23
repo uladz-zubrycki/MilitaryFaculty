@@ -18,10 +18,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ProfessorAddViewModel(Professor model)
             : base(model)
         {
-            const string title = "Добавить преподавателя:";
-
-            this.Title = title;
-
+            Title = "Добавить преподавателя:";
             InitViewModels();
         }
 

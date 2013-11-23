@@ -6,7 +6,7 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class ProfessorApplicationCommands : ICommandContainerModule
+    public class ProfessorCommandModule : ICommandContainerModule
     {
         #region Class Fields
 
@@ -16,7 +16,7 @@ namespace MilitaryFaculty.Presentation.Custom
 
         #region Class Constructors
 
-        public ProfessorApplicationCommands(IRepository<Professor> professorRepository)
+        public ProfessorCommandModule(IRepository<Professor> professorRepository)
         {
             if (professorRepository == null)
             {
@@ -32,15 +32,15 @@ namespace MilitaryFaculty.Presentation.Custom
 
         public void RegisterModule(CommandContainer container)
         {
-            container.RegisterCommand<Professor>(ApplicationCommands.AddProfessor,
+            container.RegisterCommand<Professor>(Do.Professor.Add,
                                                  OnAddProfessor,
                                                  CanAddProfessor);
 
-            container.RegisterCommand<Professor>(ApplicationCommands.UpdateProfessor,
+            container.RegisterCommand<Professor>(Do.Professor.Update,
                                                  OnUpdateProfessor,
                                                  CanUpdateProfessor);
 
-            container.RegisterCommand<Professor>(ApplicationCommands.RemoveProfessor,
+            container.RegisterCommand<Professor>(Do.Professor.Remove,
                                                  OnRemoveProfessor);
         }
 
@@ -56,7 +56,7 @@ namespace MilitaryFaculty.Presentation.Custom
             }
 
             professorRepository.Create(professor);
-            NavigationCommands.BrowseBack.Execute(null, null);
+            Browse.Back.Execute(null, null);
         }
 
         private bool CanAddProfessor(Professor professor)

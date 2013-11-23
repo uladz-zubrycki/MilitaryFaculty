@@ -15,6 +15,6 @@
         <TextBlock
             Grid.Row="0"
             Style="{StaticResource H1TextBlock}"
-            Text="{Binding Path=Title}"/>
+            Text="{Binding Title}"/>
     </Grid>
 </UserControl>

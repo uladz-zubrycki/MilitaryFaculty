@@ -32,7 +32,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Удалить преподавателя";
             const string imageSource = @"..\Content\remove.png";
 
-            return new ImagedCommandViewModel(ApplicationCommands.RemoveProfessor,
+            return new ImagedCommandViewModel(Do.Professor.Remove,
                                               Model, tooltip, imageSource);
         }
 

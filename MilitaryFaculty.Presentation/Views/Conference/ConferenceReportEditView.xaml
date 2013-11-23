@@ -29,8 +29,8 @@
                 Grid.Column="1"
                 Grid.Row="0"
                 Style="{StaticResource ValueComboBox}"
-                ItemsSource="{Binding Path=AccordanceLevelList}"
-                SelectedValue="{Binding Path=ThemeActuality,
+                ItemsSource="{Binding AccordanceLevelList}"
+                SelectedValue="{Binding ThemeActuality,
                                         Mode=TwoWay}"
                 SelectedValuePath="Item1"
                 DisplayMemberPath="Item2"/>
@@ -45,8 +45,8 @@
                 Grid.Column="1"
                 Grid.Row="1"
                 Style="{StaticResource ValueComboBox}"
-                ItemsSource="{Binding Path=AccordanceLevelList}"
-                SelectedValue="{Binding Path=OrganizationCorrectness,
+                ItemsSource="{Binding AccordanceLevelList}"
+                SelectedValue="{Binding OrganizationCorrectness,
                                         Mode=TwoWay}"
                 SelectedValuePath="Item1"
                 DisplayMemberPath="Item2"/>
@@ -61,8 +61,8 @@
                 Grid.Column="1"
                 Grid.Row="2"
                 Style="{StaticResource ValueComboBox}"
-                ItemsSource="{Binding Path=AccordanceLevelList}"
-                SelectedValue="{Binding Path=ReportMaterials,
+                ItemsSource="{Binding AccordanceLevelList}"
+                SelectedValue="{Binding ReportMaterials,
                                         Mode=TwoWay}"
                 SelectedValuePath="Item1"
                 DisplayMemberPath="Item2"/>
@@ -77,8 +77,8 @@
                 Grid.Column="1"
                 Grid.Row="3"
                 Style="{StaticResource ValueComboBox}"
-                ItemsSource="{Binding Path=AccordanceLevelList}"
-                SelectedValue="{Binding Path=ResultsUsage,
+                ItemsSource="{Binding AccordanceLevelList}"
+                SelectedValue="{Binding ResultsUsage,
                                         Mode=TwoWay}"
                 SelectedValuePath="Item1"
                 DisplayMemberPath="Item2"/>

@@ -47,7 +47,7 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding Path=ReviewedArticlesCount}"/>
+                Text="{Binding ReviewedArticlesCount}"/>
 
         <!--Articles count-->
         <TextBlock 
@@ -59,7 +59,7 @@
                 Grid.Row="2"
                 Grid.Column="1"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding Path=ArticlesCount}"/>
+                Text="{Binding ArticlesCount}"/>
 
         <!--Thesises count-->
         <TextBlock 
@@ -77,7 +77,7 @@
              Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
              BorderThickness="0"
              HorizontalAlignment="Stretch"
-             ItemsSource="{Binding Path=Publications}"
+             ItemsSource="{Binding Publications}"
              ItemContainerStyle="{StaticResource ListBoxItemStyle}"
              ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
     </Grid>

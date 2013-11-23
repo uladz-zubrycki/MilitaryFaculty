@@ -113,11 +113,9 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ProfessorInfoViewModel(Professor model, EditableViewMode mode)
             : base(model)
         {
-            const string title = "Базовая информация";
-           
-            Title = title;
+            Title = "Базовая информация";
 
-            var editCommands = new EditableViewBehaviour<Professor>(ApplicationCommands.UpdateProfessor, Model);
+            var editCommands = new EditableViewBehaviour<Professor>(Do.Professor.Update, Model);
             editCommands.Inject(this, mode);
         }
 

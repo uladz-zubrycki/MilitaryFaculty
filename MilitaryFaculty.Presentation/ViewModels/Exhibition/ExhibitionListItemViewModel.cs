@@ -6,27 +6,26 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class ConferenceListItemViewModel : ComplexViewModel<Conference>
+    public class ExhibitionListItemViewModel : ComplexViewModel<Exhibition>
     {
         #region Type Static Members
 
-        public static Func<Conference, ConferenceListItemViewModel> FromModel()
+        public static Func<Exhibition, ExhibitionListItemViewModel> FromModel()
         {
-            return conference => new ConferenceListItemViewModel(conference);
+            return conference => new ExhibitionListItemViewModel(conference);
         }
 
         #endregion // Type Static Members
 
         #region Class Properties
 
-        public ConferenceInfoViewModel InfoViewModel { get; private set; }
-        public ConferenceReportViewModel ReportViewModel { get; private set; }
+        public ExhibitionInfoViewModel InfoViewModel { get; private set; }
 
         #endregion // Class Properties
 
         #region Class Constructors
 
-        public ConferenceListItemViewModel(Conference model)
+        public ExhibitionListItemViewModel(Exhibition model)
             : base(model)
         {
             InitViewModels();
@@ -39,8 +38,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         protected void InitViewModels()
         {
-            InfoViewModel = new ConferenceInfoViewModel(Model);
-            ReportViewModel = new ConferenceReportViewModel(Model);
+            InfoViewModel = new ExhibitionInfoViewModel(Model);
 
             ViewModels.Add(InfoViewModel);
         }
@@ -49,26 +47,26 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             Commands.AddRange(new[]
                               {
-                                  CreateBrowseConferenceDetailsCommand(),
-                                  CreateRemoveConferenceCommand(),
+                                  CreateBrowseExhibitionDetailsCommand(),
+                                  CreateRemoveExhibitionCommand(),
                               });
         }
 
-        private ImagedCommandViewModel CreateRemoveConferenceCommand()
+        private ImagedCommandViewModel CreateRemoveExhibitionCommand()
         {
-            const string tooltip = "Удалить конференцию";
+            const string tooltip = "Удалить выставку";
             const string imageSource = @"..\Content\remove.png";
 
-            return new ImagedCommandViewModel(Do.Conference.Remove,
+            return new ImagedCommandViewModel(Do.Exhibition.Remove,
                                               Model, tooltip, imageSource);
         }
 
-        private ImagedCommandViewModel CreateBrowseConferenceDetailsCommand()
+        private ImagedCommandViewModel CreateBrowseExhibitionDetailsCommand()
         {
             const string tooltip = "Подробно";
             const string imageSource = @"..\..\Content\details.png";
 
-            return new ImagedCommandViewModel(Browse.Conference.Details,
+            return new ImagedCommandViewModel(Browse.Exhibition.Details,
                                               Model, tooltip, imageSource);
         }
 

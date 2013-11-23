@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="clr-namespace:MilitaryFaculty.Presentation.Infrastructure"
         xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
+        xmlns:m="clr-namespace:MilitaryFaculty.Presentation.Custom.MarkupExtensions"
         Title="Научный рейтинг" Height="550" Width="830"
         WindowStartupLocation="CenterScreen"
         i:CommandContainerBinding.CommandContainer ="{Binding CommandContainer}">
@@ -12,32 +13,32 @@
 
     <Window.CommandBindings>
         <!--Application commands-->
-        <i:CommandContainerBinding Command="c:ApplicationCommands.AddProfessor"/>
-        <i:CommandContainerBinding Command="c:ApplicationCommands.UpdateProfessor"/>
-        <i:CommandContainerBinding Command="c:ApplicationCommands.RemoveProfessor"/>
-        
-        <i:CommandContainerBinding Command="c:ApplicationCommands.AddConference"/>
-        <i:CommandContainerBinding Command="c:ApplicationCommands.UpdateConference"/>
-        <i:CommandContainerBinding Command="c:ApplicationCommands.RemoveConference"/>
-        
-        <i:CommandContainerBinding Command="c:ApplicationCommands.AddPublication"/>
-        <i:CommandContainerBinding Command="c:ApplicationCommands.UpdatePublication"/>
-        <i:CommandContainerBinding Command="c:ApplicationCommands.RemovePublication"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Add}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Update}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Remove}"/>
+                                                       
+        <i:CommandContainerBinding Command="{m:Command c:Do.Conference.Add}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Conference.Update}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Conference.Remove}"/>
 
-        <!--Common navigation commands-->
-        <i:CommandContainerBinding Command="c:NavigationCommands.BrowseBack"/>
-        <i:CommandContainerBinding Command="c:NavigationCommands.BrowseForward"/>
-
-        <!--Professor navigation commands-->
-        <i:CommandContainerBinding Command="c:NavigationCommands.BrowseProfessorAdd"/>
-
-        <!--Conference navigation commands-->
-        <i:CommandContainerBinding Command="c:NavigationCommands.BrowseConferenceAdd"/>
-        <i:CommandContainerBinding Command="c:NavigationCommands.BrowseConferenceDetails"/>
-
+        <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Add}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Update}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Remove}"/>
+                                                       
+        <!--Common navigation commands-->              
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Back}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Forward}"/>
+                                                       
+        <!--Professor navigation commands-->           
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Professor.Add}"/>
+                                                       
+        <!--Conference navigation commands-->          
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Conference.Add}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Conference.Details}"/>
+                                                    
         <!--Book navigation commands-->
-        <i:CommandContainerBinding Command="c:NavigationCommands.BrowsePublicationAdd"/>
-        <i:CommandContainerBinding Command="c:NavigationCommands.BrowsePublicationDetails"/>
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Publication.Add}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Publication.Details}"/>
     </Window.CommandBindings>
 
     <Grid>
@@ -57,13 +58,13 @@
               Grid.ColumnSpan="2"
               BorderThickness="0">
             <Button Style="{StaticResource ImagedButtonStyle}"
-                    Command="c:NavigationCommands.BrowseBack">
+                    Command="c:Browse.Back">
                 <Image Style="{StaticResource NavigationImageStyle}"
                        Source="/Content/back.png"/>
             </Button>
 
             <Button Style="{StaticResource ImagedButtonStyle}"
-                    Command="c:NavigationCommands.BrowseForward">
+                    Command="c:Browse.Forward">
                 <Image Style="{StaticResource NavigationImageStyle}"
                        Source="/Content/forward.png"/>
             </Button>
@@ -86,7 +87,7 @@
 
                 <ContentControl  
                         Grid.Row="1"
-                        Content="{Binding Path=FacultyTree, 
+                        Content="{Binding FacultyTree, 
                                           Mode=OneWay}"/>
             </Grid>
         </Border>
@@ -108,8 +109,7 @@
                     </Style>
                 </ScrollViewer.Style>
                 <ContentControl 
-                        Grid.Row="1"
-                        Content="{Binding Path=WorkWindow, 
+                        Content="{Binding WorkWindow, 
                                           Mode=OneWay}"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"/>

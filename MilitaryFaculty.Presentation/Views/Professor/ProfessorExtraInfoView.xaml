@@ -28,7 +28,7 @@
                 Grid.Row="0"
                 Grid.Column="1"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding Path=JobPositionString}"/>
+                Text="{Binding JobPositionString}"/>
 
         <!--Academic rank-->
         <TextBlock 
@@ -40,7 +40,7 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding Path=AcademicRankString}"/>
+                Text="{Binding AcademicRankString}"/>
 
         <!--Academic degree-->
         <TextBlock
@@ -52,6 +52,6 @@
                 Grid.Row="2"
                 Grid.Column="1"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding Path=AcademicDegreeString}"/>
+                Text="{Binding AcademicDegreeString}"/>
     </Grid>
 </UserControl>

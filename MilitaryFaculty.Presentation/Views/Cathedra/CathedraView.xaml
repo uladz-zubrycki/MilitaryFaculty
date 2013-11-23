@@ -18,12 +18,12 @@
 
         <ContentControl 
                 Grid.Row="0"
-                Content="{Binding Path=InfoViewModel}"/>
+                Content="{Binding InfoViewModel}"/>
 
         <ItemsControl 
                 Grid.Row="1"
                 Style="{StaticResource ExpandItemStyle}"
-                ItemsSource="{Binding Path=ViewModels}">
+                ItemsSource="{Binding ViewModels}">
         </ItemsControl>
     </Grid>
 </UserControl>

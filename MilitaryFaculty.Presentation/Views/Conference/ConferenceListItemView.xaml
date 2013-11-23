@@ -16,20 +16,20 @@
         <TextBlock
             Grid.Column="0"
             Style="{StaticResource ValueTextBlock}"
-            Text="{Binding Path=InfoViewModel.DateString}"/>
+            Text="{Binding InfoViewModel.DateString}"/>
         
         <!--Name-->
         <TextBlock
             Grid.Column="1"
             Style="{StaticResource ValueMultilineTextblock}"
-            Text="{Binding Path=InfoViewModel.Name}"/>
+            Text="{Binding InfoViewModel.Name}"/>
         
         <Grid.ToolTip>
             <ToolTip Placement="Bottom" 
                      HorizontalContentAlignment="Center" 
                      ScrollViewer.VerticalScrollBarVisibility="Disabled" >
                 <ContentControl
-                    Content="{Binding Path=ReportViewModel}"/>
+                    Content="{Binding ReportViewModel}"/>
             </ToolTip>
         </Grid.ToolTip>
     </Grid>
