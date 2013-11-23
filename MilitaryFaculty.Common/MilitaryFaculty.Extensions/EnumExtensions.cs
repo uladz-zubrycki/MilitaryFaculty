@@ -15,8 +15,8 @@ namespace MilitaryFaculty.Extensions
             var type = value.GetType();
             var fieldName = Enum.GetName(type, value);
             var attr = type.GetField(fieldName)
-                          .GetCustomAttributes(typeof (EnumNameAttribute), false)
-                          .Single() as EnumNameAttribute;
+                           .GetCustomAttributes(typeof (EnumNameAttribute), false)
+                           .Single() as EnumNameAttribute;
 
             return attr == null ? String.Empty : attr.Name;
         }
