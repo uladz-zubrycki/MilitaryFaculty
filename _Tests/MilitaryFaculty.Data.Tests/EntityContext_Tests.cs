@@ -2,6 +2,8 @@
 using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using MilitaryFaculty.Domain;
 using NUnit.Framework;
 
@@ -34,7 +36,7 @@ namespace MilitaryFaculty.Data.Tests
             SeedBooks(context);
         }
 
-        private void SeedCathedras(EntityContext context)
+        private static void SeedCathedras(EntityContext context)
         {
             var cathedras = new[]
                                 {
@@ -51,7 +53,7 @@ namespace MilitaryFaculty.Data.Tests
             context.SaveChanges();
         }
 
-        private void SeedProfessors(EntityContext context)
+        private static void SeedProfessors(EntityContext context)
         {
             var cathedra = context.Cathedras
                                   .AsQueryable()
@@ -86,7 +88,7 @@ namespace MilitaryFaculty.Data.Tests
                                          Cathedra = cathedra,
                                          MilitaryRank = MilitaryRank.Colonel,
                                          JobPosition = JobPosition.Professor,
-                                     },
+                                     }
                                  };
 
             foreach (var professor in professors)
@@ -97,7 +99,7 @@ namespace MilitaryFaculty.Data.Tests
             context.SaveChanges();
         }
 
-        private void SeedConferences(EntityContext context)
+        private static void SeedConferences(EntityContext context)
         {
             var professor1 = context.Professors
                                     .AsQueryable()
@@ -116,8 +118,8 @@ namespace MilitaryFaculty.Data.Tests
                                                  "военно-морского десанта Республики Беларусь",
                                           Date = DateTime.Parse("01.07.1993"),
                                           Curator = professor1,
-                                          EventLevel = EventLevel.University,
-                                          ConferenceReport = new ConferenceReport()
+                                          ConferenceType = EventLevel.University,
+                                          ConferenceReport = new ConferenceReport
                                                              {
                                                                  OrganizationCorrectness = AccordanceLevel.Fully,
                                                                  ReportMaterials = AccordanceLevel.None,
@@ -130,8 +132,8 @@ namespace MilitaryFaculty.Data.Tests
                                           Name = "Военно-научная конференция, посвященная 56-летию Великой Победы",
                                           Date = DateTime.Parse("11.09.2001"),
                                           Curator = professor1,
-                                          EventLevel = EventLevel.University,
-                                          ConferenceReport = new ConferenceReport()
+                                          ConferenceType = EventLevel.University,
+                                          ConferenceReport = new ConferenceReport
                                                              {
                                                                  OrganizationCorrectness = AccordanceLevel.Fully,
                                                                  ReportMaterials = AccordanceLevel.None,
@@ -144,15 +146,15 @@ namespace MilitaryFaculty.Data.Tests
                                           Name = "Вторая международная конференция",
                                           Date = DateTime.Parse("13.08.2007"),
                                           Curator = professor2,
-                                          EventLevel = EventLevel.University,
-                                          ConferenceReport = new ConferenceReport()
+                                          ConferenceType = EventLevel.University,
+                                          ConferenceReport = new ConferenceReport
                                                              {
                                                                  OrganizationCorrectness = AccordanceLevel.Fully,
                                                                  ReportMaterials = AccordanceLevel.None,
                                                                  ThemeActuality = AccordanceLevel.Partly,
                                                                  ResultsUsage = AccordanceLevel.Partly
                                                              }
-                                      },
+                                      }
                                   };
 
             foreach (var conference in conferences)
@@ -163,7 +165,7 @@ namespace MilitaryFaculty.Data.Tests
             context.SaveChanges();
         }
 
-        private void SeedBooks(EntityContext context)
+        private static void SeedBooks(EntityContext context)
         {
             var professor1 = context.Professors
                                     .AsQueryable()
@@ -198,8 +200,9 @@ namespace MilitaryFaculty.Data.Tests
                                     PagesCount = 1309,
                                     PublicationType = PublicationType.Article,
                                     Author = professor2,
-                                },
+                                }
                             };
+
 
             foreach (var book in books)
             {
