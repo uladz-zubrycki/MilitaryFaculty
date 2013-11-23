@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IExhibitionRepository.cs" />
     <Compile Include="Exceptions\DatabaseNotFoundException.cs" />
     <Compile Include="IConferenceRepository.cs" />
     <Compile Include="IPublicationRepository.cs" />

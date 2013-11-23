@@ -14,7 +14,7 @@ namespace MilitaryFaculty.Data
                                  .HasMaxLength(Exhibition.NameMaxLength);
 
             Property(m => m.Date).IsRequired();
-            Property(m => m.Award).IsRequired();
+            Property(m => m.AwardType).IsRequired();
 
             HasRequired(m => m.Participant).WithMany(p => p.Exhibitions);
         }
