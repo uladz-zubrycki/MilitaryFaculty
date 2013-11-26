@@ -44,9 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContainer_Test.cs" />
-    <Compile Include="DataProvider_Test.cs" />
-    <Compile Include="TableFormulas_Test.cs" />
-    <Compile Include="TableInfo_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
