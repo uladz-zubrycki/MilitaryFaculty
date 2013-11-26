@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace MilitaryFaculty.Logic.XmlInfoDomain
+namespace MilitaryFaculty.Logic.XmlDomain
 {
     [Serializable]
     public class TablePart

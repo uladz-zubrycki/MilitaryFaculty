@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace MilitaryFaculty.Logic.XmlInfoDomain
+namespace MilitaryFaculty.Logic.XmlDomain
 {
     [Serializable]
-    public class TableInfo
+    public class TableFormulas
     {
         #region Class Properties
-        [XmlAttribute("name")]
-        public string Name { get; set; }
-        public List<TablePart> TableParts { get; set; }
+
+        public List<Formula> Formulas { get; set; }
 
         #endregion // Class Properties
 
         #region Class Public Methods
 
-        public static void Serialize(TableInfo tableInfo, string filename)
+        public static void Serialize(TableFormulas tableFormulas, string filename)
         {
-            var serializer = new XmlSerializer(typeof(TableInfo));
+            var serializer = new XmlSerializer(typeof(TableFormulas));
             var stream = new StreamWriter(filename);
-            
+
             try
             {
-                serializer.Serialize(stream, tableInfo);
+                serializer.Serialize(stream, tableFormulas);
             }
             finally
             {
@@ -32,22 +31,22 @@ namespace MilitaryFaculty.Logic.XmlInfoDomain
             }
         }
 
-        public static TableInfo Deserialize(string filename)
+        public static TableFormulas Deserialize(string filename)
         {
-            TableInfo tableInfo;
-            var serializer = new XmlSerializer(typeof(TableInfo));
+            TableFormulas tableFormulas;
+            var serializer = new XmlSerializer(typeof(TableFormulas));
             var stream = new FileStream(filename, FileMode.Open);
 
             try
             {
-                tableInfo = (TableInfo)serializer.Deserialize(stream);
+                tableFormulas = (TableFormulas)serializer.Deserialize(stream);
             }
             finally
             {
                 stream.Close();
             }
 
-            return tableInfo;
+            return tableFormulas;
         }
 
         #endregion // Class Public Methods

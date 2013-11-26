@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace MilitaryFaculty.Logic.XmlFormulasDomain
+namespace MilitaryFaculty.Logic.XmlDomain
 {
     [Serializable]
-    public class Coefficient
+    public class Argument
     {
         #region Class Properties
 
         [XmlAttribute("name")]
         public string Name { get; set; }
-        [XmlAttribute("value")]
-        public double Value { get; set; }
+        [XmlAttribute("text")]
+        public string Text { get; set; }
 
         #endregion // Class Properties
     }
