@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using ELW.Library.Math;
 using ELW.Library.Math.Expressions;
 using ELW.Library.Math.Tools;
-using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Logic
 {
@@ -15,15 +15,24 @@ namespace MilitaryFaculty.Logic
         private readonly string formulaCore;
         private readonly CompiledExpression compiledExpression;
         private readonly ICollection<string> arguments;
-        private readonly Professor professor;
+        private readonly DataModule dataModule;
 
         #endregion // Class Fields
 
         #region Class Constructors
 
-        public Characteristic(FormulaInfo formulaInfo)
+        public Characteristic(FormulaInfo formulaInfo, DataModule dataModule)
         {
-            professor = null;
+            if (formulaInfo == null)
+            {
+                throw new ArgumentNullException("formulaInfo");
+            }
+            if (dataModule == null)
+            {
+                throw new ArgumentNullException("dataModule");
+            }
+
+            this.dataModule = dataModule;
 
             formulaCore = formulaInfo.Expression;
 
@@ -39,20 +48,13 @@ namespace MilitaryFaculty.Logic
             compiledExpression = ToolsHelper.Optimizer.Optimize(compiledExpression);
         }
 
-        public Characteristic(FormulaInfo formulaInfo, Professor professor) : this(formulaInfo)
-        {
-            this.professor = professor;
-        }
-
         #endregion // Class Constructors
 
         #region Class Public Methods
 
         public double Evaluate()
         {
-            var dataProvider = professor == null ? new DataProvider(new Cathedra()) : new DataProvider(professor);
-
-            var localVariables = arguments.Select(arg => new VariableValue(dataProvider.GetValue(arg), arg)).ToList();
+            var localVariables = arguments.Select(arg => new VariableValue(dataModule.GetValue(arg), arg)).ToList();
 
             return ToolsHelper.Calculator.Calculate(compiledExpression, localVariables);
         }

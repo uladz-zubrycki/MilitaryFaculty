@@ -411,6 +411,10 @@
       <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
       <Name>MilitaryFaculty.Domain %28MilitaryFaculty.Domain\MilitaryFaculty.Domain%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Logic\MilitaryFaculty.Logic\MilitaryFaculty.Logic.csproj">
+      <Project>{813E121E-1097-4A5A-B672-4AC98E21D4EE}</Project>
+      <Name>MilitaryFaculty.Logic %28MilitaryFaculty.Logic\MilitaryFaculty.Logic%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Content\add.png" />

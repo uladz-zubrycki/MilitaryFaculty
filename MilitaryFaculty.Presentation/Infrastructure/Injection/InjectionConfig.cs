@@ -1,6 +1,8 @@
 ﻿using System.Configuration;
 using Autofac;
 using MilitaryFaculty.Data;
+using MilitaryFaculty.Logic;
+using MilitaryFaculty.Logic.DataProviders;
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
@@ -10,6 +12,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         {
             RegisterRepositories(builder);
             RegisterEntityContext(builder);
+            RegisterDataProvider(builder);
 
             return builder.Build();
         }
@@ -30,6 +33,19 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                    .AsSelf()
                    .WithParameter("connectionString", connectionString)
                    .SingleInstance();
+        }
+
+        private static void RegisterDataProvider(ContainerBuilder builder)
+        {
+            var dataModule = new DataModule();
+            dataModule.RegisterProviders(new IDataProvider[]
+                {
+                    new CustomDataProvider(),
+                    new ProfessorsDataProvider(),
+                    new PublicationsDataProvider(), 
+                });
+
+            builder.RegisterInstance(dataModule);
         }
     }
 }

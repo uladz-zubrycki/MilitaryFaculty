@@ -42,18 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModule.cs" />
     <Compile Include="Characteristic.cs" />
-    <Compile Include="DataProvider.cs" />
+    <Compile Include="DataProviders\IDataProvider.cs" />
+    <Compile Include="DataProviders\CustomDataProvider.cs" />
     <Compile Include="DataContainer.cs" />
+    <Compile Include="DataProviders\ProfessorsDataProvider.cs" />
+    <Compile Include="DataProviders\PublicationsDataProvider.cs" />
     <Compile Include="FormulaInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XlStyle.cs" />
-    <Compile Include="XmlFormulasDomain\Argument.cs" />
-    <Compile Include="XmlFormulasDomain\Coefficient.cs" />
-    <Compile Include="XmlFormulasDomain\Formula.cs" />
-    <Compile Include="XmlFormulasDomain\TableFormulas.cs" />
-    <Compile Include="XmlInfoDomain\TableInfo.cs" />
-    <Compile Include="XmlInfoDomain\TablePart.cs" />
+    <Compile Include="XmlDomain\Argument.cs" />
+    <Compile Include="XmlDomain\Coefficient.cs" />
+    <Compile Include="XmlDomain\Formula.cs" />
+    <Compile Include="XmlDomain\TableFormulas.cs" />
+    <Compile Include="XmlDomain\TableInfo.cs" />
+    <Compile Include="XmlDomain\TablePart.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MilitaryFaculty.Common\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">
@@ -101,6 +105,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
