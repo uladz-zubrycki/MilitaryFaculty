@@ -9,19 +9,53 @@ namespace MilitaryFaculty.Logic
         private string expression;
         private string name;
         private double maxValue;
+        private ICollection<string> arguments;
+        private IDictionary<string, double> coefficients;
         #endregion // Class Fields
 
         #region Class Properties
-        public ICollection<string> Arguments { get; set; }
-        public IDictionary<string, double> Coefficients { get; set; }
+
+        public ICollection<string> Arguments
+        {
+            get { return arguments; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value");
+                }
+
+                arguments = value;
+            }
+        }
+
+        public IDictionary<string, double> Coefficients
+        {
+            get { return coefficients; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value");
+                }
+
+                coefficients = value;
+            }
+        }
 
         public string Expression
         {
             get { return expression; }
             set
             {
-                if (value == null) throw new ArgumentNullException();
-                if (String.IsNullOrEmpty(value.Trim())) throw new ArgumentException();
+                if (value == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                if (String.IsNullOrEmpty(value.Trim()))
+                {
+                    throw new ArgumentException();
+                }
                 
                 expression = value.Replace(" ", "");
 
@@ -37,8 +71,14 @@ namespace MilitaryFaculty.Logic
             get { return name; }
             set
             {
-                if (value == null) throw new ArgumentNullException();
-                if (String.IsNullOrEmpty(value.Trim())) throw new ArgumentException();
+                if (value == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                if (String.IsNullOrEmpty(value.Trim()))
+                {
+                    throw new ArgumentException();
+                }
 
                 name = value;
             }
@@ -54,6 +94,7 @@ namespace MilitaryFaculty.Logic
                     throw new ArgumentException();
 
                 }
+
                 maxValue = value;
             }
         }

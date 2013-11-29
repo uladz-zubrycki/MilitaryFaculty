@@ -19,6 +19,19 @@ namespace MilitaryFaculty.Logic
 
         public DataContainer(TableInfo tableInfo, TableFormulas tableFormulas, DataModule dataModule)
         {
+            if (tableInfo == null)
+            {
+                throw new ArgumentNullException("tableInfo");
+            }
+            if (tableFormulas == null)
+            {
+                throw new ArgumentNullException("tableFormulas");
+            }
+            if (dataModule == null)
+            {
+                throw new ArgumentNullException("dataModule");
+            }
+
             this.tableInfo = tableInfo;
             this.tableFormulas = tableFormulas;
             this.dataModule = dataModule;
@@ -26,6 +39,11 @@ namespace MilitaryFaculty.Logic
 
         public void GenerateExcelSheet(Worksheet xlWorkSheet)
         {
+            if (xlWorkSheet == null)
+            {
+                throw new ArgumentNullException("xlWorkSheet");
+            }
+
             var firstLine = xlWorkSheet.UsedRange.Rows.Count + 1;
             var curLine = firstLine;
 

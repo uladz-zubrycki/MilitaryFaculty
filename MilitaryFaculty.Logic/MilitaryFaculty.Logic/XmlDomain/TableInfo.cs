@@ -8,10 +8,42 @@ namespace MilitaryFaculty.Logic.XmlDomain
     [Serializable]
     public class TableInfo
     {
+        #region Class Fields
+
+        private string name;
+        private List<TablePart> tableParts;
+
+        #endregion // Class Fields
+
         #region Class Properties
         [XmlAttribute("name")]
-        public string Name { get; set; }
-        public List<TablePart> TableParts { get; set; }
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("value");
+                }
+
+                name = value;
+            }
+        }
+
+        public List<TablePart> TableParts
+        {
+            get { return tableParts; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentException("value");
+                }
+
+                tableParts = value;
+            }
+        }
 
         #endregion // Class Properties
 

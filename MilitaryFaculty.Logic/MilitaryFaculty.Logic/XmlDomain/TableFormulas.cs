@@ -8,9 +8,27 @@ namespace MilitaryFaculty.Logic.XmlDomain
     [Serializable]
     public class TableFormulas
     {
+        #region Class Fields
+
+        private List<Formula> formulas;
+
+        #endregion // Class Fields
+
         #region Class Properties
 
-        public List<Formula> Formulas { get; set; }
+        public List<Formula> Formulas
+        {
+            get { return formulas; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentException("value");
+                }
+
+                formulas = value;
+            }
+        }
 
         #endregion // Class Properties
 

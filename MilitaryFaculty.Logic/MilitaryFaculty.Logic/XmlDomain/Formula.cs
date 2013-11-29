@@ -8,18 +8,104 @@ namespace MilitaryFaculty.Logic.XmlDomain
     [Serializable]
     public class Formula
     {
+        #region Class Fields
+        private string name;
+        private string id;
+        private string expression;
+        private double maxValue;
+        private List<Argument> arguments;
+        private List<Coefficient> coefficients;
+        #endregion // Class Fields
+
         #region Class Properties
 
         [XmlAttribute("name")]
-        public string Name { get; set; }
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("value");
+                }
+
+                name = value;
+            }
+        }
+
         [XmlAttribute("id")]
-        public string Id { get; set; }
+        public string Id
+        {
+            get { return id; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("value");
+                }
+
+                id = value;
+            }
+        }
+
         [XmlAttribute("expression")]
-        public string Expression { get; set; }
+        public string Expression
+        {
+            get { return expression; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("value");
+                }
+
+                expression = value;
+            }
+        }
+
         [XmlAttribute("maxValue")]
-        public double MaxValue { get; set; }
-        public List<Argument> Arguments { get; set; }
-        public List<Coefficient> Coefficients { get; set; }
+        public double MaxValue
+        {
+            get { return maxValue; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("value");
+                }
+
+                maxValue = value;
+            }
+        }
+
+        public List<Argument> Arguments
+        {
+            get { return arguments; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value");
+                }
+
+                arguments = value;
+            }
+        }
+
+        public List<Coefficient> Coefficients
+        {
+            get { return coefficients; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value");
+                }
+
+                coefficients = value;
+            }
+        }
 
         #endregion // Class Properties
 

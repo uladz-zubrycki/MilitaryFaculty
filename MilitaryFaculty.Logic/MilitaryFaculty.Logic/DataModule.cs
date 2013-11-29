@@ -18,6 +18,11 @@ namespace MilitaryFaculty.Logic
 
         public double GetValue(string key)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("key");
+            }
+
             return evaluators[key]();
         }
 
@@ -62,6 +67,11 @@ namespace MilitaryFaculty.Logic
 
         private static string GetArgumentName(MethodInfo info)
         {
+            if (info == null)
+            {
+                throw new ArgumentNullException("info");
+            }
+
             var attr = info.GetCustomAttribute<FormulaArgumentAttribute>();
 
             return attr.Name;
@@ -69,6 +79,15 @@ namespace MilitaryFaculty.Logic
 
         private static Func<double> GetMethod(MethodInfo info, IDataProvider provider)
         {
+            if (info == null)
+            {
+                throw new ArgumentNullException("info");
+            }
+            if (provider == null)
+            {
+                throw new ArgumentNullException("provider");
+            }
+
             return () => (double)info.Invoke(provider, null);
         }
 
