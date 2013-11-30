@@ -33,7 +33,7 @@ namespace MilitaryFaculty.Data.Tests
             SeedCathedras(context);
             SeedProfessors(context);
             SeedConferences(context);
-            SeedBooks(context);
+            SeedPublications(context);
         }
 
         private static void SeedCathedras(EntityContext context)
@@ -165,7 +165,7 @@ namespace MilitaryFaculty.Data.Tests
             context.SaveChanges();
         }
 
-        private static void SeedBooks(EntityContext context)
+        private static void SeedPublications(EntityContext context)
         {
             var professor1 = context.Professors
                                     .AsQueryable()
