@@ -223,7 +223,7 @@
           expression = "CosCount / ProfsCount * coeff1 * coeff2"
 		  maxValue = "0">
       <Arguments>
-        <Argument name="CosCount" text="Количество докторов наук"/>
+        <Argument name="CosCount" text="Количество кандидатов наук"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
       </Arguments>
       <Coefficients>

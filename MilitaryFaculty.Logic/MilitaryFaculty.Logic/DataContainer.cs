@@ -44,6 +44,8 @@ namespace MilitaryFaculty.Logic
                 throw new ArgumentNullException("xlWorkSheet");
             }
 
+            /*TODO: Refactoring*/
+
             var firstLine = xlWorkSheet.UsedRange.Rows.Count + 1;
             var curLine = firstLine;
 
@@ -64,13 +66,12 @@ namespace MilitaryFaculty.Logic
                 {
                     var formulaInfo = tableFormulas.Formulas.First(f => f.Id == id).ToFormulaInfo();
                     var characteristic = new Characteristic(formulaInfo, dataModule); 
-                    var val = characteristic.Evaluate();
+                    var val = NormilizeValue(characteristic.Evaluate());
 
                     xlWorkSheet.Cells[curLine, 3] = formulaInfo.Name;
                     xlWorkSheet.Cells[curLine, 4] = val.ToString("F0");
-                    xlWorkSheet.Cells[curLine, 5] = Math.Abs(formulaInfo.MaxValue) < 0.001
-                                                        ? "-"
-                                                        : formulaInfo.MaxValue.ToString("F0");
+                    xlWorkSheet.Cells[curLine, 5] = ValueOfDash(formulaInfo.MaxValue);
+
                     totalRating += val;
                     curLine++;
                 }
@@ -84,5 +85,21 @@ namespace MilitaryFaculty.Logic
         }
 
         #endregion // Class Public Methods
+
+        #region Class Private Methods
+
+        private static double NormilizeValue(double value)
+        {
+            return double.IsInfinity(value) ? 0 : value;
+        }
+
+        private static string ValueOfDash(double value)
+        {
+            return Math.Abs(value) < 0.001
+                       ? "-"
+                       : value.ToString("F0");
+        }
+
+        #endregion // Class Private Methods
     }
 }
