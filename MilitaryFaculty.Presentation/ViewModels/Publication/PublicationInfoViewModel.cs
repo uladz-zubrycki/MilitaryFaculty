@@ -9,18 +9,20 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         #region Class Properties
 
+        public override string Title
+        {
+            get
+            {
+                return "Основная информация";
+            }
+        }
+
         public string Name
         {
             get { return Model.Name; }
             set
             {
-                if (value == Name)
-                {
-                    return;
-                }
-
-                Model.Name = value;
-                OnPropertyChanged();
+                SetModelProperty(m => m.Name, value);
             }
         }
 
@@ -35,13 +37,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
             set
             {
-                if (value == PagesCount)
-                {
-                    return;
-                }
-
-                Model.PagesCount = value;
-                OnPropertyChanged();
+               SetModelProperty(m => m.PagesCount, value);
             }
         }
 
@@ -49,17 +45,10 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Constructors
 
-        public PublicationInfoViewModel(Publication model)
-            : this(model, EditableViewMode.Display)
-        {
-            // Empty
-        }
-
-        public PublicationInfoViewModel(Publication model, EditableViewMode mode)
+        public PublicationInfoViewModel(Publication model, EditableViewMode mode = EditableViewMode.Display)
             : base(model)
         {
-            Title = "Основная информация";
-
+          
             var editCommands = new EditableViewBehaviour<Publication>(Do.Publication.Update, Model);
             editCommands.Inject(this, mode);
         }

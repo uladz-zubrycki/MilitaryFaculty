@@ -1,4 +1,5 @@
 ﻿using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
 
@@ -6,43 +7,22 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class PublicationViewModel : ComplexViewModel<Publication>
     {
-        #region Class Properties
-
-        public PublicationInfoViewModel InfoViewModel { get; private set; }
-        public PublicationExtraInfoViewModel ExtraInfoViewModel { get; private set; }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
-
-        public PublicationViewModel(Publication model)
-            : this(model, EditableViewMode.Display)
+        public override string Title
         {
-            // Empty
+            get
+            {
+                return "Информация о публикации";
+            }
         }
 
-        public PublicationViewModel(Publication model, EditableViewMode mode)
+        public PublicationViewModel(Publication model, EditableViewMode mode = EditableViewMode.Display)
             : base(model)
         {
-            const string title = "Информация о публикации";
-
-            Title = title;
-            InitViewModels(mode);
+            ViewModels.AddRange(new ViewModel<Publication>[]
+                                {
+                                    new PublicationInfoViewModel(Model, mode),
+                                    new PublicationExtraInfoViewModel(Model, mode)
+                                });
         }
-
-        #endregion // Class Constructors
-
-        #region Class Protected Methods
-
-        protected void InitViewModels(EditableViewMode mode)
-        {
-            InfoViewModel = new PublicationInfoViewModel(Model, mode);
-            ExtraInfoViewModel = new PublicationExtraInfoViewModel(Model, mode);
-
-            ViewModels.Add(InfoViewModel);
-            ViewModels.Add(ExtraInfoViewModel);
-        }
-
-        #endregion // Class Protected Methods
     }
 }

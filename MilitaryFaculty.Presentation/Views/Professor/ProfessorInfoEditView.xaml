@@ -6,6 +6,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Background="White">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../../Resources/CommonResources.xaml"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -62,10 +65,7 @@
         <ComboBox
                 Grid.Column="1"
                 Grid.Row="3"
-                Style="{StaticResource ValueComboBox}"
-                ItemsSource="{Binding MilitaryRankList}"
-                SelectedValue="{Binding MilitaryRank, Mode=TwoWay}"
-                SelectedValuePath="Item1"
-                DisplayMemberPath="Item2"/>
+                Style="{StaticResource EnumComboBox}"
+                SelectedValue="{Binding MilitaryRank, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

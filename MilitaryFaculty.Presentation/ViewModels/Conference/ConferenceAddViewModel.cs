@@ -1,14 +1,26 @@
-﻿using MilitaryFaculty.Domain;
+﻿using System.Windows.Input;
+using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
-using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class ConferenceAddViewModel : ComplexViewModel<Conference>
+    internal class ConferenceAddViewModel : EntityAddViewModel<Conference>
     {
         #region Class Properties
 
-        public ConferenceViewModel ConferenceViewModel { get; private set; }
+        public override string Title
+        {
+            get
+            {
+                return "Добавить конференцию";
+            }
+        }
+
+        public override ICommand AddCommand
+        {
+            get { return Do.Conference.Add; }
+        }
 
         #endregion // Class Properties
 
@@ -17,9 +29,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ConferenceAddViewModel(Conference model)
             : base(model)
         {
-            Title = "Добавить конференцию";
-
-            ConferenceViewModel = new ConferenceViewModel(Model, EditableViewMode.Edit);
+            var conferenceViewModel = new ConferenceViewModel(Model, EditableViewMode.Edit);
+            ViewModels.AddRange(conferenceViewModel.ViewModels);
         }
 
         #endregion // Class Constructors

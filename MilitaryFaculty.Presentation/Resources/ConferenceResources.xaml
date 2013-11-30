@@ -17,7 +17,7 @@
     </DataTemplate>
     
     <DataTemplate DataType="{x:Type vm:ConferenceAddViewModel}">
-        <v:ConferenceAddView/>
+        <v:EntityAddView/>
     </DataTemplate>
     
     <DataTemplate DataType="{x:Type vm:ConferenceInfoViewModel}">

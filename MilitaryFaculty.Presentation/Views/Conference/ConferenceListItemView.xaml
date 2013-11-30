@@ -27,7 +27,7 @@
         <Grid.ToolTip>
             <ToolTip Placement="Bottom" 
                      HorizontalContentAlignment="Center" 
-                     ScrollViewer.VerticalScrollBarVisibility="Disabled" >
+                     ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 <ContentControl
                     Content="{Binding ReportViewModel}"/>
             </ToolTip>

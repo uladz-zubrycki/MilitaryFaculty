@@ -36,16 +36,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return workWindow; }
             internal set
             {
-                if (value == WorkWindow)
-                {
-                    return;
-                }
-
                 var oldValue = workWindow;
-
-                workWindow = value;
-                OnPropertyChanged();
-                OnWorkWindowChanged(oldValue, value);
+                
+                if (SetValue(() => this.workWindow, value))
+                {
+                    OnWorkWindowChanged(oldValue, value);
+                }
             }
         }
 

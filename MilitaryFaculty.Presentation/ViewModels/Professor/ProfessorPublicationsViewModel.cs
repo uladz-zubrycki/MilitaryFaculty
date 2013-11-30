@@ -19,6 +19,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Properties
 
+        public override string Title
+        {
+            get { return "Публикация результатов научных исследований"; }
+        }
+
         public ObservableCollection<PublicationListItemViewModel> Publications
         {
             get
@@ -75,10 +80,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             {
                 throw new ArgumentNullException("publicationRepository");
             }
-
-            const string title = "Публикация результатов научных исследований";
-
-            this.Title = title;
 
             publicationRepository.EntityCreated += OnPublicationCreated;
             publicationRepository.EntityDeleted += OnPublicationDeleted;

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using MilitaryFaculty.Domain;
-using MilitaryFaculty.Extensions;
+﻿using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
 
@@ -13,18 +8,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         #region Class Properties
 
-        public string PublicationTypeString
-        {
-            get { return Model.PublicationType.GetName(); }
-        }
-
-        public IEnumerable<Tuple<PublicationType, string>> PublicationTypeList
+        public override string Title
         {
             get
             {
-                return Enum.GetValues(typeof(PublicationType))
-                           .Cast<PublicationType>()
-                           .Select(val => new Tuple<PublicationType, string>(val, val.GetName()));
+                return "Дополнительная информация";
             }
         }
 
@@ -33,19 +21,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.PublicationType; }
             set
             {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-                
-                if (value == PublicationType)
-                {
-                    return;
-                }
-
-                Model.PublicationType = value;
-                OnPropertyChanged();
-                OnPropertyChanged("PublicationTypeString");
+                SetModelProperty(m => m.PublicationType, value);
             }
         }
 
@@ -53,17 +29,9 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Constructors
 
-        public PublicationExtraInfoViewModel(Publication model)
-            : this(model, EditableViewMode.Display)
-        {
-            // Empty
-        }
-
-        public PublicationExtraInfoViewModel(Publication model, EditableViewMode mode)
+        public PublicationExtraInfoViewModel(Publication model, EditableViewMode mode = EditableViewMode.Display)
             : base(model)
         {
-            Title = "Дополнительная информация";
-
             var editCommands = new EditableViewBehaviour<Publication>(Do.Publication.Update, Model);
             editCommands.Inject(this, mode);
         }

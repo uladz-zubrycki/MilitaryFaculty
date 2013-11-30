@@ -1,40 +1,31 @@
-﻿using MilitaryFaculty.Domain;
+﻿using System.Windows.Input;
+using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class ProfessorAddViewModel : ComplexViewModel<Professor>
+    internal class ProfessorAddViewModel : EntityAddViewModel<Professor>
     {
-        #region Class Properties
+        public override string Title
+        {
+            get { return "Добавить преподавателя:"; }
+        }
 
-        public ProfessorInfoViewModel InfoViewModel { get; private set; }
-        public ProfessorExtraInfoViewModel ExtraInfoViewModel { get; private set; }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
+        public override ICommand AddCommand
+        {
+            get { return Do.Professor.Add; }
+        }
 
         public ProfessorAddViewModel(Professor model)
             : base(model)
         {
-            Title = "Добавить преподавателя:";
-            InitViewModels();
+            ViewModels.AddRange(new ViewModel<Professor>[]
+                                {
+                                    new ProfessorInfoViewModel(Model, EditableViewMode.Edit),
+                                    new ProfessorExtraInfoViewModel(Model, EditableViewMode.Edit)
+                                });
         }
-
-        #endregion // Class Constructors
-
-        #region Class Protected Methods
-
-        protected void InitViewModels()
-        {
-            InfoViewModel = new ProfessorInfoViewModel(Model, EditableViewMode.Edit);
-            ExtraInfoViewModel = new ProfessorExtraInfoViewModel(Model, EditableViewMode.Edit);
-
-            ViewModels.Add(InfoViewModel);
-            ViewModels.Add(ExtraInfoViewModel);
-        }
-
-        #endregion // Class Protected Methods
     }
 }

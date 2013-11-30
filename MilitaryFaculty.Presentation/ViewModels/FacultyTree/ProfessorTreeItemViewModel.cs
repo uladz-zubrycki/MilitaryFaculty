@@ -16,14 +16,24 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #endregion // Type Static Members
 
+        #region Class Properties
+
+        public override string Title
+        {
+            get
+            {
+                return Model.FullName.ToString();
+            }
+        }
+
+        #endregion // Class Properties
+
         #region Class Constructors
 
         public ProfessorTreeItemViewModel(Professor professor, TreeViewModel owner,
                                           ITreeItemViewModel parent)
             : base(professor, owner, parent, false)
         {
-            Title = professor.FullName.ToString();
-
             Commands.Add(CreateRemoveProfessorCommand());
         }
 

@@ -1,14 +1,10 @@
-﻿<UserControl x:Class="MilitaryFaculty.Presentation.Views.PublicationAddView"
+﻿<UserControl x:Class="MilitaryFaculty.Presentation.Views.EntityAddView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
              xmlns:m="clr-namespace:MilitaryFaculty.Presentation.Custom.MarkupExtensions"
-             mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
+             xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom">
     <UserControl.Resources>
-        <ResourceDictionary Source="/Resources/PublicationResources.xaml" />
+        <ResourceDictionary Source="/Resources/CommonResources.xaml" />
     </UserControl.Resources>
 
     <Grid>
@@ -27,7 +23,7 @@
         <ItemsControl
             Grid.Row="1"
             Style="{StaticResource ItemStyle}"
-            ItemsSource="{Binding PublicationViewModel.ViewModels}" />
+            ItemsSource="{Binding ViewModels}" />
 
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
@@ -39,8 +35,8 @@
                 Grid.Column="0"
                 Content="Добавить"
                 Style="{StaticResource SimpleButton}"
-                Command="{m:Command c:Do.Publication.Add}"
-                CommandParameter="{Binding Model}" />
+                Command="{Binding AddCommand}"
+                CommandParameter="{Binding Model}"/>
 
             <Button
                 Grid.Column="1"
@@ -49,6 +45,5 @@
                 Command="{m:Command c:Browse.Back}"
                 CommandParameter="{Binding Model}" />
         </Grid>
-
     </Grid>
 </UserControl>

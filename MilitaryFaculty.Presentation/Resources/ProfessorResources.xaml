@@ -12,7 +12,7 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewModels:ProfessorAddViewModel}">
-        <views:ProfessorAddView/>
+        <views:EntityAddView/>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewModels:ProfessorInfoViewModel}">

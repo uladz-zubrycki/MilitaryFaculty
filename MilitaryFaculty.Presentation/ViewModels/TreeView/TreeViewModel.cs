@@ -22,16 +22,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return selected; }
             set
             {
-                if (value == Selected)
-                {
-                    return;
-                }
-
                 var oldValue = selected;
-                selected = value;
 
-                OnPropertyChanged();
-                OnSelectedItemChanged(selected, oldValue);
+                if (SetValue(() => this.selected, value))
+                {
+                    OnSelectedItemChanged(selected, oldValue);
+                }
             }
         }
 

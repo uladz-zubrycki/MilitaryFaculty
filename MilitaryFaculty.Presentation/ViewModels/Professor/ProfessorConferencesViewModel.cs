@@ -19,6 +19,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Properties
 
+        public override string Title
+        {
+            get { return "Участие в конференциях"; }
+        }
+
         public ObservableCollection<ConferenceListItemViewModel> Conferences
         {
             get
@@ -52,10 +57,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 throw new ArgumentNullException("conferenceRepository");
             }
 
-            const string title = "Участие в конференциях";
-
-            this.Title = title;
-
             conferenceRepository.EntityCreated += OnConferenceCreated;
             conferenceRepository.EntityDeleted += OnConferenceDeleted;
 
@@ -86,7 +87,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
                                                  OnPropertyChanged("ConferencesCount");
                                              };
         }
-
 
         private void OnConferenceCreated(object sender, ModifiedEntityEventArgs<Conference> e)
         {

@@ -11,7 +11,7 @@
           VerticalAlignment="Top">
         <TextBlock
             Style="{StaticResource H1TextBlock}"
-            Text="{Binding Path=Text}"
+            Text="{Binding Path=Title}"
             TextWrapping="Wrap"
             TextAlignment="Justify"/>    
     </Grid>

@@ -7,9 +7,8 @@
              d:DesignHeight="300" 
              d:DesignWidth="300"
              Background="White">
-    
     <UserControl.Resources>
-        <ResourceDictionary Source="../../Resources/PublicationResources.xaml"/>
+        <ResourceDictionary Source="../../Resources/CommonResources.xaml"/>
     </UserControl.Resources>
     
     <Grid>
@@ -74,11 +73,9 @@
                 Text="{Binding Path=ThesisesCount}"/>
 
         <ListBox
-             Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
-             BorderThickness="0"
-             HorizontalAlignment="Stretch"
+             Grid.Row="4" 
+             Grid.Column="0" Grid.ColumnSpan="2"
              ItemsSource="{Binding Publications}"
-             ItemContainerStyle="{StaticResource ListBoxItemStyle}"
-             ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+             Style="{StaticResource ItemListStyle}" />
     </Grid>
 </UserControl>

@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Background="White">
-    
+    <UserControl.Resources>
+        <ResourceDictionary Source="../../Resources/CommonResources.xaml"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -29,12 +30,8 @@
         <ComboBox
                 Grid.Column="1"
                 Grid.Row="0"
-                Style="{StaticResource ValueComboBox}"
-                ItemsSource="{Binding JobPositionList}"
-                SelectedValue="{Binding JobPosition,
-                                        Mode=TwoWay}"
-                SelectedValuePath="Item1"
-                DisplayMemberPath="Item2"/>
+                Style="{StaticResource EnumComboBox}"
+                SelectedValue="{Binding JobPosition, Mode=TwoWay}"/>
 
         <!--Academic rank-->
         <TextBlock 
@@ -45,15 +42,8 @@
         <ComboBox
                 Grid.Column="1"
                 Grid.Row="1"
-                Style="{StaticResource ValueComboBox}"
-                ItemsSource="{Binding AcademicRank, Converter={c:EnumToValuesConverter}}"
-                SelectedValue="{Binding AcademicRank, Mode=TwoWay}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Converter={c:EnumToNameConverter}}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+                Style="{StaticResource EnumComboBox}"
+                SelectedValue="{Binding AcademicRank, Mode=TwoWay}"/>
 
         <!--Academic degree-->
         <TextBlock 
@@ -64,10 +54,7 @@
         <ComboBox 
                 Grid.Column="1"
                 Grid.Row="2"
-                Style="{StaticResource ValueComboBox}"
-                ItemsSource="{Binding AcademicDegreeList}"
-                SelectedValue="{Binding AcademicDegree, Mode=TwoWay}"
-                SelectedValuePath="Item1"
-                DisplayMemberPath="Item2"/>
+                Style="{StaticResource EnumComboBox}"
+                SelectedValue="{Binding AcademicDegree, Mode=TwoWay}"/>
     </Grid>
 </UserControl>

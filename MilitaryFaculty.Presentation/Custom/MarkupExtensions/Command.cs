@@ -7,10 +7,24 @@ using System.Xaml;
 
 namespace MilitaryFaculty.Presentation.Custom.MarkupExtensions
 {
+    /// <summary>
+    /// Provides <see cref="ICommand"/> object by its name.
+    /// </summary>
+    /// <remarks>
+    /// Command name must be written in format prefix:CommandClass.(CommandClass.)*Command
+    /// Where: 
+    ///     prefix - XAML namespace prefix.
+    ///     CommandClass - Static class containing public static property of type <see cref="ICommand"/>.
+    ///     (Every next command class is considered to be nested class.)
+    ///     Command - Command property name.
+    /// </remarks>
     public class Command : MarkupExtension
     {
         private readonly string name;
 
+        /// <summary>
+        /// Retrieves namespace prefix from markup command name.
+        /// </summary>
         private string NamespacePrefix
         {
             get
@@ -19,6 +33,9 @@ namespace MilitaryFaculty.Presentation.Custom.MarkupExtensions
             }
         }
 
+        /// <summary>
+        /// Retrieves type name from markup command name.
+        /// </summary>
         private string TypeName
         {
             get
@@ -30,6 +47,9 @@ namespace MilitaryFaculty.Presentation.Custom.MarkupExtensions
             }
         }
 
+        /// <summary>
+        /// Retrieves command property name from markup command name.
+        /// </summary>
         private string CommandName
         {
             get
@@ -38,6 +58,10 @@ namespace MilitaryFaculty.Presentation.Custom.MarkupExtensions
             }
         }
 
+        /// <summary>
+        /// Creates new Command class.
+        /// </summary>
+        /// <param name="name">Name of command to provide.</param>
         public Command(string name)
         {
             if (String.IsNullOrWhiteSpace(name))
@@ -79,6 +103,11 @@ namespace MilitaryFaculty.Presentation.Custom.MarkupExtensions
             return command;
         }
 
+        /// <summary>
+        /// Retrieves assembly name from xaml namespace.
+        /// </summary>
+        /// <param name="xamlNamespace">Information about assembly and namespace got from xaml namespace prefix.</param>
+        /// <returns>Assembly name.</returns>
         private string GetAssemblyName(string xamlNamespace)
         {
             const string pattern = @"(?<=;assembly=)(\w+(?:\.\w+)*)$";
@@ -87,6 +116,11 @@ namespace MilitaryFaculty.Presentation.Custom.MarkupExtensions
             return match.Value;
         }
 
+        /// <summary>
+        /// Retrieves namespace name from xaml namespace.
+        /// </summary>
+        /// <param name="xamlNamespace">Information about assembly and namespace got from xaml namespace prefix.</param>
+        /// <returns>Namespace name.</returns>
         private string GetNamespace(string xamlNamespace)
         {
             const string pattern = @"(?<=clr-namespace:)(\w+(?:\.\w+)*)(?=;assembly)";
@@ -95,6 +129,12 @@ namespace MilitaryFaculty.Presentation.Custom.MarkupExtensions
             return match.Value;
         }
 
+        /// <summary>
+        /// Get service of specified type.
+        /// </summary>
+        /// <typeparam name="T">Type of requested service.</typeparam>
+        /// <param name="serviceProvider">Provides access to services.</param>
+        /// <returns>Service of requested type, if exists; otherwise null.</returns>
         private T GetService<T>(IServiceProvider serviceProvider)
         {
             if (serviceProvider == null)

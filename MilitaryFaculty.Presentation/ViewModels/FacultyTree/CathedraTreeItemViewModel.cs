@@ -21,6 +21,18 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Properties
 
+        #region Overrides of ViewModel
+
+        public override string Title
+        {
+            get
+            {
+                return Model.Name;
+            }
+        }
+
+        #endregion
+
         protected FacultyTreeViewModel FacultyTree
         {
             get { return Owner as FacultyTreeViewModel; }
@@ -43,9 +55,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             professorRepository.EntityCreated += OnProfessorCreated;
             professorRepository.EntityDeleted += OnProfessorDeleted;
 
-            Title = cathedra.Name;
-
-            Commands.Add(CreateAddProffessorCommand());
+            InitCommands();
         }
 
         #endregion // Constructors
@@ -62,6 +72,14 @@ namespace MilitaryFaculty.Presentation.ViewModels
         #endregion //Class Protected Methods
 
         #region Class Private Methods
+
+        private void InitCommands()
+        {
+            Commands.AddRange(new[]
+                              {
+                                  CreateAddProffessorCommand()
+                              });
+        }
 
         private ImagedCommandViewModel CreateAddProffessorCommand()
         {

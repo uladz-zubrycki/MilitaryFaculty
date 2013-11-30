@@ -8,7 +8,7 @@
              d:DesignWidth="300"
             Background="White">
     <UserControl.Resources>
-        <ResourceDictionary Source="../../Resources/PublicationResources.xaml"/>
+        <ResourceDictionary Source="../../Resources/CommonResources.xaml"/>
     </UserControl.Resources>
     
     <Grid>
@@ -17,18 +17,13 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <!--Book Type-->
         <TextBlock 
                 Grid.Column="0"
                 Style="{StaticResource LabelTextBlock}"
                 Text="Тип:"/>
         <ComboBox 
                 Grid.Column="1"
-                Style="{StaticResource ValueComboBox}"
-                ItemsSource="{Binding PublicationTypeList}"
-                SelectedValue="{Binding PublicationType,
-                                        Mode=TwoWay}"
-                SelectedValuePath="Item1"
-                DisplayMemberPath="Item2"/>
+                Style="{StaticResource EnumComboBox}"
+                SelectedValue="{Binding PublicationType, Mode=TwoWay}" />
     </Grid>
 </UserControl>

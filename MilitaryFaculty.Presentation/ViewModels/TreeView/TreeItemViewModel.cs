@@ -46,14 +46,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return isSelected; }
             set
             {
-                if (value == isSelected)
-                {
-                    return;
-                }
-
-                isSelected = value;
-
-                OnPropertyChanged();
+                SetValue(() => this.isSelected, value);
                 Owner.Selected = this;
 
                 if (isSelected && Parent != null)
@@ -68,13 +61,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return isExpanded; }
             set
             {
-                if (value == isExpanded)
-                {
-                    return;
-                }
-
-                isExpanded = value;
-                OnPropertyChanged();
+                SetValue(() => this.isExpanded, value);
 
                 if (!ChildrenLoaded)
                 {
@@ -124,25 +111,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #endregion // Class Constructors
 
-        #region Class Private methods
-
-        private void InitChildren()
-        {
-            Children.Clear();
-            Children.AddRange(LoadChildren());
-        }
-
-        #endregion //Class Private methods
-
-        #region Class Protected methods
-
-        protected virtual IEnumerable<ITreeItemViewModel> LoadChildren()
-        {
-            throw new NotSupportedException();
-        }
-
-        #endregion // Class Protected methods
-
         #region Class Public methods
 
         public IEnumerable<ITreeItemViewModel> Find(Func<ITreeItemViewModel, bool> predicate)
@@ -161,7 +129,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             {
                 InitChildren();
             }
-            
+
             foreach (var child in Children)
             {
                 foreach (var match in child.Find(predicate))
@@ -172,5 +140,24 @@ namespace MilitaryFaculty.Presentation.ViewModels
         }
 
         #endregion // Class Public methods
+
+        #region Class Protected methods
+
+        protected virtual IEnumerable<ITreeItemViewModel> LoadChildren()
+        {
+            throw new NotSupportedException();
+        }
+
+        #endregion // Class Protected methods
+
+        #region Class Private methods
+
+        private void InitChildren()
+        {
+            Children.Clear();
+            Children.AddRange(LoadChildren());
+        }
+
+        #endregion //Class Private methods
     }
 }

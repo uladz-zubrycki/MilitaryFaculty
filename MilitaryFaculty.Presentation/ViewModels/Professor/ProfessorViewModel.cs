@@ -1,5 +1,6 @@
 ﻿using System;
 using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Infrastructure;
 using MilitaryFaculty.Domain;
 
@@ -17,9 +18,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
         #region Class Properties
 
         public ProfessorInfoViewModel InfoViewModel { get; private set; }
-        public ProfessorExtraInfoViewModel ExtraInfoViewModel { get; private set; }
-        public ProfessorConferencesViewModel ConferencesViewModel { get; private set; }
-        public ProfessorPublicationsViewModel BooksViewModel { get; private set; }
 
         #endregion // Class Properties
 
@@ -53,13 +51,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
         private void InitViewModels()
         {
             InfoViewModel = new ProfessorInfoViewModel(Model);
-            ExtraInfoViewModel = new ProfessorExtraInfoViewModel(Model);
-            ConferencesViewModel = new ProfessorConferencesViewModel(Model, conferenceRepository);
-            BooksViewModel = new ProfessorPublicationsViewModel(Model, publicationRepository);
 
-            ViewModels.Add(ExtraInfoViewModel);
-            ViewModels.Add(ConferencesViewModel);
-            ViewModels.Add(BooksViewModel);
+            ViewModels.AddRange(new ViewModel<Professor>[]
+                                {
+                                    new ProfessorExtraInfoViewModel(Model),
+                                    new ProfessorConferencesViewModel(Model, conferenceRepository),
+                                    new ProfessorPublicationsViewModel(Model, publicationRepository)
+                                });
         }
         
         #endregion // Class Private Methods

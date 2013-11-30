@@ -96,6 +96,7 @@
     <Compile Include="Infrastructure\Commands\CommandContainer.cs" />
     <Compile Include="Infrastructure\Commands\CommandContainerBinding.cs" />
     <Compile Include="Infrastructure\Commands\ICommandContainer.cs" />
+    <Compile Include="ViewModels\Common\EntityAddViewModel.cs" />
     <Compile Include="ViewModels\Exhibition\ExhibitionAddViewModel.cs" />
     <Compile Include="ViewModels\Exhibition\ExhibitionInfoViewModel.cs" />
     <Compile Include="ViewModels\Exhibition\ExhibitionListItemViewModel.cs" />
@@ -124,6 +125,24 @@
     <Compile Include="ViewModels\TreeView\Events\SelectedChangedEventArgs.cs" />
     <Compile Include="ViewModels\TreeView\TreeViewModel.cs" />
     <Compile Include="ViewModels\Main\WorkWindowChangedEventArgs.cs" />
+    <Compile Include="Views\Common\EntityView.xaml.cs">
+      <DependentUpon>EntityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Exhibition\ExhibitionInfoEditView.xaml.cs">
+      <DependentUpon>ExhibitionInfoEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Exhibition\ExhibitionInfoView.xaml.cs">
+      <DependentUpon>ExhibitionInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Exhibition\ExhibitionListItemView.xaml.cs">
+      <DependentUpon>ExhibitionListItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Exhibition\ExhibitionView.xaml.cs">
+      <DependentUpon>ExhibitionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\EntityAddView.xaml.cs">
+      <DependentUpon>EntityAddView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Publication\PublicationExtraInfoEditView.xaml.cs">
       <DependentUpon>PublicationExtraInfoEditView.xaml</DependentUpon>
     </Compile>
@@ -138,9 +157,6 @@
     </Compile>
     <Compile Include="Views\Cathedra\CathedraView.xaml.cs">
       <DependentUpon>CathedraView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Conference\ConferenceAddView.xaml.cs">
-      <DependentUpon>ConferenceAddView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Conference\ConferenceListItemView.xaml.cs">
       <DependentUpon>ConferenceListItemView.xaml</DependentUpon>
@@ -159,9 +175,6 @@
     </Compile>
     <Compile Include="Views\Conference\ConferenceView.xaml.cs">
       <DependentUpon>ConferenceView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Publication\PublicationAddView.xaml.cs">
-      <DependentUpon>PublicationAddView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Publication\PublicationInfoEditView.xaml.cs">
       <DependentUpon>PublicationInfoEditView.xaml</DependentUpon>
@@ -207,6 +220,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\ExhibitionResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\PublicationResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -227,6 +244,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Common\EntityView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Exhibition\ExhibitionInfoEditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Exhibition\ExhibitionInfoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Exhibition\ExhibitionListItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Exhibition\ExhibitionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Common\EntityAddView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Publication\PublicationExtraInfoEditView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -242,10 +283,6 @@
     <Page Include="Views\Cathedra\CathedraInfoView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Conference\ConferenceAddView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Conference\ConferenceListItemView.xaml">
       <SubType>Designer</SubType>
@@ -271,10 +308,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Publication\PublicationAddView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\Publication\PublicationInfoEditView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -294,10 +327,6 @@
     <Page Include="Views\Professor\ProfessorPublicationsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Professor\ProfessorAddView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Cathedra\CathedraView.xaml">
       <SubType>Designer</SubType>
@@ -323,9 +352,6 @@
     <Compile Include="ViewModels\FacultyTree\FacultyTreeViewModel.cs" />
     <Compile Include="ViewModels\FacultyTree\ProfessorTreeItemViewModel.cs" />
     <Compile Include="ViewModels\TreeView\TreeItemViewModel.cs" />
-    <Compile Include="Views\Professor\ProfessorAddView.xaml.cs">
-      <DependentUpon>ProfessorAddView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\FacultyTree\FacultyTreeView.xaml.cs">
       <DependentUpon>FacultyTreeView.xaml</DependentUpon>
     </Compile>

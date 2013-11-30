@@ -4,8 +4,9 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class StartupViewModel : ViewModel
     {
-        private const string text = "Стартовая страница";
-
-        public string Text { get { return text; } }
+        public override string Title
+        {
+            get { return "Стартовая страница"; }
+        }
     }
 }

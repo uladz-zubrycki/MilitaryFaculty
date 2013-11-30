@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using MilitaryFaculty.Domain;
-using MilitaryFaculty.Extensions;
+﻿using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
 
@@ -13,19 +8,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         #region Class Properties
 
-        public IEnumerable<Tuple<AccordanceLevel, string>> AccordanceLevelList
+        public override string Title
         {
             get
             {
-                return Enum.GetValues(typeof (AccordanceLevel))
-                           .Cast<AccordanceLevel>()
-                           .Select(val => new Tuple<AccordanceLevel, string>(val, val.GetName()));
+                return "Отчёт о конференции";
             }
-        }
-
-        public string ThemeActualityString
-        {
-            get { return ThemeActuality.GetName(); }
         }
 
         /// <summary>
@@ -40,11 +28,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             }
         }
 
-        public string OrganizationCorrectnessString
-        {
-            get { return OrganizationCorrectness.GetName(); }
-        }
-
         /// <summary>
         /// Evaluates conference organization correctness.
         /// </summary>
@@ -57,11 +40,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             }
         }
 
-        public string ReportMaterialsString
-        {
-            get { return ReportMaterials.GetName(); }
-        }
-
         /// <summary>
         /// Evaluates availability of conference report materials. 
         /// </summary>
@@ -72,11 +50,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             {
                SetModelProperty(m => m.ConferenceReport.ReportMaterials, value);
             }
-        }
-
-        public string ResultsUsageString
-        {
-            get { return ResultsUsage.GetName(); }
         }
 
         /// <summary>
@@ -98,8 +71,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ConferenceReportViewModel(Conference model, EditableViewMode mode = EditableViewMode.Display)
             : base(model)
         {
-            Title = "Отчёт о конференции";
-
             var editCommands = new EditableViewBehaviour<Conference>(Do.Conference.Update, Model);
             editCommands.Inject(this, mode);
         }

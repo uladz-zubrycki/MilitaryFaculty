@@ -7,7 +7,7 @@
              d:DesignHeight="300" d:DesignWidth="300"
              Background="White">
     <UserControl.Resources>
-        <ResourceDictionary Source="../../Resources/ProfessorResources.xaml"/>
+        <ResourceDictionary Source="../../Resources/CommonResources.xaml"/>
     </UserControl.Resources>
 
     <Grid>

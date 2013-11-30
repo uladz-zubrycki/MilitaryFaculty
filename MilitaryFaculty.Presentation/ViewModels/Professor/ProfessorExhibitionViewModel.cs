@@ -19,6 +19,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Properties
 
+        public override string Title
+        {
+            get { return "Участие в научных выставках и конкурсах"; }
+        }
+
         public ObservableCollection<ExhibitionListItemViewModel> Exhibitions
         {
             get
@@ -51,8 +56,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             {
                 throw new ArgumentNullException("exhibitionRepository");
             }
-
-            Title = "Участие в научных выставках и конкурсах";
 
             exhibitionRepository.EntityCreated += OnExhibitionCreated;
             exhibitionRepository.EntityDeleted += OnExhibitionDeleted;

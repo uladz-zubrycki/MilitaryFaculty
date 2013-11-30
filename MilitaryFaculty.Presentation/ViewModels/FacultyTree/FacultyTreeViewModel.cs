@@ -104,11 +104,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         protected void OnSearch()
         {
-            if (!CanSearch())
-            {
-                return;
-            }
-
             if (searchEnumerator == null || !searchEnumerator.MoveNext())
             {
                 searchEnumerator = GetSearchEnumerator();

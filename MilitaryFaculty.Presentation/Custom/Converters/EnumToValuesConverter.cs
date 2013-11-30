@@ -26,6 +26,11 @@ namespace MilitaryFaculty.Presentation.Custom
         /// <param name="culture">The culture to use in the converter.</param>
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value == null)
+            {
+                return null;
+            }
+
             if (!(value is Enum))
             {
                 throw new ArgumentException();

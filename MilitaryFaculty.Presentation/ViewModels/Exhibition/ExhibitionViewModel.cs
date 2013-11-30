@@ -1,4 +1,5 @@
 ﻿using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
 
@@ -8,7 +9,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         #region Class Properties
 
-        public ExhibitionInfoViewModel InfoViewModel { get; private set; }
+        public override string Title
+        {
+            get
+            {
+                return "Информация о выставке";
+            }
+        }
 
         #endregion // Class Properties
 
@@ -17,21 +24,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ExhibitionViewModel(Exhibition model, EditableViewMode mode = EditableViewMode.Display)
             : base(model)
         {
-            Title = "Информация о выставке";
-            InitViewModels(mode);
+            ViewModels.AddRange(new[]
+                                {
+                                    new ExhibitionInfoViewModel(Model, mode)
+                                });
         }
 
         #endregion // Class Constructors
-
-        #region Class Protected Methods
-
-        protected void InitViewModels(EditableViewMode mode)
-        {
-            InfoViewModel = new ExhibitionInfoViewModel(Model, mode);
-
-            ViewModels.Add(InfoViewModel);
-        }
-
-        #endregion // Class Protected Methods
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
@@ -13,24 +10,14 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         #region Class Properties
 
+        public override string Title
+        {
+            get { return "Базовая информация"; }
+        }
+
         public string FullName
         {
             get { return Model.FullName.ToString(); }
-        }
-
-        public string MilitaryRankString
-        {
-            get { return Model.MilitaryRank.GetName(); }
-        }
-
-        public IEnumerable<Tuple<MilitaryRank, string>> MilitaryRankList
-        {
-            get
-            {
-                return Enum.GetValues(typeof (MilitaryRank))
-                           .Cast<MilitaryRank>()
-                           .Select(val => new Tuple<MilitaryRank, string>(val, val.GetName()));
-            }
         }
 
         public string FirstName
@@ -38,14 +25,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.FullName.FirstName; }
             set
             {
-                if (value == FirstName)
-                {
-                    return;
-                }
-
-
-                Model.FullName.FirstName = value;
-                OnPropertyChanged();
+                SetModelProperty(m => m.FullName.FirstName, value);
             }
         }
 
@@ -54,13 +34,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.FullName.MiddleName; }
             set
             {
-                if (value == MiddleName)
-                {
-                    return;
-                }
-
-                Model.FullName.MiddleName = value;
-                OnPropertyChanged();
+               SetModelProperty(m => m.FullName.MiddleName, value);
             }
         }
 
@@ -69,13 +43,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.FullName.LastName; }
             set
             {
-                if (value == LastName)
-                {
-                    return;
-                }
-
-                Model.FullName.LastName = value;
-                OnPropertyChanged();
+                SetModelProperty(m => m.FullName.LastName, value);
             }
         }
 
@@ -84,19 +52,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.MilitaryRank; }
             set
             {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                if (value == MilitaryRank)
-                {
-                    return;
-                }
-
-                Model.MilitaryRank = value;
-                OnPropertyChanged();
-                OnPropertyChanged("MilitaryRankString");
+                SetModelProperty(m => m.MilitaryRank, value);
             }
         }
 
@@ -113,8 +69,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ProfessorInfoViewModel(Professor model, EditableViewMode mode)
             : base(model)
         {
-            Title = "Базовая информация";
-
             var editCommands = new EditableViewBehaviour<Professor>(Do.Professor.Update, Model);
             editCommands.Inject(this, mode);
         }

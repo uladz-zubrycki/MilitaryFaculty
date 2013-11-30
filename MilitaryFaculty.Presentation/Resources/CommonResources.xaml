@@ -3,19 +3,19 @@
                     xmlns:v="clr-namespace:MilitaryFaculty.Presentation.Views"
                     xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
                     xmlns:vm="clr-namespace:MilitaryFaculty.Presentation.ViewModels">
-    <Style  x:Key="CommandsItemControlStyle"
-            TargetType="ItemsControl">
+    <Style x:Key="CommandsItemControlStyle"
+           TargetType="ItemsControl">
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal"/>
+                    <StackPanel Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
     <DataTemplate DataType="{x:Type vm:ImagedCommandViewModel}">
-        <v:ImagedCommandView/>
+        <v:ImagedCommandView />
     </DataTemplate>
 
     <Style x:Key="ItemStyle" TargetType="ItemsControl">
@@ -25,16 +25,16 @@
                     <Border Style="{StaticResource SimpleBorder}">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
-                            <TextBlock 
+                            <TextBlock
                                 Grid.Row="0"
                                 Style="{StaticResource H2TextBlock}"
-                                Text="{Binding Title}"/>
-                            <ContentPresenter 
+                                Text="{Binding Title}" />
+                            <ContentPresenter
                                 Grid.Row="1"
-                                Content="{TemplateBinding Property=Content}"/>
+                                Content="{TemplateBinding Property=Content}" />
                         </Grid>
                     </Border>
                 </ItemContainerTemplate>
@@ -50,36 +50,37 @@
                         <Expander Style="{StaticResource SimpleExpander}">
                             <Expander.Header>
                                 <!--Header width hack by binding OneWayToSource-->
-                                <Grid HorizontalAlignment="{Binding HorizontalAlignment, 
+                                <Grid
+                                    HorizontalAlignment="{Binding HorizontalAlignment, 
                                                                     RelativeSource={RelativeSource FindAncestor,
                                                                                                    AncestorType={x:Type ContentPresenter}},
                                                                     Mode=OneWayToSource}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <!--Header text-->
-                                    <TextBlock 
-                                            Grid.Column="0"
-                                            HorizontalAlignment="Stretch"
-                                            Style="{StaticResource H3TextBlock}"
-                                            Text="{Binding Title}"
-                                            Cursor="Hand"/>
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        HorizontalAlignment="Stretch"
+                                        Style="{StaticResource H3TextBlock}"
+                                        Text="{Binding Title}"
+                                        Cursor="Hand" />
                                     <!--Header commands-->
-                                    <ItemsControl 
-                                            Grid.Column="1"
-                                            ItemsSource="{Binding Commands}"
-                                            Visibility="{Binding IsExpanded, 
+                                    <ItemsControl
+                                        Grid.Column="1"
+                                        ItemsSource="{Binding Commands}"
+                                        Visibility="{Binding IsExpanded, 
                                                                  RelativeSource={RelativeSource FindAncestor,
                                                                                                 AncestorType={x:Type Expander}},
                                                                  Converter={c:BoolToVisibilityConverter}
-                                                        }"
-                                            Style="{StaticResource CommandsItemControlStyle}"/>
+                                                    }"
+                                        Style="{StaticResource CommandsItemControlStyle}" />
                                 </Grid>
                             </Expander.Header>
                             <!--Item content-->
                             <ContentPresenter Content="{TemplateBinding Property=Content}"
-                                              ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                                              ScrollViewer.VerticalScrollBarVisibility="Auto" />
                         </Expander>
                     </Border>
                 </ItemContainerTemplate>
@@ -87,48 +88,71 @@
         </Setter>
     </Style>
     
+    <Style x:Key="EnumComboBox" TargetType="ComboBox" BasedOn="{StaticResource ValueComboBox}">
+        <Setter Property="ItemsSource"
+                Value="{Binding SelectedValue, 
+                                RelativeSource={RelativeSource Self},
+                                Converter={c:EnumToValuesConverter}
+                       }" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock
+                        Text="{Binding Converter={c:EnumToNameConverter}}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
-                    <Border x:Name="PART_BORDER"    
+                    <Border x:Name="PART_BORDER"
                             Margin="2, 1"
                             Padding="2"
                             BorderThickness="0.4"
                             BorderBrush="{StaticResource BorderSolidBrush}">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <!--Content-->
-                            <ContentPresenter 
-                                    x:Name="PART_CONTENT"
-                                    Grid.Column="0" 
-                                    Content="{TemplateBinding Property=Content}"
-                                    ContentTemplate="{TemplateBinding Property=ContentTemplate}"
-                                    Cursor="Hand"/>
+                            <ContentPresenter
+                                x:Name="PART_CONTENT"
+                                Grid.Column="0"
+                                Content="{TemplateBinding Property=Content}"
+                                ContentTemplate="{TemplateBinding Property=ContentTemplate}"
+                                Cursor="Hand" />
                             <!--Commands-->
-                            <ItemsControl 
-                                    Grid.Column="1"
-                                    VerticalAlignment="Top"
-                                    HorizontalAlignment="Right"
-                                    Margin="0 7 5 0"
-                                    ItemsSource="{Binding Commands}"
-                                    Visibility="{TemplateBinding Property=IsSelected, 
+                            <ItemsControl
+                                Grid.Column="1"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right"
+                                Margin="0 7 5 0"
+                                ItemsSource="{Binding Commands}"
+                                Visibility="{TemplateBinding Property=IsSelected, 
                                                                  Converter={c:BoolToVisibilityConverter}}"
-                                    Style="{StaticResource CommandsItemControlStyle}"/>
+                                Style="{StaticResource CommandsItemControlStyle}" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="PART_BORDER" Property="BorderBrush" Value="CornflowerBlue"/>
-                            <Setter TargetName="PART_BORDER" Property="BorderThickness" Value="0.6"/>
-                            <Setter TargetName="PART_BORDER" Property="Margin" Value="1.8 0.8"/>
+                            <Setter TargetName="PART_BORDER" Property="BorderBrush" Value="CornflowerBlue" />
+                            <Setter TargetName="PART_BORDER" Property="BorderThickness" Value="0.6" />
+                            <Setter TargetName="PART_BORDER" Property="Margin" Value="1.8 0.8" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="ItemListStyle" TargetType="ListBox">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemStyle}"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
     </Style>
 </ResourceDictionary>

@@ -1,10 +1,13 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
-    public class ViewModel : INotifyPropertyChanged
+    public abstract class ViewModel : INotifyPropertyChanged
     {
         #region Class Fields
 
@@ -14,7 +17,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 
         #region Class Properties
 
-        public string Title { get; protected set; }
+        public virtual string Title { get; protected set; }
         public ObservableCollection<CommandViewModel> Commands { get; private set; }
 
         public virtual object Tag
@@ -22,14 +25,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
             get { return tag; }
             set
             {
-                if (value == Tag)
-                {
-                    return;
-                }
-
-                tag = value;
-        
-                OnPropertyChanged();
+                SetValue(() => this.tag, value);
             }
         }
 
@@ -43,7 +39,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 
         #region Class Constructors
 
-        public ViewModel()
+        protected ViewModel()
         {
             Commands = new ObservableCollection<CommandViewModel>();
         }
@@ -51,6 +47,34 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         #endregion // Class Constructors
 
         #region Class Protected Methods
+
+        protected bool SetValue<TField>(Expression<Func<TField>> evaluator, TField value, [CallerMemberName] string propertyName = null)
+        {
+            if (evaluator == null)
+            {
+                throw new ArgumentNullException("evaluator");
+            }
+
+            if (String.IsNullOrWhiteSpace(propertyName))
+            {
+                throw new ArgumentNullException("propertyName");
+            }
+
+            var body = (MemberExpression)evaluator.Body;
+            var fieldInfo = (FieldInfo)body.Member;
+
+            var oldValue = (TField)fieldInfo.GetValue(this);
+
+            if (value.Equals(oldValue))
+            {
+                return false;
+            }
+
+            fieldInfo.SetValue(this, value);
+            OnPropertyChanged(propertyName);
+
+            return true;
+        }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

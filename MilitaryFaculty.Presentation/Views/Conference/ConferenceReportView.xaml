@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Background="White">
@@ -29,7 +30,7 @@
                 Grid.Column="1"
                 Grid.Row="0"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding ThemeActualityString}"/>
+                Text="{Binding ThemeActuality, Converter={c:EnumToNameConverter}}"/>
 
         <!--Organization Correctness-->
         <TextBlock 
@@ -41,7 +42,7 @@
                 Grid.Column="1"
                 Grid.Row="1"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding OrganizationCorrectnessString}"/>
+                Text="{Binding OrganizationCorrectness, Converter={c:EnumToNameConverter}}"/>
 
         <!--Report Materials-->
         <TextBlock 
@@ -53,7 +54,7 @@
                 Grid.Column="1"
                 Grid.Row="2"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding ReportMaterialsString}"/>
+                Text="{Binding ReportMaterials, Converter={c:EnumToNameConverter}}"/>
 
         <!--Results Usage-->
         <TextBlock 
@@ -65,6 +66,6 @@
                 Grid.Column="1"
                 Grid.Row="3"
                 Style="{StaticResource ValueTextBlock}"
-                Text="{Binding ResultsUsageString}"/>
+                Text="{Binding ResultsUsage, Converter={c:EnumToNameConverter}}"/>
     </Grid>
 </UserControl>

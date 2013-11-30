@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
 
@@ -13,18 +9,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         #region Class Properties
 
-        public string ConferenceTypeString
-        {
-            get { return ConferenceType.GetName(); }
-        }
-
-        public IEnumerable<Tuple<EventLevel, string>> ConferenceTypeList
+        public override string Title
         {
             get
             {
-                return Enum.GetValues(typeof(EventLevel))
-                           .Cast<EventLevel>()
-                           .Select(val => new Tuple<EventLevel, string>(val, val.GetName()));
+                return "Базовая информация";
             }
         }
 
@@ -34,7 +23,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             set
             {
                 SetModelProperty(m => m.ConferenceType, value);
-                OnPropertyChanged("ConferenceTypeString");
             }
         }
 
@@ -68,8 +56,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ConferenceInfoViewModel(Conference model, EditableViewMode mode = EditableViewMode.Display)
             : base(model)
         {
-            Title = "Базовая информация";
-
             var editCommands = new EditableViewBehaviour<Conference>(Do.Conference.Update, Model);
             editCommands.Inject(this, mode);
         }
