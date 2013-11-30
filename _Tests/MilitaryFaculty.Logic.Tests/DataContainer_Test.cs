@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
+using MilitaryFaculty.Data;
 using MilitaryFaculty.Logic.DataProviders;
 using MilitaryFaculty.Logic.XmlDomain;
 using NUnit.Framework;
@@ -12,20 +15,29 @@ namespace MilitaryFaculty.Logic.Tests
     [TestFixture]
     public class DataContainer_Test
     {
-        private string savePath, pathInfo, pathFormulas;
+        private string savePath, xmlPath;
         private Excel.Application xlApp;
         private Excel.Workbook xlWorkBook;
         private Excel.Worksheet xlWorkSheet;
         private readonly object misValue = System.Reflection.Missing.Value;
 
+        private const string projectDir = @"d:\Other\git_projects\MilitaryFaculty";
+
+        private EntityContext context;
+
         [SetUp]
         public void SetUp()
         {
+            const string conName = "Current";
+
+            var connectionString = ConfigurationManager.ConnectionStrings[conName].ConnectionString;
+            context = new EntityContext(connectionString);
+
             //var basePath = AppDomain.CurrentDomain.BaseDirectory;
             savePath = @"d:\Other\git_projects\";
             savePath += @"csharp-test-Excel.xls";
-            pathFormulas = @"d:\Other\git_projects\MilitaryFaculty\MilitaryFaculty.Logic\MilitaryFaculty.Logic.Services\XmlTables\";
-            pathInfo = @"d:\Other\git_projects\MilitaryFaculty\MilitaryFaculty.Logic\MilitaryFaculty.Logic.Services\XmlTables\";
+
+            xmlPath = projectDir + @"\MilitaryFaculty.Logic\MilitaryFaculty.Logic.Services\XmlTables";
         }
 
         [Test]
@@ -38,30 +50,36 @@ namespace MilitaryFaculty.Logic.Tests
             var dataModule = new DataModule();
             dataModule.RegisterProviders(new IDataProvider[]
                 {
-                    new CustomDataProvider(),
-                    new ProfessorsDataProvider(),
-                    new PublicationsDataProvider(), 
+                    new CathedrasDataProvider(new CathedraRepository(context)),
+                    new ProfessorsDataProvider(new ProfessorRepository(context)),
+                    new PublicationsDataProvider(new PublicationRepository(context)),
+                    new ExhibitionsDataProvider(new ExhibitionRepository(context)),
+                    new ConferencesDataProvider(new ConferenceRepository(context))
                 });
 
-            var tableInfo = TableInfo.Deserialize(pathInfo + @"FirstTableInfo.xml");
-            var tableFormulas = TableFormulas.Deserialize(pathFormulas + @"FirstTableFormulas.xml");
-            var dc = new DataContainer(tableInfo, tableFormulas, dataModule);
-            dc.GenerateExcelSheet(xlWorkSheet);
+            var infoNames = new List<string>
+                {
+                    @"\FirstTableInfo.xml",
+                    @"\SecondTableInfo.xml",
+                    @"\ThirdTableInfo.xml",
+                    @"\FourthTableInfo.xml"
+                };
 
-            tableInfo = TableInfo.Deserialize(pathInfo + @"SecondTableInfo.xml");
-            tableFormulas = TableFormulas.Deserialize(pathFormulas + @"SecondTableFormulas.xml");
-            dc = new DataContainer(tableInfo, tableFormulas, dataModule);
-            dc.GenerateExcelSheet(xlWorkSheet);
+            var formulaNames = new List<string>
+                {
+                    @"\FirstTableFormulas.xml",
+                    @"\SecondTableFormulas.xml",
+                    @"\ThirdTableFormulas.xml",
+                    @"\FourthTableFormulas.xml"
+                };
 
-            tableInfo = TableInfo.Deserialize(pathInfo + @"ThirdTableInfo.xml");
-            tableFormulas = TableFormulas.Deserialize(pathFormulas + @"ThirdTableFormulas.xml");
-            dc = new DataContainer(tableInfo, tableFormulas, dataModule);
-            dc.GenerateExcelSheet(xlWorkSheet);
-
-            tableInfo = TableInfo.Deserialize(pathInfo + @"FourthTableInfo.xml");
-            tableFormulas = TableFormulas.Deserialize(pathFormulas + @"FourthTableFormulas.xml");
-            dc = new DataContainer(tableInfo, tableFormulas, dataModule);
-            dc.GenerateExcelSheet(xlWorkSheet);
+            for (var i = 0; i < infoNames.Count; i++)
+            {
+                var tableInfo = TableInfo.Deserialize(xmlPath + infoNames[i]);
+                var tableFormulas = TableFormulas.Deserialize(xmlPath + formulaNames[i]);
+                var dc = new DataContainer(tableInfo, tableFormulas, dataModule);
+                dc.GenerateExcelSheet(xlWorkSheet);
+            }
 
             File.Delete(savePath);
             xlWorkBook.SaveAs(savePath, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue,

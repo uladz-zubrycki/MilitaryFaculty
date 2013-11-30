@@ -30,10 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\MilitaryFaculty.Data\MilitaryFaculty.Data\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +51,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MilitaryFaculty.Data\MilitaryFaculty.Data.Contract\MilitaryFaculty.Data.Contract.csproj">
+      <Project>{1F3C691F-2E66-4A98-AD58-1FC5B752317D}</Project>
+      <Name>MilitaryFaculty.Data.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MilitaryFaculty.Data\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj">
+      <Project>{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}</Project>
+      <Name>MilitaryFaculty.Data %28MilitaryFaculty.Data\MilitaryFaculty.Data%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.Contract\MilitaryFaculty.Domain.Contract.csproj">
       <Project>{10E40656-D44B-46CE-9FED-0496F71554B7}</Project>
       <Name>MilitaryFaculty.Domain.Contract</Name>
@@ -88,6 +100,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
