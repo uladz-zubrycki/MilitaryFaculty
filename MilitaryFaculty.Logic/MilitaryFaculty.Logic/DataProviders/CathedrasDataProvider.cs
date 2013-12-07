@@ -35,6 +35,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("PlanDocsOrg")]
         public double PlanningDocumentsOrganization()
         {
+            //TODO: Nothing to do here
             return 1;
         }
 
@@ -59,7 +60,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         }
 
         /// <summary>
-        /// Международных конференций
+        /// Уровень оргинизации международных конференций
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("IntConfOrg")]
@@ -69,7 +70,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         }
 
         /// <summary>
-        /// Республиканских конференций
+        /// Уровень оргинизации республиканских конференций
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("RepConfOrg")]
@@ -79,7 +80,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         }
 
         /// <summary>
-        /// Конференций военного учебного заведения
+        /// Уровень оргинизации конференций военного учебного заведения
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("UnConfOrg")]
@@ -89,7 +90,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         }
 
         /// <summary>
-        /// Республиканских семинаров
+        /// Уровень оргинизации республиканских семинаров
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("RepSemOrg")]
@@ -99,7 +100,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         }
 
         /// <summary>
-        /// Семинаров военного учебного заведения
+        /// Уровень оргинизации семинаров военного учебного заведения
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("UnSemOrg")]

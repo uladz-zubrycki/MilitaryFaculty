@@ -2,7 +2,6 @@
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
-using System.Linq;
 
 namespace MilitaryFaculty.Logic.DataProviders
 {
@@ -37,8 +36,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ProfsCount")]
         public double ProfessorsCount()
         {
-            var count = professorRepository.All().Count();
-            return count;
+            return professorRepository.Count(null);
         }
 
         /// <summary>
@@ -48,6 +46,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("DocsCount")]
         public double DoctoralCandidatesCount()
         {
+            //TODO: Узнать про докторантов
             return 1;
         }
 
@@ -58,6 +57,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("AdjCountFt")]
         public double AdjunctsCountFullTime()
         {
+            //TODO: адьюнкты
             return 2;
         }
 
@@ -78,6 +78,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ApplDoctCount")]
         public double ApplicantForDoctorsCount()
         {
+            //TODO: соискатели
             return 5;
         }
 
@@ -98,7 +99,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ProfPostsCount")]
         public double ProfessorPostsCount()
         {
-            return professorRepository.All().Count(p => p.AcademicDegree == AcademicDegree.Professor);
+            return professorRepository.Count(p => p.AcademicDegree == AcademicDegree.Professor);
         }
 
         /// <summary>
@@ -118,7 +119,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("DocentPostsCount")]
         public double DocentPostsCount()
         {
-            return professorRepository.All().Count(p => p.AcademicDegree == AcademicDegree.Docent);
+            return professorRepository.Count(p => p.AcademicDegree == AcademicDegree.Docent);
         }
 
         /// <summary>
@@ -128,6 +129,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("DocentPostsSubsCount")]
         public double DocentPostsSubstitutionCount()
         {
+            //TODO: DaFaq?
             return 2;
         }
 
@@ -138,7 +140,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("DosCount")]
         public double DoctorsOfScienceCount()
         {
-            return professorRepository.All().Count(p => p.AcademicRank == AcademicRank.DoctorOfScience);
+            return professorRepository.Count(p => p.AcademicRank == AcademicRank.DoctorOfScience);
         }
 
         /// <summary>
@@ -148,7 +150,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("CosCount")]
         public double CandidatsOfScienceCount()
         {
-            return professorRepository.All().Count(p => p.AcademicRank == AcademicRank.CandidateOfScience);
+            return professorRepository.Count(p => p.AcademicRank == AcademicRank.CandidateOfScience);
         }
 
         /// <summary>
@@ -189,8 +191,8 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("HqProfsCount")]
         public double HighQualificationProfsCount()
         {
-            return professorRepository.All().Count(p => p.AcademicDegree != AcademicDegree.None || 
-                                                        p.AcademicRank != AcademicRank.None);
+            return professorRepository.Count(p => p.AcademicDegree != AcademicDegree.None ||
+                                                  p.AcademicRank != AcademicRank.None);
         }
 
         /// <summary>
@@ -238,36 +240,39 @@ namespace MilitaryFaculty.Logic.DataProviders
         }
 
         /// <summary>
-        /// Укомплектованность военного факультета (кафедры) научными работнкиками высшей квалификации 
+        /// Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации (1 или 0)
         /// больше 40%
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("SoHqA40")]
         public double StaffingOfHighQualificationAbove40()
         {
-            return 5;
+            var ratio = HighQualificationProfsCount()/ProfessorsCount();
+            return ratio > 0.4 && ratio <= 1.001 ? 1 : 0;
         }
 
         /// <summary>
-        /// Укомплектованность военного факультета (кафедры) научными работнкиками высшей квалификации 
+        /// Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации (1 или 0)
         /// более 20%, но менее 40%
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("SoHqA20B40")]
         public double StaffingOfHighQualificationAbove20Below40()
         {
-            return 1;
+            var ratio = HighQualificationProfsCount() / ProfessorsCount();
+            return ratio > 0.2 && ratio <= 0.4 ? 1 : 0;
         }
 
         /// <summary>
-        /// Укомплектованность военного факультета (кафедры) научными работнкиками высшей квалификации 
+        /// Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации (1 или 0)
         /// менее 20%
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("SoHqB20")]
         public double StaffingOfHighQualificatioBelow20()
         {
-            return 2;
+            var ratio = HighQualificationProfsCount() / ProfessorsCount();
+            return ratio > 0.001 && ratio <= 0.2 ? 1 : 0;
         }
 
         /// <summary>
@@ -277,7 +282,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("SoHqE0")]
         public double StaffingOfHighQualificatioEqual0()
         {
-            return 3;
+            return Math.Abs(HighQualificationProfsCount()) < 0.001 ? 1 : 0;
         }
 
         /// <summary>
@@ -287,6 +292,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("SeProfsCount")]
         public double ScientificExperticeProfessorsCount()
         {
+            //TODO: WAT?
             return 2;
         }
 

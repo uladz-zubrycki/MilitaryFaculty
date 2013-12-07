@@ -1,5 +1,6 @@
 ﻿using System;
 using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Logic.DataProviders
@@ -33,7 +34,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("UnConfProfsCount")]
         public double UniversityConferenceProfessorsCount()
         {
-            return 4;
+            return conferenceRepository.Count(c => c.ConferenceType == EventLevel.University);
         }
 
         /// <summary>
@@ -43,7 +44,8 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("UnConfStudsCount")]
         public double UniversityConferenceStudentsCount()
         {
-            return 5;
+            //TODO: Выступления курсантов
+            return conferenceRepository.Count(c => c.ConferenceType == EventLevel.University);
         }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReConfProfsCount")]
         public double RepublicanConferenceProfessorsCount()
         {
-            return 1;
+            return conferenceRepository.Count(c => c.ConferenceType == EventLevel.Republican);
         }
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReConfStudsCount")]
         public double RepublicanConferenceStudentsCount()
         {
-            return 2;
+            return conferenceRepository.Count(c => c.ConferenceType == EventLevel.Republican);
         }
 
         /// <summary>
@@ -73,7 +75,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("InConfProfsCount")]
         public double InternationalConferenceProfessorsCount()
         {
-            return 3;
+            return conferenceRepository.Count(c => c.ConferenceType == EventLevel.International);
         }
 
         /// <summary>
@@ -83,7 +85,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("InConfStudsCount")]
         public double InternationalConferenceStudentsCount()
         {
-            return 4;
+            return conferenceRepository.Count(c => c.ConferenceType == EventLevel.International);
         }
     }
 }

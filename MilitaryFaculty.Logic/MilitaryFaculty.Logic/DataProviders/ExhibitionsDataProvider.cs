@@ -1,5 +1,6 @@
 ﻿using System;
 using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Logic.DataProviders
@@ -33,7 +34,8 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("UnFirstDiplCount")]
         public double UniversityFirstDiplomasCount()
         {
-            return 5;
+            //TODO: Уровень выставки
+            return exhibitionRepository.Count(e => e.AwardType == AwardType.FirstDegree);
         }
 
         /// <summary>
@@ -43,7 +45,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("UnSecondDiplCount")]
         public double UniversitySecondDiplomasCount()
         {
-            return 1;
+            return exhibitionRepository.Count(e => e.AwardType == AwardType.SecondDegree);
         }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("UnThirdDiplCount")]
         public double UniversityThirdDiplomasCount()
         {
-            return 2;
+            return exhibitionRepository.Count(e => e.AwardType == AwardType.ThirdDegree);
         }
 
         /// <summary>
@@ -63,7 +65,8 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("UnLettersCommendationCount")]
         public double UniversityLettersOfCommendationCount()
         {
-            return 3;
+            //TODO: Грамота
+            return exhibitionRepository.Count(e => e.AwardType == AwardType.NoneDegree);
         }
 
         /// <summary>
@@ -73,7 +76,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReFirstDiplCount")]
         public double RepublicanFirstDiplomasCount()
         {
-            return 5;
+            return exhibitionRepository.Count(e => e.AwardType == AwardType.FirstDegree);
         }
 
         /// <summary>
@@ -83,7 +86,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReSecondDiplCount")]
         public double RepublicanSecondDiplomasCount()
         {
-            return 1;
+            return exhibitionRepository.Count(e => e.AwardType == AwardType.SecondDegree);
         }
 
         /// <summary>
@@ -93,7 +96,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReThirdDiplCount")]
         public double RepublicanThirdDiplomasCount()
         {
-            return 2;
+            return exhibitionRepository.Count(e => e.AwardType == AwardType.ThirdDegree);
         }
 
         /// <summary>
@@ -103,7 +106,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReLettersCommendationCount")]
         public double RepublicanLettersOfCommendationCount()
         {
-            return 3;
+            return exhibitionRepository.Count(e => e.AwardType == AwardType.NoneDegree);
         }
 
         /// <summary>
@@ -113,7 +116,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("InFirstDiplCount")]
         public double InternationalFirstDiplomasCount()
         {
-            return 5;
+            return exhibitionRepository.Count(e => e.AwardType == AwardType.FirstDegree);
         }
 
         /// <summary>
@@ -123,7 +126,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("InSecondDiplCount")]
         public double InternationalSecondDiplomasCount()
         {
-            return 1;
+            return exhibitionRepository.Count(e => e.AwardType == AwardType.SecondDegree);
         }
 
         /// <summary>
@@ -133,7 +136,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("InThirdDiplCount")]
         public double InternationalThirdDiplomasCount()
         {
-            return 2;
+            return exhibitionRepository.Count(e => e.AwardType == AwardType.ThirdDegree);
         }
 
         /// <summary>
@@ -143,7 +146,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("InLettersCommendationCount")]
         public double InternationalLettersOfCommendationCount()
         {
-            return 3;
+            return exhibitionRepository.Count(e => e.AwardType == AwardType.NoneDegree);
         }
     }
 }

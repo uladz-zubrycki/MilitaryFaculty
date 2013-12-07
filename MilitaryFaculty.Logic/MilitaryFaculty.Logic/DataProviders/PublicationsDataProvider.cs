@@ -2,7 +2,6 @@
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
-using System.Linq;
 
 namespace MilitaryFaculty.Logic.DataProviders
 {
@@ -57,7 +56,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("MonographyPc")]
         public double MonographyPagesCount()
         {
-            return publicationRepository.All().Sum(p => p.PagesCount);
+            return publicationRepository.Sum(p => p.PagesCount);
         }
 
         /// <summary>
@@ -67,7 +66,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReviewedArticlesCount")]
         public double ReviewedArticlesCount()
         {
-            return publicationRepository.All().Count(p => p.PublicationType == PublicationType.ReviewedArticle);
+            return publicationRepository.Count(p => p.PublicationType == PublicationType.ReviewedArticle);
         }
 
         /// <summary>
@@ -77,7 +76,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ArticlesCount")]
         public double ArticlesCount()
         {
-            return publicationRepository.All().Count(p => p.PublicationType == PublicationType.Article);
+            return publicationRepository.Count(p => p.PublicationType == PublicationType.Article);
         }
 
         /// <summary>
@@ -87,7 +86,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ThesisesCount")]
         public double LecturesCount()
         {
-            return publicationRepository.All().Count(p => p.PublicationType == PublicationType.Thesis);
+            return publicationRepository.Count(p => p.PublicationType == PublicationType.Thesis);
         }
 
         /// <summary>
