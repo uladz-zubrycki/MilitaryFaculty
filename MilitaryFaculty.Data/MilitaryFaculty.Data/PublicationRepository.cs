@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
@@ -22,6 +23,16 @@ namespace MilitaryFaculty.Data
         public IEnumerable<Publication> All()
         {
             return DbSet.ToList();
+        }
+
+        public int Count(Func<Publication, bool> predicate)
+        {
+            return DbSet.Count(predicate);
+        }
+
+        public double Sum(Func<Publication, decimal?> predicate)
+        {
+            return (double)DbSet.Sum(predicate);
         }
 
         #endregion // Class Public Methods

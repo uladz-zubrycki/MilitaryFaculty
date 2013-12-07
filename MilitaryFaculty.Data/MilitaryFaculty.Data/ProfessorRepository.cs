@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
@@ -23,6 +24,11 @@ namespace MilitaryFaculty.Data
         {
             return DbSet.ToList();
         }  
+
+        public int Count(Func<Professor, bool> predicate)
+        {
+            return predicate == null ? DbSet.Count() : DbSet.Count(predicate);
+        }
 
         #endregion // Class Public Methods
     }
