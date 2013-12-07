@@ -20,11 +20,6 @@ namespace MilitaryFaculty.Data
 
         #region Class Public Methods
 
-        public ICollection<Conference> All()
-        {
-            return DbSet.ToList();
-        }
-
         public int Count(Func<Conference, bool> predicate)
         {
             return DbSet.Count(predicate);

@@ -6,7 +6,6 @@ namespace MilitaryFaculty.Data.Contract
 {
     public interface IProfessorRepository : IRepository<Professor>
     {
-        IEnumerable<Professor> All();
         int Count(Func<Professor,bool> predicate);
     }
 }

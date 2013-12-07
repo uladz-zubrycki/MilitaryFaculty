@@ -20,11 +20,6 @@ namespace MilitaryFaculty.Data
 
         #region Class Public Methods
 
-        public IEnumerable<Publication> All()
-        {
-            return DbSet.ToList();
-        }
-
         public int Count(Func<Publication, bool> predicate)
         {
             return DbSet.Count(predicate);
