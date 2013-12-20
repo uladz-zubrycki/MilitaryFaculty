@@ -6,7 +6,7 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class ExhibitionListItemViewModel : ComplexViewModel<Exhibition>
+    public class ExhibitionListItemViewModel : ListItemViewModel<Exhibition>
     {
         #region Type Static Members
 
@@ -19,7 +19,15 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Properties
 
-        public ExhibitionInfoViewModel InfoViewModel { get; private set; }
+        public override string PrimaryInfo
+        {
+            get { return Model.Date.ToShortDateString(); }
+        }
+
+        public override string SecondaryInfo
+        {
+            get { return Model.Name; }
+        } 
 
         #endregion // Class Properties
 
@@ -28,22 +36,14 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ExhibitionListItemViewModel(Exhibition model)
             : base(model)
         {
-            InitViewModels();
             InitCommands();
         }
 
         #endregion // Class Constructors
 
-        #region Class Protected Methods
+        #region Class Private Methods
 
-        protected void InitViewModels()
-        {
-            InfoViewModel = new ExhibitionInfoViewModel(Model);
-
-            ViewModels.Add(InfoViewModel);
-        }
-
-        protected void InitCommands()
+        private void InitCommands()
         {
             Commands.AddRange(new[]
                               {
@@ -70,6 +70,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
                                               Model, tooltip, imageSource);
         }
 
-        #endregion // Class Protected Methods
+        #endregion // Class Private Methods
     }
 }

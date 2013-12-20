@@ -49,7 +49,7 @@ namespace MilitaryFaculty.Presentation.Custom
                             Curator = curator,
                         };
 
-            ViewModel.WorkWindow = new ConferenceAddViewModel(model);
+            ViewModel.WorkWindow = new AddConferenceViewModel(model);
         }
 
         private void OnBrowseConferenceDetails(Conference conference)
@@ -59,7 +59,7 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("conference");
             }
 
-            ViewModel.WorkWindow = new ConferenceViewModel(conference);
+            ViewModel.WorkWindow = new ConferenceRootViewModel(conference);
         }
 
         #endregion // Class Private Methods

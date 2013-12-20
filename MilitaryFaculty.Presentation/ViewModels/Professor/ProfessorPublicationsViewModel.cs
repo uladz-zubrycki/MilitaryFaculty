@@ -34,39 +34,27 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 }
 
                 return publications;
-            } 
+            }
         }
 
         public int MonographsCount
         {
-            get
-            {
-                return GetPublicationsCount(PublicationType.Monograph);
-            }
+            get { return GetPublicationsCount(PublicationType.Monograph); }
         }
 
         public int ReviewedArticlesCount
         {
-            get
-            {
-                return GetPublicationsCount(PublicationType.ReviewedArticle);
-            }
+            get { return GetPublicationsCount(PublicationType.ReviewedArticle); }
         }
 
         public int ArticlesCount
         {
-            get
-            {
-                return GetPublicationsCount(PublicationType.Article);
-            }
+            get { return GetPublicationsCount(PublicationType.Article); }
         }
 
         public int ThesisesCount
         {
-            get
-            {
-                return GetPublicationsCount(PublicationType.Thesis);
-            }
+            get { return GetPublicationsCount(PublicationType.Thesis); }
         }
 
         #endregion // Class Properties
@@ -107,12 +95,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
             publications = new ObservableCollection<PublicationListItemViewModel>(items);
 
             publications.CollectionChanged += (sender, args) =>
-            {
-                OnPropertyChanged("MonographsCount");
-                OnPropertyChanged("ReviewedArticlesCount");
-                OnPropertyChanged("ArticlesCount");
-                OnPropertyChanged("ThesisesCount");
-            };
+                                              {
+                                                  OnPropertyChanged("MonographsCount");
+                                                  OnPropertyChanged("ReviewedArticlesCount");
+                                                  OnPropertyChanged("ArticlesCount");
+                                                  OnPropertyChanged("ThesisesCount");
+                                              };
         }
 
         private void OnPublicationCreated(object sender, ModifiedEntityEventArgs<Publication> e)

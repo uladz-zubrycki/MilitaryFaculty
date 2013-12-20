@@ -3,9 +3,9 @@ using System.Reflection;
 
 namespace MilitaryFaculty.Extensions
 {
-    public static class MethodInfoExtensions
+    public static class MemberInfoExtensions
     {
-        public static bool HasAttribute<TAttribute>(this MethodInfo info)
+        public static bool HasAttribute<TAttribute>(this MemberInfo info)
             where TAttribute: Attribute
         {
             var attr = info.GetCustomAttribute<TAttribute>();

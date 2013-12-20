@@ -7,10 +7,6 @@
         Title="Научный рейтинг" Height="550" Width="830"
         WindowStartupLocation="CenterScreen"
         i:CommandContainerBinding.CommandContainer ="{Binding CommandContainer}">
-    <Window.Resources>
-        <ResourceDictionary Source="Resources\MainWindowResources.xaml"/>
-    </Window.Resources>
-
     <Window.CommandBindings>
         <!--Application commands-->
         <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Add}"/>
@@ -52,6 +48,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <!--Navigation-->
         <Menu ItemContainerStyle="{StaticResource ImageMenuItem}"
               Grid.Row="0"
               Padding="10, 2"
@@ -92,6 +89,7 @@
             </Grid>
         </Border>
 
+        <!--Content-->
         <Border Grid.Row="1"
                 Grid.Column="1"
                 Style="{StaticResource SimpleBorder}"
@@ -109,10 +107,10 @@
                     </Style>
                 </ScrollViewer.Style>
                 <ContentControl 
-                        Content="{Binding WorkWindow, 
-                                          Mode=OneWay}"
+                        Content="{Binding WorkWindow, Mode=OneWay}"
                         HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"/>
+                        VerticalAlignment="Stretch"
+                        ContentTemplateSelector="{StaticResource TemplateSelector}"/>
             </ScrollViewer>
         </Border>
     </Grid>

@@ -41,7 +41,7 @@ namespace MilitaryFaculty.Presentation.Custom
                             Cathedra = cathedra,
                         };
 
-            ViewModel.WorkWindow = new ProfessorAddViewModel(model);
+            ViewModel.WorkWindow = new AddProfessorViewModel(model);
         }
 
         #endregion // Class Private Methods

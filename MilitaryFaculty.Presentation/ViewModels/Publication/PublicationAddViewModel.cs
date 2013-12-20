@@ -1,20 +1,16 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
+using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    internal class PublicationAddViewModel : EntityAddViewModel<Publication>
+    internal class AddPublicationViewModel : AddEntityViewModel<Publication>
     {
-        #region Class Properties
-
         public override string Title
         {
-            get
-            {
-                return "Добавить публикацию";
-            }
+            get { return "Добавить публикацию"; }
         }
 
         public override ICommand AddCommand
@@ -22,17 +18,19 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Do.Publication.Add; }
         }
 
-        #endregion // Class Properties
-
-        #region Class Constructors
-
-        public PublicationAddViewModel(Publication model)
+        public AddPublicationViewModel(Publication model)
             : base(model)
         {
-            var publicationViewModel = new PublicationViewModel(Model, EditableViewMode.Edit);
-            ViewModels.AddRange(publicationViewModel.ViewModels);
+            // EMpty
         }
 
-        #endregion // Class Constructors
+        protected override IEnumerable<ViewModel<Publication>> GetViewModels()
+        {
+            return new ViewModel<Publication>[]
+                   {
+                       new PublicationInfoViewModel(Model),
+                       new PublicationExtraInfoViewModel(Model)
+                   };
+        }
     }
 }

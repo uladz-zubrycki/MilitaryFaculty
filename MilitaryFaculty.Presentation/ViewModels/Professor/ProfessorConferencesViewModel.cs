@@ -39,10 +39,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         public int ConferencesCount
         {
-            get
-            {
-                return Conferences.Count;
-            }
+            get { return Conferences.Count; }
         }
 
         #endregion // Class Properties
@@ -82,10 +79,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             var items = Model.Conferences.Select(converter);
 
             conferences = new ObservableCollection<ConferenceListItemViewModel>(items);
-            conferences.CollectionChanged += (sender, args) =>
-                                             {
-                                                 OnPropertyChanged("ConferencesCount");
-                                             };
+            conferences.CollectionChanged += (sender, args) => { OnPropertyChanged("ConferencesCount"); };
         }
 
         private void OnConferenceCreated(object sender, ModifiedEntityEventArgs<Conference> e)

@@ -1,28 +1,29 @@
-﻿using MilitaryFaculty.Domain;
-using MilitaryFaculty.Extensions;
-using MilitaryFaculty.Presentation.Custom;
+﻿using System.Collections.Generic;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class PublicationViewModel : ComplexViewModel<Publication>
+    public class PublicationRootViewModel : EntityRootViewModel<Publication>
     {
         public override string Title
         {
-            get
-            {
-                return "Информация о публикации";
-            }
+            get { return "Информация о публикации"; }
         }
 
-        public PublicationViewModel(Publication model, EditableViewMode mode = EditableViewMode.Display)
+        public PublicationRootViewModel(Publication model)
             : base(model)
         {
-            ViewModels.AddRange(new ViewModel<Publication>[]
-                                {
-                                    new PublicationInfoViewModel(Model, mode),
-                                    new PublicationExtraInfoViewModel(Model, mode)
-                                });
+            // Empty
+        }
+
+        protected override IEnumerable<ViewModel<Publication>> GetViewModels()
+        {
+            return new ViewModel<Publication>[]
+                   {
+                       new PublicationInfoViewModel(Model),
+                       new PublicationExtraInfoViewModel(Model)
+                   };
         }
     }
 }

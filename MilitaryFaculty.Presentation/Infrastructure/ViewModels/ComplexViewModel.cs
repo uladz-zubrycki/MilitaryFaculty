@@ -1,48 +1,45 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
     public abstract class ComplexViewModel<T> : ViewModel<T>
         where T : class
     {
+        #region Class Fields
+        
+        private object tag;
+        private ObservableCollection<ViewModel<T>> viewModels;
+
+        #endregion // Class Fields
+
         #region Class Properties
-
-        public ObservableCollection<ViewModel<T>> ViewModels { get; protected set; }
-
-        public override object Tag
+        
+        public ObservableCollection<ViewModel<T>> ViewModels
         {
             get
             {
-                if (ViewModels.Count == 0)
+                if (viewModels == null)
                 {
-                    return null;
+                    viewModels = new ObservableCollection<ViewModel<T>>(GetViewModels());
                 }
 
-                var tags = ViewModels.Select(vm => vm.Tag)
-                                     .GroupBy(tag => tag)
-                                     .Select(gr => gr.Key)
-                                     .ToList();
-
-                return tags.Single();
-            }
-
-            set
-            {
-                if (value.Equals(Tag))
-                {
-                    return;
-                }
-
-                foreach (var viewModel in ViewModels)
-                {
-                    viewModel.Tag = value;
-                }
-
-                OnPropertyChanged();
+                return viewModels;
             }
         }
 
+        public sealed override object Tag
+        {
+            get { return tag; }
+
+            set
+            {
+                SetValue(() => tag, value);
+                ViewModels.ForEach(vm => vm.Tag = value);
+            }
+        }
+        
         #endregion // Class Properties
 
         #region Class Constructors
@@ -50,9 +47,15 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         protected ComplexViewModel(T model)
             : base(model)
         {
-            ViewModels = new ObservableCollection<ViewModel<T>>();
+            // Empty
         }
 
         #endregion // Class Constructors
+
+        #region Class Protected Methods
+
+        protected abstract IEnumerable<ViewModel<T>> GetViewModels();
+
+        #endregion // Class Protected Methods
     }
 }

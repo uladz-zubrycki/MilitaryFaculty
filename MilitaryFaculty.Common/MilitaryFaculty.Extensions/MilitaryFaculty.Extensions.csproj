@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DictionaryExtensions.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="EnumExtensions.cs" />
     <Compile Include="EnumNameAttribute.cs" />
     <Compile Include="CollectionExtensions.cs" />

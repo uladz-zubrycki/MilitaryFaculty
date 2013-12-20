@@ -2,6 +2,7 @@
 using Autofac;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
 
@@ -38,7 +39,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             {
                 var oldValue = workWindow;
                 
-                if (SetValue(() => this.workWindow, value))
+                if (SetValue(() => workWindow, value))
                 {
                     OnWorkWindowChanged(oldValue, value);
                 }
@@ -91,7 +92,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             }
             else if (model is Professor)
             {
-                WorkWindow = new ProfessorViewModel(model as Professor, conferenceRepository, bookRepository);
+                WorkWindow = new ProfessorRootViewModel(model as Professor, conferenceRepository, bookRepository);
             }
             else
             {
@@ -120,10 +121,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
                               new ConferenceNavigationModule(this)
                           };
 
-            foreach (var module in modules)
-            {
-                module.RegisterModule(CommandContainer);
-            }
+            modules.ForEach(m => m.RegisterModule(CommandContainer));
         }
 
         #endregion // Class Private Methods

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
@@ -39,8 +38,6 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 
         #region Class Protected Methods
 
-        
-
         protected void SetModelProperty<TProperty>(Expression<Func<T, TProperty>> evaluator, TProperty value)
         {
             if (evaluator == null)
@@ -50,7 +47,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 
             var body = (MemberExpression)evaluator.Body;
             var propInfo = (PropertyInfo)body.Member;
-            var target = GetMember(Model, body);
+            var target = GetMember(body, Model);
 
             var oldValue = (TProperty)propInfo.GetValue(target);
 
@@ -63,12 +60,17 @@ namespace MilitaryFaculty.Presentation.Infrastructure
             OnPropertyChanged(propInfo.Name);
         }
 
-        private object GetMember(T target, MemberExpression expression)
+        #endregion // Class Protected Methods
+
+        #region Class Private Methods
+        
+        private static object GetMember(MemberExpression expression, T target)
         {
             if (target == null)
             {
                 throw new ArgumentNullException("target");
             }
+
             if (expression == null)
             {
                 throw new ArgumentNullException("expression");
@@ -86,6 +88,6 @@ namespace MilitaryFaculty.Presentation.Infrastructure
             return member;
         }
 
-        #endregion // Class Protected Methods
+        #endregion // Class Private Methods
     }
 }

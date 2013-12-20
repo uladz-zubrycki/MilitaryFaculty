@@ -1,5 +1,5 @@
-﻿using MilitaryFaculty.Domain;
-using MilitaryFaculty.Extensions;
+﻿using System.Collections.Generic;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
@@ -9,11 +9,15 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public CathedraViewModel(Cathedra model)
             : base(model)
         {
-            ViewModels.AddRange(new[]
-                                {
+            // Empty
+        }
 
-                                    new CathedraInfoViewModel(Model)
-                                });
+        protected override IEnumerable<ViewModel<Cathedra>> GetViewModels()
+        {
+            return new[]
+                   {
+                       new CathedraInfoViewModel(Model)
+                   };
         }
     }
 }

@@ -1,46 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class ExhibitionInfoViewModel : ViewModel<Exhibition>
+    public class ExhibitionInfoViewModel : EntityViewModel<Exhibition>
     {
         #region Class Properties
 
-        public string Name { get; set; }
-        public DateTime Date { get; set; }
-
         public override string Title
         {
-            get
-            {
-                return "Базовая информация";
-            }
+            get { return "Базовая информация"; }
         }
 
+        [TextProperty(Label = "Название:")]
+        public string Name
+        {
+            get { return Model.Name; }
+            set { SetModelProperty(m => m.Name, value); }
+        }
+
+        [DateProperty(Label = "Дата проведения:")]
+        public DateTime Date
+        {
+            get { return Model.Date; }
+            set { SetModelProperty(m => m.Date, value); }
+        }
+
+        [EnumProperty(Label = "Награда:")]
         public AwardType AwardType
         {
             get { return Model.AwardType; }
-            set
-            {
-               SetModelProperty(m => m.AwardType, value);
-            }
+            set { SetModelProperty(m => m.AwardType, value); }
         }
 
         #endregion // Class Properties
 
         #region Class Constructors
 
-        public ExhibitionInfoViewModel(Exhibition model, EditableViewMode mode = EditableViewMode.Display)
+        public ExhibitionInfoViewModel(Exhibition model)
             : base(model)
         {
             var editCommands = new EditableViewBehaviour<Exhibition>(Do.Conference.Update, Model);
-            editCommands.Inject(this, mode);
+            editCommands.Inject(this);
         }
 
         #endregion // Class Constructors

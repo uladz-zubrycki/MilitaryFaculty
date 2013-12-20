@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Xaml;
+using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.Custom.MarkupExtensions
 {
@@ -86,7 +87,7 @@ namespace MilitaryFaculty.Presentation.Custom.MarkupExtensions
         /// <param name="serviceProvider">A service provider helper that can provide services for the markup extension.</param>
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            var resolver = GetService<IXamlNamespaceResolver>(serviceProvider);
+            var resolver = serviceProvider.GetService<IXamlNamespaceResolver>();
             var xamlNamespace = resolver.GetNamespace(NamespacePrefix);
             var assemblyName = GetAssemblyName(xamlNamespace);
             var fullTypeName = GetNamespace(xamlNamespace) + '.' + TypeName;
@@ -108,7 +109,7 @@ namespace MilitaryFaculty.Presentation.Custom.MarkupExtensions
         /// </summary>
         /// <param name="xamlNamespace">Information about assembly and namespace got from xaml namespace prefix.</param>
         /// <returns>Assembly name.</returns>
-        private string GetAssemblyName(string xamlNamespace)
+        private static string GetAssemblyName(string xamlNamespace)
         {
             const string pattern = @"(?<=;assembly=)(\w+(?:\.\w+)*)$";
             var match = Regex.Match(xamlNamespace, pattern);
@@ -121,28 +122,12 @@ namespace MilitaryFaculty.Presentation.Custom.MarkupExtensions
         /// </summary>
         /// <param name="xamlNamespace">Information about assembly and namespace got from xaml namespace prefix.</param>
         /// <returns>Namespace name.</returns>
-        private string GetNamespace(string xamlNamespace)
+        private static string GetNamespace(string xamlNamespace)
         {
             const string pattern = @"(?<=clr-namespace:)(\w+(?:\.\w+)*)(?=;assembly)";
             var match = Regex.Match(xamlNamespace, pattern);
 
             return match.Value;
-        }
-
-        /// <summary>
-        /// Get service of specified type.
-        /// </summary>
-        /// <typeparam name="T">Type of requested service.</typeparam>
-        /// <param name="serviceProvider">Provides access to services.</param>
-        /// <returns>Service of requested type, if exists; otherwise null.</returns>
-        private T GetService<T>(IServiceProvider serviceProvider)
-        {
-            if (serviceProvider == null)
-            {
-                throw new ArgumentNullException("serviceProvider");
-            }
-
-            return (T) serviceProvider.GetService(typeof (T));
         }
     }
 }

@@ -5,59 +5,45 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class ConferenceInfoViewModel : ViewModel<Conference>
+    public class ConferenceInfoViewModel : EntityViewModel<Conference>
     {
         #region Class Properties
 
         public override string Title
         {
-            get
-            {
-                return "Базовая информация";
-            }
+            get { return "Базовая информация"; }
         }
 
+        [EnumProperty(Label = "Тип:")]
         public EventLevel ConferenceType
         {
             get { return Model.ConferenceType; }
-            set
-            {
-                SetModelProperty(m => m.ConferenceType, value);
-            }
+            set { SetModelProperty(m => m.ConferenceType, value); }
         }
 
+        [TextProperty(Label = "Название:")]
         public string Name
         {
             get { return Model.Name; }
-            set
-            {
-                SetModelProperty(m => m.Name, value);
-            }
+            set { SetModelProperty(m => m.Name, value); }
         }
 
-        public string DateString
-        {
-            get { return Date.ToShortDateString(); }
-        }
-
+        [DateProperty(Label = "Дата проведения")]
         public DateTime Date
         {
             get { return Model.Date; }
-            set
-            {
-               SetModelProperty(m => m.Date, value);
-            }
+            set { SetModelProperty(m => m.Date, value); }
         }
 
         #endregion // Class Properties
 
         #region Class Constructors
 
-        public ConferenceInfoViewModel(Conference model, EditableViewMode mode = EditableViewMode.Display)
+        public ConferenceInfoViewModel(Conference model)
             : base(model)
         {
             var editCommands = new EditableViewBehaviour<Conference>(Do.Conference.Update, Model);
-            editCommands.Inject(this, mode);
+            editCommands.Inject(this);
         }
 
         #endregion // Class Constructors

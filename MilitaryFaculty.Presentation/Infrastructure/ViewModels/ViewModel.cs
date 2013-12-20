@@ -19,13 +19,15 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 
         public virtual string Title { get; protected set; }
         public ObservableCollection<CommandViewModel> Commands { get; private set; }
+        public ViewModel TooltipViewModel { get; protected set; }
 
         public virtual object Tag
         {
             get { return tag; }
             set
             {
-                SetValue(() => this.tag, value);
+                SetValue(() => tag, null); // just some hack, for DataTrigger
+                SetValue(() => tag, value);
             }
         }
 
@@ -65,15 +67,15 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 
             var oldValue = (TField)fieldInfo.GetValue(this);
 
-            if (value.Equals(oldValue))
+            if (value == null || !value.Equals(oldValue))
             {
-                return false;
+                fieldInfo.SetValue(this, value);
+                OnPropertyChanged(propertyName);
+
+                return true;
             }
 
-            fieldInfo.SetValue(this, value);
-            OnPropertyChanged(propertyName);
-
-            return true;
+            return false;
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

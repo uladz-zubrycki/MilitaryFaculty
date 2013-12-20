@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
@@ -6,7 +7,7 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class ConferenceListItemViewModel : ComplexViewModel<Conference>
+    public class ConferenceListItemViewModel : ListItemViewModel<Conference>
     {
         #region Type Static Members
 
@@ -19,8 +20,15 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Properties
 
-        public ConferenceInfoViewModel InfoViewModel { get; private set; }
-        public ConferenceReportViewModel ReportViewModel { get; private set; }
+        public override string PrimaryInfo
+        {
+            get { return Model.Date.ToShortDateString(); }
+        }
+
+        public override string SecondaryInfo
+        {
+            get { return Model.Name; }
+        }
 
         #endregion // Class Properties
 
@@ -29,21 +37,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ConferenceListItemViewModel(Conference model)
             : base(model)
         {
-            InitViewModels();
+            TooltipViewModel = new ConferenceReportViewModel(Model);
             InitCommands();
         }
 
         #endregion // Class Constructors
 
         #region Class Protected Methods
-
-        protected void InitViewModels()
-        {
-            InfoViewModel = new ConferenceInfoViewModel(Model);
-            ReportViewModel = new ConferenceReportViewModel(Model);
-
-            ViewModels.Add(InfoViewModel);
-        }
 
         protected void InitCommands()
         {
@@ -53,6 +53,10 @@ namespace MilitaryFaculty.Presentation.ViewModels
                                   CreateRemoveConferenceCommand(),
                               });
         }
+
+        #endregion // Class Protected Methods
+
+        #region Class Private Methods
 
         private ImagedCommandViewModel CreateRemoveConferenceCommand()
         {
@@ -72,6 +76,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
                                               Model, tooltip, imageSource);
         }
 
-        #endregion // Class Protected Methods
+        #endregion // Class Private Methods
     }
 }

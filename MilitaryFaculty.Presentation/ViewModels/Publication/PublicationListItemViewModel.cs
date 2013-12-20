@@ -6,21 +6,28 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class PublicationListItemViewModel : ViewModel<Publication>
+    public class PublicationListItemViewModel : ListItemViewModel<Publication>
     {
         #region Type Static Members
 
         public static Func<Publication, PublicationListItemViewModel> FromModel()
         {
             return book => new PublicationListItemViewModel(book);
-        }  
+        }
 
         #endregion // Type Static Members
 
         #region Class Properties
 
-        public PublicationInfoViewModel InfoViewModel { get; private set; }
-        public PublicationExtraInfoViewModel ExtraInfoViewModel { get; private set; }
+        public override string PrimaryInfo
+        {
+            get { return Model.PagesCount + " стр."; }
+        }
+
+        public override string SecondaryInfo
+        {
+            get { return Model.Name; }
+        }
 
         #endregion // Class Properties
 
@@ -29,19 +36,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public PublicationListItemViewModel(Publication model)
             : base(model)
         {
-            InitViewModels();
+            TooltipViewModel = new PublicationExtraInfoViewModel(Model);
             InitCommands();
         }
 
         #endregion // Class Constructors
 
         #region Class Private Methods
-
-        private void InitViewModels()
-        {
-            InfoViewModel = new PublicationInfoViewModel(Model);
-            ExtraInfoViewModel = new PublicationExtraInfoViewModel(Model);
-        }
 
         private void InitCommands()
         {
@@ -71,5 +72,10 @@ namespace MilitaryFaculty.Presentation.ViewModels
         }
 
         #endregion // Class Private Methods
+
+        #region Overrides of ListItemViewModel<Publication>
+
+      
+        #endregion
     }
 }

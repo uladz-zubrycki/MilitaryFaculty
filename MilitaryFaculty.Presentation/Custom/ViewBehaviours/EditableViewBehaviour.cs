@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Input;
+using System.Windows.Media.Media3D;
 using MilitaryFaculty.Domain.Contract;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Infrastructure;
@@ -9,15 +9,15 @@ using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class EditableViewBehaviour<T> : IViewBehaviour
-        where T : class, IImitator<T>, new()
+    public class EditableViewBehaviour<TModel> : IViewBehaviour
+        where TModel : class, IImitator<TModel>, new()
     {
         #region Class Fields
 
-        private ViewModel<T> viewModel;
+        private ViewModel<TModel> viewModel;
 
         private readonly List<CommandViewModel> commandsBackup;
-        private readonly T modelBackup;
+        private readonly TModel modelBackup;
 
         private readonly ImagedCommandViewModel editCommandViewModel;
         private readonly ImagedCommandViewModel applyChangesCommandViewModel;
@@ -35,7 +35,7 @@ namespace MilitaryFaculty.Presentation.Custom
             }
 
             commandsBackup = new List<CommandViewModel>();
-            modelBackup = new T();
+            modelBackup = new TModel();
 
             applyChangesCommandViewModel = CreateApplyChangesCommand(applyCommand, commandParameter);
             editCommandViewModel = CreateEditCommand();
@@ -46,33 +46,16 @@ namespace MilitaryFaculty.Presentation.Custom
 
         #region Class Public Methods
 
-        public void Inject(ViewModel<T> viewModel)
-        {
-            Inject(viewModel, EditableViewMode.Display);
-        }
-
-        public void Inject(ViewModel<T> viewModel, EditableViewMode mode)
+        public void Inject(ViewModel<TModel> viewModel)
         {
             if (viewModel == null)
             {
                 throw new ArgumentNullException("viewModel");
             }
 
-            if (!mode.IsDefined())
-            {
-                throw new InvalidEnumArgumentException();
-            }
-
             this.viewModel = viewModel;
-
-            if (mode == EditableViewMode.Display)
-            {
-                ToDisplayMode();
-            }
-            else 
-            {
-                ToEditMode();
-            }
+            this.viewModel.Tag = EditableViewMode.Display;
+            this.viewModel.Commands.Add(editCommandViewModel);
         }
 
         #endregion // Class Public Methods
@@ -81,12 +64,7 @@ namespace MilitaryFaculty.Presentation.Custom
 
         void IViewBehaviour.Inject(ViewModel viewModel)
         {
-            Inject(viewModel as ViewModel<T>);
-        }
-
-        void IViewBehaviour.Inject(ViewModel viewModel, object defaultTag)
-        {
-            Inject(viewModel as ViewModel<T>, (EditableViewMode)defaultTag);
+            Inject(viewModel as ViewModel<TModel>);
         }
 
         #endregion // Implementation of IViewBehaviour
@@ -97,7 +75,14 @@ namespace MilitaryFaculty.Presentation.Custom
         {
             const string tooltip = "Отмена";
             const string imagePath = @"..\Content\cancel.png";
-            var command = new Command(OnCancelChanges);
+
+            Action onCancel = () =>
+            {
+                RestoreModel();
+                ToDisplayMode();
+            };
+
+            var command = new Command(onCancel);
 
             return new ImagedCommandViewModel(command, tooltip, imagePath);
         }
@@ -142,8 +127,11 @@ namespace MilitaryFaculty.Presentation.Custom
             BackupModel();
 
             viewModel.Commands.Clear();
-            viewModel.Commands.Add(applyChangesCommandViewModel);
-            viewModel.Commands.Add(cancelChangesCommandViewModel);
+            viewModel.Commands.AddRange(new[]
+                                        {
+                                            applyChangesCommandViewModel,
+                                            cancelChangesCommandViewModel
+                                        });
 
             viewModel.Tag = EditableViewMode.Edit;
         }
@@ -171,12 +159,6 @@ namespace MilitaryFaculty.Presentation.Custom
             viewModel.Commands.Add(editCommandViewModel);
 
             commandsBackup.Clear();
-        }
-
-        private void OnCancelChanges()
-        {
-            RestoreModel();
-            ToDisplayMode();
         }
 
         #endregion // Class Private Methods

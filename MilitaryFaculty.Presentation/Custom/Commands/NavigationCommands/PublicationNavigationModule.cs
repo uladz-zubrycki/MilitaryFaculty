@@ -46,7 +46,7 @@ namespace MilitaryFaculty.Presentation.Custom
                             Author = author
                         };
 
-            ViewModel.WorkWindow = new PublicationAddViewModel(model);
+            ViewModel.WorkWindow = new AddPublicationViewModel(model);
         }
 
         private void OnBrowseBookDetails(Publication publication)
@@ -56,7 +56,7 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("publication");
             }
 
-            ViewModel.WorkWindow = new PublicationViewModel(publication);
+            ViewModel.WorkWindow = new PublicationRootViewModel(publication);
         }
 
         #endregion // Class Private Methods

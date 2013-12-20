@@ -9,7 +9,7 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class ProfessorExhibitionsViewModel : ViewModel<Professor>
+    public class ProfessorExhibitionsViewModel : EntityViewModel<Professor>
     {
         #region Class Fields
 
@@ -39,10 +39,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         public int ExhibitionsCount
         {
-            get
-            {
-                return Exhibitions.Count;
-            }
+            get { return Exhibitions.Count; }
         }
 
         #endregion // Class Properties
@@ -82,10 +79,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             var items = Model.Exhibitions.Select(converter);
 
             exhibitions = new ObservableCollection<ExhibitionListItemViewModel>(items);
-            exhibitions.CollectionChanged += (sender, args) =>
-            {
-                OnPropertyChanged("ExhibitionsCount");
-            };
+            exhibitions.CollectionChanged += (sender, args) => { OnPropertyChanged("ExhibitionsCount"); };
         }
 
         private void OnExhibitionCreated(object sender, ModifiedEntityEventArgs<Exhibition> e)
