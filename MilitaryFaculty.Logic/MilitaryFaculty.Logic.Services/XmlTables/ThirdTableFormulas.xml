@@ -270,10 +270,10 @@
 
     <Formula	name = "3.2 Издано научных статей в научных рецензируемых журналах"
           id = "id332"
-          expression = "CritArticlesCount / ProfsCount * coeff1 * coeff2"
+          expression = "ReviewedArticlesCount / ProfsCount * coeff1 * coeff2"
 		  maxValue = "0">
       <Arguments>
-        <Argument name="CritArticlesCount" text="Количество статей"/>
+        <Argument name="ReviewedArticlesCount" text="Количество статей"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
       </Arguments>
       <Coefficients>
@@ -284,10 +284,10 @@
 
     <Formula	name = "3.3 Издано научных статей в научных нерецензируемых журналах"
           id = "id333"
-          expression = "UnCritArticlesCount / ProfsCount * coeff1 * coeff2"
+          expression = "ArticlesCount / ProfsCount * coeff1 * coeff2"
 		  maxValue = "0">
       <Arguments>
-        <Argument name="UnCritArticlesCount" text="Количество статей"/>
+        <Argument name="ArticlesCount" text="Количество статей"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
       </Arguments>
       <Coefficients>
@@ -298,10 +298,10 @@
 
     <Formula	name = "3.4 Издано тезисов докладов в сборниках материалов научных конференций"
           id = "id334"
-          expression = "LecturesCount / ProfsCount * coeff1 * coeff2"
+          expression = "ThesisesCount / ProfsCount * coeff1 * coeff2"
 		  maxValue = "0">
       <Arguments>
-        <Argument name="LecturesCount" text="Количество докладов"/>
+        <Argument name="ThesisesCount" text="Количество докладов"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
       </Arguments>
       <Coefficients>

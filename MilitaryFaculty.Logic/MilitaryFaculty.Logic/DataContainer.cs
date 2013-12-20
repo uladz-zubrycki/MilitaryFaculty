@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.Office.Interop.Excel;
+using ClosedXML.Excel;
 using MilitaryFaculty.Logic.XmlDomain;
 
 namespace MilitaryFaculty.Logic
@@ -15,7 +15,7 @@ namespace MilitaryFaculty.Logic
 
         #endregion // Class Fields
 
-        #region Class Public Methods
+        #region Class Constructors
 
         public DataContainer(TableInfo tableInfo, TableFormulas tableFormulas, DataModule dataModule)
         {
@@ -37,52 +37,76 @@ namespace MilitaryFaculty.Logic
             this.dataModule = dataModule;
         }
 
-        public void GenerateExcelSheet(Worksheet xlWorkSheet)
+        #endregion // Class Constructors
+
+        #region Class Public Methods
+
+        public void GenerateExcelSheet(IXLWorksheet workSheet)
         {
-            if (xlWorkSheet == null)
+            if (workSheet == null)
             {
-                throw new ArgumentNullException("xlWorkSheet");
+                throw new ArgumentNullException("workSheet");
             }
 
-            var firstLine = xlWorkSheet.UsedRange.Rows.Count + 1;
-            var curLine = firstLine;
+            var firstLine = (workSheet.RangeUsed() == null) ? 2 : workSheet.RangeUsed().RowCount() + 4;
 
+            var curLine = firstLine;
             double totalRating = 0;
 
-            var xlRange = xlWorkSheet.Range["b" + curLine, "e" + (curLine + 1)];
-            XlStyle.SetNameStyle(xlRange, tableInfo.Name);
+            var range = workSheet.Range(curLine, XlStyle.FirstColumn, curLine + 1, XlStyle.LastColumn);
+            XlStyle.SetNameStyle(range, tableInfo.Name);
 
             curLine += 2;
 
+            //Parts generation
             foreach (var part in tableInfo.TableParts)
             {
-                xlRange = xlWorkSheet.Range["b" + curLine, "e" + curLine];
-                XlStyle.SetSubNameStyle(xlRange, part.Name);
+                range = workSheet.Range(curLine, XlStyle.FirstColumn, curLine, XlStyle.LastColumn);
+                XlStyle.SetSubNameStyle(range, part.Name);
                 curLine++;
 
+                //Formula lines generation
                 foreach (var id in part.Identifiers)
                 {
                     var formulaInfo = tableFormulas.Formulas.First(f => f.Id == id).ToFormulaInfo();
-                    var characteristic = new Characteristic(formulaInfo, dataModule); 
-                    var val = characteristic.Evaluate();
+                    var characteristic = new Characteristic(formulaInfo, dataModule);
+                    var val = NormilizeValue(characteristic.Evaluate());
 
-                    xlWorkSheet.Cells[curLine, 3] = formulaInfo.Name;
-                    xlWorkSheet.Cells[curLine, 4] = val.ToString("F0");
-                    xlWorkSheet.Cells[curLine, 5] = Math.Abs(formulaInfo.MaxValue) < 0.001
-                                                        ? "-"
-                                                        : formulaInfo.MaxValue.ToString("F0");
+                    //Fields setting
+                    workSheet.Cell(curLine, XlStyle.FirstColumn + 1).Value = formulaInfo.Name;
+                    workSheet.Cell(curLine, XlStyle.FirstColumn + 2).Value = val.ToString("F0");
+                    workSheet.Cell(curLine, XlStyle.FirstColumn + 3).Value = ValueOrDash(formulaInfo.MaxValue);
+
                     totalRating += val;
                     curLine++;
                 }
             }
 
-            XlStyle.SetNameStyle(xlWorkSheet.Range["b" + curLine, "c" + curLine], "Итог");
-            xlWorkSheet.Cells[curLine, 4] = totalRating.ToString("F0");
+            //Results setting
+            XlStyle.SetNameStyle(workSheet.Range(curLine, XlStyle.FirstColumn, curLine, XlStyle.FirstColumn + 1), "Итог");
+            workSheet.Cell(curLine, XlStyle.FirstColumn + 2).Value = totalRating.ToString("F0");
 
-            XlStyle.SetTableStyle(xlWorkSheet.Range["b" + firstLine, "e" + (curLine)]);
-            XlStyle.SetSheetStyle(xlWorkSheet, 3, 4, 5);
+            //Sheet styles setting
+            XlStyle.SetTableStyle(workSheet.Range(firstLine, XlStyle.FirstColumn, curLine, XlStyle.LastColumn));
+            XlStyle.SetSheetStyle(workSheet);
         }
 
         #endregion // Class Public Methods
+
+        #region Class Private Methods
+
+        private static double NormilizeValue(double value)
+        {
+            return double.IsInfinity(value) ? 0 : value;
+        }
+
+        private static string ValueOrDash(double value)
+        {
+            return Math.Abs(value) < 0.001
+                       ? "-"
+                       : value.ToString("F0");
+        }
+
+        #endregion // Class Private Methods
     }
 }

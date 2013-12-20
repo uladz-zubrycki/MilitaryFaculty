@@ -5,7 +5,7 @@
     <Formula	name = "1.1 Удельный вес: докторантов"
           id = "id411"
           expression = "DocsCount / ProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "1000">
       <Arguments>
         <Argument name="DocsCount" text="Количество докторантов"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
@@ -19,7 +19,7 @@
     <Formula	name = "1.2 Удельный вес: адьюнктов очной формы обучения"
           id = "id412"
           expression = "AdjCountFt / ProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "700">
       <Arguments>
         <Argument name="AdjCountFt" text="Количество адъюнктов"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
@@ -33,7 +33,7 @@
     <Formula	name = "1.3 Удельный вес: адьюнктов заочной формы обучения"
           id = "id413"
           expression = "AdjCountExt / ProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "600">
       <Arguments>
         <Argument name="AdjCountExt" text="Количество адъюнктов"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
@@ -47,7 +47,7 @@
     <Formula	name = "1.4 Удельный вес: соискателей ученой степени доктора наук"
           id = "id414"
           expression = "ApplDoctCount / ProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "900">
       <Arguments>
         <Argument name="ApplDoctCount" text="Количество соискателей ученой степени доктора наук"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
@@ -61,7 +61,7 @@
     <Formula	name = "1.5 Удельный вес: соискателей ученой степени кандидата наук"
           id = "id415"
           expression = "ApplCandCount / ProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "500">
       <Arguments>
         <Argument name="ApplCandCount" text="Количество соискателей ученой степени кандидата наук"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
@@ -75,7 +75,7 @@
     <Formula	name = "2.1 Защищено диссертаций: докторских"
           id = "id421"
           expression = "DocThesisesCount / ProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "500">
       <Arguments>
         <Argument name="DocThesisesCount" text="Количество ППС, которым присвоена ученая степень доктора наук"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
@@ -89,7 +89,7 @@
     <Formula	name = "2.2 Защищено диссертаций: кандидатских"
           id = "id422"
           expression = "CandThesisesCount / ProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "2500">
       <Arguments>
         <Argument name="CandThesisesCount" text="Количество ППС, которым присвоена ученая степень кандидата наук"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
@@ -103,7 +103,7 @@
     <Formula	name = "2.3 Присвоено ученое звание: профессора"
         id = "id423"
         expression = "DocAssignCount / ProfsCount * coeff1 * coeff2"
-		maxValue = "0">
+		maxValue = "3000">
       <Arguments>
         <Argument name="DocAssignCount" text="Количество ППС, которым присвоена ученое звание профессора"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
@@ -117,7 +117,7 @@
     <Formula	name = "2.4 Присвоено ученое звание: доцента"
           id = "id424"
           expression = "DocentsAssignCount / ProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "1500">
       <Arguments>
         <Argument name="DocentsAssignCount" text="Количество ППС, которым присвоена ученое звание доцента"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
@@ -128,10 +128,10 @@
       </Coefficients>
     </Formula>
 
-    <Formula	name = "3.1 Укомплектованность военного факультета (кафедры) научными работнкиками высшей квалификации >40%"
+    <Formula	name = "3.1 Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации >40%"
         id = "id431"
         expression = "SoHqA40 * coeff1"
-		maxValue = "0">
+		maxValue = "50">
       <Arguments>
         <Argument name="SoHqA40" text="Более 40%"/>
       </Arguments>
@@ -140,10 +140,10 @@
       </Coefficients>
     </Formula>
 
-    <Formula	name = "3.2 Укомплектованность военного факультета (кафедры) научными работнкиками высшей квалификации более 20%, но менее 40%"
+    <Formula	name = "3.2 Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации более 20%, но менее 40%"
       id = "id432"
       expression = "SoHqA20B40 * coeff1"
-	  maxValue = "0">
+	  maxValue = "40">
       <Arguments>
         <Argument name="SoHqA20B40" text="Более 20%, но менее 40%"/>
       </Arguments>
@@ -152,10 +152,10 @@
       </Coefficients>
     </Formula>
 
-    <Formula	name = "3.3 Укомплектованность военного факультета (кафедры) научными работнкиками высшей квалификации менее 20%"
+    <Formula	name = "3.3 Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации менее 20%"
       id = "id433"
       expression = "SoHqB20 * coeff1"
-	  maxValue = "0">
+	  maxValue = "20">
       <Arguments>
         <Argument name="SoHqB20" text="Менее 20%"/>
       </Arguments>
@@ -164,7 +164,7 @@
       </Coefficients>
     </Formula>
 
-    <Formula	name = "3.4 Укомплектованность военного факультета (кафедры) научными работнкиками высшей квалификации (работники отсутствуют)"
+    <Formula	name = "3.4 Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации (работники отсутствуют)"
       id = "id434"
       expression = "SoHqE0 * coeff1"
 	  maxValue = "0">
@@ -207,7 +207,7 @@
     <Formula	name = "3.7 Удельный вес докторов наук"
           id = "id437"
           expression = "DosCount / ProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "1000">
       <Arguments>
         <Argument name="DosCount" text="Количество докторов наук"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
@@ -221,9 +221,9 @@
     <Formula	name = "3.8 Удельный вес кандидатов наук"
           id = "id438"
           expression = "CosCount / ProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "500">
       <Arguments>
-        <Argument name="CosCount" text="Количество докторов наук"/>
+        <Argument name="CosCount" text="Количество кандидатов наук"/>
         <Argument name="ProfsCount" text="Общее количество ППС"/>
       </Arguments>
       <Coefficients>
@@ -339,7 +339,7 @@
         <Argument name="HqProfsCount" text="Общее количество научных работников высшей квалификации"/>
       </Arguments>
       <Coefficients>
-        <Coefficient name="coeff1" value="3"/>
+        <Coefficient name="coeff1" value="300"/>
         <Coefficient name="coeff2" value="100"/>
       </Coefficients>
     </Formula>
@@ -347,7 +347,7 @@
     <Formula	name = "4.9 Степень участия научных работников ысшей квалификации из числа ППС в составе специальных советов по защите диссертаций"
           id = "id449"
           expression = "DodHqProfsCount / HqProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "250">
       <Arguments>
         <Argument name="DodHqProfsCount" text="Количество научных работников высшей квалификации из числа ППС, участвующих в работе специализированных советов по защите диссертаций"/>
         <Argument name="HqProfsCount" text="Общее количество научных работников высшей квалификации"/>
@@ -361,7 +361,7 @@
     <Formula	name = "4.10 Степень участия научных работников высшей квалификации из числа ППС в составе военно-научных и научно-технических советов вуза"
           id = "id4410"
           expression = "RcHqProfsCount / HqProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "200">
       <Arguments>
         <Argument name="RcHqProfsCount" text="Количество научных работников высшей квалификации из числа ППС, участвующих в работе научных советов вуза"/>
         <Argument name="HqProfsCount" text="Общее количество научных работников высшей квалификации"/>
@@ -375,7 +375,7 @@
     <Formula	name = "4.11 Степень участия научных работников ысшей квалификации из числа ППС в составе редакционных коллегий научных изданий"
           id = "id4411"
           expression = "EbspHqProfsCount / HqProfsCount * coeff1 * coeff2"
-		  maxValue = "0">
+		  maxValue = "150">
       <Arguments>
         <Argument name="EbspHqProfsCount" text="Количество научных работников высшей квалификации из числа ППС, участвующих в работе редакционных коллегий научных изданий"/>
         <Argument name="HqProfsCount" text="Общее количество научных работников высшей квалификации"/>

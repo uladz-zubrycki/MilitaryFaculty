@@ -52,6 +52,7 @@
     <Compile Include="Configurations\CathedraConfiguration.cs" />
     <Compile Include="Configurations\FullNameConfiguration.cs" />
     <Compile Include="ConferenceRepository.cs" />
+    <Compile Include="ExhibitionRepository.cs" />
     <Compile Include="PublicationRepository.cs" />
     <Compile Include="EntityContext.cs" />
     <Compile Include="Configurations\ConferenceConfiguration.cs" />

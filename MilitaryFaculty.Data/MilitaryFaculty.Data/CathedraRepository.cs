@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
@@ -22,7 +23,12 @@ namespace MilitaryFaculty.Data
         public ICollection<Cathedra> All()
         {
             return DbSet.ToList();
-        }  
+        }
+
+        public int Count(Func<Cathedra, bool> predicate)
+        {
+            return DbSet.Count(predicate);
+        }
 
         #endregion // Class Public Methods
     }

@@ -53,9 +53,11 @@ namespace MilitaryFaculty.Presentation.Infrastructure
             var dataModule = new DataModule();
             dataModule.RegisterProviders(new IDataProvider[]
                 {
-                    new CustomDataProvider(),
-                    new ProfessorsDataProvider(),
-                    new PublicationsDataProvider(), 
+                    //new CathedrasDataProvider(new CathedraRepository(context)),
+                    //new ProfessorsDataProvider(new ProfessorRepository(context)),
+                    //new PublicationsDataProvider(new PublicationRepository(context)),
+                    //new ExhibitionsDataProvider(new ExhibitionRepository(context)),
+                    //new ConferencesDataProvider(new ConferenceRepository(context)), 
                 });
 
             builder.RegisterInstance(dataModule);

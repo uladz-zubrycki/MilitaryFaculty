@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.69.1.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="ELW.Library.Math">
       <HintPath>..\..\lib\ELW.Library.Math.dll</HintPath>
     </Reference>
@@ -44,8 +52,10 @@
   <ItemGroup>
     <Compile Include="DataModule.cs" />
     <Compile Include="Characteristic.cs" />
+    <Compile Include="DataProviders\ConferencesDataProvider.cs" />
+    <Compile Include="DataProviders\ExhibitionsDataProvider.cs" />
     <Compile Include="DataProviders\IDataProvider.cs" />
-    <Compile Include="DataProviders\CustomDataProvider.cs" />
+    <Compile Include="DataProviders\CathedrasDataProvider.cs" />
     <Compile Include="DataContainer.cs" />
     <Compile Include="DataProviders\ProfessorsDataProvider.cs" />
     <Compile Include="DataProviders\PublicationsDataProvider.cs" />
@@ -64,6 +74,14 @@
       <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
       <Name>MilitaryFaculty.Extensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\MilitaryFaculty.Data\MilitaryFaculty.Data.Contract\MilitaryFaculty.Data.Contract.csproj">
+      <Project>{1F3C691F-2E66-4A98-AD58-1FC5B752317D}</Project>
+      <Name>MilitaryFaculty.Data.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MilitaryFaculty.Data\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj">
+      <Project>{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}</Project>
+      <Name>MilitaryFaculty.Data %28MilitaryFaculty.Data\MilitaryFaculty.Data%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.Contract\MilitaryFaculty.Domain.Contract.csproj">
       <Project>{10E40656-D44B-46CE-9FED-0496F71554B7}</Project>
       <Name>MilitaryFaculty.Domain.Contract</Name>
@@ -74,24 +92,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="Microsoft.Office.Core">
-      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>5</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="Microsoft.Office.Interop.Excel">
-      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>7</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="VBIDE">
       <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>5</VersionMajor>
