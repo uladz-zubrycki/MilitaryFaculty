@@ -9,13 +9,13 @@ namespace MilitaryFaculty.Logic.DataProviders
     {
         #region Class Fields
 
-        private readonly IExhibitionRepository exhibitionRepository;
+        private readonly IRepository<Exhibition> exhibitionRepository;
         
         #endregion // Class Fields
 
         #region Class Constructors
 
-        public ExhibitionsDataProvider(IExhibitionRepository exhibitionRepository)
+        public ExhibitionsDataProvider(IRepository<Exhibition> exhibitionRepository)
         {
             if (exhibitionRepository == null)
             {
@@ -35,7 +35,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         public double UniversityFirstDiplomasCount()
         {
             //TODO: Уровень выставки
-            return exhibitionRepository.Count(e => e.AwardType == AwardType.FirstDegree);
+            return exhibitionRepository.CountOf(e => e.AwardType == AwardType.FirstDegree);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("UnSecondDiplCount")]
         public double UniversitySecondDiplomasCount()
         {
-            return exhibitionRepository.Count(e => e.AwardType == AwardType.SecondDegree);
+            return exhibitionRepository.CountOf(e => e.AwardType == AwardType.SecondDegree);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("UnThirdDiplCount")]
         public double UniversityThirdDiplomasCount()
         {
-            return exhibitionRepository.Count(e => e.AwardType == AwardType.ThirdDegree);
+            return exhibitionRepository.CountOf(e => e.AwardType == AwardType.ThirdDegree);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         public double UniversityLettersOfCommendationCount()
         {
             //TODO: Грамота
-            return exhibitionRepository.Count(e => e.AwardType == AwardType.NoneDegree);
+            return exhibitionRepository.CountOf(e => e.AwardType == AwardType.WithoutDegree);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReFirstDiplCount")]
         public double RepublicanFirstDiplomasCount()
         {
-            return exhibitionRepository.Count(e => e.AwardType == AwardType.FirstDegree);
+            return exhibitionRepository.CountOf(e => e.AwardType == AwardType.FirstDegree);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReSecondDiplCount")]
         public double RepublicanSecondDiplomasCount()
         {
-            return exhibitionRepository.Count(e => e.AwardType == AwardType.SecondDegree);
+            return exhibitionRepository.CountOf(e => e.AwardType == AwardType.SecondDegree);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReThirdDiplCount")]
         public double RepublicanThirdDiplomasCount()
         {
-            return exhibitionRepository.Count(e => e.AwardType == AwardType.ThirdDegree);
+            return exhibitionRepository.CountOf(e => e.AwardType == AwardType.ThirdDegree);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReLettersCommendationCount")]
         public double RepublicanLettersOfCommendationCount()
         {
-            return exhibitionRepository.Count(e => e.AwardType == AwardType.NoneDegree);
+            return exhibitionRepository.CountOf(e => e.AwardType == AwardType.WithoutDegree);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("InFirstDiplCount")]
         public double InternationalFirstDiplomasCount()
         {
-            return exhibitionRepository.Count(e => e.AwardType == AwardType.FirstDegree);
+            return exhibitionRepository.CountOf(e => e.AwardType == AwardType.FirstDegree);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("InSecondDiplCount")]
         public double InternationalSecondDiplomasCount()
         {
-            return exhibitionRepository.Count(e => e.AwardType == AwardType.SecondDegree);
+            return exhibitionRepository.CountOf(e => e.AwardType == AwardType.SecondDegree);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("InThirdDiplCount")]
         public double InternationalThirdDiplomasCount()
         {
-            return exhibitionRepository.Count(e => e.AwardType == AwardType.ThirdDegree);
+            return exhibitionRepository.CountOf(e => e.AwardType == AwardType.ThirdDegree);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("InLettersCommendationCount")]
         public double InternationalLettersOfCommendationCount()
         {
-            return exhibitionRepository.Count(e => e.AwardType == AwardType.NoneDegree);
+            return exhibitionRepository.CountOf(e => e.AwardType == AwardType.WithoutDegree);
         }
     }
 }

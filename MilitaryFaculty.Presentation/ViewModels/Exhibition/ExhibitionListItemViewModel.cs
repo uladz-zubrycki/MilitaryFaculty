@@ -37,6 +37,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             : base(model)
         {
             InitCommands();
+            TooltipViewModel = new ExhibitionInfoViewModel(Model);
         }
 
         #endregion // Class Constructors

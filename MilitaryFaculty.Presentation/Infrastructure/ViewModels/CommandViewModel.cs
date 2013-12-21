@@ -2,7 +2,7 @@
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
-    public class CommandViewModel : ViewModel<ICommand>
+    public abstract class CommandViewModel : ViewModel<ICommand>
     {
         #region Class Properties
 
@@ -13,13 +13,13 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 
         #region Class Constructors
 
-        public CommandViewModel(ICommand model, string tooltip)
+        protected CommandViewModel(ICommand model, string tooltip)
             : base(model)
         {
             Tooltip = tooltip;
         }
 
-        public CommandViewModel(ICommand model, object parameter, string tooltip)
+        protected CommandViewModel(ICommand model, object parameter, string tooltip)
             : base(model)
         {
             Parameter = parameter;

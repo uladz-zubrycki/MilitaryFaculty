@@ -46,21 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CathedraRepository.cs" />
+    <Compile Include="Configurations\BookConfiguration.cs" />
     <Compile Include="Configurations\ExhibitionConfiguration.cs" />
     <Compile Include="Configurations\PublicationConfiguration.cs" />
     <Compile Include="Configurations\CathedraConfiguration.cs" />
     <Compile Include="Configurations\FullNameConfiguration.cs" />
-    <Compile Include="ConferenceRepository.cs" />
-    <Compile Include="ExhibitionRepository.cs" />
-    <Compile Include="PublicationRepository.cs" />
     <Compile Include="EntityContext.cs" />
     <Compile Include="Configurations\ConferenceConfiguration.cs" />
     <Compile Include="Configurations\ConferenceReportConfiguration.cs" />
     <Compile Include="Configurations\ProfessorConfiguration.cs" />
-    <Compile Include="ProfessorRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GenericRepository.cs" />
+    <Compile Include="BaseRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

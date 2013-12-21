@@ -1,5 +1,6 @@
 ﻿using System;
 using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Logic.DataProviders
@@ -8,20 +9,20 @@ namespace MilitaryFaculty.Logic.DataProviders
     {
         #region Class Fields
 
-        private readonly ICathedraRepository cathedraRapository;
+        private readonly IRepository<Cathedra> cathedraRepository;
         
         #endregion // Class Fields
 
         #region Class Constructors
 
-        public CathedrasDataProvider(ICathedraRepository cathedraRepository)
+        public CathedrasDataProvider(IRepository<Cathedra> cathedraRepository)
         {
             if (cathedraRepository == null)
             {
                 throw new ArgumentNullException("cathedraRepository");
             }
 
-            this.cathedraRapository = cathedraRepository;
+            this.cathedraRepository = cathedraRepository;
         }
 
         #endregion // Class Constructors

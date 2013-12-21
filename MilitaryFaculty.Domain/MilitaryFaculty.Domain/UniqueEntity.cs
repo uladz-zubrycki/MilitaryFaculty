@@ -5,13 +5,7 @@ namespace MilitaryFaculty.Domain
 {
     public abstract class UniqueEntity : IUniqueEntity
     {
-        #region Class Properties
-
         public Guid Id { get; set; }
-
-        #endregion // Class Properties
-
-        #region Class Public Methods
 
         /// <summary>
         /// Serves as a hash function for a particular type. 
@@ -50,7 +44,5 @@ namespace MilitaryFaculty.Domain
         {
             return other != null && Id == other.Id;
         }
-
-        #endregion // Class Public Methods
     }
 }

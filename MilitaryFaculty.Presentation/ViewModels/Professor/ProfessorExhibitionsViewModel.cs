@@ -9,7 +9,7 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class ProfessorExhibitionsViewModel : EntityViewModel<Professor>
+    public class ProfessorExhibitionsViewModel : ViewModel<Professor>
     {
         #region Class Fields
 
@@ -46,7 +46,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Constructors
 
-        public ProfessorExhibitionsViewModel(Professor model, IExhibitionRepository exhibitionRepository)
+        public ProfessorExhibitionsViewModel(Professor model, IRepository<Exhibition> exhibitionRepository)
             : base(model)
         {
             if (exhibitionRepository == null)
@@ -57,14 +57,14 @@ namespace MilitaryFaculty.Presentation.ViewModels
             exhibitionRepository.EntityCreated += OnExhibitionCreated;
             exhibitionRepository.EntityDeleted += OnExhibitionDeleted;
 
-            Commands.Add(CreateAddConferenceCommand());
+            Commands.Add(CreateAddExhibitionCommand());
         }
 
         #endregion // Class Constructors
 
         #region Class Private Methods
 
-        private ImagedCommandViewModel CreateAddConferenceCommand()
+        private ImagedCommandViewModel CreateAddExhibitionCommand()
         {
             const string tooltip = "Добавить научную выставку";
             const string imageSource = @"..\Content\add.png";

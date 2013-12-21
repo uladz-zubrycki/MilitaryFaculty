@@ -67,11 +67,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Custom\Commands\ApplicationCommands\BaseCommandModule.cs" />
+    <Compile Include="Custom\Commands\ApplicationCommands\BookCommandModule.cs" />
+    <Compile Include="Custom\Commands\ApplicationCommands\PublicationCommandModule.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands\BookNavigationModule.cs" />
+    <Compile Include="Custom\Commands\NavigationCommands\ExhibitionNavigationModule.cs" />
     <Compile Include="Custom\Converters\BoolToVisibilityConverter.cs" />
-    <Compile Include="Custom\Commands\ApplicationCommands\PublicationCommands.cs" />
+    <Compile Include="Custom\Commands\ApplicationCommands\ExhibitionCommandModule.cs" />
     <Compile Include="Custom\Commands\ApplicationCommands\ConferenceCommandModule.cs" />
     <Compile Include="Custom\Commands\ApplicationCommands\ProfessorCommandModule.cs" />
     <Compile Include="Custom\Commands\Do.cs" />
+    <Compile Include="Custom\Converters\IntToStringConverter.cs" />
     <Compile Include="Custom\Converters\DateToStringConverter.cs" />
     <Compile Include="Custom\Converters\EnumToNameConverter.cs" />
     <Compile Include="Custom\Converters\EnumToValuesConverter.cs" />
@@ -99,6 +105,14 @@
     <Compile Include="Infrastructure\ViewModels\EntityViewModel.cs" />
     <Compile Include="Infrastructure\Attributes\PropertyAttribute.cs" />
     <Compile Include="Infrastructure\ViewModels\ListItemViewModel.cs" />
+    <Compile Include="ViewModels\Book\AddBookViewModel.cs" />
+    <Compile Include="ViewModels\Book\BookExtraInfoViewModel.cs" />
+    <Compile Include="ViewModels\Book\BookInfoViewModel.cs" />
+    <Compile Include="ViewModels\Book\BookListItemViewModel.cs" />
+    <Compile Include="ViewModels\Book\BookRootViewModel.cs" />
+    <Compile Include="ViewModels\Book\BookHeaderViewModel.cs" />
+    <Compile Include="ViewModels\Common\IntPropertyAttribute.cs" />
+    <Compile Include="ViewModels\Common\IntPropertyViewModel.cs" />
     <Compile Include="ViewModels\Common\DatePropertyAttribute.cs" />
     <Compile Include="ViewModels\Common\DatePropertyViewModel.cs" />
     <Compile Include="ViewModels\Common\EnumPropertyAttribute.cs" />
@@ -114,16 +128,19 @@
     <Compile Include="ViewModels\Common\TextPropertyViewModel.cs" />
     <Compile Include="ViewModels\Conference\ConferenceHeaderViewModel.cs" />
     <Compile Include="ViewModels\Exhibition\AddExhibitionViewModel.cs" />
+    <Compile Include="ViewModels\Exhibition\ExhibitionHeaderViewModel.cs" />
     <Compile Include="ViewModels\Exhibition\ExhibitionInfoViewModel.cs" />
     <Compile Include="ViewModels\Exhibition\ExhibitionListItemViewModel.cs" />
     <Compile Include="ViewModels\Exhibition\ExhibitionRootViewModel.cs" />
-    <Compile Include="ViewModels\Professor\ProfessorExhibitionViewModel.cs" />
+    <Compile Include="ViewModels\Professor\ProfessorBooksViewModel.cs" />
+    <Compile Include="ViewModels\Professor\ProfessorExhibitionsViewModel.cs" />
     <Compile Include="ViewModels\Professor\ProfessorHeaderViewModel.cs" />
+    <Compile Include="ViewModels\Publication\PublicationHeaderViewModel.cs" />
     <Compile Include="ViewModels\Publication\PublicationAddViewModel.cs" />
     <Compile Include="ViewModels\Publication\PublicationInfoViewModel.cs" />
     <Compile Include="ViewModels\Publication\PublicationListItemViewModel.cs" />
     <Compile Include="ViewModels\Publication\PublicationExtraInfoViewModel.cs" />
-    <Compile Include="ViewModels\Publication\PublicationViewModel.cs" />
+    <Compile Include="ViewModels\Publication\PublicationRootViewModel.cs" />
     <Compile Include="ViewModels\Cathedra\CathedraInfoViewModel.cs" />
     <Compile Include="ViewModels\Conference\AddConferenceViewModel.cs" />
     <Compile Include="ViewModels\Conference\ConferenceInfoViewModel.cs" />
@@ -154,6 +171,12 @@
     <Compile Include="Views\Common\ListItemView.xaml.cs">
       <DependentUpon>ListItemView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Common\PropertyViews\IntPropertyEditView.xaml.cs">
+      <DependentUpon>IntPropertyEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\PropertyViews\IntPropertyView.xaml.cs">
+      <DependentUpon>IntPropertyView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Common\PropertyViews\DatePropertyEditView.xaml.cs">
       <DependentUpon>DatePropertyEditView.xaml</DependentUpon>
     </Compile>
@@ -180,6 +203,12 @@
     </Compile>
     <Compile Include="Views\Cathedra\CathedraView.xaml.cs">
       <DependentUpon>CathedraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorBooksView.xaml.cs">
+      <DependentUpon>ProfessorBooksView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorExhibitionsView.xaml.cs">
+      <DependentUpon>ProfessorExhibitionsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Professor\ProfessorHeaderView.xaml.cs">
       <DependentUpon>ProfessorHeaderView.xaml</DependentUpon>
@@ -236,6 +265,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Common\PropertyViews\IntPropertyEditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Common\PropertyViews\IntPropertyView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Common\PropertyViews\DatePropertyEditView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -265,6 +302,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Cathedra\CathedraInfoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorBooksView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorExhibitionsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

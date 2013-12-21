@@ -26,15 +26,15 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("sink");
             }
 
-            container.RegisterCommand<Professor>(Browse.Publication.Add, OnBrowseBookAdd);
-            container.RegisterCommand<Publication>(Browse.Publication.Details, OnBrowseBookDetails);
+            container.RegisterCommand<Professor>(Browse.Publication.Add, OnBrowsePublicationAdd);
+            container.RegisterCommand<Publication>(Browse.Publication.Details, OnBrowsePublicationDetails);
         }
 
         #endregion // Class Public Methods
 
         #region Class Private Methods
 
-        private void OnBrowseBookAdd(Professor author)
+        private void OnBrowsePublicationAdd(Professor author)
         {
             if (author == null)
             {
@@ -49,7 +49,7 @@ namespace MilitaryFaculty.Presentation.Custom
             ViewModel.WorkWindow = new AddPublicationViewModel(model);
         }
 
-        private void OnBrowseBookDetails(Publication publication)
+        private void OnBrowsePublicationDetails(Publication publication)
         {
             if (publication == null)
             {

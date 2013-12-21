@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using MilitaryFaculty.Domain.Contract;
 using MilitaryFaculty.Extensions;
 
@@ -27,7 +25,8 @@ namespace MilitaryFaculty.Domain
 
         public virtual ICollection<Publication> Publications { get; set; }
         public virtual ICollection<Conference> Conferences { get; set; }
-        public virtual ICollection<Exhibition> Exhibitions { get; set; } 
+        public virtual ICollection<Exhibition> Exhibitions { get; set; }
+        public virtual ICollection<Book> Books { get; set; } 
 
         public virtual MilitaryRank MilitaryRank
         {
@@ -102,6 +101,7 @@ namespace MilitaryFaculty.Domain
             Conferences = new Collection<Conference>();
             Publications = new Collection<Publication>();
             Exhibitions = new Collection<Exhibition>();
+            Books = new Collection<Book>();
 
         }
 

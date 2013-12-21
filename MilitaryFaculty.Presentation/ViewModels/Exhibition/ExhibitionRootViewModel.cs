@@ -6,15 +6,10 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ExhibitionRootViewModel : EntityRootViewModel<Exhibition>
     {
-        public override string Title
-        {
-            get { return "Информация о выставке"; }
-        }
-
         public ExhibitionRootViewModel(Exhibition model)
             : base(model)
         {
-            //HeaderViewModel = new ExhibitionHeaderViewModel();
+            HeaderViewModel = new ExhibitionHeaderViewModel();
         }
      
         protected override IEnumerable<ViewModel<Exhibition>> GetViewModels()

@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using Autofac;
 using MilitaryFaculty.Data;
+using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Logic;
 using MilitaryFaculty.Logic.DataProviders;
 
@@ -28,10 +29,8 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         /// <param name="builder">Builder for service container.</param>
         private static void RegisterRepositories(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(typeof(EntityContext).Assembly)
-                   .Where(t => t.Name.EndsWith("Repository") && !t.Name.Contains("Base"))
-                   .AsImplementedInterfaces()
-                   .SingleInstance();
+            builder.RegisterGeneric(typeof (BaseRepository<>))
+                   .AsImplementedInterfaces();
         }
 
         /// <summary>

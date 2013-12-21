@@ -1,17 +1,11 @@
 ﻿using System.Collections.Generic;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ConferenceRootViewModel : EntityRootViewModel<Conference>
     {
-        public override string Title
-        {
-            get { return "Информация о конференции"; }
-        }
-
         public ConferenceRootViewModel(Conference model)
             : base(model)
         {

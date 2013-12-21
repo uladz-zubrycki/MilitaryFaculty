@@ -2,6 +2,7 @@
 using System.Configuration;
 using ClosedXML.Excel;
 using MilitaryFaculty.Data;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Logic.DataProviders;
 using MilitaryFaculty.Logic.XmlDomain;
 using NUnit.Framework;
@@ -46,11 +47,11 @@ namespace MilitaryFaculty.Logic.Tests
             var dataModule = new DataModule();
             dataModule.RegisterProviders(new IDataProvider[]
                 {
-                    new CathedrasDataProvider(new CathedraRepository(context)),
-                    new ProfessorsDataProvider(new ProfessorRepository(context)),
-                    new PublicationsDataProvider(new PublicationRepository(context)),
-                    new ExhibitionsDataProvider(new ExhibitionRepository(context)),
-                    new ConferencesDataProvider(new ConferenceRepository(context))
+                    new CathedrasDataProvider(new BaseRepository<Cathedra>(context)),
+                    new ProfessorsDataProvider(new BaseRepository<Professor>(context)),
+                    new PublicationsDataProvider(new BaseRepository<Publication>(context)),
+                    new ExhibitionsDataProvider(new BaseRepository<Exhibition>(context)),
+                    new ConferencesDataProvider(new BaseRepository<Conference>(context))
                 });
 
             var infoNames = new List<string>

@@ -9,20 +9,21 @@ namespace MilitaryFaculty.Domain
     {
         #region Type Static Members
 
-        public static int NameMaxLength = 50; 
+        public static int NameMaxLength = 50;
 
         #endregion // Type Static Members
 
         #region Class Fields
 
         private AwardType awardType;
+        private EventLevel eventLevel;
 
         #endregion // Class Fields
 
         #region Class Properties
 
         public string Name { get; set; }
-        public DateTime Date { get;set; }
+        public DateTime Date { get; set; }
         public Professor Participant { get; set; }
 
         public AwardType AwardType
@@ -39,7 +40,38 @@ namespace MilitaryFaculty.Domain
             }
         }
 
+        public EventLevel EventLevel
+        {
+            get { return eventLevel; }
+            set
+            {
+                if (!value.IsDefined())
+                {
+                    throw new InvalidEnumArgumentException();
+                }
+
+                eventLevel = value;
+            }
+        }
+
         #endregion // Class Properties
+
+        #region Class Constructors
+
+        public Exhibition()
+        {
+            Id = Guid.Empty;
+            Name = String.Empty;
+            Date = DateTime.Now;
+        }
+
+        public Exhibition(Exhibition other)
+            : this()
+        {
+            Imitate(other);
+        }
+
+        #endregion // Class Constructors
 
         #region Class Public Methods
 
@@ -55,7 +87,7 @@ namespace MilitaryFaculty.Domain
             this.Name = other.Name;
             this.Participant = other.Participant;
         }
-        
+
         #endregion // Class Public Methods
     }
 }

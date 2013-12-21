@@ -9,13 +9,13 @@ namespace MilitaryFaculty.Logic.DataProviders
     {
         #region Class Fields
 
-        private readonly IConferenceRepository conferenceRepository;
+        private readonly IRepository<Conference> conferenceRepository;
 
         #endregion // Class Fields
 
         #region Class Constructors
 
-        public ConferencesDataProvider(IConferenceRepository conferenceRepository)
+        public ConferencesDataProvider(IRepository<Conference> conferenceRepository)
         {
             if (conferenceRepository == null)
             {
@@ -34,7 +34,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("UnConfProfsCount")]
         public double UniversityConferenceProfessorsCount()
         {
-            return conferenceRepository.Count(c => c.ConferenceType == EventLevel.University);
+            return conferenceRepository.CountOf(c => c.EventLevel == EventLevel.University);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         public double UniversityConferenceStudentsCount()
         {
             //TODO: Выступления курсантов
-            return conferenceRepository.Count(c => c.ConferenceType == EventLevel.University);
+            return conferenceRepository.CountOf(c => c.EventLevel == EventLevel.University);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReConfProfsCount")]
         public double RepublicanConferenceProfessorsCount()
         {
-            return conferenceRepository.Count(c => c.ConferenceType == EventLevel.Republican);
+            return conferenceRepository.CountOf(c => c.EventLevel == EventLevel.Republican);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReConfStudsCount")]
         public double RepublicanConferenceStudentsCount()
         {
-            return conferenceRepository.Count(c => c.ConferenceType == EventLevel.Republican);
+            return conferenceRepository.CountOf(c => c.EventLevel == EventLevel.Republican);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("InConfProfsCount")]
         public double InternationalConferenceProfessorsCount()
         {
-            return conferenceRepository.Count(c => c.ConferenceType == EventLevel.International);
+            return conferenceRepository.CountOf(c => c.EventLevel == EventLevel.International);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("InConfStudsCount")]
         public double InternationalConferenceStudentsCount()
         {
-            return conferenceRepository.Count(c => c.ConferenceType == EventLevel.International);
+            return conferenceRepository.CountOf(c => c.EventLevel == EventLevel.International);
         }
     }
 }

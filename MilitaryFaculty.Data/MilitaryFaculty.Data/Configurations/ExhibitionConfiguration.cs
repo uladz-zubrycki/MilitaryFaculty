@@ -15,6 +15,7 @@ namespace MilitaryFaculty.Data
 
             Property(m => m.Date).IsRequired();
             Property(m => m.AwardType).IsRequired();
+            Property(m => m.EventLevel).IsRequired();
 
             HasRequired(m => m.Participant).WithMany(p => p.Exhibitions);
         }

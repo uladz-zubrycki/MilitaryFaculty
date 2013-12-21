@@ -23,7 +23,7 @@ namespace MilitaryFaculty.Presentation.Custom
         {
             if (container == null)
             {
-                throw new ArgumentNullException("sink");
+                throw new ArgumentNullException("container");
             }
 
             container.RegisterCommand<Professor>(Browse.Conference.Add,

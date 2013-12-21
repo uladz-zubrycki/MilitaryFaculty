@@ -29,5 +29,11 @@ namespace MilitaryFaculty.Presentation.Custom
             public static readonly RoutedCommand Add = new RoutedCommand();
             public static readonly RoutedCommand Details = new RoutedCommand();
         }
+
+        public static class Book
+        {
+            public static readonly RoutedCommand Add = new RoutedCommand();
+            public static readonly RoutedCommand Details = new RoutedCommand();
+        }
     }
 }

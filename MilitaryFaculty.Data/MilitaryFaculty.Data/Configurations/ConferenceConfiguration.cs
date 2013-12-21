@@ -14,7 +14,7 @@ namespace MilitaryFaculty.Data
                                  .HasMaxLength(Conference.NameMaxLength);
 
             Property(m => m.Date).IsRequired();
-            Property(m => m.ConferenceType).IsRequired();
+            Property(m => m.EventLevel).IsRequired();
 
             HasRequired(m => m.Curator).WithMany(p => p.Conferences);
         }

@@ -28,6 +28,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
             set { SetModelProperty(m => m.Date, value); }
         }
 
+        [EnumProperty(Label = "Уровень мероприятия:")]
+        public EventLevel EventLevel
+        {
+            get { return Model.EventLevel; }
+            set { SetModelProperty(m => m.EventLevel, value); }
+        }
+
         [EnumProperty(Label = "Награда:")]
         public AwardType AwardType
         {

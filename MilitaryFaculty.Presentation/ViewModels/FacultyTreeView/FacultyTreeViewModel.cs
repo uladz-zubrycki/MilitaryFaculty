@@ -15,8 +15,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         #region Class Fields
 
-        private readonly IProfessorRepository professorRepository;
-        private readonly ICathedraRepository cathedraRepository;
+        private readonly IRepository<Professor> professorRepository;
+        private readonly IRepository<Cathedra> cathedraRepository;
 
         private ObservableCollection<CathedraTreeItemViewModel> cathedras;
 
@@ -76,8 +76,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Constructors
 
-        public FacultyTreeViewModel(IProfessorRepository professorRepository,
-                                    ICathedraRepository cathedraRepository)
+        public FacultyTreeViewModel(IRepository<Professor> professorRepository,
+                                    IRepository<Cathedra> cathedraRepository)
         {
             if (professorRepository == null)
             {
@@ -140,7 +140,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             var converter = CathedraTreeItemViewModel.FromModel(this, professorRepository);
 
-            var items = cathedraRepository.All()
+            var items = cathedraRepository.Table
                                           .Select(converter)
                                           .ToList();
 

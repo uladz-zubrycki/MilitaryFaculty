@@ -20,7 +20,15 @@
         <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Add}"/>
         <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Update}"/>
         <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Remove}"/>
-                                                       
+
+        <i:CommandContainerBinding Command="{m:Command c:Do.Exhibition.Add}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Exhibition.Update}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Exhibition.Remove}"/>
+
+        <i:CommandContainerBinding Command="{m:Command c:Do.Book.Add}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Book.Update}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Book.Remove}"/>
+
         <!--Common navigation commands-->              
         <i:CommandContainerBinding Command="{m:Command c:Browse.Back}"/>
         <i:CommandContainerBinding Command="{m:Command c:Browse.Forward}"/>
@@ -31,10 +39,18 @@
         <!--Conference navigation commands-->          
         <i:CommandContainerBinding Command="{m:Command c:Browse.Conference.Add}"/>
         <i:CommandContainerBinding Command="{m:Command c:Browse.Conference.Details}"/>
-                                                    
-        <!--Book navigation commands-->
+
+        <!--Publication navigation commands-->
         <i:CommandContainerBinding Command="{m:Command c:Browse.Publication.Add}"/>
         <i:CommandContainerBinding Command="{m:Command c:Browse.Publication.Details}"/>
+
+        <!--Book navigation commands-->
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Book.Add}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Book.Details}"/>
+
+        <!--Exhibition navigation commands-->
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Exhibition.Add}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Exhibition.Details}"/>
     </Window.CommandBindings>
 
     <Grid>

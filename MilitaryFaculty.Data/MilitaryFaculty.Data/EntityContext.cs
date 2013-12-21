@@ -11,7 +11,9 @@ namespace MilitaryFaculty.Data
         public DbSet<Cathedra> Cathedras { get; set; }
         public DbSet<Conference> Conferences { get; set; }
         public DbSet<Professor> Professors { get; set; }
-        public DbSet<Publication> Books { get; set; }
+        public DbSet<Publication> Publications { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Exhibition> Exhibitions { get; set; }
 
         #endregion // Class Properties
 
@@ -34,6 +36,7 @@ namespace MilitaryFaculty.Data
             modelBuilder.Configurations.Add(new ConferenceConfiguration());
             modelBuilder.Configurations.Add(new PublicationConfiguration());
             modelBuilder.Configurations.Add(new ExhibitionConfiguration());
+            modelBuilder.Configurations.Add(new BookConfiguration());
 
             modelBuilder.Configurations.Add(new ConferenceReportConfiguration());
             modelBuilder.Configurations.Add(new FullNameConfiguration());

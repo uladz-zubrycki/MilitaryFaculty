@@ -9,13 +9,13 @@ namespace MilitaryFaculty.Logic.DataProviders
     {
         #region Class Fields
 
-        private readonly IProfessorRepository professorRepository;
+        private readonly IRepository<Professor> professorRepository;
         
         #endregion // Class Fields
 
         #region Class Constructors
 
-        public ProfessorsDataProvider(IProfessorRepository professorRepository)
+        public ProfessorsDataProvider(IRepository<Professor> professorRepository)
         {
             if (professorRepository == null)
             {
@@ -36,7 +36,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ProfsCount")]
         public double ProfessorsCount()
         {
-            return professorRepository.Count(null);
+            return professorRepository.CountOf(null);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ProfPostsCount")]
         public double ProfessorPostsCount()
         {
-            return professorRepository.Count(p => p.AcademicDegree == AcademicDegree.Professor);
+            return professorRepository.CountOf(p => p.AcademicDegree == AcademicDegree.Professor);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("DocentPostsCount")]
         public double DocentPostsCount()
         {
-            return professorRepository.Count(p => p.AcademicDegree == AcademicDegree.Docent);
+            return professorRepository.CountOf(p => p.AcademicDegree == AcademicDegree.Docent);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("DosCount")]
         public double DoctorsOfScienceCount()
         {
-            return professorRepository.Count(p => p.AcademicRank == AcademicRank.DoctorOfScience);
+            return professorRepository.CountOf(p => p.AcademicRank == AcademicRank.DoctorOfScience);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("CosCount")]
         public double CandidatsOfScienceCount()
         {
-            return professorRepository.Count(p => p.AcademicRank == AcademicRank.CandidateOfScience);
+            return professorRepository.CountOf(p => p.AcademicRank == AcademicRank.CandidateOfScience);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("HqProfsCount")]
         public double HighQualificationProfsCount()
         {
-            return professorRepository.Count(p => p.AcademicDegree != AcademicDegree.None ||
+            return professorRepository.CountOf(p => p.AcademicDegree != AcademicDegree.None ||
                                                   p.AcademicRank != AcademicRank.None);
         }
 

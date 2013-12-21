@@ -14,11 +14,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return "Базовая информация"; }
         }
 
-        [EnumProperty(Label = "Тип:")]
+        [EnumProperty(Label = "Уровень мероприятия:")]
         public EventLevel ConferenceType
         {
-            get { return Model.ConferenceType; }
-            set { SetModelProperty(m => m.ConferenceType, value); }
+            get { return Model.EventLevel; }
+            set { SetModelProperty(m => m.EventLevel, value); }
         }
 
         [TextProperty(Label = "Название:")]

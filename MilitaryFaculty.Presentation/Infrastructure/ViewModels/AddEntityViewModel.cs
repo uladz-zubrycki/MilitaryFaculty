@@ -4,7 +4,7 @@ using MilitaryFaculty.Presentation.Custom;
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
-    internal abstract class AddEntityViewModel<T>: ComplexViewModel<T>
+    public abstract class AddEntityViewModel<T>: ComplexViewModel<T>
         where T: UniqueEntity
     {
         public abstract ICommand AddCommand { get; }

@@ -22,7 +22,7 @@
         <v:AddEntityView />
     </DataTemplate>
 
-    <!--Add entity-->
+    <!--List item entity-->
     <!--If Key is changed, update MilitaryFaculty.Custom.TemplateSelector also.-->
     <DataTemplate x:Key="ListItemViewTemplate">
         <v:ListItemView />
@@ -38,10 +38,59 @@
         <v:TextPropertyEditView />
     </DataTemplate>
 
+    <!--Enum Property display mode-->
+    <DataTemplate x:Key="EnumPropertyDisplayTemplate">
+        <v:EnumPropertyView />
+    </DataTemplate>
+
+    <!--Enum Property edit mode-->
+    <DataTemplate x:Key="EnumPropertyEditTemplate">
+        <v:EnumPropertyEditView />
+    </DataTemplate>
+
+    <!--Int Property display mode-->
+    <DataTemplate x:Key="IntPropertyDisplayTemplate">
+        <v:IntPropertyView />
+    </DataTemplate>
+
+    <!--Int Property edit mode-->
+    <DataTemplate x:Key="IntPropertyEditTemplate">
+        <v:IntPropertyEditView />
+    </DataTemplate>
+
+    <!--Date Property display mode-->
+    <DataTemplate x:Key="DatePropertyDisplayTemplate">
+        <v:DatePropertyView />
+    </DataTemplate>
+
+    <!--Date Property edit mode-->
+    <DataTemplate x:Key="DatePropertyEditTemplate">
+        <v:DatePropertyEditView />
+    </DataTemplate>
+
+    <!--String-->
     <c:EditableViewTemplateSelector
         x:Key="StringPropertyTemplateSelector"
         DisplayViewTemplate="{StaticResource TextPropertyDisplayTemplate}"
         EditViewTemplate="{StaticResource TextPropertyEditTemplate}" />
+
+    <!--Enum-->
+    <c:EditableViewTemplateSelector
+        x:Key="EnumPropertyTemplateSelector"
+        DisplayViewTemplate="{StaticResource EnumPropertyDisplayTemplate}"
+        EditViewTemplate="{StaticResource EnumPropertyEditTemplate}" />
+
+    <!--Int-->
+    <c:EditableViewTemplateSelector
+        x:Key="IntPropertyTemplateSelector"
+        DisplayViewTemplate="{StaticResource IntPropertyDisplayTemplate}"
+        EditViewTemplate="{StaticResource IntPropertyEditTemplate}" />
+
+    <!--Date-->
+    <c:EditableViewTemplateSelector
+        x:Key="DatePropertyTemplateSelector"
+        DisplayViewTemplate="{StaticResource DatePropertyDisplayTemplate}"
+        EditViewTemplate="{StaticResource DatePropertyEditTemplate}" />
 
     <!--String-->
     <DataTemplate DataType="{x:Type vm:TextPropertyViewModel}">
@@ -59,21 +108,6 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <!--Enum Property display mode-->
-    <DataTemplate x:Key="EnumPropertyDisplayTemplate">
-        <v:EnumPropertyView />
-    </DataTemplate>
-
-    <!--Text Property edit mode-->
-    <DataTemplate x:Key="EnumPropertyEditTemplate">
-        <v:EnumPropertyEditView />
-    </DataTemplate>
-
-    <c:EditableViewTemplateSelector
-        x:Key="EnumPropertyTemplateSelector"
-        DisplayViewTemplate="{StaticResource EnumPropertyDisplayTemplate}"
-        EditViewTemplate="{StaticResource EnumPropertyEditTemplate}" />
-
     <!--Enum-->
     <DataTemplate DataType="{x:Type vm:EnumPropertyViewModel}">
         <ContentPresenter x:Name="ContentPresenter"
@@ -89,6 +123,36 @@
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
-    
-   
+
+    <!--Int-->
+    <DataTemplate DataType="{x:Type vm:IntPropertyViewModel}">
+        <ContentPresenter x:Name="ContentPresenter"
+                          ContentTemplateSelector="{StaticResource IntPropertyTemplateSelector}" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Tag}" Value="{x:Null}">
+                <Setter TargetName="ContentPresenter" Property="Content"
+                        Value="{x:Null}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Tag}" Value="{x:Static c:EditableViewMode.Edit}">
+                <Setter TargetName="ContentPresenter" Property="ContentTemplateSelector"
+                        Value="{StaticResource IntPropertyTemplateSelector}" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <!--Date-->
+    <DataTemplate DataType="{x:Type vm:DatePropertyViewModel}">
+        <ContentPresenter x:Name="ContentPresenter"
+                          ContentTemplateSelector="{StaticResource DatePropertyTemplateSelector}" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Tag}" Value="{x:Null}">
+                <Setter TargetName="ContentPresenter" Property="Content"
+                        Value="{x:Null}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Tag}" Value="{x:Static c:EditableViewMode.Edit}">
+                <Setter TargetName="ContentPresenter" Property="ContentTemplateSelector"
+                        Value="{StaticResource DatePropertyTemplateSelector}" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
 </ResourceDictionary>

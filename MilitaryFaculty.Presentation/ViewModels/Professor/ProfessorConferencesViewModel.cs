@@ -46,7 +46,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Constructors
 
-        public ProfessorConferencesViewModel(Professor model, IConferenceRepository conferenceRepository)
+        public ProfessorConferencesViewModel(Professor model, IRepository<Conference> conferenceRepository)
             : base(model)
         {
             if (conferenceRepository == null)

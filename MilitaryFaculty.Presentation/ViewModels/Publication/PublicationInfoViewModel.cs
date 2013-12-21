@@ -20,7 +20,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             set { SetModelProperty(m => m.Name, value); }
         }
 
-        [TextProperty(Label = "Количество страниц:")]
+        [IntProperty(Label = "Количество страниц:")]
         public int PagesCount
         {
             get { return Model.PagesCount; }

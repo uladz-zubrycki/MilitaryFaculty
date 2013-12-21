@@ -13,4 +13,12 @@
     <DataTemplate DataType="{x:Type vm:ProfessorPublicationsViewModel}">
         <v:ProfessorPublicationsView/>
     </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProfessorBooksViewModel}">
+        <v:ProfessorBooksView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProfessorExhibitionsViewModel}">
+        <v:ProfessorExhibitionsView/>
+    </DataTemplate>
 </ResourceDictionary>

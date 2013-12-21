@@ -13,7 +13,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         #region Type Static Members
 
-        public static Func<Cathedra, CathedraTreeItemViewModel> FromModel(TreeViewModel owner, IProfessorRepository professorRepository)
+        public static Func<Cathedra, CathedraTreeItemViewModel> FromModel(TreeViewModel owner, IRepository<Professor> professorRepository)
         {
             return cathedra => new CathedraTreeItemViewModel(cathedra, owner, null, professorRepository);
         }

@@ -14,10 +14,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         private ViewModel workWindow;
 
-        private readonly IProfessorRepository professorRepository;
-        private readonly ICathedraRepository cathedraRepository;
-        private readonly IConferenceRepository conferenceRepository;
-        private readonly IPublicationRepository bookRepository;
+        private readonly IRepository<Professor> professorRepository;
+        private readonly IRepository<Cathedra> cathedraRepository;
+        private readonly IRepository<Conference> conferenceRepository;
+        private readonly IRepository<Publication> publicationRepository;
+        private readonly IRepository<Exhibition> exhibitionRepository;
+        private readonly IRepository<Book> bookRepository;
 
         #endregion // Class Fields
 
@@ -38,7 +40,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             internal set
             {
                 var oldValue = workWindow;
-                
+
                 if (SetValue(() => workWindow, value))
                 {
                     OnWorkWindowChanged(oldValue, value);
@@ -57,10 +59,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 throw new ArgumentNullException("container");
             }
 
-            professorRepository = container.Resolve<IProfessorRepository>();
-            cathedraRepository = container.Resolve<ICathedraRepository>();
-            conferenceRepository = container.Resolve<IConferenceRepository>();
-            bookRepository = container.Resolve<IPublicationRepository>();
+            professorRepository = container.Resolve<IRepository<Professor>>();
+            cathedraRepository = container.Resolve<IRepository<Cathedra>>();
+            conferenceRepository = container.Resolve<IRepository<Conference>>();
+            publicationRepository = container.Resolve<IRepository<Publication>>();
+            exhibitionRepository = container.Resolve<IRepository<Exhibition>>();
+            bookRepository = container.Resolve<IRepository<Book>>();
 
             workWindow = new StartupViewModel();
 
@@ -92,7 +96,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
             }
             else if (model is Professor)
             {
-                WorkWindow = new ProfessorRootViewModel(model as Professor, conferenceRepository, bookRepository);
+                WorkWindow = new ProfessorRootViewModel(model as Professor,
+                                                        conferenceRepository,
+                                                        publicationRepository,
+                                                        exhibitionRepository,
+                                                        bookRepository);
             }
             else
             {
@@ -113,12 +121,16 @@ namespace MilitaryFaculty.Presentation.ViewModels
             var modules = new ICommandContainerModule[]
                           {
                               new ProfessorCommandModule(professorRepository),
-                              new PublicationCommandModule(bookRepository),
+                              new PublicationCommandModule(publicationRepository),
                               new ConferenceCommandModule(conferenceRepository),
+                              new ExhibitionCommandModule(exhibitionRepository),
+                              new BookCommandModule(bookRepository),
                               new CommonNavigationModule(this),
                               new PublicationNavigationModule(this),
                               new ProfessorNavigationModule(this),
-                              new ConferenceNavigationModule(this)
+                              new ConferenceNavigationModule(this),
+                              new BookNavigationModule(this),
+                              new ExhibitionNavigationModule(this),
                           };
 
             modules.ForEach(m => m.RegisterModule(CommandContainer));

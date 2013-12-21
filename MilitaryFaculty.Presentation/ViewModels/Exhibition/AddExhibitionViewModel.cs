@@ -10,7 +10,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         public override string Title
         {
-            get { return "Добавить конференцию"; }
+            get { return "Добавить научную выставку "; }
         }
 
         public override ICommand AddCommand

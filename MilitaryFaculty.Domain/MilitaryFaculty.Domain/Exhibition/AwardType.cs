@@ -14,6 +14,6 @@ namespace MilitaryFaculty.Domain
         ThirdDegree,
         
         [EnumName("Диплом (грамота)")]
-        NoneDegree
+        WithoutDegree
     }
 }

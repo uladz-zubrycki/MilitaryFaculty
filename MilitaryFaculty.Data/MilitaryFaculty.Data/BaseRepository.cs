@@ -17,13 +17,21 @@ namespace MilitaryFaculty.Data
 
         #region Class Properties
 
+        public IQueryable<T> Table
+        {
+            get
+            {
+                return DbSet.AsQueryable();
+            }
+        }
+
         protected DbSet<T> DbSet
         {
             get
             {
                 return dbContext.Set<T>();
             }
-        } 
+        }
 
         #endregion // Class Properties
 
@@ -91,6 +99,17 @@ namespace MilitaryFaculty.Data
 
             DbSet.Remove(entity);
             dbContext.SaveChanges();
+        }
+
+        public int CountOf(Func<T, bool> predicate)
+        {
+            return Table.Count(predicate);
+        }
+
+        public double SumOf(Func<T, decimal?> evaluator)
+        {
+            //TODO: strange
+            return (double)Table.Sum(evaluator);
         }
 
         #endregion // Public Class Methods

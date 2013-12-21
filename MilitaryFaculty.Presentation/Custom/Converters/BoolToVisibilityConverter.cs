@@ -28,7 +28,7 @@ namespace MilitaryFaculty.Presentation.Custom
         {
             if (!(value is bool))
             {
-                throw new ArgumentException();
+                return null;
             }
 
             return (bool) value ? Visibility.Visible : Visibility.Hidden;
@@ -48,7 +48,7 @@ namespace MilitaryFaculty.Presentation.Custom
         {
             if (!(value is Visibility))
             {
-                throw new ArgumentException();
+                return null;
             }
 
             return (Visibility) value == Visibility.Visible;

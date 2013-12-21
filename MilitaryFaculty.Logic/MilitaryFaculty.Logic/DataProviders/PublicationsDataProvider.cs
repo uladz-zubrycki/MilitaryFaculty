@@ -9,13 +9,13 @@ namespace MilitaryFaculty.Logic.DataProviders
     {
         #region Class Fields
 
-        private readonly IPublicationRepository publicationRepository;
+        private readonly IRepository<Publication> publicationRepository;
         
         #endregion // Class Fields
 
         #region Class Constructors
 
-        public PublicationsDataProvider(IPublicationRepository publicationRepository)
+        public PublicationsDataProvider(IRepository<Publication> publicationRepository)
         {
             if (publicationRepository == null)
             {
@@ -56,7 +56,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("MonographyPc")]
         public double MonographyPagesCount()
         {
-            return publicationRepository.Sum(p => p.PagesCount);
+            return publicationRepository.SumOf(p => p.PagesCount);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ReviewedArticlesCount")]
         public double ReviewedArticlesCount()
         {
-            return publicationRepository.Count(p => p.PublicationType == PublicationType.ReviewedArticle);
+            return publicationRepository.CountOf(p => p.PublicationType == PublicationType.ReviewedArticle);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ArticlesCount")]
         public double ArticlesCount()
         {
-            return publicationRepository.Count(p => p.PublicationType == PublicationType.Article);
+            return publicationRepository.CountOf(p => p.PublicationType == PublicationType.Article);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace MilitaryFaculty.Logic.DataProviders
         [FormulaArgument("ThesisesCount")]
         public double LecturesCount()
         {
-            return publicationRepository.Count(p => p.PublicationType == PublicationType.Thesis);
+            return publicationRepository.CountOf(p => p.PublicationType == PublicationType.Thesis);
         }
 
         /// <summary>

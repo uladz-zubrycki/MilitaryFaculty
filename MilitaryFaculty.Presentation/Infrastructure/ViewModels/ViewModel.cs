@@ -19,7 +19,6 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 
         public virtual string Title { get; protected set; }
         public ObservableCollection<CommandViewModel> Commands { get; private set; }
-        public ViewModel TooltipViewModel { get; protected set; }
 
         public virtual object Tag
         {

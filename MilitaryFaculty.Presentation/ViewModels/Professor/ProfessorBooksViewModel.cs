@@ -13,12 +13,20 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         #region Class Fields
 
-        private readonly IBookRepository bookRepository;
+        private readonly IRepository<Book> bookRepository;
         private ObservableCollection<BookListItemViewModel> books;
 
         #endregion // Class Fields
 
         #region Class Properties
+
+        public override string Title
+        {
+            get
+            {
+                return "Разработка учебников, учебных пособий";
+            }
+        }
 
         public ObservableCollection<BookListItemViewModel> Books
         {
@@ -53,7 +61,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         #region Class Constructors
 
-        public ProfessorBooksViewModel(Professor model, IBookRepository bookRepository)
+        public ProfessorBooksViewModel(Professor model, IRepository<Book> bookRepository)
             : base(model)
         {
             if (bookRepository == null)
@@ -61,9 +69,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 throw new ArgumentNullException("conferenceRepository");
             }
 
-            const string title = "Разработка учебников, учебных пособий";
-
-            this.Title = title;
             this.bookRepository = bookRepository;
 
             bookRepository.EntityCreated += OnBookCreated;
@@ -80,7 +85,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Добавить учебник";
             const string imageSource = @"..\Content\add.png";
 
-            return new ImagedCommandViewModel(GlobalNavCommands.BrowseBookAdd,
+            return new ImagedCommandViewModel(Browse.Book.Add,
                                               Model, tooltip, imageSource);
         }
 

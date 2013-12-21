@@ -34,6 +34,8 @@ namespace MilitaryFaculty.Data.Tests
             SeedProfessors(context);
             SeedConferences(context);
             SeedPublications(context);
+            SeedBooks(context);
+            SeedExhibitions(context);
         }
 
         private static void SeedCathedras(EntityContext context)
@@ -84,7 +86,7 @@ namespace MilitaryFaculty.Data.Tests
                                      },
                                      new Professor
                                      {
-                                         FullName = new FullName("Дюжов", "Юрьевич", "Геннадий"),
+                                         FullName = new FullName("Геннадий", "Юрьевич", "Дюжов"),
                                          Cathedra = cathedra,
                                          MilitaryRank = MilitaryRank.Colonel,
                                          JobPosition = JobPosition.Professor,
@@ -118,7 +120,7 @@ namespace MilitaryFaculty.Data.Tests
                                                  "военно-морского десанта Республики Беларусь",
                                           Date = DateTime.Parse("01.07.1993"),
                                           Curator = professor1,
-                                          ConferenceType = EventLevel.University,
+                                          EventLevel = EventLevel.University,
                                           ConferenceReport = new ConferenceReport
                                                              {
                                                                  OrganizationCorrectness = AccordanceLevel.Fully,
@@ -132,7 +134,7 @@ namespace MilitaryFaculty.Data.Tests
                                           Name = "Военно-научная конференция, посвященная 56-летию Великой Победы",
                                           Date = DateTime.Parse("11.09.2001"),
                                           Curator = professor1,
-                                          ConferenceType = EventLevel.University,
+                                          EventLevel = EventLevel.University,
                                           ConferenceReport = new ConferenceReport
                                                              {
                                                                  OrganizationCorrectness = AccordanceLevel.Fully,
@@ -146,7 +148,7 @@ namespace MilitaryFaculty.Data.Tests
                                           Name = "Вторая международная конференция",
                                           Date = DateTime.Parse("13.08.2007"),
                                           Curator = professor2,
-                                          ConferenceType = EventLevel.University,
+                                          EventLevel = EventLevel.University,
                                           ConferenceReport = new ConferenceReport
                                                              {
                                                                  OrganizationCorrectness = AccordanceLevel.Fully,
@@ -173,9 +175,9 @@ namespace MilitaryFaculty.Data.Tests
 
             var professor2 = context.Professors
                                     .AsQueryable()
-                                    .Single(p => p.FullName.LastName == "Касанин");
+                                    .Single(p => p.FullName.LastName == "Дюжов");
 
-            var books = new[]
+            var publications = new[]
                             {
                                 new Publication
                                 {
@@ -204,9 +206,75 @@ namespace MilitaryFaculty.Data.Tests
                             };
 
 
+            foreach (var publication in publications)
+            {
+                context.Publications.Add(publication);
+            }
+
+            context.SaveChanges();
+        }
+
+        private static void SeedBooks(EntityContext context)
+        {
+            var professor1 = context.Professors
+                                    .AsQueryable()
+                                    .Single(p => p.FullName.LastName == "Кашкаров");
+
+            var books = new[]
+                            {
+                                new Book
+                                {
+                                    Name = "Воинский устав в картинках. Для детей дошкольного возраста.",
+                                    PagesCount = 28,
+                                    Author = professor1,
+                                    BookType = BookType.Tutorial
+                                },
+                                new Book
+                                {
+                                    Name = "Моя служба. Мемуары.",
+                                    PagesCount = 1411,
+                                    BookType = BookType.Schoolbook,
+                                    Author = professor1,
+                                },
+                            };
+
+
             foreach (var book in books)
             {
                 context.Books.Add(book);
+            }
+
+            context.SaveChanges();
+        }
+
+        private static void SeedExhibitions(EntityContext context)
+        {
+            var professor1 = context.Professors
+                                    .AsQueryable()
+                                    .Single(p => p.FullName.LastName == "Кашкаров");
+
+            var exhibitions = new[]
+                            {
+                                new Exhibition
+                                {
+                                    Name = "Военная научная выставка.",
+                                    Participant = professor1,
+                                    AwardType = AwardType.ThirdDegree,
+                                    Date = DateTime.Today
+                                },
+                                new Exhibition
+                                {
+                                    Name = "Тибо 2001.",
+                                    AwardType = AwardType.FirstDegree,
+                                    Participant = professor1,
+                                    Date = DateTime.Today
+                                },
+                            };
+
+
+            foreach (var exhibition in exhibitions)
+            {
+                context.Exhibitions.Add(exhibition);
             }
 
             context.SaveChanges();
