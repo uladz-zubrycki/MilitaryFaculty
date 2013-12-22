@@ -44,13 +44,7 @@ namespace MilitaryFaculty.Reporting
         {
             return files.SelectMany(ReadFromFile)
                         .AsParallel()
-                        .Select(f => new
-                                     {
-                                         f.Id,
-                                         FormulaInfo = XFormula.ToFormulaInfo(f),
-                                     })
-                        .ToDictionary(pair => pair.Id,
-                                      pair => pair.FormulaInfo);
+                        .ToDictionary(f => f.Id, XFormula.ToFormulaInfo);
         }
 
         private static IEnumerable<XFormula> ReadFromFile(string file)
