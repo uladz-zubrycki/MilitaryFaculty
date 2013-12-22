@@ -5,6 +5,7 @@ using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
+using MilitaryFaculty.Reporting.Excel;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
@@ -20,6 +21,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         private readonly IRepository<Publication> publicationRepository;
         private readonly IRepository<Exhibition> exhibitionRepository;
         private readonly IRepository<Book> bookRepository;
+        private readonly ExcelReportingService excelReporting;
 
         #endregion // Class Fields
 
@@ -65,6 +67,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             publicationRepository = container.Resolve<IRepository<Publication>>();
             exhibitionRepository = container.Resolve<IRepository<Exhibition>>();
             bookRepository = container.Resolve<IRepository<Book>>();
+            excelReporting = container.Resolve<ExcelReportingService>();
 
             workWindow = new StartupViewModel();
 
@@ -131,6 +134,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
                               new ConferenceNavigationModule(this),
                               new BookNavigationModule(this),
                               new ExhibitionNavigationModule(this),
+                              new ReportingCommandModule(excelReporting), 
                           };
 
             modules.ForEach(m => m.RegisterModule(CommandContainer));

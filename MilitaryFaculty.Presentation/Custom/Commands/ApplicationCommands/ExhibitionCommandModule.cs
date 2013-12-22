@@ -4,7 +4,7 @@ using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class ExhibitionCommandModule : BaseCommandModule<Exhibition>
+    public class ExhibitionCommandModule : EntityCommandModule<Exhibition>
     {
         protected override RoutedCommand AddCommand
         {

@@ -5,17 +5,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MilitaryFaculty.Domain", "M
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MilitaryFaculty.Data", "MilitaryFaculty.Data", "{CF87E20A-6752-4BBF-AB2E-A22CE904A277}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MilitaryFaculty.Logic", "MilitaryFaculty.Logic", "{731F0277-7B54-4A16-9575-B662FAA56BDB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MilitaryFaculty.Reporting", "MilitaryFaculty.Reporting", "{731F0277-7B54-4A16-9575-B662FAA56BDB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MilitaryFaculty.Presentation", "MilitaryFaculty.Presentation", "{8CAEFDE1-33E6-4FF5-A246-DE3C5F44AEB2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Domain", "MilitaryFaculty.Domain\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj", "{6D238556-9B46-46DE-BDC9-0BB085627089}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Domain.Contract", "MilitaryFaculty.Domain\MilitaryFaculty.Domain.Contract\MilitaryFaculty.Domain.Contract.csproj", "{10E40656-D44B-46CE-9FED-0496F71554B7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Logic", "MilitaryFaculty.Logic\MilitaryFaculty.Logic\MilitaryFaculty.Logic.csproj", "{813E121E-1097-4A5A-B672-4AC98E21D4EE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Logic.Services", "MilitaryFaculty.Logic\MilitaryFaculty.Logic.Services\MilitaryFaculty.Logic.Services.csproj", "{74DE6247-CC90-4EA8-BD45-C51C3ED32EF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Presentation", "MilitaryFaculty.Presentation\MilitaryFaculty.Presentation.csproj", "{605451BC-3748-4D32-8B5F-20915719894C}"
 EndProject
@@ -40,7 +36,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Data.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Logic.Tests", "_Tests\MilitaryFaculty.Logic.Tests\MilitaryFaculty.Logic.Tests.csproj", "{10B84C81-F792-49C3-882D-59D8AF3D0A4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Presentation.Tests", "_Tests\MilitaryFaculty.Presentation.Tests\MilitaryFaculty.Presentation.Tests.csproj", "{706B6BCC-3787-4D19-A1FC-F78BB8115709}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Reporting", "MilitaryFaculty.Reporting\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.csproj", "{813E121E-1097-4A5A-B672-4AC98E21D4EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Reporting.Data", "MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.Data\MilitaryFaculty.Reporting.Data.csproj", "{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Reporting.Excel", "MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.Excel\MilitaryFaculty.Reporting.Excel.csproj", "{B9539664-9E26-4DE9-B14E-CFD5EB13F012}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,14 +56,6 @@ Global
 		{10E40656-D44B-46CE-9FED-0496F71554B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10E40656-D44B-46CE-9FED-0496F71554B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10E40656-D44B-46CE-9FED-0496F71554B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{813E121E-1097-4A5A-B672-4AC98E21D4EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{813E121E-1097-4A5A-B672-4AC98E21D4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{813E121E-1097-4A5A-B672-4AC98E21D4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{813E121E-1097-4A5A-B672-4AC98E21D4EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74DE6247-CC90-4EA8-BD45-C51C3ED32EF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74DE6247-CC90-4EA8-BD45-C51C3ED32EF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74DE6247-CC90-4EA8-BD45-C51C3ED32EF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74DE6247-CC90-4EA8-BD45-C51C3ED32EF2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{605451BC-3748-4D32-8B5F-20915719894C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{605451BC-3748-4D32-8B5F-20915719894C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{605451BC-3748-4D32-8B5F-20915719894C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -88,10 +80,18 @@ Global
 		{10B84C81-F792-49C3-882D-59D8AF3D0A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10B84C81-F792-49C3-882D-59D8AF3D0A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10B84C81-F792-49C3-882D-59D8AF3D0A4B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{706B6BCC-3787-4D19-A1FC-F78BB8115709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{706B6BCC-3787-4D19-A1FC-F78BB8115709}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{706B6BCC-3787-4D19-A1FC-F78BB8115709}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{706B6BCC-3787-4D19-A1FC-F78BB8115709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{813E121E-1097-4A5A-B672-4AC98E21D4EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{813E121E-1097-4A5A-B672-4AC98E21D4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{813E121E-1097-4A5A-B672-4AC98E21D4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{813E121E-1097-4A5A-B672-4AC98E21D4EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9539664-9E26-4DE9-B14E-CFD5EB13F012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9539664-9E26-4DE9-B14E-CFD5EB13F012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9539664-9E26-4DE9-B14E-CFD5EB13F012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9539664-9E26-4DE9-B14E-CFD5EB13F012}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,11 +102,11 @@ Global
 		{64CF86E4-FCB8-40F5-B9D8-BF403BE66858} = {CF87E20A-6752-4BBF-AB2E-A22CE904A277}
 		{1F3C691F-2E66-4A98-AD58-1FC5B752317D} = {CF87E20A-6752-4BBF-AB2E-A22CE904A277}
 		{813E121E-1097-4A5A-B672-4AC98E21D4EE} = {731F0277-7B54-4A16-9575-B662FAA56BDB}
-		{74DE6247-CC90-4EA8-BD45-C51C3ED32EF2} = {731F0277-7B54-4A16-9575-B662FAA56BDB}
+		{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708} = {731F0277-7B54-4A16-9575-B662FAA56BDB}
+		{B9539664-9E26-4DE9-B14E-CFD5EB13F012} = {731F0277-7B54-4A16-9575-B662FAA56BDB}
 		{605451BC-3748-4D32-8B5F-20915719894C} = {8CAEFDE1-33E6-4FF5-A246-DE3C5F44AEB2}
 		{6E68E327-B0D0-483A-878A-C72E0FE03F13} = {63B78265-6160-4D37-A24B-AA82A217F781}
 		{10B84C81-F792-49C3-882D-59D8AF3D0A4B} = {63B78265-6160-4D37-A24B-AA82A217F781}
-		{706B6BCC-3787-4D19-A1FC-F78BB8115709} = {63B78265-6160-4D37-A24B-AA82A217F781}
 		{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB} = {DCA4EE3D-8A72-4430-90FB-6B70DA2FB058}
 	EndGlobalSection
 EndGlobal

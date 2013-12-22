@@ -1,10 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
-using ClosedXML.Excel;
+using System.Linq;
+using System.Xml;
+using System.Xml.Serialization;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Logic.DataProviders;
-using MilitaryFaculty.Logic.XmlDomain;
+using MilitaryFaculty.Reporting;
+using MilitaryFaculty.Reporting.Data;
+using MilitaryFaculty.Reporting.Excel;
+using MilitaryFaculty.Reporting.XmlDomain;
 using NUnit.Framework;
 
 namespace MilitaryFaculty.Logic.Tests
@@ -13,10 +18,6 @@ namespace MilitaryFaculty.Logic.Tests
     [TestFixture]
     public class DataContainer_Test
     {
-        private string savePath, xmlPath;
-
-        private const string projectDir = @"d:\Other\git_projects\MilitaryFaculty";
-
         private EntityContext context;
 
         [SetUp]
@@ -26,60 +27,79 @@ namespace MilitaryFaculty.Logic.Tests
 
             var connectionString = ConfigurationManager.ConnectionStrings[conName].ConnectionString;
             context = new EntityContext(connectionString);
-
-            //var basePath = AppDomain.CurrentDomain.BaseDirectory;
-            savePath = @"d:\Other\git_projects";
-            
-            xmlPath = projectDir + @"\MilitaryFaculty.Logic\MilitaryFaculty.Logic.Services\XmlTables";
         }
 
         [Test]
         public void TestExcel()
         {
-            //var workbook = new XLWorkbook();
-            //var worksheet = workbook.Worksheets.Add("Sample Sheet");
-            //worksheet.Cell("A1").Value = "Hello World!";
-            //workbook.SaveAs(path + @"\HelloWorld.xlsx");
+            var reportDataProvider = new ReportDataProvider(new IDataProvider[]
+                                                            {
+                                                                new CathedrasDataProvider(
+                                                                    new Repository<Cathedra>(context)),
+                                                                new ProfessorsDataProvider(
+                                                                    new Repository<Professor>(context)),
+                                                                new PublicationsDataProvider(
+                                                                    new Repository<Publication>(context)),
+                                                                new ExhibitionsDataProvider(
+                                                                    new Repository<Exhibition>(context)),
+                                                                new ConferencesDataProvider(
+                                                                    new Repository<Conference>(context))
+                                                            });
 
-            var workbook = new XLWorkbook();
-            var worksheet = workbook.Worksheets.Add("Results");
+            const string relDirPath = @"..\..\..\..\..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting\formulas\";
+            const string tableBaseName = "table-";
+            const string formulaBaseName = "formulas-";
+            var dirPath = Environment.CurrentDirectory + relDirPath;
 
-            var dataModule = new DataModule();
-            dataModule.RegisterProviders(new IDataProvider[]
-                {
-                    new CathedrasDataProvider(new BaseRepository<Cathedra>(context)),
-                    new ProfessorsDataProvider(new BaseRepository<Professor>(context)),
-                    new PublicationsDataProvider(new BaseRepository<Publication>(context)),
-                    new ExhibitionsDataProvider(new BaseRepository<Exhibition>(context)),
-                    new ConferencesDataProvider(new BaseRepository<Conference>(context))
-                });
+            var tableFiles = Enumerable.Range(1, 4)
+                                       .Select(i => dirPath + tableBaseName + i + ".xml")
+                                       .ToList();
 
-            var infoNames = new List<string>
-                {
-                    @"\FirstTableInfo.xml",
-                    @"\SecondTableInfo.xml",
-                    @"\ThirdTableInfo.xml",
-                    @"\FourthTableInfo.xml"
-                };
+            var formulaFiles = Enumerable.Range(1, 4)
+                                         .Select(i => dirPath + formulaBaseName + i + ".xml")
+                                         .ToList();
 
-            var formulaNames = new List<string>
-                {
-                    @"\FirstTableFormulas.xml",
-                    @"\SecondTableFormulas.xml",
-                    @"\ThirdTableFormulas.xml",
-                    @"\FourthTableFormulas.xml"
-                };
+            var formulaProvider = new FormulaProvider(formulaFiles);
+            var tableProvider = new ReportTableProvider(tableFiles);
 
-            for (var i = 0; i < infoNames.Count; i++)
-            {
-                var tableInfo = TableInfo.Deserialize(xmlPath + infoNames[i]);
-                var tableFormulas = TableFormulas.Deserialize(xmlPath + formulaNames[i]);
-                var dc = new DataContainer(tableInfo, tableFormulas, dataModule);
-                dc.GenerateExcelSheet(worksheet);
-            }
+            var reportingService = new ExcelReportingService(tableProvider, formulaProvider, reportDataProvider);
+            reportingService.ExportReport("D:\\1");
+        }
 
-            workbook.SaveAs(savePath + @"\results.xlsx");
+        [Test]
+        public void fdf()
+        {
+            var t = new List<XFormula>()
+                    {
+                        new XFormula()
+                        {
+                            Arguments = new List<XArgument>()
+                                        {
+                                            new XArgument()
+                                            {
+                                                Name = "fdf",
+                                                Text = "fdf"
+                                            }
+                                        },
+                            Coefficients = new List<XCoefficient>()
+                                           {
+                                               new XCoefficient()
+                                               {
+                                                   Name = "fdf",
+                                                   Value = 43
+                                               }
+                                           },
+                            Name = "fdf",
+                            MaxValue = 43,
+                            Id = "fd",
+                            Expression = "fdf"
+                        }
+                    }
+                ;
+
+            new XmlSerializer(typeof (List<XFormula>)).Serialize(XmlWriter.Create(@"D:\1.xml"), t);
         }
     }
+
     // ReSharper restore InconsistentNaming
 }

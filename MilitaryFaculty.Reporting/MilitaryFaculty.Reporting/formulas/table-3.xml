@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ReportTable name="Частные показатели апробации результатов научных исследований">
+  <Groups>
+    <Group
+      name="1. Степень участия ППС в апробоации результатов научных исследований на научных конференциях, семинарах">
+      <Formulas>
+        <id>id311</id>
+        <id>id312</id>
+        <id>id313</id>
+        <id>id314</id>
+        <id>id315</id>
+        <id>id316</id>
+      </Formulas>
+    </Group>
+    <Group name="2. Степень участия ППС на выставках и конкурсах научных и творческих работ">
+      <Formulas>
+        <id>id321</id>
+        <id>id322</id>
+        <id>id323</id>
+        <id>id324</id>
+        <id>id325</id>
+        <id>id326</id>
+        <id>id327</id>
+        <id>id328</id>
+        <id>id329</id>
+        <id>id3210</id>
+        <id>id3211</id>
+        <id>id3212</id>
+      </Formulas>
+    </Group>
+    <Group name="3. Степень участия ППС в публикации результатов научных исследованиий">
+      <Formulas>
+        <id>id331</id>
+        <id>id332</id>
+        <id>id333</id>
+        <id>id334</id>
+      </Formulas>
+    </Group>
+    <Group name="4. Другие частные показатели, характеризующие апробацию результатов научных исследований">
+      <Formulas>
+        <id>id34</id>
+      </Formulas>
+    </Group>
+  </Groups>
+</ReportTable>

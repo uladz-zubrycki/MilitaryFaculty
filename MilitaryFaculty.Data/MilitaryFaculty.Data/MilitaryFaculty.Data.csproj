@@ -56,7 +56,7 @@
     <Compile Include="Configurations\ConferenceReportConfiguration.cs" />
     <Compile Include="Configurations\ProfessorConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BaseRepository.cs" />
+    <Compile Include="Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

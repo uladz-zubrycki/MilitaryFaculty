@@ -36,7 +36,5 @@ namespace MilitaryFaculty.Presentation.Custom
 
             return base.SelectTemplate(item, container);
         }
-
-        
     }
 }

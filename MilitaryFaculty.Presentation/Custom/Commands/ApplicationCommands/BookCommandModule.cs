@@ -5,7 +5,7 @@ using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class BookCommandModule : BaseCommandModule<Book>
+    public class BookCommandModule : EntityCommandModule<Book>
     {
         protected override RoutedCommand AddCommand
         {

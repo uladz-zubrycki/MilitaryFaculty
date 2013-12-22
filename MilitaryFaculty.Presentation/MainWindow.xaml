@@ -29,6 +29,8 @@
         <i:CommandContainerBinding Command="{m:Command c:Do.Book.Update}"/>
         <i:CommandContainerBinding Command="{m:Command c:Do.Book.Remove}"/>
 
+        <i:CommandContainerBinding Command="{m:Command c:Report.Generate}"/>
+        
         <!--Common navigation commands-->              
         <i:CommandContainerBinding Command="{m:Command c:Browse.Back}"/>
         <i:CommandContainerBinding Command="{m:Command c:Browse.Forward}"/>
@@ -80,6 +82,12 @@
                     Command="c:Browse.Forward">
                 <Image Style="{StaticResource NavigationImageStyle}"
                        Source="/Content/forward.png"/>
+            </Button>
+
+            <Button Command="c:Report.Generate"
+                    Margin="10, 0"
+                    Padding="2">
+                Создать отчёт
             </Button>
         </Menu>
 

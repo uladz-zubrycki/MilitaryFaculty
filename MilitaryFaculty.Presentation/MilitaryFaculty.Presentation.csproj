@@ -67,11 +67,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Custom\Commands\ApplicationCommands\BaseCommandModule.cs" />
+    <Compile Include="Custom\Commands\ApplicationCommands\EntityCommandModule.cs" />
     <Compile Include="Custom\Commands\ApplicationCommands\BookCommandModule.cs" />
     <Compile Include="Custom\Commands\ApplicationCommands\PublicationCommandModule.cs" />
+    <Compile Include="Custom\Commands\ApplicationCommands\ReportingCommandModule.cs" />
     <Compile Include="Custom\Commands\NavigationCommands\BookNavigationModule.cs" />
     <Compile Include="Custom\Commands\NavigationCommands\ExhibitionNavigationModule.cs" />
+    <Compile Include="Custom\Commands\Report.cs" />
     <Compile Include="Custom\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Custom\Commands\ApplicationCommands\ExhibitionCommandModule.cs" />
     <Compile Include="Custom\Commands\ApplicationCommands\ConferenceCommandModule.cs" />
@@ -414,9 +416,17 @@
       <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
       <Name>MilitaryFaculty.Domain %28MilitaryFaculty.Domain\MilitaryFaculty.Domain%29</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MilitaryFaculty.Logic\MilitaryFaculty.Logic\MilitaryFaculty.Logic.csproj">
+    <ProjectReference Include="..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.Data\MilitaryFaculty.Reporting.Data.csproj">
+      <Project>{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}</Project>
+      <Name>MilitaryFaculty.Reporting.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.Excel\MilitaryFaculty.Reporting.Excel.csproj">
+      <Project>{B9539664-9E26-4DE9-B14E-CFD5EB13F012}</Project>
+      <Name>MilitaryFaculty.Reporting.Excel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.csproj">
       <Project>{813E121E-1097-4A5A-B672-4AC98E21D4EE}</Project>
-      <Name>MilitaryFaculty.Logic %28MilitaryFaculty.Logic\MilitaryFaculty.Logic%29</Name>
+      <Name>MilitaryFaculty.Reporting %28MilitaryFaculty.Reporting\MilitaryFaculty.Reporting%29</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

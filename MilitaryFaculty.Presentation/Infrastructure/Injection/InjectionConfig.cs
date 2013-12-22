@@ -1,9 +1,11 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
+using System.Linq;
 using Autofac;
 using MilitaryFaculty.Data;
-using MilitaryFaculty.Data.Contract;
-using MilitaryFaculty.Logic;
-using MilitaryFaculty.Logic.DataProviders;
+using MilitaryFaculty.Reporting;
+using MilitaryFaculty.Reporting.Data;
+using MilitaryFaculty.Reporting.Excel;
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
@@ -18,18 +20,21 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         {
             RegisterRepositories(builder);
             RegisterEntityContext(builder);
-            RegisterDataProvider(builder);
+            RegisterDataProviders(builder);
+            RegisterFormulaProvider(builder);
+            RegisterReportTableProvider(builder);
+            RegisterExcelReportingService(builder);
 
             return builder.Build();
         }
 
         /// <summary>
-        /// Registers repositories as singletones.
+        /// Registers repositories.
         /// </summary>
         /// <param name="builder">Builder for service container.</param>
         private static void RegisterRepositories(ContainerBuilder builder)
         {
-            builder.RegisterGeneric(typeof (BaseRepository<>))
+            builder.RegisterGeneric(typeof (Repository<>))
                    .AsImplementedInterfaces();
         }
 
@@ -47,19 +52,53 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                    .SingleInstance();
         }
 
-        private static void RegisterDataProvider(ContainerBuilder builder)
+        private static void RegisterFormulaProvider(ContainerBuilder builder)
         {
-            var dataModule = new DataModule();
-            dataModule.RegisterProviders(new IDataProvider[]
-                {
-                    //new CathedrasDataProvider(new CathedraRepository(context)),
-                    //new ProfessorsDataProvider(new ProfessorRepository(context)),
-                    //new PublicationsDataProvider(new PublicationRepository(context)),
-                    //new ExhibitionsDataProvider(new ExhibitionRepository(context)),
-                    //new ConferencesDataProvider(new ConferenceRepository(context)), 
-                });
+            const string relDirPath = @"..\..\..\..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting\formulas\";
+            const string baseName = "formulas-";
+            var dirPath = Environment.CurrentDirectory + relDirPath;
 
-            builder.RegisterInstance(dataModule);
+            var files = Enumerable.Range(1, 4)
+                                  .Select(i => dirPath + baseName + i + ".xml")
+                                  .ToList();
+
+            builder.RegisterType<FormulaProvider>()
+                   .As<IFormulaProvider>()
+                   .WithParameter("files", files)
+                   .SingleInstance();
+        }
+
+        private static void RegisterReportTableProvider(ContainerBuilder builder)
+        {
+            const string relDirPath = @"..\..\..\..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting\formulas\";
+            const string baseName = "table-";
+            var dirPath = Environment.CurrentDirectory + relDirPath;
+
+            var files = Enumerable.Range(1, 4)
+                                  .Select(i => dirPath + baseName + i + ".xml")
+                                  .ToList();
+
+            builder.RegisterType<ReportTableProvider>()
+                   .As<IReportTableProvider>()
+                   .WithParameter("files", files)
+                   .SingleInstance();
+        }
+
+        private static void RegisterDataProviders(ContainerBuilder builder)
+        {
+            builder.RegisterType<ReportDataProvider>()
+                   .AsSelf();
+
+            builder.RegisterAssemblyTypes(typeof (ReportDataProvider).Assembly)
+                   .Where(type => type.IsAssignableTo<IDataProvider>())
+                   .As<IDataProvider>();
+        }
+
+        private static void RegisterExcelReportingService(ContainerBuilder builder)
+        {
+            builder.RegisterType<ExcelReportingService>()
+                   .AsSelf()
+                   .SingleInstance();
         }
     }
 }
