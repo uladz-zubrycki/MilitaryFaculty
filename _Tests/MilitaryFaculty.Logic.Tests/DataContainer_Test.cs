@@ -63,7 +63,7 @@ namespace MilitaryFaculty.Logic.Tests
             var tableProvider = new ReportTableProvider(tableFiles);
 
             var reportingService = new ExcelReportingService(tableProvider, formulaProvider, reportDataProvider);
-            reportingService.ExportReport("D:\\1");
+            reportingService.ExportReport(@"D:\1.xls");
         }
 
         [Test]

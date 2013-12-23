@@ -1,20 +1,15 @@
 ﻿using System;
-using ClosedXML.Excel;
+using Microsoft.Office.Interop.Excel;
+
+//using Worksheet = DocumentFormat.OpenXml.Spreadsheet.Worksheet;
 
 namespace MilitaryFaculty.Reporting.Excel
 {
     public static class XlStyle
     {
-        #region Class Static Variables
-
-        public static int FirstColumn = 2;
-        public static int LastColumn = 5;
-
-        #endregion Class Static Variables
-
         #region Class Public Methods
 
-        public static void SetNameStyle(IXLRange xlRange, string name)
+        public static void SetNameStyle(Range xlRange, string name)
         {
             if (xlRange == null)
             {
@@ -25,13 +20,13 @@ namespace MilitaryFaculty.Reporting.Excel
                 throw new ArgumentException("name");
             }
 
-            xlRange.Merge();
+            xlRange.Merge(false);
             xlRange.Value = name;
-            xlRange.Style.Font.Bold = true;
-            xlRange.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            xlRange.Font.Bold = true;
+            xlRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
         }
 
-        public static void SetSubNameStyle(IXLRange xlRange, string name)
+        public static void SetSubNameStyle(Range xlRange, string name)
         {
             if (xlRange == null)
             {
@@ -42,37 +37,50 @@ namespace MilitaryFaculty.Reporting.Excel
                 throw new ArgumentNullException("name");
             }
 
-            xlRange.Merge();
+            xlRange.Merge(false);
             xlRange.Value = name;
-            xlRange.Style.Font.Bold = true;
+            xlRange.Font.Bold = true;
         }
 
-        public static void SetTableStyle(IXLRange xlRange)
+        public static void SetTableStyle(Range xlRange)
         {
             if (xlRange == null)
             {
                 throw new ArgumentNullException("xlRange");
             }
 
-            xlRange.Style.Border.OutsideBorder = XLBorderStyleValues.Thick;
-            xlRange.Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+            xlRange.BorderAround(XlLineStyle.xlDouble, XlBorderWeight.xlThick,
+                                    XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic);
+            xlRange.Borders[XlBordersIndex.xlInsideHorizontal].LineStyle = XlLineStyle.xlContinuous;
 
-            xlRange.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
-            xlRange.Style.Alignment.SetWrapText(true);
+            xlRange.Borders[XlBordersIndex.xlInsideVertical].LineStyle = XlLineStyle.xlContinuous;
+            xlRange.VerticalAlignment = XlVAlign.xlVAlignCenter;
+            xlRange.WrapText = true;
         }
 
-        public static void SetSheetStyle(IXLWorksheet xlWorkSheet)
+        public static void SetSheetStyle(Worksheet xlWorkSheet, int nameColumn, int totalRationColumn, int maxRatingColumn)
         {
             if (xlWorkSheet == null)
             {
                 throw new ArgumentNullException("xlWorkSheet");
             }
+            if (nameColumn < 1)
+            {
+                throw new ArgumentException("nameColumn");
+            }
+            if (totalRationColumn < 1)
+            {
+                throw new ArgumentException("totalRationColumn");
+            }
+            if (maxRatingColumn < 1)
+            {
+                throw new ArgumentException("maxRatingColumn");
+            }
 
-            xlWorkSheet.Column(1).Width = 5;
-            xlWorkSheet.Column(FirstColumn).Width = 5;
-            xlWorkSheet.Column(FirstColumn + 1).Width = 105;
-            xlWorkSheet.Column(FirstColumn + 2).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-            xlWorkSheet.Column(FirstColumn + 3).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            ((Range)xlWorkSheet.Columns[1, Type.Missing]).EntireColumn.ColumnWidth = 2.5;
+            ((Range)xlWorkSheet.Columns[nameColumn, Type.Missing]).EntireColumn.ColumnWidth = 100;
+            ((Range)xlWorkSheet.Columns[totalRationColumn, Type.Missing]).EntireColumn.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+            ((Range)xlWorkSheet.Columns[maxRatingColumn, Type.Missing]).EntireColumn.HorizontalAlignment = XlHAlign.xlHAlignCenter;
         }
 
         #endregion // Class Public Methods
