@@ -54,6 +54,7 @@ namespace MilitaryFaculty.Reporting.Excel
             range.Value = value;
             range.Style.Font.Bold = true;
             range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            range.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
             curLine += 2;
         }
 
