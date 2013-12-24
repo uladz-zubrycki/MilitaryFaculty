@@ -63,7 +63,7 @@ namespace MilitaryFaculty.Logic.Tests
             var tableProvider = new ReportTableProvider(tableFiles);
 
             var reportingService = new ExcelReportingService(tableProvider, formulaProvider, reportDataProvider);
-            reportingService.ExportReport(@"D:\1.xls");
+            reportingService.ExportReport(@"D:\1.xlsx");
         }
 
         [Test]
@@ -97,7 +97,7 @@ namespace MilitaryFaculty.Logic.Tests
                     }
                 ;
 
-            new XmlSerializer(typeof (List<XFormula>)).Serialize(XmlWriter.Create(@"D:\1.xml"), t);
+            new XmlSerializer(typeof(List<XFormula>)).Serialize(XmlWriter.Create(@"D:\1.xml"), t);
         }
     }
 

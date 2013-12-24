@@ -1,9 +1,9 @@
-﻿using System;
-using System.IO;
-using Microsoft.Office.Interop.Excel;
-using MilitaryFaculty.Extensions;
+﻿using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.XmlDomain;
+using OfficeOpenXml;
+using System;
+using System.IO;
 
 namespace MilitaryFaculty.Reporting.Excel
 {
@@ -46,58 +46,52 @@ namespace MilitaryFaculty.Reporting.Excel
 
         public void ExportReport(string filePath)
         {
-            if (String.IsNullOrEmpty(filePath))
+            if (String.IsNullOrWhiteSpace(filePath))
             {
                 throw new ArgumentNullException("filePath");
             }
 
-            object misValue = System.Reflection.Missing.Value;
-
-            var xlApp = new Application();
-            var xlWorkBook = xlApp.Workbooks.Add(misValue);
-            var xlWorkSheet = (Worksheet)xlWorkBook.Worksheets.Item[1];
-
-            tableProvider.GetTables()
-                         .ForEach(table => ExportTable(table, xlWorkSheet));
-
             File.Delete(filePath);
-            xlWorkBook.SaveAs(filePath, XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue,
-                              misValue, XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue,
-                              misValue);
-            xlWorkBook.Close(true, misValue, misValue);
-            xlApp.Quit();
+            var newFile = new FileInfo(filePath);
 
-            ReleaseObject(xlWorkSheet);
-            ReleaseObject(xlWorkBook);
-            ReleaseObject(xlApp);
+            using (var xlPackage = new ExcelPackage(newFile))
+            {
+                var ws = xlPackage.Workbook.Worksheets.Add("Resuts");
+
+                tableProvider.GetTables()
+                         .ForEach(table => ExportTable(table, ws));
+
+                xlPackage.Save();
+            }
         }
 
         #endregion // Class Public Methods
 
         #region Class Private Methods
 
-        private void ExportTable(XReportTable table, Worksheet xlWorkSheet)
+        private void ExportTable(XReportTable table, ExcelWorksheet workSheet)
         {
-            if (xlWorkSheet == null)
+            if (table == null)
             {
-                throw new ArgumentNullException("xlWorkSheet");
+                throw new ArgumentNullException("table");
+            }
+            if (workSheet == null)
+            {
+                throw new ArgumentNullException("workSheet");
             }
 
-            var firstLine = xlWorkSheet.UsedRange.Rows.Count + 1;
+            var xlHelper = new XlResultsHelper(2);
+
+            var firstLine = workSheet.Dimension != null ?  workSheet.Dimension.End.Row + 2 : 2;
             var curLine = firstLine;
             double totalRating = 0;
 
-            var xlRange = xlWorkSheet.Range["b" + curLine, "e" + (curLine + 1)];
-            XlStyle.SetNameStyle(xlRange, table.Name);
-
-            curLine += 2;
+            xlHelper.PutName(table.Name, workSheet, ref curLine);
 
             //Groups generation
             foreach (var part in table.Groups)
             {
-                xlRange = xlWorkSheet.Range["b" + curLine, "e" + curLine];
-                XlStyle.SetSubNameStyle(xlRange, part.Name);
-                curLine++;
+                xlHelper.PutSubName(part.Name, workSheet, ref curLine);
 
                 //Formula lines generation
                 foreach (var formulaId in part.Formulas)
@@ -107,24 +101,18 @@ namespace MilitaryFaculty.Reporting.Excel
                     var value = NormalizeValue(characteristic.Evaluate());
 
                     //Fields setting
-                    xlWorkSheet.Cells[curLine, 3] = formulaInfo.Name;
-                    xlWorkSheet.Cells[curLine, 4] = value.ToString("F0");
-                    xlWorkSheet.Cells[curLine, 5] = ValueOrDash(formulaInfo.MaxValue);
-
+                    xlHelper.PutFieldLine(formulaInfo.Name, value.ToString("F0"), ValueOrDash(formulaInfo.MaxValue), workSheet, ref curLine);
                     totalRating += value;
-                    curLine++;
                 }
             }
 
             //Results setting
-            XlStyle.SetNameStyle(xlWorkSheet.Range["b" + curLine, "c" + curLine], "Итог");
-            xlWorkSheet.Cells[curLine, 4] = totalRating.ToString("F0");
+            xlHelper.PutResults("Итог", totalRating.ToString("F0"), workSheet, ref curLine);
 
             //Sheet styles setting
-            XlStyle.SetTableStyle(xlWorkSheet.Range["b" + firstLine, "e" + (curLine)]);
-            XlStyle.SetSheetStyle(xlWorkSheet, 3, 4, 5);
+            xlHelper.SetTableStyle(firstLine, curLine - 1, workSheet);
         }
- 
+
         private static double NormalizeValue(double value)
         {
             return double.IsInfinity(value) ? 0 : value;
@@ -135,18 +123,6 @@ namespace MilitaryFaculty.Reporting.Excel
             return Math.Abs(value) < 0.001
                        ? "-"
                        : value.ToString("F0");
-        }
-
-        private static void ReleaseObject(object obj)
-        {
-            try
-            {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-            }
-            finally
-            {
-                GC.Collect();
-            }
         }
 
         #endregion // Class Private Methods

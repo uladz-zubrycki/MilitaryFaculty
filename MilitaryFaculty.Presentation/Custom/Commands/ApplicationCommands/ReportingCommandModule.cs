@@ -13,7 +13,7 @@ namespace MilitaryFaculty.Presentation.Custom
         {
             if (reportingService == null)
             {
-                throw new ArgumentNullException("ReportingService");
+                throw new ArgumentNullException("reportingService");
             }
 
             this.reportingService = reportingService;
