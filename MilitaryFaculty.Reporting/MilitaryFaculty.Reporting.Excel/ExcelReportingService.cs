@@ -1,15 +1,17 @@
-﻿using System;
-using ClosedXML.Excel;
+﻿using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.XmlDomain;
+using OfficeOpenXml;
+using System;
+using System.IO;
 
 namespace MilitaryFaculty.Reporting.Excel
 {
     public class ExcelReportingService
     {
+        private readonly IReportTableProvider _tableProvider;
         private readonly IFormulaProvider _formulaProvider;
         private readonly ReportDataProvider _reportDataProvider;
-        private readonly IReportTableProvider _tableProvider;
 
         public ExcelReportingService(IReportTableProvider tableProvider, IFormulaProvider formulaProvider,
                                      ReportDataProvider reportDataProvider)
@@ -24,7 +26,7 @@ namespace MilitaryFaculty.Reporting.Excel
             }
             if (reportDataProvider == null)
             {
-                throw new ArgumentNullException("ReportDataProvider");
+                throw new ArgumentNullException("reportDataProvider");
             }
 
             _tableProvider = tableProvider;
@@ -34,38 +36,48 @@ namespace MilitaryFaculty.Reporting.Excel
 
         public void ExportReport(string filePath)
         {
-            if (String.IsNullOrEmpty(filePath))
+            if (String.IsNullOrWhiteSpace(filePath))
+            {
+                throw new ArgumentNullException("filePath");
+            }
+
+            File.Delete(filePath);
+            var newFile = new FileInfo(filePath);
+
+            using (var xlPackage = new ExcelPackage(newFile))
+            {
+                var ws = xlPackage.Workbook.Worksheets.Add("Resuts");
+
+                _tableProvider.GetTables()
+                         .ForEach(table => ExportTable(table, ws));
+
+                xlPackage.Save();
+            }
+        }
+
+        private void ExportTable(XReportTable table, ExcelWorksheet workSheet)
+        {
+            if (table == null)
+            {
+                throw new ArgumentNullException("table");
+            }
+            if (workSheet == null)
             {
                 throw new ArgumentNullException("workSheet");
             }
 
-            using (var workbook = new XLWorkbook())
-            {
-                var worksheet = workbook.Worksheets.Add("Results");
-                _tableProvider.GetTables()
-                              .ForEach(table => ExportTable(table, worksheet));
-                workbook.SaveAs(filePath);
-            }
-        }
+            var xlHelper = new XlResultsHelper(2);
 
-        private void ExportTable(XReportTable table, IXLWorksheet worksheet)
-        {
-            var firstLine = (worksheet.RangeUsed() == null) ? 2 : worksheet.RangeUsed().RowCount() + 4;
-
+            var firstLine = workSheet.Dimension != null ?  workSheet.Dimension.End.Row + 2 : 2;
             var curLine = firstLine;
             double totalRating = 0;
 
-            var range = worksheet.Range(curLine, XlStyle.FirstColumn, curLine + 1, XlStyle.LastColumn);
-            XlStyle.SetNameStyle(range, table.Name);
-
-            curLine += 2;
+            xlHelper.PutName(workSheet, ref curLine, table.Name);
 
             //Groups generation
             foreach (var part in table.Groups)
             {
-                range = worksheet.Range(curLine, XlStyle.FirstColumn, curLine, XlStyle.LastColumn);
-                XlStyle.SetSubNameStyle(range, part.Name);
-                curLine++;
+                xlHelper.PutSubName(workSheet, ref curLine, part.Name);
 
                 //Formula lines generation
                 foreach (var formulaId in part.Formulas)
@@ -74,23 +86,15 @@ namespace MilitaryFaculty.Reporting.Excel
                     var characteristic = new Characteristic(formulaInfo, _reportDataProvider);
                     var value = NormalizeValue(characteristic.Evaluate());
 
-                    //Fields setting
-                    worksheet.Cell(curLine, XlStyle.FirstColumn + 1).Value = formulaInfo.Name;
-                    worksheet.Cell(curLine, XlStyle.FirstColumn + 2).Value = value.ToString("F0");
-                    worksheet.Cell(curLine, XlStyle.FirstColumn + 3).Value = ValueOrDash(formulaInfo.MaxValue);
-
+                    xlHelper.PutFieldLine(workSheet, ref curLine, formulaInfo.Name, value.ToString("F0"), ValueOrDash(formulaInfo.MaxValue));
                     totalRating += value;
-                    curLine++;
                 }
             }
 
-            //Results setting
-            XlStyle.SetNameStyle(worksheet.Range(curLine, XlStyle.FirstColumn, curLine, XlStyle.FirstColumn + 1), "Итог");
-            worksheet.Cell(curLine, XlStyle.FirstColumn + 2).Value = totalRating.ToString("F0");
+            xlHelper.PutResults(workSheet, ref curLine, "Итог", totalRating.ToString("F0"));
 
             //Sheet styles setting
-            XlStyle.SetTableStyle(worksheet.Range(firstLine, XlStyle.FirstColumn, curLine, XlStyle.LastColumn));
-            XlStyle.SetSheetStyle(worksheet);
+            xlHelper.SetTableStyle(workSheet, firstLine, curLine - 1);
         }
 
         private static double NormalizeValue(double value)
@@ -101,8 +105,8 @@ namespace MilitaryFaculty.Reporting.Excel
         private static string ValueOrDash(double value)
         {
             return Math.Abs(value) < 0.001
-                ? "-"
-                : value.ToString("F0");
+                       ? "-"
+                       : value.ToString("F0");
         }
     }
 }
