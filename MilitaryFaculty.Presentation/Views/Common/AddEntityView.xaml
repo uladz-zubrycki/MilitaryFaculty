@@ -36,7 +36,7 @@
                 Content="Добавить"
                 Style="{StaticResource SimpleButton}"
                 Command="{Binding AddCommand}"
-                CommandParameter="{Binding Model}"/>
+                CommandParameter="{Binding Model}" />
 
             <Button
                 Grid.Column="1"

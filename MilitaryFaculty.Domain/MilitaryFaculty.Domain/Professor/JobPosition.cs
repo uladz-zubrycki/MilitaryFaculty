@@ -4,22 +4,16 @@ namespace MilitaryFaculty.Domain
 {
     public enum JobPosition : byte
     {
-        [EnumName("Преподаватель")]
-        Teacher,
+        [EnumName("Преподаватель")] Teacher,
 
-        [EnumName("Старший преподаватель")]
-        SeniorProfessor,
+        [EnumName("Старший преподаватель")] SeniorProfessor,
 
-        [EnumName("Доцент")]
-        Docent,
+        [EnumName("Доцент")] Docent,
 
-        [EnumName("Профессор")]
-        Professor,
-        
-        [EnumName("Начальник цикла")]
-        HeadOfCycle,
-        
-        [EnumName("Начальник кафедры")]
-        HeadOfCathedra
+        [EnumName("Профессор")] Professor,
+
+        [EnumName("Начальник цикла")] HeadOfCycle,
+
+        [EnumName("Начальник кафедры")] HeadOfCathedra
     }
 }

@@ -3,7 +3,7 @@
 namespace MilitaryFaculty.Presentation.Views
 {
     /// <summary>
-    /// Interaction logic for ImagedCommandView.xaml
+    ///     Interaction logic for ImagedCommandView.xaml
     /// </summary>
     public partial class ImagedCommandView : UserControl
     {

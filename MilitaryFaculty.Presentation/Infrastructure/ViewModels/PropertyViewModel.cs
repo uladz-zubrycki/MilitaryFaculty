@@ -2,28 +2,18 @@
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
-    public abstract class PropertyViewModel: ViewModel
+    public abstract class PropertyViewModel : ViewModel
     {
-        #region Class Fields
-
-        private readonly Action<object> setter;
-        private readonly Func<object> getter;
-        
-        #endregion // Class Fields
-
-        #region Class Properties
+        private readonly Func<object> _getter;
+        private readonly Action<object> _setter;
 
         public string Label { get; set; }
 
         public object Property
         {
-            get { return getter(); }
-            set { setter(value); }
+            get { return _getter(); }
+            set { _setter(value); }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         protected PropertyViewModel(Func<object> getter, Action<object> setter, string label)
         {
@@ -42,11 +32,9 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                 throw new ArgumentException("label");
             }
 
-            this.getter = getter;
-            this.setter = setter;
-            this.Label = label;
+            _getter = getter;
+            _setter = setter;
+            Label = label;
         }
-
-        #endregion // Class Constructors
     }
 }

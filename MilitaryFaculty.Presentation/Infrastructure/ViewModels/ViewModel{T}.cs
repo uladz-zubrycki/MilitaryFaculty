@@ -5,19 +5,13 @@ using System.Reflection;
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
     /// <summary>
-    /// Strong-typed base ViewModel class.
+    ///     Strong-typed base ViewModel class.
     /// </summary>
     /// <typeparam name="T">Contained model type.</typeparam>
     public abstract class ViewModel<T> : ViewModel
         where T : class
     {
-        #region Class Properties
-
         public T Model { get; private set; }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         protected ViewModel()
         {
@@ -34,10 +28,6 @@ namespace MilitaryFaculty.Presentation.Infrastructure
             Model = model;
         }
 
-        #endregion // Class Constructors
-
-        #region Class Protected Methods
-
         protected void SetModelProperty<TProperty>(Expression<Func<T, TProperty>> evaluator, TProperty value)
         {
             if (evaluator == null)
@@ -45,11 +35,11 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                 throw new ArgumentNullException("evaluator");
             }
 
-            var body = (MemberExpression)evaluator.Body;
-            var propInfo = (PropertyInfo)body.Member;
+            var body = (MemberExpression) evaluator.Body;
+            var propInfo = (PropertyInfo) body.Member;
             var target = GetMember(body, Model);
 
-            var oldValue = (TProperty)propInfo.GetValue(target);
+            var oldValue = (TProperty) propInfo.GetValue(target);
 
             if (value.Equals(oldValue))
             {
@@ -60,10 +50,6 @@ namespace MilitaryFaculty.Presentation.Infrastructure
             OnPropertyChanged(propInfo.Name);
         }
 
-        #endregion // Class Protected Methods
-
-        #region Class Private Methods
-        
         private static object GetMember(MemberExpression expression, T target)
         {
             if (target == null)
@@ -80,14 +66,12 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 
             while (expression.Expression is MemberExpression)
             {
-                expression = (MemberExpression)expression.Expression;
-                var propInfo = (PropertyInfo)expression.Member;
+                expression = (MemberExpression) expression.Expression;
+                var propInfo = (PropertyInfo) expression.Member;
                 member = propInfo.GetValue(member);
             }
 
             return member;
         }
-
-        #endregion // Class Private Methods
     }
 }

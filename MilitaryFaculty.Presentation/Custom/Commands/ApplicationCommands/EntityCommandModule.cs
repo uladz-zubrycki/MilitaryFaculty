@@ -10,22 +10,12 @@ namespace MilitaryFaculty.Presentation.Custom
     public abstract class EntityCommandModule<T> : ICommandContainerModule
         where T : class, IUniqueEntity
     {
-        #region Class Fields
-        
-        private readonly IRepository<T> repository;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private readonly IRepository<T> _repository;
 
         protected abstract RoutedCommand AddCommand { get; }
         protected abstract RoutedCommand UpdateCommand { get; }
         protected abstract RoutedCommand RemoveCommand { get; }
 
-        #endregion // Class Properties
-
-        #region Class Constructors
-        
         protected EntityCommandModule(IRepository<T> repository)
         {
             if (repository == null)
@@ -33,12 +23,8 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("repository");
             }
 
-            this.repository = repository;
+            _repository = repository;
         }
-        #endregion // Class Constructors
-
-
-        #region Class Public Methods
 
         public void RegisterModule(CommandContainer container)
         {
@@ -48,26 +34,18 @@ namespace MilitaryFaculty.Presentation.Custom
             }
 
             container.RegisterCommand<T>(AddCommand,
-                                         OnAddEntity,
-                                         CanAddEntity);
+                OnAddEntity,
+                CanAddEntity);
 
             container.RegisterCommand<T>(UpdateCommand,
-                                         OnUpdateEntity,
-                                         CanUpdateEntity);
+                OnUpdateEntity,
+                CanUpdateEntity);
 
             container.RegisterCommand<T>(RemoveCommand,
-                                         OnRemoveEntity);
+                OnRemoveEntity);
         }
 
-        #endregion // Class Public Methods
-
-        #region Class Protected Methods
-
         protected abstract string GetRemovalMessage();
-
-        #endregion // Class Protected Methods
-
-        #region Class Private Methods
 
         private bool CanAddEntity(T entity)
         {
@@ -81,7 +59,7 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("entity");
             }
 
-            repository.Create(entity);
+            _repository.Create(entity);
             Browse.Back.Execute(null, null);
         }
 
@@ -97,7 +75,7 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("entity");
             }
 
-            repository.Update(entity);
+            _repository.Update(entity);
         }
 
         private void OnRemoveEntity(T entity)
@@ -114,10 +92,8 @@ namespace MilitaryFaculty.Presentation.Custom
 
             if (userInput != MessageBoxResult.Cancel)
             {
-                repository.Delete(entity.Id);
+                _repository.Delete(entity.Id);
             }
         }
-
-        #endregion // Class Private Methods
     }
 }

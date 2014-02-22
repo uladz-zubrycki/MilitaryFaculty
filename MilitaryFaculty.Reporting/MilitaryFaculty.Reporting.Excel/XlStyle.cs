@@ -5,14 +5,8 @@ namespace MilitaryFaculty.Reporting.Excel
 {
     public static class XlStyle
     {
-        #region Class Static Variables
-
         public static int FirstColumn = 2;
         public static int LastColumn = 5;
-
-        #endregion Class Static Variables
-
-        #region Class Public Methods
 
         public static void SetNameStyle(IXLRange xlRange, string name)
         {
@@ -74,7 +68,5 @@ namespace MilitaryFaculty.Reporting.Excel
             xlWorkSheet.Column(FirstColumn + 2).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
             xlWorkSheet.Column(FirstColumn + 3).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
         }
-
-        #endregion // Class Public Methods
     }
 }

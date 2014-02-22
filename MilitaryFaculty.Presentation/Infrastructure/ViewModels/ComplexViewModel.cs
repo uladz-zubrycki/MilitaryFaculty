@@ -7,42 +7,32 @@ namespace MilitaryFaculty.Presentation.Infrastructure
     public abstract class ComplexViewModel<T> : ViewModel<T>
         where T : class
     {
-        #region Class Fields
-        
-        private object tag;
-        private ObservableCollection<ViewModel<T>> viewModels;
+        private readonly object _tag;
+        private ObservableCollection<ViewModel<T>> _viewModels;
 
-        #endregion // Class Fields
-
-        #region Class Properties
-        
         public ObservableCollection<ViewModel<T>> ViewModels
         {
             get
             {
-                if (viewModels == null)
+                if (_viewModels == null)
                 {
-                    viewModels = new ObservableCollection<ViewModel<T>>(GetViewModels());
+                    _viewModels = new ObservableCollection<ViewModel<T>>(GetViewModels());
                 }
 
-                return viewModels;
+                return _viewModels;
             }
         }
 
-        public sealed override object Tag
+        public override sealed object Tag
         {
-            get { return tag; }
+            get { return _tag; }
 
             set
             {
-                SetValue(() => tag, value);
+                SetValue(() => _tag, value);
                 ViewModels.ForEach(vm => vm.Tag = value);
             }
         }
-        
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         protected ComplexViewModel(T model)
             : base(model)
@@ -50,12 +40,6 @@ namespace MilitaryFaculty.Presentation.Infrastructure
             // Empty
         }
 
-        #endregion // Class Constructors
-
-        #region Class Protected Methods
-
         protected abstract IEnumerable<ViewModel<T>> GetViewModels();
-
-        #endregion // Class Protected Methods
     }
 }

@@ -5,13 +5,7 @@ namespace MilitaryFaculty.Extensions
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
     public class EnumNameAttribute : Attribute
     {
-        #region Class Properties
-
         public string Name { get; private set; }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public EnumNameAttribute(string name)
         {
@@ -22,7 +16,5 @@ namespace MilitaryFaculty.Extensions
 
             Name = name;
         }
-
-        #endregion // Class Constructors
     }
 }

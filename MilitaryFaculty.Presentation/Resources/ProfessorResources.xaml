@@ -3,22 +3,22 @@
                     xmlns:vm="clr-namespace:MilitaryFaculty.Presentation.ViewModels"
                     xmlns:v="clr-namespace:MilitaryFaculty.Presentation.Views">
     <DataTemplate DataType="{x:Type vm:ProfessorHeaderViewModel}">
-        <v:ProfessorHeaderView/>
+        <v:ProfessorHeaderView />
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type vm:ProfessorConferencesViewModel}">
-        <v:ProfessorConferencesView/>
+        <v:ProfessorConferencesView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorPublicationsViewModel}">
-        <v:ProfessorPublicationsView/>
+        <v:ProfessorPublicationsView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorBooksViewModel}">
-        <v:ProfessorBooksView/>
+        <v:ProfessorBooksView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorExhibitionsViewModel}">
-        <v:ProfessorExhibitionsView/>
+        <v:ProfessorExhibitionsView />
     </DataTemplate>
 </ResourceDictionary>

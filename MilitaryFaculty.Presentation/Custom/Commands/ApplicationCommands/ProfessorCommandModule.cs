@@ -18,10 +18,10 @@ namespace MilitaryFaculty.Presentation.Custom
 
         protected override RoutedCommand RemoveCommand
         {
-            get { return Do.Professor.Remove; ; }
+            get { return Do.Professor.Remove; }
         }
 
-        public ProfessorCommandModule(IRepository<Professor> repository) 
+        public ProfessorCommandModule(IRepository<Professor> repository)
             : base(repository)
         {
             // Empty

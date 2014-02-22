@@ -7,20 +7,10 @@ namespace MilitaryFaculty.Domain
 {
     public class Exhibition : UniqueEntity, IImitator<Exhibition>
     {
-        #region Type Static Members
-
         public static int NameMaxLength = 50;
 
-        #endregion // Type Static Members
-
-        #region Class Fields
-
-        private AwardType awardType;
-        private EventLevel eventLevel;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private AwardType _awardType;
+        private EventLevel _eventLevel;
 
         public string Name { get; set; }
         public DateTime Date { get; set; }
@@ -28,7 +18,7 @@ namespace MilitaryFaculty.Domain
 
         public AwardType AwardType
         {
-            get { return awardType; }
+            get { return _awardType; }
             set
             {
                 if (!value.IsDefined())
@@ -36,13 +26,13 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                awardType = value;
+                _awardType = value;
             }
         }
 
         public EventLevel EventLevel
         {
-            get { return eventLevel; }
+            get { return _eventLevel; }
             set
             {
                 if (!value.IsDefined())
@@ -50,13 +40,9 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                eventLevel = value;
+                _eventLevel = value;
             }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public Exhibition()
         {
@@ -71,10 +57,6 @@ namespace MilitaryFaculty.Domain
             Imitate(other);
         }
 
-        #endregion // Class Constructors
-
-        #region Class Public Methods
-
         public void Imitate(Exhibition other)
         {
             if (other == null)
@@ -82,12 +64,10 @@ namespace MilitaryFaculty.Domain
                 throw new ArgumentNullException("other");
             }
 
-            this.AwardType = other.AwardType;
-            this.Date = other.Date;
-            this.Name = other.Name;
-            this.Participant = other.Participant;
+            AwardType = other.AwardType;
+            Date = other.Date;
+            Name = other.Name;
+            Participant = other.Participant;
         }
-
-        #endregion // Class Public Methods
     }
 }

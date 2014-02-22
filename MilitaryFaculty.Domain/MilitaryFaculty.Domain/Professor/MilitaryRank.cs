@@ -4,34 +4,18 @@ namespace MilitaryFaculty.Domain
 {
     public enum MilitaryRank : short
     {
-        [EnumName("Младший лейтенант")]
-        JuniorLieutenant,        
+        [EnumName("Младший лейтенант")] JuniorLieutenant,
 
-        [EnumName("Лейтенант")]
-        Lieutenant,              
+        [EnumName("Лейтенант")] Lieutenant,
 
-        [EnumName("Старший лейтенант")]
-        SeniorLieutenant,        
+        [EnumName("Старший лейтенант")] SeniorLieutenant,
 
-        [EnumName("Капитан")]
-        Captain,                  
+        [EnumName("Капитан")] Captain,
 
-        [EnumName("Майор")]
-        Major,                   
+        [EnumName("Майор")] Major,
 
-        [EnumName("Подполковник")]
-        LieutenantColonel,       
+        [EnumName("Подполковник")] LieutenantColonel,
 
-        [EnumName("Полковник")]
-        Colonel,                 
-
-        //[EnumName("Генерал-майор")]
-        //MajorGeneral,            
-
-        //[EnumName("Генерал-лейтенант")]
-        //LieutenantGeneral,       
-
-        //[EnumName("Генерал-полковник")]
-        //ColonelGeneral,          
+        [EnumName("Полковник")] Colonel,
     }
 }

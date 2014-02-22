@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using ClosedXML.Excel;
 using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.XmlDomain;
@@ -9,15 +7,9 @@ namespace MilitaryFaculty.Reporting.Excel
 {
     public class ExcelReportingService
     {
-        #region Class Fields
-
-        private readonly IReportTableProvider tableProvider;
-        private readonly IFormulaProvider formulaProvider;
-        private readonly ReportDataProvider reportDataProvider;
-
-        #endregion // Class Fields
-
-        #region Class Constructors
+        private readonly IFormulaProvider _formulaProvider;
+        private readonly ReportDataProvider _reportDataProvider;
+        private readonly IReportTableProvider _tableProvider;
 
         public ExcelReportingService(IReportTableProvider tableProvider, IFormulaProvider formulaProvider,
                                      ReportDataProvider reportDataProvider)
@@ -35,14 +27,10 @@ namespace MilitaryFaculty.Reporting.Excel
                 throw new ArgumentNullException("ReportDataProvider");
             }
 
-            this.tableProvider = tableProvider;
-            this.formulaProvider = formulaProvider;
-            this.reportDataProvider = reportDataProvider;
+            _tableProvider = tableProvider;
+            _formulaProvider = formulaProvider;
+            _reportDataProvider = reportDataProvider;
         }
-
-        #endregion // Class Constructors
-
-        #region Class Public Methods
 
         public void ExportReport(string filePath)
         {
@@ -54,15 +42,11 @@ namespace MilitaryFaculty.Reporting.Excel
             using (var workbook = new XLWorkbook())
             {
                 var worksheet = workbook.Worksheets.Add("Results");
-                tableProvider.GetTables()
-                             .ForEach(table => ExportTable(table, worksheet));
+                _tableProvider.GetTables()
+                              .ForEach(table => ExportTable(table, worksheet));
                 workbook.SaveAs(filePath);
             }
         }
-
-        #endregion // Class Public Methods
-
-        #region Class Private Methods
 
         private void ExportTable(XReportTable table, IXLWorksheet worksheet)
         {
@@ -86,8 +70,8 @@ namespace MilitaryFaculty.Reporting.Excel
                 //Formula lines generation
                 foreach (var formulaId in part.Formulas)
                 {
-                    var formulaInfo = formulaProvider.GetFormula(formulaId);
-                    var characteristic = new Characteristic(formulaInfo, reportDataProvider);
+                    var formulaInfo = _formulaProvider.GetFormula(formulaId);
+                    var characteristic = new Characteristic(formulaInfo, _reportDataProvider);
                     var value = NormalizeValue(characteristic.Evaluate());
 
                     //Fields setting
@@ -117,10 +101,8 @@ namespace MilitaryFaculty.Reporting.Excel
         private static string ValueOrDash(double value)
         {
             return Math.Abs(value) < 0.001
-                       ? "-"
-                       : value.ToString("F0");
+                ? "-"
+                : value.ToString("F0");
         }
-
-        #endregion // Class Private Methods
     }
 }

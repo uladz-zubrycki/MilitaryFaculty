@@ -3,16 +3,14 @@
                     xmlns:vm="clr-namespace:MilitaryFaculty.Presentation.ViewModels"
                     xmlns:v="clr-namespace:MilitaryFaculty.Presentation.Views">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="EntityResources.xaml"/>
-        <ResourceDictionary Source="CathedraResources.xaml"/>
-        <ResourceDictionary Source="ProfessorResources.xaml"/>
-        <ResourceDictionary Source="FacultyTreeResources.xaml"/>
-        <ResourceDictionary Source="CommonResources.xaml"/>
+        <ResourceDictionary Source="EntityResources.xaml" />
+        <ResourceDictionary Source="CathedraResources.xaml" />
+        <ResourceDictionary Source="ProfessorResources.xaml" />
+        <ResourceDictionary Source="FacultyTreeResources.xaml" />
+        <ResourceDictionary Source="CommonResources.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type vm:StartupViewModel}">
-        <v:StartupView/>
+        <v:StartupView />
     </DataTemplate>
 </ResourceDictionary>
-
-    

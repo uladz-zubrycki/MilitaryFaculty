@@ -6,12 +6,6 @@ namespace MilitaryFaculty.Extensions
 {
     public static class DictionaryExtensions
     {
-        public static TValue ValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> source, TKey key)
-        {
-            TValue result;
-            return source.TryGetValue(key, out result) ? result : default(TValue);
-        }
-
         public static TValue FirstOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> source,
                                                           Func<TKey, bool> predicate)
         {

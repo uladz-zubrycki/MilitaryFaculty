@@ -5,7 +5,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
     public static class ServiceProviderExtensions
     {
         /// <summary>
-        /// Get service of specified type.
+        ///     Get service of specified type.
         /// </summary>
         /// <typeparam name="T">Type of requested service.</typeparam>
         /// <param name="serviceProvider">Provides access to services.</param>

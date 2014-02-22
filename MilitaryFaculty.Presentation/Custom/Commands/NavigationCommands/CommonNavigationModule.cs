@@ -7,33 +7,19 @@ namespace MilitaryFaculty.Presentation.Custom
 {
     public class CommonNavigationModule : BaseNavigationModule
     {
-        #region Class Constants
-
         private const int HistorySize = 10;
 
-        #endregion // Class Constants
-
-        #region Class Fields
-
-        private readonly LinkedList<ViewModel> backHistory;
-        private readonly LinkedList<ViewModel> forwardHistory;
-
-        #endregion // Class Fields
-
-        #region Class Constructors
+        private readonly LinkedList<ViewModel> _backHistory;
+        private readonly LinkedList<ViewModel> _forwardHistory;
 
         public CommonNavigationModule(MainViewModel viewModel)
             : base(viewModel)
         {
-            backHistory = new LinkedList<ViewModel>();
-            forwardHistory = new LinkedList<ViewModel>();
+            _backHistory = new LinkedList<ViewModel>();
+            _forwardHistory = new LinkedList<ViewModel>();
 
             ViewModel.WorkWindowChanged += ViewModelOnWorkWindowChanged;
         }
-
-        #endregion // Class Constructors
-
-        #region Class Public Methods
 
         public override void RegisterModule(CommandContainer container)
         {
@@ -43,17 +29,13 @@ namespace MilitaryFaculty.Presentation.Custom
             }
 
             container.RegisterCommand(Browse.Back,
-                                      OnBrowseBack,
-                                      CanBrowseBack);
+                OnBrowseBack,
+                CanBrowseBack);
 
             container.RegisterCommand(Browse.Forward,
-                                      OnBrowseForward,
-                                      CanBrowseForward);
+                OnBrowseForward,
+                CanBrowseForward);
         }
-
-        #endregion // Class Public Methods
-
-        #region Class Private Methods
 
         private void ViewModelOnWorkWindowChanged(object sender, WorkWindowChangedEventArgs e)
         {
@@ -67,30 +49,30 @@ namespace MilitaryFaculty.Presentation.Custom
 
         private void OnBrowseBack()
         {
-            var previous = backHistory.First.Value;
+            var previous = _backHistory.First.Value;
             AddToForwardHistory(ViewModel.WorkWindow);
             ViewModel.WorkWindow = previous;
 
-            backHistory.RemoveFirst();
+            _backHistory.RemoveFirst();
         }
 
         private bool CanBrowseBack()
         {
-            return backHistory != null && backHistory.Count > 0;
+            return _backHistory != null && _backHistory.Count > 0;
         }
 
         private void OnBrowseForward()
         {
-            var next = forwardHistory.First.Value;
+            var next = _forwardHistory.First.Value;
             AddToBackHistory(ViewModel.WorkWindow);
             ViewModel.WorkWindow = next;
 
-            forwardHistory.RemoveFirst();
+            _forwardHistory.RemoveFirst();
         }
 
         private bool CanBrowseForward()
         {
-            return forwardHistory != null && forwardHistory.Count > 0;
+            return _forwardHistory != null && _forwardHistory.Count > 0;
         }
 
         private void AddToBackHistory(ViewModel viewModel)
@@ -100,12 +82,12 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("viewModel");
             }
 
-            if (backHistory.Count >= HistorySize)
+            if (_backHistory.Count >= HistorySize)
             {
-                backHistory.RemoveLast();
+                _backHistory.RemoveLast();
             }
 
-            backHistory.AddFirst(viewModel);
+            _backHistory.AddFirst(viewModel);
         }
 
         private void AddToForwardHistory(ViewModel viewModel)
@@ -115,24 +97,22 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("viewModel");
             }
 
-            if (forwardHistory.Count >= HistorySize)
+            if (_forwardHistory.Count >= HistorySize)
             {
-                forwardHistory.RemoveLast();
+                _forwardHistory.RemoveLast();
             }
 
-            forwardHistory.AddFirst(viewModel);
+            _forwardHistory.AddFirst(viewModel);
         }
 
         private bool IsChangedByBrowseForward(WorkWindowChangedEventArgs e)
         {
-            return forwardHistory.First != null && e.NewValue == forwardHistory.First.Value;
+            return _forwardHistory.First != null && e.NewValue == _forwardHistory.First.Value;
         }
 
         private bool IsChangedByBrowseBack(WorkWindowChangedEventArgs e)
         {
-            return backHistory.First != null && e.NewValue == backHistory.First.Value;
+            return _backHistory.First != null && e.NewValue == _backHistory.First.Value;
         }
-
-        #endregion // Class Private Methods
     }
 }

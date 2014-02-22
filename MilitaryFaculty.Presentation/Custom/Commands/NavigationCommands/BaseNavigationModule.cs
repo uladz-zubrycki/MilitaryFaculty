@@ -6,13 +6,7 @@ namespace MilitaryFaculty.Presentation.Custom
 {
     public abstract class BaseNavigationModule : ICommandContainerModule
     {
-        #region Class Fields
-
         protected readonly MainViewModel ViewModel;
-
-        #endregion // Class Fields
-
-        #region Class Constructors
 
         protected BaseNavigationModule(MainViewModel viewModel)
         {
@@ -21,15 +15,9 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("viewModel");
             }
 
-            this.ViewModel = viewModel;
+            ViewModel = viewModel;
         }
 
-        #endregion // Class Constructors
-
-        #region Class Abstract Methods
-
         public abstract void RegisterModule(CommandContainer container);
-
-        #endregion // Class Abstract Methods
     }
 }

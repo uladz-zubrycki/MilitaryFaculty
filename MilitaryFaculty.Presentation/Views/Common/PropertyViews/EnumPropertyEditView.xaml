@@ -14,7 +14,7 @@
             Grid.Column="0"
             Style="{StaticResource LabelTextBlock}"
             Text="{Binding Label}" />
-        
+
         <ComboBox
             Grid.Column="1"
             Style="{StaticResource EnumComboBox}"

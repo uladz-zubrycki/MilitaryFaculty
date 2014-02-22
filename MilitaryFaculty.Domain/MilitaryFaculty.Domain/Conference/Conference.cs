@@ -7,19 +7,9 @@ namespace MilitaryFaculty.Domain
 {
     public class Conference : UniqueEntity, IImitator<Conference>
     {
-        #region Class Constants
-
         public const int NameMaxLength = 200;
 
-        #endregion // Class Constants
-
-        #region Class Fields
-
-        private EventLevel eventLevel;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private EventLevel _eventLevel;
 
         public virtual string Name { get; set; }
         public virtual DateTime Date { get; set; }
@@ -28,7 +18,7 @@ namespace MilitaryFaculty.Domain
 
         public virtual EventLevel EventLevel
         {
-            get { return eventLevel; }
+            get { return _eventLevel; }
             set
             {
                 if (!value.IsDefined())
@@ -36,13 +26,9 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                eventLevel = value;
+                _eventLevel = value;
             }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public Conference()
         {
@@ -59,10 +45,6 @@ namespace MilitaryFaculty.Domain
             Imitate(other);
         }
 
-        #endregion // Class Constructors
-
-        #region Implementation of IImitator<Conference>
-
         public void Imitate(Conference other)
         {
             if (other == null)
@@ -77,7 +59,5 @@ namespace MilitaryFaculty.Domain
             EventLevel = other.EventLevel;
             ConferenceReport.Imitate(other.ConferenceReport);
         }
-
-        #endregion // Implementation of IImitator<Conference>
     }
 }

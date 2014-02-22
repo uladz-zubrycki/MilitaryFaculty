@@ -21,7 +21,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public AddExhibitionViewModel(Exhibition model)
             : base(model)
         {
-           // Empty
+            // Empty
         }
 
         protected override IEnumerable<ViewModel<Exhibition>> GetViewModels()
@@ -30,6 +30,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
                    {
                        new ExhibitionInfoViewModel(Model)
                    };
-        } 
+        }
     }
 }

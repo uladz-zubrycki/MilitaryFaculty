@@ -18,8 +18,6 @@ namespace MilitaryFaculty.Logic.Tests
     [TestFixture]
     public class DataContainer_Test
     {
-        private EntityContext context;
-
         [SetUp]
         public void SetUp()
         {
@@ -28,6 +26,8 @@ namespace MilitaryFaculty.Logic.Tests
             var connectionString = ConfigurationManager.ConnectionStrings[conName].ConnectionString;
             context = new EntityContext(connectionString);
         }
+
+        private EntityContext context;
 
         [Test]
         public void TestExcel()
@@ -69,21 +69,21 @@ namespace MilitaryFaculty.Logic.Tests
         [Test]
         public void fdf()
         {
-            var t = new List<XFormula>()
+            var t = new List<XFormula>
                     {
-                        new XFormula()
+                        new XFormula
                         {
-                            Arguments = new List<XArgument>()
+                            Arguments = new List<XArgument>
                                         {
-                                            new XArgument()
+                                            new XArgument
                                             {
                                                 Name = "fdf",
                                                 Text = "fdf"
                                             }
                                         },
-                            Coefficients = new List<XCoefficient>()
+                            Coefficients = new List<XCoefficient>
                                            {
-                                               new XCoefficient()
+                                               new XCoefficient
                                                {
                                                    Name = "fdf",
                                                    Value = 43

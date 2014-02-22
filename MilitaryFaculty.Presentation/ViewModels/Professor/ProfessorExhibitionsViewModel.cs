@@ -11,13 +11,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ProfessorExhibitionsViewModel : ViewModel<Professor>
     {
-        #region Class Fields
-
-        private ObservableCollection<ExhibitionListItemViewModel> exhibitions;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private ObservableCollection<ExhibitionListItemViewModel> _exhibitions;
 
         public override string Title
         {
@@ -28,12 +22,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             get
             {
-                if (exhibitions == null)
+                if (_exhibitions == null)
                 {
                     InitExhibitions();
                 }
 
-                return exhibitions;
+                return _exhibitions;
             }
         }
 
@@ -41,10 +35,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             get { return Exhibitions.Count; }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public ProfessorExhibitionsViewModel(Professor model, IRepository<Exhibition> exhibitionRepository)
             : base(model)
@@ -60,17 +50,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
             Commands.Add(CreateAddExhibitionCommand());
         }
 
-        #endregion // Class Constructors
-
-        #region Class Private Methods
-
         private ImagedCommandViewModel CreateAddExhibitionCommand()
         {
             const string tooltip = "Добавить научную выставку";
             const string imageSource = @"..\Content\add.png";
 
             return new ImagedCommandViewModel(Browse.Exhibition.Add,
-                                              Model, tooltip, imageSource);
+                Model, tooltip, imageSource);
         }
 
         private void InitExhibitions()
@@ -78,8 +64,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
             var converter = ExhibitionListItemViewModel.FromModel();
             var items = Model.Exhibitions.Select(converter);
 
-            exhibitions = new ObservableCollection<ExhibitionListItemViewModel>(items);
-            exhibitions.CollectionChanged += (sender, args) => { OnPropertyChanged("ExhibitionsCount"); };
+            _exhibitions = new ObservableCollection<ExhibitionListItemViewModel>(items);
+            _exhibitions.CollectionChanged += (sender, args) => { OnPropertyChanged("ExhibitionsCount"); };
         }
 
         private void OnExhibitionCreated(object sender, ModifiedEntityEventArgs<Exhibition> e)
@@ -93,7 +79,5 @@ namespace MilitaryFaculty.Presentation.ViewModels
             var exhibition = e.ModifiedEntity;
             Exhibitions.RemoveSingle(c => c.Model.Equals(exhibition));
         }
-
-        #endregion // Class Private Methods
     }
 }

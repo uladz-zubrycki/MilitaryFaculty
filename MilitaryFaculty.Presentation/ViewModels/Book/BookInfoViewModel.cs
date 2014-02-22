@@ -8,10 +8,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         public override string Title
         {
-            get
-            {
-                return "Основная информация";
-            } 
+            get { return "Основная информация"; }
         }
 
         [TextProperty(Label = "Название:")]

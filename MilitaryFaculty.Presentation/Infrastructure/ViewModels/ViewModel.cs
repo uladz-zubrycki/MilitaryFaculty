@@ -9,47 +9,30 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 {
     public abstract class ViewModel : INotifyPropertyChanged
     {
-        #region Class Fields
-
-        private object tag;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private object _tag;
 
         public virtual string Title { get; protected set; }
         public ObservableCollection<CommandViewModel> Commands { get; private set; }
 
         public virtual object Tag
         {
-            get { return tag; }
+            get { return _tag; }
             set
             {
-                SetValue(() => tag, null); // just some hack, for DataTrigger
-                SetValue(() => tag, value);
+                SetValue(() => _tag, null); // just some hack, for DataTrigger
+                SetValue(() => _tag, value);
             }
         }
-
-        #endregion // Class Properties
-
-        #region Class Events
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion // Class Events
-
-        #region Class Constructors
 
         protected ViewModel()
         {
             Commands = new ObservableCollection<CommandViewModel>();
         }
 
-        #endregion // Class Constructors
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        #region Class Protected Methods
-
-        protected bool SetValue<TField>(Expression<Func<TField>> evaluator, TField value, [CallerMemberName] string propertyName = null)
+        protected bool SetValue<TField>(Expression<Func<TField>> evaluator, TField value,
+                                        [CallerMemberName] string propertyName = null)
         {
             if (evaluator == null)
             {
@@ -61,10 +44,10 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                 throw new ArgumentNullException("propertyName");
             }
 
-            var body = (MemberExpression)evaluator.Body;
-            var fieldInfo = (FieldInfo)body.Member;
+            var body = (MemberExpression) evaluator.Body;
+            var fieldInfo = (FieldInfo) body.Member;
 
-            var oldValue = (TField)fieldInfo.GetValue(this);
+            var oldValue = (TField) fieldInfo.GetValue(this);
 
             if (value == null || !value.Equals(oldValue))
             {
@@ -86,7 +69,5 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        #endregion // Class Protected Methods
     }
 }

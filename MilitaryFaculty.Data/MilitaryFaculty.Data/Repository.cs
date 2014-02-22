@@ -10,27 +10,21 @@ namespace MilitaryFaculty.Data
         where T : class, IUniqueEntity
     {
         #region Class Fields
-        
+
         private readonly DbContext dbContext;
 
         #endregion // Class Fields
 
         #region Class Properties
 
-        public IQueryable<T> Table
-        {
-            get
-            {
-                return DbSet.AsQueryable();
-            }
-        }
-
         protected DbSet<T> DbSet
         {
-            get
-            {
-                return dbContext.Set<T>();
-            }
+            get { return dbContext.Set<T>(); }
+        }
+
+        public IQueryable<T> Table
+        {
+            get { return DbSet.AsQueryable(); }
         }
 
         #endregion // Class Properties
@@ -106,10 +100,9 @@ namespace MilitaryFaculty.Data
             return Table.Count(predicate);
         }
 
-        public double SumOf(Func<T, decimal?> evaluator)
+        public double SumOf(Func<T, double> evaluator)
         {
-            //TODO: strange
-            return (double)Table.Sum(evaluator);
+            return Table.Sum(evaluator);
         }
 
         #endregion // Public Class Methods
@@ -119,7 +112,7 @@ namespace MilitaryFaculty.Data
         protected void OnEntityCreated(T entity)
         {
             var handler = EntityCreated;
-            
+
             if (handler != null)
             {
                 handler(null, new ModifiedEntityEventArgs<T>(entity));
@@ -129,7 +122,7 @@ namespace MilitaryFaculty.Data
         protected void OnEntityUpdated(T entity)
         {
             var handler = EntityUpdated;
-            
+
             if (handler != null)
             {
                 handler(null, new ModifiedEntityEventArgs<T>(entity));
@@ -139,7 +132,7 @@ namespace MilitaryFaculty.Data
         protected void OnEntityDeleted(T entity)
         {
             var handler = EntityDeleted;
-            
+
             if (handler != null)
             {
                 handler(null, new ModifiedEntityEventArgs<T>(entity));

@@ -11,13 +11,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ProfessorPublicationsViewModel : ViewModel<Professor>
     {
-        #region Class Fields
-
-        private ObservableCollection<PublicationListItemViewModel> publications;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private ObservableCollection<PublicationListItemViewModel> _publications;
 
         public override string Title
         {
@@ -28,12 +22,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             get
             {
-                if (publications == null)
+                if (_publications == null)
                 {
                     InitPublications();
                 }
 
-                return publications;
+                return _publications;
             }
         }
 
@@ -57,10 +51,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return GetPublicationsCount(PublicationType.Thesis); }
         }
 
-        #endregion // Class Properties
-
-        #region Class Constructors
-
         public ProfessorPublicationsViewModel(Professor model, IRepository<Publication> publicationRepository)
             : base(model)
         {
@@ -74,17 +64,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
             Commands.Add(CreateAddPublicationCommand());
         }
 
-        #endregion // Class Constructors
-
-        #region Class Private Methods
-
         private ImagedCommandViewModel CreateAddPublicationCommand()
         {
             const string tooltip = "Добавить публикацию";
             const string imageSource = @"..\Content\add.png";
 
             return new ImagedCommandViewModel(Browse.Publication.Add,
-                                              Model, tooltip, imageSource);
+                Model, tooltip, imageSource);
         }
 
         private void InitPublications()
@@ -92,15 +78,15 @@ namespace MilitaryFaculty.Presentation.ViewModels
             var converter = PublicationListItemViewModel.FromModel();
             var items = Model.Publications.Select(converter);
 
-            publications = new ObservableCollection<PublicationListItemViewModel>(items);
+            _publications = new ObservableCollection<PublicationListItemViewModel>(items);
 
-            publications.CollectionChanged += (sender, args) =>
-                                              {
-                                                  OnPropertyChanged("MonographsCount");
-                                                  OnPropertyChanged("ReviewedArticlesCount");
-                                                  OnPropertyChanged("ArticlesCount");
-                                                  OnPropertyChanged("ThesisesCount");
-                                              };
+            _publications.CollectionChanged += (sender, args) =>
+                                               {
+                                                   OnPropertyChanged("MonographsCount");
+                                                   OnPropertyChanged("ReviewedArticlesCount");
+                                                   OnPropertyChanged("ArticlesCount");
+                                                   OnPropertyChanged("ThesisesCount");
+                                               };
         }
 
         private void OnPublicationCreated(object sender, ModifiedEntityEventArgs<Publication> e)
@@ -119,7 +105,5 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             return Publications.Count(vm => vm.Model.PublicationType == type);
         }
-
-        #endregion // Class Private Methods
     }
 }

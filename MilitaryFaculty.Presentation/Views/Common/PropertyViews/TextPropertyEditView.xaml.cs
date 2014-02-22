@@ -3,7 +3,7 @@
 namespace MilitaryFaculty.Presentation.Views
 {
     /// <summary>
-    /// Interaction logic for TextPropertyView.xaml
+    ///     Interaction logic for TextPropertyView.xaml
     /// </summary>
     public partial class TextPropertyEditView : UserControl
     {

@@ -11,13 +11,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ProfessorConferencesViewModel : ViewModel<Professor>
     {
-        #region Class Fields
-
-        private ObservableCollection<ConferenceListItemViewModel> conferences;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private ObservableCollection<ConferenceListItemViewModel> _conferences;
 
         public override string Title
         {
@@ -28,12 +22,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             get
             {
-                if (conferences == null)
+                if (_conferences == null)
                 {
                     InitConferences();
                 }
 
-                return conferences;
+                return _conferences;
             }
         }
 
@@ -41,10 +35,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             get { return Conferences.Count; }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public ProfessorConferencesViewModel(Professor model, IRepository<Conference> conferenceRepository)
             : base(model)
@@ -60,17 +50,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
             Commands.Add(CreateAddConferenceCommand());
         }
 
-        #endregion // Class Constructors
-
-        #region Class Private Methods
-
         private ImagedCommandViewModel CreateAddConferenceCommand()
         {
             const string tooltip = "Добавить конференцию";
             const string imageSource = @"..\Content\add.png";
 
             return new ImagedCommandViewModel(Browse.Conference.Add,
-                                              Model, tooltip, imageSource);
+                Model, tooltip, imageSource);
         }
 
         private void InitConferences()
@@ -78,8 +64,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
             var converter = ConferenceListItemViewModel.FromModel();
             var items = Model.Conferences.Select(converter);
 
-            conferences = new ObservableCollection<ConferenceListItemViewModel>(items);
-            conferences.CollectionChanged += (sender, args) => { OnPropertyChanged("ConferencesCount"); };
+            _conferences = new ObservableCollection<ConferenceListItemViewModel>(items);
+            _conferences.CollectionChanged += (sender, args) => { OnPropertyChanged("ConferencesCount"); };
         }
 
         private void OnConferenceCreated(object sender, ModifiedEntityEventArgs<Conference> e)
@@ -93,7 +79,5 @@ namespace MilitaryFaculty.Presentation.ViewModels
             var conference = e.ModifiedEntity;
             Conferences.RemoveSingle(c => c.Model.Equals(conference));
         }
-
-        #endregion // Class Private Methods
     }
 }

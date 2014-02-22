@@ -3,7 +3,7 @@
 namespace MilitaryFaculty.Presentation.Views
 {
     /// <summary>
-    /// Interaction logic for FacultyTreeView.xaml
+    ///     Interaction logic for FacultyTreeView.xaml
     /// </summary>
     public partial class FacultyTreeView : UserControl
     {

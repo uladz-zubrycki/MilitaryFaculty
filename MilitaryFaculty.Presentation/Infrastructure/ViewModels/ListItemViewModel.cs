@@ -1,6 +1,6 @@
 ﻿namespace MilitaryFaculty.Presentation.Infrastructure
 {
-    public abstract class ListItemViewModel<T>: ViewModel<T> 
+    public abstract class ListItemViewModel<T> : ViewModel<T>
         where T : class
     {
         public abstract string PrimaryInfo { get; }

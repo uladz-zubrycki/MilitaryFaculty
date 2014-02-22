@@ -11,19 +11,19 @@ namespace MilitaryFaculty.Data.Contract
             // Empty
         }
 
-        public DatabaseNotFoundException(string message) 
+        public DatabaseNotFoundException(string message)
             : base(message)
         {
             // Empty
         }
 
-        public DatabaseNotFoundException(string message, Exception inner) 
+        public DatabaseNotFoundException(string message, Exception inner)
             : base(message, inner)
         {
             // Empty
         }
 
-        protected DatabaseNotFoundException(SerializationInfo info, StreamingContext context) 
+        protected DatabaseNotFoundException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
             // Empty

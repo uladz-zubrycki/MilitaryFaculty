@@ -6,19 +6,14 @@ using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    [ValueConversion(typeof(Enum), typeof(string) )]
-    class EnumToNameConverter : Converter<EnumToNameConverter>
+    [ValueConversion(typeof (Enum), typeof (string))]
+    internal class EnumToNameConverter : Converter<EnumToNameConverter>
     {
-        public EnumToNameConverter()
-        {
-            // Empty
-        }
-
         /// <summary>
-        /// Converts a value. 
+        ///     Converts a value.
         /// </summary>
         /// <returns>
-        /// A converted value. If the method returns null, the valid null value is used.
+        ///     A converted value. If the method returns null, the valid null value is used.
         /// </returns>
         /// <param name="value">The value produced by the binding source.</param>
         /// <param name="targetType">The type of the binding target property.</param>

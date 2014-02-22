@@ -8,17 +8,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ExhibitionListItemViewModel : ListItemViewModel<Exhibition>
     {
-        #region Type Static Members
-
-        public static Func<Exhibition, ExhibitionListItemViewModel> FromModel()
-        {
-            return conference => new ExhibitionListItemViewModel(conference);
-        }
-
-        #endregion // Type Static Members
-
-        #region Class Properties
-
         public override string PrimaryInfo
         {
             get { return Model.Date.ToShortDateString(); }
@@ -27,11 +16,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public override string SecondaryInfo
         {
             get { return Model.Name; }
-        } 
-
-        #endregion // Class Properties
-
-        #region Class Constructors
+        }
 
         public ExhibitionListItemViewModel(Exhibition model)
             : base(model)
@@ -40,16 +25,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
             TooltipViewModel = new ExhibitionInfoViewModel(Model);
         }
 
-        #endregion // Class Constructors
-
-        #region Class Private Methods
-
         private void InitCommands()
         {
             Commands.AddRange(new[]
                               {
                                   CreateBrowseExhibitionDetailsCommand(),
-                                  CreateRemoveExhibitionCommand(),
+                                  CreateRemoveExhibitionCommand()
                               });
         }
 
@@ -59,7 +40,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string imageSource = @"..\Content\remove.png";
 
             return new ImagedCommandViewModel(Do.Exhibition.Remove,
-                                              Model, tooltip, imageSource);
+                Model, tooltip, imageSource);
         }
 
         private ImagedCommandViewModel CreateBrowseExhibitionDetailsCommand()
@@ -68,9 +49,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string imageSource = @"..\..\Content\details.png";
 
             return new ImagedCommandViewModel(Browse.Exhibition.Details,
-                                              Model, tooltip, imageSource);
+                Model, tooltip, imageSource);
         }
 
-        #endregion // Class Private Methods
+        public static Func<Exhibition, ExhibitionListItemViewModel> FromModel()
+        {
+            return conference => new ExhibitionListItemViewModel(conference);
+        }
     }
 }

@@ -7,13 +7,7 @@ namespace MilitaryFaculty.Reporting.Data
 {
     public class ProfessorsDataProvider : IDataProvider
     {
-        #region Class Fields
-
-        private readonly IRepository<Professor> professorRepository;
-        
-        #endregion // Class Fields
-
-        #region Class Constructors
+        private readonly IRepository<Professor> _professorRepository;
 
         public ProfessorsDataProvider(IRepository<Professor> professorRepository)
         {
@@ -22,25 +16,21 @@ namespace MilitaryFaculty.Reporting.Data
                 throw new ArgumentNullException("professorRepository");
             }
 
-            this.professorRepository = professorRepository;
+            _professorRepository = professorRepository;
         }
 
-        #endregion // Class Constructors
-
-        #region Class Public Argument Methods
-
         /// <summary>
-        /// Общее количество ППС
+        ///     Общее количество ППС
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ProfsCount")]
         public double ProfessorsCount()
         {
-            return professorRepository.CountOf(x => true);
+            return _professorRepository.CountOf(x => true);
         }
 
         /// <summary>
-        /// Количество докторантов
+        ///     Количество докторантов
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("DocsCount")]
@@ -51,7 +41,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Удельный вес: адьюнктов очной формы обучения
+        ///     Удельный вес: адьюнктов очной формы обучения
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("AdjCountFt")]
@@ -62,7 +52,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Удельный вес: адьюнктов заочной формы обучения
+        ///     Удельный вес: адьюнктов заочной формы обучения
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("AdjCountExt")]
@@ -72,7 +62,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество соискателей ученой степени доктора наук
+        ///     Количество соискателей ученой степени доктора наук
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ApplDoctCount")]
@@ -83,7 +73,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество соискателей ученой степени кандидата наук
+        ///     Количество соискателей ученой степени кандидата наук
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ApplCandCount")]
@@ -93,17 +83,17 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество профессоров
+        ///     Количество профессоров
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ProfPostsCount")]
         public double ProfessorPostsCount()
         {
-            return professorRepository.CountOf(p => p.AcademicDegree == AcademicDegree.Professor);
+            return _professorRepository.CountOf(p => p.AcademicDegree == AcademicDegree.Professor);
         }
 
         /// <summary>
-        /// Количество должностей подлежащих замещению профессорами
+        ///     Количество должностей подлежащих замещению профессорами
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ProfPostsSubsCount")]
@@ -113,17 +103,17 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество доцектов
+        ///     Количество доцектов
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("DocentPostsCount")]
         public double DocentPostsCount()
         {
-            return professorRepository.CountOf(p => p.AcademicDegree == AcademicDegree.Docent);
+            return _professorRepository.CountOf(p => p.AcademicDegree == AcademicDegree.Docent);
         }
 
         /// <summary>
-        /// Количество должностей подлежащих замещению доцентами
+        ///     Количество должностей подлежащих замещению доцентами
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("DocentPostsSubsCount")]
@@ -134,27 +124,27 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество докторов наук
+        ///     Количество докторов наук
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("DosCount")]
         public double DoctorsOfScienceCount()
         {
-            return professorRepository.CountOf(p => p.AcademicRank == AcademicRank.DoctorOfScience);
+            return _professorRepository.CountOf(p => p.AcademicRank == AcademicRank.DoctorOfScience);
         }
 
         /// <summary>
-        /// Количество кандидатов наук
+        ///     Количество кандидатов наук
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("CosCount")]
         public double CandidatsOfScienceCount()
         {
-            return professorRepository.CountOf(p => p.AcademicRank == AcademicRank.CandidateOfScience);
+            return _professorRepository.CountOf(p => p.AcademicRank == AcademicRank.CandidateOfScience);
         }
 
         /// <summary>
-        /// Количество докторов и кандидатов наук из числа ППС
+        ///     Количество докторов и кандидатов наук из числа ППС
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("DosCosCount")]
@@ -164,8 +154,8 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество научных работников высшей квалификации из числа ППС, 
-        /// осуществляющих научное консультирование
+        ///     Количество научных работников высшей квалификации из числа ППС,
+        ///     осуществляющих научное консультирование
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("SaHqProfsCount")]
@@ -175,7 +165,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество ППС, осуществляющих научное руководство
+        ///     Количество ППС, осуществляющих научное руководство
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("SaProfsCount")]
@@ -185,19 +175,19 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Общее количество научных работников высшей квалификации
+        ///     Общее количество научных работников высшей квалификации
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("HqProfsCount")]
         public double HighQualificationProfsCount()
         {
-            return professorRepository.CountOf(p => p.AcademicDegree != AcademicDegree.None ||
-                                                  p.AcademicRank != AcademicRank.None);
+            return _professorRepository.CountOf(p => p.AcademicDegree != AcademicDegree.None ||
+                                                     p.AcademicRank != AcademicRank.None);
         }
 
         /// <summary>
-        /// Количество научных работников высшей квалификации из числа ППС, 
-        /// участвующих в работе экспертных советов ВАК Беларуси
+        ///     Количество научных работников высшей квалификации из числа ППС,
+        ///     участвующих в работе экспертных советов ВАК Беларуси
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("HacHqProfsCount")]
@@ -207,8 +197,8 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество научных работников высшей квалификации из числа ППС, 
-        /// участвующих в работе специализированных советов по защите диссертаций
+        ///     Количество научных работников высшей квалификации из числа ППС,
+        ///     участвующих в работе специализированных советов по защите диссертаций
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("DodHqProfsCount")]
@@ -218,8 +208,8 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество научных работников высшей квалификации из числа ППС, 
-        /// участвующих в работе научных советов вуза
+        ///     Количество научных работников высшей квалификации из числа ППС,
+        ///     участвующих в работе научных советов вуза
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("RcHqProfsCount")]
@@ -227,10 +217,10 @@ namespace MilitaryFaculty.Reporting.Data
         {
             return 4;
         }
-        
+
         /// <summary>
-        /// Количество научных работников высшей квалификации из числа ППС, 
-        /// участвующих в работе редакционных коллегий научных изданий
+        ///     Количество научных работников высшей квалификации из числа ППС,
+        ///     участвующих в работе редакционных коллегий научных изданий
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("EbspHqProfsCount")]
@@ -240,8 +230,8 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации (1 или 0)
-        /// больше 40%
+        ///     Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации (1 или 0)
+        ///     больше 40%
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("SoHqA40")]
@@ -252,31 +242,31 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации (1 или 0)
-        /// более 20%, но менее 40%
+        ///     Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации (1 или 0)
+        ///     более 20%, но менее 40%
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("SoHqA20B40")]
         public double StaffingOfHighQualificationAbove20Below40()
         {
-            var ratio = HighQualificationProfsCount() / ProfessorsCount();
+            var ratio = HighQualificationProfsCount()/ProfessorsCount();
             return ratio > 0.2 && ratio <= 0.4 ? 1 : 0;
         }
 
         /// <summary>
-        /// Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации (1 или 0)
-        /// менее 20%
+        ///     Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации (1 или 0)
+        ///     менее 20%
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("SoHqB20")]
         public double StaffingOfHighQualificatioBelow20()
         {
-            var ratio = HighQualificationProfsCount() / ProfessorsCount();
+            var ratio = HighQualificationProfsCount()/ProfessorsCount();
             return ratio > 0.001 && ratio <= 0.2 ? 1 : 0;
         }
 
         /// <summary>
-        /// Работники высшей квалификации отсутствуют
+        ///     Работники высшей квалификации отсутствуют
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("SoHqE0")]
@@ -286,7 +276,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество ППС, участвующих в работе по проведению научной экспертизы
+        ///     Количество ППС, участвующих в работе по проведению научной экспертизы
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("SeProfsCount")]
@@ -295,7 +285,5 @@ namespace MilitaryFaculty.Reporting.Data
             //TODO: WAT?
             return 2;
         }
-
-        #endregion // Class Public Argument Methods
     }
 }

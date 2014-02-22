@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using MilitaryFaculty.Data.Contract;
-using MilitaryFaculty.Presentation.Infrastructure;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ProfessorRootViewModel : EntityRootViewModel<Professor>
     {
-        private readonly IRepository<Conference> conferenceRepository;
-        private readonly IRepository<Publication> publicationRepository;
-        private IRepository<Exhibition> exhibitionRepository;
-        private IRepository<Book> bookRepository;
+        private readonly IRepository<Book> _bookRepository;
+        private readonly IRepository<Conference> _conferenceRepository;
+        private readonly IRepository<Exhibition> _exhibitionRepository;
+        private readonly IRepository<Publication> _publicationRepository;
 
         public ProfessorRootViewModel(Professor model,
                                       IRepository<Conference> conferenceRepository,
@@ -40,10 +40,10 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 throw new ArgumentNullException("bookRepository");
             }
 
-            this.conferenceRepository = conferenceRepository;
-            this.publicationRepository = publicationRepository;
-            this.exhibitionRepository = exhibitionRepository;
-            this.bookRepository = bookRepository;
+            _conferenceRepository = conferenceRepository;
+            _publicationRepository = publicationRepository;
+            _exhibitionRepository = exhibitionRepository;
+            _bookRepository = bookRepository;
 
             HeaderViewModel = new ProfessorHeaderViewModel(Model);
         }
@@ -53,10 +53,10 @@ namespace MilitaryFaculty.Presentation.ViewModels
             return new ViewModel<Professor>[]
                    {
                        new ProfessorExtraInfoViewModel(Model),
-                       new ProfessorConferencesViewModel(Model, conferenceRepository),
-                       new ProfessorPublicationsViewModel(Model, publicationRepository),
-                       new ProfessorExhibitionsViewModel(Model, exhibitionRepository),
-                       new ProfessorBooksViewModel(Model, bookRepository)
+                       new ProfessorConferencesViewModel(Model, _conferenceRepository),
+                       new ProfessorPublicationsViewModel(Model, _publicationRepository),
+                       new ProfessorExhibitionsViewModel(Model, _exhibitionRepository),
+                       new ProfessorBooksViewModel(Model, _bookRepository)
                    };
         }
     }

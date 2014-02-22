@@ -11,33 +11,15 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class CathedraTreeItemViewModel : TreeItemViewModel<Cathedra>
     {
-        #region Type Static Members
-
-        public static Func<Cathedra, CathedraTreeItemViewModel> FromModel(TreeViewModel owner, IRepository<Professor> professorRepository)
-        {
-            return cathedra => new CathedraTreeItemViewModel(cathedra, owner, null, professorRepository);
-        }
-
-        #endregion // Type Static Members
-
-        #region Class Properties
-
         public override string Title
         {
-            get
-            {
-                return Model.Name;
-            }
+            get { return Model.Name; }
         }
 
         protected FacultyTreeViewModel FacultyTree
         {
             get { return Owner as FacultyTreeViewModel; }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public CathedraTreeItemViewModel(Cathedra cathedra, TreeViewModel owner,
                                          ITreeItemViewModel parent,
@@ -55,20 +37,18 @@ namespace MilitaryFaculty.Presentation.ViewModels
             InitCommands();
         }
 
-        #endregion // Constructors
-
-        #region Class Protected Methods
+        public static Func<Cathedra, CathedraTreeItemViewModel> FromModel(TreeViewModel owner,
+                                                                          IRepository<Professor> professorRepository)
+        {
+            return cathedra => new CathedraTreeItemViewModel(cathedra, owner, null, professorRepository);
+        }
 
         protected override IEnumerable<ITreeItemViewModel> LoadChildren()
         {
             var converter = ProfessorTreeItemViewModel.FromModel(Owner, this);
-            
+
             return Model.Professors.Select(converter);
         }
-
-        #endregion //Class Protected Methods
-
-        #region Class Private Methods
 
         private void InitCommands()
         {
@@ -84,7 +64,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string imageSource = @"..\Content\add-user.png";
 
             return new ImagedCommandViewModel(Browse.Professor.Add,
-                                              Model, tooltip, imageSource);
+                Model, tooltip, imageSource);
         }
 
         private void OnProfessorCreated(object sender, ModifiedEntityEventArgs<Professor> e)
@@ -110,13 +90,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
             }
 
             var professor = e.ModifiedEntity;
-            
+
             if (professor.Cathedra.Equals(Model))
             {
                 Children.RemoveSingle(c => c.Model.Equals(professor));
             }
         }
-
-        #endregion // Class Private Methods
     }
 }

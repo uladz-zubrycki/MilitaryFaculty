@@ -9,19 +9,19 @@ namespace MilitaryFaculty.Reporting
 {
     public class FormulaProvider : IFormulaProvider
     {
-        private readonly ICollection<string> files;
-        private IDictionary<string, FormulaInfo> formulas;
+        private readonly ICollection<string> _files;
+        private IDictionary<string, FormulaInfo> _formulas;
 
         private IDictionary<string, FormulaInfo> Formulas
         {
             get
             {
-                if (formulas == null)
+                if (_formulas == null)
                 {
-                    formulas = ReadFormulas();
+                    _formulas = ReadFormulas();
                 }
 
-                return formulas;
+                return _formulas;
             }
         }
 
@@ -32,7 +32,7 @@ namespace MilitaryFaculty.Reporting
                 throw new ArgumentNullException("files");
             }
 
-            this.files = files.ToList();
+            _files = files.ToList();
         }
 
         public FormulaInfo GetFormula(string id)
@@ -42,9 +42,9 @@ namespace MilitaryFaculty.Reporting
 
         private IDictionary<string, FormulaInfo> ReadFormulas()
         {
-            return files.SelectMany(ReadFromFile)
-                        .AsParallel()
-                        .ToDictionary(f => f.Id, XFormula.ToFormulaInfo);
+            return _files.SelectMany(ReadFromFile)
+                         .AsParallel()
+                         .ToDictionary(f => f.Id, XFormula.ToFormulaInfo);
         }
 
         private static IEnumerable<XFormula> ReadFromFile(string file)

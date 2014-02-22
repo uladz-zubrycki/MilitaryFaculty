@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Xml.Serialization;
 
 namespace MilitaryFaculty.Reporting.XmlDomain
@@ -13,7 +12,7 @@ namespace MilitaryFaculty.Reporting.XmlDomain
         public string Name { get; set; }
 
         [XmlArray("Groups")]
-        [XmlArrayItem("Group", typeof(XReportTableGroup))]
+        [XmlArrayItem("Group", typeof (XReportTableGroup))]
         public List<XReportTableGroup> Groups { get; set; }
     }
 }

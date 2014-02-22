@@ -5,21 +5,15 @@ namespace MilitaryFaculty.Reporting
 {
     public class FormulaInfo
     {
-        #region Class Fields
-
-        private string expression;
-        private string name;
-        private double maxValue;
-        private ICollection<string> arguments;
-        private IDictionary<string, double> coefficients;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private ICollection<string> _arguments;
+        private IDictionary<string, double> _coefficients;
+        private string _expression;
+        private double _maxValue;
+        private string _name;
 
         public string Name
         {
-            get { return name; }
+            get { return _name; }
             set
             {
                 if (value == null)
@@ -31,27 +25,27 @@ namespace MilitaryFaculty.Reporting
                     throw new ArgumentException();
                 }
 
-                name = value;
+                _name = value;
             }
         }
 
         public double MaxValue
         {
-            get { return maxValue; }
+            get { return _maxValue; }
             set
             {
-                if (maxValue < 0)
+                if (_maxValue < 0)
                 {
                     throw new ArgumentException();
                 }
 
-                maxValue = value;
+                _maxValue = value;
             }
         }
 
         public ICollection<string> Arguments
         {
-            get { return arguments; }
+            get { return _arguments; }
             set
             {
                 if (value == null)
@@ -59,13 +53,13 @@ namespace MilitaryFaculty.Reporting
                     throw new ArgumentNullException("value");
                 }
 
-                arguments = value;
+                _arguments = value;
             }
         }
 
         public IDictionary<string, double> Coefficients
         {
-            get { return coefficients; }
+            get { return _coefficients; }
             set
             {
                 if (value == null)
@@ -73,29 +67,27 @@ namespace MilitaryFaculty.Reporting
                     throw new ArgumentNullException("value");
                 }
 
-                coefficients = value;
+                _coefficients = value;
             }
         }
 
         public string Expression
         {
-            get { return expression; }
+            get { return _expression; }
             set
             {
                 if (value == null)
                 {
                     throw new ArgumentNullException();
                 }
-               
-                expression = value.Replace(" ", "");
 
-                if (expression == String.Empty)
+                _expression = value.Replace(" ", "");
+
+                if (_expression == String.Empty)
                 {
                     throw new ArgumentException("expression");
                 }
             }
         }
-
-        #endregion // Class Properties
     }
 }

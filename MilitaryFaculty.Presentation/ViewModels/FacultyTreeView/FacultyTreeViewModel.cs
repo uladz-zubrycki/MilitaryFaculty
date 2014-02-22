@@ -13,19 +13,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class FacultyTreeViewModel : TreeViewModel
     {
-        #region Class Fields
+        private readonly IRepository<Cathedra> _cathedraRepository;
+        private readonly IRepository<Professor> _professorRepository;
 
-        private readonly IRepository<Professor> professorRepository;
-        private readonly IRepository<Cathedra> cathedraRepository;
+        private ObservableCollection<CathedraTreeItemViewModel> _cathedras;
 
-        private ObservableCollection<CathedraTreeItemViewModel> cathedras;
-
-        private string searchString;
-        private IEnumerator<ITreeItemViewModel> searchEnumerator;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private IEnumerator<ITreeItemViewModel> _searchEnumerator;
+        private string _searchString;
 
         public ICommand SearchCommand { get; private set; }
 
@@ -38,18 +32,18 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             get
             {
-                if (cathedras == null)
+                if (_cathedras == null)
                 {
                     InitCathedras();
                 }
 
-                return cathedras;
+                return _cathedras;
             }
         }
 
         public string SearchString
         {
-            get { return searchString; }
+            get { return _searchString; }
             set
             {
                 if (value == null)
@@ -60,21 +54,17 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 var withoutSpaces = value.MergeSpaces();
                 withoutSpaces = withoutSpaces.TrimStart();
 
-                if (withoutSpaces == searchString)
+                if (withoutSpaces == _searchString)
                 {
                     return;
                 }
 
-                searchString = withoutSpaces;
+                _searchString = withoutSpaces;
                 OnPropertyChanged();
 
-                searchEnumerator = null;
+                _searchEnumerator = null;
             }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public FacultyTreeViewModel(IRepository<Professor> professorRepository,
                                     IRepository<Cathedra> cathedraRepository)
@@ -89,8 +79,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 throw new ArgumentNullException("cathedraRepository");
             }
 
-            this.professorRepository = professorRepository;
-            this.cathedraRepository = cathedraRepository;
+            _professorRepository = professorRepository;
+            _cathedraRepository = cathedraRepository;
 
             cathedraRepository.EntityCreated += OnCathedraCreated;
             cathedraRepository.EntityDeleted += OnCathedraDeleted;
@@ -98,19 +88,15 @@ namespace MilitaryFaculty.Presentation.ViewModels
             SearchCommand = new Command(OnSearch, CanSearch);
         }
 
-        #endregion // Class Constructors
-
-        #region Class Protected Methods
-
         protected void OnSearch()
         {
-            if (searchEnumerator == null || !searchEnumerator.MoveNext())
+            if (_searchEnumerator == null || !_searchEnumerator.MoveNext())
             {
-                searchEnumerator = GetSearchEnumerator();
+                _searchEnumerator = GetSearchEnumerator();
             }
 
-            var cur = searchEnumerator.Current;
-            
+            var cur = _searchEnumerator.Current;
+
             if (cur != null)
             {
                 cur.IsSelected = true;
@@ -132,30 +118,28 @@ namespace MilitaryFaculty.Presentation.ViewModels
             return enumerator;
         }
 
-        #endregion // Class Protected Methods
-
-        #region Class Private Methods
-
         private void InitCathedras()
         {
-            var converter = CathedraTreeItemViewModel.FromModel(this, professorRepository);
+            var converter = CathedraTreeItemViewModel.FromModel(this,
+                _professorRepository);
 
-            var items = cathedraRepository.Table
-                                          .Select(converter)
-                                          .ToList();
+            var items = _cathedraRepository.Table
+                                           .Select(converter)
+                                           .ToList();
 
-            cathedras = new ObservableCollection<CathedraTreeItemViewModel>(items);
+            _cathedras = new ObservableCollection<CathedraTreeItemViewModel>(items);
         }
 
         private Func<ITreeItemViewModel, bool> GetSearchCriteria()
         {
-            Func<ITreeItemViewModel, bool> criteria = (item) =>
-            {
-                var title = item.Title;
-                var match = Regex.Match(title, SearchString, RegexOptions.IgnoreCase);
+            Func<ITreeItemViewModel, bool> criteria = item =>
+                                                      {
+                                                          var title = item.Title;
+                                                          var match = Regex.Match(title, SearchString,
+                                                              RegexOptions.IgnoreCase);
 
-                return match.Success;
-            };
+                                                          return match.Success;
+                                                      };
 
             return criteria;
         }
@@ -168,8 +152,9 @@ namespace MilitaryFaculty.Presentation.ViewModels
             }
 
             var cathedra = e.ModifiedEntity;
-            var converter = CathedraTreeItemViewModel.FromModel(this, professorRepository);
-            
+            var converter = CathedraTreeItemViewModel.FromModel(this,
+                _professorRepository);
+
             Cathedras.Add(converter(cathedra));
         }
 
@@ -181,9 +166,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             }
 
             var cathedra = e.ModifiedEntity;
-            cathedras.RemoveSingle(c => c.Model.Equals(cathedra));
+            _cathedras.RemoveSingle(c => c.Model.Equals(cathedra));
         }
-
-        #endregion // Class Private Methods
     }
 }

@@ -21,10 +21,10 @@ namespace MilitaryFaculty.Presentation.Custom
             get { return Do.Conference.Remove; }
         }
 
-        public ConferenceCommandModule(IRepository<Conference> repository) 
+        public ConferenceCommandModule(IRepository<Conference> repository)
             : base(repository)
         {
-             // Empty
+            // Empty
         }
 
         protected override string GetRemovalMessage()

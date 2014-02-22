@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
@@ -10,9 +9,9 @@ namespace MilitaryFaculty.Reporting
 {
     public class ReportTableProvider : IReportTableProvider
     {
-        private readonly ICollection<string> files;
+        private readonly ICollection<string> _files;
 
-        private ICollection<XReportTable> tables;
+        private ICollection<XReportTable> _tables;
 
         public ReportTableProvider(IEnumerable<string> files)
         {
@@ -21,26 +20,26 @@ namespace MilitaryFaculty.Reporting
                 throw new ArgumentNullException("files");
             }
 
-            this.files = files.ToList();
+            _files = files.ToList();
         }
 
         public ICollection<XReportTable> GetTables()
         {
-            return tables ?? (tables = InitTables());
+            return _tables ?? (_tables = InitTables());
         }
 
         private ICollection<XReportTable> InitTables()
         {
-            return files.Select(ReadTable)
-                        .ToList();
+            return _files.Select(ReadTable)
+                         .ToList();
         }
 
         private static XReportTable ReadTable(string file)
         {
-            var serializer = new XmlSerializer(typeof(XReportTable));
+            var serializer = new XmlSerializer(typeof (XReportTable));
             using (var reader = XmlReader.Create(file))
             {
-                return (XReportTable)serializer.Deserialize(reader);
+                return (XReportTable) serializer.Deserialize(reader);
             }
         }
     }

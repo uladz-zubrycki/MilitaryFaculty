@@ -3,7 +3,7 @@
 namespace MilitaryFaculty.Presentation.Views
 {
     /// <summary>
-    /// Interaction logic for StartupView.xaml
+    ///     Interaction logic for StartupView.xaml
     /// </summary>
     public partial class StartupView : UserControl
     {

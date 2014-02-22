@@ -5,24 +5,24 @@ using System.Windows.Input;
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
     /// <summary>
-    /// A CommandBinding subclass that will attach its
-    /// CanExecute and Executed events to the event handling
-    /// methods on the object referenced by its CommandContainer property.  
-    /// Set the attached CommandContainer property on the element 
-    /// whose CommandBindings collection contain CommandContainerBindings.
-    /// If you dynamically create an instance of this class and add it 
-    /// to the CommandBindings of an element, you must explicitly set
-    /// its CommandContainer property.
+    ///     A CommandBinding subclass that will attach its
+    ///     CanExecute and Executed events to the event handling
+    ///     methods on the object referenced by its CommandContainer property.
+    ///     Set the attached CommandContainer property on the element
+    ///     whose CommandBindings collection contain CommandContainerBindings.
+    ///     If you dynamically create an instance of this class and add it
+    ///     to the CommandBindings of an element, you must explicitly set
+    ///     its CommandContainer property.
     /// </summary>
     public class CommandContainerBinding : CommandBinding
     {
         #region CommandContainer [instance property]
 
-        private ICommandContainer commandContainer;
+        private ICommandContainer _commandContainer;
 
         public ICommandContainer CommandContainer
         {
-            get { return commandContainer; }
+            get { return _commandContainer; }
             set
             {
                 if (value == null)
@@ -30,23 +30,24 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                     throw new ArgumentNullException();
                 }
 
-                if (commandContainer != null)
+                if (_commandContainer != null)
                 {
                     throw new InvalidOperationException("Cannot set CommandContainer more than once.");
                 }
 
-                commandContainer = value;
+                _commandContainer = value;
 
                 CanExecute += (s, e) =>
                               {
                                   var command = e.Command as RoutedCommand;
                                   if (command == null)
                                   {
-                                      throw new InvalidOperationException("Only routed commands can be used inside CommandContainerBinding.");
+                                      throw new InvalidOperationException(
+                                          "Only routed commands can be used inside CommandContainerBinding.");
                                   }
 
                                   bool handled;
-                                  e.CanExecute = commandContainer.CanExecuteCommand(command, e.Parameter, out handled);
+                                  e.CanExecute = _commandContainer.CanExecuteCommand(command, e.Parameter, out handled);
                                   e.Handled = handled;
                               };
 
@@ -55,11 +56,12 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                                 var command = e.Command as RoutedCommand;
                                 if (command == null)
                                 {
-                                    throw new InvalidOperationException("Only routed commands can be used inside CommandContainerBinding.");
+                                    throw new InvalidOperationException(
+                                        "Only routed commands can be used inside CommandContainerBinding.");
                                 }
 
                                 bool handled;
-                                commandContainer.ExecuteCommand(command, e.Parameter, out handled);
+                                _commandContainer.ExecuteCommand(command, e.Parameter, out handled);
                                 e.Handled = handled;
                             };
             }
@@ -68,6 +70,13 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         #endregion // CommandContainer [instance property]
 
         #region CommandContainer [attached property]
+
+        public static readonly DependencyProperty CommandContainerProperty =
+            DependencyProperty.RegisterAttached(
+                "CommandContainer",
+                typeof (ICommandContainer),
+                typeof (CommandContainerBinding),
+                new UIPropertyMetadata(null, OnCommandContainerChanged));
 
         public static ICommandContainer GetCommandContainer(DependencyObject obj)
         {
@@ -78,13 +87,6 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         {
             obj.SetValue(CommandContainerProperty, value);
         }
-
-        public static readonly DependencyProperty CommandContainerProperty =
-            DependencyProperty.RegisterAttached(
-                "CommandContainer",
-                typeof (ICommandContainer),
-                typeof (CommandContainerBinding),
-                new UIPropertyMetadata(null, OnCommandContainerChanged));
 
         private static void OnCommandContainerChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
         {
@@ -101,7 +103,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         // yet had a chance to be created and added to its CommandBindings collection.
         private static bool ConfigureDelayedProcessing(DependencyObject depObj, ICommandContainer commandContainer)
         {
-            bool isDelayed = false;
+            var isDelayed = false;
 
             var elem = new CommonElement(depObj);
             if (elem.IsValid && !elem.IsLoaded)
@@ -122,8 +124,8 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 
         private static void ProcessCommandContainerChanged(DependencyObject depObj, ICommandContainer commandContainer)
         {
-            CommandBindingCollection cmdBindings = GetCommandBindings(depObj);
-           
+            var cmdBindings = GetCommandBindings(depObj);
+
             if (cmdBindings == null)
             {
                 throw new ArgumentException(
@@ -152,24 +154,15 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         #region CommonElement [nested class]
 
         /// <summary>
-        /// This class makes it easier to write code that works 
-        /// with the common members of both the FrameworkElement
-        /// and FrameworkContentElement classes.
+        ///     This class makes it easier to write code that works
+        ///     with the common members of both the FrameworkElement
+        ///     and FrameworkContentElement classes.
         /// </summary>
         private class CommonElement
         {
-            private readonly FrameworkElement fe;
-            private readonly FrameworkContentElement fce;
-
             public readonly bool IsValid;
-
-            public CommonElement(DependencyObject depObj)
-            {
-                fe = depObj as FrameworkElement;
-                fce = depObj as FrameworkContentElement;
-
-                IsValid = fe != null || fce != null;
-            }
+            private readonly FrameworkContentElement fce;
+            private readonly FrameworkElement fe;
 
             public CommandBindingCollection CommandBindings
             {
@@ -201,6 +194,14 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                 }
             }
 
+            public CommonElement(DependencyObject depObj)
+            {
+                fe = depObj as FrameworkElement;
+                fce = depObj as FrameworkContentElement;
+
+                IsValid = fe != null || fce != null;
+            }
+
             public event RoutedEventHandler Loaded
             {
                 add
@@ -218,7 +219,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                 }
                 remove
                 {
-                    this.Verify();
+                    Verify();
 
                     if (fe != null)
                         fe.Loaded -= value;

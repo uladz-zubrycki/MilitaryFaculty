@@ -8,17 +8,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class PublicationListItemViewModel : ListItemViewModel<Publication>
     {
-        #region Type Static Members
-
-        public static Func<Publication, PublicationListItemViewModel> FromModel()
-        {
-            return book => new PublicationListItemViewModel(book);
-        }
-
-        #endregion // Type Static Members
-
-        #region Class Properties
-
         public override string PrimaryInfo
         {
             get { return Model.PagesCount + " стр."; }
@@ -29,10 +18,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Model.Name; }
         }
 
-        #endregion // Class Properties
-
-        #region Class Constructors
-
         public PublicationListItemViewModel(Publication model)
             : base(model)
         {
@@ -40,16 +25,17 @@ namespace MilitaryFaculty.Presentation.ViewModels
             InitCommands();
         }
 
-        #endregion // Class Constructors
-
-        #region Class Private Methods
+        public static Func<Publication, PublicationListItemViewModel> FromModel()
+        {
+            return book => new PublicationListItemViewModel(book);
+        }
 
         private void InitCommands()
         {
             Commands.AddRange(new[]
                               {
                                   CreateBrowsePublicationCommand(),
-                                  CreateRemovePublicationCommand(),
+                                  CreateRemovePublicationCommand()
                               });
         }
 
@@ -59,7 +45,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string imageSource = @"..\Content\remove.png";
 
             return new ImagedCommandViewModel(Do.Publication.Remove,
-                                              Model, tooltip, imageSource);
+                Model, tooltip, imageSource);
         }
 
         private ImagedCommandViewModel CreateBrowsePublicationCommand()
@@ -68,14 +54,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string imageSource = @"..\..\Content\details.png";
 
             return new ImagedCommandViewModel(Browse.Publication.Details,
-                                              Model, tooltip, imageSource);
+                Model, tooltip, imageSource);
         }
-
-        #endregion // Class Private Methods
-
-        #region Overrides of ListItemViewModel<Publication>
-
-      
-        #endregion
     }
 }

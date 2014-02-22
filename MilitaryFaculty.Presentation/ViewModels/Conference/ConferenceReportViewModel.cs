@@ -6,15 +6,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ConferenceReportViewModel : EntityViewModel<Conference>
     {
-        #region Class Properties
-
         public override string Title
         {
             get { return "Отчёт о конференции"; }
         }
 
         /// <summary>
-        /// Evaluates conference theme actuality.
+        ///     Evaluates conference theme actuality.
         /// </summary>
         [EnumProperty(Label = "Актуальность тематики:")]
         public AccordanceLevel ThemeActuality
@@ -24,7 +22,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         }
 
         /// <summary>
-        /// Evaluates conference organization correctness.
+        ///     Evaluates conference organization correctness.
         /// </summary>
         [EnumProperty(Label = "Правильность организации:")]
         public AccordanceLevel OrganizationCorrectness
@@ -34,7 +32,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         }
 
         /// <summary>
-        /// Evaluates availability of conference report materials. 
+        ///     Evaluates availability of conference report materials.
         /// </summary>
         [EnumProperty(Label = "Наличие отчётных материалов:")]
         public AccordanceLevel ReportMaterials
@@ -44,7 +42,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         }
 
         /// <summary>
-        /// Evaluates level of conference results adoption.
+        ///     Evaluates level of conference results adoption.
         /// </summary>
         [EnumProperty(Label = "Внедрение результатов:")]
         public AccordanceLevel ResultsUsage
@@ -53,17 +51,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
             set { SetModelProperty(m => m.ConferenceReport.ResultsUsage, value); }
         }
 
-        #endregion // Class Properties
-
-        #region Class Constructors
-
         public ConferenceReportViewModel(Conference model)
             : base(model)
         {
             var editCommands = new EditableViewBehaviour<Conference>(Do.Conference.Update, Model);
             editCommands.Inject(this);
         }
-
-        #endregion // Class Constructors
     }
 }

@@ -4,17 +4,17 @@ using MilitaryFaculty.Domain.Contract;
 
 namespace MilitaryFaculty.Data.Contract
 {
-    public interface IRepository<T> 
+    public interface IRepository<T>
         where T : class, IUniqueEntity
     {
+        IQueryable<T> Table { get; }
         void Create(T entity);
         T Read(Guid id);
         void Update(T entity);
         void Delete(Guid id);
 
-        IQueryable<T> Table { get; }
         int CountOf(Func<T, bool> predicate);
-        double SumOf(Func<T, decimal?> evaluator);
+        double SumOf(Func<T, double> evaluator);
 
         event EventHandler<ModifiedEntityEventArgs<T>> EntityCreated;
         event EventHandler<ModifiedEntityEventArgs<T>> EntityUpdated;

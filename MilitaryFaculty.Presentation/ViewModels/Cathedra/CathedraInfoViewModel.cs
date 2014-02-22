@@ -7,14 +7,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         public override string Title
         {
-            get
-            {
-                return Model.Name;
-            }
-        } 
+            get { return Model.Name; }
+        }
 
         public CathedraInfoViewModel(Cathedra model)
-            :base(model)
+            : base(model)
         {
             // Empty
         }

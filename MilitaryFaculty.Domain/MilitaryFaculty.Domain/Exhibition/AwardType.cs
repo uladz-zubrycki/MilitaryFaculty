@@ -4,16 +4,12 @@ namespace MilitaryFaculty.Domain
 {
     public enum AwardType
     {
-        [EnumName("Диплом первой степени")]
-        FirstDegree,
+        [EnumName("Диплом первой степени")] FirstDegree,
 
-        [EnumName("Диплом второй степени (медаль)")]
-        SecondDegree,
-        
-        [EnumName("Диплом третьей степени")]
-        ThirdDegree,
-        
-        [EnumName("Диплом (грамота)")]
-        WithoutDegree
+        [EnumName("Диплом второй степени (медаль)")] SecondDegree,
+
+        [EnumName("Диплом третьей степени")] ThirdDegree,
+
+        [EnumName("Диплом (грамота)")] WithoutDegree
     }
 }

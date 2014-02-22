@@ -11,48 +11,31 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class MainViewModel : ViewModel
     {
-        #region Class Fields
-
-        private ViewModel workWindow;
-
-        private readonly IRepository<Professor> professorRepository;
-        private readonly IRepository<Cathedra> cathedraRepository;
-        private readonly IRepository<Conference> conferenceRepository;
-        private readonly IRepository<Publication> publicationRepository;
-        private readonly IRepository<Exhibition> exhibitionRepository;
-        private readonly IRepository<Book> bookRepository;
-        private readonly ExcelReportingService excelReporting;
-
-        #endregion // Class Fields
-
-        #region Class Events
-
-        public event EventHandler<WorkWindowChangedEventArgs> WorkWindowChanged;
-
-        #endregion // Class Events
-
-        #region Class Properties
+        private readonly IRepository<Book> _bookRepository;
+        private readonly IRepository<Cathedra> _cathedraRepository;
+        private readonly IRepository<Conference> _conferenceRepository;
+        private readonly ExcelReportingService _excelReportingService;
+        private readonly IRepository<Exhibition> _exhibitionRepository;
+        private readonly IRepository<Professor> _professorRepository;
+        private readonly IRepository<Publication> _publicationRepository;
+        private readonly ViewModel _workWindow;
 
         public FacultyTreeViewModel FacultyTree { get; private set; }
         public CommandContainer CommandContainer { get; private set; }
 
         public ViewModel WorkWindow
         {
-            get { return workWindow; }
+            get { return _workWindow; }
             internal set
             {
-                var oldValue = workWindow;
+                var oldValue = _workWindow;
 
-                if (SetValue(() => workWindow, value))
+                if (SetValue(() => _workWindow, value))
                 {
                     OnWorkWindowChanged(oldValue, value);
                 }
             }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public MainViewModel(IContainer container)
         {
@@ -61,23 +44,21 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 throw new ArgumentNullException("container");
             }
 
-            professorRepository = container.Resolve<IRepository<Professor>>();
-            cathedraRepository = container.Resolve<IRepository<Cathedra>>();
-            conferenceRepository = container.Resolve<IRepository<Conference>>();
-            publicationRepository = container.Resolve<IRepository<Publication>>();
-            exhibitionRepository = container.Resolve<IRepository<Exhibition>>();
-            bookRepository = container.Resolve<IRepository<Book>>();
-            excelReporting = container.Resolve<ExcelReportingService>();
+            _professorRepository = container.Resolve<IRepository<Professor>>();
+            _cathedraRepository = container.Resolve<IRepository<Cathedra>>();
+            _conferenceRepository = container.Resolve<IRepository<Conference>>();
+            _publicationRepository = container.Resolve<IRepository<Publication>>();
+            _exhibitionRepository = container.Resolve<IRepository<Exhibition>>();
+            _bookRepository = container.Resolve<IRepository<Book>>();
+            _excelReportingService = container.Resolve<ExcelReportingService>();
 
-            workWindow = new StartupViewModel();
+            _workWindow = new StartupViewModel();
 
             InitFacultyTree();
             InitCommandContainer();
         }
 
-        #endregion // Class Constructors
-
-        #region Class Private Methods
+        public event EventHandler<WorkWindowChangedEventArgs> WorkWindowChanged;
 
         private void OnWorkWindowChanged(ViewModel oldValue, ViewModel newValue)
         {
@@ -100,10 +81,10 @@ namespace MilitaryFaculty.Presentation.ViewModels
             else if (model is Professor)
             {
                 WorkWindow = new ProfessorRootViewModel(model as Professor,
-                                                        conferenceRepository,
-                                                        publicationRepository,
-                                                        exhibitionRepository,
-                                                        bookRepository);
+                    _conferenceRepository,
+                    _publicationRepository,
+                    _exhibitionRepository,
+                    _bookRepository);
             }
             else
             {
@@ -113,7 +94,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         private void InitFacultyTree()
         {
-            FacultyTree = new FacultyTreeViewModel(professorRepository, cathedraRepository);
+            FacultyTree = new FacultyTreeViewModel(_professorRepository, _cathedraRepository);
             FacultyTree.SelectedItemChanged += FacultyTreeOnSelectedItemChanged;
         }
 
@@ -123,23 +104,21 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
             var modules = new ICommandContainerModule[]
                           {
-                              new ProfessorCommandModule(professorRepository),
-                              new PublicationCommandModule(publicationRepository),
-                              new ConferenceCommandModule(conferenceRepository),
-                              new ExhibitionCommandModule(exhibitionRepository),
-                              new BookCommandModule(bookRepository),
+                              new ProfessorCommandModule(_professorRepository),
+                              new PublicationCommandModule(_publicationRepository),
+                              new ConferenceCommandModule(_conferenceRepository),
+                              new ExhibitionCommandModule(_exhibitionRepository),
+                              new BookCommandModule(_bookRepository),
                               new CommonNavigationModule(this),
                               new PublicationNavigationModule(this),
                               new ProfessorNavigationModule(this),
                               new ConferenceNavigationModule(this),
                               new BookNavigationModule(this),
                               new ExhibitionNavigationModule(this),
-                              new ReportingCommandModule(excelReporting), 
+                              new ReportingCommandModule(_excelReportingService)
                           };
 
             modules.ForEach(m => m.RegisterModule(CommandContainer));
         }
-
-        #endregion // Class Private Methods
     }
 }

@@ -3,7 +3,7 @@ using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Data
 {
-    internal class ConferenceReportConfiguration : ComplexTypeConfiguration<ConferenceReport> 
+    internal class ConferenceReportConfiguration : ComplexTypeConfiguration<ConferenceReport>
     {
         public ConferenceReportConfiguration()
         {

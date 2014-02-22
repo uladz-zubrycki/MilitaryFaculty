@@ -7,13 +7,7 @@ namespace MilitaryFaculty.Reporting.Data
 {
     public class PublicationsDataProvider : IDataProvider
     {
-        #region Class Fields
-
-        private readonly IRepository<Publication> publicationRepository;
-        
-        #endregion // Class Fields
-
-        #region Class Constructors
+        private readonly IRepository<Publication> _publicationRepository;
 
         public PublicationsDataProvider(IRepository<Publication> publicationRepository)
         {
@@ -22,15 +16,11 @@ namespace MilitaryFaculty.Reporting.Data
                 throw new ArgumentNullException("publicationRepository");
             }
 
-            this.publicationRepository = publicationRepository;
+            _publicationRepository = publicationRepository;
         }
 
-        #endregion // Class Constructors
-        
-        #region Class Public Argument Methods
-
         /// <summary>
-        /// Количество условно-печатных листов изданных учебников
+        ///     Количество условно-печатных листов изданных учебников
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("TotalBooksPc")]
@@ -40,7 +30,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество условно-печатных листов изданных учебных пособий
+        ///     Количество условно-печатных листов изданных учебных пособий
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("TotalTutorialsPc")]
@@ -50,47 +40,47 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество условно-печатных листов изданных монографий
+        ///     Количество условно-печатных листов изданных монографий
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("MonographyPc")]
         public double MonographyPagesCount()
         {
-            return publicationRepository.SumOf(p => p.PagesCount);
+            return _publicationRepository.SumOf(p => p.PagesCount);
         }
 
         /// <summary>
-        /// Издано научных статей в научных рецензируемых журналах
+        ///     Издано научных статей в научных рецензируемых журналах
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ReviewedArticlesCount")]
         public double ReviewedArticlesCount()
         {
-            return publicationRepository.CountOf(p => p.PublicationType == PublicationType.ReviewedArticle);
+            return _publicationRepository.CountOf(p => p.PublicationType == PublicationType.ReviewedArticle);
         }
 
         /// <summary>
-        /// Издано научных статей в научных нерецензируемых журналах
+        ///     Издано научных статей в научных нерецензируемых журналах
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ArticlesCount")]
         public double ArticlesCount()
         {
-            return publicationRepository.CountOf(p => p.PublicationType == PublicationType.Article);
+            return _publicationRepository.CountOf(p => p.PublicationType == PublicationType.Article);
         }
 
         /// <summary>
-        /// Издано тезисов докладов в сборниках материалов научных конференций
+        ///     Издано тезисов докладов в сборниках материалов научных конференций
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ThesisesCount")]
         public double LecturesCount()
         {
-            return publicationRepository.CountOf(p => p.PublicationType == PublicationType.Thesis);
+            return _publicationRepository.CountOf(p => p.PublicationType == PublicationType.Thesis);
         }
 
         /// <summary>
-        /// Количество ППС, которым присвоена ученая степень доктора наук (в проверяемый период)
+        ///     Количество ППС, которым присвоена ученая степень доктора наук (в проверяемый период)
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("DocThesisesCount")]
@@ -100,7 +90,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество ППС, которым присвоена ученая степень кандидата наук (в проверяемый период)
+        ///     Количество ППС, которым присвоена ученая степень кандидата наук (в проверяемый период)
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("CandThesisesCount")]
@@ -110,7 +100,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество ППС, которым присвоена ученое звание профессора (в проверяемый период)
+        ///     Количество ППС, которым присвоена ученое звание профессора (в проверяемый период)
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("DocAssignCount")]
@@ -120,7 +110,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество ППС, которым присвоена ученое звание доцента (в проверяемый период)
+        ///     Количество ППС, которым присвоена ученое звание доцента (в проверяемый период)
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("DocentsAssignCount")]
@@ -130,7 +120,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Подготовлено экспертных заключений по диссертациям: докторским
+        ///     Подготовлено экспертных заключений по диссертациям: докторским
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("DocEoCount")]
@@ -140,7 +130,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Подготовлено экспертных заключений по диссертациям: кандидатским
+        ///     Подготовлено экспертных заключений по диссертациям: кандидатским
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("CandEoCount")]
@@ -150,7 +140,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Отзывов на авторефераты диссертаций: докторских
+        ///     Отзывов на авторефераты диссертаций: докторских
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("EssayReviewDosCount")]
@@ -160,7 +150,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Отзывов на авторефераты диссертаций: кандидатских
+        ///     Отзывов на авторефераты диссертаций: кандидатских
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("EssayReviewCanCount")]
@@ -170,7 +160,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество ППС, участвующих во всех НИР
+        ///     Количество ППС, участвующих во всех НИР
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("SrwProfsCount")]
@@ -180,7 +170,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество выполненных НИР
+        ///     Количество выполненных НИР
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("SrwCount")]
@@ -190,7 +180,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество проведенных военно-научных сопровождений
+        ///     Количество проведенных военно-научных сопровождений
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("MssCount")]
@@ -200,7 +190,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество заявок на изобретение
+        ///     Количество заявок на изобретение
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("InnCount")]
@@ -210,7 +200,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество заявок на полезную модель
+        ///     Количество заявок на полезную модель
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("UsModCount")]
@@ -220,7 +210,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество положительных ответов на заявки на изобретение
+        ///     Количество положительных ответов на заявки на изобретение
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("PosInnCount")]
@@ -230,7 +220,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество положительных ответов на завку на полезную модель
+        ///     Количество положительных ответов на завку на полезную модель
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("PosUsModCount")]
@@ -240,7 +230,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Количество принятих рационализаторских предложений
+        ///     Количество принятих рационализаторских предложений
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("RationPropCount")]
@@ -248,7 +238,5 @@ namespace MilitaryFaculty.Reporting.Data
         {
             return 1;
         }
-
-        #endregion // Class Public Argument Methods
     }
 }

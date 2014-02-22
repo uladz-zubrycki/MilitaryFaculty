@@ -7,17 +7,11 @@ namespace MilitaryFaculty.Presentation.Custom
 {
     public class BookNavigationModule : BaseNavigationModule
     {
-        #region Class Constructors
-
         public BookNavigationModule(MainViewModel viewModel)
             : base(viewModel)
         {
             // Empty
         }
-
-        #endregion // Class Constructors
-
-        #region Class Public Methods
 
         public override void RegisterModule(CommandContainer container)
         {
@@ -30,10 +24,6 @@ namespace MilitaryFaculty.Presentation.Custom
             container.RegisterCommand<Book>(Browse.Book.Details, OnBrowseBookDetails);
         }
 
-        #endregion // Class Public Methods
-
-        #region Class Private Methods
-
         private void OnBrowseBookAdd(Professor author)
         {
             if (author == null)
@@ -41,11 +31,7 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("author");
             }
 
-            var model = new Book
-                        {
-                            Author = author
-                        };
-
+            var model = new Book {Author = author};
             ViewModel.WorkWindow = new AddBookViewModel(model);
         }
 
@@ -58,7 +44,5 @@ namespace MilitaryFaculty.Presentation.Custom
 
             ViewModel.WorkWindow = new BookRootViewModel(book);
         }
-
-        #endregion // Class Private Methods
     }
 }

@@ -7,18 +7,17 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ContentControl 
-                Grid.Row="0"
-                Content="{Binding InfoViewModel}"/>
+        <ContentControl
+            Grid.Row="0"
+            Content="{Binding InfoViewModel}" />
 
-        <ItemsControl 
-                Grid.Row="1"
-                Style="{StaticResource ExpandItemStyle}"
-                ItemsSource="{Binding ViewModels}">
-        </ItemsControl>
+        <ItemsControl
+            Grid.Row="1"
+            Style="{StaticResource ExpandItemStyle}"
+            ItemsSource="{Binding ViewModels}" />
     </Grid>
 </UserControl>

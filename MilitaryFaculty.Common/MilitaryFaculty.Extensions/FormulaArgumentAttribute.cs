@@ -5,13 +5,7 @@ namespace MilitaryFaculty.Extensions
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class FormulaArgumentAttribute : Attribute
     {
-        #region Class Properties
-
         public string Name { get; private set; }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public FormulaArgumentAttribute(string name)
         {
@@ -22,7 +16,5 @@ namespace MilitaryFaculty.Extensions
 
             Name = name;
         }
-
-        #endregion // Class Constructors
     }
 }

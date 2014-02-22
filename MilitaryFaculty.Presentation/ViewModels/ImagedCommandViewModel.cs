@@ -6,13 +6,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ImagedCommandViewModel : CommandViewModel
     {
-        #region Class Properties
-
         public string ImageSource { get; private set; }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public ImagedCommandViewModel(ICommand model, string tooltip, string imageSrc)
             : base(model, tooltip)
@@ -35,7 +29,5 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
             ImageSource = imageSrc;
         }
-
-        #endregion // Class Constructors
     }
 }

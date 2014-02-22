@@ -7,13 +7,7 @@ namespace MilitaryFaculty.Domain
 {
     public class Publication : UniqueEntity, IImitator<Publication>
     {
-        #region Class Fields
-
-        private PublicationType publicationType;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private PublicationType _publicationType;
 
         public virtual Professor Author { get; set; }
         public virtual string Name { get; set; }
@@ -21,7 +15,7 @@ namespace MilitaryFaculty.Domain
 
         public virtual PublicationType PublicationType
         {
-            get { return publicationType; }
+            get { return _publicationType; }
             set
             {
                 if (!value.IsDefined())
@@ -29,30 +23,22 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                publicationType = value;
+                _publicationType = value;
             }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public Publication()
         {
             Id = Guid.Empty;
             Name = String.Empty;
             PagesCount = 0;
-            publicationType = PublicationType.Monograph;
+            PublicationType = PublicationType.Monograph;
         }
 
         public Publication(Publication other)
         {
             Imitate(other);
         }
-
-        #endregion // Class Constructors
-
-        #region Class Public Methods
 
         public void Imitate(Publication other)
         {
@@ -67,7 +53,5 @@ namespace MilitaryFaculty.Domain
             Author = other.Author;
             PublicationType = other.PublicationType;
         }
-
-        #endregion // Class Public Methods
     }
 }

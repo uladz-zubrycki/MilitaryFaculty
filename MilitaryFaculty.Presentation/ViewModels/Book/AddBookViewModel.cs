@@ -10,10 +10,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         public override string Title
         {
-            get
-            {
-                return "Добавить учебник";
-            } 
+            get { return "Добавить учебник"; }
         }
 
         public override ICommand AddCommand
@@ -32,7 +29,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             return new ViewModel<Book>[]
                    {
                        new BookInfoViewModel(Model),
-                       new BookExtraInfoViewModel(Model),
+                       new BookExtraInfoViewModel(Model)
                    };
         }
     }

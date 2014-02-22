@@ -7,13 +7,7 @@ namespace MilitaryFaculty.Reporting.Data
 {
     public class CathedrasDataProvider : IDataProvider
     {
-        #region Class Fields
-
-        private readonly IRepository<Cathedra> cathedraRepository;
-        
-        #endregion // Class Fields
-
-        #region Class Constructors
+        private readonly IRepository<Cathedra> _cathedraRepository;
 
         public CathedrasDataProvider(IRepository<Cathedra> cathedraRepository)
         {
@@ -22,15 +16,12 @@ namespace MilitaryFaculty.Reporting.Data
                 throw new ArgumentNullException("cathedraRepository");
             }
 
-            this.cathedraRepository = cathedraRepository;
+            _cathedraRepository = cathedraRepository;
         }
 
-        #endregion // Class Constructors
-
-        #region Class Public Argument Methods
-
         /// <summary>
-        /// Планирующие документы разработаны в соответствии с требованиями прововых актов, мероприятия по научной работе выполнены своевременно и имеют практический результат
+        ///     Планирующие документы разработаны в соответствии с требованиями прововых актов, мероприятия по научной работе
+        ///     выполнены своевременно и имеют практический результат
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("PlanDocsOrg")]
@@ -41,7 +32,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Тематика исследований соответствует направлениям строительства и развития Вооруженный Сил
+        ///     Тематика исследований соответствует направлениям строительства и развития Вооруженный Сил
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ResTopicsOrg")]
@@ -51,7 +42,9 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Лица из числа руководящего и профессорско-преподавательского состаово знают требования правовых актов Министерства обороны по организации научной работы и руководствуются ими в повседневной деятельности, непосредственно принимают участие в научной работе
+        ///     Лица из числа руководящего и профессорско-преподавательского состаово знают требования правовых актов Министерства
+        ///     обороны по организации научной работы и руководствуются ими в повседневной деятельности, непосредственно принимают
+        ///     участие в научной работе
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ProfsOrg")]
@@ -61,7 +54,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Уровень оргинизации международных конференций
+        ///     Уровень оргинизации международных конференций
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("IntConfOrg")]
@@ -71,7 +64,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Уровень оргинизации республиканских конференций
+        ///     Уровень оргинизации республиканских конференций
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("RepConfOrg")]
@@ -81,7 +74,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Уровень оргинизации конференций военного учебного заведения
+        ///     Уровень оргинизации конференций военного учебного заведения
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("UnConfOrg")]
@@ -91,7 +84,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Уровень оргинизации республиканских семинаров
+        ///     Уровень оргинизации республиканских семинаров
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("RepSemOrg")]
@@ -101,7 +94,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Уровень оргинизации семинаров военного учебного заведения
+        ///     Уровень оргинизации семинаров военного учебного заведения
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("UnSemOrg")]
@@ -111,7 +104,9 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Подготовка научно-педагогических работников высшей квалификации организована (разработаны годовой и перспективный планы подготовки научных работников высшей квалификации; имеются в налиии и выполнены индивидуальные планы соискателей)
+        ///     Подготовка научно-педагогических работников высшей квалификации организована (разработаны годовой и перспективный
+        ///     планы подготовки научных работников высшей квалификации; имеются в налиии и выполнены индивидуальные планы
+        ///     соискателей)
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ProfsOrgFull")]
@@ -121,7 +116,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Подготовка научно-педагогических работников высшей квалификации организована, но ведется с отдельными недостатками
+        ///     Подготовка научно-педагогических работников высшей квалификации организована, но ведется с отдельными недостатками
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ProfsOrgCust")]
@@ -131,7 +126,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Военно-историческая работа организована и ведется в соответствии с требованиями нормативных правовых актов
+        ///     Военно-историческая работа организована и ведется в соответствии с требованиями нормативных правовых актов
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("HistWorkFull")]
@@ -141,7 +136,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Военно-историческая работа органозована, но ведется с отдельными недостатками
+        ///     Военно-историческая работа органозована, но ведется с отдельными недостатками
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("HistWorkCust")]
@@ -151,7 +146,8 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Работа научного кружка курсантов (студентов) организована и ведется в соответствии с требованиями нормативных правовых актов
+        ///     Работа научного кружка курсантов (студентов) организована и ведется в соответствии с требованиями нормативных
+        ///     правовых актов
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("MssFull")]
@@ -161,7 +157,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Работа научного кружка курсантов (стедентов) организована, но ведется с отдельными недостатками
+        ///     Работа научного кружка курсантов (стедентов) организована, но ведется с отдельными недостатками
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("MssCust")]
@@ -171,7 +167,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Другие частные показатели, характеризующие качество организации научной работы
+        ///     Другие частные показатели, характеризующие качество организации научной работы
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("CustSwOrg")]
@@ -181,7 +177,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Другие частные показатели, характеризующие проведение научных исследований
+        ///     Другие частные показатели, характеризующие проведение научных исследований
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("CustSrOrg")]
@@ -191,7 +187,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Другие частные показатели, характеризующие апробацию результатов научных исследований
+        ///     Другие частные показатели, характеризующие апробацию результатов научных исследований
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("CustArsrOrg")]
@@ -201,7 +197,7 @@ namespace MilitaryFaculty.Reporting.Data
         }
 
         /// <summary>
-        /// Другие частные показатели, характеризующие подготовку и аттестацию научных работников высшей квалификации
+        ///     Другие частные показатели, характеризующие подготовку и аттестацию научных работников высшей квалификации
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("CustTcSpHq")]
@@ -209,7 +205,5 @@ namespace MilitaryFaculty.Reporting.Data
         {
             return 1;
         }
-        
-        #endregion Class Public Argument Methods
     }
 }

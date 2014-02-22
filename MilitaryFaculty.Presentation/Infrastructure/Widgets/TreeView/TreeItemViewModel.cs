@@ -2,82 +2,27 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using MilitaryFaculty.Extensions;
-using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
     public class TreeItemViewModel<T> : ViewModel<T>, ITreeItemViewModel
         where T : class
     {
-        #region Class Static Fields
-
         /// <summary>
-        /// Dummy child for lazy children loading.
+        ///     Dummy child for lazy children loading.
         /// </summary>
         private static readonly ITreeItemViewModel FakeChild = new TreeItemViewModel<object>();
 
-        #endregion // Class Static Fields
-
-        #region Class Fields
-
-        private bool isSelected;    // accessed via SetValue method
-        private bool isExpanded;    // accessed via SetValue method
+        // ReSharper disable UnassignedField.Compiler
         protected readonly TreeViewModel Owner;
-
-        #endregion // Class Fields
-
-        #region Class Properties
-
-        public ITreeItemViewModel Parent { get; private set; }
-        public ObservableCollection<ITreeItemViewModel> Children { get; private set; }
-
-        object ITreeItemViewModel.Model
-        {
-            get { return Model; }
-        }
+        private bool _isExpanded; // accessed via SetValue method
+        private bool _isSelected; // accessed via SetValue method
+        // ReSharper restore UnassignedField.Compiler
 
         private bool ChildrenLoaded
         {
             get { return !(Children.Contains(FakeChild)); }
         }
-
-        public bool IsSelected
-        {
-            get { return isSelected; }
-            set
-            {
-                SetValue(() => isSelected, value);
-                Owner.Selected = this;
-
-                if (isSelected && Parent != null)
-                {
-                    Parent.IsExpanded = true;
-                }
-            }
-        }
-
-        public bool IsExpanded
-        {
-            get { return isExpanded; }
-            set
-            {
-                SetValue(() => isExpanded, value);
-
-                if (!ChildrenLoaded)
-                {
-                    InitChildren();
-                }
-
-                if (isExpanded && Parent != null)
-                {
-                    Parent.IsExpanded = true;
-                }
-            }
-        }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         private TreeItemViewModel()
         {
@@ -98,8 +43,8 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                 throw new ArgumentNullException("owner");
             }
 
-            this.Owner = owner;
-            this.Parent = parent;
+            Owner = owner;
+            Parent = parent;
 
             Children = new ObservableCollection<ITreeItemViewModel>();
 
@@ -109,9 +54,47 @@ namespace MilitaryFaculty.Presentation.Infrastructure
             }
         }
 
-        #endregion // Class Constructors
+        public ITreeItemViewModel Parent { get; private set; }
+        public ObservableCollection<ITreeItemViewModel> Children { get; private set; }
 
-        #region Class Public methods
+        object ITreeItemViewModel.Model
+        {
+            get { return Model; }
+        }
+
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                SetValue(() => _isSelected, value);
+                Owner.Selected = this;
+
+                if (_isSelected && Parent != null)
+                {
+                    Parent.IsExpanded = true;
+                }
+            }
+        }
+
+        public bool IsExpanded
+        {
+            get { return _isExpanded; }
+            set
+            {
+                SetValue(() => _isExpanded, value);
+
+                if (!ChildrenLoaded)
+                {
+                    InitChildren();
+                }
+
+                if (_isExpanded && Parent != null)
+                {
+                    Parent.IsExpanded = true;
+                }
+            }
+        }
 
         public IEnumerable<ITreeItemViewModel> Find(Func<ITreeItemViewModel, bool> predicate)
         {
@@ -139,25 +122,15 @@ namespace MilitaryFaculty.Presentation.Infrastructure
             }
         }
 
-        #endregion // Class Public methods
-
-        #region Class Protected methods
-
         protected virtual IEnumerable<ITreeItemViewModel> LoadChildren()
         {
             throw new NotSupportedException();
         }
-
-        #endregion // Class Protected methods
-
-        #region Class Private methods
 
         private void InitChildren()
         {
             Children.Clear();
             Children.AddRange(LoadChildren());
         }
-
-        #endregion //Class Private methods
     }
 }

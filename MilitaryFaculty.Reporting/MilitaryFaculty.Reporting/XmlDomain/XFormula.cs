@@ -9,23 +9,6 @@ namespace MilitaryFaculty.Reporting.XmlDomain
     [XmlType(TypeName = "Formula")]
     public class XFormula
     {
-        public static FormulaInfo ToFormulaInfo(XFormula formula)
-        {
-            if (formula == null)
-            {
-                throw new ArgumentNullException("XFormula");
-            }
-
-            return new FormulaInfo
-                   {
-                       Coefficients = formula.Coefficients.ToDictionary(c => c.Name, c => c.Value),
-                       Arguments = formula.Arguments.Select(a => a.Name).ToList(),
-                       Expression = formula.Expression,
-                       Name = formula.Name,
-                       MaxValue = formula.MaxValue
-                   };
-        }
-
         [XmlAttribute("id")]
         public string Id { get; set; }
 
@@ -45,5 +28,22 @@ namespace MilitaryFaculty.Reporting.XmlDomain
         [XmlArray("Coefficients")]
         [XmlArrayItem("Coefficient")]
         public List<XCoefficient> Coefficients { get; set; }
+
+        public static FormulaInfo ToFormulaInfo(XFormula formula)
+        {
+            if (formula == null)
+            {
+                throw new ArgumentNullException("XFormula");
+            }
+
+            return new FormulaInfo
+                   {
+                       Coefficients = formula.Coefficients.ToDictionary(c => c.Name, c => c.Value),
+                       Arguments = formula.Arguments.Select(a => a.Name).ToList(),
+                       Expression = formula.Expression,
+                       Name = formula.Name,
+                       MaxValue = formula.MaxValue
+                   };
+        }
     }
 }

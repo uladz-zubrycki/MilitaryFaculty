@@ -6,64 +6,64 @@
         xmlns:m="clr-namespace:MilitaryFaculty.Presentation.Custom.MarkupExtensions"
         Title="Научный рейтинг" Height="550" Width="830"
         WindowStartupLocation="CenterScreen"
-        i:CommandContainerBinding.CommandContainer ="{Binding CommandContainer}">
+        i:CommandContainerBinding.CommandContainer="{Binding CommandContainer}">
     <Window.CommandBindings>
         <!--Application commands-->
-        <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Add}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Update}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Remove}"/>
-                                                       
-        <i:CommandContainerBinding Command="{m:Command c:Do.Conference.Add}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Do.Conference.Update}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Do.Conference.Remove}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Add}" />
+        <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Update}" />
+        <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Remove}" />
 
-        <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Add}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Update}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Remove}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Conference.Add}" />
+        <i:CommandContainerBinding Command="{m:Command c:Do.Conference.Update}" />
+        <i:CommandContainerBinding Command="{m:Command c:Do.Conference.Remove}" />
 
-        <i:CommandContainerBinding Command="{m:Command c:Do.Exhibition.Add}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Do.Exhibition.Update}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Do.Exhibition.Remove}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Add}" />
+        <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Update}" />
+        <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Remove}" />
 
-        <i:CommandContainerBinding Command="{m:Command c:Do.Book.Add}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Do.Book.Update}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Do.Book.Remove}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Exhibition.Add}" />
+        <i:CommandContainerBinding Command="{m:Command c:Do.Exhibition.Update}" />
+        <i:CommandContainerBinding Command="{m:Command c:Do.Exhibition.Remove}" />
 
-        <i:CommandContainerBinding Command="{m:Command c:Report.Generate}"/>
-        
-        <!--Common navigation commands-->              
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Back}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Forward}"/>
-                                                       
-        <!--Professor navigation commands-->           
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Professor.Add}"/>
-                                                       
-        <!--Conference navigation commands-->          
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Conference.Add}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Conference.Details}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Do.Book.Add}" />
+        <i:CommandContainerBinding Command="{m:Command c:Do.Book.Update}" />
+        <i:CommandContainerBinding Command="{m:Command c:Do.Book.Remove}" />
+
+        <i:CommandContainerBinding Command="{m:Command c:Report.Generate}" />
+
+        <!--Common navigation commands-->
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Back}" />
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Forward}" />
+
+        <!--Professor navigation commands-->
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Professor.Add}" />
+
+        <!--Conference navigation commands-->
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Conference.Add}" />
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Conference.Details}" />
 
         <!--Publication navigation commands-->
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Publication.Add}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Publication.Details}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Publication.Add}" />
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Publication.Details}" />
 
         <!--Book navigation commands-->
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Book.Add}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Book.Details}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Book.Add}" />
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Book.Details}" />
 
         <!--Exhibition navigation commands-->
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Exhibition.Add}"/>
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Exhibition.Details}"/>
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Exhibition.Add}" />
+        <i:CommandContainerBinding Command="{m:Command c:Browse.Exhibition.Details}" />
     </Window.CommandBindings>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <!--Navigation-->
@@ -75,13 +75,13 @@
             <Button Style="{StaticResource ImagedButtonStyle}"
                     Command="c:Browse.Back">
                 <Image Style="{StaticResource NavigationImageStyle}"
-                       Source="/Content/back.png"/>
+                       Source="/Content/back.png" />
             </Button>
 
             <Button Style="{StaticResource ImagedButtonStyle}"
                     Command="c:Browse.Forward">
                 <Image Style="{StaticResource NavigationImageStyle}"
-                       Source="/Content/forward.png"/>
+                       Source="/Content/forward.png" />
             </Button>
 
             <Button Command="c:Report.Generate"
@@ -97,19 +97,19 @@
                 Style="{StaticResource SimpleBorder}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <TextBlock  
-                        Grid.Row="0"
-                        Style="{StaticResource H1TextBlock}"
-                        Text="Структура факультета:"/>
+                <TextBlock
+                    Grid.Row="0"
+                    Style="{StaticResource H1TextBlock}"
+                    Text="Структура факультета:" />
 
-                <ContentControl  
-                        Grid.Row="1"
-                        Content="{Binding FacultyTree, 
-                                          Mode=OneWay}"/>
+                <ContentControl
+                    Grid.Row="1"
+                    Content="{Binding FacultyTree, 
+                                          Mode=OneWay}" />
             </Grid>
         </Border>
 
@@ -119,22 +119,22 @@
                 Style="{StaticResource SimpleBorder}"
                 Padding="0 0 0 0">
             <ScrollViewer
-                    VerticalScrollBarVisibility="Auto">
+                VerticalScrollBarVisibility="Auto">
                 <ScrollViewer.Style>
                     <Style TargetType="ScrollViewer">
-                        <Setter Property="Padding" Value="22 10"/>
+                        <Setter Property="Padding" Value="22 10" />
                         <Style.Triggers>
                             <Trigger Property="ComputedVerticalScrollBarVisibility" Value="Visible">
-                                <Setter Property="Padding" Value="22 10 5 10"/>
+                                <Setter Property="Padding" Value="22 10 5 10" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </ScrollViewer.Style>
-                <ContentControl 
-                        Content="{Binding WorkWindow, Mode=OneWay}"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        ContentTemplateSelector="{StaticResource TemplateSelector}"/>
+                <ContentControl
+                    Content="{Binding WorkWindow, Mode=OneWay}"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    ContentTemplateSelector="{StaticResource TemplateSelector}" />
             </ScrollViewer>
         </Border>
     </Grid>

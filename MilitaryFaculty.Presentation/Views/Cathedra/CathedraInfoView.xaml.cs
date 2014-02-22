@@ -3,7 +3,7 @@
 namespace MilitaryFaculty.Presentation.Views
 {
     /// <summary>
-    /// Interaction logic for ConferenceAddView.xaml
+    ///     Interaction logic for ConferenceAddView.xaml
     /// </summary>
     public partial class CathedraInfoView : UserControl
     {

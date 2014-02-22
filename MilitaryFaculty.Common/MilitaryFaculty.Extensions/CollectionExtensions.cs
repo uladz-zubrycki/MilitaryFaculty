@@ -10,7 +10,7 @@ namespace MilitaryFaculty.Extensions
         {
             if (collection == null)
             {
-                throw new ArgumentNullException(); 
+                throw new ArgumentNullException();
             }
 
             if (items == null)

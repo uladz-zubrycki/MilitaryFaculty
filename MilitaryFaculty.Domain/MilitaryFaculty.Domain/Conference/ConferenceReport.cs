@@ -7,23 +7,17 @@ namespace MilitaryFaculty.Domain
 {
     public class ConferenceReport : IImitator<ConferenceReport>
     {
-        #region Class Fields
-
-        private AccordanceLevel themeActuality;
-        private AccordanceLevel organizationCorrectness;
-        private AccordanceLevel reportMaterials;
-        private AccordanceLevel resultsUsage;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private AccordanceLevel _organizationCorrectness;
+        private AccordanceLevel _reportMaterials;
+        private AccordanceLevel _resultsUsage;
+        private AccordanceLevel _themeActuality;
 
         /// <summary>
-        /// Evaluates conference theme actuality.
+        ///     Evaluates conference theme actuality.
         /// </summary>
         public AccordanceLevel ThemeActuality
         {
-            get { return themeActuality; }
+            get { return _themeActuality; }
             set
             {
                 if (!value.IsDefined())
@@ -31,16 +25,16 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                themeActuality = value;
+                _themeActuality = value;
             }
         }
 
         /// <summary>
-        /// Evaluates conference organization correctness.
+        ///     Evaluates conference organization correctness.
         /// </summary>
         public AccordanceLevel OrganizationCorrectness
         {
-            get { return organizationCorrectness; }
+            get { return _organizationCorrectness; }
             set
             {
                 if (!value.IsDefined())
@@ -48,16 +42,16 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                organizationCorrectness = value;
+                _organizationCorrectness = value;
             }
         }
 
         /// <summary>
-        /// Evaluates availability of conference report materials. 
+        ///     Evaluates availability of conference report materials.
         /// </summary>
         public AccordanceLevel ReportMaterials
         {
-            get { return reportMaterials; }
+            get { return _reportMaterials; }
             set
             {
                 if (!value.IsDefined())
@@ -65,30 +59,26 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                reportMaterials = value;
+                _reportMaterials = value;
             }
         }
 
         /// <summary>
-        /// Evaluates level of conference results adoption.
+        ///     Evaluates level of conference results adoption.
         /// </summary>
         public AccordanceLevel ResultsUsage
         {
-            get { return resultsUsage; }
+            get { return _resultsUsage; }
             set
             {
-                 if (!value.IsDefined())
+                if (!value.IsDefined())
                 {
                     throw new InvalidEnumArgumentException();
                 }
 
-                resultsUsage = value;
+                _resultsUsage = value;
             }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public ConferenceReport()
         {
@@ -104,10 +94,6 @@ namespace MilitaryFaculty.Domain
             Imitate(other);
         }
 
-        #endregion // Class Constructors
-
-        #region Implementation of IImitator<ConferenceReport>
-
         public void Imitate(ConferenceReport other)
         {
             if (other == null)
@@ -120,7 +106,5 @@ namespace MilitaryFaculty.Domain
             ReportMaterials = other.ReportMaterials;
             ResultsUsage = other.ResultsUsage;
         }
-
-        #endregion // Implementation of IImitator<ConferenceReport>
     }
 }

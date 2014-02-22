@@ -4,10 +4,8 @@ namespace MilitaryFaculty.Domain
 {
     public enum BookType
     {
-        [EnumName("Учебник")]
-        Schoolbook,
+        [EnumName("Учебник")] Schoolbook,
 
-        [EnumName("Учебное пособие")]
-        Tutorial
+        [EnumName("Учебное пособие")] Tutorial
     }
 }

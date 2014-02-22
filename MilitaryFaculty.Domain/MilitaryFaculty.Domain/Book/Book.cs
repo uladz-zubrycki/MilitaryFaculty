@@ -1,19 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
-using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Domain.Contract;
+using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
     public class Book : UniqueEntity, IImitator<Book>
     {
-        #region Class Fields
-
-        private BookType bookType;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private BookType _bookType;
 
         public virtual Professor Author { get; set; }
         public virtual string Name { get; set; }
@@ -21,7 +15,7 @@ namespace MilitaryFaculty.Domain
 
         public virtual BookType BookType
         {
-            get { return bookType; }
+            get { return _bookType; }
             set
             {
                 if (!value.IsDefined())
@@ -29,30 +23,22 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                bookType = value;
+                _bookType = value;
             }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public Book()
         {
             Id = Guid.Empty;
             Name = String.Empty;
             PagesCount = 0;
-            bookType = BookType.Schoolbook;
+            _bookType = BookType.Schoolbook;
         }
 
         public Book(Book other)
         {
             Imitate(other);
         }
-
-        #endregion // Class Constructors
-
-        #region Class Public Methods
 
         public void Imitate(Book other)
         {
@@ -67,7 +53,5 @@ namespace MilitaryFaculty.Domain
             Author = other.Author;
             BookType = other.BookType;
         }
-
-        #endregion // Class Public Methods
     }
 }

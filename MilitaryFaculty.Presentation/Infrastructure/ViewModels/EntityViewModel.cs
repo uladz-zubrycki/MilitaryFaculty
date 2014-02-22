@@ -6,66 +6,48 @@ using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
-    public abstract class EntityViewModel<T>: ViewModel<T> 
+    public abstract class EntityViewModel<T> : ViewModel<T>
         where T : class
     {
-        #region Class Fields
-
-        private ICollection<PropertyViewModel> properties;
-        private object tag;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private ICollection<PropertyViewModel> _properties;
+        private object _tag;
 
         public ICollection<PropertyViewModel> Properties
         {
             get
             {
-                if (properties == null)
+                if (_properties == null)
                 {
                     InitPropeties();
                 }
 
-                return properties;
+                return _properties;
             }
         }
-
-        #region Overrides of ViewModel
 
         public override object Tag
         {
-            get { return tag; }
+            get { return _tag; }
             set
             {
                 Properties.ForEach(p => p.Tag = value);
-                SetValue(() => tag, value);
+                SetValue(() => _tag, value);
             }
         }
-
-        #endregion
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         protected EntityViewModel(T model)
             : base(model)
         {
             // Empty
-        }  
-
-        #endregion // Class Constructors
-
-        #region Class Private Methods
+        }
 
         private void InitPropeties()
         {
             var type = GetType();
-            properties = type.GetProperties()
-                        .Where(p => p.HasAttribute<PropertyAttribute>())
-                        .Select(CreatePropertyViewModel)
-                        .ToList();
+            _properties = type.GetProperties()
+                              .Where(p => p.HasAttribute<PropertyAttribute>())
+                              .Select(CreatePropertyViewModel)
+                              .ToList();
         }
 
         private PropertyViewModel CreatePropertyViewModel(PropertyInfo property)
@@ -87,7 +69,5 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         {
             return x => property.SetValue(this, x);
         }
-
-        #endregion // Class Private Methods
     }
 }

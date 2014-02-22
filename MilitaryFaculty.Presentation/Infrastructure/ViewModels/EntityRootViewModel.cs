@@ -5,7 +5,7 @@
     {
         public ViewModel HeaderViewModel { get; protected set; }
 
-        protected EntityRootViewModel(T model) 
+        protected EntityRootViewModel(T model)
             : base(model)
         {
             // Empty

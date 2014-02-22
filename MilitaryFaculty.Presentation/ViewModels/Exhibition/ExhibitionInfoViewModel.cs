@@ -7,8 +7,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ExhibitionInfoViewModel : EntityViewModel<Exhibition>
     {
-        #region Class Properties
-
         public override string Title
         {
             get { return "Базовая информация"; }
@@ -42,17 +40,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
             set { SetModelProperty(m => m.AwardType, value); }
         }
 
-        #endregion // Class Properties
-
-        #region Class Constructors
-
         public ExhibitionInfoViewModel(Exhibition model)
             : base(model)
         {
             var editCommands = new EditableViewBehaviour<Exhibition>(Do.Conference.Update, Model);
             editCommands.Inject(this);
         }
-
-        #endregion // Class Constructors
     }
 }

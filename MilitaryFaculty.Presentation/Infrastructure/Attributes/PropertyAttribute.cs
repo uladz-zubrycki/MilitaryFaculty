@@ -4,11 +4,11 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 {
     public abstract class PropertyAttribute : Attribute
     {
-        private string label;
+        private string _label;
 
-        public  string Label
+        public string Label
         {
-            get { return label; }
+            get { return _label; }
             set
             {
                 if (String.IsNullOrEmpty(value))
@@ -16,7 +16,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                     throw new ArgumentException("value");
                 }
 
-                label = value;
+                _label = value;
             }
         }
 

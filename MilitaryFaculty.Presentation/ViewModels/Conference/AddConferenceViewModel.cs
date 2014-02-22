@@ -21,7 +21,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public AddConferenceViewModel(Conference model)
             : base(model)
         {
-           // Empty
+            // Empty
         }
 
         protected override IEnumerable<ViewModel<Conference>> GetViewModels()
@@ -31,6 +31,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
                        new ConferenceInfoViewModel(Model),
                        new ConferenceReportViewModel(Model)
                    };
-        } 
+        }
     }
 }

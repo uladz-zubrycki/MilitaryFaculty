@@ -2,11 +2,11 @@
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
-    public class PublicationHeaderViewModel: ViewModel
+    public class PublicationHeaderViewModel : ViewModel
     {
         public override string Title
         {
-            get { return "Информация о публикации"; } 
+            get { return "Информация о публикации"; }
         }
     }
 }

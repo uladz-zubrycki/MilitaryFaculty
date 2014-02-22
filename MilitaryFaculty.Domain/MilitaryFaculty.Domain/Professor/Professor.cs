@@ -9,16 +9,10 @@ namespace MilitaryFaculty.Domain
 {
     public class Professor : UniqueEntity, IImitator<Professor>
     {
-        #region Class Fields
-
-        private MilitaryRank militaryRank;
-        private JobPosition jobPosition;
-        private AcademicRank academicRank;
-        private AcademicDegree academicDegree;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private AcademicDegree _academicDegree;
+        private AcademicRank _academicRank;
+        private JobPosition _jobPosition;
+        private MilitaryRank _militaryRank;
 
         public virtual FullName FullName { get; set; }
         public virtual Cathedra Cathedra { get; set; }
@@ -26,11 +20,11 @@ namespace MilitaryFaculty.Domain
         public virtual ICollection<Publication> Publications { get; set; }
         public virtual ICollection<Conference> Conferences { get; set; }
         public virtual ICollection<Exhibition> Exhibitions { get; set; }
-        public virtual ICollection<Book> Books { get; set; } 
+        public virtual ICollection<Book> Books { get; set; }
 
         public virtual MilitaryRank MilitaryRank
         {
-            get { return militaryRank; }
+            get { return _militaryRank; }
             set
             {
                 if (!value.IsDefined())
@@ -38,13 +32,13 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                militaryRank = value;
+                _militaryRank = value;
             }
         }
 
         public virtual AcademicRank AcademicRank
         {
-            get { return academicRank; }
+            get { return _academicRank; }
             set
             {
                 if (!value.IsDefined())
@@ -52,27 +46,27 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                academicRank = value;
+                _academicRank = value;
             }
         }
 
         public virtual AcademicDegree AcademicDegree
         {
-            get { return academicDegree; }
+            get { return _academicDegree; }
             set
             {
                 if (!value.IsDefined())
                 {
                     throw new InvalidEnumArgumentException();
                 }
-                
-                academicDegree = value;
+
+                _academicDegree = value;
             }
         }
 
         public virtual JobPosition JobPosition
         {
-            get { return jobPosition; }
+            get { return _jobPosition; }
             set
             {
                 if (!value.IsDefined())
@@ -80,21 +74,17 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                jobPosition = value;
+                _jobPosition = value;
             }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public Professor()
         {
             Id = Guid.Empty;
-            militaryRank = MilitaryRank.JuniorLieutenant;
-            academicDegree = AcademicDegree.None;
-            academicRank = AcademicRank.None;
-            jobPosition = JobPosition.Teacher;
+            _militaryRank = MilitaryRank.JuniorLieutenant;
+            _academicDegree = AcademicDegree.None;
+            _academicRank = AcademicRank.None;
+            _jobPosition = JobPosition.Teacher;
 
             FullName = new FullName();
             Cathedra = null;
@@ -102,7 +92,6 @@ namespace MilitaryFaculty.Domain
             Publications = new Collection<Publication>();
             Exhibitions = new Collection<Exhibition>();
             Books = new Collection<Book>();
-
         }
 
         public Professor(Professor other)
@@ -110,10 +99,6 @@ namespace MilitaryFaculty.Domain
         {
             Imitate(other);
         }
-
-        #endregion // Class Constructors
-
-        #region Implementation of IImitator<Professor>
 
         public void Imitate(Professor other)
         {
@@ -130,7 +115,5 @@ namespace MilitaryFaculty.Domain
             FullName.Imitate(other.FullName);
             Cathedra = other.Cathedra;
         }
-
-        #endregion // Implementation of IImitator<Professor>
     }
 }

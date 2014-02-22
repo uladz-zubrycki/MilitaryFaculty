@@ -16,7 +16,7 @@
             Grid.Column="0"
             Style="{StaticResource LabelTextBlock}"
             Text="{Binding Label}" />
-        
+
         <TextBlock
             Grid.Row="0"
             Grid.Column="1"

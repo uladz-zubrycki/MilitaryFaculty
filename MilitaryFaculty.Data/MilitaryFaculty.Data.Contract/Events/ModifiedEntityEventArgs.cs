@@ -7,7 +7,7 @@ namespace MilitaryFaculty.Data.Contract
         where T : class, IUniqueEntity
     {
         public T ModifiedEntity { get; protected set; }
-        
+
         public ModifiedEntityEventArgs(T entity)
         {
             if (entity == null)

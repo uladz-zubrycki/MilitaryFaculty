@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity;
-using System.Linq;
 using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Data

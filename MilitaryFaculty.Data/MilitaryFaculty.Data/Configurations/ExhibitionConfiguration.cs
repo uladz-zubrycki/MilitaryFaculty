@@ -4,7 +4,7 @@ using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Data
 {
-    class ExhibitionConfiguration : EntityTypeConfiguration<Exhibition>
+    internal class ExhibitionConfiguration : EntityTypeConfiguration<Exhibition>
     {
         public ExhibitionConfiguration()
         {

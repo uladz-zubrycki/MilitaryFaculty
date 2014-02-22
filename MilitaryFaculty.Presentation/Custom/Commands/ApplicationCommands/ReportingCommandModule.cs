@@ -5,9 +5,9 @@ using MilitaryFaculty.Reporting.Excel;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class ReportingCommandModule: ICommandContainerModule
+    public class ReportingCommandModule : ICommandContainerModule
     {
-        private readonly ExcelReportingService reportingService;
+        private readonly ExcelReportingService _reportingService;
 
         public ReportingCommandModule(ExcelReportingService reportingService)
         {
@@ -16,12 +16,12 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("ReportingService");
             }
 
-            this.reportingService = reportingService;
+            _reportingService = reportingService;
         }
 
         public void RegisterModule(CommandContainer container)
         {
-            container.RegisterCommand(Report.Generate, GenerateReport);   
+            container.RegisterCommand(Report.Generate, GenerateReport);
         }
 
         private void GenerateReport()
@@ -36,7 +36,7 @@ namespace MilitaryFaculty.Presentation.Custom
             if (dialog.ShowDialog() == true)
             {
                 var filename = dialog.FileName;
-                reportingService.ExportReport(filename);
+                _reportingService.ExportReport(filename);
             }
         }
     }

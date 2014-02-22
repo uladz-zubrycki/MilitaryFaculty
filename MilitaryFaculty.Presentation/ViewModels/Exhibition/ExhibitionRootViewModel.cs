@@ -11,7 +11,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             HeaderViewModel = new ExhibitionHeaderViewModel();
         }
-     
+
         protected override IEnumerable<ViewModel<Exhibition>> GetViewModels()
         {
             return new[]

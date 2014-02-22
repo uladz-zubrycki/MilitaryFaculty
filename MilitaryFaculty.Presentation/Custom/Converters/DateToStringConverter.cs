@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
 using MilitaryFaculty.Presentation.Infrastructure;
 
@@ -9,16 +8,11 @@ namespace MilitaryFaculty.Presentation.Custom
     [ValueConversion(typeof (DateTime), typeof (string))]
     internal class DateToStringConverter : Converter<DateToStringConverter>
     {
-        public DateToStringConverter()
-        {
-            // Empty
-        }
-
         /// <summary>
-        /// Converts a value. 
+        ///     Converts a value.
         /// </summary>
         /// <returns>
-        /// A converted value. If the method returns null, the valid null value is used.
+        ///     A converted value. If the method returns null, the valid null value is used.
         /// </returns>
         /// <param name="value">The value produced by the binding source.</param>
         /// <param name="targetType">The type of the binding target property.</param>
@@ -35,10 +29,10 @@ namespace MilitaryFaculty.Presentation.Custom
         }
 
         /// <summary>
-        /// Converts a value. 
+        ///     Converts a value.
         /// </summary>
         /// <returns>
-        /// A converted value. If the method returns null, the valid null value is used.
+        ///     A converted value. If the method returns null, the valid null value is used.
         /// </returns>
         /// <param name="value">The value that is produced by the binding target.</param>
         /// <param name="targetType">The type to convert to.</param>

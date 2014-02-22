@@ -3,7 +3,7 @@
 namespace MilitaryFaculty.Presentation.Views
 {
     /// <summary>
-    /// Interaction logic for DatePropertyView.xaml
+    ///     Interaction logic for DatePropertyView.xaml
     /// </summary>
     public partial class DatePropertyEditView : UserControl
     {

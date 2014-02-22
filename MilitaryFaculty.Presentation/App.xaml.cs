@@ -1,14 +1,12 @@
-﻿using System.Data.Entity;
-using System.Windows;
+﻿using System.Windows;
 using Autofac;
-using MilitaryFaculty.Data;
 using MilitaryFaculty.Presentation.Infrastructure;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    ///     Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
@@ -19,9 +17,9 @@ namespace MilitaryFaculty.Presentation
             var container = InjectionConfig.Register(new ContainerBuilder());
 
             var view = new MainWindow
-                {
-                    DataContext = new MainViewModel(container),
-                };
+                       {
+                           DataContext = new MainViewModel(container),
+                       };
 
             view.Show();
         }

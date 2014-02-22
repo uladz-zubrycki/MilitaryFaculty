@@ -17,8 +17,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
             return new ViewModel<Book>[]
                    {
                        new BookInfoViewModel(Model),
-                       new BookExtraInfoViewModel(Model),
+                       new BookExtraInfoViewModel(Model)
                    };
         }
-     }
+    }
 }

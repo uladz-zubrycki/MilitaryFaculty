@@ -4,157 +4,157 @@
                     xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
                     xmlns:vm="clr-namespace:MilitaryFaculty.Presentation.ViewModels"
                     xmlns:i="clr-namespace:MilitaryFaculty.Presentation.Infrastructure">
-    <c:GenericTemplateSelector x:Key="TemplateSelector"/>
+    <c:GenericTemplateSelector x:Key="TemplateSelector" />
 
     <SolidColorBrush x:Key="BorderSolidBrush">
         <SolidColorBrush.Color>
-            <Color A="255" 
-                       R="225"
-                       G="225"
-                       B="240"/>
+            <Color A="255"
+                   R="225"
+                   G="225"
+                   B="240" />
         </SolidColorBrush.Color>
     </SolidColorBrush>
 
     <Style TargetType="Control">
-        <Setter Property="FontFamily" Value="Calibri"/>
+        <Setter Property="FontFamily" Value="Calibri" />
     </Style>
 
     <Style x:Key="TextBlock" TargetType="TextBlock">
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <Style x:Key="TextBox" TargetType="TextBox">
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <Style x:Key="H1TextBlock" TargetType="TextBlock" BasedOn="{StaticResource TextBlock}">
-        <Setter Property="Margin" Value="0, 4, 5, 8"/>
-        <Setter Property="FontSize" Value="22"/>
-        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Margin" Value="0, 4, 5, 8" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontWeight" Value="Light" />
     </Style>
 
     <Style x:Key="H2TextBlock" TargetType="TextBlock" BasedOn="{StaticResource TextBlock}">
-        <Setter Property="Margin" Value="0, 2, 5, 5"/>
-        <Setter Property="FontSize" Value="17"/>
-        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Margin" Value="0, 2, 5, 5" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="FontWeight" Value="Light" />
     </Style>
 
     <Style x:Key="H3TextBlock" TargetType="TextBlock" BasedOn="{StaticResource TextBlock}">
-        <Setter Property="FontSize" Value="15"/>
-        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontWeight" Value="Light" />
     </Style>
 
     <Style x:Key="LabelTextBlock" TargetType="TextBlock" BasedOn="{StaticResource TextBlock}">
-        <Setter Property="Padding" Value="4 6"/>
-        <Setter Property="Margin" Value="2, 2"/>
-        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Padding" Value="4 6" />
+        <Setter Property="Margin" Value="2, 2" />
+        <Setter Property="FontSize" Value="13" />
     </Style>
 
     <Style x:Key="ValueTextBlock" TargetType="TextBlock" BasedOn="{StaticResource LabelTextBlock}">
-        <Setter Property="Padding" Value="8 6"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Padding" Value="8 6" />
+        <Setter Property="FontSize" Value="12" />
     </Style>
 
     <Style x:Key="ValueMultilineTextblock" TargetType="TextBlock" BasedOn="{StaticResource ValueTextBlock}">
-        <Setter Property="Height" Value="Auto"/>
-        <Setter Property="TextAlignment" Value="Justify"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="TextAlignment" Value="Justify" />
+        <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
     <Style x:Key="ValueTextBox" TargetType="TextBox" BasedOn="{StaticResource TextBox}">
-        <Setter Property="Padding" Value="4 4"/>
-        <Setter Property="Margin" Value="2, 2"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Padding" Value="4 4" />
+        <Setter Property="Margin" Value="2, 2" />
+        <Setter Property="FontSize" Value="12" />
     </Style>
 
     <Style x:Key="ValueMultilineTextbox" TargetType="TextBox" BasedOn="{StaticResource ValueTextBox}">
-        <Setter Property="Height" Value="Auto"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="AcceptsReturn" Value="True" />
     </Style>
 
     <Style x:Key="ValueDatePicker" TargetType="DatePicker">
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="4 4"/>
-        <Setter Property="Margin" Value="2, 2"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Padding" Value="4 4" />
+        <Setter Property="Margin" Value="2, 2" />
+        <Setter Property="FontSize" Value="12" />
     </Style>
 
     <Style x:Key="ValueComboBox" TargetType="ComboBox">
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="8 6"/>
-        <Setter Property="Margin" Value="2, 2"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Padding" Value="8 6" />
+        <Setter Property="Margin" Value="2, 2" />
+        <Setter Property="FontSize" Value="12" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="ComboBoxItem">
-                    <Setter Property="Padding" Value="10 4.5"/>
+                    <Setter Property="Padding" Value="10 4.5" />
                 </Style>
             </Setter.Value>
         </Setter>
     </Style>
 
     <Style x:Key="SimpleButton" TargetType="Button">
-        <Setter Property="Margin" Value="5"/>
-        <Setter Property="Padding" Value="5, 2"/>
-        <Setter Property="FontSize" Value="13"/>
-        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Padding" Value="5, 2" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Light" />
     </Style>
 
     <Style x:Key="SimpleBorder" TargetType="Border">
-        <Setter Property="BorderBrush" Value="{StaticResource BorderSolidBrush}"/>
-        <Setter Property="BorderThickness" Value="0.6"/>
-        <Setter Property="Margin" Value="5"/>
-        <Setter Property="Padding" Value="15, 10"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderSolidBrush}" />
+        <Setter Property="BorderThickness" Value="0.6" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Padding" Value="15, 10" />
     </Style>
 
     <Style x:Key="SimpleExpander" TargetType="Expander">
-        <Setter Property="IsExpanded" Value="False"/>
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="3 5"/>
+        <Setter Property="IsExpanded" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Padding" Value="3 5" />
     </Style>
 
     <Style x:Key="ImagedButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Margin" Value="2"/>
-        <Setter Property="Cursor" Value="Arrow"/>
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <ContentPresenter 
-                            Content="{TemplateBinding Property=Content}"
-                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                            Cursor="{TemplateBinding Property=Cursor}"/>
+                    <ContentPresenter
+                        Content="{TemplateBinding Property=Content}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        Cursor="{TemplateBinding Property=Cursor}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
     <Style x:Key="NavigationImageStyle" TargetType="Image">
-        <Setter Property="Width" Value="15"/>
-        <Setter Property="Margin" Value="1.5"/>
+        <Setter Property="Width" Value="15" />
+        <Setter Property="Margin" Value="1.5" />
         <Style.Triggers>
             <Trigger Property="IsMouseDirectlyOver" Value="True">
-                <Setter Property="Width" Value="18"/>
-                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Width" Value="18" />
+                <Setter Property="Margin" Value="0" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <Style x:Key="CommandImageStyle" TargetType="Image">
-        <Setter Property="Width" Value="12"/>
-        <Setter Property="Margin" Value="1.5"/>
+        <Setter Property="Width" Value="12" />
+        <Setter Property="Margin" Value="1.5" />
         <Style.Triggers>
             <Trigger Property="IsMouseDirectlyOver" Value="True">
-                <Setter Property="Width" Value="15"/>
-                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Width" Value="15" />
+                <Setter Property="Margin" Value="0" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -163,12 +163,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="MenuItem">
-                    <ContentPresenter Content="{TemplateBinding Property=Header}"/>
+                    <ContentPresenter Content="{TemplateBinding Property=Header}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="CommandsItemControlStyle"
            TargetType="ItemsControl">
         <Setter Property="ItemsPanel">
@@ -204,8 +204,8 @@
                                 Text="{Binding Title}" />
                             <ContentPresenter
                                 Grid.Row="1"
-                                Content="{TemplateBinding Property=Content}" 
-                                ContentTemplateSelector="{StaticResource TemplateSelector}"/>
+                                Content="{TemplateBinding Property=Content}"
+                                ContentTemplateSelector="{StaticResource TemplateSelector}" />
                         </Grid>
                     </Border>
                 </ItemContainerTemplate>
@@ -252,14 +252,14 @@
                             <!--Item content-->
                             <ContentPresenter Content="{TemplateBinding Property=Content}"
                                               ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                              ContentTemplateSelector="{StaticResource TemplateSelector}"/>
+                                              ContentTemplateSelector="{StaticResource TemplateSelector}" />
                         </Expander>
                     </Border>
                 </ItemContainerTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="EnumComboBox" TargetType="ComboBox" BasedOn="{StaticResource ValueComboBox}">
         <Setter Property="ItemsSource"
                 Value="{Binding SelectedValue, 
@@ -324,9 +324,9 @@
     </Style>
 
     <Style x:Key="ItemListStyle" TargetType="ListBox">
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemStyle}"/>
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemStyle}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
     </Style>
 </ResourceDictionary>

@@ -5,22 +5,51 @@ using System.Windows.Input;
 namespace MilitaryFaculty.Presentation.Infrastructure
 {
     /// <summary>
-    /// It provides a means of registering commands and their callback 
-    /// methods, and will invoke those callbacks upon request.
+    ///     It provides a means of registering commands and their callback
+    ///     methods, and will invoke those callbacks upon request.
     /// </summary>
     /// <remarks>
-    /// Used for registering RoutedCommands inside view models, but not code-behind files.
+    ///     Used for registering RoutedCommands inside view models, but not code-behind files.
     /// </remarks>
     public class CommandContainer : ICommandContainer
     {
-        #region Class Fields
-
-        private readonly Dictionary<RoutedCommand, ICommand> commandToCallbackMap =
+        private readonly Dictionary<RoutedCommand, ICommand> _commandToCallbackMap =
             new Dictionary<RoutedCommand, ICommand>();
 
-        #endregion // Class Fields
+        public virtual bool CanExecuteCommand(RoutedCommand command, object parameter, out bool handled)
+        {
+            if (command == null)
+            {
+                throw new ArgumentNullException("command");
+            }
 
-        #region Class Public Methods
+            if (_commandToCallbackMap.ContainsKey(command))
+            {
+                handled = true;
+
+                return _commandToCallbackMap[command].CanExecute(parameter);
+            }
+
+            return (handled = false);
+        }
+
+        public virtual void ExecuteCommand(RoutedCommand command, object parameter, out bool handled)
+        {
+            if (command == null)
+            {
+                throw new ArgumentNullException("command");
+            }
+
+            if (_commandToCallbackMap.ContainsKey(command))
+            {
+                handled = true;
+                _commandToCallbackMap[command].Execute(parameter);
+            }
+            else
+            {
+                handled = false;
+            }
+        }
 
         public void RegisterCommand(RoutedCommand command, Action execute)
         {
@@ -39,7 +68,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                 throw new ArgumentNullException("execute");
             }
 
-            commandToCallbackMap[command] = new Command(execute, canExecute);
+            _commandToCallbackMap[command] = new Command(execute, canExecute);
         }
 
         public void RegisterCommand<T>(RoutedCommand command, Action<T> execute)
@@ -58,7 +87,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                 throw new ArgumentNullException("execute");
             }
 
-            commandToCallbackMap[command] = new Command<T>(execute, canExecute);
+            _commandToCallbackMap[command] = new Command<T>(execute, canExecute);
         }
 
         public void UnregisterCommand(RoutedCommand command)
@@ -68,51 +97,10 @@ namespace MilitaryFaculty.Presentation.Infrastructure
                 throw new ArgumentNullException("command");
             }
 
-            if (commandToCallbackMap.ContainsKey(command))
+            if (_commandToCallbackMap.ContainsKey(command))
             {
-                commandToCallbackMap.Remove(command);
+                _commandToCallbackMap.Remove(command);
             }
         }
-
-        #endregion // Class Public Methods
-
-        #region Implementation of ICommandContainer
-
-        public virtual bool CanExecuteCommand(RoutedCommand command, object parameter, out bool handled)
-        {
-            if (command == null)
-            {
-                throw new ArgumentNullException("command");
-            }
-
-            if (commandToCallbackMap.ContainsKey(command))
-            {
-                handled = true;
-
-                return commandToCallbackMap[command].CanExecute(parameter);
-            }
-
-            return (handled = false);
-        }
-
-        public virtual void ExecuteCommand(RoutedCommand command, object parameter, out bool handled)
-        {
-            if (command == null)
-            {
-                throw new ArgumentNullException("command");
-            }
-
-            if (commandToCallbackMap.ContainsKey(command))
-            {
-                handled = true;
-                commandToCallbackMap[command].Execute(parameter);
-            }
-            else
-            {
-                handled = false;
-            }
-        }
-
-        #endregion // Implementation of ICommandContainer
     }
 }

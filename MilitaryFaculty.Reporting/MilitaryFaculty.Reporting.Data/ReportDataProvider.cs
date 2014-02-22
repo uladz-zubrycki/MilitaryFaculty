@@ -8,7 +8,7 @@ namespace MilitaryFaculty.Reporting.Data
 {
     public class ReportDataProvider
     {
-        private readonly IDictionary<string, Func<double>> evaluators;
+        private readonly IDictionary<string, Func<double>> _evaluators;
 
         public ReportDataProvider(IEnumerable<IDataProvider> providers)
         {
@@ -17,7 +17,7 @@ namespace MilitaryFaculty.Reporting.Data
                 throw new ArgumentNullException("providers");
             }
 
-            evaluators = new Dictionary<string, Func<double>>();
+            _evaluators = new Dictionary<string, Func<double>>();
 
             foreach (var provider in providers)
             {
@@ -27,7 +27,7 @@ namespace MilitaryFaculty.Reporting.Data
 
         public double GetValue(string key)
         {
-            var evaluator = evaluators[key];
+            var evaluator = _evaluators[key];
 
             return evaluator();
         }
@@ -49,12 +49,12 @@ namespace MilitaryFaculty.Reporting.Data
                 var key = GetArgumentName(method);
                 var evaluator = CreateEvaluator(method, provider);
 
-                if (evaluators.ContainsKey(key))
+                if (_evaluators.ContainsKey(key))
                 {
                     throw new InvalidOperationException(String.Format("Formula argument duplicate {0}", key));
                 }
 
-                evaluators[key] = evaluator;
+                _evaluators[key] = evaluator;
             }
         }
 
@@ -82,7 +82,7 @@ namespace MilitaryFaculty.Reporting.Data
                 throw new ArgumentNullException("provider");
             }
 
-            return () => (double)info.Invoke(provider, null);
+            return () => (double) info.Invoke(provider, null);
         }
 
         private static bool IsEvaluator(MethodInfo info)

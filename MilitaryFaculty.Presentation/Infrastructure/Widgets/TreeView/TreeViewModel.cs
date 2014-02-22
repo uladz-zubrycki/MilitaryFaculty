@@ -6,53 +6,25 @@ namespace MilitaryFaculty.Presentation.Infrastructure
 {
     public abstract class TreeViewModel : ViewModel, ITreeViewModel
     {
-        #region Class Fields
-
-        private ITreeItemViewModel selected;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private ITreeItemViewModel _selected;
 
         public abstract IEnumerable<ITreeItemViewModel> Items { get; }
 
         public ITreeItemViewModel Selected
         {
-            get { return selected; }
+            get { return _selected; }
             set
             {
-                var oldValue = selected;
+                var oldValue = _selected;
 
-                if (SetValue(() => selected, value))
+                if (SetValue(() => _selected, value))
                 {
-                    OnSelectedItemChanged(selected, oldValue);
+                    OnSelectedItemChanged(_selected, oldValue);
                 }
             }
         }
 
-        #endregion // Class Properties
-
-        #region Class Events
-
         public event EventHandler<SelectedChangedEventArgs> SelectedItemChanged;
-
-        #endregion // Class Events
-
-        #region Class Protected Methods
-
-        protected void OnSelectedItemChanged(ITreeItemViewModel newValue, ITreeItemViewModel oldValue)
-        {
-            var handler = SelectedItemChanged;
-
-            if (handler != null)
-            {
-                handler(null, new SelectedChangedEventArgs(newValue, oldValue));
-            }
-        }
-
-        #endregion // Class Protected Methods
-
-        #region Class Public Methods
 
         public IEnumerable<ITreeItemViewModel> Find(Func<ITreeItemViewModel, bool> predicate)
         {
@@ -64,6 +36,14 @@ namespace MilitaryFaculty.Presentation.Infrastructure
             return Items.SelectMany(item => item.Find(predicate));
         }
 
-        #endregion // Class Public Methods
+        protected void OnSelectedItemChanged(ITreeItemViewModel newValue, ITreeItemViewModel oldValue)
+        {
+            var handler = SelectedItemChanged;
+
+            if (handler != null)
+            {
+                handler(null, new SelectedChangedEventArgs(newValue, oldValue));
+            }
+        }
     }
 }

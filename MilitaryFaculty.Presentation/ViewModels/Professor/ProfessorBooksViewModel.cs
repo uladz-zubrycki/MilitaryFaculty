@@ -11,55 +11,36 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ProfessorBooksViewModel : ViewModel<Professor>
     {
-        #region Class Fields
-
-        private readonly IRepository<Book> bookRepository;
-        private ObservableCollection<BookListItemViewModel> books;
-
-        #endregion // Class Fields
-
-        #region Class Properties
+        private readonly IRepository<Book> _bookRepository;
+        private ObservableCollection<BookListItemViewModel> _books;
 
         public override string Title
         {
-            get
-            {
-                return "Разработка учебников, учебных пособий";
-            }
+            get { return "Разработка учебников, учебных пособий"; }
         }
 
         public ObservableCollection<BookListItemViewModel> Books
         {
             get
             {
-                if (books == null)
+                if (_books == null)
                 {
                     InitBooks();
                 }
 
-                return books;
-            } 
+                return _books;
+            }
         }
 
         public int SchoolbooksCount
         {
-            get
-            {
-                return Books.Count(vm => vm.Model.BookType == BookType.Schoolbook);
-            }
+            get { return Books.Count(vm => vm.Model.BookType == BookType.Schoolbook); }
         }
 
         public int TutorialsCount
         {
-            get
-            {
-                return Books.Count(vm => vm.Model.BookType == BookType.Tutorial);
-            }
+            get { return Books.Count(vm => vm.Model.BookType == BookType.Tutorial); }
         }
-
-        #endregion // Class Properties
-
-        #region Class Constructors
 
         public ProfessorBooksViewModel(Professor model, IRepository<Book> bookRepository)
             : base(model)
@@ -69,16 +50,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 throw new ArgumentNullException("conferenceRepository");
             }
 
-            this.bookRepository = bookRepository;
+            _bookRepository = bookRepository;
 
             bookRepository.EntityCreated += OnBookCreated;
             bookRepository.EntityDeleted += OnBookDeleted;
             Commands.Add(CreateAddBookCommand());
         }
-
-        #endregion // Class Constructors
-
-        #region Class Private Methods
 
         private ImagedCommandViewModel CreateAddBookCommand()
         {
@@ -86,7 +63,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string imageSource = @"..\Content\add.png";
 
             return new ImagedCommandViewModel(Browse.Book.Add,
-                                              Model, tooltip, imageSource);
+                Model, tooltip, imageSource);
         }
 
         private void InitBooks()
@@ -94,13 +71,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
             var converter = BookListItemViewModel.FromModel();
             var items = Model.Books.Select(converter);
 
-            books = new ObservableCollection<BookListItemViewModel>(items);
+            _books = new ObservableCollection<BookListItemViewModel>(items);
 
-            books.CollectionChanged += (sender, args) =>
-            {
-                OnPropertyChanged("SchoolbooksCount");
-                OnPropertyChanged("TutorialsCount");
-            };
+            _books.CollectionChanged += (sender, args) =>
+                                        {
+                                            OnPropertyChanged("SchoolbooksCount");
+                                            OnPropertyChanged("TutorialsCount");
+                                        };
         }
 
         private void OnBookCreated(object sender, ModifiedEntityEventArgs<Book> e)
@@ -114,7 +91,5 @@ namespace MilitaryFaculty.Presentation.ViewModels
             var book = e.ModifiedEntity;
             Books.RemoveSingle(c => c.Model.Equals(book));
         }
-
-        #endregion // Class Private Methods
     }
 }

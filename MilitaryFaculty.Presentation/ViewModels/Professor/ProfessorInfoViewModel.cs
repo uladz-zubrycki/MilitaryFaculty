@@ -6,8 +6,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ProfessorInfoViewModel : EntityViewModel<Professor>
     {
-        #region Class Properties
-
         public override string Title
         {
             get { return "Базовая информация"; }
@@ -41,17 +39,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
             set { SetModelProperty(m => m.MilitaryRank, value); }
         }
 
-        #endregion // Class Properties
-
-        #region Class Constructors
-
         public ProfessorInfoViewModel(Professor model)
             : base(model)
         {
             var editCommands = new EditableViewBehaviour<Professor>(Do.Professor.Update, Model);
             editCommands.Inject(this);
         }
-
-        #endregion // Class Constructors
     }
 }

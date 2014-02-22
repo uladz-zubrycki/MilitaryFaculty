@@ -7,17 +7,11 @@ namespace MilitaryFaculty.Presentation.Custom
 {
     public class ConferenceNavigationModule : BaseNavigationModule
     {
-        #region Class Constructors
-
         public ConferenceNavigationModule(MainViewModel viewModel)
             : base(viewModel)
         {
             // Empty
         }
-
-        #endregion // Class Constructors
-
-        #region Class Public Methods
 
         public override void RegisterModule(CommandContainer container)
         {
@@ -27,15 +21,11 @@ namespace MilitaryFaculty.Presentation.Custom
             }
 
             container.RegisterCommand<Professor>(Browse.Conference.Add,
-                                                 OnBrowseConferenceAdd);
+                OnBrowseConferenceAdd);
 
             container.RegisterCommand<Conference>(Browse.Conference.Details,
-                                                  OnBrowseConferenceDetails);
+                OnBrowseConferenceDetails);
         }
-
-        #endregion // Class Public Methods
-
-        #region Class Private Methods
 
         private void OnBrowseConferenceAdd(Professor curator)
         {
@@ -44,11 +34,7 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("curator");
             }
 
-            var model = new Conference
-                        {
-                            Curator = curator,
-                        };
-
+            var model = new Conference {Curator = curator};
             ViewModel.WorkWindow = new AddConferenceViewModel(model);
         }
 
@@ -61,7 +47,5 @@ namespace MilitaryFaculty.Presentation.Custom
 
             ViewModel.WorkWindow = new ConferenceRootViewModel(conference);
         }
-
-        #endregion // Class Private Methods
     }
 }

@@ -6,8 +6,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class PublicationInfoViewModel : EntityViewModel<Publication>
     {
-        #region Class Properties
-
         public override string Title
         {
             get { return "Основная информация"; }
@@ -27,17 +25,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
             set { SetModelProperty(m => m.PagesCount, value); }
         }
 
-        #endregion // Class Properties
-
-        #region Class Constructors
-
         public PublicationInfoViewModel(Publication model)
             : base(model)
         {
             var editCommands = new EditableViewBehaviour<Publication>(Do.Publication.Update, Model);
             editCommands.Inject(this);
         }
-
-        #endregion // Class Constructors
     }
 }

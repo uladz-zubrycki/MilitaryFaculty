@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
 
@@ -22,7 +21,7 @@ namespace MilitaryFaculty.Presentation.Custom
             get { return Do.Book.Remove; }
         }
 
-        public BookCommandModule(IRepository<Book> repository) 
+        public BookCommandModule(IRepository<Book> repository)
             : base(repository)
         {
             // Empty

@@ -3,7 +3,7 @@ using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Data
 {
-    internal class FullNameConfiguration : ComplexTypeConfiguration<FullName> 
+    internal class FullNameConfiguration : ComplexTypeConfiguration<FullName>
     {
         public FullNameConfiguration()
         {

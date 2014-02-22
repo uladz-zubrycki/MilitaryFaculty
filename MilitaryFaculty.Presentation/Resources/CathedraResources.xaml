@@ -3,10 +3,10 @@
                     xmlns:views="clr-namespace:MilitaryFaculty.Presentation.Views"
                     xmlns:viewModels="clr-namespace:MilitaryFaculty.Presentation.ViewModels">
     <DataTemplate DataType="{x:Type viewModels:CathedraViewModel}">
-        <views:CathedraView/>
+        <views:CathedraView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewModels:CathedraInfoViewModel}">
-        <views:CathedraInfoView/>
+        <views:CathedraInfoView />
     </DataTemplate>
 </ResourceDictionary>

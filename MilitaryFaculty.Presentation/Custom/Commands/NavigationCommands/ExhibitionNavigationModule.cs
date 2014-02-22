@@ -7,17 +7,11 @@ namespace MilitaryFaculty.Presentation.Custom
 {
     public class ExhibitionNavigationModule : BaseNavigationModule
     {
-        #region Class Constructors
-
         public ExhibitionNavigationModule(MainViewModel viewModel)
             : base(viewModel)
         {
             // Empty
         }
-
-        #endregion // Class Constructors
-
-        #region Class Public Methods
 
         public override void RegisterModule(CommandContainer container)
         {
@@ -30,10 +24,6 @@ namespace MilitaryFaculty.Presentation.Custom
             container.RegisterCommand<Exhibition>(Browse.Exhibition.Details, OnBrowseExhibitionDetails);
         }
 
-        #endregion // Class Public Methods
-
-        #region Class Private Methods
-
         private void OnBrowseExhibitionAdd(Professor author)
         {
             if (author == null)
@@ -41,11 +31,7 @@ namespace MilitaryFaculty.Presentation.Custom
                 throw new ArgumentNullException("author");
             }
 
-            var model = new Exhibition
-                        {
-                            Participant = author
-                        };
-
+            var model = new Exhibition {Participant = author};
             ViewModel.WorkWindow = new AddExhibitionViewModel(model);
         }
 
@@ -58,7 +44,5 @@ namespace MilitaryFaculty.Presentation.Custom
 
             ViewModel.WorkWindow = new ExhibitionRootViewModel(publication);
         }
-
-        #endregion // Class Private Methods
     }
 }
