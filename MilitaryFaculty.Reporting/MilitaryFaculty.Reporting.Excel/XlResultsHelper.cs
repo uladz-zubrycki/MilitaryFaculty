@@ -34,7 +34,7 @@ namespace MilitaryFaculty.Reporting.Excel
 
         #region Class Public Methods
 
-        public void PutName(string value, ExcelWorksheet workSheet, ref int curLine)
+        public void PutName(ExcelWorksheet workSheet, ref int curLine, string value)
         {
             if (String.IsNullOrWhiteSpace(value))
             {
@@ -58,7 +58,7 @@ namespace MilitaryFaculty.Reporting.Excel
             curLine += 2;
         }
 
-        public void PutSubName(string value, ExcelWorksheet workSheet, ref int curLine)
+        public void PutSubName(ExcelWorksheet workSheet, ref int curLine, string value)
         {
             if (String.IsNullOrWhiteSpace(value))
             {
@@ -80,7 +80,7 @@ namespace MilitaryFaculty.Reporting.Excel
             curLine++;
         }
 
-        public void PutFieldLine(string name, string value, string maxValue, ExcelWorksheet workSheet, ref int curLine)
+        public void PutFieldLine(ExcelWorksheet workSheet, ref int curLine, string name, string value, string maxValue)
         {
             if (String.IsNullOrWhiteSpace(name))
             {
@@ -109,7 +109,7 @@ namespace MilitaryFaculty.Reporting.Excel
             curLine++;
         }
 
-        public void PutResults(string name, string value, ExcelWorksheet workSheet, ref int curLine)
+        public void PutResults(ExcelWorksheet workSheet, ref int curLine, string name, string value)
         {
             if (String.IsNullOrWhiteSpace(name))
             {
@@ -128,16 +128,23 @@ namespace MilitaryFaculty.Reporting.Excel
                 throw new ArgumentException("curLine");
             }
 
-            var range = workSheet.Cells[curLine, firstColumn, curLine, nameColumn];
+            var range = workSheet.Cells[curLine, firstColumn, curLine + 1, nameColumn];
             range.Merge = true;
             range.Value = name;
             range.Style.Font.Bold = true;
             range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            workSheet.Cells[curLine, valueColumn].Value = value;
-            curLine++;
+            range.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+
+            range = workSheet.Cells[curLine, valueColumn, curLine + 1, maxValueColumn];
+            range.Merge = true;
+            range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            range.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+            range.Value = value;
+
+            curLine += 2;
         }
 
-        public void SetTableStyle(int fistLine, int lastLine, ExcelWorksheet workSheet)
+        public void SetTableStyle(ExcelWorksheet workSheet, int fistLine, int lastLine)
         {
             if (workSheet == null)
             {

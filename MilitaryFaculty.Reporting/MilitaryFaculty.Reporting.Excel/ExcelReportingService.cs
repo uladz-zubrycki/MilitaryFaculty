@@ -86,12 +86,12 @@ namespace MilitaryFaculty.Reporting.Excel
             var curLine = firstLine;
             double totalRating = 0;
 
-            xlHelper.PutName(table.Name, workSheet, ref curLine);
+            xlHelper.PutName(workSheet, ref curLine, table.Name);
 
             //Groups generation
             foreach (var part in table.Groups)
             {
-                xlHelper.PutSubName(part.Name, workSheet, ref curLine);
+                xlHelper.PutSubName(workSheet, ref curLine, part.Name);
 
                 //Formula lines generation
                 foreach (var formulaId in part.Formulas)
@@ -100,17 +100,15 @@ namespace MilitaryFaculty.Reporting.Excel
                     var characteristic = new Characteristic(formulaInfo, reportDataProvider);
                     var value = NormalizeValue(characteristic.Evaluate());
 
-                    //Fields setting
-                    xlHelper.PutFieldLine(formulaInfo.Name, value.ToString("F0"), ValueOrDash(formulaInfo.MaxValue), workSheet, ref curLine);
+                    xlHelper.PutFieldLine(workSheet, ref curLine, formulaInfo.Name, value.ToString("F0"), ValueOrDash(formulaInfo.MaxValue));
                     totalRating += value;
                 }
             }
 
-            //Results setting
-            xlHelper.PutResults("Итог", totalRating.ToString("F0"), workSheet, ref curLine);
+            xlHelper.PutResults(workSheet, ref curLine, "Итог", totalRating.ToString("F0"));
 
             //Sheet styles setting
-            xlHelper.SetTableStyle(firstLine, curLine - 1, workSheet);
+            xlHelper.SetTableStyle(workSheet, firstLine, curLine - 1);
         }
 
         private static double NormalizeValue(double value)
