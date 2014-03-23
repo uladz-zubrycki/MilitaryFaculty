@@ -7,16 +7,16 @@ namespace MilitaryFaculty.Presentation.Custom
 {
     public class ReportingCommandModule : ICommandContainerModule
     {
-        private readonly ExcelReportingService _reportingService;
+        private readonly IExcelReportingService _service;
 
-        public ReportingCommandModule(ExcelReportingService reportingService)
+        public ReportingCommandModule(IExcelReportingService service)
         {
-            if (reportingService == null)
+            if (service == null)
             {
-                throw new ArgumentNullException("reportingService");
+                throw new ArgumentNullException("service");
             }
 
-            _reportingService = reportingService;
+            _service = service;
         }
 
         public void RegisterModule(CommandContainer container)
@@ -36,7 +36,7 @@ namespace MilitaryFaculty.Presentation.Custom
             if (dialog.ShowDialog() == true)
             {
                 var filename = dialog.FileName;
-                _reportingService.ExportReport(filename);
+                _service.ExportReport(filename);
             }
         }
     }

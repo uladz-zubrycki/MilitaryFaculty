@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Serialization;
 using MilitaryFaculty.Data;
@@ -9,6 +10,7 @@ using MilitaryFaculty.Domain;
 using MilitaryFaculty.Reporting;
 using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.Excel;
+using MilitaryFaculty.Reporting.ReportObjectDomain;
 using MilitaryFaculty.Reporting.XmlDomain;
 using NUnit.Framework;
 
@@ -60,9 +62,10 @@ namespace MilitaryFaculty.Logic.Tests
                                          .ToList();
 
             var formulaProvider = new FormulaProvider(formulaFiles);
-            var tableProvider = new ReportTableProvider(tableFiles);
+            var tableProvider = new FacultyReportTableProvider(tableFiles);
 
-            var reportingService = new ExcelReportingService(tableProvider, formulaProvider, reportDataProvider);
+            var reportObject = new ReportObject(tableProvider, formulaProvider, reportDataProvider);
+            var reportingService = new SingleInstanceExcelService(reportObject);
             reportingService.ExportReport(@"D:\1.xlsx");
         }
 

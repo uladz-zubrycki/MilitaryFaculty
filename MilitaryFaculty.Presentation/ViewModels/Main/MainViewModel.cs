@@ -14,7 +14,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         private readonly IRepository<Book> _bookRepository;
         private readonly IRepository<Cathedra> _cathedraRepository;
         private readonly IRepository<Conference> _conferenceRepository;
-        private readonly ExcelReportingService _excelReportingService;
+        private readonly FacultyExcelReportingService _excelService;
         private readonly IRepository<Exhibition> _exhibitionRepository;
         private readonly IRepository<Professor> _professorRepository;
         private readonly IRepository<Publication> _publicationRepository;
@@ -50,7 +50,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             _publicationRepository = container.Resolve<IRepository<Publication>>();
             _exhibitionRepository = container.Resolve<IRepository<Exhibition>>();
             _bookRepository = container.Resolve<IRepository<Book>>();
-            _excelReportingService = container.Resolve<ExcelReportingService>();
+            _excelService = container.Resolve<FacultyExcelReportingService>();
 
             _workWindow = new StartupViewModel();
 
@@ -115,7 +115,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
                               new ConferenceNavigationModule(this),
                               new BookNavigationModule(this),
                               new ExhibitionNavigationModule(this),
-                              new ReportingCommandModule(_excelReportingService)
+                              new ReportingCommandModule(_excelService)
                           };
 
             modules.ForEach(m => m.RegisterModule(CommandContainer));

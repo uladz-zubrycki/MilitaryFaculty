@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <ArrayOfFormula>
-  <Formula name="1.1 Полнота разработки планирующих документов"
+  <Formula name="Полнота разработки планирующих документов"
            id="id11"
            expression="PlanDocsOrg * coeff1 + ResTopicsOrg * coeff2 + ProfsOrg * coeff3"
            maxValue="60">
@@ -20,7 +20,7 @@
     </Coefficients>
   </Formula>
 
-  <Formula name="2.1 Уровень организации и проведения: научных (научно-практических) конференций, научных семинаров"
+  <Formula name="Уровень организации и проведения: научных (научно-практических) конференций, научных семинаров"
            id="id12"
            expression="IntConfOrg * coeff1 + RepConfOrg * coeff2 + UnConfOrg * coeff3 + RepSemOrg * coeff4 + UnSemOrg * coeff5"
            maxValue="0">
@@ -40,7 +40,7 @@
     </Coefficients>
   </Formula>
 
-  <Formula name="3.1 Уровень организации подготовки научно-педагогических работников высшей квалификации"
+  <Formula name="Уровень организации подготовки научно-педагогических работников высшей квалификации"
            id="id13"
            expression="ProfsOrgFull * coeff1 + ProfsOrgCust * coeff2"
            maxValue="40">
@@ -56,7 +56,7 @@
     </Coefficients>
   </Formula>
 
-  <Formula name="4.1 Уровень организации военно-исторической работы"
+  <Formula name="Уровень организации военно-исторической работы"
            id="id14"
            expression="HistWorkFull * coeff1 + HistWorkCust * coeff2"
            maxValue="20">
@@ -72,7 +72,7 @@
     </Coefficients>
   </Formula>
 
-  <Formula name="5.1 Уровень организации работы научных кружков слушателей, курсантов (студентов)"
+  <Formula name="Уровень организации работы научных кружков слушателей, курсантов (студентов)"
            id="id15"
            expression="MssFull * coeff1 + MssCust * coeff2"
            maxValue="20">
@@ -88,7 +88,7 @@
     </Coefficients>
   </Formula>
 
-  <Formula name="6.1 Другие частные показатели, характеризующие качество организации научной работы"
+  <Formula name="Другие частные показатели, характеризующие качество организации научной работы"
            id="id16"
            expression="CustSwOrg"
            maxValue="50">

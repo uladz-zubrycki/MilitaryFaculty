@@ -7,13 +7,13 @@ using MilitaryFaculty.Reporting.XmlDomain;
 
 namespace MilitaryFaculty.Reporting
 {
-    public class ReportTableProvider : IReportTableProvider
+    public class FacultyReportTableProvider : IReportTableProvider
     {
         private readonly ICollection<string> _files;
 
         private ICollection<XReportTable> _tables;
 
-        public ReportTableProvider(IEnumerable<string> files)
+        public FacultyReportTableProvider(IEnumerable<string> files)
         {
             if (files == null)
             {
@@ -30,8 +30,7 @@ namespace MilitaryFaculty.Reporting
 
         private ICollection<XReportTable> InitTables()
         {
-            return _files.Select(ReadTable)
-                         .ToList();
+            return _files.Select(ReadTable).ToList();
         }
 
         private static XReportTable ReadTable(string file)

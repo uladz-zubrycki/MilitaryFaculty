@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ReportTable name="Частные показатели качества организации научной работы">
+  <Groups>
+    <Group name="Степень участия ППС в проведении НИР">
+      <Formulas>
+        <id>id21</id>
+      </Formulas>
+    </Group>
+    <Group name="Результативность выполненных НИР">
+      <Formulas>
+        <id>id22</id>
+      </Formulas>
+    </Group>
+    <Group name="Степень участия ППС в разработке учебников, учебных пособий">
+      <Formulas>
+        <id>id231</id>
+        <id>id232</id>
+      </Formulas>
+    </Group>
+    <Group name="Степень участия ППС в изобретательской работе">
+      <Formulas>
+        <id>id241</id>
+        <id>id242</id>
+      </Formulas>
+    </Group>
+    <Group
+      name="Степень участия ППС в работе по проведению научной экспертизы уставных документов, учебников и учебных пособий">
+      <Formulas>
+        <id>id25</id>
+      </Formulas>
+    </Group>
+    <Group name="Другие частные показатели, характеризующие проведение наунчых исследований">
+      <Formulas>
+        <id>id26</id>
+      </Formulas>
+    </Group>
+  </Groups>
+</ReportTable>

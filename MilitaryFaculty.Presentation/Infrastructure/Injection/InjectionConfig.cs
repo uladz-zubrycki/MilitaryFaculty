@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net.Mime;
 using Autofac;
+using Autofac.Features.Indexed;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Reporting;
 using MilitaryFaculty.Reporting.Data;
@@ -22,8 +25,10 @@ namespace MilitaryFaculty.Presentation.Infrastructure
             RegisterEntityContext(builder);
             RegisterDataProviders(builder);
             RegisterFormulaProvider(builder);
-            RegisterReportTableProvider(builder);
-            RegisterExcelReportingService(builder);
+            RegisterReportTableTypeFactory(builder);
+            RegisterFacultyReportTableProvider(builder);
+            RegisterProfessorReportTableProvider(builder);
+            RegisterExcelReportingServices(builder);
 
             return builder.Build();
         }
@@ -35,7 +40,7 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         private static void RegisterRepositories(ContainerBuilder builder)
         {
             builder.RegisterGeneric(typeof (Repository<>))
-                   .AsImplementedInterfaces();
+                .AsImplementedInterfaces();
         }
 
         /// <summary>
@@ -44,61 +49,101 @@ namespace MilitaryFaculty.Presentation.Infrastructure
         /// <param name="builder">Builder for service container.</param>
         private static void RegisterEntityContext(ContainerBuilder builder)
         {
-            var connectionString = ConfigurationManager.ConnectionStrings["Current"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["Current"].ConnectionString;
 
             builder.RegisterType<EntityContext>()
-                   .AsSelf()
-                   .WithParameter("connectionString", connectionString)
-                   .SingleInstance();
+                .AsSelf()
+                .WithParameter("connectionString", connectionString)
+                .SingleInstance();
         }
 
         private static void RegisterFormulaProvider(ContainerBuilder builder)
         {
-            const string relDirPath = @"..\..\..\..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting\formulas\";
-            const string baseName = "formulas-";
-            var dirPath = Environment.CurrentDirectory + relDirPath;
+            string relDirPath = ConfigurationManager.AppSettings["relatedFormulasPath"];
+            string baseName = ConfigurationManager.AppSettings["baseFormulasName"];
+            string dirPath = Environment.CurrentDirectory + relDirPath;
 
-            var files = Enumerable.Range(1, 4)
-                                  .Select(i => dirPath + baseName + i + ".xml")
-                                  .ToList();
-
+            List<string> files = Enumerable.Range(1, 4)
+                .Select(i => dirPath + baseName + i + ".xml")
+                .ToList();
+            
             builder.RegisterType<FormulaProvider>()
-                   .As<IFormulaProvider>()
-                   .WithParameter("files", files)
-                   .SingleInstance();
+                .As<IFormulaProvider>()
+                .WithParameter("files", files)
+                .SingleInstance();
         }
 
-        private static void RegisterReportTableProvider(ContainerBuilder builder)
+        private static void RegisterReportTableTypeFactory(ContainerBuilder builder)
         {
-            const string relDirPath = @"..\..\..\..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting\formulas\";
-            const string baseName = "table-";
-            var dirPath = Environment.CurrentDirectory + relDirPath;
+            Func<IComponentContext, Func<ReportType, IReportTableProvider>> factory =
+                ctx => type =>
+                {
+                    var factDict = ctx.Resolve<IIndex<ReportType, IReportTableProvider>>();
+                    return factDict[type];
+                };
 
-            var files = Enumerable.Range(1, 4)
-                                  .Select(i => dirPath + baseName + i + ".xml")
-                                  .ToList();
+            builder.Register(factory)
+                .As<Func<ReportType, IReportTableProvider>>()
+                .SingleInstance();
+        }
 
-            builder.RegisterType<ReportTableProvider>()
-                   .As<IReportTableProvider>()
-                   .WithParameter("files", files)
-                   .SingleInstance();
+        private static void RegisterFacultyReportTableProvider(ContainerBuilder builder)
+        {
+            string relDirPath = ConfigurationManager.AppSettings["relatedFormulasPath"];
+            string baseName = ConfigurationManager.AppSettings["baseFacultyTableName"];
+            string dir = Environment.CurrentDirectory;
+            
+            string dirPath = Environment.CurrentDirectory + relDirPath;
+
+            List<string> files = Enumerable.Range(1, 4)
+                .Select(i => dirPath + baseName + i + ".xml")
+                .ToList();
+
+            builder.RegisterType<FacultyReportTableProvider>()
+                .Keyed<IReportTableProvider>(ReportType.Faculty)
+                .WithParameter("files", files)
+                .SingleInstance();
+        }
+
+        private static void RegisterProfessorReportTableProvider(ContainerBuilder builder)
+        {
+            string relDirPath = ConfigurationManager.AppSettings["relatedFormulasPath"];
+            string baseName = ConfigurationManager.AppSettings["baseProfessorTableName"]; ;
+            string dirPath = Environment.CurrentDirectory + relDirPath;
+
+            List<string> files = Enumerable.Range(1, 3)
+                .Select(i => dirPath + baseName + i + ".xml")
+                .ToList();
+
+            builder.RegisterType<FacultyReportTableProvider>()
+                .Keyed<IReportTableProvider>(ReportType.Professor)
+                .WithParameter("files", files)
+                .SingleInstance();
         }
 
         private static void RegisterDataProviders(ContainerBuilder builder)
         {
             builder.RegisterType<ReportDataProvider>()
-                   .AsSelf();
+                .AsSelf();
 
             builder.RegisterAssemblyTypes(typeof (ReportDataProvider).Assembly)
-                   .Where(type => type.IsAssignableTo<IDataProvider>())
-                   .As<IDataProvider>();
+                .Where(type => type.IsAssignableTo<IDataProvider>())
+                .As<IDataProvider>();
         }
 
-        private static void RegisterExcelReportingService(ContainerBuilder builder)
+        private static void RegisterExcelReportingServices(ContainerBuilder builder)
         {
-            builder.RegisterType<ExcelReportingService>()
-                   .AsSelf()
-                   .SingleInstance();
+            builder.RegisterType<SingleInstanceExcelService>()
+                .AsSelf()
+                .SingleInstance();
+
+            builder.RegisterType<MultipleInstancesExcelService>()
+                .AsSelf()
+                .SingleInstance();
+
+            builder.RegisterType<FacultyExcelReportingService>()
+                .AsSelf()
+                .SingleInstance();
         }
     }
 }
