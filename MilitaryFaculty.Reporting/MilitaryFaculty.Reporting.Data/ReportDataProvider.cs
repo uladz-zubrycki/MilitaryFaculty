@@ -6,89 +6,89 @@ using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Reporting.Data
 {
-    public class ReportDataProvider
-    {
-        private readonly IDictionary<string, Func<double>> _evaluators;
+	public class ReportDataProvider
+	{
+		private readonly IDictionary<string, Func<double>> _evaluators;
 
-        public ReportDataProvider(IEnumerable<IDataProvider> providers)
-        {
-            if (providers == null)
-            {
-                throw new ArgumentNullException("providers");
-            }
+		public ReportDataProvider(IEnumerable<IDataProvider> providers)
+		{
+			if (providers == null)
+			{
+				throw new ArgumentNullException("providers");
+			}
 
-            _evaluators = new Dictionary<string, Func<double>>();
+			_evaluators = new Dictionary<string, Func<double>>();
 
-            foreach (var provider in providers)
-            {
-                RegisterDataProvider(provider);
-            }
-        }
+			foreach (IDataProvider provider in providers)
+			{
+				RegisterDataProvider(provider);
+			}
+		}
 
-        public double GetValue(string key)
-        {
-            var evaluator = _evaluators[key];
+		public double GetValue(string key)
+		{
+			Func<double> evaluator = _evaluators[key];
 
-            return evaluator();
-        }
+			return evaluator();
+		}
 
-        private void RegisterDataProvider(IDataProvider provider)
-        {
-            if (provider == null)
-            {
-                throw new ArgumentNullException("provider");
-            }
+		private void RegisterDataProvider(IDataProvider provider)
+		{
+			if (provider == null)
+			{
+				throw new ArgumentNullException("provider");
+			}
 
-            var type = provider.GetType();
-            var methods = type.GetMethods()
-                              .Where(IsEvaluator)
-                              .ToList();
+			Type type = provider.GetType();
+			List<MethodInfo> methods = type.GetMethods()
+										   .Where(IsEvaluator)
+										   .ToList();
 
-            foreach (var method in methods)
-            {
-                var key = GetArgumentName(method);
-                var evaluator = CreateEvaluator(method, provider);
+			foreach (MethodInfo method in methods)
+			{
+				string key = GetArgumentName(method);
+				Func<double> evaluator = CreateEvaluator(method, provider);
 
-                if (_evaluators.ContainsKey(key))
-                {
-                    throw new InvalidOperationException(String.Format("Formula argument duplicate {0}", key));
-                }
+				if (_evaluators.ContainsKey(key))
+				{
+					throw new InvalidOperationException(String.Format("Formula argument duplicate {0}", key));
+				}
 
-                _evaluators[key] = evaluator;
-            }
-        }
+				_evaluators[key] = evaluator;
+			}
+		}
 
-        private static string GetArgumentName(MethodInfo info)
-        {
-            if (info == null)
-            {
-                throw new ArgumentNullException("info");
-            }
+		private static string GetArgumentName(MethodInfo info)
+		{
+			if (info == null)
+			{
+				throw new ArgumentNullException("info");
+			}
 
-            var attr = info.GetCustomAttribute<FormulaArgumentAttribute>();
+			var attr = info.GetCustomAttribute<FormulaArgumentAttribute>();
 
-            return attr.Name;
-        }
+			return attr.Name;
+		}
 
-        private static Func<double> CreateEvaluator(MethodInfo info, IDataProvider provider)
-        {
-            if (info == null)
-            {
-                throw new ArgumentNullException("info");
-            }
+		private static Func<double> CreateEvaluator(MethodInfo info, IDataProvider provider)
+		{
+			if (info == null)
+			{
+				throw new ArgumentNullException("info");
+			}
 
-            if (provider == null)
-            {
-                throw new ArgumentNullException("provider");
-            }
+			if (provider == null)
+			{
+				throw new ArgumentNullException("provider");
+			}
 
-            return () => (double) info.Invoke(provider, null);
-        }
+			return () => (double)info.Invoke(provider, null);
+		}
 
-        private static bool IsEvaluator(MethodInfo info)
-        {
-            return info.HasAttribute<FormulaArgumentAttribute>() &&
-                   info.ReturnType == typeof (double);
-        }
-    }
+		private static bool IsEvaluator(MethodInfo info)
+		{
+			return info.HasAttribute<FormulaArgumentAttribute>() &&
+				   info.ReturnType == typeof(double);
+		}
+	}
 }

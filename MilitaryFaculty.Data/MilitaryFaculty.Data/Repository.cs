@@ -6,139 +6,108 @@ using MilitaryFaculty.Domain.Contract;
 
 namespace MilitaryFaculty.Data
 {
-    public class Repository<T> : IRepository<T>
-        where T : class, IUniqueEntity
-    {
-        #region Class Fields
+	public class Repository<T> : IRepository<T>
+		where T : class, IUniqueEntity
+	{
+		private readonly DbContext _dbContext;
 
-        private readonly DbContext dbContext;
+		protected DbSet<T> DbSet
+		{
+			get { return _dbContext.Set<T>(); }
+		}
 
-        #endregion // Class Fields
+		public IQueryable<T> Table
+		{
+			get
+			{
+				return DbSet;
+			}
+		}
 
-        #region Class Properties
+		public event EventHandler<ModifiedEntityEventArgs<T>> EntityCreated;
+		public event EventHandler<ModifiedEntityEventArgs<T>> EntityUpdated;
+		public event EventHandler<ModifiedEntityEventArgs<T>> EntityDeleted;
 
-        protected DbSet<T> DbSet
-        {
-            get { return dbContext.Set<T>(); }
-        }
+		public Repository(EntityContext context)
+		{
+			if (context == null)
+			{
+				throw new ArgumentNullException("context");
+			}
 
-        public IQueryable<T> Table
-        {
-            get { return DbSet.AsQueryable(); }
-        }
+			_dbContext = context;
+		}
 
-        #endregion // Class Properties
+		public void Create(T entity)
+		{
+			if (entity == null)
+			{
+				throw new ArgumentNullException("entity");
+			}
 
-        #region Class Events
+			DbSet.Add(entity);
+			_dbContext.SaveChanges();
 
-        public event EventHandler<ModifiedEntityEventArgs<T>> EntityCreated;
-        public event EventHandler<ModifiedEntityEventArgs<T>> EntityUpdated;
-        public event EventHandler<ModifiedEntityEventArgs<T>> EntityDeleted;
+			OnEntityCreated(entity);
+		}
 
-        #endregion // Class Events
+		public T Read(Guid id)
+		{
+			return DbSet.Single(x => x.Id == id);
+		}
 
-        #region Class Constructors
+		public void Update(T entity)
+		{
+			if (entity == null)
+			{
+				throw new ArgumentNullException("entity");
+			}
 
-        public Repository(EntityContext context)
-        {
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
+			// changes are auto-tracking by context, 
+			// so just check if entity exist in database
+			Read(entity.Id);
+			_dbContext.SaveChanges();
 
-            dbContext = context;
-        }
+			OnEntityUpdated(entity);
+		}
 
-        #endregion // Class Constructors
+		public void Delete(Guid id)
+		{
+			var entity = Read(id);
+			OnEntityDeleted(entity);
 
-        #region Public Class Methods
+			DbSet.Remove(entity);
+			_dbContext.SaveChanges();
+		}
 
-        public void Create(T entity)
-        {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("item");
-            }
+		protected void OnEntityCreated(T entity)
+		{
+			var handler = EntityCreated;
 
-            DbSet.Add(entity);
-            dbContext.SaveChanges();
+			if (handler != null)
+			{
+				handler(null, new ModifiedEntityEventArgs<T>(entity));
+			}
+		}
 
-            OnEntityCreated(entity);
-        }
+		protected void OnEntityUpdated(T entity)
+		{
+			var handler = EntityUpdated;
 
-        public T Read(Guid id)
-        {
-            return DbSet.Single(x => x.Id == id);
-        }
+			if (handler != null)
+			{
+				handler(null, new ModifiedEntityEventArgs<T>(entity));
+			}
+		}
 
-        public void Update(T entity)
-        {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("entity");
-            }
+		protected void OnEntityDeleted(T entity)
+		{
+			var handler = EntityDeleted;
 
-            // changes are auto-tracking by context, 
-            // so just check if entity exist in database
-            Read(entity.Id);
-            dbContext.SaveChanges();
-
-            OnEntityUpdated(entity);
-        }
-
-        public void Delete(Guid id)
-        {
-            var entity = Read(id);
-            OnEntityDeleted(entity);
-
-            DbSet.Remove(entity);
-            dbContext.SaveChanges();
-        }
-
-        public int CountOf(Func<T, bool> predicate)
-        {
-            return Table.Count(predicate);
-        }
-
-        public double SumOf(Func<T, double> evaluator)
-        {
-            return Table.Sum(evaluator);
-        }
-
-        #endregion // Public Class Methods
-
-        #region Class Protected Methods
-
-        protected void OnEntityCreated(T entity)
-        {
-            var handler = EntityCreated;
-
-            if (handler != null)
-            {
-                handler(null, new ModifiedEntityEventArgs<T>(entity));
-            }
-        }
-
-        protected void OnEntityUpdated(T entity)
-        {
-            var handler = EntityUpdated;
-
-            if (handler != null)
-            {
-                handler(null, new ModifiedEntityEventArgs<T>(entity));
-            }
-        }
-
-        protected void OnEntityDeleted(T entity)
-        {
-            var handler = EntityDeleted;
-
-            if (handler != null)
-            {
-                handler(null, new ModifiedEntityEventArgs<T>(entity));
-            }
-        }
-
-        #endregion // Class Protected Methods
-    }
+			if (handler != null)
+			{
+				handler(null, new ModifiedEntityEventArgs<T>(entity));
+			}
+		}
+	}
 }

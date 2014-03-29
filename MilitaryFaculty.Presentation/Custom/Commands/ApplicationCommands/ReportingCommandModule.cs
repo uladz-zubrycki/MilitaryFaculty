@@ -1,15 +1,18 @@
 ﻿using System;
+using Autofac.Features.GeneratedFactories;
 using Microsoft.Win32;
 using MilitaryFaculty.Presentation.Infrastructure;
 using MilitaryFaculty.Reporting.Excel;
+using MilitaryFaculty.Reporting.ReportObjectDomain;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
     public class ReportingCommandModule : ICommandContainerModule
     {
-        private readonly IExcelReportingService _service;
+        private readonly ExcelReportingService _service;
+	    private readonly ReportObjectFactory _factory;
 
-        public ReportingCommandModule(IExcelReportingService service)
+        public ReportingCommandModule(ExcelReportingService service, ReportObjectFactory factory)
         {
             if (service == null)
             {
@@ -17,6 +20,7 @@ namespace MilitaryFaculty.Presentation.Custom
             }
 
             _service = service;
+	        _factory = factory;
         }
 
         public void RegisterModule(CommandContainer container)
@@ -36,7 +40,7 @@ namespace MilitaryFaculty.Presentation.Custom
             if (dialog.ShowDialog() == true)
             {
                 var filename = dialog.FileName;
-                _service.ExportReport(filename);
+                _service.ExportReport(filename, _factory.CreateReportObject());
             }
         }
     }

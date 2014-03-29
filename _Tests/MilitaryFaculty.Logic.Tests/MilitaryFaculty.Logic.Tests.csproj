@@ -87,6 +87,10 @@
       <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
       <Name>MilitaryFaculty.Domain %28MilitaryFaculty.Domain\MilitaryFaculty.Domain%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\MilitaryFaculty.Presentation\MilitaryFaculty.Presentation.csproj">
+      <Project>{605451BC-3748-4D32-8B5F-20915719894C}</Project>
+      <Name>MilitaryFaculty.Presentation %28MilitaryFaculty.Presentation\MilitaryFaculty.Presentation%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.Data\MilitaryFaculty.Reporting.Data.csproj">
       <Project>{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}</Project>
       <Name>MilitaryFaculty.Reporting.Data</Name>

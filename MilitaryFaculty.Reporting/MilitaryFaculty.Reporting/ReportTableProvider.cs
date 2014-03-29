@@ -7,13 +7,13 @@ using MilitaryFaculty.Reporting.XmlDomain;
 
 namespace MilitaryFaculty.Reporting
 {
-    public class FacultyReportTableProvider : IReportTableProvider
+    public class ReportTableProvider : IReportTableProvider
     {
         private readonly ICollection<string> _files;
 
         private ICollection<XReportTable> _tables;
 
-        public FacultyReportTableProvider(IEnumerable<string> files)
+        public ReportTableProvider(IEnumerable<string> files)
         {
             if (files == null)
             {

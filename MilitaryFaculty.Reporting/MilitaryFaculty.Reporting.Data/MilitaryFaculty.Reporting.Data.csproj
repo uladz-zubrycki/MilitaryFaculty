@@ -60,6 +60,7 @@
     <Compile Include="CathedrasDataProvider.cs" />
     <Compile Include="ConferencesDataProvider.cs" />
     <Compile Include="ExhibitionsDataProvider.cs" />
+    <Compile Include="DataProvider.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="ProfessorsDataProvider.cs" />
     <Compile Include="PublicationsDataProvider.cs" />

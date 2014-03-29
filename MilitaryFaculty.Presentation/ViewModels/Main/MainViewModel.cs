@@ -6,6 +6,7 @@ using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Custom;
 using MilitaryFaculty.Presentation.Infrastructure;
 using MilitaryFaculty.Reporting.Excel;
+using MilitaryFaculty.Reporting.ReportObjectDomain;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
@@ -14,7 +15,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
         private readonly IRepository<Book> _bookRepository;
         private readonly IRepository<Cathedra> _cathedraRepository;
         private readonly IRepository<Conference> _conferenceRepository;
-        private readonly FacultyExcelReportingService _excelService;
+        private readonly ExcelReportingService _excelService;
+	    private readonly ReportObjectFactory _reportObjectFactory;
         private readonly IRepository<Exhibition> _exhibitionRepository;
         private readonly IRepository<Professor> _professorRepository;
         private readonly IRepository<Publication> _publicationRepository;
@@ -50,7 +52,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
             _publicationRepository = container.Resolve<IRepository<Publication>>();
             _exhibitionRepository = container.Resolve<IRepository<Exhibition>>();
             _bookRepository = container.Resolve<IRepository<Book>>();
-            _excelService = container.Resolve<FacultyExcelReportingService>();
+            _excelService = container.Resolve<ExcelReportingService>();
+	        _reportObjectFactory = container.Resolve<FacultyReportObjectFactory>();
 
             _workWindow = new StartupViewModel();
 
@@ -115,7 +118,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
                               new ConferenceNavigationModule(this),
                               new BookNavigationModule(this),
                               new ExhibitionNavigationModule(this),
-                              new ReportingCommandModule(_excelService)
+                              new ReportingCommandModule(_excelService, _reportObjectFactory)
                           };
 
             modules.ForEach(m => m.RegisterModule(CommandContainer));

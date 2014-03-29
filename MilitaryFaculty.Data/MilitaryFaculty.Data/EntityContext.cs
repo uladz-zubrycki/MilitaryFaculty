@@ -5,8 +5,6 @@ namespace MilitaryFaculty.Data
 {
     public class EntityContext : DbContext
     {
-        #region Class Properties
-
         public DbSet<Cathedra> Cathedras { get; set; }
         public DbSet<Conference> Conferences { get; set; }
         public DbSet<Professor> Professors { get; set; }
@@ -14,19 +12,11 @@ namespace MilitaryFaculty.Data
         public DbSet<Book> Books { get; set; }
         public DbSet<Exhibition> Exhibitions { get; set; }
 
-        #endregion // Class Properties
-
-        #region Class Constructors
-
         public EntityContext(string connectionString)
             : base(connectionString)
         {
             Configuration.LazyLoadingEnabled = true;
         }
-
-        #endregion // Class Constructors
-
-        #region Class Protected Methods
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -42,7 +32,5 @@ namespace MilitaryFaculty.Data
 
             base.OnModelCreating(modelBuilder);
         }
-
-        #endregion // Class Protected Methods
     }
 }
