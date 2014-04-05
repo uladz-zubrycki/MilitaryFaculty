@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using MilitaryFaculty.Reporting.Data;
+using MilitaryFaculty.Reporting.Providers;
 using MilitaryFaculty.Reporting.XmlDomain;
 
-namespace MilitaryFaculty.Reporting.ReportObjectDomain
+namespace MilitaryFaculty.Reporting.ReportDomain
 {
-    public class ReportFormulasGroup
+    public class ReportGroup
     {
         public string Name { get; private set; }
-        public ICollection<ReportFormulaInfo> FormulasInfo { get; private set; }
+        public ICollection<ReportRow> FormulasInfo { get; private set; }
 
-        public ReportFormulasGroup(XReportTableGroup xmlGroup, 
-                                   IFormulaProvider formulaProvider,
-                                   ReportDataProvider reportDataProvider)
+        public ReportGroup(XReportTableGroup xmlGroup,
+                           IFormulaProvider formulaProvider,
+                           ReportDataProvider reportDataProvider)
         {
             if (xmlGroup == null)
             {
@@ -28,7 +29,7 @@ namespace MilitaryFaculty.Reporting.ReportObjectDomain
             }
 
             Name = xmlGroup.Name;
-            FormulasInfo = new List<ReportFormulaInfo>();
+            FormulasInfo = new List<ReportRow>();
 
             foreach (var formulaId in xmlGroup.Formulas)
             {
@@ -37,9 +38,9 @@ namespace MilitaryFaculty.Reporting.ReportObjectDomain
                 var value = NormalizeValue(characteristic.Evaluate());
 
                 //TODO: Round or Integral part?
-                var reportFormula = new ReportFormulaInfo(formulaInfo.Name, 
-                                                          Convert.ToInt32(value),     
-                                                          Convert.ToInt32(formulaInfo.MaxValue));
+                var reportFormula = new ReportRow(formulaInfo.Name,
+                    Convert.ToInt32(value),
+                    Convert.ToInt32(formulaInfo.MaxValue));
                 FormulasInfo.Add(reportFormula);
             }
         }

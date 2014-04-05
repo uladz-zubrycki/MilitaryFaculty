@@ -1,4 +1,4 @@
-﻿namespace MilitaryFaculty.Reporting
+﻿namespace MilitaryFaculty.Reporting.Providers
 {
     public interface IFormulaProvider
     {

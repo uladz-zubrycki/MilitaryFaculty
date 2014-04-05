@@ -4,7 +4,7 @@ using OfficeOpenXml.Style;
 
 namespace MilitaryFaculty.Reporting.Excel
 {
-    public class SingleInstanceExcelWriter
+    public class MultipleInstancesExcelWriter
     {
         private readonly ExcelWorksheet _excelWorksheet;
         private readonly int _firstColumn;
@@ -14,7 +14,7 @@ namespace MilitaryFaculty.Reporting.Excel
         private readonly int _valueColumn;
         private int _curLine;
 
-        public SingleInstanceExcelWriter(ExcelWorksheet excelWorksheet, int firstLine, int firstColumn)
+        public MultipleInstancesExcelWriter(ExcelWorksheet excelWorksheet, int firstLine, int firstColumn)
         {
             if (excelWorksheet == null)
             {

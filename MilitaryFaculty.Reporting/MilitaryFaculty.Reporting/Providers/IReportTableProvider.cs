@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using MilitaryFaculty.Reporting.XmlDomain;
 
-namespace MilitaryFaculty.Reporting
+namespace MilitaryFaculty.Reporting.Providers
 {
     public interface IReportTableProvider
     {

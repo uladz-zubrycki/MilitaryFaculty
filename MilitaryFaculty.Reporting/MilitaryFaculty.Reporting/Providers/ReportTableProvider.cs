@@ -5,7 +5,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using MilitaryFaculty.Reporting.XmlDomain;
 
-namespace MilitaryFaculty.Reporting
+namespace MilitaryFaculty.Reporting.Providers
 {
     public class ReportTableProvider : IReportTableProvider
     {

@@ -1,12 +1,12 @@
-﻿namespace MilitaryFaculty.Reporting.ReportObjectDomain
+﻿namespace MilitaryFaculty.Reporting.ReportDomain
 {
-    public class ReportFormulaInfo
+    public class ReportRow
     {
         public string Name { get; private set; }
         public int Value { get; private set; }
         public int MaxValue { get; private set; }
 
-        public ReportFormulaInfo (string name, int value, int maxValue)
+        public ReportRow(string name, int value, int maxValue)
         {
             Name = name;
             Value = value;

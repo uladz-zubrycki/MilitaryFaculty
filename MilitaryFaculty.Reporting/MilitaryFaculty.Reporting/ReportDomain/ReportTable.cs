@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using MilitaryFaculty.Reporting.Data;
+using MilitaryFaculty.Reporting.Providers;
 using MilitaryFaculty.Reporting.XmlDomain;
 
-namespace MilitaryFaculty.Reporting.ReportObjectDomain
+namespace MilitaryFaculty.Reporting.ReportDomain
 {
     public class ReportTable
     {
         public string Name { get; private set; }
-        public ICollection<ReportFormulasGroup> FormulasGroups { get; private set; }
+        public ICollection<ReportGroup> FormulasGroups { get; private set; }
 
-        public ReportTable(XReportTable xmlTable, 
+        public ReportTable(XReportTable xmlTable,
                            IFormulaProvider formulaProvider,
                            ReportDataProvider reportDataProvider)
         {
@@ -28,11 +29,11 @@ namespace MilitaryFaculty.Reporting.ReportObjectDomain
             }
 
             Name = xmlTable.Name;
-            FormulasGroups = new List<ReportFormulasGroup>();
+            FormulasGroups = new List<ReportGroup>();
 
             foreach (var xmlGroup in xmlTable.Groups)
             {
-                var reportGroup = new ReportFormulasGroup(xmlGroup, formulaProvider, reportDataProvider);
+                var reportGroup = new ReportGroup(xmlGroup, formulaProvider, reportDataProvider);
                 FormulasGroups.Add(reportGroup);
             }
         }

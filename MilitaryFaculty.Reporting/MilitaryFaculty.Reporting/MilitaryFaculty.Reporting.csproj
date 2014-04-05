@@ -62,23 +62,24 @@
   <ItemGroup>
     <Compile Include="Characteristic.cs" />
     <Compile Include="FormulaInfo.cs" />
-    <Compile Include="FormulaProvider.cs" />
-    <Compile Include="IFormulaProvider.cs" />
+    <Compile Include="IReportGenerator.cs" />
+    <Compile Include="Providers\FormulaProvider.cs" />
+    <Compile Include="Providers\IFormulaProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IReportTableProvider.cs" />
-    <Compile Include="ReportObjectDomain\FacultyReportObjectFactory.cs" />
-    <Compile Include="ReportObjectDomain\ReportObjectFactory.cs" />
-    <Compile Include="ReportTableProvider.cs" />
-    <Compile Include="ReportObjectDomain\ReportFormulaInfo.cs" />
-    <Compile Include="ReportObjectDomain\ReportFormulasGroup.cs" />
-    <Compile Include="ReportObjectDomain\ReportTable.cs" />
+    <Compile Include="Providers\IReportTableProvider.cs" />
+    <Compile Include="ReportGenerator.cs" />
+    <Compile Include="Providers\ReportTableProvider.cs" />
+    <Compile Include="ReportDomain\ReportRow.cs" />
+    <Compile Include="ReportDomain\ReportGroup.cs" />
+    <Compile Include="ReportDomain\ReportTable.cs" />
     <Compile Include="ReportType.cs" />
+    <Compile Include="TimeInterval.cs" />
     <Compile Include="XmlDomain\XArgument.cs" />
     <Compile Include="XmlDomain\XCoefficient.cs" />
     <Compile Include="XmlDomain\XFormula.cs" />
     <Compile Include="XmlDomain\XReportTable.cs" />
     <Compile Include="XmlDomain\XReportTableGroup.cs" />
-    <Compile Include="ReportObjectDomain\ReportObject.cs" />
+    <Compile Include="ReportDomain\Report.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MilitaryFaculty.Common\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">

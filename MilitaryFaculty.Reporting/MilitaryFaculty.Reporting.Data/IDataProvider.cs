@@ -1,7 +1,7 @@
 ﻿namespace MilitaryFaculty.Reporting.Data
 {
-	public interface IDataProvider
-	{
-		//Empty
-	}
+    public interface IDataProvider
+    {
+        //Empty
+    }
 }

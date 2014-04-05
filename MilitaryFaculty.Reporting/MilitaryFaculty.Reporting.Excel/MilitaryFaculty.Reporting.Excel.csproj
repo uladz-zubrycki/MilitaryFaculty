@@ -62,7 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MultipleInstancecExcelWriter.cs" />
+    <Compile Include="MultipleInstancesExcelWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ExcelReportingService.cs" />
     <Compile Include="SingleInstanceExcelWriter.cs" />

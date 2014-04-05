@@ -2,90 +2,78 @@
 using System.Collections.Generic;
 using System.IO;
 using MilitaryFaculty.Extensions;
-using MilitaryFaculty.Reporting.ReportObjectDomain;
+using MilitaryFaculty.Reporting.ReportDomain;
 using OfficeOpenXml;
 
 namespace MilitaryFaculty.Reporting.Excel
 {
-	public class ExcelReportingService
-	{
-		public void ExportReport(string filePath, ReportObject reportObject)
-		{
-			if (String.IsNullOrWhiteSpace(filePath))
-			{
-				throw new ArgumentNullException("filePath");
-			}
+    public class ExcelReportingService
+    {
+        public void ExportReport(string filePath, Report reportObject)
+        {
+            if (String.IsNullOrWhiteSpace(filePath))
+            {
+                throw new ArgumentNullException("filePath");
+            }
+            if (reportObject == null)
+            {
+                throw new ArgumentNullException("reportObject");
+            }
 
-			File.Delete(filePath);
-			var newFile = new FileInfo(filePath);
+            File.Delete(filePath);
+            var newFile = new FileInfo(filePath);
 
-			using (var xlPackage = new ExcelPackage(newFile))
-			{
-				var ws = xlPackage.Workbook.Worksheets.Add("Resuts");
+            using (var xlPackage = new ExcelPackage(newFile))
+            {
+                var ws = xlPackage.Workbook.Worksheets.Add("Resuts");
 
-				reportObject.FormulasTables
-					.ForEach(table => ExportTable(ws, table));
+                reportObject.FormulasTables
+                            .ForEach(table => ExportTable(ws, table));
 
-				xlPackage.Save();
-			}
-		}
+                xlPackage.Save();
+            }
+        }
 
-		public void ExportReport(string filePath, ICollection<ReportObject> reportObject)
-		{
-			//if (String.IsNullOrWhiteSpace(filePath))
-			//{
-			//	throw new ArgumentNullException("filePath");
-			//}
+        public void ExportReport(string filePath, ICollection<Report> reportObject)
+        {
+            //ToDo: Generate multiple instaces
+        }
 
-			//File.Delete(filePath);
-			//var newFile = new FileInfo(filePath);
+        private void ExportTable(ExcelWorksheet workSheet, ReportTable table)
+        {
+            if (table == null)
+            {
+                throw new ArgumentNullException("table");
+            }
+            if (workSheet == null)
+            {
+                throw new ArgumentNullException("workSheet");
+            }
 
-			//using (var xlPackage = new ExcelPackage(newFile))
-			//{
-			//	var ws = xlPackage.Workbook.Worksheets.Add("Resuts");
+            const int firstColumn = 2;
+            var firstLine = workSheet.Dimension != null ? workSheet.Dimension.End.Row + 2 : 2;
+            var xlWriter = new SingleInstanceExcelWriter(workSheet, firstLine, firstColumn);
 
-			//	reportObject.FormulasTables
-			//		.ForEach(table => ExportTable(ws, table));
+            var totalRating = 0;
 
-			//	xlPackage.Save();
-			//}
-		}
+            xlWriter.PutName(table.Name);
 
-		private void ExportTable(ExcelWorksheet workSheet, ReportTable table)
-		{
-			if (table == null)
-			{
-				throw new ArgumentNullException("table");
-			}
-			if (workSheet == null)
-			{
-				throw new ArgumentNullException("workSheet");
-			}
+            foreach (var group in table.FormulasGroups)
+            {
+                xlWriter.PutSubName(group.Name);
 
-			const int firstColumn = 2;
-			var firstLine = workSheet.Dimension != null ? workSheet.Dimension.End.Row + 2 : 2;
-			var xlWriter = new SingleInstanceExcelWriter(workSheet, firstLine, firstColumn);
+                foreach (var formulaInfo in group.FormulasInfo)
+                {
+                    xlWriter.PutFieldLine(formulaInfo.Name,
+                        formulaInfo.Value,
+                        formulaInfo.MaxValue);
 
-			int totalRating = 0;
+                    totalRating += formulaInfo.Value;
+                }
+            }
 
-			xlWriter.PutName(table.Name);
-
-			foreach (var group in table.FormulasGroups)
-			{
-				xlWriter.PutSubName(group.Name);
-
-				foreach (var formulaInfo in group.FormulasInfo)
-				{
-					xlWriter.PutFieldLine(formulaInfo.Name,
-										  formulaInfo.Value,
-										  formulaInfo.MaxValue);
-
-					totalRating += formulaInfo.Value;
-				}
-			}
-
-			xlWriter.PutResults("Итог", totalRating);
-			xlWriter.SetTableStyle();
-		}
-	}
+            xlWriter.PutResults("Итог", totalRating);
+            xlWriter.SetTableStyle();
+        }
+    }
 }
