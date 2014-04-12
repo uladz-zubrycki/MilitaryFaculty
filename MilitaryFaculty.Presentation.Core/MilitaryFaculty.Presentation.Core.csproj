@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F175083-DFF1-452F-AE20-C1C93D59765F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MilitaryFaculty.Presentation.Core</RootNamespace>
+    <AssemblyName>MilitaryFaculty.Presentation.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\PropertyAttribute.cs" />
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\CommandContainer.cs" />
+    <Compile Include="Commands\CommandContainerBinding.cs" />
+    <Compile Include="Commands\Command{T}.cs" />
+    <Compile Include="Commands\ICommandContainer.cs" />
+    <Compile Include="Commands\ICommandContainerModule.cs" />
+    <Compile Include="Markup\BoolToVisibilityConverter.cs" />
+    <Compile Include="Markup\Converter.cs" />
+    <Compile Include="Markup\DateToStringConverter.cs" />
+    <Compile Include="Markup\EnumToNameConverter.cs" />
+    <Compile Include="Markup\EnumToValuesConverter.cs" />
+    <Compile Include="Markup\IntToStringConverter.cs" />
+    <Compile Include="Markup\ParametrizedConverter.cs" />
+    <Compile Include="Extensions\ServiceProviderExtensions.cs" />
+    <Compile Include="Markup\Command.cs" />
+    <Compile Include="ViewBehaviours\EditableViewBehaviour.cs" />
+    <Compile Include="ViewBehaviours\EditableViewMode.cs" />
+    <Compile Include="ViewBehaviours\IViewBehaviour.cs" />
+    <Compile Include="ViewModels\CommandViewModel.cs" />
+    <Compile Include="ViewModels\ComplexViewModel.cs" />
+    <Compile Include="ViewModels\Entity\EntityViewModel.cs" />
+    <Compile Include="Attributes\DatePropertyAttribute.cs" />
+    <Compile Include="ViewModels\Entity\DatePropertyViewModel.cs" />
+    <Compile Include="Attributes\EnumPropertyAttribute.cs" />
+    <Compile Include="ViewModels\Entity\EnumPropertyViewModel.cs" />
+    <Compile Include="Attributes\IntPropertyAttribute.cs" />
+    <Compile Include="ViewModels\Entity\IntPropertyViewModel.cs" />
+    <Compile Include="Attributes\TextPropertyAttribute.cs" />
+    <Compile Include="ViewModels\Entity\TextPropertyViewModel.cs" />
+    <Compile Include="ViewModels\ImagedCommandViewModel.cs" />
+    <Compile Include="ViewModels\Entity\PropertyViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel{T}.cs" />
+    <Compile Include="Widgets\TreeView\Events\SelectedChangedEventArgs.cs" />
+    <Compile Include="Widgets\TreeView\ITreeItemViewModel.cs" />
+    <Compile Include="Widgets\TreeView\ITreeViewModel.cs" />
+    <Compile Include="Widgets\TreeView\TreeItemViewModel.cs" />
+    <Compile Include="Widgets\TreeView\TreeViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MilitaryFaculty.Common\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">
+      <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
+      <Name>MilitaryFaculty.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.Contract\MilitaryFaculty.Domain.Contract.csproj">
+      <Project>{10E40656-D44B-46CE-9FED-0496F71554B7}</Project>
+      <Name>MilitaryFaculty.Domain.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
+      <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
+      <Name>MilitaryFaculty.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

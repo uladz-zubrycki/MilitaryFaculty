@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MilitaryFaculty.Extensions
 {
@@ -16,6 +17,16 @@ namespace MilitaryFaculty.Extensions
             {
                 action(item);
             }
+        }
+
+        public static bool IsEmpty<T>(this IEnumerable<T> @this)
+        {
+            if (@this == null)
+            {
+                throw new ArgumentNullException("this");
+            }
+
+            return !@this.Any();
         }
     }
 }

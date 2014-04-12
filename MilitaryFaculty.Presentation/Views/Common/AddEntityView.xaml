@@ -1,8 +1,8 @@
 ﻿<UserControl x:Class="MilitaryFaculty.Presentation.Views.AddEntityView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:m="clr-namespace:MilitaryFaculty.Presentation.Custom.MarkupExtensions"
-             xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom">
+             xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
+             xmlns:markup="clr-namespace:MilitaryFaculty.Presentation.Core.Markup;assembly=MilitaryFaculty.Presentation.Core">
     <UserControl.Resources>
         <ResourceDictionary Source="/Resources/CommonResources.xaml" />
     </UserControl.Resources>
@@ -42,7 +42,7 @@
                 Grid.Column="1"
                 Content="Отмена"
                 Style="{StaticResource SimpleButton}"
-                Command="{m:Command c:Browse.Back}"
+                Command="{markup:Command c:Browse.Back}"
                 CommandParameter="{Binding Model}" />
         </Grid>
     </Grid>

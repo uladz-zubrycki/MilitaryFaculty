@@ -50,8 +50,12 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
@@ -60,7 +64,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,7 +77,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\MilitaryFaculty.Data\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj">
       <Project>{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}</Project>
-      <Name>MilitaryFaculty.Data %28MilitaryFaculty.Data\MilitaryFaculty.Data%29</Name>
+      <Name>MilitaryFaculty.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.Contract\MilitaryFaculty.Domain.Contract.csproj">
       <Project>{10E40656-D44B-46CE-9FED-0496F71554B7}</Project>
@@ -82,7 +85,7 @@
     </ProjectReference>
     <ProjectReference Include="..\..\MilitaryFaculty.Domain\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
       <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
-      <Name>MilitaryFaculty.Domain %28MilitaryFaculty.Domain\MilitaryFaculty.Domain%29</Name>
+      <Name>MilitaryFaculty.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

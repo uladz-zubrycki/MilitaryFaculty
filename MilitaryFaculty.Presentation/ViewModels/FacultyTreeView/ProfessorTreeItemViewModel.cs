@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Presentation.Core;
+using MilitaryFaculty.Presentation.Core.ViewModels;
+using MilitaryFaculty.Presentation.Core.Widgets.TreeView;
 using MilitaryFaculty.Presentation.Custom;
-using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {

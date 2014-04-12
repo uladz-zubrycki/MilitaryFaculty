@@ -78,7 +78,7 @@
     </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.csproj">
       <Project>{813E121E-1097-4A5A-B672-4AC98E21D4EE}</Project>
-      <Name>MilitaryFaculty.Reporting %28MilitaryFaculty.Reporting\MilitaryFaculty.Reporting%29</Name>
+      <Name>MilitaryFaculty.Reporting</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

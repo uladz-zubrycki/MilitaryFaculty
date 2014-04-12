@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using MilitaryFaculty.Reporting.XmlDomain;
+using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Reporting.Providers
 {
@@ -42,9 +43,29 @@ namespace MilitaryFaculty.Reporting.Providers
 
         private IDictionary<string, FormulaInfo> ReadFormulas()
         {
+            Func<XFormula, FormulaInfo> convert =
+                xmlItem =>
+                {
+                    var coefficients = xmlItem.Coefficients
+                                              .ToDictionary(c => c.Name,
+                                                            c => c.Value);
+
+                    var arguments = xmlItem.Arguments
+                                           .Select(a => a.Name)
+                                           .ToList();
+
+                    return new FormulaInfo
+                           {
+                               Coefficients = coefficients,
+                               Arguments = arguments,
+                               Expression = xmlItem.Expression,
+                               Name = xmlItem.Name,
+                               MaxValue = xmlItem.MaxValue
+                           };
+                };
+
             return _files.SelectMany(ReadFromFile)
-                         .AsParallel()
-                         .ToDictionary(f => f.Id, XFormula.ToFormulaInfo);
+                         .ToDictionary(f => f.Id, convert);
         }
 
         private static IEnumerable<XFormula> ReadFromFile(string file)
@@ -53,7 +74,7 @@ namespace MilitaryFaculty.Reporting.Providers
 
             using (var stream = new FileStream(file, FileMode.Open))
             {
-                return ((List<XFormula>) serializer.Deserialize(stream));
+                return serializer.Deserialize<List<XFormula>>(stream);
             }
         }
     }

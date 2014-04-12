@@ -2,8 +2,8 @@
 using System.Globalization;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
+using MilitaryFaculty.Presentation.Core.ViewModels;
 using MilitaryFaculty.Presentation.Custom;
-using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {

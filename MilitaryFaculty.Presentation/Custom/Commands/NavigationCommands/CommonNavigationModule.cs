@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using MilitaryFaculty.Presentation.Infrastructure;
+using MilitaryFaculty.Presentation.Core.Commands;
+using MilitaryFaculty.Presentation.Core.ViewModels;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom

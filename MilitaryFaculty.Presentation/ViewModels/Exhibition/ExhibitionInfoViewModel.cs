@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Presentation.Core.Attributes;
+using MilitaryFaculty.Presentation.Core.ViewBehaviours;
+using MilitaryFaculty.Presentation.Core.ViewModels.Entity;
 using MilitaryFaculty.Presentation.Custom;
-using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
@@ -43,8 +46,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public ExhibitionInfoViewModel(Exhibition model)
             : base(model)
         {
-            var editCommands = new EditableViewBehaviour<Exhibition>(Do.Conference.Update, Model);
-            editCommands.Inject(this);
+            // Empty
+        }
+
+        protected override IEnumerable<IViewBehaviour> GetBehaviours()
+        {
+            yield return new EditableViewBehaviour<Exhibition>(Do.Conference.Update);
         }
     }
 }

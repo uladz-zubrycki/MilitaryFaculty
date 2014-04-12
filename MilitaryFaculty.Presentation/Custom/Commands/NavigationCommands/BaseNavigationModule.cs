@@ -1,5 +1,5 @@
 ﻿using System;
-using MilitaryFaculty.Presentation.Infrastructure;
+using MilitaryFaculty.Presentation.Core.Commands;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom

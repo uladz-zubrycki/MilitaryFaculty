@@ -4,8 +4,8 @@ using System.Linq;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
+using MilitaryFaculty.Presentation.Core.ViewModels;
 using MilitaryFaculty.Presentation.Custom;
-using MilitaryFaculty.Presentation.Infrastructure;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
@@ -82,6 +82,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
             _publications.CollectionChanged += (sender, args) =>
                                                {
+                                                   //todo property as lambda
                                                    OnPropertyChanged("MonographsCount");
                                                    OnPropertyChanged("ReviewedArticlesCount");
                                                    OnPropertyChanged("ArticlesCount");

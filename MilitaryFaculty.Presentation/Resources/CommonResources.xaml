@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:v="clr-namespace:MilitaryFaculty.Presentation.Views"
                     xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
-                    xmlns:vm="clr-namespace:MilitaryFaculty.Presentation.ViewModels"
-                    xmlns:i="clr-namespace:MilitaryFaculty.Presentation.Infrastructure">
+                    xmlns:vm="clr-namespace:MilitaryFaculty.Presentation.Core.ViewModels;assembly=MilitaryFaculty.Presentation.Core"
+                    xmlns:markup="clr-namespace:MilitaryFaculty.Presentation.Core.Markup;assembly=MilitaryFaculty.Presentation.Core">
     <c:GenericTemplateSelector x:Key="TemplateSelector" />
 
     <SolidColorBrush x:Key="BorderSolidBrush">
@@ -184,7 +184,7 @@
         <v:ImagedCommandView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type i:ViewModel}">
+    <DataTemplate DataType="{x:Type vm:ViewModel}">
         <v:DefaultView />
     </DataTemplate>
 
@@ -244,7 +244,7 @@
                                         Visibility="{Binding IsExpanded, 
                                                              RelativeSource={RelativeSource FindAncestor,
                                                                                             AncestorType={x:Type Expander}},
-                                                             Converter={c:BoolToVisibilityConverter}
+                                                             Converter={markup:BoolToVisibilityConverter}
                                                     }"
                                         Style="{StaticResource CommandsItemControlStyle}" />
                                 </Grid>
@@ -264,13 +264,13 @@
         <Setter Property="ItemsSource"
                 Value="{Binding SelectedValue, 
                                 RelativeSource={RelativeSource Self},
-                                Converter={c:EnumToValuesConverter}
+                                Converter={markup:EnumToValuesConverter}
                        }" />
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
                     <TextBlock
-                        Text="{Binding Converter={c:EnumToNameConverter}}" />
+                        Text="{Binding Converter={markup:EnumToNameConverter}}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -306,7 +306,7 @@
                                 Margin="0 7 5 0"
                                 ItemsSource="{Binding Commands}"
                                 Visibility="{TemplateBinding Property=IsSelected, 
-                                                             Converter={c:BoolToVisibilityConverter}
+                                                             Converter={markup:BoolToVisibilityConverter}
                                             }"
                                 Style="{StaticResource CommandsItemControlStyle}" />
                         </Grid>

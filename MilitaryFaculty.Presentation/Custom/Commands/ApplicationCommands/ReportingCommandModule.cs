@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Win32;
-using MilitaryFaculty.Presentation.Infrastructure;
+using MilitaryFaculty.Presentation.Core;
+using MilitaryFaculty.Presentation.Core.Commands;
 using MilitaryFaculty.Reporting;
 using MilitaryFaculty.Reporting.Excel;
 using MilitaryFaculty.Reporting.ReportDomain;

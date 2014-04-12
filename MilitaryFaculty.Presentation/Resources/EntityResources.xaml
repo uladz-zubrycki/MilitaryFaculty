@@ -2,7 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:vm="clr-namespace:MilitaryFaculty.Presentation.ViewModels"
                     xmlns:v="clr-namespace:MilitaryFaculty.Presentation.Views"
-                    xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom">
+                    xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
+                    xmlns:entity="clr-namespace:MilitaryFaculty.Presentation.Core.ViewModels.Entity;assembly=MilitaryFaculty.Presentation.Core"
+                    xmlns:viewBehaviours="clr-namespace:MilitaryFaculty.Presentation.Core.ViewBehaviours;assembly=MilitaryFaculty.Presentation.Core">
 
     <!--Entity-->
     <!--If Key is changed, update MilitaryFaculty.Custom.TemplateSelector also.-->
@@ -93,7 +95,7 @@
         EditViewTemplate="{StaticResource DatePropertyEditTemplate}" />
 
     <!--String-->
-    <DataTemplate DataType="{x:Type vm:TextPropertyViewModel}">
+    <DataTemplate DataType="{x:Type entity:TextPropertyViewModel}">
         <ContentPresenter x:Name="ContentPresenter"
                           ContentTemplateSelector="{StaticResource StringPropertyTemplateSelector}" />
         <DataTemplate.Triggers>
@@ -101,7 +103,7 @@
                 <Setter TargetName="ContentPresenter" Property="Content"
                         Value="{x:Null}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Tag}" Value="{x:Static c:EditableViewMode.Edit}">
+            <DataTrigger Binding="{Binding Tag}" Value="{x:Static viewBehaviours:EditableViewMode.Edit}">
                 <Setter TargetName="ContentPresenter" Property="ContentTemplateSelector"
                         Value="{StaticResource StringPropertyTemplateSelector}" />
             </DataTrigger>
@@ -109,7 +111,7 @@
     </DataTemplate>
 
     <!--Enum-->
-    <DataTemplate DataType="{x:Type vm:EnumPropertyViewModel}">
+    <DataTemplate DataType="{x:Type entity:EnumPropertyViewModel}">
         <ContentPresenter x:Name="ContentPresenter"
                           ContentTemplateSelector="{StaticResource EnumPropertyTemplateSelector}" />
         <DataTemplate.Triggers>
@@ -117,7 +119,7 @@
                 <Setter TargetName="ContentPresenter" Property="Content"
                         Value="{x:Null}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Tag}" Value="{x:Static c:EditableViewMode.Edit}">
+            <DataTrigger Binding="{Binding Tag}" Value="{x:Static viewBehaviours:EditableViewMode.Edit}">
                 <Setter TargetName="ContentPresenter" Property="ContentTemplateSelector"
                         Value="{StaticResource EnumPropertyTemplateSelector}" />
             </DataTrigger>
@@ -125,7 +127,7 @@
     </DataTemplate>
 
     <!--Int-->
-    <DataTemplate DataType="{x:Type vm:IntPropertyViewModel}">
+    <DataTemplate DataType="{x:Type entity:IntPropertyViewModel}">
         <ContentPresenter x:Name="ContentPresenter"
                           ContentTemplateSelector="{StaticResource IntPropertyTemplateSelector}" />
         <DataTemplate.Triggers>
@@ -133,7 +135,7 @@
                 <Setter TargetName="ContentPresenter" Property="Content"
                         Value="{x:Null}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Tag}" Value="{x:Static c:EditableViewMode.Edit}">
+            <DataTrigger Binding="{Binding Tag}" Value="{x:Static viewBehaviours:EditableViewMode.Edit}">
                 <Setter TargetName="ContentPresenter" Property="ContentTemplateSelector"
                         Value="{StaticResource IntPropertyTemplateSelector}" />
             </DataTrigger>
@@ -141,7 +143,7 @@
     </DataTemplate>
 
     <!--Date-->
-    <DataTemplate DataType="{x:Type vm:DatePropertyViewModel}">
+    <DataTemplate DataType="{x:Type entity:DatePropertyViewModel}">
         <ContentPresenter x:Name="ContentPresenter"
                           ContentTemplateSelector="{StaticResource DatePropertyTemplateSelector}" />
         <DataTemplate.Triggers>
@@ -149,7 +151,7 @@
                 <Setter TargetName="ContentPresenter" Property="Content"
                         Value="{x:Null}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Tag}" Value="{x:Static c:EditableViewMode.Edit}">
+            <DataTrigger Binding="{Binding Tag}" Value="{x:Static viewBehaviours:EditableViewMode.Edit}">
                 <Setter TargetName="ContentPresenter" Property="ContentTemplateSelector"
                         Value="{StaticResource DatePropertyTemplateSelector}" />
             </DataTrigger>

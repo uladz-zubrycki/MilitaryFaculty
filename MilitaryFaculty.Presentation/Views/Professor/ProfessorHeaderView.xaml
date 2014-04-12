@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
+             xmlns:markup="clr-namespace:MilitaryFaculty.Presentation.Core.Markup;assembly=MilitaryFaculty.Presentation.Core"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -20,6 +21,6 @@
         <TextBlock
             Grid.Row="1"
             Style="{StaticResource H2TextBlock}"
-            Text="{Binding MilitaryRank, Converter={c:EnumToNameConverter}}" />
+            Text="{Binding MilitaryRank, Converter={markup:EnumToNameConverter}}" />
     </Grid>
 </UserControl>

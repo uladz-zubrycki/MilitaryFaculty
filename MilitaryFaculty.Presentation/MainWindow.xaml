@@ -1,58 +1,58 @@
 ﻿<Window x:Class="MilitaryFaculty.Presentation.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:i="clr-namespace:MilitaryFaculty.Presentation.Infrastructure"
         xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
-        xmlns:m="clr-namespace:MilitaryFaculty.Presentation.Custom.MarkupExtensions"
+        xmlns:commands="clr-namespace:MilitaryFaculty.Presentation.Core.Commands;assembly=MilitaryFaculty.Presentation.Core"
+        xmlns:markup="clr-namespace:MilitaryFaculty.Presentation.Core.Markup;assembly=MilitaryFaculty.Presentation.Core"
         Title="Научный рейтинг" Height="550" Width="830"
         WindowStartupLocation="CenterScreen"
-        i:CommandContainerBinding.CommandContainer="{Binding CommandContainer}">
+        commands:CommandContainerBinding.CommandContainer="{Binding CommandContainer}">
     <Window.CommandBindings>
         <!--Application commands-->
-        <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Add}" />
-        <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Update}" />
-        <i:CommandContainerBinding Command="{m:Command c:Do.Professor.Remove}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Professor.Add}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Professor.Update}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Professor.Remove}" />
 
-        <i:CommandContainerBinding Command="{m:Command c:Do.Conference.Add}" />
-        <i:CommandContainerBinding Command="{m:Command c:Do.Conference.Update}" />
-        <i:CommandContainerBinding Command="{m:Command c:Do.Conference.Remove}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Conference.Add}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Conference.Update}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Conference.Remove}" />
 
-        <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Add}" />
-        <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Update}" />
-        <i:CommandContainerBinding Command="{m:Command c:Do.Publication.Remove}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Publication.Add}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Publication.Update}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Publication.Remove}" />
 
-        <i:CommandContainerBinding Command="{m:Command c:Do.Exhibition.Add}" />
-        <i:CommandContainerBinding Command="{m:Command c:Do.Exhibition.Update}" />
-        <i:CommandContainerBinding Command="{m:Command c:Do.Exhibition.Remove}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Exhibition.Add}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Exhibition.Update}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Exhibition.Remove}" />
 
-        <i:CommandContainerBinding Command="{m:Command c:Do.Book.Add}" />
-        <i:CommandContainerBinding Command="{m:Command c:Do.Book.Update}" />
-        <i:CommandContainerBinding Command="{m:Command c:Do.Book.Remove}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Book.Add}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Book.Update}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Do.Book.Remove}" />
 
-        <i:CommandContainerBinding Command="{m:Command c:Report.Generate}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Report.Generate}" />
 
         <!--Common navigation commands-->
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Back}" />
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Forward}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Back}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Forward}" />
 
         <!--Professor navigation commands-->
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Professor.Add}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Professor.Add}" />
 
         <!--Conference navigation commands-->
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Conference.Add}" />
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Conference.Details}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Conference.Add}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Conference.Details}" />
 
         <!--Publication navigation commands-->
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Publication.Add}" />
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Publication.Details}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Publication.Add}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Publication.Details}" />
 
         <!--Book navigation commands-->
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Book.Add}" />
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Book.Details}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Book.Add}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Book.Details}" />
 
         <!--Exhibition navigation commands-->
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Exhibition.Add}" />
-        <i:CommandContainerBinding Command="{m:Command c:Browse.Exhibition.Details}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Exhibition.Add}" />
+        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Exhibition.Details}" />
     </Window.CommandBindings>
 
     <Grid>

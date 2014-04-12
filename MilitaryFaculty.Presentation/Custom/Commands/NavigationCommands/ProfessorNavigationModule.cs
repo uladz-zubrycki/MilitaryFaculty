@@ -1,6 +1,6 @@
 ﻿using System;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Presentation.Infrastructure;
+using MilitaryFaculty.Presentation.Core.Commands;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom
@@ -16,7 +16,7 @@ namespace MilitaryFaculty.Presentation.Custom
         public override void RegisterModule(CommandContainer container)
         {
             container.RegisterCommand<Cathedra>(Browse.Professor.Add,
-                OnBrowseProfessorAdd);
+                                                OnBrowseProfessorAdd);
         }
 
         private void OnBrowseProfessorAdd(Cathedra cathedra)

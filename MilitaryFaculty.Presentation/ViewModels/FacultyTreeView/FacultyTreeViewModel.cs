@@ -7,7 +7,8 @@ using System.Windows.Input;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
-using MilitaryFaculty.Presentation.Infrastructure;
+using MilitaryFaculty.Presentation.Core.Commands;
+using MilitaryFaculty.Presentation.Core.Widgets.TreeView;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
@@ -60,7 +61,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 }
 
                 _searchString = withoutSpaces;
-                OnPropertyChanged();
+                OnPropertyChanged("SearchString");
 
                 _searchEnumerator = null;
             }

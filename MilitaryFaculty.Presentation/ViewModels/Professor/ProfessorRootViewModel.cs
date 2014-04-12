@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Presentation.Infrastructure;
+using MilitaryFaculty.Presentation.Core;
+using MilitaryFaculty.Presentation.Core.ViewModels;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {

@@ -3,8 +3,11 @@ using Autofac;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
+using MilitaryFaculty.Presentation.Core;
+using MilitaryFaculty.Presentation.Core.Commands;
+using MilitaryFaculty.Presentation.Core.ViewModels;
+using MilitaryFaculty.Presentation.Core.Widgets.TreeView.Events;
 using MilitaryFaculty.Presentation.Custom;
-using MilitaryFaculty.Presentation.Infrastructure;
 using MilitaryFaculty.Reporting;
 using MilitaryFaculty.Reporting.Excel;
 using MilitaryFaculty.Reporting.ReportDomain;
@@ -104,6 +107,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             CommandContainer = new CommandContainer();
 
+            //todo get module from container
             var modules = new ICommandContainerModule[]
                           {
                               new ProfessorCommandModule(_professorRepository),

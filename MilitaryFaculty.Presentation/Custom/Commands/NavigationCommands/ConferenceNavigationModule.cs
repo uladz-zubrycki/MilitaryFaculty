@@ -1,6 +1,6 @@
 ﻿using System;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Presentation.Infrastructure;
+using MilitaryFaculty.Presentation.Core.Commands;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom
@@ -21,10 +21,10 @@ namespace MilitaryFaculty.Presentation.Custom
             }
 
             container.RegisterCommand<Professor>(Browse.Conference.Add,
-                OnBrowseConferenceAdd);
+                                                 OnBrowseConferenceAdd);
 
             container.RegisterCommand<Conference>(Browse.Conference.Details,
-                OnBrowseConferenceDetails);
+                                                  OnBrowseConferenceDetails);
         }
 
         private void OnBrowseConferenceAdd(Professor curator)

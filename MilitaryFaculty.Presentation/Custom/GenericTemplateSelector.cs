@@ -4,7 +4,8 @@ using System.Windows;
 using System.Windows.Controls;
 using Autofac;
 using MilitaryFaculty.Extensions;
-using MilitaryFaculty.Presentation.Infrastructure;
+using MilitaryFaculty.Presentation.Core.ViewModels.Entity;
+using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom
 {

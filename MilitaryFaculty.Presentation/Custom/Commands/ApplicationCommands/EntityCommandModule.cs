@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain.Contract;
-using MilitaryFaculty.Presentation.Infrastructure;
+using MilitaryFaculty.Presentation.Core.Commands;
 
 namespace MilitaryFaculty.Presentation.Custom
 {

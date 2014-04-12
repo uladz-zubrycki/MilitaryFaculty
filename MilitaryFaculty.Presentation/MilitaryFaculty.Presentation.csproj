@@ -59,14 +59,17 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.1.1\lib\net40\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -93,66 +96,34 @@
     <Compile Include="Custom\Commands\NavigationCommands\BookNavigationModule.cs" />
     <Compile Include="Custom\Commands\NavigationCommands\ExhibitionNavigationModule.cs" />
     <Compile Include="Custom\Commands\Report.cs" />
-    <Compile Include="Custom\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Custom\Commands\ApplicationCommands\ExhibitionCommandModule.cs" />
     <Compile Include="Custom\Commands\ApplicationCommands\ConferenceCommandModule.cs" />
     <Compile Include="Custom\Commands\ApplicationCommands\ProfessorCommandModule.cs" />
     <Compile Include="Custom\Commands\Do.cs" />
-    <Compile Include="Custom\Converters\IntToStringConverter.cs" />
-    <Compile Include="Custom\Converters\DateToStringConverter.cs" />
-    <Compile Include="Custom\Converters\EnumToNameConverter.cs" />
-    <Compile Include="Custom\Converters\EnumToValuesConverter.cs" />
-    <Compile Include="Custom\MarkupExtensions\Command.cs" />
     <Compile Include="Custom\EditableViewTemplateSelector.cs" />
     <Compile Include="Custom\GenericTemplateSelector.cs" />
-    <Compile Include="Infrastructure\Commands\Command.cs" />
-    <Compile Include="Infrastructure\Commands\ICommandContainerModule.cs" />
     <Compile Include="Custom\Commands\NavigationCommands\PublicationNavigationModule.cs" />
     <Compile Include="Custom\Commands\NavigationCommands\ConferenceNavigationModule.cs" />
     <Compile Include="Custom\Commands\NavigationCommands\CommonNavigationModule.cs" />
     <Compile Include="Custom\Commands\NavigationCommands\BaseNavigationModule.cs" />
     <Compile Include="Custom\Commands\NavigationCommands\ProfessorNavigationModule.cs" />
-    <Compile Include="Custom\ViewBehaviours\EditableViewMode.cs" />
     <Compile Include="Custom\Commands\Browse.cs" />
-    <Compile Include="Infrastructure\Converters\Converter.cs" />
-    <Compile Include="Infrastructure\Converters\ParametrizedConverter.cs" />
-    <Compile Include="Infrastructure\Injection\InjectionConfig.cs" />
-    <Compile Include="Infrastructure\MarkupExtensions\ServiceProviderExtensions.cs" />
-    <Compile Include="Infrastructure\ViewModels\ComplexViewModel.cs" />
-    <Compile Include="Infrastructure\ViewBehaviours\IViewBehaviour.cs" />
-    <Compile Include="Infrastructure\ViewModels\CommandViewModel.cs" />
-    <Compile Include="Custom\ViewBehaviours\EditableViewBehaviour.cs" />
-    <Compile Include="Infrastructure\ViewModels\EntityRootViewModel.cs" />
-    <Compile Include="Infrastructure\ViewModels\EntityViewModel.cs" />
-    <Compile Include="Infrastructure\Attributes\PropertyAttribute.cs" />
-    <Compile Include="Infrastructure\ViewModels\ListItemViewModel.cs" />
+    <Compile Include="InjectionConfig.cs" />
+    <Compile Include="ViewModels\AddEntityViewModel.cs" />
     <Compile Include="ViewModels\Book\AddBookViewModel.cs" />
     <Compile Include="ViewModels\Book\BookExtraInfoViewModel.cs" />
     <Compile Include="ViewModels\Book\BookInfoViewModel.cs" />
     <Compile Include="ViewModels\Book\BookListItemViewModel.cs" />
     <Compile Include="ViewModels\Book\BookRootViewModel.cs" />
     <Compile Include="ViewModels\Book\BookHeaderViewModel.cs" />
-    <Compile Include="ViewModels\Common\IntPropertyAttribute.cs" />
-    <Compile Include="ViewModels\Common\IntPropertyViewModel.cs" />
-    <Compile Include="ViewModels\Common\DatePropertyAttribute.cs" />
-    <Compile Include="ViewModels\Common\DatePropertyViewModel.cs" />
-    <Compile Include="ViewModels\Common\EnumPropertyAttribute.cs" />
-    <Compile Include="ViewModels\Common\EnumPropertyViewModel.cs" />
-    <Compile Include="ViewModels\Common\TextPropertyAttribute.cs" />
-    <Compile Include="Infrastructure\ViewModels\ViewModel{T}.cs" />
-    <Compile Include="Infrastructure\Commands\Command{T}.cs" />
-    <Compile Include="Infrastructure\Commands\CommandContainer.cs" />
-    <Compile Include="Infrastructure\Commands\CommandContainerBinding.cs" />
-    <Compile Include="Infrastructure\Commands\ICommandContainer.cs" />
-    <Compile Include="Infrastructure\ViewModels\AddEntityViewModel.cs" />
-    <Compile Include="Infrastructure\ViewModels\PropertyViewModel.cs" />
-    <Compile Include="ViewModels\Common\TextPropertyViewModel.cs" />
     <Compile Include="ViewModels\Conference\ConferenceHeaderViewModel.cs" />
+    <Compile Include="ViewModels\EntityRootViewModel.cs" />
     <Compile Include="ViewModels\Exhibition\AddExhibitionViewModel.cs" />
     <Compile Include="ViewModels\Exhibition\ExhibitionHeaderViewModel.cs" />
     <Compile Include="ViewModels\Exhibition\ExhibitionInfoViewModel.cs" />
     <Compile Include="ViewModels\Exhibition\ExhibitionListItemViewModel.cs" />
     <Compile Include="ViewModels\Exhibition\ExhibitionRootViewModel.cs" />
+    <Compile Include="ViewModels\ListItemViewModel.cs" />
     <Compile Include="ViewModels\Professor\ProfessorBooksViewModel.cs" />
     <Compile Include="ViewModels\Professor\ProfessorExhibitionsViewModel.cs" />
     <Compile Include="ViewModels\Professor\ProfessorHeaderViewModel.cs" />
@@ -168,17 +139,12 @@
     <Compile Include="ViewModels\Conference\ConferenceListItemViewModel.cs" />
     <Compile Include="ViewModels\Conference\ConferenceRootViewModel.cs" />
     <Compile Include="ViewModels\Conference\ConferenceReportViewModel.cs" />
-    <Compile Include="ViewModels\ImagedCommandViewModel.cs" />
     <Compile Include="ViewModels\Professor\ProfessorPublicationsViewModel.cs" />
     <Compile Include="ViewModels\Professor\ProfessorInfoViewModel.cs" />
     <Compile Include="ViewModels\Professor\ProfessorExtraInfoViewModel.cs" />
     <Compile Include="ViewModels\Professor\ProfessorRootViewModel.cs" />
     <Compile Include="ViewModels\Professor\ProfessorConferencesViewModel.cs" />
     <Compile Include="ViewModels\StartupViewModel.cs" />
-    <Compile Include="Infrastructure\Widgets\TreeView\ITreeItemViewModel.cs" />
-    <Compile Include="Infrastructure\Widgets\TreeView\ITreeViewModel.cs" />
-    <Compile Include="Infrastructure\Widgets\TreeView\Events\SelectedChangedEventArgs.cs" />
-    <Compile Include="Infrastructure\Widgets\TreeView\TreeViewModel.cs" />
     <Compile Include="ViewModels\Main\WorkWindowChangedEventArgs.cs" />
     <Compile Include="Views\Common\DefaultView.xaml.cs">
       <DependentUpon>DefaultView.xaml</DependentUpon>
@@ -364,12 +330,10 @@
     </Compile>
     <Compile Include="ViewModels\Professor\AddProfessorViewModel.cs" />
     <Compile Include="ViewModels\Cathedra\CathedraViewModel.cs" />
-    <Compile Include="Infrastructure\ViewModels\ViewModel.cs" />
     <Compile Include="ViewModels\Main\MainViewModel.cs" />
     <Compile Include="ViewModels\FacultyTreeView\CathedraTreeItemViewModel.cs" />
     <Compile Include="ViewModels\FacultyTreeView\FacultyTreeViewModel.cs" />
     <Compile Include="ViewModels\FacultyTreeView\ProfessorTreeItemViewModel.cs" />
-    <Compile Include="Infrastructure\Widgets\TreeView\TreeItemViewModel.cs" />
     <Compile Include="Views\FacultyTree\FacultyTreeView.xaml.cs">
       <DependentUpon>FacultyTreeView.xaml</DependentUpon>
     </Compile>
@@ -425,7 +389,7 @@
     </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Data\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj">
       <Project>{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}</Project>
-      <Name>MilitaryFaculty.Data %28MilitaryFaculty.Data\MilitaryFaculty.Data%29</Name>
+      <Name>MilitaryFaculty.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.Contract\MilitaryFaculty.Domain.Contract.csproj">
       <Project>{10E40656-D44B-46CE-9FED-0496F71554B7}</Project>
@@ -433,7 +397,11 @@
     </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
       <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
-      <Name>MilitaryFaculty.Domain %28MilitaryFaculty.Domain\MilitaryFaculty.Domain%29</Name>
+      <Name>MilitaryFaculty.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Presentation.Core\MilitaryFaculty.Presentation.Core.csproj">
+      <Project>{1F175083-DFF1-452F-AE20-C1C93D59765F}</Project>
+      <Name>MilitaryFaculty.Presentation.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.Data\MilitaryFaculty.Reporting.Data.csproj">
       <Project>{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}</Project>
@@ -445,7 +413,7 @@
     </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.csproj">
       <Project>{813E121E-1097-4A5A-B672-4AC98E21D4EE}</Project>
-      <Name>MilitaryFaculty.Reporting %28MilitaryFaculty.Reporting\MilitaryFaculty.Reporting%29</Name>
+      <Name>MilitaryFaculty.Reporting</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

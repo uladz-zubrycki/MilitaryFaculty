@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using Autofac;
-using MilitaryFaculty.Presentation.Infrastructure;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation
@@ -12,8 +11,6 @@ namespace MilitaryFaculty.Presentation
     {
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            //Database.SetInitializer(new DropCreateDatabaseAlways<EntityContext>());
-
             var container = InjectionConfig.Register(new ContainerBuilder());
 
             var view = new MainWindow
