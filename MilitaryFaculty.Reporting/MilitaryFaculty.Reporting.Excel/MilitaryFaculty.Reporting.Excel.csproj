@@ -55,6 +55,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,10 +63,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MultipleInstancesExcelWriter.cs" />
+    <Compile Include="ExcelWriter.cs" />
+    <Compile Include="IExcelReportingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ExcelReportingService.cs" />
-    <Compile Include="SingleInstanceExcelWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MilitaryFaculty.Common\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">

@@ -73,7 +73,6 @@
     <Compile Include="ReportDomain\ReportGroup.cs" />
     <Compile Include="ReportDomain\ReportTable.cs" />
     <Compile Include="ReportType.cs" />
-    <Compile Include="TimeInterval.cs" />
     <Compile Include="XmlDomain\XArgument.cs" />
     <Compile Include="XmlDomain\XCoefficient.cs" />
     <Compile Include="XmlDomain\XFormula.cs" />

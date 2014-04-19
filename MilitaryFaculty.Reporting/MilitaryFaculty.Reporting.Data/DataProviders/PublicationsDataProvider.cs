@@ -26,7 +26,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("TotalBooksPc")]
         public double TotalBooksPagesCount()
         {
-            return 0;
+            return 1;
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("CandThesisesCount")]
         public double CandidateThesisesCount()
         {
-            return 2;
+            return 1;
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DocAssignCount")]
         public double DoctorsAssignedCount()
         {
-            return 3;
+            return 1;
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DocentsAssignCount")]
         public double DocentsAssignedCount()
         {
-            return 4;
+            return 1;
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DocEoCount")]
         public double DoctorsOfScienceExpertOpinionsCount()
         {
-            return 5;
+            return 1;
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("EssayReviewDosCount")]
         public double EssayReviewsByDosCount()
         {
-            return 3;
+            return 1;
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("EssayReviewCanCount")]
         public double EssayReviewByCandidatsCount()
         {
-            return 4;
+            return 1;
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("SrwCount")]
         public double ScientificResearchWorksCount()
         {
-            return 3;
+            return 1;
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("MssCount")]
         public double MilitaryScientificSupportsCount()
         {
-            return 4;
+            return 1;
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("InnCount")]
         public double InnovationsCount()
         {
-            return 2;
+            return 1;
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UsModCount")]
         public double UsefulModelsCount()
         {
-            return 3;
+            return 1;
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("PosInnCount")]
         public double PositiveInnovationsCount()
         {
-            return 4;
+            return 1;
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("PosUsModCount")]
         public double PositiveUsefulModelsCount()
         {
-            return 5;
+            return 1;
         }
 
         /// <summary>

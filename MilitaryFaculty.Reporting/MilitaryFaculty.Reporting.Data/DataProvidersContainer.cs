@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Reporting.Data.DataProviders;
 
 namespace MilitaryFaculty.Reporting.Data
@@ -58,13 +59,23 @@ namespace MilitaryFaculty.Reporting.Data
             _publications.QueryModificator = null;
         }
 
-        public void SetProfessorModificator(Professor professor)
+        public void SetProfessorModificator(Professor professor, TimeInterval interval)
         {
             _cathedras.QueryModificator = null;
-            _conferences.QueryModificator = con => con.Curator.Id == professor.Id;
-            _exhibitions.QueryModificator = exh => exh.Participant.Id == professor.Id;
-            _professors.QueryModificator = prof => prof.Id == professor.Id;
-            _publications.QueryModificator = pub => pub.Author.Id == professor.Id;
+            _conferences.QueryModificator = con =>
+                con.Curator.Id == professor.Id
+                && con.Date >= interval.From
+                && con.Date <= interval.To;
+            _exhibitions.QueryModificator = exh => 
+                exh.Participant.Id == professor.Id
+                && exh.Date >= interval.From
+                && exh.Date <= interval.To;
+            _professors.QueryModificator = prof =>
+                //TODO: Professors interval
+                prof.Id == professor.Id;
+            _publications.QueryModificator = pub =>
+                //TODO: Publication date
+                pub.Author.Id == professor.Id;
         }
 
         public IEnumerable<IDataProvider> GetProviders()

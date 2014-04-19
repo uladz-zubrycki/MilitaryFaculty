@@ -29,22 +29,6 @@ namespace MilitaryFaculty.Reporting.Data
             }
         }
 
-        //TODO: Delete this constructor
-        public ReportDataProvider(IEnumerable<IDataProvider> providers)
-        {
-            if (providers == null)
-            {
-                throw new ArgumentNullException("providers");
-            }
-
-            _evaluators = new Dictionary<string, Func<double>>();
-
-            foreach (var provider in providers)
-            {
-                RegisterDataProvider(provider);
-            }
-        }
-
         public double GetValue(string key)
         {
             var evaluator = _evaluators[key];

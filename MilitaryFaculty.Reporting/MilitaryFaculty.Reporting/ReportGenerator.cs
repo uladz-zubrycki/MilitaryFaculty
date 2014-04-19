@@ -36,23 +36,23 @@ namespace MilitaryFaculty.Reporting
                 throw new ArgumentNullException("interval");
             }
 
+            //For faculty object
             if (entity == null)
             {
-                //For faculty object
                 ReportDataProvider.ReportDataProvidersContainer.ClearModificators();
                 return new Report("Faculty", TableProvider, FormulaProvider, ReportDataProvider);
             }
             if (entity is Cathedra)
             {
                 var cathedra = (Cathedra) entity;
-                //Temp solution
+                //TODO: Cathedra report
                 ReportDataProvider.ReportDataProvidersContainer.ClearModificators();
                 return new Report(cathedra.Name, TableProvider, FormulaProvider, ReportDataProvider);
             }
             if (entity is Professor)
             {
                 var professor = (Professor) entity;
-                ReportDataProvider.ReportDataProvidersContainer.SetProfessorModificator(professor);
+                ReportDataProvider.ReportDataProvidersContainer.SetProfessorModificator(professor, interval);
                 return new Report(professor.FullName.ToString(), TableProvider, FormulaProvider, ReportDataProvider);
             }
 

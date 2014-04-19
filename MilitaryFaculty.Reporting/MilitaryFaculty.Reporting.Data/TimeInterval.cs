@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MilitaryFaculty.Reporting
+namespace MilitaryFaculty.Reporting.Data
 {
     public class TimeInterval
     {

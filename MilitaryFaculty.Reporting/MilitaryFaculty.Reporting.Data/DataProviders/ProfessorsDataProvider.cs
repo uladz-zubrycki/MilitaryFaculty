@@ -48,7 +48,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         public double AdjunctsCountFullTime()
         {
             //TODO: адьюнкты
-            return 2;
+            return 1;
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("AdjCountExt")]
         public double AdjunctsCountExtramural()
         {
-            return 3;
+            return 1;
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         public double ApplicantForDoctorsCount()
         {
             //TODO: соискатели
-            return 5;
+            return 1;
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ApplCandCount")]
         public double ApplicantForCandidatsCount()
         {
-            return 5;
+            return 1;
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ProfPostsSubsCount")]
         public double ProfessorPostsSubstitutionCount()
         {
-            return 5;
+            return 1;
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         public double DocentPostsSubstitutionCount()
         {
             //TODO: DaFaq?
-            return 2;
+            return 1;
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("SaHqProfsCount")]
         public double ScientificAdviceHqProfsCount()
         {
-            return 5;
+            return 1;
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("SaProfsCount")]
         public double ScientificAdviceProfsCount()
         {
-            return 5;
+            return 1;
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("HacHqProfsCount")]
         public double HacHqProfsCount() //Higher Attestation Commission
         {
-            return 2;
+            return 1;
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DodHqProfsCount")]
         public double DodHqProfsCount() //Defence of dissertation counsil
         {
-            return 3;
+            return 1;
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("RcHqProfsCount")]
         public double RcHqProfsCount() //research counsil
         {
-            return 4;
+            return 1;
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("EbspHqProfsCount")]
         public double EbspHqProfsCount() //editorial boards of scientific publications
         {
-            return 5;
+            return 1;
         }
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         public double ScientificExperticeProfessorsCount()
         {
             //TODO: WAT?
-            return 2;
+            return 1;
         }
     }
 }

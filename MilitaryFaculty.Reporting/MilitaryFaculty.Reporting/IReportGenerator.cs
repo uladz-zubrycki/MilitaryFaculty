@@ -1,4 +1,5 @@
-﻿using MilitaryFaculty.Reporting.ReportDomain;
+﻿using MilitaryFaculty.Reporting.Data;
+using MilitaryFaculty.Reporting.ReportDomain;
 
 namespace MilitaryFaculty.Reporting
 {

@@ -38,7 +38,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ResTopicsOrg")]
         public double ResearchTopicsOrganization()
         {
-            return 2;
+            return 1;
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ProfsOrg")]
         public double ProfessorsOrganization()
         {
-            return 3;
+            return 1;
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("IntConfOrg")]
         public double InternationalConferencesOrganization()
         {
-            return 4;
+            return 1;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("RepConfOrg")]
         public double RepublicanConferenceOrganization()
         {
-            return 5;
+            return 1;
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("RepSemOrg")]
         public double RepablicanSeminarOrganization()
         {
-            return 2;
+            return 1;
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UnSemOrg")]
         public double UniversitySeminarOrganization()
         {
-            return 3;
+            return 1;
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ProfsOrgFull")]
         public double ProfessorsOrganizationFull()
         {
-            return 4;
+            return 1;
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ProfsOrgCust")]
         public double ProfessorsOrganizationCustom()
         {
-            return 5;
+            return 1;
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("HistWorkCust")]
         public double HistoricalWorkOrganizationCustom()
         {
-            return 2;
+            return 1;
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("MssFull")]
         public double MilitaryScientificSocietyOrganizationFull()
         {
-            return 3;
+            return 1;
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("MssCust")]
         public double MilitaryScientificSocietyOrganizationCustom()
         {
-            return 4;
+            return 1;
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("CustSwOrg")]
         public double CustomScientificWorkOrganizationRating()
         {
-            return 5;
+            return 1;
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("CustSrOrg")]
         public double CustomScientificResearchOrganizationRating()
         {
-            return 3;
+            return 1;
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("CustArsrOrg")]
         public double CustomAprobationResultsOfScientificWork()
         {
-            return 3;
+            return 1;
         }
 
         /// <summary>
