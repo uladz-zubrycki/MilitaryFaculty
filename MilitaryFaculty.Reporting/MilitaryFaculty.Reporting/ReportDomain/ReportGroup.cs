@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.Providers;
 using MilitaryFaculty.Reporting.XmlDomain;
@@ -9,11 +10,13 @@ namespace MilitaryFaculty.Reporting.ReportDomain
     public class ReportGroup
     {
         public string Name { get; private set; }
-        public ICollection<ReportRow> FormulasInfo { get; private set; }
+        public ICollection<ReportRow> ReportRows { get; private set; }
+
+        private ReportGroup() { }
 
         public ReportGroup(XReportTableGroup xmlGroup,
-                           IFormulaProvider formulaProvider,
-                           ReportDataProvider reportDataProvider)
+            IFormulaProvider formulaProvider,
+            ReportDataProvider reportDataProvider)
         {
             if (xmlGroup == null)
             {
@@ -29,7 +32,7 @@ namespace MilitaryFaculty.Reporting.ReportDomain
             }
 
             Name = xmlGroup.Name;
-            FormulasInfo = new List<ReportRow>();
+            ReportRows = new List<ReportRow>();
 
             foreach (var formulaId in xmlGroup.Formulas)
             {
@@ -41,8 +44,51 @@ namespace MilitaryFaculty.Reporting.ReportDomain
                 var reportFormula = new ReportRow(formulaInfo.Name,
                     Convert.ToInt32(value),
                     Convert.ToInt32(formulaInfo.MaxValue));
-                FormulasInfo.Add(reportFormula);
+                ReportRows.Add(reportFormula);
             }
+        }
+
+        public static ReportGroup Unify(ICollection<ReportGroup> reportGroups)
+        {
+            if (reportGroups == null || reportGroups.Count == 0)
+            {
+                throw new ArgumentException("reportGroups");
+            }
+
+            CheckNames(reportGroups);
+
+            var newGroup = new ReportGroup
+            {
+                Name = reportGroups.First().Name,
+                ReportRows = new List<ReportRow>()
+            };
+
+            for (var i = 0; i < reportGroups.First().ReportRows.Count; i++)
+            {
+                var collection = GetRowsCollection(reportGroups, i);
+                newGroup.ReportRows.Add(ReportRow.Unify(collection));
+            }
+
+            return newGroup;
+        }
+
+        private static void CheckNames(ICollection<ReportGroup> reportGroups)
+        {
+            if (reportGroups.Any(reportGroup => reportGroup.Name != reportGroups.First().Name))
+            {
+                throw new Exception("Groups discrepancy");
+            }
+        }
+
+        private static ICollection<ReportRow> GetRowsCollection(ICollection<ReportGroup> reportGroups, int rowNumber)
+        {
+            var rowsCollection = new List<ReportRow>();
+            for (var i = 0; i < reportGroups.Count; i++)
+            {
+                rowsCollection.Add(reportGroups.ElementAt(i).ReportRows.ElementAt(rowNumber));
+            }
+
+            return rowsCollection;
         }
 
         private static double NormalizeValue(double value)

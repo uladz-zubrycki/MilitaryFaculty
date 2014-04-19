@@ -27,7 +27,7 @@ namespace MilitaryFaculty.Reporting.Excel
             {
                 var ws = xlPackage.Workbook.Worksheets.Add("Resuts");
 
-                reportObject.FormulasTables
+                reportObject.ReportTables
                             .ForEach(table => ExportTable(ws, table));
 
                 xlPackage.Save();
@@ -36,7 +36,31 @@ namespace MilitaryFaculty.Reporting.Excel
 
         public void ExportReport(string filePath, ICollection<Report> reportObject)
         {
-            //ToDo: Generate multiple instaces
+            //if (String.IsNullOrWhiteSpace(filePath))
+            //{
+            //    throw new ArgumentNullException("filePath");
+            //}
+            //if (reportObject == null)
+            //{
+            //    throw new ArgumentNullException("reportObject");
+            //}
+            //if (reportObject.Count == 0)
+            //{
+            //    throw new ArgumentException("reportObject");
+            //}
+
+            //File.Delete(filePath);
+            //var newFile = new FileInfo(filePath);
+
+            //using (var xlPackage = new ExcelPackage(newFile))
+            //{
+            //    var ws = xlPackage.Workbook.Worksheets.Add("Resuts");
+
+            //    reportObject.FormulasTables
+            //                .ForEach(table => ExportTable(ws, table));
+
+            //    xlPackage.Save();
+            //}
         }
 
         private void ExportTable(ExcelWorksheet workSheet, ReportTable table)
@@ -58,11 +82,11 @@ namespace MilitaryFaculty.Reporting.Excel
 
             xlWriter.PutName(table.Name);
 
-            foreach (var group in table.FormulasGroups)
+            foreach (var group in table.ReportGroups)
             {
                 xlWriter.PutSubName(group.Name);
 
-                foreach (var formulaInfo in group.FormulasInfo)
+                foreach (var formulaInfo in group.ReportRows)
                 {
                     xlWriter.PutFieldLine(formulaInfo.Name,
                         formulaInfo.Value,

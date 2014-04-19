@@ -69,17 +69,19 @@ namespace MilitaryFaculty.Logic.Tests
             var formulaProvider = new FormulaProvider(formulaFiles);
             var tableProvider = new ReportTableProvider(tableFiles);
 
-            var report = new List<Report>();
+            var reports = new List<Report>();
             var reportGenerator = new ReportGenerator(tableProvider, formulaProvider, reportDataProvider);
             
             var interval = new TimeInterval(new DateTime(2000, 1, 1), DateTime.Now);
             var prof = profRepository.Table.Single(p => p.FullName.LastName.StartsWith("Кашкаров"));
-            report.Add(reportGenerator.Generate(prof, interval));
+            reports.Add(reportGenerator.Generate(prof, interval));
             prof = profRepository.Table.Single(p => p.FullName.LastName.StartsWith("Касанин"));
-            report.Add(reportGenerator.Generate(prof, interval));
+            reports.Add(reportGenerator.Generate(prof, interval));
+
+            var unified = Report.Unify(reports);
 
             var reportingService = new ExcelReportingService();
-            reportingService.ExportReport(@"D:\1.xlsx", report);
+            reportingService.ExportReport(@"D:\1.xlsx", reports);
         }
 
         [Test]
