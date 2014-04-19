@@ -4,7 +4,7 @@ using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public abstract class BaseNavigationModule : ICommandContainerModule
+    public abstract class BaseNavigationModule : ICommandModule
     {
         protected readonly MainViewModel ViewModel;
 
@@ -18,6 +18,6 @@ namespace MilitaryFaculty.Presentation.Custom
             ViewModel = viewModel;
         }
 
-        public abstract void RegisterModule(CommandContainer container);
+        public abstract void LoadModule(RoutedCommands commands);
     }
 }

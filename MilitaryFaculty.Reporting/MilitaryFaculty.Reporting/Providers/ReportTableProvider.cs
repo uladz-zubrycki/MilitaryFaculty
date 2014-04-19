@@ -1,36 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Reporting.XmlDomain;
 
 namespace MilitaryFaculty.Reporting.Providers
 {
     public class ReportTableProvider : IReportTableProvider
     {
-        private readonly ICollection<string> _files;
+        private const string TablePattern = @"table\d*";
+        private const RegexOptions TablePatternOptions = RegexOptions.IgnoreCase;
 
-        private ICollection<XReportTable> _tables;
+        private readonly Lazy<ICollection<XReportTable>> _tables;
 
-        public ReportTableProvider(IEnumerable<string> files)
+        public ReportTableProvider(string tablesPath)
         {
-            if (files == null)
+            if (tablesPath == null)
             {
-                throw new ArgumentNullException("files");
+                throw new ArgumentNullException("tablesPath");
             }
 
-            _files = files.ToList();
+            _tables = Lazy.Create(() => RetreiveTables(tablesPath));
         }
 
         public ICollection<XReportTable> GetTables()
         {
-            return _tables ?? (_tables = InitTables());
+            return _tables.Value;
         }
 
-        private ICollection<XReportTable> InitTables()
+        private static ICollection<XReportTable> RetreiveTables(string tablesPath)
         {
-            return _files.Select(ReadTable).ToList();
+            if (!Directory.Exists(tablesPath))
+            {
+                throw new DirectoryNotFoundException();
+            }
+
+            Func<string, bool> isReportTable =
+                filePath =>
+                {
+                    var fileName = Path.GetFileName(filePath);
+
+                    return Regex.IsMatch(fileName,
+                                         TablePattern,
+                                         TablePatternOptions);
+                };
+
+            var result = Directory.EnumerateFiles(tablesPath)
+                                  .Where(isReportTable)
+                                  .Select(ReadTable)
+                                  .ToList();
+
+            return result;
         }
 
         private static XReportTable ReadTable(string file)

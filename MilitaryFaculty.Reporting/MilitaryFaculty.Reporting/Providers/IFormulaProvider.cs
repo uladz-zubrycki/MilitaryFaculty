@@ -2,6 +2,6 @@
 {
     public interface IFormulaProvider
     {
-        FormulaInfo GetFormula(string id);
+        FormulaInfo GetFormula(int id);
     }
 }

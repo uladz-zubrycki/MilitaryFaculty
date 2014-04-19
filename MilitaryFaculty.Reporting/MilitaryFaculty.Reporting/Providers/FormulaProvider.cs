@@ -10,38 +10,29 @@ namespace MilitaryFaculty.Reporting.Providers
 {
     public class FormulaProvider : IFormulaProvider
     {
-        private readonly ICollection<string> _files;
-        private IDictionary<string, FormulaInfo> _formulas;
+        private readonly Lazy<IDictionary<int, FormulaInfo>> _formulas;
 
-        private IDictionary<string, FormulaInfo> Formulas
+        private IDictionary<int, FormulaInfo> Formulas
         {
-            get
-            {
-                if (_formulas == null)
-                {
-                    _formulas = ReadFormulas();
-                }
-
-                return _formulas;
-            }
+            get { return _formulas.Value; }
         }
 
-        public FormulaProvider(IEnumerable<string> files)
+        public FormulaProvider(string filePath)
         {
-            if (files == null)
+            if (String.IsNullOrEmpty(filePath))
             {
-                throw new ArgumentNullException("files");
+                throw new ArgumentException();
             }
 
-            _files = files.ToList();
+            _formulas = Lazy.Create(() => ReadFormulas(filePath));
         }
 
-        public FormulaInfo GetFormula(string id)
+        public FormulaInfo GetFormula(int id)
         {
             return Formulas[id];
         }
 
-        private IDictionary<string, FormulaInfo> ReadFormulas()
+        private static IDictionary<int, FormulaInfo> ReadFormulas(string filePath)
         {
             Func<XFormula, FormulaInfo> convert =
                 xmlItem =>
@@ -64,15 +55,14 @@ namespace MilitaryFaculty.Reporting.Providers
                            };
                 };
 
-            return _files.SelectMany(ReadFromFile)
-                         .ToDictionary(f => f.Id, convert);
+            return ReadFromFile(filePath).ToDictionary(f => f.Id, convert);
         }
 
         private static IEnumerable<XFormula> ReadFromFile(string file)
         {
             var serializer = new XmlSerializer(typeof (List<XFormula>));
 
-            using (var stream = new FileStream(file, FileMode.Open))
+            using (var stream = File.OpenRead(file))
             {
                 return serializer.Deserialize<List<XFormula>>(stream);
             }

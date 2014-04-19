@@ -1,8 +1,26 @@
 ﻿<Window x:Class="MilitaryFaculty.FormulaEditor.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Редактор формул" Height="350" Width="525">
     <Grid>
-        
+        <StackPanel Orientation="Horizontal">
+            <ListBox>
+                <ListBoxItem>First table</ListBoxItem>
+                <ListBoxItem>Second table</ListBoxItem>
+                <ListBoxItem>Third table</ListBoxItem>
+            </ListBox>
+            <ListBox>
+                <ListBoxItem>First Group</ListBoxItem>
+                <ListBoxItem>Second Group</ListBoxItem>
+                <ListBoxItem>Last Group</ListBoxItem>
+            </ListBox>
+
+        </StackPanel>
+
+        <ListBox>
+            <ListBoxItem>First formula</ListBoxItem>
+            <ListBoxItem>Second formula</ListBoxItem>
+            <ListBoxItem>Last formula</ListBoxItem>
+        </ListBox>
     </Grid>
 </Window>

@@ -12,17 +12,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class CathedraTreeItemViewModel : TreeItemViewModel<Cathedra>
     {
-        public override string Title
-        {
-            get { return Model.Name; }
-        }
-
-        protected FacultyTreeViewModel FacultyTree
-        {
-            get { return Owner as FacultyTreeViewModel; }
-        }
-
-        public CathedraTreeItemViewModel(Cathedra cathedra, TreeViewModel owner,
+        public CathedraTreeItemViewModel(Cathedra cathedra,
+                                         TreeViewModel owner,
                                          ITreeItemViewModel parent,
                                          IRepository<Professor> professorRepository)
             : base(cathedra, owner, parent, true)
@@ -38,17 +29,22 @@ namespace MilitaryFaculty.Presentation.ViewModels
             InitCommands();
         }
 
-        public static Func<Cathedra, CathedraTreeItemViewModel> FromModel(TreeViewModel owner,
-                                                                          IRepository<Professor> professorRepository)
+        public override string Title
         {
-            return cathedra => new CathedraTreeItemViewModel(cathedra, owner, null, professorRepository);
+            get { return Model.Name; }
+        }
+
+        protected FacultyTreeViewModel FacultyTree
+        {
+            get { return Owner as FacultyTreeViewModel; }
         }
 
         protected override IEnumerable<ITreeItemViewModel> LoadChildren()
         {
-            var converter = ProfessorTreeItemViewModel.FromModel(Owner, this);
+            var result = Model.Professors
+                              .Select(ProfessorTreeItemViewModel.FromModel(Owner, this));
 
-            return Model.Professors.Select(converter);
+            return result;
         }
 
         private void InitCommands()
@@ -64,17 +60,14 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Добавить преподавателя";
             const string imageSource = @"..\Content\add-user.png";
 
-            return new ImagedCommandViewModel(Browse.Professor.Add,
-                Model, tooltip, imageSource);
+            return new ImagedCommandViewModel(Browse.ProfessorAdd,
+                                              Model,
+                                              tooltip,
+                                              imageSource);
         }
 
         private void OnProfessorCreated(object sender, ModifiedEntityEventArgs<Professor> e)
         {
-            if (e == null)
-            {
-                throw new ArgumentNullException("e");
-            }
-
             var professor = e.ModifiedEntity;
 
             if (professor.Cathedra.Equals(Model))
@@ -85,17 +78,28 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         private void OnProfessorDeleted(object sender, ModifiedEntityEventArgs<Professor> e)
         {
-            if (e == null)
-            {
-                throw new ArgumentNullException("e");
-            }
-
             var professor = e.ModifiedEntity;
 
             if (professor.Cathedra.Equals(Model))
             {
                 Children.RemoveSingle(c => c.Model.Equals(professor));
             }
+        }
+
+        public static CathedraTreeItemViewModel FromModel(Cathedra model,
+                                                          TreeViewModel owner,
+                                                          IRepository<Professor> professorRepository)
+        {
+            return new CathedraTreeItemViewModel(cathedra: model,
+                                                 owner: owner,
+                                                 parent: null,
+                                                 professorRepository: professorRepository);
+        }
+
+        public static Func<Cathedra, CathedraTreeItemViewModel> FromModel(TreeViewModel owner,
+                                                                          IRepository<Professor> professorRepository)
+        {
+            return cathedra => FromModel(cathedra, owner, professorRepository);
         }
     }
 }

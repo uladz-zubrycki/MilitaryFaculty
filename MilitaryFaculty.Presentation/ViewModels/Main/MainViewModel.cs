@@ -26,21 +26,9 @@ namespace MilitaryFaculty.Presentation.ViewModels
         private readonly ViewModel _workWindow;
 
         public FacultyTreeViewModel FacultyTree { get; private set; }
-        public CommandContainer CommandContainer { get; private set; }
+        public RoutedCommands RoutedCommands { get; private set; }
 
-        public ViewModel WorkWindow
-        {
-            get { return _workWindow; }
-            internal set
-            {
-                var oldValue = _workWindow;
-
-                if (SetValue(() => _workWindow, value))
-                {
-                    OnWorkWindowChanged(oldValue, value);
-                }
-            }
-        }
+        public event EventHandler<WorkWindowChangedEventArgs> WorkWindowChanged;
 
         public MainViewModel(IContainer container)
         {
@@ -60,10 +48,22 @@ namespace MilitaryFaculty.Presentation.ViewModels
             _workWindow = new StartupViewModel();
 
             InitFacultyTree();
-            InitCommandContainer();
+            InitRoutedCommands();
         }
 
-        public event EventHandler<WorkWindowChangedEventArgs> WorkWindowChanged;
+        public ViewModel WorkWindow
+        {
+            get { return _workWindow; }
+            internal set
+            {
+                var oldValue = _workWindow;
+
+                if (SetValue(() => _workWindow, value))
+                {
+                    OnWorkWindowChanged(oldValue, value);
+                }
+            }
+        }
 
         private void OnWorkWindowChanged(ViewModel oldValue, ViewModel newValue)
         {
@@ -103,12 +103,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
             FacultyTree.SelectedItemChanged += FacultyTreeOnSelectedItemChanged;
         }
 
-        private void InitCommandContainer()
+        private void InitRoutedCommands()
         {
-            CommandContainer = new CommandContainer();
+            RoutedCommands = new RoutedCommands();
 
             //todo get module from container
-            var modules = new ICommandContainerModule[]
+            var modules = new ICommandModule[]
                           {
                               new ProfessorCommandModule(_professorRepository),
                               new PublicationCommandModule(_publicationRepository),
@@ -124,7 +124,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
                               new ReportingCommandModule(_excelService/*, Generator? */)
                           };
 
-            modules.ForEach(m => m.RegisterModule(CommandContainer));
+            modules.ForEach(m => m.LoadModule(RoutedCommands));
         }
     }
 }

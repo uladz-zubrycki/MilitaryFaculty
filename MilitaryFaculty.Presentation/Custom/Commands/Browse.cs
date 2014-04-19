@@ -7,33 +7,18 @@ namespace MilitaryFaculty.Presentation.Custom
         public static readonly RoutedCommand Forward = new RoutedCommand();
         public static readonly RoutedCommand Back = new RoutedCommand();
 
-        public static class Book
-        {
-            public static readonly RoutedCommand Add = new RoutedCommand();
-            public static readonly RoutedCommand Details = new RoutedCommand();
-        }
+        public static readonly RoutedCommand ProfessorAdd = new RoutedCommand();
 
-        public static class Conference
-        {
-            public static readonly RoutedCommand Add = new RoutedCommand();
-            public static readonly RoutedCommand Details = new RoutedCommand();
-        }
+        public static readonly RoutedCommand BookAdd = new RoutedCommand();
+        public static readonly RoutedCommand BookDetails = new RoutedCommand();
 
-        public static class Exhibition
-        {
-            public static readonly RoutedCommand Add = new RoutedCommand();
-            public static readonly RoutedCommand Details = new RoutedCommand();
-        }
+        public static readonly RoutedCommand ConferenceAdd = new RoutedCommand();
+        public static readonly RoutedCommand ConferenceDetails = new RoutedCommand();
 
-        public static class Professor
-        {
-            public static readonly RoutedCommand Add = new RoutedCommand();
-        }
+        public static readonly RoutedCommand ExhibitionAdd = new RoutedCommand();
+        public static readonly RoutedCommand ExhibitionDetails = new RoutedCommand();
 
-        public static class Publication
-        {
-            public static readonly RoutedCommand Add = new RoutedCommand();
-            public static readonly RoutedCommand Details = new RoutedCommand();
-        }
+        public static readonly RoutedCommand PublicationAdd = new RoutedCommand();
+        public static readonly RoutedCommand PublicationDetails = new RoutedCommand();
     }
 }

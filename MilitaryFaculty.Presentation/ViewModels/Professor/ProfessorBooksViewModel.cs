@@ -11,8 +11,22 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ProfessorBooksViewModel : ViewModel<Professor>
     {
-        private readonly IRepository<Book> _bookRepository;
-        private ObservableCollection<BookListItemViewModel> _books;
+        private readonly Lazy<ObservableCollection<BookListItemViewModel>> _books;
+
+        public ProfessorBooksViewModel(Professor model, IRepository<Book> bookRepository)
+            : base(model)
+        {
+            if (bookRepository == null)
+            {
+                throw new ArgumentNullException("conferenceRepository");
+            }
+
+            _books = Lazy.Create(CreateBooksViewModel);
+
+            bookRepository.EntityCreated += OnBookCreated;
+            bookRepository.EntityDeleted += OnBookDeleted;
+            Commands.Add(CreateAddBookCommand());
+        }
 
         public override string Title
         {
@@ -21,15 +35,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         public ObservableCollection<BookListItemViewModel> Books
         {
-            get
-            {
-                if (_books == null)
-                {
-                    InitBooks();
-                }
-
-                return _books;
-            }
+            get { return _books.Value; }
         }
 
         public int SchoolbooksCount
@@ -42,42 +48,30 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return Books.Count(vm => vm.Model.BookType == BookType.Tutorial); }
         }
 
-        public ProfessorBooksViewModel(Professor model, IRepository<Book> bookRepository)
-            : base(model)
-        {
-            if (bookRepository == null)
-            {
-                throw new ArgumentNullException("conferenceRepository");
-            }
-
-            _bookRepository = bookRepository;
-
-            bookRepository.EntityCreated += OnBookCreated;
-            bookRepository.EntityDeleted += OnBookDeleted;
-            Commands.Add(CreateAddBookCommand());
-        }
-
         private ImagedCommandViewModel CreateAddBookCommand()
         {
             const string tooltip = "Добавить учебник";
             const string imageSource = @"..\Content\add.png";
 
-            return new ImagedCommandViewModel(Browse.Book.Add,
-                Model, tooltip, imageSource);
+            return new ImagedCommandViewModel(Browse.BookAdd,
+                                              Model, tooltip, imageSource);
         }
 
-        private void InitBooks()
+        private ObservableCollection<BookListItemViewModel> CreateBooksViewModel()
         {
-            var converter = BookListItemViewModel.FromModel();
-            var items = Model.Books.Select(converter);
+            var books = Model.Books
+                             .Select(BookListItemViewModel.FromModel)
+                             .ToList();
 
-            _books = new ObservableCollection<BookListItemViewModel>(items);
-
-            _books.CollectionChanged += (sender, args) =>
+            var result = new ObservableCollection<BookListItemViewModel>(books);
+            result.CollectionChanged += (sender, args) =>
                                         {
+                                            //todo property name from expression
                                             OnPropertyChanged("SchoolbooksCount");
                                             OnPropertyChanged("TutorialsCount");
                                         };
+
+            return result;
         }
 
         private void OnBookCreated(object sender, ModifiedEntityEventArgs<Book> e)

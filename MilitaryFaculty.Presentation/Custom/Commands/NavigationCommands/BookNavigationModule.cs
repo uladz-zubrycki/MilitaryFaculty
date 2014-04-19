@@ -13,15 +13,15 @@ namespace MilitaryFaculty.Presentation.Custom
             // Empty
         }
 
-        public override void RegisterModule(CommandContainer container)
+        public override void LoadModule(RoutedCommands commands)
         {
-            if (container == null)
+            if (commands == null)
             {
                 throw new ArgumentNullException("sink");
             }
 
-            container.RegisterCommand<Professor>(Browse.Book.Add, OnBrowseBookAdd);
-            container.RegisterCommand<Book>(Browse.Book.Details, OnBrowseBookDetails);
+            commands.AddCommand<Professor>(Browse.BookAdd, OnBrowseBookAdd);
+            commands.AddCommand<Book>(Browse.BookDetails, OnBrowseBookDetails);
         }
 
         private void OnBrowseBookAdd(Professor author)

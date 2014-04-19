@@ -11,30 +11,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ProfessorConferencesViewModel : ViewModel<Professor>
     {
-        private ObservableCollection<ConferenceListItemViewModel> _conferences;
-
-        public override string Title
-        {
-            get { return "Участие в конференциях"; }
-        }
-
-        public ObservableCollection<ConferenceListItemViewModel> Conferences
-        {
-            get
-            {
-                if (_conferences == null)
-                {
-                    InitConferences();
-                }
-
-                return _conferences;
-            }
-        }
-
-        public int ConferencesCount
-        {
-            get { return Conferences.Count; }
-        }
+        private readonly Lazy<ObservableCollection<ConferenceListItemViewModel>> _conferences;
 
         public ProfessorConferencesViewModel(Professor model, IRepository<Conference> conferenceRepository)
             : base(model)
@@ -44,10 +21,27 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 throw new ArgumentNullException("conferenceRepository");
             }
 
+            _conferences = Lazy.Create(CreateConferencesViewModel);
+
             conferenceRepository.EntityCreated += OnConferenceCreated;
             conferenceRepository.EntityDeleted += OnConferenceDeleted;
 
             Commands.Add(CreateAddConferenceCommand());
+        }
+
+        public ObservableCollection<ConferenceListItemViewModel> Conferences
+        {
+            get { return _conferences.Value; }
+        }
+
+        public override string Title
+        {
+            get { return "Участие в конференциях"; }
+        }
+
+        public int ConferencesCount
+        {
+            get { return Conferences.Count; }
         }
 
         private ImagedCommandViewModel CreateAddConferenceCommand()
@@ -55,17 +49,20 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Добавить конференцию";
             const string imageSource = @"..\Content\add.png";
 
-            return new ImagedCommandViewModel(Browse.Conference.Add,
-                Model, tooltip, imageSource);
+            return new ImagedCommandViewModel(Browse.ConferenceAdd,
+                                              Model, tooltip, imageSource);
         }
 
-        private void InitConferences()
+        private ObservableCollection<ConferenceListItemViewModel> CreateConferencesViewModel()
         {
-            var converter = ConferenceListItemViewModel.FromModel();
-            var items = Model.Conferences.Select(converter);
+            var conferences = Model.Conferences
+                                   .Select(ConferenceListItemViewModel.FromModel)
+                                   .ToList();
 
-            _conferences = new ObservableCollection<ConferenceListItemViewModel>(items);
-            _conferences.CollectionChanged += (sender, args) => { OnPropertyChanged("ConferencesCount"); };
+            var result = new ObservableCollection<ConferenceListItemViewModel>(conferences);
+            result.CollectionChanged += (sender, args) => OnPropertyChanged("ConferencesCount");
+
+            return result;
         }
 
         private void OnConferenceCreated(object sender, ModifiedEntityEventArgs<Conference> e)

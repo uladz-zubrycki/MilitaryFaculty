@@ -14,7 +14,6 @@ namespace MilitaryFaculty.Presentation.Core.ViewModels
         public T Model { get; private set; }
 
         protected ViewModel()
-            : base()
         {
             // Empty
         }

@@ -3,56 +3,55 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:c="clr-namespace:MilitaryFaculty.Presentation.Custom"
         xmlns:commands="clr-namespace:MilitaryFaculty.Presentation.Core.Commands;assembly=MilitaryFaculty.Presentation.Core"
-        xmlns:markup="clr-namespace:MilitaryFaculty.Presentation.Core.Markup;assembly=MilitaryFaculty.Presentation.Core"
         Title="Научный рейтинг" Height="550" Width="830"
         WindowStartupLocation="CenterScreen"
-        commands:CommandContainerBinding.CommandContainer="{Binding CommandContainer}">
+        commands:RoutedBinding.RoutedCommands="{Binding RoutedCommands}">
     <Window.CommandBindings>
         <!--Application commands-->
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Professor.Add}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Professor.Update}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Professor.Remove}" />
-
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Conference.Add}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Conference.Update}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Conference.Remove}" />
-
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Publication.Add}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Publication.Update}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Publication.Remove}" />
-
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Exhibition.Add}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Exhibition.Update}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Exhibition.Remove}" />
-
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Book.Add}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Book.Update}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Do.Book.Remove}" />
-
-        <commands:CommandContainerBinding Command="{markup:Command c:Report.Generate}" />
+        <commands:RoutedBinding Command="{x:Static c:Do.ProfessorAdd}" />
+        <commands:RoutedBinding Command="{x:Static c:Do.ProfessorSave}" />
+        <commands:RoutedBinding Command="{x:Static c:Do.ProfessorRemove}" />
+       
+        <commands:RoutedBinding Command="{x:Static c:Do.ConferenceAdd}" />
+        <commands:RoutedBinding Command="{x:Static c:Do.ConferenceSave}" />
+        <commands:RoutedBinding Command="{x:Static c:Do.ConferenceRemove}" />
+       
+        <commands:RoutedBinding Command="{x:Static c:Do.PublicationAdd}" />
+        <commands:RoutedBinding Command="{x:Static c:Do.PublicationSave}" />
+        <commands:RoutedBinding Command="{x:Static c:Do.PublicationRemove}" />
+        
+        <commands:RoutedBinding Command="{x:Static c:Do.ExhibitionAdd}" />
+        <commands:RoutedBinding Command="{x:Static c:Do.ExhibitionSave}" />
+        <commands:RoutedBinding Command="{x:Static c:Do.ExhibitionRemove}" />
+       
+        <commands:RoutedBinding Command="{x:Static c:Do.BookAdd}" />
+        <commands:RoutedBinding Command="{x:Static c:Do.BookSave}" />
+        <commands:RoutedBinding Command="{x:Static c:Do.BookRemove}" />
+       
+        <commands:RoutedBinding Command="{x:Static c:Do.ReportGenerate}" />
 
         <!--Common navigation commands-->
-        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Back}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Forward}" />
+        <commands:RoutedBinding Command="{x:Static c:Browse.Back}" />
+        <commands:RoutedBinding Command="{x:Static c:Browse.Forward}" />
 
         <!--Professor navigation commands-->
-        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Professor.Add}" />
+        <commands:RoutedBinding Command="{x:Static c:Browse.ProfessorAdd}" />
 
         <!--Conference navigation commands-->
-        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Conference.Add}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Conference.Details}" />
+        <commands:RoutedBinding Command="{x:Static c:Browse.ConferenceAdd}" />
+        <commands:RoutedBinding Command="{x:Static c:Browse.ConferenceDetails}" />
 
         <!--Publication navigation commands-->
-        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Publication.Add}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Publication.Details}" />
+        <commands:RoutedBinding Command="{x:Static c:Browse.PublicationAdd}" />
+        <commands:RoutedBinding Command="{x:Static c:Browse.PublicationDetails}" />
 
         <!--Book navigation commands-->
-        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Book.Add}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Book.Details}" />
+        <commands:RoutedBinding Command="{x:Static c:Browse.BookAdd}" />
+        <commands:RoutedBinding Command="{x:Static c:Browse.BookDetails}" />
 
         <!--Exhibition navigation commands-->
-        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Exhibition.Add}" />
-        <commands:CommandContainerBinding Command="{markup:Command c:Browse.Exhibition.Details}" />
+        <commands:RoutedBinding Command="{x:Static c:Browse.ExhibitionAdd}" />
+        <commands:RoutedBinding Command="{x:Static c:Browse.ExhibitionDetails}" />
     </Window.CommandBindings>
 
     <Grid>
@@ -84,7 +83,7 @@
                        Source="/Content/forward.png" />
             </Button>
 
-            <Button Command="c:Report.Generate"
+            <Button Command="c:Do.ReportGenerate"
                     Margin="10, 0"
                     Padding="2">
                 Создать отчёт
@@ -109,7 +108,7 @@
                 <ContentControl
                     Grid.Row="1"
                     Content="{Binding FacultyTree, 
-                                          Mode=OneWay}" />
+                                      Mode=OneWay}" />
             </Grid>
         </Border>
 

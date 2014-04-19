@@ -18,7 +18,21 @@ namespace MilitaryFaculty.FormulaEditor
                 throw new ArgumentException();
             }
 
-            throw new NotImplementedException();
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException(("Can't find file at path " +
+                                                 "'{0}'").f(filePath));
+            }
+
+            using (var stream = File.OpenRead(filePath))
+            {
+                var serializer = new XmlSerializer(typeof (List<XFormula>));
+                var xFormulas = serializer.Deserialize<List<XFormula>>(stream);
+                var formulas = xFormulas.Select(FormulaXmlHelper.FromXml);
+
+                return new FormulaDocument(filePath,
+                                           formulas);
+            }
         }
 
         public void Save(FormulaDocument document)

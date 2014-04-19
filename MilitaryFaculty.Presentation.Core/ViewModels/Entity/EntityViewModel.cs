@@ -10,20 +10,18 @@ namespace MilitaryFaculty.Presentation.Core.ViewModels.Entity
     public abstract class EntityViewModel<T> : ViewModel<T>
         where T : class
     {
-        private ICollection<PropertyViewModel> _properties;
+        private readonly Lazy<IEnumerable<PropertyViewModel>> _properties;
         private object _tag;
 
-        public ICollection<PropertyViewModel> Properties
+        protected EntityViewModel(T model)
+            : base(model)
         {
-            get
-            {
-                if (_properties == null)
-                {
-                    InitPropeties();
-                }
+            _properties = Lazy.Create(CreateProperties);
+        }
 
-                return _properties;
-            }
+        public IEnumerable<PropertyViewModel> Properties
+        {
+            get { return _properties.Value; }
         }
 
         public override object Tag
@@ -36,19 +34,15 @@ namespace MilitaryFaculty.Presentation.Core.ViewModels.Entity
             }
         }
 
-        protected EntityViewModel(T model)
-            : base(model)
-        {
-            // Empty
-        }
-
-        private void InitPropeties()
+        private IEnumerable<PropertyViewModel> CreateProperties()
         {
             var type = GetType();
-            _properties = type.GetProperties()
-                              .Where(p => p.HasAttribute<PropertyAttribute>())
-                              .Select(CreatePropertyViewModel)
-                              .ToList();
+            var result = type.GetProperties()
+                             .Where(p => p.HasAttribute<PropertyAttribute>())
+                             .Select(CreatePropertyViewModel)
+                             .ToList();
+
+            return result;
         }
 
         private PropertyViewModel CreatePropertyViewModel(PropertyInfo property)

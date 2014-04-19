@@ -9,6 +9,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class BookListItemViewModel : ListItemViewModel<Book>
     {
+        public BookListItemViewModel(Book model)
+            : base(model)
+        {
+            TooltipViewModel = new BookExtraInfoViewModel(Model);
+            InitCommands();
+        }
+
         public override string PrimaryInfo
         {
             get { return Model.PagesCount.ToString(CultureInfo.InvariantCulture) + "стр."; }
@@ -17,19 +24,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public override string SecondaryInfo
         {
             get { return Model.Name; }
-        }
-
-        public BookListItemViewModel(Book model)
-            : base(model)
-        {
-            InitCommands();
-
-            TooltipViewModel = new BookExtraInfoViewModel(Model);
-        }
-
-        public static Func<Book, BookListItemViewModel> FromModel()
-        {
-            return book => new BookListItemViewModel(book);
         }
 
         private void InitCommands()
@@ -46,8 +40,10 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Удалить книгу";
             const string imageSource = @"..\Content\remove.png";
 
-            return new ImagedCommandViewModel(Do.Book.Remove,
-                Model, tooltip, imageSource);
+            return new ImagedCommandViewModel(Do.BookRemove,
+                                              Model,
+                                              tooltip,
+                                              imageSource);
         }
 
         private ImagedCommandViewModel CreateBrowseBookCommand()
@@ -55,8 +51,20 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Подробно";
             const string imageSource = @"..\..\Content\details.png";
 
-            return new ImagedCommandViewModel(Browse.Book.Details,
-                Model, tooltip, imageSource);
+            return new ImagedCommandViewModel(Browse.BookDetails,
+                                              Model,
+                                              tooltip,
+                                              imageSource);
+        }
+
+        public static BookListItemViewModel FromModel(Book model)
+        {
+            if (model == null)
+            {
+                throw new ArgumentNullException("model");
+            }
+
+            return new BookListItemViewModel(model);
         }
     }
 }

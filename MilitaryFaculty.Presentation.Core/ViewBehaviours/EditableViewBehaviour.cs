@@ -8,28 +8,47 @@ using MilitaryFaculty.Presentation.Core.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Core.ViewBehaviours
 {
+    public static class ViewModelExtensions
+    {
+        public static void Editable<T>(this ViewModel<T> @this, ICommand saveCommand)
+            where T : class, IImitator<T>, new()
+        {
+            if (@this == null)
+            {
+                throw new ArgumentNullException("this");
+            }
+
+            if (saveCommand == null)
+            {
+                throw new ArgumentNullException("saveCommand");
+            }
+
+            new EditableViewBehaviour<T>(saveCommand).Inject(@this);
+        }
+    }
+
     public class EditableViewBehaviour<TModel> : IViewBehaviour
         where TModel : class, IImitator<TModel>, new()
     {
         private readonly ImagedCommandViewModel _editCommandViewModel;
-        private readonly ImagedCommandViewModel _applyCommandViewModel;
+        private readonly ImagedCommandViewModel _saveCommandViewModel;
         private readonly ImagedCommandViewModel _cancelCommandViewModel;
         private readonly List<CommandViewModel> _commandsBackup;
         private readonly TModel _modelBackup;
 
         private ViewModel<TModel> _viewModel;
 
-        public EditableViewBehaviour(ICommand applyCommand)
+        public EditableViewBehaviour(ICommand saveCommand)
         {
-            if (applyCommand == null)
+            if (saveCommand == null)
             {
-                throw new ArgumentNullException("applyCommand");
+                throw new ArgumentNullException("saveCommand");
             }
 
             _commandsBackup = new List<CommandViewModel>();
             _modelBackup = new TModel();
 
-            _applyCommandViewModel = CreateApplyChangesCommand(applyCommand);
+            _saveCommandViewModel = CreateSaveCommand(saveCommand);
             _editCommandViewModel = CreateEditCommand();
             _cancelCommandViewModel = CreateCancelCommand();
         }
@@ -75,22 +94,22 @@ namespace MilitaryFaculty.Presentation.Core.ViewBehaviours
                                               imagePath);
         }
 
-        private ImagedCommandViewModel CreateApplyChangesCommand(ICommand applyCommand)
+        private ImagedCommandViewModel CreateSaveCommand(ICommand applyCommand)
         {
             const string tooltip = "Ок";
             const string imagePath = @"..\Content\ok.png";
 
-            Action apply =
+            Action save =
                 () =>
                 {
                     applyCommand.Execute(_viewModel.Model);
                     ToDisplayMode();
                 };
 
-            Func<bool> canApply =
+            Func<bool> canSave =
                 () => applyCommand.CanExecute(_viewModel.Model);
 
-            var command = new Command(apply, canApply);
+            var command = new Command(save, canSave);
 
             return new ImagedCommandViewModel(command,
                                               tooltip,
@@ -101,7 +120,7 @@ namespace MilitaryFaculty.Presentation.Core.ViewBehaviours
         {
             const string tooltip = "Редактировать";
             const string imagePath = @"..\Content\edit.png";
-           
+
             var command = new Command(ToEditMode);
 
             return new ImagedCommandViewModel(command,
@@ -123,7 +142,7 @@ namespace MilitaryFaculty.Presentation.Core.ViewBehaviours
             _viewModel.Commands.Clear();
             _viewModel.Commands.AddRange(new[]
                                          {
-                                             _applyCommandViewModel,
+                                             _saveCommandViewModel,
                                              _cancelCommandViewModel
                                          });
 

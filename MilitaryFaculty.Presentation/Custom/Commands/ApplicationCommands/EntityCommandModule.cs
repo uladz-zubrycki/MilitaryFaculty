@@ -7,13 +7,13 @@ using MilitaryFaculty.Presentation.Core.Commands;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public abstract class EntityCommandModule<T> : ICommandContainerModule
+    public abstract class EntityCommandModule<T> : ICommandModule
         where T : class, IUniqueEntity
     {
         private readonly IRepository<T> _repository;
 
         protected abstract RoutedCommand AddCommand { get; }
-        protected abstract RoutedCommand UpdateCommand { get; }
+        protected abstract RoutedCommand SaveCommand { get; }
         protected abstract RoutedCommand RemoveCommand { get; }
 
         protected EntityCommandModule(IRepository<T> repository)
@@ -26,23 +26,23 @@ namespace MilitaryFaculty.Presentation.Custom
             _repository = repository;
         }
 
-        public void RegisterModule(CommandContainer container)
+        public void LoadModule(RoutedCommands commands)
         {
-            if (container == null)
+            if (commands == null)
             {
                 throw new ArgumentNullException("sink");
             }
 
-            container.RegisterCommand<T>(AddCommand,
-                OnAddEntity,
-                CanAddEntity);
+            commands.AddCommand<T>(AddCommand,
+                                   OnAddEntity,
+                                   CanAddEntity);
 
-            container.RegisterCommand<T>(UpdateCommand,
-                OnUpdateEntity,
-                CanUpdateEntity);
+            commands.AddCommand<T>(SaveCommand,
+                                   OnSaveEntity,
+                                   CanSaveEntity);
 
-            container.RegisterCommand<T>(RemoveCommand,
-                OnRemoveEntity);
+            commands.AddCommand<T>(RemoveCommand,
+                                   OnRemoveEntity);
         }
 
         protected abstract string GetRemovalMessage();
@@ -63,12 +63,12 @@ namespace MilitaryFaculty.Presentation.Custom
             Browse.Back.Execute(null, null);
         }
 
-        private bool CanUpdateEntity(T entity)
+        private bool CanSaveEntity(T entity)
         {
             return true;
         }
 
-        private void OnUpdateEntity(T entity)
+        private void OnSaveEntity(T entity)
         {
             if (entity == null)
             {

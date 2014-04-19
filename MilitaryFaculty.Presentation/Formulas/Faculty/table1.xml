@@ -4,32 +4,32 @@
   <Groups>
     <Group name="Полнота разработки планирующих документов">
       <Formulas>
-        <id>id11</id>
+        <id>11</id>
       </Formulas>
     </Group>
     <Group name="Уровень организации и проведения: научных (научно-практических) конференций, научных семинаров">
       <Formulas>
-        <id>id12</id>
+        <id>12</id>
       </Formulas>
     </Group>
     <Group name="Уровень организации подготовки научно-педагогических работников высшей квалификации">
       <Formulas>
-        <id>id13</id>
+        <id>13</id>
       </Formulas>
     </Group>
     <Group name="Уровень организации военно-исторической работы">
       <Formulas>
-        <id>id14</id>
+        <id>14</id>
       </Formulas>
     </Group>
     <Group name="Уровень организации работы научных кружков слушателей, курсантов (студентов)">
       <Formulas>
-        <id>id15</id>
+        <id>15</id>
       </Formulas>
     </Group>
     <Group name="Другие частные показатели, характеризующие качество организации научной работы">
       <Formulas>
-        <id>id16</id>
+        <id>16</id>
       </Formulas>
     </Group>
   </Groups>

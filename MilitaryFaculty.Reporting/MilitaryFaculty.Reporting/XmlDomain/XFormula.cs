@@ -9,7 +9,7 @@ namespace MilitaryFaculty.Reporting.XmlDomain
     public class XFormula
     {
         [XmlAttribute("id")]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [XmlAttribute("name")]
         public string Name { get; set; }

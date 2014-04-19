@@ -11,30 +11,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ProfessorExhibitionsViewModel : ViewModel<Professor>
     {
-        private ObservableCollection<ExhibitionListItemViewModel> _exhibitions;
-
-        public override string Title
-        {
-            get { return "Участие в научных выставках и конкурсах"; }
-        }
-
-        public ObservableCollection<ExhibitionListItemViewModel> Exhibitions
-        {
-            get
-            {
-                if (_exhibitions == null)
-                {
-                    InitExhibitions();
-                }
-
-                return _exhibitions;
-            }
-        }
-
-        public int ExhibitionsCount
-        {
-            get { return Exhibitions.Count; }
-        }
+        private Lazy<ObservableCollection<ExhibitionListItemViewModel>> _exhibitions;
 
         public ProfessorExhibitionsViewModel(Professor model, IRepository<Exhibition> exhibitionRepository)
             : base(model)
@@ -44,10 +21,27 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 throw new ArgumentNullException("exhibitionRepository");
             }
 
+            _exhibitions = Lazy.Create(CreateExhibitionsViewModel);
+
             exhibitionRepository.EntityCreated += OnExhibitionCreated;
             exhibitionRepository.EntityDeleted += OnExhibitionDeleted;
 
             Commands.Add(CreateAddExhibitionCommand());
+        }
+
+        public override string Title
+        {
+            get { return "Участие в научных выставках и конкурсах"; }
+        }
+
+        public ObservableCollection<ExhibitionListItemViewModel> Exhibitions
+        {
+            get { return _exhibitions.Value; }
+        }
+
+        public int ExhibitionsCount
+        {
+            get { return Exhibitions.Count; }
         }
 
         private ImagedCommandViewModel CreateAddExhibitionCommand()
@@ -55,17 +49,22 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Добавить научную выставку";
             const string imageSource = @"..\Content\add.png";
 
-            return new ImagedCommandViewModel(Browse.Exhibition.Add,
-                Model, tooltip, imageSource);
+            return new ImagedCommandViewModel(Browse.ExhibitionAdd,
+                                              Model,
+                                              tooltip,
+                                              imageSource);
         }
 
-        private void InitExhibitions()
+        private ObservableCollection<ExhibitionListItemViewModel> CreateExhibitionsViewModel()
         {
-            var converter = ExhibitionListItemViewModel.FromModel();
-            var items = Model.Exhibitions.Select(converter);
+            var exhibitions = Model.Exhibitions
+                                   .Select(ExhibitionListItemViewModel.FromModel)
+                                   .ToList();
 
-            _exhibitions = new ObservableCollection<ExhibitionListItemViewModel>(items);
-            _exhibitions.CollectionChanged += (sender, args) => { OnPropertyChanged("ExhibitionsCount"); };
+            var result = new ObservableCollection<ExhibitionListItemViewModel>(exhibitions);
+            result.CollectionChanged += (sender, args) => OnPropertyChanged("ExhibitionsCount");
+
+            return result;
         }
 
         private void OnExhibitionCreated(object sender, ModifiedEntityEventArgs<Exhibition> e)

@@ -8,6 +8,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     internal class AddPublicationViewModel : AddEntityViewModel<Publication>
     {
+        public AddPublicationViewModel(Publication model)
+            : base(model)
+        {
+            // EMpty
+        }
+
         public override string Title
         {
             get { return "Добавить публикацию"; }
@@ -15,13 +21,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         public override ICommand AddCommand
         {
-            get { return Do.Publication.Add; }
-        }
-
-        public AddPublicationViewModel(Publication model)
-            : base(model)
-        {
-            // EMpty
+            get { return Do.PublicationAdd; }
         }
 
         protected override IEnumerable<ViewModel<Publication>> GetViewModels()

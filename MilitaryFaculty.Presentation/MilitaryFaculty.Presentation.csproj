@@ -95,7 +95,6 @@
     <Compile Include="Custom\Commands\ApplicationCommands\ReportingCommandModule.cs" />
     <Compile Include="Custom\Commands\NavigationCommands\BookNavigationModule.cs" />
     <Compile Include="Custom\Commands\NavigationCommands\ExhibitionNavigationModule.cs" />
-    <Compile Include="Custom\Commands\Report.cs" />
     <Compile Include="Custom\Commands\ApplicationCommands\ExhibitionCommandModule.cs" />
     <Compile Include="Custom\Commands\ApplicationCommands\ConferenceCommandModule.cs" />
     <Compile Include="Custom\Commands\ApplicationCommands\ProfessorCommandModule.cs" />
@@ -434,7 +433,32 @@
   <ItemGroup>
     <Resource Include="Content\details.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Formulas\Faculty\table1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Formulas\Faculty\table2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Formulas\Faculty\table3.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Formulas\Faculty\table4.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Formulas\formulas.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Formulas\Professor\table1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Formulas\Professor\table2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Formulas\Professor\table3.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using MilitaryFaculty.Domain;
-using MilitaryFaculty.Presentation.Core;
+﻿using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Core.Attributes;
 using MilitaryFaculty.Presentation.Core.ViewBehaviours;
 using MilitaryFaculty.Presentation.Core.ViewModels.Entity;
@@ -10,6 +8,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class BookInfoViewModel : EntityViewModel<Book>
     {
+        public BookInfoViewModel(Book model)
+            : base(model)
+        {
+            this.Editable(Do.BookSave);
+        }
+
         public override string Title
         {
             get { return "Основная информация"; }
@@ -26,19 +30,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public int PagesCount
         {
             get { return Model.PagesCount; }
-
             set { SetModelProperty(m => m.PagesCount, value); }
-        }
-
-        public BookInfoViewModel(Book model)
-            : base(model)
-        {
-            // Empty
-        }
-
-        protected override IEnumerable<IViewBehaviour> GetBehaviours()
-        {
-            yield return new EditableViewBehaviour<Book>(Do.Book.Update);
         }
     }
 }

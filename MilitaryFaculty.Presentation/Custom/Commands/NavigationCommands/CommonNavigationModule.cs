@@ -22,20 +22,20 @@ namespace MilitaryFaculty.Presentation.Custom
             ViewModel.WorkWindowChanged += ViewModelOnWorkWindowChanged;
         }
 
-        public override void RegisterModule(CommandContainer container)
+        public override void LoadModule(RoutedCommands commands)
         {
-            if (container == null)
+            if (commands == null)
             {
                 throw new ArgumentNullException("sink");
             }
 
-            container.RegisterCommand(Browse.Back,
-                OnBrowseBack,
-                CanBrowseBack);
+            commands.AddCommand(Browse.Back,
+                                OnBrowseBack,
+                                CanBrowseBack);
 
-            container.RegisterCommand(Browse.Forward,
-                OnBrowseForward,
-                CanBrowseForward);
+            commands.AddCommand(Browse.Forward,
+                                OnBrowseForward,
+                                CanBrowseForward);
         }
 
         private void ViewModelOnWorkWindowChanged(object sender, WorkWindowChangedEventArgs e)
@@ -108,12 +108,14 @@ namespace MilitaryFaculty.Presentation.Custom
 
         private bool IsChangedByBrowseForward(WorkWindowChangedEventArgs e)
         {
-            return _forwardHistory.First != null && e.NewValue == _forwardHistory.First.Value;
+            return _forwardHistory.First != null &&
+                   e.NewValue == _forwardHistory.First.Value;
         }
 
         private bool IsChangedByBrowseBack(WorkWindowChangedEventArgs e)
         {
-            return _backHistory.First != null && e.NewValue == _backHistory.First.Value;
+            return _backHistory.First != null &&
+                   e.NewValue == _backHistory.First.Value;
         }
     }
 }

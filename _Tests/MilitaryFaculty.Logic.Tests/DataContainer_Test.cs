@@ -45,74 +45,41 @@ namespace MilitaryFaculty.Logic.Tests
                 new PublicationsDataProvider(new Repository<Publication>(context))
                 ));
 
-            var relDirPath = ConfigurationManager.AppSettings["relatedFormulasPath"];
+            //var relDirPath = ConfigurationManager.AppSettings["relatedFormulasPath"];
 
-            var formulaBaseName = ConfigurationManager.AppSettings["baseFormulasName"];
-            var formulasFilesCount = int.Parse(ConfigurationManager.AppSettings["formulasFilesCount"]);
+            //var formulaBaseName = ConfigurationManager.AppSettings["baseFormulasName"];
+            //var formulasFilesCount = int.Parse(ConfigurationManager.AppSettings["formulasFilesCount"]);
 
-            //var tableBaseName = ConfigurationManager.AppSettings["baseFacultyTableName"];
-            //var tablesCount = int.Parse(ConfigurationManager.AppSettings["facultyTablesCount"]);
+            ////var tableBaseName = ConfigurationManager.AppSettings["baseFacultyTableName"];
+            ////var tablesCount = int.Parse(ConfigurationManager.AppSettings["facultyTablesCount"]);
 
-            var tableBaseName = ConfigurationManager.AppSettings["baseProfessorTableName"];
-            var tablesCount = int.Parse(ConfigurationManager.AppSettings["professorsTablesCount"]);
+            //var tableBaseName = ConfigurationManager.AppSettings["baseProfessorTableName"];
+            //var tablesCount = int.Parse(ConfigurationManager.AppSettings["professorsTablesCount"]);
 
-            var dirPath = Environment.CurrentDirectory + relDirPath;
+            //var dirPath = Environment.CurrentDirectory + relDirPath;
 
-            var tableFiles = Enumerable.Range(1, tablesCount)
-                                       .Select(i => dirPath + tableBaseName + i + ".xml")
-                                       .ToList();
+            //var tableFiles = Enumerable.Range(1, tablesCount)
+            //                           .Select(i => dirPath + tableBaseName + i + ".xml")
+            //                           .ToList();
 
-            var formulaFiles = Enumerable.Range(1, formulasFilesCount)
-                                         .Select(i => dirPath + formulaBaseName + i + ".xml")
-                                         .ToList();
+            //var formulaFiles = Enumerable.Range(1, formulasFilesCount)
+            //                             .Select(i => dirPath + formulaBaseName + i + ".xml")
+            //                             .ToList();
 
-            var formulaProvider = new FormulaProvider(formulaFiles);
-            var tableProvider = new ReportTableProvider(tableFiles);
+            //var formulaProvider = new FormulaProvider(formulaFiles);
+            //var tableProvider = new ReportTableProvider(tableFiles);
 
-            var report = new List<Report>();
-            var reportGenerator = new ReportGenerator(tableProvider, formulaProvider, reportDataProvider);
+            //var report = new List<Report>();
+            //var reportGenerator = new ReportGenerator(tableProvider, formulaProvider, reportDataProvider);
             
-            var interval = new TimeInterval(new DateTime(2000, 1, 1), DateTime.Now);
-            var prof = profRepository.Table.Single(p => p.FullName.LastName.StartsWith("Кашкаров"));
-            report.Add(reportGenerator.Generate(prof, interval));
-            prof = profRepository.Table.Single(p => p.FullName.LastName.StartsWith("Касанин"));
-            report.Add(reportGenerator.Generate(prof, interval));
+            //var interval = new TimeInterval(new DateTime(2000, 1, 1), DateTime.Now);
+            //var prof = profRepository.Table.Single(p => p.FullName.LastName.StartsWith("Кашкаров"));
+            //report.Add(reportGenerator.Generate(prof, interval));
+            //prof = profRepository.Table.Single(p => p.FullName.LastName.StartsWith("Касанин"));
+            //report.Add(reportGenerator.Generate(prof, interval));
 
-            var reportingService = new ExcelReportingService();
-            reportingService.ExportReport(@"D:\1.xlsx", report);
-        }
-
-        [Test]
-        public void fdf()
-        {
-            var t = new List<XFormula>
-            {
-                new XFormula
-                {
-                    Arguments = new List<XArgument>
-                    {
-                        new XArgument
-                        {
-                            Name = "fdf",
-                            Text = "fdf"
-                        }
-                    },
-                    Coefficients = new List<XCoefficient>
-                    {
-                        new XCoefficient
-                        {
-                            Name = "fdf",
-                            Value = 43
-                        }
-                    },
-                    Name = "fdf",
-                    MaxValue = 43,
-                    Id = "fd",
-                    Expression = "fdf"
-                }
-            };
-
-            new XmlSerializer(typeof (List<XFormula>)).Serialize(XmlWriter.Create(@"D:\1.xml"), t);
+            //var reportingService = new ExcelReportingService();
+            //reportingService.ExportReport(@"D:\1.xlsx", report);
         }
     }
 
