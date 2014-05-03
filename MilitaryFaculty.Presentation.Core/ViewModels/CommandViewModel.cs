@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 
 namespace MilitaryFaculty.Presentation.Core.ViewModels
 {
@@ -10,14 +11,23 @@ namespace MilitaryFaculty.Presentation.Core.ViewModels
         protected CommandViewModel(ICommand model, string tooltip)
             : base(model)
         {
+            if (model == null)
+            {
+                throw new ArgumentNullException("model");
+            }
+
+            if (String.IsNullOrEmpty(tooltip))
+            {
+                throw new ArgumentException();
+            }
+
             Tooltip = tooltip;
         }
 
         protected CommandViewModel(ICommand model, object parameter, string tooltip)
-            : base(model)
+            : this(model, tooltip)
         {
             Parameter = parameter;
-            Tooltip = tooltip;
         }
     }
 }

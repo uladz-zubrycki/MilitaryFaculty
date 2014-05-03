@@ -11,39 +11,38 @@ namespace MilitaryFaculty.Presentation.Core.Commands
     /// <remarks>
     ///     Used for registering RoutedCommands inside view models, but not code-behind files.
     /// </remarks>
-    public class CommandContainer : ICommandContainer
+    public class RoutedCommands
     {
-        private readonly Dictionary<RoutedCommand, ICommand> _commandToCallbackMap =
+        private readonly Dictionary<RoutedCommand, ICommand> _commands =
             new Dictionary<RoutedCommand, ICommand>();
 
-        public virtual bool CanExecuteCommand(RoutedCommand command, object parameter, out bool handled)
+        public bool CanExecuteCommand(RoutedCommand command, object parameter, out bool handled)
         {
             if (command == null)
             {
                 throw new ArgumentNullException("command");
             }
 
-            if (_commandToCallbackMap.ContainsKey(command))
+            if (_commands.ContainsKey(command))
             {
                 handled = true;
-
-                return _commandToCallbackMap[command].CanExecute(parameter);
+                return _commands[command].CanExecute(parameter);
             }
 
             return (handled = false);
         }
 
-        public virtual void ExecuteCommand(RoutedCommand command, object parameter, out bool handled)
+        public void ExecuteCommand(RoutedCommand command, object parameter, out bool handled)
         {
             if (command == null)
             {
                 throw new ArgumentNullException("command");
             }
 
-            if (_commandToCallbackMap.ContainsKey(command))
+            if (_commands.ContainsKey(command))
             {
                 handled = true;
-                _commandToCallbackMap[command].Execute(parameter);
+                _commands[command].Execute(parameter);
             }
             else
             {
@@ -51,12 +50,12 @@ namespace MilitaryFaculty.Presentation.Core.Commands
             }
         }
 
-        public void RegisterCommand(RoutedCommand command, Action execute)
+        public void AddCommand(RoutedCommand command, Action execute)
         {
-            RegisterCommand(command, execute, null);
+            AddCommand(command, execute, null);
         }
 
-        public void RegisterCommand(RoutedCommand command, Action execute, Func<bool> canExecute)
+        public void AddCommand(RoutedCommand command, Action execute, Func<bool> canExecute)
         {
             if (command == null)
             {
@@ -68,15 +67,15 @@ namespace MilitaryFaculty.Presentation.Core.Commands
                 throw new ArgumentNullException("execute");
             }
 
-            _commandToCallbackMap[command] = new Command(execute, canExecute);
+            _commands[command] = new Command(execute, canExecute);
         }
 
-        public void RegisterCommand<T>(RoutedCommand command, Action<T> execute)
+        public void AddCommand<T>(RoutedCommand command, Action<T> execute)
         {
-            RegisterCommand(command, execute, null);
+            AddCommand(command, execute, null);
         }
 
-        public void RegisterCommand<T>(RoutedCommand command, Action<T> execute, Func<T, bool> canExecute)
+        public void AddCommand<T>(RoutedCommand command, Action<T> execute, Func<T, bool> canExecute)
         {
             if (command == null)
             {
@@ -87,19 +86,19 @@ namespace MilitaryFaculty.Presentation.Core.Commands
                 throw new ArgumentNullException("execute");
             }
 
-            _commandToCallbackMap[command] = new Command<T>(execute, canExecute);
+            _commands[command] = new Command<T>(execute, canExecute);
         }
 
-        public void UnregisterCommand(RoutedCommand command)
+        public void RemoveCommand(RoutedCommand command)
         {
             if (command == null)
             {
                 throw new ArgumentNullException("command");
             }
 
-            if (_commandToCallbackMap.ContainsKey(command))
+            if (_commands.ContainsKey(command))
             {
-                _commandToCallbackMap.Remove(command);
+                _commands.Remove(command);
             }
         }
     }

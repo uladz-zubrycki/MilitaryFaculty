@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Core.Attributes;
 using MilitaryFaculty.Presentation.Core.ViewBehaviours;
@@ -10,6 +9,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ConferenceInfoViewModel : EntityViewModel<Conference>
     {
+        public ConferenceInfoViewModel(Conference model)
+            : base(model)
+        {
+            this.Editable(Do.ConferenceSave);
+        }
+
         public override string Title
         {
             get { return "Базовая информация"; }
@@ -34,17 +39,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             get { return Model.Date; }
             set { SetModelProperty(m => m.Date, value); }
-        }
-
-        public ConferenceInfoViewModel(Conference model)
-            : base(model)
-        {
-            // Empty
-        }
-
-        protected override IEnumerable<IViewBehaviour> GetBehaviours()
-        {
-            yield return new EditableViewBehaviour<Conference>(Do.Conference.Update);
         }
     }
 }

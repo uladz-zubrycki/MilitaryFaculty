@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using Autofac;
 using Autofac.Features.Indexed;
@@ -48,7 +49,8 @@ namespace MilitaryFaculty.Presentation
         /// <param name="builder">Builder for service container.</param>
         private static void RegisterEntityContext(ContainerBuilder builder)
         {
-            var connectionString = ConfigurationManager.ConnectionStrings["Current"].ConnectionString;
+            var connectionStringSettings = ConfigurationManager.ConnectionStrings["Current"];
+            var connectionString = connectionStringSettings.ConnectionString;
 
             builder.RegisterType<EntityContext>()
                    .AsSelf()
@@ -58,19 +60,13 @@ namespace MilitaryFaculty.Presentation
 
         private static void RegisterFormulaProvider(ContainerBuilder builder)
         {
-            var relDirPath = ConfigurationManager.AppSettings["relatedFormulasPath"];
-            var baseName = ConfigurationManager.AppSettings["baseFormulasName"];
-            var filesCount = int.Parse(ConfigurationManager.AppSettings["formulasFilesCount"]);
-
-            var dirPath = Environment.CurrentDirectory + relDirPath;
-
-            var files = Enumerable.Range(1, filesCount)
-                                  .Select(i => dirPath + baseName + i + ".xml")
-                                  .ToList();
+            var curPath = Environment.CurrentDirectory;
+            var formulasFileName = ConfigurationManager.AppSettings["formulasFile"];
+            var formulasFilePath = Path.Combine(curPath, formulasFileName);
 
             builder.RegisterType<FormulaProvider>()
                    .As<IFormulaProvider>()
-                   .WithParameter("files", files)
+                   .WithParameter("file", formulasFilePath)
                    .SingleInstance();
         }
 
@@ -78,10 +74,10 @@ namespace MilitaryFaculty.Presentation
         {
             Func<IComponentContext, Func<ReportType, IReportTableProvider>> factory =
                 ctx => type =>
-                {
-                    var factDict = ctx.Resolve<IIndex<ReportType, IReportTableProvider>>();
-                    return factDict[type];
-                };
+                       {
+                           var index = ctx.Resolve<IIndex<ReportType, IReportTableProvider>>();
+                           return index[type];
+                       };
 
             builder.Register(factory)
                    .As<Func<ReportType, IReportTableProvider>>()
@@ -90,36 +86,25 @@ namespace MilitaryFaculty.Presentation
 
         private static void RegisterFacultyReportTableProvider(ContainerBuilder builder)
         {
-            var relDirPath = ConfigurationManager.AppSettings["relatedFormulasPath"];
-            var baseName = ConfigurationManager.AppSettings["baseFacultyTableName"];
-            var filesCount = int.Parse(ConfigurationManager.AppSettings["facultyTablesCount"]);
-
-            var dirPath = Environment.CurrentDirectory + relDirPath;
-
-            var files = Enumerable.Range(1, filesCount)
-                                  .Select(i => dirPath + baseName + i + ".xml")
-                                  .ToList();
+            var curPath = Environment.CurrentDirectory;
+            var tablesRelPath = ConfigurationManager.AppSettings["facultyTablesPath"];
+            var tablesPath = Path.Combine(curPath, tablesRelPath);
 
             builder.RegisterType<ReportTableProvider>()
                    .Keyed<IReportTableProvider>(ReportType.Faculty)
-                   .WithParameter("files", files)
+                   .WithParameter("tablesPath", tablesPath)
                    .SingleInstance();
         }
 
         private static void RegisterProfessorReportTableProvider(ContainerBuilder builder)
         {
-            var relDirPath = ConfigurationManager.AppSettings["relatedFormulasPath"];
-            var baseName = ConfigurationManager.AppSettings["baseProfessorTableName"];
-            var filesCount = int.Parse(ConfigurationManager.AppSettings["professorsTablesCount"]);
-            var dirPath = Environment.CurrentDirectory + relDirPath;
-
-            var files = Enumerable.Range(1, filesCount)
-                                  .Select(i => dirPath + baseName + i + ".xml")
-                                  .ToList();
+            var curPath = Environment.CurrentDirectory;
+            var tablesRelPath = ConfigurationManager.AppSettings["professorTablesPath"];
+            var tablesPath = Path.Combine(curPath, tablesRelPath);
 
             builder.RegisterType<ReportTableProvider>()
                    .Keyed<IReportTableProvider>(ReportType.Professor)
-                   .WithParameter("files", files)
+                   .WithParameter("tablesPath", tablesPath)
                    .SingleInstance();
         }
 

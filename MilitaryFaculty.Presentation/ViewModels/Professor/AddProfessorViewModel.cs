@@ -8,6 +8,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     internal class AddProfessorViewModel : AddEntityViewModel<Professor>
     {
+        public AddProfessorViewModel(Professor model)
+            : base(model)
+        {
+            // Empty
+        }
+
         public override string Title
         {
             get { return "Добавить преподавателя:"; }
@@ -15,13 +21,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         public override ICommand AddCommand
         {
-            get { return Do.Professor.Add; }
-        }
-
-        public AddProfessorViewModel(Professor model)
-            : base(model)
-        {
-            // Empty
+            get { return Do.ProfessorAdd; }
         }
 
         protected override IEnumerable<ViewModel<Professor>> GetViewModels()

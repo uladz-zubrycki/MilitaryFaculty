@@ -13,10 +13,10 @@ namespace MilitaryFaculty.Presentation.Custom
             // Empty
         }
 
-        public override void RegisterModule(CommandContainer container)
+        public override void LoadModule(RoutedCommands commands)
         {
-            container.RegisterCommand<Cathedra>(Browse.Professor.Add,
-                                                OnBrowseProfessorAdd);
+            commands.AddCommand<Cathedra>(Browse.ProfessorAdd,
+                                          OnBrowseProfessorAdd);
         }
 
         private void OnBrowseProfessorAdd(Cathedra cathedra)

@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using MilitaryFaculty.Extensions;
-using MilitaryFaculty.Presentation.Core.ViewBehaviours;
 
 namespace MilitaryFaculty.Presentation.Core.ViewModels
 {
@@ -15,8 +11,13 @@ namespace MilitaryFaculty.Presentation.Core.ViewModels
     {
         private object _tag;
 
-        public virtual string Title { get; protected set; }
         public ObservableCollection<CommandViewModel> Commands { get; private set; }
+        public virtual string Title { get; protected set; }
+
+        protected ViewModel()
+        {
+            Commands = new ObservableCollection<CommandViewModel>();
+        }
 
         public virtual object Tag
         {
@@ -28,24 +29,7 @@ namespace MilitaryFaculty.Presentation.Core.ViewModels
             }
         }
 
-        protected ViewModel()
-        {
-            Commands = new ObservableCollection<CommandViewModel>();
-            InjectBehaviours();
-        }
-
-        private void InjectBehaviours()
-        {
-            var behaviours = GetBehaviours();
-            behaviours.ForEach(b => b.Inject(this));
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual IEnumerable<IViewBehaviour> GetBehaviours()
-        {
-            return Enumerable.Empty<IViewBehaviour>();
-        }
 
         protected bool SetValue<TField>(Expression<Func<TField>> evaluator, TField value,
                                         [CallerMemberName] string propertyName = null)

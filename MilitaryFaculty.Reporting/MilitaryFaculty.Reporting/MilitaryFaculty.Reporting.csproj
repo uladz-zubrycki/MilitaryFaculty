@@ -106,19 +106,6 @@
       <Name>MilitaryFaculty.Reporting.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="formulas\faculty-table-1.xml" />
-    <Content Include="formulas\faculty-table-2.xml" />
-    <Content Include="formulas\faculty-table-3.xml" />
-    <Content Include="formulas\faculty-table-4.xml" />
-    <Content Include="formulas\formulas-1.xml" />
-    <Content Include="formulas\professor-table-1.xml" />
-    <Content Include="formulas\professor-table-2.xml" />
-    <Content Include="formulas\professor-table-3.xml" />
-    <Content Include="formulas\formulas-4.xml" />
-    <Content Include="formulas\formulas-2.xml" />
-    <Content Include="formulas\formulas-3.xml" />
-  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

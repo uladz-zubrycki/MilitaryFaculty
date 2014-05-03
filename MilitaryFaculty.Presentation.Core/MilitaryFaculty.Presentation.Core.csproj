@@ -45,11 +45,10 @@
   <ItemGroup>
     <Compile Include="Attributes\PropertyAttribute.cs" />
     <Compile Include="Commands\Command.cs" />
-    <Compile Include="Commands\CommandContainer.cs" />
-    <Compile Include="Commands\CommandContainerBinding.cs" />
+    <Compile Include="Commands\RoutedCommands.cs" />
+    <Compile Include="Commands\RoutedBinding.cs" />
     <Compile Include="Commands\Command{T}.cs" />
-    <Compile Include="Commands\ICommandContainer.cs" />
-    <Compile Include="Commands\ICommandContainerModule.cs" />
+    <Compile Include="Commands\ICommandModule.cs" />
     <Compile Include="Markup\BoolToVisibilityConverter.cs" />
     <Compile Include="Markup\Converter.cs" />
     <Compile Include="Markup\DateToStringConverter.cs" />
@@ -58,7 +57,6 @@
     <Compile Include="Markup\IntToStringConverter.cs" />
     <Compile Include="Markup\ParametrizedConverter.cs" />
     <Compile Include="Extensions\ServiceProviderExtensions.cs" />
-    <Compile Include="Markup\Command.cs" />
     <Compile Include="ViewBehaviours\EditableViewBehaviour.cs" />
     <Compile Include="ViewBehaviours\EditableViewMode.cs" />
     <Compile Include="ViewBehaviours\IViewBehaviour.cs" />

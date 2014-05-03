@@ -2,7 +2,7 @@
 
 namespace MilitaryFaculty.FormulaEditor.Domain
 {
-    internal class Argument
+    internal sealed class Argument
     {
         public readonly string Name;
         public readonly string Text;

@@ -4,7 +4,7 @@ using System.Collections.Immutable;
 
 namespace MilitaryFaculty.FormulaEditor.Domain
 {
-    internal class Formula
+    internal sealed class Formula
     {
         public readonly string Name;
         public readonly double MaxValue;

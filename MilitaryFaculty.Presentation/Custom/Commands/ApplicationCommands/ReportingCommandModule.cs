@@ -1,14 +1,12 @@
 ﻿using System;
 using Microsoft.Win32;
-using MilitaryFaculty.Presentation.Core;
 using MilitaryFaculty.Presentation.Core.Commands;
-using MilitaryFaculty.Reporting;
 using MilitaryFaculty.Reporting.Excel;
 using MilitaryFaculty.Reporting.ReportDomain;
 
 namespace MilitaryFaculty.Presentation.Custom
 {
-    public class ReportingCommandModule : ICommandContainerModule
+    public class ReportingCommandModule : ICommandModule
     {
         private readonly ExcelReportingService _service;
 
@@ -22,9 +20,9 @@ namespace MilitaryFaculty.Presentation.Custom
             _service = service;
         }
 
-        public void RegisterModule(CommandContainer container)
+        public void LoadModule(RoutedCommands commands)
         {
-            container.RegisterCommand(Report.Generate, GenerateReport);
+            commands.AddCommand(Do.ReportGenerate, GenerateReport);
         }
 
         private void GenerateReport()
@@ -40,7 +38,7 @@ namespace MilitaryFaculty.Presentation.Custom
             {
                 var filename = dialog.FileName;
                 //TODO: generate report
-                Reporting.ReportDomain.Report report = null;
+                Report report = null;
                 _service.ExportReport(filename, report);
             }
         }

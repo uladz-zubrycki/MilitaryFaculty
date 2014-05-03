@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using MilitaryFaculty.Domain;
+﻿using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Core.Attributes;
 using MilitaryFaculty.Presentation.Core.ViewBehaviours;
 using MilitaryFaculty.Presentation.Core.ViewModels.Entity;
@@ -9,14 +8,17 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ConferenceReportViewModel : EntityViewModel<Conference>
     {
+        public ConferenceReportViewModel(Conference model)
+            : base(model)
+        {
+           this.Editable(Do.ConferenceSave);
+        }
+
         public override string Title
         {
             get { return "Отчёт о конференции"; }
         }
 
-        /// <summary>
-        ///     Evaluates conference theme actuality.
-        /// </summary>
         [EnumProperty(Label = "Актуальность тематики:")]
         public AccordanceLevel ThemeActuality
         {
@@ -24,9 +26,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             set { SetModelProperty(m => m.ConferenceReport.ThemeActuality, value); }
         }
 
-        /// <summary>
-        ///     Evaluates conference organization correctness.
-        /// </summary>
         [EnumProperty(Label = "Правильность организации:")]
         public AccordanceLevel OrganizationCorrectness
         {
@@ -34,9 +33,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
             set { SetModelProperty(m => m.ConferenceReport.OrganizationCorrectness, value); }
         }
 
-        /// <summary>
-        ///     Evaluates availability of conference report materials.
-        /// </summary>
         [EnumProperty(Label = "Наличие отчётных материалов:")]
         public AccordanceLevel ReportMaterials
         {
@@ -44,25 +40,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
             set { SetModelProperty(m => m.ConferenceReport.ReportMaterials, value); }
         }
 
-        /// <summary>
-        ///     Evaluates level of conference results adoption.
-        /// </summary>
         [EnumProperty(Label = "Внедрение результатов:")]
         public AccordanceLevel ResultsUsage
         {
             get { return Model.ConferenceReport.ResultsUsage; }
             set { SetModelProperty(m => m.ConferenceReport.ResultsUsage, value); }
-        }
-
-        public ConferenceReportViewModel(Conference model)
-            : base(model)
-        {
-            // Empty
-        }
-
-        protected override IEnumerable<IViewBehaviour> GetBehaviours()
-        {
-            yield return new EditableViewBehaviour<Conference>(Do.Conference.Update);
         }
     }
 }

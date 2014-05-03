@@ -12,7 +12,7 @@ namespace MilitaryFaculty.Reporting.XmlDomain
         public string Name { get; set; }
 
         [XmlArray("Formulas")]
-        [XmlArrayItem("id", typeof (string))]
-        public List<string> Formulas { get; set; }
+        [XmlArrayItem("id", typeof (int))]
+        public List<int> Formulas { get; set; }
     }
 }

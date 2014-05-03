@@ -11,7 +11,23 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ProfessorPublicationsViewModel : ViewModel<Professor>
     {
-        private ObservableCollection<PublicationListItemViewModel> _publications;
+        private readonly Lazy<ObservableCollection<PublicationListItemViewModel>> _publications;
+
+        public ProfessorPublicationsViewModel(Professor model,
+                                              IRepository<Publication> publicationRepository)
+            : base(model)
+        {
+            if (publicationRepository == null)
+            {
+                throw new ArgumentNullException("publicationRepository");
+            }
+
+            _publications = Lazy.Create(CreatePublicationsViewModel);
+
+            publicationRepository.EntityCreated += OnPublicationCreated;
+            publicationRepository.EntityDeleted += OnPublicationDeleted;
+            Commands.Add(CreateAddPublicationCommand());
+        }
 
         public override string Title
         {
@@ -20,15 +36,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         public ObservableCollection<PublicationListItemViewModel> Publications
         {
-            get
-            {
-                if (_publications == null)
-                {
-                    InitPublications();
-                }
-
-                return _publications;
-            }
+            get { return _publications.Value; }
         }
 
         public int MonographsCount
@@ -51,43 +59,34 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return GetPublicationsCount(PublicationType.Thesis); }
         }
 
-        public ProfessorPublicationsViewModel(Professor model, IRepository<Publication> publicationRepository)
-            : base(model)
-        {
-            if (publicationRepository == null)
-            {
-                throw new ArgumentNullException("publicationRepository");
-            }
-
-            publicationRepository.EntityCreated += OnPublicationCreated;
-            publicationRepository.EntityDeleted += OnPublicationDeleted;
-            Commands.Add(CreateAddPublicationCommand());
-        }
-
         private ImagedCommandViewModel CreateAddPublicationCommand()
         {
             const string tooltip = "Добавить публикацию";
             const string imageSource = @"..\Content\add.png";
 
-            return new ImagedCommandViewModel(Browse.Publication.Add,
-                Model, tooltip, imageSource);
+            return new ImagedCommandViewModel(Browse.PublicationAdd,
+                                              Model,
+                                              tooltip,
+                                              imageSource);
         }
 
-        private void InitPublications()
+        private ObservableCollection<PublicationListItemViewModel> CreatePublicationsViewModel()
         {
-            var converter = PublicationListItemViewModel.FromModel();
-            var items = Model.Publications.Select(converter);
+            var publications = Model.Publications
+                                    .Select(PublicationListItemViewModel.FromModel)
+                                    .ToList();
 
-            _publications = new ObservableCollection<PublicationListItemViewModel>(items);
+            var result = new ObservableCollection<PublicationListItemViewModel>(publications);
+            result.CollectionChanged += (sender, args) =>
+                                        {
+                                            //todo property name from expression 
+                                            OnPropertyChanged("MonographsCount");
+                                            OnPropertyChanged("ReviewedArticlesCount");
+                                            OnPropertyChanged("ArticlesCount");
+                                            OnPropertyChanged("ThesisesCount");
+                                        };
 
-            _publications.CollectionChanged += (sender, args) =>
-                                               {
-                                                   //todo property as lambda
-                                                   OnPropertyChanged("MonographsCount");
-                                                   OnPropertyChanged("ReviewedArticlesCount");
-                                                   OnPropertyChanged("ArticlesCount");
-                                                   OnPropertyChanged("ThesisesCount");
-                                               };
+            return result;
         }
 
         private void OnPublicationCreated(object sender, ModifiedEntityEventArgs<Publication> e)

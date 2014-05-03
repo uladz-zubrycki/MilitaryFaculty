@@ -73,9 +73,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContainer_Test.cs" />
+    <Compile Include="Debug.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\FormulaEditor\MilitaryFaculty.FormulaEditor.csproj">
+      <Project>{5F0C285C-02E3-40F9-A93A-777A7FE64EBE}</Project>
+      <Name>MilitaryFaculty.FormulaEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MilitaryFaculty.Data\MilitaryFaculty.Data.Contract\MilitaryFaculty.Data.Contract.csproj">
       <Project>{1F3C691F-2E66-4A98-AD58-1FC5B752317D}</Project>
       <Name>MilitaryFaculty.Data.Contract</Name>
@@ -114,6 +119,11 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\formulas-1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using MilitaryFaculty.Domain;
+﻿using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Core.Attributes;
 using MilitaryFaculty.Presentation.Core.ViewBehaviours;
 using MilitaryFaculty.Presentation.Core.ViewModels.Entity;
@@ -9,6 +8,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ProfessorInfoViewModel : EntityViewModel<Professor>
     {
+        public ProfessorInfoViewModel(Professor model)
+            : base(model)
+        {
+            this.Editable(Do.ProfessorSave);
+        }
+
         public override string Title
         {
             get { return "Базовая информация"; }
@@ -40,17 +45,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             get { return Model.MilitaryRank; }
             set { SetModelProperty(m => m.MilitaryRank, value); }
-        }
-
-        public ProfessorInfoViewModel(Professor model)
-            : base(model)
-        {
-            // Empty
-        }
-
-        protected override IEnumerable<IViewBehaviour> GetBehaviours()
-        {
-            yield return new EditableViewBehaviour<Professor>(Do.Professor.Update);
         }
     }
 }

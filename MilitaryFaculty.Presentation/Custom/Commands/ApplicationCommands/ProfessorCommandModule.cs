@@ -6,30 +6,31 @@ namespace MilitaryFaculty.Presentation.Custom
 {
     public class ProfessorCommandModule : EntityCommandModule<Professor>
     {
-        protected override RoutedCommand AddCommand
-        {
-            get { return Do.Professor.Add; }
-        }
-
-        protected override RoutedCommand UpdateCommand
-        {
-            get { return Do.Professor.Update; }
-        }
-
-        protected override RoutedCommand RemoveCommand
-        {
-            get { return Do.Professor.Remove; }
-        }
-
         public ProfessorCommandModule(IRepository<Professor> repository)
             : base(repository)
         {
             // Empty
         }
 
+        protected override RoutedCommand AddCommand
+        {
+            get { return Do.ProfessorAdd; }
+        }
+
+        protected override RoutedCommand SaveCommand
+        {
+            get { return Do.ProfessorSave; }
+        }
+
+        protected override RoutedCommand RemoveCommand
+        {
+            get { return Do.ProfessorRemove; }
+        }
+
         protected override string GetRemovalMessage()
         {
-            return "Вы действительно хотите удалить преподавателя? Все данные будут утеряны.";
+            return ("Вы действительно хотите удалить преподавателя? " +
+                    "Все данные будут утеряны.");
         }
     }
 }

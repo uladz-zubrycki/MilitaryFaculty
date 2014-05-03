@@ -8,6 +8,13 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ConferenceListItemViewModel : ListItemViewModel<Conference>
     {
+        public ConferenceListItemViewModel(Conference model)
+            : base(model)
+        {
+            TooltipViewModel = new ConferenceReportViewModel(Model);
+            InitCommands();
+        }
+
         public override string PrimaryInfo
         {
             get { return Model.Date.ToShortDateString(); }
@@ -16,18 +23,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
         public override string SecondaryInfo
         {
             get { return Model.Name; }
-        }
-
-        public ConferenceListItemViewModel(Conference model)
-            : base(model)
-        {
-            TooltipViewModel = new ConferenceReportViewModel(Model);
-            InitCommands();
-        }
-
-        public static Func<Conference, ConferenceListItemViewModel> FromModel()
-        {
-            return conference => new ConferenceListItemViewModel(conference);
         }
 
         protected void InitCommands()
@@ -44,8 +39,10 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Удалить конференцию";
             const string imageSource = @"..\Content\remove.png";
 
-            return new ImagedCommandViewModel(Do.Conference.Remove,
-                Model, tooltip, imageSource);
+            return new ImagedCommandViewModel(Do.ConferenceRemove,
+                                              Model,
+                                              tooltip,
+                                              imageSource);
         }
 
         private ImagedCommandViewModel CreateBrowseConferenceDetailsCommand()
@@ -53,8 +50,20 @@ namespace MilitaryFaculty.Presentation.ViewModels
             const string tooltip = "Подробно";
             const string imageSource = @"..\..\Content\details.png";
 
-            return new ImagedCommandViewModel(Browse.Conference.Details,
-                Model, tooltip, imageSource);
+            return new ImagedCommandViewModel(Browse.ConferenceDetails,
+                                              Model,
+                                              tooltip,
+                                              imageSource);
+        }
+
+        public static ConferenceListItemViewModel FromModel(Conference model)
+        {
+            if (model == null)
+            {
+                throw new ArgumentNullException("model");
+            }
+
+            return new ConferenceListItemViewModel(model);
         }
     }
 }

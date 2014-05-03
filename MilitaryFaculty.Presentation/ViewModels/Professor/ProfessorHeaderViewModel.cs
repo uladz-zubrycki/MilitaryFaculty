@@ -5,6 +5,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class ProfessorHeaderViewModel : ViewModel<Professor>
     {
+        public ProfessorHeaderViewModel(Professor model)
+            : base(model)
+        {
+            // Empty
+        }
+
         public string FullName
         {
             get { return Model.FullName.ToString(); }
@@ -14,12 +20,6 @@ namespace MilitaryFaculty.Presentation.ViewModels
         {
             get { return Model.MilitaryRank; }
             set { SetModelProperty(m => m.MilitaryRank, value); }
-        }
-
-        public ProfessorHeaderViewModel(Professor model)
-            : base(model)
-        {
-            // Empty
         }
     }
 }

@@ -6,30 +6,31 @@ namespace MilitaryFaculty.Presentation.Custom
 {
     public class BookCommandModule : EntityCommandModule<Book>
     {
-        protected override RoutedCommand AddCommand
-        {
-            get { return Do.Book.Add; }
-        }
-
-        protected override RoutedCommand UpdateCommand
-        {
-            get { return Do.Book.Update; }
-        }
-
-        protected override RoutedCommand RemoveCommand
-        {
-            get { return Do.Book.Remove; }
-        }
-
         public BookCommandModule(IRepository<Book> repository)
             : base(repository)
         {
             // Empty
         }
 
+        protected override RoutedCommand AddCommand
+        {
+            get { return Do.BookAdd; }
+        }
+
+        protected override RoutedCommand SaveCommand
+        {
+            get { return Do.BookSave; }
+        }
+
+        protected override RoutedCommand RemoveCommand
+        {
+            get { return Do.BookRemove; }
+        }
+
         protected override string GetRemovalMessage()
         {
-            return "Вы действительно хотите удалить книгу? Все данные будут утеряны.";
+            return ("Вы действительно хотите удалить книгу? " +
+                    "Все данные будут утеряны.");
         }
     }
 }

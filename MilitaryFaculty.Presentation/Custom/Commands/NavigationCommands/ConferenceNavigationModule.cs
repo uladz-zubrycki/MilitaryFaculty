@@ -13,18 +13,18 @@ namespace MilitaryFaculty.Presentation.Custom
             // Empty
         }
 
-        public override void RegisterModule(CommandContainer container)
+        public override void LoadModule(RoutedCommands commands)
         {
-            if (container == null)
+            if (commands == null)
             {
                 throw new ArgumentNullException("container");
             }
 
-            container.RegisterCommand<Professor>(Browse.Conference.Add,
-                                                 OnBrowseConferenceAdd);
+            commands.AddCommand<Professor>(Browse.ConferenceAdd,
+                                           OnBrowseConferenceAdd);
 
-            container.RegisterCommand<Conference>(Browse.Conference.Details,
-                                                  OnBrowseConferenceDetails);
+            commands.AddCommand<Conference>(Browse.ConferenceDetails,
+                                            OnBrowseConferenceDetails);
         }
 
         private void OnBrowseConferenceAdd(Professor curator)

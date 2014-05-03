@@ -8,6 +8,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class AddBookViewModel : AddEntityViewModel<Book>
     {
+        public AddBookViewModel(Book model)
+            : base(model)
+        {
+            // Empty
+        }
+
         public override string Title
         {
             get { return "Добавить учебник"; }
@@ -15,13 +21,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         public override ICommand AddCommand
         {
-            get { return Do.Book.Add; }
-        }
-
-        public AddBookViewModel(Book model)
-            : base(model)
-        {
-            // Empty
+            get { return Do.BookAdd; }
         }
 
         protected override IEnumerable<ViewModel<Book>> GetViewModels()

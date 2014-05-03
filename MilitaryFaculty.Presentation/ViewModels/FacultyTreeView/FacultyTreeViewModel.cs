@@ -16,30 +16,21 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         private readonly IRepository<Cathedra> _cathedraRepository;
         private readonly IRepository<Professor> _professorRepository;
-
-        private ObservableCollection<CathedraTreeItemViewModel> _cathedras;
+        private readonly Lazy<ObservableCollection<CathedraTreeItemViewModel>> _cathedras;
 
         private IEnumerator<ITreeItemViewModel> _searchEnumerator;
         private string _searchString;
 
         public ICommand SearchCommand { get; private set; }
 
+        public ObservableCollection<CathedraTreeItemViewModel> Cathedras
+        {
+            get { return _cathedras.Value; }
+        }
+
         public override IEnumerable<ITreeItemViewModel> Items
         {
             get { return Cathedras; }
-        }
-
-        public ObservableCollection<CathedraTreeItemViewModel> Cathedras
-        {
-            get
-            {
-                if (_cathedras == null)
-                {
-                    InitCathedras();
-                }
-
-                return _cathedras;
-            }
         }
 
         public string SearchString
@@ -80,6 +71,8 @@ namespace MilitaryFaculty.Presentation.ViewModels
                 throw new ArgumentNullException("cathedraRepository");
             }
 
+            _cathedras = Lazy.Create(CreateCathedrasViewModel);
+
             _professorRepository = professorRepository;
             _cathedraRepository = cathedraRepository;
 
@@ -119,55 +112,46 @@ namespace MilitaryFaculty.Presentation.ViewModels
             return enumerator;
         }
 
-        private void InitCathedras()
+        private ObservableCollection<CathedraTreeItemViewModel> CreateCathedrasViewModel()
         {
-            var converter = CathedraTreeItemViewModel.FromModel(this,
-                _professorRepository);
+            var convert = CathedraTreeItemViewModel.FromModel(this, _professorRepository);
+            var cathedras = _cathedraRepository.Table.Select(convert);
 
-            var items = _cathedraRepository.Table
-                                           .Select(converter)
-                                           .ToList();
+            var result = new ObservableCollection<CathedraTreeItemViewModel>(cathedras);
 
-            _cathedras = new ObservableCollection<CathedraTreeItemViewModel>(items);
+            return result;
         }
 
         private Func<ITreeItemViewModel, bool> GetSearchCriteria()
         {
-            Func<ITreeItemViewModel, bool> criteria = item =>
-                                                      {
-                                                          var title = item.Title;
-                                                          var match = Regex.Match(title, SearchString,
-                                                              RegexOptions.IgnoreCase);
+            Func<ITreeItemViewModel, bool> criteria =
+                item =>
+                {
+                    var title = item.Title;
+                    var match = Regex.Match(title, SearchString,
+                                            RegexOptions.IgnoreCase);
 
-                                                          return match.Success;
-                                                      };
+                    return match.Success;
+                };
 
             return criteria;
         }
 
         private void OnCathedraCreated(object sender, ModifiedEntityEventArgs<Cathedra> e)
         {
-            if (e == null)
-            {
-                throw new ArgumentNullException("e");
-            }
-
             var cathedra = e.ModifiedEntity;
-            var converter = CathedraTreeItemViewModel.FromModel(this,
-                _professorRepository);
+            var cathedraViewModel = CathedraTreeItemViewModel.FromModel(
+                model: cathedra,
+                owner: this,
+                professorRepository: _professorRepository);
 
-            Cathedras.Add(converter(cathedra));
+            Cathedras.Add(cathedraViewModel);
         }
 
         private void OnCathedraDeleted(object sender, ModifiedEntityEventArgs<Cathedra> e)
         {
-            if (e == null)
-            {
-                throw new ArgumentNullException("e");
-            }
-
             var cathedra = e.ModifiedEntity;
-            _cathedras.RemoveSingle(c => c.Model.Equals(cathedra));
+            Cathedras.RemoveSingle(c => c.Model.Equals(cathedra));
         }
     }
 }
