@@ -8,18 +8,18 @@ namespace MilitaryFaculty.Reporting
 {
     public class ReportGenerator : IReportGenerator
     {
-        protected IReportTableProvider TableProvider;
-        protected IFormulaProvider FormulaProvider;
-        protected ReportDataProvider ReportDataProvider;
+        private IReportTableResolver ReportTableResolver;
+        private IFormulaProvider FormulaProvider;
+        private ReportDataProvider ReportDataProvider;
 
         public ReportGenerator
             (
-            IReportTableProvider tableProvider,
+            IReportTableResolver reportTableResolver,
             IFormulaProvider formulaProvider,
             ReportDataProvider reportDataProvider
             )
         {
-            TableProvider = tableProvider;
+            ReportTableResolver = reportTableResolver;
             FormulaProvider = formulaProvider;
             ReportDataProvider = reportDataProvider;
         }
@@ -40,20 +40,20 @@ namespace MilitaryFaculty.Reporting
             if (entity == null)
             {
                 ReportDataProvider.ReportDataProvidersContainer.ClearModificators();
-                return new Report("Faculty", TableProvider, FormulaProvider, ReportDataProvider);
+                return new Report("Faculty", ReportTableResolver.GetTableProvider(typeof(Cathedra)), FormulaProvider, ReportDataProvider);
             }
             if (entity is Cathedra)
             {
                 var cathedra = (Cathedra) entity;
                 //TODO: Cathedra report
                 ReportDataProvider.ReportDataProvidersContainer.ClearModificators();
-                return new Report(cathedra.Name, TableProvider, FormulaProvider, ReportDataProvider);
+                return new Report(cathedra.Name, ReportTableResolver.GetTableProvider(typeof(Cathedra)), FormulaProvider, ReportDataProvider);
             }
             if (entity is Professor)
             {
                 var professor = (Professor) entity;
                 ReportDataProvider.ReportDataProvidersContainer.SetProfessorModificator(professor, interval);
-                return new Report(professor.FullName.ToString(), TableProvider, FormulaProvider, ReportDataProvider);
+                return new Report(professor.FullName.ToString(), ReportTableResolver.GetTableProvider(typeof(Professor)), FormulaProvider, ReportDataProvider);
             }
 
             throw new ArgumentException("Type of entity is not supported.");

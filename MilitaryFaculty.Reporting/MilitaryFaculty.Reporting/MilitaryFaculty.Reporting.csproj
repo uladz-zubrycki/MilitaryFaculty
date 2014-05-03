@@ -63,6 +63,7 @@
     <Compile Include="Characteristic.cs" />
     <Compile Include="FormulaInfo.cs" />
     <Compile Include="IReportGenerator.cs" />
+    <Compile Include="IReportTableResolver.cs" />
     <Compile Include="Providers\FormulaProvider.cs" />
     <Compile Include="Providers\IFormulaProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="ReportDomain\ReportRow.cs" />
     <Compile Include="ReportDomain\ReportGroup.cs" />
     <Compile Include="ReportDomain\ReportTable.cs" />
+    <Compile Include="ReportTableResolver.cs" />
     <Compile Include="ReportType.cs" />
     <Compile Include="XmlDomain\XArgument.cs" />
     <Compile Include="XmlDomain\XCoefficient.cs" />

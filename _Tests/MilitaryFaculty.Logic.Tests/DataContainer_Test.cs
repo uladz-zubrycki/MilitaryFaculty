@@ -36,8 +36,10 @@ namespace MilitaryFaculty.Logic.Tests
         [Test]
         public void TestExcel()
         {
+            //To receive profs
             Repository<Professor> profRepository;
 
+            //Register data provider
             var reportDataProvider = new ReportDataProvider(new DataProvidersContainer(
                 new CathedrasDataProvider(new Repository<Cathedra>(context)),
                 new ConferencesDataProvider(new Repository<Conference>(context)),
@@ -46,40 +48,40 @@ namespace MilitaryFaculty.Logic.Tests
                 new PublicationsDataProvider(new Repository<Publication>(context))
                 ));
 
-            var relDirPath = ConfigurationManager.AppSettings["relatedFormulasPath"];
-
-            var formulaBaseName = ConfigurationManager.AppSettings["baseFormulasName"];
-            var formulasFilesCount = int.Parse(ConfigurationManager.AppSettings["formulasFilesCount"]);
-
-            //var tableBaseName = ConfigurationManager.AppSettings["baseFacultyTableName"];
-            //var tablesCount = int.Parse(ConfigurationManager.AppSettings["facultyTablesCount"]);
-
-            //var tableBaseName = ConfigurationManager.AppSettings["baseProfessorTableName"];
-            //var tablesCount = int.Parse(ConfigurationManager.AppSettings["professorsTablesCount"]);
-            //var dirPath = Environment.CurrentDirectory + relDirPath;
-
-            var curDir = @"d:\Other\git_projects\MilitaryFaculty\MilitaryFaculty.Presentation\Formulas\";
+            //Register formula provider
+            const string curDir = @"d:\Other\git_projects\MilitaryFaculty\MilitaryFaculty.Presentation\Formulas\";
             string fileName = "formulas.xml";
             var filePath = Path.Combine(curDir, fileName);
             var formulaProvider = new FormulaProvider(filePath);
+            
+            //Register report tables resolver
+            var reportTableResolver = new ReportTableResolver();
+
             fileName = @"Professor\";
             filePath = Path.Combine(curDir, fileName);
             var tableProvider = new ReportTableProvider(filePath);
+            reportTableResolver.RegisterTableProvider(typeof(Professor), tableProvider);
+
+            fileName = @"Faculty\";
+            filePath = Path.Combine(curDir, fileName);
+            tableProvider = new ReportTableProvider(filePath);
+            reportTableResolver.RegisterTableProvider(typeof(Cathedra), tableProvider);
+
+            //Creating reports
+            var interval = new TimeInterval(new DateTime(2000, 1, 1), DateTime.Now);
+            var reportGenerator = new ReportGenerator(reportTableResolver, formulaProvider, reportDataProvider);
 
             var reports = new List<Report>();
-            var reportGenerator = new ReportGenerator(tableProvider, formulaProvider, reportDataProvider);
-            
-            var interval = new TimeInterval(new DateTime(2000, 1, 1), DateTime.Now);
-            //var prof = profRepository.Table.Single(p => p.FullName.LastName.StartsWith("Кашкаров"));
-            //reports.Add(reportGenerator.Generate(prof, interval));
-            //prof = profRepository.Table.Single(p => p.FullName.LastName.StartsWith("Касанин"));
-            //reports.Add(reportGenerator.Generate(prof, interval));
-
-            //var unified = Report.Unify(reports);
+            var prof = profRepository.Table.Single(p => p.FullName.LastName.StartsWith("Кашкаров"));
+            reports.Add(reportGenerator.Generate(prof, interval));
+            prof = profRepository.Table.Single(p => p.FullName.LastName.StartsWith("Касанин"));
+            reports.Add(reportGenerator.Generate(prof, interval));
 
             var report = reportGenerator.Generate(null, interval);
 
+            //Generation
             var reportingService = new ExcelReportingService();
+            reportingService.ExportReport(@"D:\1.xlsx", reports);
             reportingService.ExportReport(@"D:\2.xlsx", report);
         }
     }
