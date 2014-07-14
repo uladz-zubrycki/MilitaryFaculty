@@ -68,6 +68,7 @@
     <Compile Include="Exhibition\Exhibition.cs" />
     <Compile Include="ImprovementSuggestion\ImprovementSuggestion.cs" />
     <Compile Include="Professor\AcademicDegree.cs" />
+    <Compile Include="Professor\AcademicDegreeChanging.cs" />
     <Compile Include="Professor\AcademicRank.cs" />
     <Compile Include="Professor\FullName.cs" />
     <Compile Include="Professor\JobPosition.cs" />
@@ -83,6 +84,8 @@
     <Compile Include="ScientificRequest\ScientificRequestType.cs" />
     <Compile Include="ScientificResearch\MilitaryScientificSupportState.cs" />
     <Compile Include="ScientificResearch\ScientificResearch.cs" />
+    <Compile Include="Synopsis\Synopsis.cs" />
+    <Compile Include="Synopsis\SynopsisType.cs" />
     <Compile Include="UniqueEntity.cs" />
     <Compile Include="Publication\Publication.cs" />
     <Compile Include="Publication\PublicationType.cs" />
@@ -97,9 +100,7 @@
       <Name>MilitaryFaculty.Domain.Contract</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dissertation\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,18 +5,19 @@ namespace MilitaryFaculty.Data
 {
     public class EntityContext : DbContext
     {
+        public DbSet<Book> Books { get; set; }
         public DbSet<Cathedra> Cathedras { get; set; }
         public DbSet<Conference> Conferences { get; set; }
+        public DbSet<Exhibition> Exhibitions { get; set; }
         public DbSet<Professor> Professors { get; set; }
         public DbSet<Publication> Publications { get; set; }
-        public DbSet<Book> Books { get; set; }
-        public DbSet<Exhibition> Exhibitions { get; set; }
+        public DbSet<Synopsis> Synopses { get; set; }
+
 
         public DbSet<ScientificExpertise> ScientificExpertises { get; set; }
         public DbSet<ScientificRequest> ScientificRequests { get; set; }
         public DbSet<ScientificResearch> ScientificResearches { get; set; }
         public DbSet<ImprovementSuggestion> ImprovementSuggestions { get; set; }
-        public DbSet<Participation> Participations { get; set; }
 
         public EntityContext(string connectionString)
             : base(connectionString)
@@ -38,6 +39,8 @@ namespace MilitaryFaculty.Data
             modelBuilder.Configurations.Add(new ScientificResearchConfiguration());
             modelBuilder.Configurations.Add(new ImprovementSuggestionConfiguration());
             modelBuilder.Configurations.Add(new ParticipationConfiguration());
+            modelBuilder.Configurations.Add(new AcademicDegreeChangingConfiguraton());
+            modelBuilder.Configurations.Add(new SynopsisConfiguration());
 
             modelBuilder.Configurations.Add(new ConferenceReportConfiguration());
             modelBuilder.Configurations.Add(new FullNameConfiguration());

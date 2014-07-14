@@ -67,11 +67,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\AcademicDegreeChangingConfiguraton.cs" />
     <Compile Include="Configurations\BookConfiguration.cs" />
     <Compile Include="Configurations\ExhibitionConfiguration.cs" />
+    <Compile Include="Configurations\ImprovementSuggestionConfiguration.cs" />
+    <Compile Include="Configurations\ParticipationConfiguration.cs" />
     <Compile Include="Configurations\PublicationConfiguration.cs" />
     <Compile Include="Configurations\CathedraConfiguration.cs" />
     <Compile Include="Configurations\FullNameConfiguration.cs" />
+    <Compile Include="Configurations\ScientificExpertiseConfiguration.cs" />
+    <Compile Include="Configurations\ScientificRequestConfiguration.cs" />
+    <Compile Include="Configurations\ScientificResearchConfiguration.cs" />
+    <Compile Include="Configurations\SynopsisConfiguration.cs" />
     <Compile Include="EntityContext.cs" />
     <Compile Include="Configurations\ConferenceConfiguration.cs" />
     <Compile Include="Configurations\ConferenceReportConfiguration.cs" />
