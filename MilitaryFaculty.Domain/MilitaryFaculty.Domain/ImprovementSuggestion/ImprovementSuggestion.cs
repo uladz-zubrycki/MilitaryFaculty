@@ -1,7 +1,7 @@
 ﻿using System;
 using MilitaryFaculty.Domain.Contract;
 
-namespace MilitaryFaculty.Domain.ImprovementSuggestion
+namespace MilitaryFaculty.Domain
 {
     public class ImprovementSuggestion : UniqueEntity, IImitator<ImprovementSuggestion>
     {

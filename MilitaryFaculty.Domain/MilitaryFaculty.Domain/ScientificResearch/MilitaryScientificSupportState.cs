@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MilitaryFaculty.Extensions;
+﻿using MilitaryFaculty.Extensions;
 
-namespace MilitaryFaculty.Domain.ScientificResearch
+namespace MilitaryFaculty.Domain
 {
     public enum MilitaryScientificSupportState
     {

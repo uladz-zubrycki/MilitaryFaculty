@@ -12,6 +12,12 @@ namespace MilitaryFaculty.Data
         public DbSet<Book> Books { get; set; }
         public DbSet<Exhibition> Exhibitions { get; set; }
 
+        public DbSet<ScientificExpertise> ScientificExpertises { get; set; }
+        public DbSet<ScientificRequest> ScientificRequests { get; set; }
+        public DbSet<ScientificResearch> ScientificResearches { get; set; }
+        public DbSet<ImprovementSuggestion> ImprovementSuggestions { get; set; }
+        public DbSet<Participation> Participations { get; set; }
+
         public EntityContext(string connectionString)
             : base(connectionString)
         {
@@ -26,6 +32,12 @@ namespace MilitaryFaculty.Data
             modelBuilder.Configurations.Add(new PublicationConfiguration());
             modelBuilder.Configurations.Add(new ExhibitionConfiguration());
             modelBuilder.Configurations.Add(new BookConfiguration());
+
+            modelBuilder.Configurations.Add(new ScientificExpertiseConfiguration());
+            modelBuilder.Configurations.Add(new ScientificRequestConfiguration());
+            modelBuilder.Configurations.Add(new ScientificResearchConfiguration());
+            modelBuilder.Configurations.Add(new ImprovementSuggestionConfiguration());
+            modelBuilder.Configurations.Add(new ParticipationConfiguration());
 
             modelBuilder.Configurations.Add(new ConferenceReportConfiguration());
             modelBuilder.Configurations.Add(new FullNameConfiguration());

@@ -72,6 +72,8 @@
     <Compile Include="Professor\FullName.cs" />
     <Compile Include="Professor\JobPosition.cs" />
     <Compile Include="Professor\MilitaryRank.cs" />
+    <Compile Include="Professor\Participation.cs" />
+    <Compile Include="Professor\ParticipationPlace.cs" />
     <Compile Include="Professor\Professor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cathedra\Cathedra.cs" />
@@ -95,7 +97,9 @@
       <Name>MilitaryFaculty.Domain.Contract</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Dissertation\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -12,7 +12,6 @@ namespace MilitaryFaculty.Domain
         public Professor Participant { get; set; }
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
-        public bool IsCurrent { get; set; }
         public DateTime EndDate { get; set; }
 
         public ParticipationPlace PlaceType
@@ -35,7 +34,6 @@ namespace MilitaryFaculty.Domain
             Name = String.Empty;
             StartDate = DateTime.Now;
             EndDate = DateTime.MaxValue;
-            IsCurrent = true;
             _placeType = ParticipationPlace.HigherAttestationCommission;
         }
 
@@ -56,7 +54,6 @@ namespace MilitaryFaculty.Domain
             Name = other.Name;
             StartDate = other.StartDate;
             EndDate = other.EndDate;
-            IsCurrent = other.IsCurrent;
             PlaceType = other.PlaceType;
         }
     }

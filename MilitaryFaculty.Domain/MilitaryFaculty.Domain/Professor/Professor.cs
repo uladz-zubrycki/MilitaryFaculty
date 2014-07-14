@@ -22,6 +22,12 @@ namespace MilitaryFaculty.Domain
         public virtual ICollection<Exhibition> Exhibitions { get; set; }
         public virtual ICollection<Book> Books { get; set; }
 
+        public virtual ICollection<ScientificResearch> ScientificResearches { get; set; }
+        public virtual ICollection<ScientificRequest> ScientificRequests { get; set; }
+        public virtual ICollection<ScientificExpertise> ScientificExpertises { get; set; }
+        public virtual ICollection<ImprovementSuggestion> ImprovementSuggestions { get; set; }
+        public virtual ICollection<Participation> Participations { get; set; }
+
         public virtual MilitaryRank MilitaryRank
         {
             get { return _militaryRank; }

@@ -1,7 +1,7 @@
 ﻿using System;
 using MilitaryFaculty.Domain.Contract;
 
-namespace MilitaryFaculty.Domain.ScientificExpertise
+namespace MilitaryFaculty.Domain
 {
     public class ScientificExpertise : UniqueEntity, IImitator<ScientificExpertise>
     {
