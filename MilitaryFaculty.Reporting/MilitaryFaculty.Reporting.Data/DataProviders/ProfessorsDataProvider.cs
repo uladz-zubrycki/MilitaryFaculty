@@ -262,7 +262,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         public double StaffingOfHighQualificatioBelow20()
         {
             var ratio = HighQualificationProfsCount()/ProfessorsCount();
-            return ratio > 0.001 && ratio <= 0.2 ? 1 : 0;
+            return ratio > 0.0001 && ratio <= 0.2 ? 1 : 0;
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("SoHqE0")]
         public double StaffingOfHighQualificatioEqual0()
         {
-            return Math.Abs(HighQualificationProfsCount()) < 0.001 ? 1 : 0;
+            return Math.Abs(HighQualificationProfsCount()) < 0.0001 ? 1 : 0;
         }
 
         /// <summary>

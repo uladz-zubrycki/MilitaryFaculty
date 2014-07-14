@@ -3,20 +3,20 @@ using System.ComponentModel;
 using MilitaryFaculty.Domain.Contract;
 using MilitaryFaculty.Extensions;
 
-namespace MilitaryFaculty.Domain
+namespace MilitaryFaculty.Domain.ScientificResearch
 {
-    public class Publication : UniqueEntity, IImitator<Publication>
+    public class ScientificResearch : UniqueEntity, IImitator<ScientificResearch>
     {
-        private PublicationType _publicationType;
+        private MilitaryScientificSupportState _state;
 
-        public virtual Professor Author { get; set; }
-        public virtual string Name { get; set; }
-        public virtual int PagesCount { get; set; }
-        public virtual DateTime Date { get; set; }
+        public string Name { get; set; }
+        public DateTime Date { get; set; }
+        public Professor Author { get; set; }
+        public int PagesCount { get; set; }
 
-        public virtual PublicationType PublicationType
+        public MilitaryScientificSupportState State
         {
-            get { return _publicationType; }
+            get { return _state; }
             set
             {
                 if (!value.IsDefined())
@@ -24,25 +24,26 @@ namespace MilitaryFaculty.Domain
                     throw new InvalidEnumArgumentException();
                 }
 
-                _publicationType = value;
+                _state = value;
             }
         }
 
-        public Publication()
+        public ScientificResearch()
         {
             Id = Guid.Empty;
             Name = String.Empty;
             Date = DateTime.Now;
             PagesCount = 0;
-            PublicationType = PublicationType.Monograph;
+            _state = MilitaryScientificSupportState.NotCompleted;
         }
 
-        public Publication(Publication other)
+        public ScientificResearch(ScientificResearch other)
+            : this()
         {
             Imitate(other);
         }
 
-        public void Imitate(Publication other)
+        public void Imitate(ScientificResearch other)
         {
             if (other == null)
             {
@@ -50,11 +51,11 @@ namespace MilitaryFaculty.Domain
             }
 
             Id = other.Id;
-            Date = other.Date;
             Name = other.Name;
             PagesCount = other.PagesCount;
             Author = other.Author;
-            PublicationType = other.PublicationType;
+            Date = other.Date;
+            State = other.State;
         }
     }
 }

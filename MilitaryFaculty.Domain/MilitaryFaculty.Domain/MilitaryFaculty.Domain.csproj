@@ -66,6 +66,7 @@
     <Compile Include="EventLevel.cs" />
     <Compile Include="Exhibition\AwardType.cs" />
     <Compile Include="Exhibition\Exhibition.cs" />
+    <Compile Include="ImprovementSuggestion\ImprovementSuggestion.cs" />
     <Compile Include="Professor\AcademicDegree.cs" />
     <Compile Include="Professor\AcademicRank.cs" />
     <Compile Include="Professor\FullName.cs" />
@@ -74,6 +75,12 @@
     <Compile Include="Professor\Professor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cathedra\Cathedra.cs" />
+    <Compile Include="ScientificExpertise\ScientificExpertise.cs" />
+    <Compile Include="ScientificRequest\ScientificRequest.cs" />
+    <Compile Include="ScientificRequest\ScientificRequestResponce.cs" />
+    <Compile Include="ScientificRequest\ScientificRequestType.cs" />
+    <Compile Include="ScientificResearch\MilitaryScientificSupportState.cs" />
+    <Compile Include="ScientificResearch\ScientificResearch.cs" />
     <Compile Include="UniqueEntity.cs" />
     <Compile Include="Publication\Publication.cs" />
     <Compile Include="Publication\PublicationType.cs" />
@@ -88,6 +95,7 @@
       <Name>MilitaryFaculty.Domain.Contract</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

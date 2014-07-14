@@ -12,6 +12,7 @@ namespace MilitaryFaculty.Domain
         public virtual Professor Author { get; set; }
         public virtual string Name { get; set; }
         public virtual int PagesCount { get; set; }
+        public virtual DateTime Date { get; set; }
 
         public virtual BookType BookType
         {
@@ -32,6 +33,7 @@ namespace MilitaryFaculty.Domain
             Id = Guid.Empty;
             Name = String.Empty;
             PagesCount = 0;
+            Date = DateTime.Now;
             _bookType = BookType.Schoolbook;
         }
 
@@ -52,6 +54,7 @@ namespace MilitaryFaculty.Domain
             PagesCount = other.PagesCount;
             Author = other.Author;
             BookType = other.BookType;
+            Date = other.Date;
         }
     }
 }
