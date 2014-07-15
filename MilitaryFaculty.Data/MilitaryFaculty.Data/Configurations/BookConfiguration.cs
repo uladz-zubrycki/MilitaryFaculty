@@ -13,6 +13,7 @@ namespace MilitaryFaculty.Data
             Property(m => m.BookType).IsRequired();
             Property(m => m.Name).IsRequired();
             Property(m => m.PagesCount).IsRequired();
+            Property(m => m.Date).IsRequired();
 
             HasRequired(m => m.Author).WithMany(p => p.Books);
         }

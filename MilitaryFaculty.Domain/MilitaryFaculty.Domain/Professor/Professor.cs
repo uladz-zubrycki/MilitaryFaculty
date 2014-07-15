@@ -100,6 +100,14 @@ namespace MilitaryFaculty.Domain
             Publications = new Collection<Publication>();
             Exhibitions = new Collection<Exhibition>();
             Books = new Collection<Book>();
+
+            ScientificResearches = new Collection<ScientificResearch>();
+            ScientificRequests = new Collection<ScientificRequest>();
+            ScientificExpertises = new Collection<ScientificExpertise>();
+            ImprovementSuggestions = new Collection<ImprovementSuggestion>();
+            Synopses = new Collection<Synopsis>();
+            AcademicDegreeChangings = new Collection<AcademicDegreeChanging>();
+            Participations = new Collection<Participation>();
         }
 
         public Professor(Professor other)

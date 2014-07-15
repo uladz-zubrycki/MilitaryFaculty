@@ -268,6 +268,33 @@ namespace MilitaryFaculty.Data.Tests
             context.SaveChanges();
         }
 
+        private static void SeedScientificResearches(EntityContext context)
+        {
+            var professor1 = context.Professors
+                                    .AsQueryable()
+                                    .Single(p => p.FullName.LastName == "Кашкаров");
+
+            var scientificResearches = new[]
+                              {
+                                  new ScientificResearch()
+                                  {
+                                      Name = "Какая-то научная работа",
+                                      Author = professor1,
+                                      Date = DateTime.Today,
+                                      PagesCount = 50,
+                                      State = MilitaryScientificSupportState.Completed
+                                  }
+                              };
+
+
+            foreach (var research in scientificResearches)
+            {
+                context.ScientificResearches.Add(research);
+            }
+
+            context.SaveChanges();
+        }
+
         [Test]
         public void InitDatabase()
         {
@@ -277,6 +304,7 @@ namespace MilitaryFaculty.Data.Tests
             SeedPublications(context);
             SeedBooks(context);
             SeedExhibitions(context);
+            SeedScientificResearches(context);
         }
     }
 }

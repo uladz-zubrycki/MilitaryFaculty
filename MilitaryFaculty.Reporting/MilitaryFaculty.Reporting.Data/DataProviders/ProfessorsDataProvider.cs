@@ -335,7 +335,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("SrwProfsCount")]
         public double ScientificResearchWorkProfessorsCount()
         {
-            return CountOf(p => p.ScientificResearches.Count != 0);
+            return CountOf(p => p.ScientificResearches.Count != 0 );
         }
     }
 }

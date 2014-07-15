@@ -40,6 +40,11 @@ namespace MilitaryFaculty.Reporting.ReportDomain
                 var characteristic = new Characteristic(formulaInfo, reportDataProvider);
                 var value = NormalizeValue(characteristic.Evaluate());
 
+                if (double.IsNaN(value))
+                {
+                    value = 0;
+                }
+
                 //TODO: Round or Integral part?
                 var reportFormula = new ReportRow(formulaInfo.Name,
                     Convert.ToInt32(value),

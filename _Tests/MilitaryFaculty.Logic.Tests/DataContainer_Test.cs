@@ -41,15 +41,20 @@ namespace MilitaryFaculty.Logic.Tests
 
             //Register data provider
             var reportDataProvider = new ReportDataProvider(new DataProvidersContainer(
+                new BooksDataProvider(new Repository<Book>(context)), 
                 new CathedrasDataProvider(new Repository<Cathedra>(context)),
                 new ConferencesDataProvider(new Repository<Conference>(context)),
                 new ExhibitionsDataProvider(new Repository<Exhibition>(context)),
+                new ImprovementSuggestionsDataProvider(new Repository<ImprovementSuggestion>(context)), 
                 new ProfessorsDataProvider(profRepository = new Repository<Professor>(context)),
-                new PublicationsDataProvider(new Repository<Publication>(context))
+                new PublicationsDataProvider(new Repository<Publication>(context)),
+                new ScientificRequestsDataProvider(new Repository<ScientificRequest>(context)),
+                new ScientificResearchesDataProvider(new Repository<ScientificResearch>(context)),
+                new SynopsesDataProvider(new Repository<Synopsis>(context))
                 ));
 
             //Register formula provider
-            const string curDir = @"d:\Other\git_projects\MilitaryFaculty\MilitaryFaculty.Presentation\Formulas\";
+            const string curDir = @"d:\Git\MilitaryFaculty\MilitaryFaculty.Presentation\Formulas\";
             string fileName = "formulas.xml";
             var filePath = Path.Combine(curDir, fileName);
             var formulaProvider = new FormulaProvider(filePath);

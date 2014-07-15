@@ -1,27 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Reporting.Data.DataProviders;
 
 namespace MilitaryFaculty.Reporting.Data
 {
+    //TODO: Need to refactor this class, too much hardcode!
     public class DataProvidersContainer
     {
+        private readonly BooksDataProvider _books;
         private readonly CathedrasDataProvider _cathedras;
         private readonly ConferencesDataProvider _conferences;
         private readonly ExhibitionsDataProvider _exhibitions;
+        private readonly ImprovementSuggestionsDataProvider _improvementSuggestions;
         private readonly ProfessorsDataProvider _professors;
         private readonly PublicationsDataProvider _publications;
+        private readonly ScientificRequestsDataProvider _scientificRequests;
+        private readonly ScientificResearchesDataProvider _scientificResearches;
+        private readonly SynopsesDataProvider _synopses;
 
         public DataProvidersContainer(
+            BooksDataProvider books,
             CathedrasDataProvider cathedras,
             ConferencesDataProvider conferences,
             ExhibitionsDataProvider exhibitions,
+            ImprovementSuggestionsDataProvider improvementSuggestions,
             ProfessorsDataProvider professors,
-            PublicationsDataProvider publications
+            PublicationsDataProvider publications,
+            ScientificRequestsDataProvider scientificRequests,
+            ScientificResearchesDataProvider scientificResearches,
+            SynopsesDataProvider synopses
             )
         {
+            #region ParametersCheching
+
+            if (books == null)
+            {
+                throw new ArgumentNullException("books");
+            }
             if (cathedras == null)
             {
                 throw new ArgumentNullException("cathedras");
@@ -34,6 +50,10 @@ namespace MilitaryFaculty.Reporting.Data
             {
                 throw new ArgumentNullException("exhibitions");
             }
+            if (improvementSuggestions == null)
+            {
+                throw new ArgumentNullException("improvementSuggestions");
+            }
             if (professors == null)
             {
                 throw new ArgumentNullException("professors");
@@ -42,51 +62,106 @@ namespace MilitaryFaculty.Reporting.Data
             {
                 throw new ArgumentNullException("publications");
             }
+            if (scientificRequests == null)
+            {
+                throw new ArgumentNullException("scientificRequests");
+            }
+            if (scientificResearches == null)
+            {
+                throw new ArgumentNullException("scientificResearches");
+            }
+            if (synopses == null)
+            {
+                throw new ArgumentNullException("synopses");
+            }
 
+            #endregion //ParametersCheching
+
+            _books = books;
             _cathedras = cathedras;
             _conferences = conferences;
             _exhibitions = exhibitions;
+            _improvementSuggestions = improvementSuggestions;
             _professors = professors;
             _publications = publications;
+            _scientificRequests = scientificRequests;
+            _scientificResearches = scientificResearches;
+            _synopses = synopses;
         }
 
         public void ClearModificators()
         {
+            _books.QueryModificator = null;
             _cathedras.QueryModificator = null;
             _conferences.QueryModificator = null;
             _exhibitions.QueryModificator = null;
+            _improvementSuggestions.QueryModificator = null;
             _professors.QueryModificator = null;
             _publications.QueryModificator = null;
+            _scientificRequests.QueryModificator = null;
+            _scientificResearches.QueryModificator = null;
+            _synopses.QueryModificator = null;
+        }
+
+        public void SetCathedraModificator(Cathedra cathedra, TimeInterval interval)
+        {
+            throw new NotImplementedException();
         }
 
         public void SetProfessorModificator(Professor professor, TimeInterval interval)
         {
+            _books.QueryModificator = b =>
+                b.Author.Id == professor.Id
+                && b.Date >= interval.From
+                && b.Date <= interval.To;
             _cathedras.QueryModificator = null;
             _conferences.QueryModificator = con =>
                 con.Curator.Id == professor.Id
                 && con.Date >= interval.From
                 && con.Date <= interval.To;
-            _exhibitions.QueryModificator = exh => 
+            _exhibitions.QueryModificator = exh =>
                 exh.Participant.Id == professor.Id
                 && exh.Date >= interval.From
                 && exh.Date <= interval.To;
+            _improvementSuggestions.QueryModificator = imsug =>
+                imsug.Author.Id == professor.Id
+                && imsug.Date >= interval.From
+                && imsug.Date <= interval.To;
             _professors.QueryModificator = prof =>
                 //TODO: Professors interval
                 prof.Id == professor.Id;
             _publications.QueryModificator = pub =>
-                //TODO: Publication date
-                pub.Author.Id == professor.Id;
+                pub.Author.Id == professor.Id
+                && pub.Date >= interval.From
+                && pub.Date <= interval.To;
+            _scientificRequests.QueryModificator = srq =>
+                srq.Author.Id == professor.Id
+                && srq.Date >= interval.From
+                && srq.Date <= interval.To;
+            _scientificResearches.QueryModificator = srs =>
+                srs.Author.Id == professor.Id
+                && srs.Date >= interval.From
+                && srs.Date <= interval.To;
+            _synopses.QueryModificator = syn =>
+                syn.Author.Id == professor.Id
+                && syn.Date >= interval.From
+                && syn.Date <= interval.To;
         }
 
         public IEnumerable<IDataProvider> GetProviders()
         {
             var providers = new IDataProvider[]
             {
+                _books,
                 _cathedras,
                 _conferences,
                 _exhibitions,
+                _improvementSuggestions,
                 _professors,
-                _publications
+                _publications,
+                _scientificRequests,
+                _scientificResearches,
+                _synopses
             };
 
             return providers;
