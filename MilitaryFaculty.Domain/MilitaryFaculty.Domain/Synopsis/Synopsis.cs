@@ -8,6 +8,7 @@ namespace MilitaryFaculty.Domain
     public class Synopsis : UniqueEntity, IImitator<Synopsis>
     {
         private SynopsisType _synopsisType;
+        private SynopsisDegree _synopsisDegree;
 
         public Professor Author { get; set; }
         public string Name { get; set; }
@@ -27,12 +28,27 @@ namespace MilitaryFaculty.Domain
             }
         }
 
+        public SynopsisDegree SynopsisDegree
+        {
+            get { return _synopsisDegree; }
+            set
+            {
+                if (!value.IsDefined())
+                {
+                    throw new InvalidEnumArgumentException();
+                }
+
+                _synopsisDegree = value;
+            }
+        }
+
         public Synopsis()
         {
             Id = Guid.Empty;
             Name = String.Empty;
             Date = DateTime.Now;
             SynopsisType = SynopsisType.Dissertation;
+            SynopsisDegree = SynopsisDegree.Candidate;
         }
 
         public Synopsis(Synopsis other)
@@ -52,6 +68,7 @@ namespace MilitaryFaculty.Domain
             Name = other.Name;
             Author = other.Author;
             _synopsisType = other.SynopsisType;
+            _synopsisDegree = other.SynopsisDegree;
         }
     }
 }

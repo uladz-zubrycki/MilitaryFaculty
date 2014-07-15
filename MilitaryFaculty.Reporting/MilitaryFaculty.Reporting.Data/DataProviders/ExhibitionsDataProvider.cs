@@ -26,7 +26,6 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UnFirstDiplCount")]
         public double UniversityFirstDiplomasCount()
         {
-            //TODO: Уровень выставки
             return CountOf(e => e.AwardType == AwardType.FirstDegree);
         }
 
@@ -57,7 +56,6 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UnLettersCommendationCount")]
         public double UniversityLettersOfCommendationCount()
         {
-            //TODO: Грамота
             return CountOf(e => e.AwardType == AwardType.WithoutDegree);
         }
 

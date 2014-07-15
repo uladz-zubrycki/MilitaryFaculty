@@ -41,9 +41,9 @@ namespace MilitaryFaculty.Reporting.Data
             return QueryableCollection.Count(predicate);
         }
 
-        protected double SumOf(Func<T, double> evaluator)
+        protected double SumOf(Func<T, bool> selector, Func<T, double> evaluator)
         {
-            return QueryableCollection.Sum(evaluator);
+            return QueryableCollection.Where(selector).Sum(evaluator);
         }
     }
 }

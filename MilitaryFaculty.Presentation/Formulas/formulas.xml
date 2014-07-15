@@ -174,10 +174,10 @@
 
   <Formula name="Результативность рационализаторской работы"
            id="242"
-           expression="RationPropCount * coeff1"
+           expression="ImprovSuggCount * coeff1"
            maxValue="0">
     <Arguments>
-      <Argument name="RationPropCount" text="Количество принятих рационализаторских предложений" />
+      <Argument name="ImprovSuggCount" text="Количество принятих рационализаторских предложений" />
     </Arguments>
     <Coefficients>
       <Coefficient name="coeff1" value="10" />

@@ -48,7 +48,7 @@ namespace MilitaryFaculty.Domain
             Name = String.Empty;
             Date = DateTime.Now;
             _scientificType = ScientificRequestType.Invention;
-            _scientificResponce = ScientificRequestResponce.Unanswered;
+            _scientificResponce = ScientificRequestResponce.Positive;
         }
 
         public ScientificRequest(ScientificRequest other)

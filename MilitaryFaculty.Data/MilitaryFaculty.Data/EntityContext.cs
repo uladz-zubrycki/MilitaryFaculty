@@ -13,7 +13,6 @@ namespace MilitaryFaculty.Data
         public DbSet<Publication> Publications { get; set; }
         public DbSet<Synopsis> Synopses { get; set; }
 
-        public DbSet<ScientificExpertise> ScientificExpertises { get; set; }
         public DbSet<ScientificRequest> ScientificRequests { get; set; }
         public DbSet<ScientificResearch> ScientificResearches { get; set; }
         public DbSet<ImprovementSuggestion> ImprovementSuggestions { get; set; }
@@ -33,14 +32,14 @@ namespace MilitaryFaculty.Data
             modelBuilder.Configurations.Add(new ExhibitionConfiguration());
             modelBuilder.Configurations.Add(new BookConfiguration());
 
-            modelBuilder.Configurations.Add(new ScientificExpertiseConfiguration());
             modelBuilder.Configurations.Add(new ScientificRequestConfiguration());
             modelBuilder.Configurations.Add(new ScientificResearchConfiguration());
             modelBuilder.Configurations.Add(new ImprovementSuggestionConfiguration());
-            modelBuilder.Configurations.Add(new ParticipationConfiguration());
             modelBuilder.Configurations.Add(new AcademicDegreeChangingConfiguraton());
             modelBuilder.Configurations.Add(new SynopsisConfiguration());
 
+            modelBuilder.Configurations.Add(new ParticipationConfiguration());
+            modelBuilder.Configurations.Add(new ScientificExpertiseConfiguration());
             modelBuilder.Configurations.Add(new ConferenceReportConfiguration());
             modelBuilder.Configurations.Add(new FullNameConfiguration());
 

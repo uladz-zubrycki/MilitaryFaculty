@@ -307,5 +307,35 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         {
             return CountOf(p => p.ScientificExpertises.Count != 0);
         }
+
+        /// <summary>
+        ///     Количество ППС, которым присвоена ученое звание профессора (в проверяемый период)
+        /// </summary>
+        /// <returns></returns>
+        [FormulaArgument("DocAssignCount")]
+        public double DoctorsAssignedCount()
+        {
+            return 1;
+        }
+
+        /// <summary>
+        ///     Количество ППС, которым присвоена ученое звание доцента (в проверяемый период)
+        /// </summary>
+        /// <returns></returns>
+        [FormulaArgument("DocentsAssignCount")]
+        public double DocentsAssignedCount()
+        {
+            return 1;
+        }
+
+        /// <summary>
+        ///     Количество ППС, участвующих во всех НИР
+        /// </summary>
+        /// <returns></returns>
+        [FormulaArgument("SrwProfsCount")]
+        public double ScientificResearchWorkProfessorsCount()
+        {
+            return CountOf(p => p.ScientificResearches.Count != 0);
+        }
     }
 }

@@ -57,11 +57,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataProviders\BooksDataProvider.cs" />
     <Compile Include="DataProviders\CathedrasDataProvider.cs" />
     <Compile Include="DataProviders\ConferencesDataProvider.cs" />
     <Compile Include="DataProvidersContainer.cs" />
     <Compile Include="DataProviders\ExhibitionsDataProvider.cs" />
     <Compile Include="DataProvider.cs" />
+    <Compile Include="DataProviders\ImprovementSuggestionsDataProvider.cs" />
+    <Compile Include="DataProviders\ScientificRequestsDataProvider.cs" />
+    <Compile Include="DataProviders\ScientificResearchesDataProvider.cs" />
+    <Compile Include="DataProviders\SynopsesDataProvider.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="DataProviders\ProfessorsDataProvider.cs" />
     <Compile Include="DataProviders\PublicationsDataProvider.cs" />

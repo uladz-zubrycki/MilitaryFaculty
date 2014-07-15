@@ -14,6 +14,7 @@ namespace MilitaryFaculty.Data
             Property(m => m.Date).IsRequired();
             Property(m => m.Name).IsRequired();
             Property(m => m.SynopsisType).IsRequired();
+            Property(m => m.SynopsisDegree).IsRequired();
 
             HasRequired(m => m.Author).WithMany(p => p.Synopses);
         }
