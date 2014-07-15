@@ -13,7 +13,6 @@ namespace MilitaryFaculty.Data
         public DbSet<Publication> Publications { get; set; }
         public DbSet<Synopsis> Synopses { get; set; }
 
-
         public DbSet<ScientificExpertise> ScientificExpertises { get; set; }
         public DbSet<ScientificRequest> ScientificRequests { get; set; }
         public DbSet<ScientificResearch> ScientificResearches { get; set; }

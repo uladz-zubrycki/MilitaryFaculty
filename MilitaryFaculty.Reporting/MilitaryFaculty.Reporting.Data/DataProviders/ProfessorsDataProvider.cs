@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Linq.Expressions;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
@@ -14,7 +15,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         }
 
         public ProfessorsDataProvider(IRepository<Professor> repository,
-                                      Expression<Func<Professor, bool>> modificator)
+            Expression<Func<Professor, bool>> modificator)
             : base(repository, modificator)
         {
         }
@@ -193,7 +194,13 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("HacHqProfsCount")]
         public double HacHqProfsCount() //Higher Attestation Commission
         {
-            return 1;
+            //TODO: Start here
+            return CountOf(
+                p =>
+                    p.Participations.Count(
+                        partisipation => partisipation.PlaceType == ParticipationPlace.HigherAttestationCommission
+                        ) != 0
+                );
         }
 
         /// <summary>
@@ -204,7 +211,12 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DodHqProfsCount")]
         public double DodHqProfsCount() //Defence of dissertation counsil
         {
-            return 1;
+            return CountOf(
+                p =>
+                    p.Participations.Count(
+                        partisipation => partisipation.PlaceType == ParticipationPlace.DefenceOfDissertationCounsil
+                        ) != 0
+                );
         }
 
         /// <summary>
@@ -215,7 +227,12 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("RcHqProfsCount")]
         public double RcHqProfsCount() //research counsil
         {
-            return 1;
+            return CountOf(
+                p =>
+                    p.Participations.Count(
+                        partisipation => partisipation.PlaceType == ParticipationPlace.ResearchCounsil
+                        ) != 0
+                );
         }
 
         /// <summary>
@@ -226,7 +243,13 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("EbspHqProfsCount")]
         public double EbspHqProfsCount() //editorial boards of scientific publications
         {
-            return 1;
+            return CountOf(
+                p =>
+                    p.Participations.Count(
+                        partisipation =>
+                            partisipation.PlaceType == ParticipationPlace.EditorialBoardsOfScientificPublications
+                        ) != 0
+                );
         }
 
         /// <summary>
@@ -282,8 +305,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("SeProfsCount")]
         public double ScientificExperticeProfessorsCount()
         {
-            //TODO: WAT?
-            return 1;
+            return CountOf(p => p.ScientificExpertises.Count != 0);
         }
     }
 }

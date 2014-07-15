@@ -26,6 +26,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("TotalBooksPc")]
         public double TotalBooksPagesCount()
         {
+            //TODO: Вынести в книги
             return 1;
         }
 
@@ -79,6 +80,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
             return CountOf(p => p.PublicationType == PublicationType.Thesis);
         }
 
+        //TODO: К диссертациям
         /// <summary>
         ///     Количество ППС, которым присвоена ученая степень доктора наук (в проверяемый период)
         /// </summary>

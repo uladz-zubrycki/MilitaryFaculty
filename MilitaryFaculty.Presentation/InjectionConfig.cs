@@ -25,16 +25,15 @@ namespace MilitaryFaculty.Presentation
             RegisterEntityContext(builder);
             RegisterDataProviders(builder);
             RegisterFormulaProvider(builder);
-            RegisterReportTableTypeFactory(builder);
-            RegisterFacultyReportTableProvider(builder);
-            RegisterProfessorReportTableProvider(builder);
+            RegisterReportTableResolver(builder);
             RegisterExcelReportingServices(builder);
+            RegisterReportGenerator(builder);
 
             return builder.Build();
         }
 
         /// <summary>
-        ///     Registers repositories.
+        ///     Registers repositories
         /// </summary>
         /// <param name="builder">Builder for service container.</param>
         private static void RegisterRepositories(ContainerBuilder builder)
@@ -66,18 +65,19 @@ namespace MilitaryFaculty.Presentation
 
             builder.RegisterType<FormulaProvider>()
                    .As<IFormulaProvider>()
-                   .WithParameter("file", formulasFilePath)
+                   .WithParameter("filePath", formulasFilePath)
                    .SingleInstance();
         }
 
+        //<Refactor>
         private static void RegisterReportTableTypeFactory(ContainerBuilder builder)
         {
             Func<IComponentContext, Func<ReportType, IReportTableProvider>> factory =
                 ctx => type =>
-                       {
-                           var index = ctx.Resolve<IIndex<ReportType, IReportTableProvider>>();
-                           return index[type];
-                       };
+                {
+                    var index = ctx.Resolve<IIndex<ReportType, IReportTableProvider>>();
+                    return index[type];
+                };
 
             builder.Register(factory)
                    .As<Func<ReportType, IReportTableProvider>>()
@@ -108,20 +108,37 @@ namespace MilitaryFaculty.Presentation
                    .SingleInstance();
         }
 
+        private static void RegisterReportTableResolver(ContainerBuilder builder)
+        {
+            builder.RegisterType<ReportTableResolver>()
+                   .As<IReportTableResolver>();
+        }
+        //</Refactor>
+
         private static void RegisterDataProviders(ContainerBuilder builder)
         {
             builder.RegisterType<ReportDataProvider>()
                    .AsSelf();
 
-            builder.RegisterAssemblyTypes(typeof (ReportDataProvider).Assembly)
-                   .Where(type => type.IsAssignableTo<IDataProvider>())
-                   .As<IDataProvider>();
+            builder.RegisterType<DataProvidersContainer>()
+                   .AsSelf();
+
+            builder.RegisterAssemblyTypes(typeof (DataProvidersContainer).Assembly)
+                   .Where(type => typeof (IDataProvider).IsAssignableFrom(type))
+                   .AsSelf();
         }
 
         private static void RegisterExcelReportingServices(ContainerBuilder builder)
         {
             builder.RegisterType<ExcelReportingService>()
-                   .AsSelf()
+                   .As<IExcelReportingService>()
+                   .SingleInstance();
+        }
+
+        private static void RegisterReportGenerator(ContainerBuilder builder)
+        {
+            builder.RegisterType<ReportGenerator>()
+                   .As<IReportGenerator>()
                    .SingleInstance();
         }
     }

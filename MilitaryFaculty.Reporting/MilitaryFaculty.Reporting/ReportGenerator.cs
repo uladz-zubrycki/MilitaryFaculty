@@ -8,9 +8,9 @@ namespace MilitaryFaculty.Reporting
 {
     public class ReportGenerator : IReportGenerator
     {
-        private IReportTableResolver ReportTableResolver;
-        private IFormulaProvider FormulaProvider;
-        private ReportDataProvider ReportDataProvider;
+        private readonly IReportTableResolver _reportTableResolver;
+        private readonly IFormulaProvider _formulaProvider;
+        private readonly ReportDataProvider _reportDataProvider;
 
         public ReportGenerator
             (
@@ -19,9 +19,9 @@ namespace MilitaryFaculty.Reporting
             ReportDataProvider reportDataProvider
             )
         {
-            ReportTableResolver = reportTableResolver;
-            FormulaProvider = formulaProvider;
-            ReportDataProvider = reportDataProvider;
+            _reportTableResolver = reportTableResolver;
+            _formulaProvider = formulaProvider;
+            _reportDataProvider = reportDataProvider;
         }
 
         public virtual Report CreateReportObject()
@@ -39,21 +39,21 @@ namespace MilitaryFaculty.Reporting
             //For faculty object
             if (entity == null)
             {
-                ReportDataProvider.ReportDataProvidersContainer.ClearModificators();
-                return new Report("Faculty", ReportTableResolver.GetTableProvider(typeof(Cathedra)), FormulaProvider, ReportDataProvider);
+                _reportDataProvider.ReportDataProvidersContainer.ClearModificators();
+                return new Report("Faculty", _reportTableResolver.GetTableProvider(typeof(Cathedra)), _formulaProvider, _reportDataProvider);
             }
             if (entity is Cathedra)
             {
                 var cathedra = (Cathedra) entity;
                 //TODO: Cathedra report
-                ReportDataProvider.ReportDataProvidersContainer.ClearModificators();
-                return new Report(cathedra.Name, ReportTableResolver.GetTableProvider(typeof(Cathedra)), FormulaProvider, ReportDataProvider);
+                _reportDataProvider.ReportDataProvidersContainer.ClearModificators();
+                return new Report(cathedra.Name, _reportTableResolver.GetTableProvider(typeof(Cathedra)), _formulaProvider, _reportDataProvider);
             }
             if (entity is Professor)
             {
                 var professor = (Professor) entity;
-                ReportDataProvider.ReportDataProvidersContainer.SetProfessorModificator(professor, interval);
-                return new Report(professor.FullName.ToString(), ReportTableResolver.GetTableProvider(typeof(Professor)), FormulaProvider, ReportDataProvider);
+                _reportDataProvider.ReportDataProvidersContainer.SetProfessorModificator(professor, interval);
+                return new Report(professor.FullName.ToString(), _reportTableResolver.GetTableProvider(typeof(Professor)), _formulaProvider, _reportDataProvider);
             }
 
             throw new ArgumentException("Type of entity is not supported.");
