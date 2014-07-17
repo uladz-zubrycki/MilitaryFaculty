@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Configuration;
 using System.IO;
-using System.Linq;
 using Autofac;
 using Autofac.Features.Indexed;
 using MilitaryFaculty.Data;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Reporting;
 using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.Excel;
@@ -25,7 +25,9 @@ namespace MilitaryFaculty.Presentation
             RegisterEntityContext(builder);
             RegisterDataProviders(builder);
             RegisterFormulaProvider(builder);
-            RegisterReportTableResolver(builder);
+            RegisterReportTableTypeFactory(builder);
+            RegisterFacultyReportTableProvider(builder);
+            RegisterProfessorReportTableProvider(builder);
             RegisterExcelReportingServices(builder);
             RegisterReportGenerator(builder);
 
@@ -69,18 +71,17 @@ namespace MilitaryFaculty.Presentation
                    .SingleInstance();
         }
 
-        //<Refactor>
         private static void RegisterReportTableTypeFactory(ContainerBuilder builder)
         {
-            Func<IComponentContext, Func<ReportType, IReportTableProvider>> factory =
-                ctx => type =>
+            Func<IComponentContext, Func<Type, IReportTableProvider>> factory =
+                ctx =>
                 {
-                    var index = ctx.Resolve<IIndex<ReportType, IReportTableProvider>>();
-                    return index[type];
+                    var index = ctx.Resolve<IIndex<Type, IReportTableProvider>>();
+                    return type => index[type];
                 };
 
             builder.Register(factory)
-                   .As<Func<ReportType, IReportTableProvider>>()
+                   .As<Func<Type, IReportTableProvider>>()
                    .SingleInstance();
         }
 
@@ -91,7 +92,7 @@ namespace MilitaryFaculty.Presentation
             var tablesPath = Path.Combine(curPath, tablesRelPath);
 
             builder.RegisterType<ReportTableProvider>()
-                   .Keyed<IReportTableProvider>(ReportType.Faculty)
+                   .Keyed<IReportTableProvider>(typeof (Cathedra))
                    .WithParameter("tablesPath", tablesPath)
                    .SingleInstance();
         }
@@ -103,17 +104,10 @@ namespace MilitaryFaculty.Presentation
             var tablesPath = Path.Combine(curPath, tablesRelPath);
 
             builder.RegisterType<ReportTableProvider>()
-                   .Keyed<IReportTableProvider>(ReportType.Professor)
+                   .Keyed<IReportTableProvider>(typeof (Professor))
                    .WithParameter("tablesPath", tablesPath)
                    .SingleInstance();
         }
-
-        private static void RegisterReportTableResolver(ContainerBuilder builder)
-        {
-            builder.RegisterType<ReportTableResolver>()
-                   .As<IReportTableResolver>();
-        }
-        //</Refactor>
 
         private static void RegisterDataProviders(ContainerBuilder builder)
         {
