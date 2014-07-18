@@ -9,11 +9,11 @@ namespace MilitaryFaculty.Domain
         private ScientificRequestType _scientificType { get; set; }
         private ScientificRequestResponce _scientificResponce { get; set; }
 
-        public string Name { get; set; }
-        public Professor Author { get; set; }
-        public DateTime Date { get; set; }
+        public virtual string Name { get; set; }
+        public virtual Professor Author { get; set; }
+        public virtual DateTime Date { get; set; }
 
-        public ScientificRequestType ScientificType
+        public virtual ScientificRequestType ScientificType
         {
             get { return _scientificType; }
             set
@@ -27,7 +27,7 @@ namespace MilitaryFaculty.Domain
             }
         }
 
-        public ScientificRequestResponce ScientificResponce
+        public virtual ScientificRequestResponce ScientificResponce
         {
             get { return _scientificResponce; }
             set
@@ -43,11 +43,8 @@ namespace MilitaryFaculty.Domain
 
         public ScientificRequest()
         {
-            Id = Guid.Empty;
             Name = String.Empty;
             Date = DateTime.Now;
-            _scientificType = ScientificRequestType.Invention;
-            _scientificResponce = ScientificRequestResponce.Positive;
         }
 
         public ScientificRequest(ScientificRequest other)

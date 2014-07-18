@@ -4,13 +4,12 @@ namespace MilitaryFaculty.Domain
 {
     public class ScientificExpertise : UniqueEntity, IImitator<ScientificExpertise>
     {
-        public string Name { get; set; }
-        public Professor Author { get; set; }
-        public DateTime Date { get; set; }
+        public virtual string Name { get; set; }
+        public virtual Professor Author { get; set; }
+        public virtual DateTime Date { get; set; }
 
         public ScientificExpertise()
         {
-            Id = Guid.Empty;
             Name = String.Empty;
             Date = DateTime.Now;
         }

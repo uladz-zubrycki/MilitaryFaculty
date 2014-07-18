@@ -60,6 +60,9 @@
   <ItemGroup>
     <Compile Include="Book\Book.cs" />
     <Compile Include="Book\BookType.cs" />
+    <Compile Include="Cathedra\HistoricalWorkOrganization.cs" />
+    <Compile Include="Cathedra\MilitaryScientificSocietyOrganization.cs" />
+    <Compile Include="Cathedra\ProfsOrganization.cs" />
     <Compile Include="Conference\AccordanceLevel.cs" />
     <Compile Include="Conference\Conference.cs" />
     <Compile Include="Conference\ConferenceReport.cs" />

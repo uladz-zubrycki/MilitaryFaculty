@@ -9,11 +9,11 @@ namespace MilitaryFaculty.Domain
         private SynopsisType _synopsisType;
         private SynopsisDegree _synopsisDegree;
 
-        public Professor Author { get; set; }
-        public string Name { get; set; }
-        public DateTime Date { get; set; }
+        public virtual Professor Author { get; set; }
+        public virtual string Name { get; set; }
+        public virtual DateTime Date { get; set; }
 
-        public SynopsisType SynopsisType
+        public virtual SynopsisType SynopsisType
         {
             get { return _synopsisType; }
             set
@@ -27,7 +27,7 @@ namespace MilitaryFaculty.Domain
             }
         }
 
-        public SynopsisDegree SynopsisDegree
+        public virtual SynopsisDegree SynopsisDegree
         {
             get { return _synopsisDegree; }
             set
@@ -43,11 +43,8 @@ namespace MilitaryFaculty.Domain
 
         public Synopsis()
         {
-            Id = Guid.Empty;
             Name = String.Empty;
             Date = DateTime.Now;
-            SynopsisType = SynopsisType.Dissertation;
-            SynopsisDegree = SynopsisDegree.Candidate;
         }
 
         public Synopsis(Synopsis other)

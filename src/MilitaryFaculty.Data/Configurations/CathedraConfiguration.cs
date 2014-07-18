@@ -12,6 +12,16 @@ namespace MilitaryFaculty.Data
             Property(m => m.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(m => m.Name).IsRequired()
                                  .HasMaxLength(Cathedra.NameMaxLength);
+
+            Property(m => m.LevelOfOrganizationIc).IsRequired();
+            Property(m => m.LevelOfOrganizationRc).IsRequired();
+            Property(m => m.LevelOfOrganizationRrs).IsRequired();
+            Property(m => m.LevelOfOrganizationUc).IsRequired();
+            Property(m => m.LevelOfOrganizationUrs).IsRequired();
+
+            Property(m => m.HistoricalWorkOrganization).IsRequired();
+            Property(m => m.MilitaryScientificSupportState).IsRequired();
+            Property(m => m.ProfsOrganization).IsRequired();
         }
     }
 }

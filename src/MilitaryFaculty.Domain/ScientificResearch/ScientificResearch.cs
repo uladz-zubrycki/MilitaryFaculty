@@ -8,12 +8,12 @@ namespace MilitaryFaculty.Domain
     {
         private MilitaryScientificSupportState _state;
 
-        public string Name { get; set; }
-        public DateTime Date { get; set; }
-        public Professor Author { get; set; }
-        public int PagesCount { get; set; }
+        public virtual string Name { get; set; }
+        public virtual DateTime Date { get; set; }
+        public virtual Professor Author { get; set; }
+        public virtual int PagesCount { get; set; }
 
-        public MilitaryScientificSupportState State
+        public virtual MilitaryScientificSupportState State
         {
             get { return _state; }
             set
@@ -29,11 +29,8 @@ namespace MilitaryFaculty.Domain
 
         public ScientificResearch()
         {
-            Id = Guid.Empty;
             Name = String.Empty;
             Date = DateTime.Now;
-            PagesCount = 0;
-            _state = MilitaryScientificSupportState.NotCompleted;
         }
 
         public ScientificResearch(ScientificResearch other)

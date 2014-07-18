@@ -6,6 +6,6 @@ namespace MilitaryFaculty.Domain
     {
         [EnumName("Военно-научное сопровождение не проведено")] NotCompleted,
 
-        [EnumName("Военно-научное сопровождение проведено")] Completed
+        [EnumName("Военно-научное сопровождение проведено")] Completed,
     }
 }

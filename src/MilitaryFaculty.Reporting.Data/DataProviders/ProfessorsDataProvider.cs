@@ -36,7 +36,6 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DocsCount")]
         public double DoctoralCandidatesCount()
         {
-            //TODO: Узнать про докторантов
             return 1;
         }
 
@@ -47,7 +46,6 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("AdjCountFt")]
         public double AdjunctsCountFullTime()
         {
-            //TODO: адьюнкты
             return 1;
         }
 
@@ -68,7 +66,6 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ApplDoctCount")]
         public double ApplicantForDoctorsCount()
         {
-            //TODO: соискатели
             return 1;
         }
 
@@ -119,7 +116,6 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DocentPostsSubsCount")]
         public double DocentPostsSubstitutionCount()
         {
-            //TODO: DaFaq?
             return 1;
         }
 

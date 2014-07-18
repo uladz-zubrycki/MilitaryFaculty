@@ -13,24 +13,24 @@ namespace MilitaryFaculty.Domain
         private JobPosition _jobPosition;
         private MilitaryRank _militaryRank;
 
-        public FullName FullName { get; set; }
-        public Cathedra Cathedra { get; set; }
+        public virtual FullName FullName { get; set; }
+        public virtual Cathedra Cathedra { get; set; }
 
-        public DateTime EnrollDate { get; set; }
-        public DateTime DismissalDate { get; set; }
+        public virtual DateTime EnrollDate { get; set; }
+        public virtual DateTime DismissalDate { get; set; }
 
-        public ICollection<Publication> Publications { get; set; }
-        public ICollection<Conference> Conferences { get; set; }
-        public ICollection<Exhibition> Exhibitions { get; set; }
-        public ICollection<Book> Books { get; set; }
+        public virtual ICollection<Publication> Publications { get; set; }
+        public virtual ICollection<Conference> Conferences { get; set; }
+        public virtual ICollection<Exhibition> Exhibitions { get; set; }
+        public virtual ICollection<Book> Books { get; set; }
 
-        public ICollection<ScientificResearch> ScientificResearches { get; set; }
-        public ICollection<ScientificRequest> ScientificRequests { get; set; }
-        public ICollection<ScientificExpertise> ScientificExpertises { get; set; }
-        public ICollection<ImprovementSuggestion> ImprovementSuggestions { get; set; }
-        public ICollection<Synopsis> Synopses { get; set; }
-        public ICollection<AcademicDegreeChanging> AcademicDegreeChangings { get; set; }
-        public ICollection<Participation> Participations { get; set; }
+        public virtual ICollection<ScientificResearch> ScientificResearches { get; set; }
+        public virtual ICollection<ScientificRequest> ScientificRequests { get; set; }
+        public virtual ICollection<ScientificExpertise> ScientificExpertises { get; set; }
+        public virtual ICollection<ImprovementSuggestion> ImprovementSuggestions { get; set; }
+        public virtual ICollection<Synopsis> Synopses { get; set; }
+        public virtual ICollection<AcademicDegreeChanging> AcademicDegreeChangings { get; set; }
+        public virtual ICollection<Participation> Participations { get; set; }
 
         public virtual MilitaryRank MilitaryRank
         {
@@ -90,17 +90,11 @@ namespace MilitaryFaculty.Domain
 
         public Professor()
         {
-            Id = Guid.Empty;
-            _militaryRank = MilitaryRank.JuniorLieutenant;
-            _academicDegree = AcademicDegree.None;
-            _academicRank = AcademicRank.None;
-            _jobPosition = JobPosition.Teacher;
-
             EnrollDate = DateTime.Now;
             DismissalDate = DateTime.MaxValue;
+            _jobPosition = JobPosition.Professor;
 
             FullName = new FullName();
-            Cathedra = null;
             Conferences = new Collection<Conference>();
             Publications = new Collection<Publication>();
             Exhibitions = new Collection<Exhibition>();

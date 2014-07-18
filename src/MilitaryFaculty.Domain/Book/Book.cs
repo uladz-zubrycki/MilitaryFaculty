@@ -29,11 +29,8 @@ namespace MilitaryFaculty.Domain
 
         public Book()
         {
-            Id = Guid.Empty;
             Name = String.Empty;
-            PagesCount = 0;
             Date = DateTime.Now;
-            _bookType = BookType.Schoolbook;
         }
 
         public Book(Book other)

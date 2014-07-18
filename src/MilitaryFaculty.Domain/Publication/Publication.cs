@@ -29,11 +29,9 @@ namespace MilitaryFaculty.Domain
 
         public Publication()
         {
-            Id = Guid.Empty;
             Name = String.Empty;
             Date = DateTime.Now;
             PagesCount = 0;
-            PublicationType = PublicationType.Monograph;
         }
 
         public Publication(Publication other)

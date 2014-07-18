@@ -11,11 +11,11 @@ namespace MilitaryFaculty.Domain
         private AwardType _awardType;
         private EventLevel _eventLevel;
 
-        public string Name { get; set; }
-        public DateTime Date { get; set; }
-        public Professor Participant { get; set; }
+        public virtual string Name { get; set; }
+        public virtual DateTime Date { get; set; }
+        public virtual Professor Participant { get; set; }
 
-        public AwardType AwardType
+        public virtual AwardType AwardType
         {
             get { return _awardType; }
             set
@@ -29,7 +29,7 @@ namespace MilitaryFaculty.Domain
             }
         }
 
-        public EventLevel EventLevel
+        public virtual EventLevel EventLevel
         {
             get { return _eventLevel; }
             set

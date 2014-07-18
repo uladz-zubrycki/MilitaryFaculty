@@ -31,11 +31,9 @@ namespace MilitaryFaculty.Domain
 
         public Conference()
         {
-            Id = Guid.Empty;
             Name = String.Empty;
             ConferenceReport = new ConferenceReport();
             Date = DateTime.Now;
-            Curator = null;
         }
 
         public Conference(Conference other)
