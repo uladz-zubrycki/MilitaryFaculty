@@ -2,13 +2,13 @@
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Attributes;
 using MilitaryFaculty.Presentation.ViewBehaviours;
-using MilitaryFaculty.Presentation.ViewModels.Entity;
+using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ProfessorInfoViewModel : EntityViewModel<Professor>
+    public class ProfessorInfoViewModel : EntityViewModel<Domain.Professor>
     {
-        public ProfessorInfoViewModel(Professor model)
+        public ProfessorInfoViewModel(Domain.Professor model)
             : base(model)
         {
             this.Editable(Do.ProfessorSave);

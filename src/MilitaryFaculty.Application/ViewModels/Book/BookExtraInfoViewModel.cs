@@ -2,13 +2,13 @@
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Attributes;
 using MilitaryFaculty.Presentation.ViewBehaviours;
-using MilitaryFaculty.Presentation.ViewModels.Entity;
+using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class BookExtraInfoViewModel : EntityViewModel<Book>
+    public class BookExtraInfoViewModel : EntityViewModel<Domain.Book>
     {
-        public BookExtraInfoViewModel(Book model)
+        public BookExtraInfoViewModel(Domain.Book model)
             : base(model)
         {
             this.Editable(Do.BookSave);

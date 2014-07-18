@@ -1,5 +1,10 @@
 ﻿using System.Data.Entity;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Domain.ImprovementSuggestion;
+using MilitaryFaculty.Domain.ScientificExpertise;
+using MilitaryFaculty.Domain.ScientificRequest;
+using MilitaryFaculty.Domain.ScientificResearch;
+using MilitaryFaculty.Domain.Synopsis;
 
 namespace MilitaryFaculty.Data
 {
@@ -29,25 +34,7 @@ namespace MilitaryFaculty.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new CathedraConfiguration());
-            modelBuilder.Configurations.Add(new ProfessorConfiguration());
-            modelBuilder.Configurations.Add(new ConferenceConfiguration());
-            modelBuilder.Configurations.Add(new PublicationConfiguration());
-            modelBuilder.Configurations.Add(new ExhibitionConfiguration());
-            modelBuilder.Configurations.Add(new BookConfiguration());
-
-            modelBuilder.Configurations.Add(new ScientificRequestConfiguration());
-            modelBuilder.Configurations.Add(new ScientificResearchConfiguration());
-            modelBuilder.Configurations.Add(new ImprovementSuggestionConfiguration());
-            modelBuilder.Configurations.Add(new AcademicDegreeChangingConfiguraton());
-            modelBuilder.Configurations.Add(new SynopsisConfiguration());
-            modelBuilder.Configurations.Add(new ParticipationConfiguration());
-            modelBuilder.Configurations.Add(new ScientificExpertiseConfiguration());
-
-            modelBuilder.Configurations.Add(new ConferenceReportConfiguration());
-            modelBuilder.Configurations.Add(new FullNameConfiguration());
-
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Configurations.AddFromAssembly(typeof (EntityContext).Assembly);
         }
     }
 }

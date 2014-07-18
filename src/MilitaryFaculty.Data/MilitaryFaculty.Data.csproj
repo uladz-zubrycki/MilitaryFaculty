@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -82,6 +83,8 @@
     <Compile Include="Configurations\ConferenceConfiguration.cs" />
     <Compile Include="Configurations\ConferenceReportConfiguration.cs" />
     <Compile Include="Configurations\ProfessorConfiguration.cs" />
+    <Compile Include="Events\ModifiedEntityEventArgs.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
   </ItemGroup>
@@ -93,10 +96,6 @@
     <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
       <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
       <Name>MilitaryFaculty.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MilitaryFaculty.Data.Contract\MilitaryFaculty.Data.Contract.csproj">
-      <Project>{1F3C691F-2E66-4A98-AD58-1FC5B752317D}</Project>
-      <Name>MilitaryFaculty.Data.Contract</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

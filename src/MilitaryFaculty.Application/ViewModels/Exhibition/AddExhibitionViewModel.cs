@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    internal class AddExhibitionViewModel : AddEntityViewModel<Exhibition>
+    internal class AddExhibitionViewModel : AddEntityViewModel<Domain.Exhibition>
     {
-        public AddExhibitionViewModel(Exhibition model)
+        public AddExhibitionViewModel(Domain.Exhibition model)
             : base(model)
         {
             // Empty
@@ -24,7 +23,7 @@ namespace MilitaryFaculty.Application.ViewModels
             get { return Do.ExhibitionAdd; }
         }
 
-        protected override IEnumerable<ViewModel<Exhibition>> GetViewModels()
+        protected override IEnumerable<ViewModel<Domain.Exhibition>> GetViewModels()
         {
             return new[]
                    {

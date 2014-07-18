@@ -3,13 +3,13 @@ using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Attributes;
 using MilitaryFaculty.Presentation.ViewBehaviours;
-using MilitaryFaculty.Presentation.ViewModels.Entity;
+using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ConferenceInfoViewModel : EntityViewModel<Conference>
+    public class ConferenceInfoViewModel : EntityViewModel<Domain.Conference>
     {
-        public ConferenceInfoViewModel(Conference model)
+        public ConferenceInfoViewModel(Domain.Conference model)
             : base(model)
         {
             this.Editable(Do.ConferenceSave);

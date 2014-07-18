@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 using MilitaryFaculty.Presentation.Widgets.TreeView;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ProfessorTreeItemViewModel : TreeItemViewModel<Professor>
+    public class ProfessorTreeItemViewModel : TreeItemViewModel<Domain.Professor>
     {
-        public ProfessorTreeItemViewModel(Professor professor,
+        public ProfessorTreeItemViewModel(Domain.Professor professor,
                                           TreeViewModel owner,
                                           ITreeItemViewModel parent)
             : base(professor, owner, parent, false)
@@ -36,14 +35,14 @@ namespace MilitaryFaculty.Application.ViewModels
             throw new NotSupportedException();
         }
 
-        public static ProfessorTreeItemViewModel FromModel(Professor model,
+        public static ProfessorTreeItemViewModel FromModel(Domain.Professor model,
                                                            TreeViewModel owner,
                                                            ITreeItemViewModel parent)
         {
             return new ProfessorTreeItemViewModel(model, owner, parent);
         }
 
-        public static Func<Professor, ProfessorTreeItemViewModel> FromModel(TreeViewModel owner,
+        public static Func<Domain.Professor, ProfessorTreeItemViewModel> FromModel(TreeViewModel owner,
                                                                             ITreeItemViewModel parent)
         {
             return professor => FromModel(professor, owner, parent);

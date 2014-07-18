@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    internal class AddProfessorViewModel : AddEntityViewModel<Professor>
+    internal class AddProfessorViewModel : AddEntityViewModel<Domain.Professor>
     {
-        public AddProfessorViewModel(Professor model)
+        public AddProfessorViewModel(Domain.Professor model)
             : base(model)
         {
             // Empty
@@ -24,9 +23,9 @@ namespace MilitaryFaculty.Application.ViewModels
             get { return Do.ProfessorAdd; }
         }
 
-        protected override IEnumerable<ViewModel<Professor>> GetViewModels()
+        protected override IEnumerable<ViewModel<Domain.Professor>> GetViewModels()
         {
-            return new ViewModel<Professor>[]
+            return new ViewModel<Domain.Professor>[]
                    {
                        new ProfessorInfoViewModel(Model),
                        new ProfessorExtraInfoViewModel(Model)

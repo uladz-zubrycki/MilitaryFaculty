@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MilitaryFaculty.Domain
+namespace MilitaryFaculty.Domain.ScientificExpertise
 {
     public class ScientificExpertise : UniqueEntity, IImitator<ScientificExpertise>
     {

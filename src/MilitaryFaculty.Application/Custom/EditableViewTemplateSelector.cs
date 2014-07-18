@@ -2,7 +2,6 @@
 using System.Windows.Controls;
 using MilitaryFaculty.Presentation.ViewBehaviours;
 using MilitaryFaculty.Presentation.ViewModels;
-using MilitaryFaculty.Presentation.ViewModels.Entity;
 
 namespace MilitaryFaculty.Application.Custom
 {

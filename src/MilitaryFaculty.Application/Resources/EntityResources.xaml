@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:entity="clr-namespace:MilitaryFaculty.Presentation.ViewModels.Entity;assembly=MilitaryFaculty.Presentation"
                     xmlns:viewBehaviours="clr-namespace:MilitaryFaculty.Presentation.ViewBehaviours;assembly=MilitaryFaculty.Presentation"
                     xmlns:views="clr-namespace:MilitaryFaculty.Application.Views"
-                    xmlns:custom="clr-namespace:MilitaryFaculty.Application.Custom">
+                    xmlns:custom="clr-namespace:MilitaryFaculty.Application.Custom"
+                    xmlns:entity="clr-namespace:MilitaryFaculty.Presentation.ViewModels;assembly=MilitaryFaculty.Presentation">
 
     <!--Entity-->
     <!--If Key is changed, update MilitaryFaculty.Custom.TemplateSelector also.-->

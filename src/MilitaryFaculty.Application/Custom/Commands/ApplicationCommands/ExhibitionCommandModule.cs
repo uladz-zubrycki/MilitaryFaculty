@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Application.Custom

@@ -1,14 +1,13 @@
 ﻿using System;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ConferenceListItemViewModel : ListItemViewModel<Conference>
+    public class ConferenceListItemViewModel : ListItemViewModel<Domain.Conference>
     {
-        public ConferenceListItemViewModel(Conference model)
+        public ConferenceListItemViewModel(Domain.Conference model)
             : base(model)
         {
             TooltipViewModel = new ConferenceReportViewModel(Model);
@@ -56,7 +55,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                               imageSource);
         }
 
-        public static ConferenceListItemViewModel FromModel(Conference model)
+        public static ConferenceListItemViewModel FromModel(Domain.Conference model)
         {
             if (model == null)
             {

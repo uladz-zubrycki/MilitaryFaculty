@@ -29,7 +29,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             Model = model;
         }
 
-        protected void SetModelProperty<TProperty>(Expression<Func<T, TProperty>> evaluator, TProperty value)
+        protected bool SetModelProperty<TProperty>(Expression<Func<T, TProperty>> evaluator, TProperty value)
         {
             if (evaluator == null)
             {
@@ -42,13 +42,15 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
             var oldValue = (TProperty) propInfo.GetValue(target);
 
-            if (value.Equals(oldValue))
+            if (!value.Equals(oldValue))
             {
-                return;
+                propInfo.SetValue(target, value);
+                OnPropertyChanged(propInfo.Name);
+
+                return true;
             }
 
-            propInfo.SetValue(target, value);
-            OnPropertyChanged(propInfo.Name);
+            return false;
         }
 
         private static object GetMember(MemberExpression expression, T target)

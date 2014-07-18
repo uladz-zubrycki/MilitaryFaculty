@@ -1,14 +1,13 @@
 ﻿using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Attributes;
 using MilitaryFaculty.Presentation.ViewBehaviours;
-using MilitaryFaculty.Presentation.ViewModels.Entity;
+using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class PublicationInfoViewModel : EntityViewModel<Publication>
+    public class PublicationInfoViewModel : EntityViewModel<Domain.Publication>
     {
-        public PublicationInfoViewModel(Publication model)
+        public PublicationInfoViewModel(Domain.Publication model)
             : base(model)
         {
             this.Editable(Do.PublicationSave);

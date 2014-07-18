@@ -1,11 +1,10 @@
-﻿using MilitaryFaculty.Domain;
-using MilitaryFaculty.Presentation.ViewModels;
+﻿using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class CathedraInfoViewModel : ViewModel<Cathedra>
+    public class CathedraInfoViewModel : ViewModel<Domain.Cathedra>
     {
-        public CathedraInfoViewModel(Cathedra model)
+        public CathedraInfoViewModel(Domain.Cathedra model)
             : base(model)
         {
             // Empty

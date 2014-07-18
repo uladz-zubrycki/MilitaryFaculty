@@ -10,9 +10,7 @@ namespace MilitaryFaculty.Data
         {
             HasKey(m => m.Id);
             Property(m => m.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(m => m.Name).IsRequired()
-                                 .HasMaxLength(Exhibition.NameMaxLength);
-
+            Property(m => m.Name).IsRequired().HasMaxLength(Exhibition.NameMaxLength);
             Property(m => m.Date).IsRequired();
             Property(m => m.AwardType).IsRequired();
             Property(m => m.EventLevel).IsRequired();

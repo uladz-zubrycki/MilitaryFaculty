@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using MilitaryFaculty.Data.Contract;
-using MilitaryFaculty.Domain;
+using MilitaryFaculty.Data;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ProfessorRootViewModel : EntityRootViewModel<Professor>
+    public class ProfessorRootViewModel : EntityRootViewModel<Domain.Professor>
     {
-        private readonly IRepository<Book> _bookRepository;
-        private readonly IRepository<Conference> _conferenceRepository;
-        private readonly IRepository<Exhibition> _exhibitionRepository;
-        private readonly IRepository<Publication> _publicationRepository;
+        private readonly IRepository<Domain.Book> _bookRepository;
+        private readonly IRepository<Domain.Conference> _conferenceRepository;
+        private readonly IRepository<Domain.Exhibition> _exhibitionRepository;
+        private readonly IRepository<Domain.Publication> _publicationRepository;
 
-        public ProfessorRootViewModel(Professor model,
-                                      IRepository<Conference> conferenceRepository,
-                                      IRepository<Publication> publicationRepository,
-                                      IRepository<Exhibition> exhibitionRepository,
-                                      IRepository<Book> bookRepository)
+        public ProfessorRootViewModel(Domain.Professor model,
+                                      IRepository<Domain.Conference> conferenceRepository,
+                                      IRepository<Domain.Publication> publicationRepository,
+                                      IRepository<Domain.Exhibition> exhibitionRepository,
+                                      IRepository<Domain.Book> bookRepository)
             : base(model)
         {
             if (conferenceRepository == null)
@@ -48,9 +47,9 @@ namespace MilitaryFaculty.Application.ViewModels
             HeaderViewModel = new ProfessorHeaderViewModel(Model);
         }
 
-        protected override IEnumerable<ViewModel<Professor>> GetViewModels()
+        protected override IEnumerable<ViewModel<Domain.Professor>> GetViewModels()
         {
-            return new ViewModel<Professor>[]
+            return new ViewModel<Domain.Professor>[]
                    {
                        new ProfessorExtraInfoViewModel(Model),
                        new ProfessorConferencesViewModel(Model, _conferenceRepository),

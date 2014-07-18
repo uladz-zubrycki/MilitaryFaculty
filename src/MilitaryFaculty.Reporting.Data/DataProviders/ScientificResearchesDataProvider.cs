@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Domain.ScientificResearch;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Reporting.Data.DataProviders

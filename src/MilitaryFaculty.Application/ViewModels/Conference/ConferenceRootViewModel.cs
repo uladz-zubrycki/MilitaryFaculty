@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ConferenceRootViewModel : EntityRootViewModel<Conference>
+    public class ConferenceRootViewModel : EntityRootViewModel<Domain.Conference>
     {
-        public ConferenceRootViewModel(Conference model)
+        public ConferenceRootViewModel(Domain.Conference model)
             : base(model)
         {
             HeaderViewModel = new ConferenceHeaderViewModel();
         }
 
-        protected override IEnumerable<ViewModel<Conference>> GetViewModels()
+        protected override IEnumerable<ViewModel<Domain.Conference>> GetViewModels()
         {
-            return new ViewModel<Conference>[]
+            return new ViewModel<Domain.Conference>[]
                    {
                        new ConferenceInfoViewModel(Model),
                        new ConferenceReportViewModel(Model)

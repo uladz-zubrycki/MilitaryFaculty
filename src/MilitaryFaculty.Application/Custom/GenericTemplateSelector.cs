@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using Autofac;
 using MilitaryFaculty.Application.ViewModels;
 using MilitaryFaculty.Extensions;
-using MilitaryFaculty.Presentation.ViewModels.Entity;
+using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.Custom
 {

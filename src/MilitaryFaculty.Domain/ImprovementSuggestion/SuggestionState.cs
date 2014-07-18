@@ -1,6 +1,6 @@
 ﻿using MilitaryFaculty.Extensions;
 
-namespace MilitaryFaculty.Domain
+namespace MilitaryFaculty.Domain.ImprovementSuggestion
 {
     public enum SuggestionState
     {

@@ -1,14 +1,13 @@
 ﻿using System;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class PublicationListItemViewModel : ListItemViewModel<Publication>
+    public class PublicationListItemViewModel : ListItemViewModel<Domain.Publication>
     {
-        public PublicationListItemViewModel(Publication model)
+        public PublicationListItemViewModel(Domain.Publication model)
             : base(model)
         {
             TooltipViewModel = new PublicationExtraInfoViewModel(Model);
@@ -56,7 +55,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                               imageSource);
         }
 
-        public static PublicationListItemViewModel FromModel(Publication model)
+        public static PublicationListItemViewModel FromModel(Domain.Publication model)
         {
             if (model == null)
             {

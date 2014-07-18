@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Domain.ImprovementSuggestion;
 
 namespace MilitaryFaculty.Data
 {

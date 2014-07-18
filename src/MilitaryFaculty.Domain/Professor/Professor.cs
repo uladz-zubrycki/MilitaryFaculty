@@ -90,11 +90,17 @@ namespace MilitaryFaculty.Domain
 
         public Professor()
         {
+            Id = Guid.Empty;
+            _militaryRank = MilitaryRank.JuniorLieutenant;
+            _academicDegree = AcademicDegree.None;
+            _academicRank = AcademicRank.None;
+            _jobPosition = JobPosition.Teacher;
+
             EnrollDate = DateTime.Now;
             DismissalDate = DateTime.MaxValue;
-            _jobPosition = JobPosition.Professor;
 
             FullName = new FullName();
+            Cathedra = null;
             Conferences = new Collection<Conference>();
             Publications = new Collection<Publication>();
             Exhibitions = new Collection<Exhibition>();
