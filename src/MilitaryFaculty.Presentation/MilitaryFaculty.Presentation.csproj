@@ -378,6 +378,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MilitaryFaculty.Common\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">
+      <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
+      <Name>MilitaryFaculty.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Data\MilitaryFaculty.Data.Contract\MilitaryFaculty.Data.Contract.csproj">
+      <Project>{1F3C691F-2E66-4A98-AD58-1FC5B752317D}</Project>
+      <Name>MilitaryFaculty.Data.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Data\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj">
+      <Project>{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}</Project>
+      <Name>MilitaryFaculty.Data %28MilitaryFaculty.Data\MilitaryFaculty.Data%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.Contract\MilitaryFaculty.Domain.Contract.csproj">
+      <Project>{10E40656-D44B-46CE-9FED-0496F71554B7}</Project>
+      <Name>MilitaryFaculty.Domain.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
+      <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
+      <Name>MilitaryFaculty.Domain %28MilitaryFaculty.Domain\MilitaryFaculty.Domain%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Presentation.Core\MilitaryFaculty.Presentation.Core.csproj">
       <Project>{1F175083-DFF1-452F-AE20-C1C93D59765F}</Project>
       <Name>MilitaryFaculty.Presentation.Core</Name>

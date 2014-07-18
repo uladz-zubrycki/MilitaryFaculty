@@ -1,19 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Linq;
-using System.Xml;
-using System.Xml.Serialization;
+﻿using System.Configuration;
 using MilitaryFaculty.Data;
-using MilitaryFaculty.Domain;
-using MilitaryFaculty.Reporting;
-using MilitaryFaculty.Reporting.Data;
-using MilitaryFaculty.Reporting.Data.DataProviders;
-using MilitaryFaculty.Reporting.Excel;
-using MilitaryFaculty.Reporting.Providers;
-using MilitaryFaculty.Reporting.ReportDomain;
-using MilitaryFaculty.Reporting.XmlDomain;
 using NUnit.Framework;
 
 namespace MilitaryFaculty.Logic.Tests

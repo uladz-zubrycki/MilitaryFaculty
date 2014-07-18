@@ -276,7 +276,7 @@ namespace MilitaryFaculty.Data.Tests
 
             var scientificResearches = new[]
                               {
-                                  new ScientificResearch()
+                                  new ScientificResearch
                                   {
                                       Name = "Какая-то научная работа",
                                       Author = professor1,

@@ -33,7 +33,7 @@ namespace MilitaryFaculty.Reporting.ReportDomain
                 throw new ArgumentException("reportRows");
             }
 
-            var newRow = new ReportRow()
+            var newRow = new ReportRow
             {
                 Name = reportRows.First().Name,
                 MaxValue = reportRows.First().MaxValue,

@@ -43,7 +43,7 @@ namespace MilitaryFaculty.Reporting.Excel
             }
             if (reportObjects == null)
             {
-                throw new ArgumentNullException("reportObject");
+                throw new ArgumentNullException("reportObjects");
             }
             if (reportObjects.Count == 0)
             {
