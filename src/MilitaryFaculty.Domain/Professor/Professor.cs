@@ -106,11 +106,11 @@ namespace MilitaryFaculty.Domain
             Exhibitions = new Collection<Exhibition>();
             Books = new Collection<Book>();
 
-            ScientificResearches = new Collection<ScientificResearch>();
-            ScientificRequests = new Collection<ScientificRequest>();
-            ScientificExpertises = new Collection<ScientificExpertise>();
-            ImprovementSuggestions = new Collection<ImprovementSuggestion>();
-            Synopses = new Collection<Synopsis>();
+            ScientificResearches = new Collection<ScientificResearch.ScientificResearch>();
+            ScientificRequests = new Collection<ScientificRequest.ScientificRequest>();
+            ScientificExpertises = new Collection<ScientificExpertise.ScientificExpertise>();
+            ImprovementSuggestions = new Collection<ImprovementSuggestion.ImprovementSuggestion>();
+            Synopses = new Collection<Synopsis.Synopsis>();
             AcademicDegreeChangings = new Collection<AcademicDegreeChanging>();
             Participations = new Collection<Participation>();
         }

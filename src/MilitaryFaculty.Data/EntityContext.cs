@@ -1,10 +1,5 @@
 ﻿using System.Data.Entity;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Domain.ImprovementSuggestion;
-using MilitaryFaculty.Domain.ScientificExpertise;
-using MilitaryFaculty.Domain.ScientificRequest;
-using MilitaryFaculty.Domain.ScientificResearch;
-using MilitaryFaculty.Domain.Synopsis;
 
 namespace MilitaryFaculty.Data
 {

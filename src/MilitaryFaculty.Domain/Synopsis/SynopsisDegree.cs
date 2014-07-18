@@ -1,6 +1,6 @@
 ﻿using MilitaryFaculty.Extensions;
 
-namespace MilitaryFaculty.Domain.Synopsis
+namespace MilitaryFaculty.Domain
 {
     public enum SynopsisDegree
     {

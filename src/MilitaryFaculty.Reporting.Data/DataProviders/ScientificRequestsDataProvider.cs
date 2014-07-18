@@ -2,7 +2,6 @@
 using System.Linq.Expressions;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Domain.ScientificRequest;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Reporting.Data.DataProviders

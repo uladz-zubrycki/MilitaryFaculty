@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using MilitaryFaculty.Extensions;
 
-namespace MilitaryFaculty.Domain.ImprovementSuggestion
+namespace MilitaryFaculty.Domain
 {
     public class ImprovementSuggestion : UniqueEntity, IImitator<ImprovementSuggestion>
     {
