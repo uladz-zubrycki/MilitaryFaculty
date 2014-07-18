@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Presentation.ViewModels;

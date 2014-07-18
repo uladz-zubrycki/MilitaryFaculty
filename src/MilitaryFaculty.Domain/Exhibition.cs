@@ -1,47 +1,35 @@
 ﻿using System;
-using System.ComponentModel;
+using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
+    public enum AwardType
+    {
+        [EnumName("Диплом первой степени")]
+        FirstDegree,
+
+        [EnumName("Диплом второй степени (медаль)")]
+        SecondDegree,
+
+        [EnumName("Диплом третьей степени")]
+        ThirdDegree,
+
+        [EnumName("Диплом (грамота)")]
+        WithoutDegree
+    }
+
+    // ReSharper disable DoNotCallOverridableMethodsInConstructor
+    // Properties are virtual only for EntityFramework
     public class Exhibition : UniqueEntity, IImitator<Exhibition>
     {
         public static int NameMaxLength = 50;
 
-        private AwardType _awardType;
-        private EventLevel _eventLevel;
-
         public virtual string Name { get; set; }
         public virtual DateTime Date { get; set; }
         public virtual Professor Participant { get; set; }
-
-        public virtual AwardType AwardType
-        {
-            get { return _awardType; }
-            set
-            {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                _awardType = value;
-            }
-        }
-
-        public virtual EventLevel EventLevel
-        {
-            get { return _eventLevel; }
-            set
-            {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                _eventLevel = value;
-            }
-        }
+        public virtual AwardType AwardType { get; set; }
+        public virtual EventLevel EventLevel { get; set; }
 
         public Exhibition()
         {
@@ -69,4 +57,5 @@ namespace MilitaryFaculty.Domain
             Participant = other.Participant;
         }
     }
+    // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

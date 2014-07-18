@@ -1,31 +1,31 @@
 ﻿using System;
-using System.ComponentModel;
+using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
+    public enum ParticipationPlace
+    {
+        [EnumName("Экспертный совет ВАК Беларуси")]
+        HigherAttestationCommission,
+
+        [EnumName("Специализированный совет по защите диссертаций")]
+        DefenceOfDissertationCounsil,
+
+        [EnumName("Военно-научный или научно-технический совет вуза")]
+        ResearchCounsil,
+
+        [EnumName("Редакционная коллегия научных изданий")]
+        EditorialBoardsOfScientificPublications
+    }
+
     public class Participation : UniqueEntity, IImitator<Participation>
     {
-        private ParticipationPlace _placeType;
-
         public Professor Participant { get; set; }
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-
-        public ParticipationPlace PlaceType
-        {
-            get { return _placeType; }
-            set
-            {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                _placeType = value;
-            }
-        }
+        public ParticipationPlace PlaceType { get; set; }
 
         public Participation()
         {
@@ -33,7 +33,7 @@ namespace MilitaryFaculty.Domain
             Name = String.Empty;
             StartDate = DateTime.Now;
             EndDate = DateTime.MaxValue;
-            _placeType = ParticipationPlace.HigherAttestationCommission;
+            PlaceType = ParticipationPlace.HigherAttestationCommission;
         }
 
         public Participation(Participation other)

@@ -1,32 +1,28 @@
 ﻿using System;
-using System.ComponentModel;
+using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
+    public enum BookType
+    {
+        [EnumName("Учебник")]
+        Schoolbook,
+
+        [EnumName("Учебное пособие")]
+        Tutorial
+    }
+
+    // ReSharper disable DoNotCallOverridableMethodsInConstructor
+    // Properties are virtual only for EntityFramework
     public class Book : UniqueEntity, IImitator<Book>
     {
-        private BookType _bookType;
-
         public virtual Professor Author { get; set; }
         public virtual string Name { get; set; }
         public virtual int PagesCount { get; set; }
         public virtual DateTime Date { get; set; }
-
-        public virtual BookType BookType
-        {
-            get { return _bookType; }
-            set
-            {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                _bookType = value;
-            }
-        }
-
+        public virtual BookType BookType { get; set; }
+       
         public Book()
         {
             Name = String.Empty;
@@ -53,4 +49,5 @@ namespace MilitaryFaculty.Domain
             Date = other.Date;
         }
     }
+    // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Presentation.Commands;
 
 namespace MilitaryFaculty.Application.Custom

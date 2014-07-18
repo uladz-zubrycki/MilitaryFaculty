@@ -1,31 +1,33 @@
 ﻿using System;
-using System.ComponentModel;
+using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
+    public enum PublicationType
+    {
+        [EnumName("Монография")]
+        Monograph,
+
+        [EnumName("Рецензируемая научная статья")]
+        ReviewedArticle,
+
+        [EnumName("Нерецензируемая научная статья")]
+        Article,
+
+        [EnumName("Тезис докладов")]
+        Thesis
+    }
+
+    // ReSharper disable DoNotCallOverridableMethodsInConstructor
+    // Properties are virtual only for EntityFramework
     public class Publication : UniqueEntity, IImitator<Publication>
     {
-        private PublicationType _publicationType;
-
         public virtual Professor Author { get; set; }
         public virtual string Name { get; set; }
         public virtual int PagesCount { get; set; }
         public virtual DateTime Date { get; set; }
-
-        public virtual PublicationType PublicationType
-        {
-            get { return _publicationType; }
-            set
-            {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                _publicationType = value;
-            }
-        }
+        public virtual PublicationType PublicationType { get; set; }
 
         public Publication()
         {
@@ -54,4 +56,5 @@ namespace MilitaryFaculty.Domain
             PublicationType = other.PublicationType;
         }
     }
+    // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

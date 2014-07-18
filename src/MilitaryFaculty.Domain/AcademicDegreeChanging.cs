@@ -1,34 +1,20 @@
 ﻿using System;
 using System.ComponentModel;
+using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
     public class AcademicDegreeChanging : UniqueEntity, IImitator<AcademicDegreeChanging>
     {
-        private AcademicDegree _resultedDegree;
-
         public DateTime Date { get; set; }
         public Professor Target { get; set; }
-
-        public AcademicDegree ResultedDegree
-        {
-            get { return _resultedDegree; }
-            set
-            {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                _resultedDegree = value;
-            }
-        }
-
+        public AcademicDegree ResultedDegree { get; set; }
+    
         public AcademicDegreeChanging()
         {
             Date = DateTime.Now;
-            _resultedDegree = AcademicDegree.None;
+            ResultedDegree = AcademicDegree.None;
         }
 
         public AcademicDegreeChanging(AcademicDegreeChanging other)

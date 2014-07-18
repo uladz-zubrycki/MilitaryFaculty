@@ -1,4 +1,4 @@
-﻿namespace MilitaryFaculty.Domain
+﻿namespace MilitaryFaculty.Domain.Base
 {
     public interface IImitator<in T>
     {

@@ -1,9 +1,21 @@
 ﻿using System;
 using System.ComponentModel;
+using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
+    public enum MilitaryScientificSupportState
+    {
+        [EnumName("Военно-научное сопровождение не проведено")]
+        NotCompleted,
+
+        [EnumName("Военно-научное сопровождение проведено")]
+        Completed,
+    }
+
+    // ReSharper disable DoNotCallOverridableMethodsInConstructor
+    // Properties are virtual only for EntityFramework
     public class ScientificResearch : UniqueEntity, IImitator<ScientificResearch>
     {
         private MilitaryScientificSupportState _state;
@@ -12,20 +24,7 @@ namespace MilitaryFaculty.Domain
         public virtual DateTime Date { get; set; }
         public virtual Professor Author { get; set; }
         public virtual int PagesCount { get; set; }
-
-        public virtual MilitaryScientificSupportState State
-        {
-            get { return _state; }
-            set
-            {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                _state = value;
-            }
-        }
+        public virtual MilitaryScientificSupportState State { get; set; }
 
         public ScientificResearch()
         {
@@ -54,4 +53,5 @@ namespace MilitaryFaculty.Domain
             State = other.State;
         }
     }
+    // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

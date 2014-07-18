@@ -1,7 +1,10 @@
 ﻿using System;
+using MilitaryFaculty.Domain.Base;
 
 namespace MilitaryFaculty.Domain
 {
+    // ReSharper disable DoNotCallOverridableMethodsInConstructor
+    // Properties are virtual only for EntityFramework
     public class FullName : IImitator<FullName>
     {
         public const int FirstNameMaxLength = 50;
@@ -49,4 +52,5 @@ namespace MilitaryFaculty.Domain
             return String.Format("{0} {1} {2}", FirstName, MiddleName, LastName);
         }
     }
+    // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

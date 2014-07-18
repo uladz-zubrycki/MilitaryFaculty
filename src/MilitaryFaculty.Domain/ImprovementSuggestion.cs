@@ -1,30 +1,26 @@
 ﻿using System;
-using System.ComponentModel;
+using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
+    public enum SuggestionState
+    {
+        [EnumName("Не принята")]
+        Denied,
+
+        [EnumName("Принята")]
+        Accepted,
+    }
+
+    // ReSharper disable DoNotCallOverridableMethodsInConstructor
+    // Properties are virtual only for EntityFramework
     public class ImprovementSuggestion : UniqueEntity, IImitator<ImprovementSuggestion>
     {
-        private SuggestionState _suggestionState;
-
         public virtual string Name { get; set; }
         public virtual Professor Author { get; set; }
         public virtual DateTime Date { get; set; }
-
-        public virtual SuggestionState SuggestionState
-        {
-            get { return _suggestionState; }
-            set
-            {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                _suggestionState = value;
-            }
-        }
+        public virtual SuggestionState SuggestionState { get; set; }
 
         public ImprovementSuggestion()
         {
@@ -49,7 +45,8 @@ namespace MilitaryFaculty.Domain
             Name = other.Name;
             Author = other.Author;
             Date = other.Date;
-            _suggestionState = other.SuggestionState;
+            SuggestionState = other.SuggestionState;
         }
     }
+    // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

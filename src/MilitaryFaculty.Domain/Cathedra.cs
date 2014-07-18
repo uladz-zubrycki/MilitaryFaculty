@@ -1,24 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
+    public enum HistoricalWorkOrganization
+    {
+        [EnumName("Военно-историческая работа не организована")]
+        None,
+
+        [EnumName("Военно-историческая работа организована, но ведется с отдельными недостатками")]
+        Custom,
+
+        [EnumName("Военно-историческая работа организована и ведется в соответствии с требованиями нормативных правовых актов")]
+        Full,
+    }
+
+    public enum MilitaryScientificSocietyOrganization
+    {
+        [EnumName("Работа научного кружка курсантов (стедентов) не организована")]
+        None,
+
+        [EnumName("Работа научного кружка курсантов (стедентов) организована, но ведется с отдельными недостатками")]
+        Custom,
+
+        [EnumName("Работа научного кружка курсантов (студентов) организована и ведется в соответствии с требованиями нормативных правовых актов")]
+        Full,
+    }
+
+    public enum ProfsOrganization
+    {
+        [EnumName("Подготовка научно-педагогических работников высшей квалификации не организована")]
+        None,
+
+        [EnumName("Подготовка научно-педагогических работников высшей квалификации организована, но ведется с отдельными недостатками")]
+        Custom,
+
+        [EnumName("Подготовка научно-педагогических работников высшей квалификации организована")]
+        Full,
+    }
+
     /// <summary>
     ///     University subdepartment.
     /// </summary>
+    // ReSharper disable DoNotCallOverridableMethodsInConstructor
+    // Properties are virtual only for EntityFramework
     public class Cathedra : UniqueEntity, IImitator<Cathedra>
     {
-        private HistoricalWorkOrganization _historicalWorkOrganization;
-        private MilitaryScientificSocietyOrganization _militaryScientificSocietyOrganization;
-        private ProfsOrganization _profsOrganization;
-
         public const int NameMaxLength = 50;
 
         public virtual string Name { get; set; }
         public virtual ICollection<Professor> Professors { get; set; }
-
         public virtual int DevelopmentOfPlanningDocuments { get; set; }
         public virtual int ResearchTopics { get; set; }
         public virtual int RequirementsOfLegalActs { get; set; }
@@ -44,47 +77,9 @@ namespace MilitaryFaculty.Domain
         //Показатели, характеризующие подготовку и аттестацию научных работников высшей квалификации
         public virtual int CustTcSpHq { get; set; }
 
-        public virtual HistoricalWorkOrganization HistoricalWorkOrganization
-        {
-            get { return _historicalWorkOrganization; }
-            set
-            {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                _historicalWorkOrganization = value;
-            }
-        }
-
-        public virtual MilitaryScientificSocietyOrganization MilitaryScientificSupportState
-        {
-            get { return _militaryScientificSocietyOrganization; }
-            set
-            {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                _militaryScientificSocietyOrganization = value;
-            }
-        }
-
-        public virtual ProfsOrganization ProfsOrganization
-        {
-            get { return _profsOrganization; }
-            set
-            {
-                if (!value.IsDefined())
-                {
-                    throw new InvalidEnumArgumentException();
-                }
-
-                _profsOrganization = value;
-            }
-        }
+        public virtual HistoricalWorkOrganization HistoricalWorkOrganization { get; set; }
+        public virtual MilitaryScientificSocietyOrganization MilitaryScientificSupportState { get; set; }
+        public virtual ProfsOrganization ProfsOrganization { get; set; }
 
         public Cathedra()
         {
@@ -113,10 +108,9 @@ namespace MilitaryFaculty.Domain
             Id = other.Id;
             Name = other.Name;
 
-            _militaryScientificSocietyOrganization = other.MilitaryScientificSupportState;
-            _historicalWorkOrganization = other.HistoricalWorkOrganization;
-            _profsOrganization = other.ProfsOrganization;
-
+            MilitaryScientificSupportState = other.MilitaryScientificSupportState;
+            HistoricalWorkOrganization = other.HistoricalWorkOrganization;
+            ProfsOrganization = other.ProfsOrganization;
             LevelOfOrganizationIc = other.LevelOfOrganizationIc;
             LevelOfOrganizationRc = other.LevelOfOrganizationRc;
             LevelOfOrganizationRrs = other.LevelOfOrganizationRrs;
@@ -124,4 +118,5 @@ namespace MilitaryFaculty.Domain
             LevelOfOrganizationUrs = other.LevelOfOrganizationUrs;
         }
     }
+    // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

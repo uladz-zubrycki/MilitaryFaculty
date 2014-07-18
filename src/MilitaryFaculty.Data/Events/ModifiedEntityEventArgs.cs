@@ -1,5 +1,6 @@
 ﻿using System;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Domain.Base;
 
 namespace MilitaryFaculty.Data.Events
 {

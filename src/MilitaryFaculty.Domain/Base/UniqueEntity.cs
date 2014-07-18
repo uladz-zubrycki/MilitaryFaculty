@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MilitaryFaculty.Domain
+namespace MilitaryFaculty.Domain.Base
 {
     public interface IUniqueEntity : IEquatable<IUniqueEntity>
     {

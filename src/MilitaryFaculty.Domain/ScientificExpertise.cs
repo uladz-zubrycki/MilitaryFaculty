@@ -1,7 +1,10 @@
 ﻿using System;
+using MilitaryFaculty.Domain.Base;
 
 namespace MilitaryFaculty.Domain
 {
+    // ReSharper disable DoNotCallOverridableMethodsInConstructor
+    // Properties are virtual only for EntityFramework
     public class ScientificExpertise : UniqueEntity, IImitator<ScientificExpertise>
     {
         public virtual string Name { get; set; }
@@ -33,4 +36,5 @@ namespace MilitaryFaculty.Domain
             Date = other.Date;
         }
     }
+    // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

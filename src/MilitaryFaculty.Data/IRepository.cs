@@ -2,6 +2,7 @@
 using System.Linq;
 using MilitaryFaculty.Data.Events;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Domain.Base;
 
 namespace MilitaryFaculty.Data
 {
