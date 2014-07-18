@@ -10,7 +10,7 @@ namespace MilitaryFaculty.Domain
         private AcademicDegree _resultedDegree;
 
         public DateTime Date { get; set; }
-        public Professor Targer { get; set; }
+        public Professor Target { get; set; }
 
         public AcademicDegree ResultedDegree
         {
@@ -47,7 +47,7 @@ namespace MilitaryFaculty.Domain
 
             Id = other.Id;
             Date = other.Date;
-            Targer = other.Targer;
+            Target = other.Target;
         }
     }
 }

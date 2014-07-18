@@ -17,6 +17,9 @@ namespace MilitaryFaculty.Data
         public DbSet<ScientificResearch> ScientificResearches { get; set; }
         public DbSet<ImprovementSuggestion> ImprovementSuggestions { get; set; }
 
+        public DbSet<AcademicDegreeChanging> AcademicDegreeChangings { get; set; }
+        public DbSet<Participation> Participations { get; set; }
+
         public EntityContext(string connectionString)
             : base(connectionString)
         {

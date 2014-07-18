@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataProviders\AcademicDegreeChangingsDataProvider.cs" />
     <Compile Include="DataProviders\BooksDataProvider.cs" />
     <Compile Include="DataProviders\CathedrasDataProvider.cs" />
     <Compile Include="DataProviders\ConferencesDataProvider.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="DataProviders\ExhibitionsDataProvider.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="DataProviders\ImprovementSuggestionsDataProvider.cs" />
+    <Compile Include="DataProviders\ParticipationsDataProvider.cs" />
     <Compile Include="DataProviders\ScientificRequestsDataProvider.cs" />
     <Compile Include="DataProviders\ScientificResearchesDataProvider.cs" />
     <Compile Include="DataProviders\SynopsesDataProvider.cs" />

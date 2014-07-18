@@ -13,7 +13,7 @@ namespace MilitaryFaculty.Data
             Property(m => m.Date).IsRequired();
             Property(m => m.ResultedDegree).IsRequired();
 
-            HasRequired(m => m.Targer).WithMany(p => p.AcademicDegreeChangings);
+            HasRequired(m => m.Target).WithMany(p => p.AcademicDegreeChangings);
         }
     }
 }
