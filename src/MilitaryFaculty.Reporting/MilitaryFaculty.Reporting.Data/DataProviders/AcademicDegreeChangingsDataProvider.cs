@@ -18,5 +18,25 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
             : base(repository, modificator)
         {
         }
+
+        /// <summary>
+        ///     Количество ППС, которым присвоена ученое звание профессора (в проверяемый период)
+        /// </summary>
+        /// <returns></returns>
+        [FormulaArgument("DocAssignCount")]
+        public double DoctorsAssignedCount()
+        {
+            return CountOf(adc => adc.ResultedDegree == AcademicDegree.Professor);
+        }
+
+        /// <summary>
+        ///     Количество ППС, которым присвоена ученое звание доцента (в проверяемый период)
+        /// </summary>
+        /// <returns></returns>
+        [FormulaArgument("DocentsAssignCount")]
+        public double DocentsAssignedCount()
+        {
+            return CountOf(adc => adc.ResultedDegree == AcademicDegree.Docent);
+        }
     }
 }

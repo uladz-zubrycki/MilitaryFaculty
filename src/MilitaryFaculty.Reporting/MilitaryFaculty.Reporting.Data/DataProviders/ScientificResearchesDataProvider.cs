@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
@@ -37,6 +38,26 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         public double MilitaryScientificSupportsCount()
         {
             return CountOf(w => w.State == MilitaryScientificSupportState.Completed);
+        }
+
+        /// <summary>
+        ///     Количество ППС, участвующих во всех НИР
+        /// </summary>
+        /// <returns></returns>
+        [FormulaArgument("SrwProfsCount")]
+        public double ScientificResearchWorkProfessorsCount()
+        {
+            //TODO: вероятная оптимизация - вынести модификатор на уровень репозитория?
+            var professorMemo = new HashSet<Guid>();
+            return CountOf(sr =>
+            {
+                if (!professorMemo.Contains(sr.Author.Id))
+                {
+                    professorMemo.Add(sr.Author.Id);
+                    return true;
+                }
+                return false;
+            });
         }
     }
 }

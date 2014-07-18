@@ -17,6 +17,7 @@ namespace MilitaryFaculty.Reporting.Data
         private readonly ParticipationsDataProvider _participations;
         private readonly ProfessorsDataProvider _professors;
         private readonly PublicationsDataProvider _publications;
+        private readonly ScientificExpertisesDataProvider _scientificExpertises;
         private readonly ScientificRequestsDataProvider _scientificRequests;
         private readonly ScientificResearchesDataProvider _scientificResearches;
         private readonly SynopsesDataProvider _synopses;
@@ -28,9 +29,10 @@ namespace MilitaryFaculty.Reporting.Data
             ConferencesDataProvider conferences,
             ExhibitionsDataProvider exhibitions,
             ImprovementSuggestionsDataProvider improvementSuggestions,
-            ParticipationsDataProvider participationsDataProvider,
+            ParticipationsDataProvider participations,
             ProfessorsDataProvider professors,
             PublicationsDataProvider publications,
+            ScientificExpertisesDataProvider scientificExpertises,
             ScientificRequestsDataProvider scientificRequests,
             ScientificResearchesDataProvider scientificResearches,
             SynopsesDataProvider synopses
@@ -62,9 +64,9 @@ namespace MilitaryFaculty.Reporting.Data
             {
                 throw new ArgumentNullException("improvementSuggestions");
             }
-            if (participationsDataProvider == null)
+            if (participations == null)
             {
-                throw new ArgumentNullException("participationsDataProvider");
+                throw new ArgumentNullException("participations");
             }
             if (professors == null)
             {
@@ -73,6 +75,10 @@ namespace MilitaryFaculty.Reporting.Data
             if (publications == null)
             {
                 throw new ArgumentNullException("publications");
+            }
+            if (scientificExpertises == null)
+            {
+                throw new ArgumentNullException("scientificExpertises");
             }
             if (scientificRequests == null)
             {
@@ -95,9 +101,10 @@ namespace MilitaryFaculty.Reporting.Data
             _conferences = conferences;
             _exhibitions = exhibitions;
             _improvementSuggestions = improvementSuggestions;
-            _participations = participationsDataProvider;
+            _participations = participations;
             _professors = professors;
             _publications = publications;
+            _scientificExpertises = scientificExpertises;
             _scientificRequests = scientificRequests;
             _scientificResearches = scientificResearches;
             _synopses = synopses;
@@ -114,6 +121,7 @@ namespace MilitaryFaculty.Reporting.Data
             _participations.QueryModificator = null;
             _professors.QueryModificator = null;
             _publications.QueryModificator = null;
+            _scientificExpertises.QueryModificator = null;
             _scientificRequests.QueryModificator = null;
             _scientificResearches.QueryModificator = null;
             _synopses.QueryModificator = null;
@@ -164,6 +172,10 @@ namespace MilitaryFaculty.Reporting.Data
                 pub.Author.Id == professor.Id
                 && pub.Date >= interval.From
                 && pub.Date <= interval.To;
+            _scientificExpertises.QueryModificator = se =>
+                se.Author.Id == professor.Id
+                && se.Date >= interval.From
+                && se.Date <= interval.To;
             _scientificRequests.QueryModificator = srq =>
                 srq.Author.Id == professor.Id
                 && srq.Date >= interval.From
@@ -182,13 +194,16 @@ namespace MilitaryFaculty.Reporting.Data
         {
             var providers = new IDataProvider[]
             {
+                _academicDegreeChangings,
                 _books,
                 _cathedras,
                 _conferences,
                 _exhibitions,
                 _improvementSuggestions,
+                _participations,
                 _professors,
                 _publications,
+                _scientificExpertises,
                 _scientificRequests,
                 _scientificResearches,
                 _synopses

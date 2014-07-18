@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Linq.Expressions;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
@@ -187,72 +186,6 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         }
 
         /// <summary>
-        ///     Количество научных работников высшей квалификации из числа ППС,
-        ///     участвующих в работе экспертных советов ВАК Беларуси
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("HacHqProfsCount")]
-        public double HacHqProfsCount() //Higher Attestation Commission
-        {
-            //TODO: Start here
-            return CountOf(
-                p =>
-                    p.Participations.Count(
-                        partisipation => partisipation.PlaceType == ParticipationPlace.HigherAttestationCommission
-                        ) != 0
-                );
-        }
-
-        /// <summary>
-        ///     Количество научных работников высшей квалификации из числа ППС,
-        ///     участвующих в работе специализированных советов по защите диссертаций
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("DodHqProfsCount")]
-        public double DodHqProfsCount() //Defence of dissertation counsil
-        {
-            return CountOf(
-                p =>
-                    p.Participations.Count(
-                        partisipation => partisipation.PlaceType == ParticipationPlace.DefenceOfDissertationCounsil
-                        ) != 0
-                );
-        }
-
-        /// <summary>
-        ///     Количество научных работников высшей квалификации из числа ППС,
-        ///     участвующих в работе научных советов вуза
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("RcHqProfsCount")]
-        public double RcHqProfsCount() //research counsil
-        {
-            return CountOf(
-                p =>
-                    p.Participations.Count(
-                        partisipation => partisipation.PlaceType == ParticipationPlace.ResearchCounsil
-                        ) != 0
-                );
-        }
-
-        /// <summary>
-        ///     Количество научных работников высшей квалификации из числа ППС,
-        ///     участвующих в работе редакционных коллегий научных изданий
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("EbspHqProfsCount")]
-        public double EbspHqProfsCount() //editorial boards of scientific publications
-        {
-            return CountOf(
-                p =>
-                    p.Participations.Count(
-                        partisipation =>
-                            partisipation.PlaceType == ParticipationPlace.EditorialBoardsOfScientificPublications
-                        ) != 0
-                );
-        }
-
-        /// <summary>
         ///     Укомплектованность военного факультета (кафедры) научными работниками высшей квалификации (1 или 0)
         ///     больше 40%
         /// </summary>
@@ -296,46 +229,6 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         public double StaffingOfHighQualificatioEqual0()
         {
             return Math.Abs(HighQualificationProfsCount()) < 0.0001 ? 1 : 0;
-        }
-
-        /// <summary>
-        ///     Количество ППС, участвующих в работе по проведению научной экспертизы
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("SeProfsCount")]
-        public double ScientificExperticeProfessorsCount()
-        {
-            return CountOf(p => p.ScientificExpertises.Count != 0);
-        }
-
-        /// <summary>
-        ///     Количество ППС, которым присвоена ученое звание профессора (в проверяемый период)
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("DocAssignCount")]
-        public double DoctorsAssignedCount()
-        {
-            return 1;
-        }
-
-        /// <summary>
-        ///     Количество ППС, которым присвоена ученое звание доцента (в проверяемый период)
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("DocentsAssignCount")]
-        public double DocentsAssignedCount()
-        {
-            return 1;
-        }
-
-        /// <summary>
-        ///     Количество ППС, участвующих во всех НИР
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("SrwProfsCount")]
-        public double ScientificResearchWorkProfessorsCount()
-        {
-            return CountOf(p => p.ScientificResearches.Count != 0 );
         }
     }
 }

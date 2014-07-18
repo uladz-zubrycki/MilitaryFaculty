@@ -66,6 +66,7 @@
     <Compile Include="DataProvider.cs" />
     <Compile Include="DataProviders\ImprovementSuggestionsDataProvider.cs" />
     <Compile Include="DataProviders\ParticipationsDataProvider.cs" />
+    <Compile Include="DataProviders\ScientificExpertisesDataProvider.cs" />
     <Compile Include="DataProviders\ScientificRequestsDataProvider.cs" />
     <Compile Include="DataProviders\ScientificResearchesDataProvider.cs" />
     <Compile Include="DataProviders\SynopsesDataProvider.cs" />
