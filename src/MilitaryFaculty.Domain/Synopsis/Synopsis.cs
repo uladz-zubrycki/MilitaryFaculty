@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using MilitaryFaculty.Extensions;
 
-namespace MilitaryFaculty.Domain.Synopsis
+namespace MilitaryFaculty.Domain
 {
     public class Synopsis : UniqueEntity, IImitator<Synopsis>
     {

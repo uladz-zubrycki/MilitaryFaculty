@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using MilitaryFaculty.Extensions;
 
-namespace MilitaryFaculty.Domain.ScientificRequest
+namespace MilitaryFaculty.Domain
 {
     public class ScientificRequest : UniqueEntity, IImitator<ScientificRequest>
     {

@@ -3,7 +3,6 @@ using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Domain.ScientificResearch;
 using NUnit.Framework;
 
 // ReSharper disable InconsistentNaming
