@@ -16,6 +16,9 @@ namespace MilitaryFaculty.Domain
         public FullName FullName { get; set; }
         public Cathedra Cathedra { get; set; }
 
+        public DateTime EnrollDate { get; set; }
+        public DateTime DismissalDate { get; set; }
+
         public ICollection<Publication> Publications { get; set; }
         public ICollection<Conference> Conferences { get; set; }
         public ICollection<Exhibition> Exhibitions { get; set; }
@@ -93,6 +96,9 @@ namespace MilitaryFaculty.Domain
             _academicRank = AcademicRank.None;
             _jobPosition = JobPosition.Teacher;
 
+            EnrollDate = DateTime.Now;
+            DismissalDate = DateTime.MaxValue;
+
             FullName = new FullName();
             Cathedra = null;
             Conferences = new Collection<Conference>();
@@ -129,6 +135,9 @@ namespace MilitaryFaculty.Domain
             MilitaryRank = other.MilitaryRank;
             FullName.Imitate(other.FullName);
             Cathedra = other.Cathedra;
+
+            EnrollDate = other.EnrollDate;
+            DismissalDate = other.DismissalDate;
         }
     }
 }

@@ -14,6 +14,8 @@ namespace MilitaryFaculty.Data
             Property(m => m.AcademicRank).IsRequired();
             Property(m => m.JobPosition).IsRequired();
             Property(m => m.MilitaryRank).IsRequired();
+            Property(m => m.EnrollDate).IsRequired();
+            Property(m => m.DismissalDate).IsRequired();
 
             HasRequired(m => m.Cathedra).WithMany(c => c.Professors);
         }

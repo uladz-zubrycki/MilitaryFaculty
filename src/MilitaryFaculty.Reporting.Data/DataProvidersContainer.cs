@@ -163,11 +163,13 @@ namespace MilitaryFaculty.Reporting.Data
             _participations.QueryModificator = part =>
                 part.Participant.Id == professor.Id
                 && ((part.StartDate >= interval.From && part.StartDate <= interval.To)
-                || (part.EndDate >= interval.From && part.StartDate <= interval.To)
+                || (part.EndDate >= interval.From && part.EndDate <= interval.To)
                 || (part.StartDate <= interval.From && part.EndDate >= interval.To));
             _professors.QueryModificator = prof =>
-                //TODO: Professors interval (with prof contract)
-                prof.Id == professor.Id;
+                prof.Id == professor.Id
+                && ((prof.EnrollDate >= interval.From && prof.EnrollDate <= interval.To)
+                || (prof.DismissalDate >= interval.From && prof.DismissalDate <= interval.To)
+                || (prof.EnrollDate <= interval.From && prof.DismissalDate >= interval.To));
             _publications.QueryModificator = pub =>
                 pub.Author.Id == professor.Id
                 && pub.Date >= interval.From
