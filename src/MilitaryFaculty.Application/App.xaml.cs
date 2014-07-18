@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading;
+using System.Windows;
 using Autofac;
 using MilitaryFaculty.Application.ViewModels;
 
@@ -7,9 +8,15 @@ namespace MilitaryFaculty.Application
     /// <summary>
     ///     Interaction logic for App.xaml
     /// </summary>
-    public partial class App : System.Windows.Application
+    public partial class App
     {
         private void App_OnStartup(object sender, StartupEventArgs e)
+        {
+            WaitForSplashScreen();
+            ShowWindow();
+        }
+
+        private static void ShowWindow()
         {
             var container = InjectionConfig.Register(new ContainerBuilder());
 
@@ -19,6 +26,11 @@ namespace MilitaryFaculty.Application
                        };
 
             view.Show();
+        }
+
+        private static void WaitForSplashScreen()
+        {
+            Thread.SpinWait(10000);
         }
     }
 }
