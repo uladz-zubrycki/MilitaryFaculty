@@ -5,7 +5,7 @@ using System.Reflection;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Attributes;
 
-namespace MilitaryFaculty.Presentation.ViewModels.Entity
+namespace MilitaryFaculty.Presentation.ViewModels
 {
     public abstract class EntityViewModel<T> : ViewModel<T>
         where T : class

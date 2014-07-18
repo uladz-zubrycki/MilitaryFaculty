@@ -2,18 +2,18 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Data.Contract;
-using MilitaryFaculty.Domain;
+using MilitaryFaculty.Data;
+using MilitaryFaculty.Data.Events;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ProfessorExhibitionsViewModel : ViewModel<Professor>
+    public class ProfessorExhibitionsViewModel : ViewModel<Domain.Professor>
     {
         private readonly Lazy<ObservableCollection<ExhibitionListItemViewModel>> _exhibitions;
 
-        public ProfessorExhibitionsViewModel(Professor model, IRepository<Exhibition> exhibitionRepository)
+        public ProfessorExhibitionsViewModel(Domain.Professor model, IRepository<Domain.Exhibition> exhibitionRepository)
             : base(model)
         {
             if (exhibitionRepository == null)
@@ -67,13 +67,13 @@ namespace MilitaryFaculty.Application.ViewModels
             return result;
         }
 
-        private void OnExhibitionCreated(object sender, ModifiedEntityEventArgs<Exhibition> e)
+        private void OnExhibitionCreated(object sender, ModifiedEntityEventArgs<Domain.Exhibition> e)
         {
             var exhibition = e.ModifiedEntity;
             Exhibitions.Add(new ExhibitionListItemViewModel(exhibition));
         }
 
-        private void OnExhibitionDeleted(object sender, ModifiedEntityEventArgs<Exhibition> e)
+        private void OnExhibitionDeleted(object sender, ModifiedEntityEventArgs<Domain.Exhibition> e)
         {
             var exhibition = e.ModifiedEntity;
             Exhibitions.RemoveSingle(c => c.Model.Equals(exhibition));

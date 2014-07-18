@@ -1,12 +1,13 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Reporting.Data
 {
-    public abstract class DataProvider<T> : IDataProvider where T : class, IUniqueEntity
+    public abstract class DataProvider<T> : IDataProvider 
+        where T : class, IUniqueEntity
     {
         private readonly IQueryable<T> _queryableCollection;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
-using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Data.Events;
 using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Data

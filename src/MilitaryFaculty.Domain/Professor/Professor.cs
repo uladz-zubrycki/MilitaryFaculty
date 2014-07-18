@@ -24,11 +24,11 @@ namespace MilitaryFaculty.Domain
         public ICollection<Exhibition> Exhibitions { get; set; }
         public ICollection<Book> Books { get; set; }
 
-        public ICollection<ScientificResearch> ScientificResearches { get; set; }
-        public ICollection<ScientificRequest> ScientificRequests { get; set; }
-        public ICollection<ScientificExpertise> ScientificExpertises { get; set; }
-        public ICollection<ImprovementSuggestion> ImprovementSuggestions { get; set; }
-        public ICollection<Synopsis> Synopses { get; set; }
+        public ICollection<ScientificResearch.ScientificResearch> ScientificResearches { get; set; }
+        public ICollection<ScientificRequest.ScientificRequest> ScientificRequests { get; set; }
+        public ICollection<ScientificExpertise.ScientificExpertise> ScientificExpertises { get; set; }
+        public ICollection<ImprovementSuggestion.ImprovementSuggestion> ImprovementSuggestions { get; set; }
+        public ICollection<Synopsis.Synopsis> Synopses { get; set; }
         public ICollection<AcademicDegreeChanging> AcademicDegreeChangings { get; set; }
         public ICollection<Participation> Participations { get; set; }
 
@@ -106,11 +106,11 @@ namespace MilitaryFaculty.Domain
             Exhibitions = new Collection<Exhibition>();
             Books = new Collection<Book>();
 
-            ScientificResearches = new Collection<ScientificResearch>();
-            ScientificRequests = new Collection<ScientificRequest>();
-            ScientificExpertises = new Collection<ScientificExpertise>();
-            ImprovementSuggestions = new Collection<ImprovementSuggestion>();
-            Synopses = new Collection<Synopsis>();
+            ScientificResearches = new Collection<ScientificResearch.ScientificResearch>();
+            ScientificRequests = new Collection<ScientificRequest.ScientificRequest>();
+            ScientificExpertises = new Collection<ScientificExpertise.ScientificExpertise>();
+            ImprovementSuggestions = new Collection<ImprovementSuggestion.ImprovementSuggestion>();
+            Synopses = new Collection<Synopsis.Synopsis>();
             AcademicDegreeChangings = new Collection<AcademicDegreeChanging>();
             Participations = new Collection<Participation>();
         }

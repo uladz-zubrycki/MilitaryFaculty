@@ -2,19 +2,20 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Data;
+using MilitaryFaculty.Data.Events;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ProfessorPublicationsViewModel : ViewModel<Professor>
+    public class ProfessorPublicationsViewModel : ViewModel<Domain.Professor>
     {
         private readonly Lazy<ObservableCollection<PublicationListItemViewModel>> _publications;
 
-        public ProfessorPublicationsViewModel(Professor model,
-                                              IRepository<Publication> publicationRepository)
+        public ProfessorPublicationsViewModel(Domain.Professor model,
+                                              IRepository<Domain.Publication> publicationRepository)
             : base(model)
         {
             if (publicationRepository == null)
@@ -89,13 +90,13 @@ namespace MilitaryFaculty.Application.ViewModels
             return result;
         }
 
-        private void OnPublicationCreated(object sender, ModifiedEntityEventArgs<Publication> e)
+        private void OnPublicationCreated(object sender, ModifiedEntityEventArgs<Domain.Publication> e)
         {
             var publication = e.ModifiedEntity;
             Publications.Add(new PublicationListItemViewModel(publication));
         }
 
-        private void OnPublicationDeleted(object sender, ModifiedEntityEventArgs<Publication> e)
+        private void OnPublicationDeleted(object sender, ModifiedEntityEventArgs<Domain.Publication> e)
         {
             var publication = e.ModifiedEntity;
             Publications.RemoveSingle(c => c.Model.Equals(publication));

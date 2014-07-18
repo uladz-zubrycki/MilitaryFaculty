@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
-using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Commands;
 

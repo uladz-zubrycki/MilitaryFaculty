@@ -3,9 +3,9 @@ using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ProfessorHeaderViewModel : ViewModel<Professor>
+    public class ProfessorHeaderViewModel : ViewModel<Domain.Professor>
     {
-        public ProfessorHeaderViewModel(Professor model)
+        public ProfessorHeaderViewModel(Domain.Professor model)
             : base(model)
         {
             // Empty

@@ -1,6 +1,6 @@
 ﻿using MilitaryFaculty.Extensions;
 
-namespace MilitaryFaculty.Domain
+namespace MilitaryFaculty.Domain.ScientificRequest
 {
     public enum ScientificRequestType
     {

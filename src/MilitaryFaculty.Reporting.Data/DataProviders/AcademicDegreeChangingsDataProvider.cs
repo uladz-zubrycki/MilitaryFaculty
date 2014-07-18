@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
-using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 

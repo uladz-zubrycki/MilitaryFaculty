@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MilitaryFaculty.Presentation.ViewModels.Entity
+namespace MilitaryFaculty.Presentation.ViewModels
 {
     public class TextPropertyViewModel : PropertyViewModel
     {

@@ -2,18 +2,19 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Data;
+using MilitaryFaculty.Data.Events;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ProfessorBooksViewModel : ViewModel<Professor>
+    public class ProfessorBooksViewModel : ViewModel<Domain.Professor>
     {
         private readonly Lazy<ObservableCollection<BookListItemViewModel>> _books;
 
-        public ProfessorBooksViewModel(Professor model, IRepository<Book> bookRepository)
+        public ProfessorBooksViewModel(Domain.Professor model, IRepository<Domain.Book> bookRepository)
             : base(model)
         {
             if (bookRepository == null)
@@ -74,13 +75,13 @@ namespace MilitaryFaculty.Application.ViewModels
             return result;
         }
 
-        private void OnBookCreated(object sender, ModifiedEntityEventArgs<Book> e)
+        private void OnBookCreated(object sender, ModifiedEntityEventArgs<Domain.Book> e)
         {
             var book = e.ModifiedEntity;
             Books.Add(new BookListItemViewModel(book));
         }
 
-        private void OnBookDeleted(object sender, ModifiedEntityEventArgs<Book> e)
+        private void OnBookDeleted(object sender, ModifiedEntityEventArgs<Domain.Book> e)
         {
             var book = e.ModifiedEntity;
             Books.RemoveSingle(c => c.Model.Equals(book));

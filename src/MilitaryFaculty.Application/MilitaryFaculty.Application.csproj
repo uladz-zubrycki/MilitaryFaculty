@@ -381,10 +381,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MilitaryFaculty.Data.Contract\MilitaryFaculty.Data.Contract.csproj">
-      <Project>{1F3C691F-2E66-4A98-AD58-1FC5B752317D}</Project>
-      <Name>MilitaryFaculty.Data.Contract</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj">
       <Project>{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}</Project>
       <Name>MilitaryFaculty.Data</Name>

@@ -1,13 +1,12 @@
 ﻿using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ExhibitionListItemViewModel : ListItemViewModel<Exhibition>
+    public class ExhibitionListItemViewModel : ListItemViewModel<Domain.Exhibition>
     {
-        public ExhibitionListItemViewModel(Exhibition model)
+        public ExhibitionListItemViewModel(Domain.Exhibition model)
             : base(model)
         {
             InitCommands();
@@ -55,7 +54,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                               imageSource);
         }
 
-        public static ExhibitionListItemViewModel FromModel(Exhibition model)
+        public static ExhibitionListItemViewModel FromModel(Domain.Exhibition model)
         {
             return new ExhibitionListItemViewModel(model);
         }

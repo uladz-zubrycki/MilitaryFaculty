@@ -2,18 +2,18 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Data.Contract;
-using MilitaryFaculty.Domain;
+using MilitaryFaculty.Data;
+using MilitaryFaculty.Data.Events;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ProfessorConferencesViewModel : ViewModel<Professor>
+    public class ProfessorConferencesViewModel : ViewModel<Domain.Professor>
     {
         private readonly Lazy<ObservableCollection<ConferenceListItemViewModel>> _conferences;
 
-        public ProfessorConferencesViewModel(Professor model, IRepository<Conference> conferenceRepository)
+        public ProfessorConferencesViewModel(Domain.Professor model, IRepository<Domain.Conference> conferenceRepository)
             : base(model)
         {
             if (conferenceRepository == null)
@@ -65,13 +65,13 @@ namespace MilitaryFaculty.Application.ViewModels
             return result;
         }
 
-        private void OnConferenceCreated(object sender, ModifiedEntityEventArgs<Conference> e)
+        private void OnConferenceCreated(object sender, ModifiedEntityEventArgs<Domain.Conference> e)
         {
             var conference = e.ModifiedEntity;
             Conferences.Add(new ConferenceListItemViewModel(conference));
         }
 
-        private void OnConferenceDeleted(object sender, ModifiedEntityEventArgs<Conference> e)
+        private void OnConferenceDeleted(object sender, ModifiedEntityEventArgs<Domain.Conference> e)
         {
             var conference = e.ModifiedEntity;
             Conferences.RemoveSingle(c => c.Model.Equals(conference));

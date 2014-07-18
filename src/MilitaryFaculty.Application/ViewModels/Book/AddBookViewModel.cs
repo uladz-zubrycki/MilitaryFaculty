@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class AddBookViewModel : AddEntityViewModel<Book>
+    public class AddBookViewModel : AddEntityViewModel<Domain.Book>
     {
-        public AddBookViewModel(Book model)
+        public AddBookViewModel(Domain.Book model)
             : base(model)
         {
             // Empty
@@ -24,9 +23,9 @@ namespace MilitaryFaculty.Application.ViewModels
             get { return Do.BookAdd; }
         }
 
-        protected override IEnumerable<ViewModel<Book>> GetViewModels()
+        protected override IEnumerable<ViewModel<Domain.Book>> GetViewModels()
         {
-            return new ViewModel<Book>[]
+            return new ViewModel<Domain.Book>[]
                    {
                        new BookInfoViewModel(Model),
                        new BookExtraInfoViewModel(Model)

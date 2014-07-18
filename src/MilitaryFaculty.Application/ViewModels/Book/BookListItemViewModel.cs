@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Globalization;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class BookListItemViewModel : ListItemViewModel<Book>
+    public class BookListItemViewModel : ListItemViewModel<Domain.Book>
     {
-        public BookListItemViewModel(Book model)
+        public BookListItemViewModel(Domain.Book model)
             : base(model)
         {
             TooltipViewModel = new BookExtraInfoViewModel(Model);
@@ -57,7 +56,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                               imageSource);
         }
 
-        public static BookListItemViewModel FromModel(Book model)
+        public static BookListItemViewModel FromModel(Domain.Book model)
         {
             if (model == null)
             {

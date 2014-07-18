@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    internal class AddPublicationViewModel : AddEntityViewModel<Publication>
+    internal class AddPublicationViewModel : AddEntityViewModel<Domain.Publication>
     {
-        public AddPublicationViewModel(Publication model)
+        public AddPublicationViewModel(Domain.Publication model)
             : base(model)
         {
             // EMpty
@@ -24,9 +23,9 @@ namespace MilitaryFaculty.Application.ViewModels
             get { return Do.PublicationAdd; }
         }
 
-        protected override IEnumerable<ViewModel<Publication>> GetViewModels()
+        protected override IEnumerable<ViewModel<Domain.Publication>> GetViewModels()
         {
-            return new ViewModel<Publication>[]
+            return new ViewModel<Domain.Publication>[]
                    {
                        new PublicationInfoViewModel(Model),
                        new PublicationExtraInfoViewModel(Model)

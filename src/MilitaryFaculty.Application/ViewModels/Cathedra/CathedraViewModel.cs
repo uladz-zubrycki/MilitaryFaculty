@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class CathedraViewModel : ComplexViewModel<Cathedra>
+    public class CathedraViewModel : ComplexViewModel<Domain.Cathedra>
     {
-        public CathedraViewModel(Cathedra model)
+        public CathedraViewModel(Domain.Cathedra model)
             : base(model)
         {
             // Empty
         }
 
-        protected override IEnumerable<ViewModel<Cathedra>> GetViewModels()
+        protected override IEnumerable<ViewModel<Domain.Cathedra>> GetViewModels()
         {
             return new[]
                    {

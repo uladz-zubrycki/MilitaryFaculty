@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ExhibitionRootViewModel : EntityRootViewModel<Exhibition>
+    public class ExhibitionRootViewModel : EntityRootViewModel<Domain.Exhibition>
     {
-        public ExhibitionRootViewModel(Exhibition model)
+        public ExhibitionRootViewModel(Domain.Exhibition model)
             : base(model)
         {
             HeaderViewModel = new ExhibitionHeaderViewModel();
         }
 
-        protected override IEnumerable<ViewModel<Exhibition>> GetViewModels()
+        protected override IEnumerable<ViewModel<Domain.Exhibition>> GetViewModels()
         {
             return new[]
                    {
