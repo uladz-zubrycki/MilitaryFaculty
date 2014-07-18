@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Windows;
+﻿using System.Windows;
 using Autofac;
 using MilitaryFaculty.Application.ViewModels;
 
@@ -18,7 +17,9 @@ namespace MilitaryFaculty.Application
 
         private static void WaitForSplashScreen()
         {
-            Thread.SpinWait(10000);
+#if !DEBUG
+            Thread.SpinWait(500);
+#endif
         }
 
         private static void StartApplication()
