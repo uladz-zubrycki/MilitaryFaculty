@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewBehaviours;
 using MilitaryFaculty.Presentation.ViewModels;
 

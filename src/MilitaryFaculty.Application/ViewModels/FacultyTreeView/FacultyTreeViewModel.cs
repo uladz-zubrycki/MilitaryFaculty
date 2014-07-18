@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
+using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Presentation.Widgets.TreeView;
 

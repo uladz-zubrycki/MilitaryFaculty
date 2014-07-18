@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MilitaryFaculty.Application.Custom;
+using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 using MilitaryFaculty.Presentation.Widgets.TreeView;
 

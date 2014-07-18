@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Autofac;
 using MilitaryFaculty.Application.ViewModels;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels.Entity;
 
 namespace MilitaryFaculty.Application.Custom
@@ -47,7 +48,7 @@ namespace MilitaryFaculty.Application.Custom
 
         private static DataTemplate FindResource(string resourceKey)
         {
-            return (DataTemplate) Application.Current.FindResource(resourceKey);
+            return (DataTemplate) System.Windows.Application.Current.FindResource(resourceKey);
         }
     }
 }

@@ -80,6 +80,16 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj">
+      <Project>{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}</Project>
+      <Name>MilitaryFaculty.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
+      <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
+      <Name>MilitaryFaculty.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

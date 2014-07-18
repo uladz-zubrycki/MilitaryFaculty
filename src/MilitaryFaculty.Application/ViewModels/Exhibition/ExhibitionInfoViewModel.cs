@@ -1,6 +1,8 @@
 ﻿using System;
 using MilitaryFaculty.Application.Custom;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Attributes;
+using MilitaryFaculty.Presentation.ViewBehaviours;
 using MilitaryFaculty.Presentation.ViewModels.Entity;
 
 namespace MilitaryFaculty.Application.ViewModels

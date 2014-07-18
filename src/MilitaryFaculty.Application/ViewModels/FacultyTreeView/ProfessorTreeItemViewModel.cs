@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MilitaryFaculty.Application.Custom;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 using MilitaryFaculty.Presentation.Widgets.TreeView;
 

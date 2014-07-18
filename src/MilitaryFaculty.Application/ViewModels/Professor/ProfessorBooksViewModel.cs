@@ -2,6 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using MilitaryFaculty.Application.Custom;
+using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels

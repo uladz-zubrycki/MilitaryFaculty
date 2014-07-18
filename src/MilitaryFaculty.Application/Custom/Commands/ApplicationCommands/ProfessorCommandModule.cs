@@ -1,4 +1,6 @@
 ﻿using System.Windows.Input;
+using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Application.Custom
 {

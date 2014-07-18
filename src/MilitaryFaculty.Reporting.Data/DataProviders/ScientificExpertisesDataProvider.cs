@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using MilitaryFaculty.Data.Contract;
 using MilitaryFaculty.Domain;
@@ -27,17 +27,9 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("SeProfsCount")]
         public double ScientificExperticeProfessorsCount()
         {
-            //TODO: вероятная оптимизация - вынести модификатор на уровень репозитория?
-            var professorMemo = new HashSet<Guid>();
-            return CountOf(se =>
-            {
-                if (!professorMemo.Contains(se.Author.Id))
-                {
-                    professorMemo.Add(se.Author.Id);
-                    return true;
-                }
-                return false;
-            });
+            return QueryableCollection.Select(se => se.Author.Id)
+                                      .Distinct()
+                                      .Count();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels

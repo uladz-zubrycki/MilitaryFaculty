@@ -3,6 +3,8 @@ using System.Configuration;
 using System.IO;
 using Autofac;
 using Autofac.Features.Indexed;
+using MilitaryFaculty.Data;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Reporting;
 using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.Excel;

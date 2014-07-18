@@ -1,5 +1,6 @@
 ﻿using System;
 using MilitaryFaculty.Application.ViewModels;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Commands;
 
 namespace MilitaryFaculty.Application.Custom

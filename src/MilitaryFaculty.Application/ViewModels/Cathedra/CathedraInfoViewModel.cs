@@ -1,4 +1,5 @@
-﻿using MilitaryFaculty.Presentation.ViewModels;
+﻿using MilitaryFaculty.Domain;
+using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {

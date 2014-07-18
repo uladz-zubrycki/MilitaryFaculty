@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using MilitaryFaculty.Application.Custom;
+using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels

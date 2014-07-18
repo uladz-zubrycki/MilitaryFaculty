@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using MilitaryFaculty.Application.Custom;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels

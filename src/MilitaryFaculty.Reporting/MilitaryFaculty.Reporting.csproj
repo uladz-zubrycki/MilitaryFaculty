@@ -49,7 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ELW.Library.Math">
-      <HintPath>..\..\..\lib\ELW.Library.Math.dll</HintPath>
+      <HintPath>..\..\lib\ELW.Library.Math.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -83,6 +83,10 @@
     <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
       <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
       <Name>MilitaryFaculty.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">
+      <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
+      <Name>MilitaryFaculty.Extensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Reporting.Data\MilitaryFaculty.Reporting.Data.csproj">
       <Project>{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}</Project>

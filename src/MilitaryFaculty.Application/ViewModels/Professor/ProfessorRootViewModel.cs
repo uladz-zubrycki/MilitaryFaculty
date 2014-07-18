@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels

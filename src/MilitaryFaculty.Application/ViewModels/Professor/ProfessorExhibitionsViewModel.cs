@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using MilitaryFaculty.Application.Custom;
+using MilitaryFaculty.Data.Contract;
+using MilitaryFaculty.Domain;
+using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
     public class ProfessorExhibitionsViewModel : ViewModel<Professor>
     {
-        private Lazy<ObservableCollection<ExhibitionListItemViewModel>> _exhibitions;
+        private readonly Lazy<ObservableCollection<ExhibitionListItemViewModel>> _exhibitions;
 
         public ProfessorExhibitionsViewModel(Professor model, IRepository<Exhibition> exhibitionRepository)
             : base(model)
