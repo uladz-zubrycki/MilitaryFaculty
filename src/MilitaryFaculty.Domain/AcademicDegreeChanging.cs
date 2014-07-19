@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using MilitaryFaculty.Domain.Base;
-using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {

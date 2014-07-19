@@ -78,6 +78,10 @@
     <Compile Include="TimeInterval.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MilitaryFaculty.Common\MilitaryFaculty.Common.csproj">
+      <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
+      <Name>MilitaryFaculty.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj">
       <Project>{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}</Project>
       <Name>MilitaryFaculty.Data</Name>
@@ -85,10 +89,6 @@
     <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
       <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
       <Name>MilitaryFaculty.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">
-      <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
-      <Name>MilitaryFaculty.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -78,12 +78,11 @@
     <Compile Include="Publication.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">
+    <ProjectReference Include="..\MilitaryFaculty.Common\MilitaryFaculty.Common.csproj">
       <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
-      <Name>MilitaryFaculty.Extensions</Name>
+      <Name>MilitaryFaculty.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

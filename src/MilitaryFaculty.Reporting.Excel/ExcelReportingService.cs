@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using MilitaryFaculty.Extensions;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Reporting.ReportDomain;
 using OfficeOpenXml;
 

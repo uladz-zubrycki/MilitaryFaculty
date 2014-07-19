@@ -51,8 +51,12 @@
     <Reference Include="ELW.Library.Math">
       <HintPath>..\..\lib\ELW.Library.Math.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\..\packages\EPPlus.3.1.3.3\lib\net35\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,37 +65,62 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Characteristic.cs" />
-    <Compile Include="FormulaInfo.cs" />
+    <Compile Include="Data\DataProvider.cs" />
+    <Compile Include="Data\DataProvidersContainer.cs" />
+    <Compile Include="Data\DataProviders\AcademicDegreeChangingsDataProvider.cs" />
+    <Compile Include="Data\DataProviders\BooksDataProvider.cs" />
+    <Compile Include="Data\DataProviders\CathedrasDataProvider.cs" />
+    <Compile Include="Data\DataProviders\ConferencesDataProvider.cs" />
+    <Compile Include="Data\DataProviders\DissertationWorksDataProvider.cs" />
+    <Compile Include="Data\DataProviders\ExhibitionsDataProvider.cs" />
+    <Compile Include="Data\DataProviders\ImprovementSuggestionsDataProvider.cs" />
+    <Compile Include="Data\DataProviders\ParticipationsDataProvider.cs" />
+    <Compile Include="Data\DataProviders\ProfessorsDataProvider.cs" />
+    <Compile Include="Data\DataProviders\PublicationsDataProvider.cs" />
+    <Compile Include="Data\DataProviders\ScientificExpertisesDataProvider.cs" />
+    <Compile Include="Data\DataProviders\ScientificRequestsDataProvider.cs" />
+    <Compile Include="Data\DataProviders\ScientificResearchesDataProvider.cs" />
+    <Compile Include="Data\IDataProvider.cs" />
+    <Compile Include="Data\ReportDataProvider.cs" />
+    <Compile Include="FormulaArgumentAttribute.cs" />
+    <Compile Include="TimeInterval.cs" />
+    <Compile Include="Excel\ExcelReportingService.cs" />
+    <Compile Include="Excel\ExcelWriter.cs" />
+    <Compile Include="Excel\IExcelReportingService.cs" />
+    <Compile Include="Structure\FormulaInfo.cs" />
     <Compile Include="IReportGenerator.cs" />
-    <Compile Include="Providers\FormulaProvider.cs" />
-    <Compile Include="Providers\IFormulaProvider.cs" />
+    <Compile Include="Structure\FormulaProvider.cs" />
+    <Compile Include="Structure\IFormulaProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\IReportTableProvider.cs" />
+    <Compile Include="IReportTableProvider.cs" />
     <Compile Include="ReportGenerator.cs" />
-    <Compile Include="Providers\ReportTableProvider.cs" />
-    <Compile Include="ReportDomain\ReportRow.cs" />
-    <Compile Include="ReportDomain\ReportGroup.cs" />
-    <Compile Include="ReportDomain\ReportTable.cs" />
-    <Compile Include="XmlDomain\XArgument.cs" />
-    <Compile Include="XmlDomain\XCoefficient.cs" />
-    <Compile Include="XmlDomain\XFormula.cs" />
-    <Compile Include="XmlDomain\XReportTable.cs" />
-    <Compile Include="XmlDomain\XReportTableGroup.cs" />
-    <Compile Include="ReportDomain\Report.cs" />
+    <Compile Include="ReportTableProvider.cs" />
+    <Compile Include="ReportRow.cs" />
+    <Compile Include="ReportGroup.cs" />
+    <Compile Include="ReportTable.cs" />
+    <Compile Include="Structure\XmlDomain\XArgument.cs" />
+    <Compile Include="Structure\XmlDomain\XCoefficient.cs" />
+    <Compile Include="Structure\XmlDomain\XFormula.cs" />
+    <Compile Include="Structure\XmlDomain\XReportTable.cs" />
+    <Compile Include="Structure\XmlDomain\XReportTableGroup.cs" />
+    <Compile Include="Report.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MilitaryFaculty.Common\MilitaryFaculty.Common.csproj">
+      <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
+      <Name>MilitaryFaculty.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj">
+      <Project>{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}</Project>
+      <Name>MilitaryFaculty.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
       <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
       <Name>MilitaryFaculty.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">
-      <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
-      <Name>MilitaryFaculty.Extensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MilitaryFaculty.Reporting.Data\MilitaryFaculty.Reporting.Data.csproj">
-      <Project>{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}</Project>
-      <Name>MilitaryFaculty.Reporting.Data</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

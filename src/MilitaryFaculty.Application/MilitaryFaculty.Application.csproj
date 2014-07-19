@@ -108,6 +108,11 @@
     <Compile Include="Custom\Commands\NavigationCommands\BaseNavigationModule.cs" />
     <Compile Include="Custom\Commands\NavigationCommands\ProfessorNavigationModule.cs" />
     <Compile Include="Custom\Commands\Browse.cs" />
+    <Compile Include="Resources\Enumerations.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Enumerations.resx</DependentUpon>
+    </Compile>
     <Compile Include="InjectionConfig.cs" />
     <Compile Include="ViewModels\AddEntityViewModel.cs" />
     <Compile Include="ViewModels\Book\AddBookViewModel.cs" />
@@ -212,27 +217,27 @@
     <Compile Include="Views\StartupView.xaml.cs">
       <DependentUpon>StartupView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resources\CathedraResources.xaml">
+    <Page Include="ViewResources\CathedraResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\EntityResources.xaml">
+    <Page Include="ViewResources\EntityResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\FacultyTreeResources.xaml">
+    <Page Include="ViewResources\FacultyTreeResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\CommonResources.xaml">
+    <Page Include="ViewResources\CommonResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\ApplicationResources.xaml">
+    <Page Include="ViewResources\ApplicationResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\ProfessorResources.xaml">
+    <Page Include="ViewResources\ProfessorResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -364,6 +369,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Resources\Enumerations.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Enumerations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -381,6 +390,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MilitaryFaculty.Common\MilitaryFaculty.Common.csproj">
+      <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
+      <Name>MilitaryFaculty.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj">
       <Project>{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}</Project>
       <Name>MilitaryFaculty.Data</Name>
@@ -389,21 +402,9 @@
       <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
       <Name>MilitaryFaculty.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">
-      <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
-      <Name>MilitaryFaculty.Extensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Presentation\MilitaryFaculty.Presentation.csproj">
       <Project>{1F175083-DFF1-452F-AE20-C1C93D59765F}</Project>
       <Name>MilitaryFaculty.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MilitaryFaculty.Reporting.Data\MilitaryFaculty.Reporting.Data.csproj">
-      <Project>{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}</Project>
-      <Name>MilitaryFaculty.Reporting.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MilitaryFaculty.Reporting.Excel\MilitaryFaculty.Reporting.Excel.csproj">
-      <Project>{B9539664-9E26-4DE9-B14E-CFD5EB13F012}</Project>
-      <Name>MilitaryFaculty.Reporting.Excel</Name>
     </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.csproj">
       <Project>{813E121E-1097-4A5A-B672-4AC98E21D4EE}</Project>

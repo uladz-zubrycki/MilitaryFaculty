@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <ResourceDictionary Source="/Resources/FacultyTreeResources.xaml" />
+        <ResourceDictionary Source="/ViewResources/FacultyTreeResources.xaml" />
     </UserControl.Resources>
 
     <Grid Width="270">

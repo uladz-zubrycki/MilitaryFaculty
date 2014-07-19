@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
-using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
@@ -19,10 +19,10 @@ namespace MilitaryFaculty.Domain
 
     public enum MilitaryScientificSocietyOrganization
     {
-        [EnumName("Работа научного кружка курсантов (стедентов) не организована")]
+        [EnumName("Работа научного кружка курсантов (студентов) не организована")]
         None,
 
-        [EnumName("Работа научного кружка курсантов (стедентов) организована, но ведется с отдельными недостатками")]
+        [EnumName("Работа научного кружка курсантов (студентов) организована, но ведется с отдельными недостатками")]
         Custom,
 
         [EnumName("Работа научного кружка курсантов (студентов) организована и ведется в соответствии с требованиями нормативных правовых актов")]
