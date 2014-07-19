@@ -62,7 +62,6 @@
     <Compile Include="EnumExtensions.cs" />
     <Compile Include="EnumNameAttribute.cs" />
     <Compile Include="CollectionExtensions.cs" />
-    <Compile Include="FormulaArgumentAttribute.cs" />
     <Compile Include="Lazy.cs" />
     <Compile Include="MethodInfoExtensions.cs" />
     <Compile Include="StringExtensions.cs" />

@@ -82,6 +82,7 @@
     <Compile Include="Data\DataProviders\ScientificResearchesDataProvider.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\ReportDataProvider.cs" />
+    <Compile Include="FormulaArgumentAttribute.cs" />
     <Compile Include="TimeInterval.cs" />
     <Compile Include="Excel\ExcelReportingService.cs" />
     <Compile Include="Excel\ExcelWriter.cs" />

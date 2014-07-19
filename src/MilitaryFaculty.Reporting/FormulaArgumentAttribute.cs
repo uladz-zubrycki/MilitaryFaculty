@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace MilitaryFaculty.Common
+namespace MilitaryFaculty.Reporting
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class FormulaArgumentAttribute : Attribute
     {
-        public string Name { get; private set; }
+        public readonly string Name;
 
         public FormulaArgumentAttribute(string name)
         {
