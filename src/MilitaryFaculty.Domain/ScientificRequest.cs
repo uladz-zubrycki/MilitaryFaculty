@@ -6,19 +6,19 @@ namespace MilitaryFaculty.Domain
 {
     public enum ScientificRequestResponce
     {
-        [EnumName("С отрицательным ответом")]
+        ////[EnumName("С отрицательным ответом")]
         Negative,
 
-        [EnumName("С положительным ответом")]
+        ////[EnumName("С положительным ответом")]
         Positive,
     }
 
     public enum ScientificRequestType
     {
-        [EnumName("Заявка на изобретение")]
+        ////[EnumName("Заявка на изобретение")]
         Invention,
 
-        [EnumName("Заявка на полезную модель")]
+        ////[EnumName("Заявка на полезную модель")]
         UtilityModel
     }
 

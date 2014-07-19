@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MilitaryFaculty.Application.Resources {
+namespace MilitaryFaculty.Domain.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace MilitaryFaculty.Application.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Enumerations {
+    internal class EnumStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Enumerations() {
+        internal EnumStrings() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MilitaryFaculty.Application.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MilitaryFaculty.Application.Resources.Enumerations", typeof(Enumerations).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MilitaryFaculty.Domain.Resources.EnumStrings", typeof(EnumStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,24 @@ namespace MilitaryFaculty.Application.Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Учебник.
+        /// </summary>
+        internal static string BookType_Schoolbook {
+            get {
+                return ResourceManager.GetString("BookType_Schoolbook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Учебное пособие.
+        /// </summary>
+        internal static string BookType_Tutorial {
+            get {
+                return ResourceManager.GetString("BookType_Tutorial", resourceCulture);
             }
         }
     }

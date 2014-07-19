@@ -1,10 +1,16 @@
 ﻿using System;
-using System.Linq;
+using System.Reflection;
+using System.Resources;
 
 namespace MilitaryFaculty.Common
 {
     public static class EnumExtensions
     {
+        public static bool IsDefined(this Enum value)
+        {
+            return Enum.IsDefined(value.GetType(), value);
+        }
+
         public static string GetName(this Enum value)
         {
             if (value == null)
@@ -12,18 +18,31 @@ namespace MilitaryFaculty.Common
                 throw new ArgumentNullException("value");
             }
 
-            var type = value.GetType();
-            var fieldName = Enum.GetName(type, value);
-            var attr = type.GetField(fieldName)
-                           .GetCustomAttributes(typeof (EnumNameAttribute), false)
-                           .Single() as EnumNameAttribute;
+            var enumType = value.GetType();
+            var enumFieldName = Enum.GetName(enumType, value);
+            var localizationAttr = enumType.GetCustomAttribute<LocalizedEnumAttribute>();
 
-            return attr == null ? String.Empty : attr.Name;
+            if (localizationAttr == null)
+            {
+                return enumFieldName;
+            }
+
+            var localized = FindLocalizedName(enumType,
+                                              enumFieldName,
+                                              localizationAttr.ResourceSource);
+
+            return localized ?? enumFieldName;
         }
 
-        public static bool IsDefined(this Enum value)
+        private static string FindLocalizedName(Type enumType,
+                                                string enumFieldName,
+                                                Type resourceSource)
         {
-            return Enum.IsDefined(value.GetType(), value);
+            var resourceManager = new ResourceManager(resourceSource);
+            var resourceStrName = enumType.Name + "_" + enumFieldName;
+            var resourceStr = resourceManager.GetString(resourceStrName);
+
+            return resourceStr;
         }
     }
 }

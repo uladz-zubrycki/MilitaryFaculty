@@ -2,10 +2,6 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:c="clr-namespace:MilitaryFaculty.Application.Custom">
-    <UserControl.Resources>
-        <ResourceDictionary Source="/ViewResources/CommonResources.xaml" />
-    </UserControl.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

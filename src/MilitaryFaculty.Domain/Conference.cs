@@ -9,13 +9,13 @@ namespace MilitaryFaculty.Domain
     /// </summary>
     public enum AccordanceLevel : byte
     {
-        [EnumName("Не соответствует")]
+        //[EnumName("Не соответствует")]
         None = 0,
 
-        [EnumName("Частично соответствует")]
+        //[EnumName("Частично соответствует")]
         Partly = 1,
 
-        [EnumName("Полностью соответствует")]
+        //[EnumName("Полностью соответствует")]
         Fully = 2,
     }
 

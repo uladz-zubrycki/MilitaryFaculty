@@ -8,82 +8,82 @@ namespace MilitaryFaculty.Domain
 {
     public enum AcademicRank : byte
     {
-        [EnumName("Отсутствует")]
+        //[EnumName("Отсутствует")]
         None,
 
-        [EnumName("Кандидат наук")]
+        //[EnumName("Кандидат наук")]
         CandidateOfScience,
 
-        [EnumName("Доктор наук")]
+        //[EnumName("Доктор наук")]
         DoctorOfScience
     }
 
     public enum JobPosition : byte
     {
-        [EnumName("Курсант/Студент")]
+        //[EnumName("Курсант/Студент")]
         Student,
 
-        [EnumName("Аспирант")]
+        //[EnumName("Аспирант")]
         Aspirant,
 
-        [EnumName("Докторант")]
+        //[EnumName("Докторант")]
         Doctorant,
 
-        [EnumName("Преподаватель")]
+        //[EnumName("Преподаватель")]
         Teacher,
 
-        [EnumName("Старший преподаватель")]
+        //[EnumName("Старший преподаватель")]
         SeniorProfessor,
 
-        [EnumName("Доцент")]
+        //[EnumName("Доцент")]
         Docent,
 
-        [EnumName("Профессор")]
+        //[EnumName("Профессор")]
         Professor,
 
-        [EnumName("Начальник цикла")]
+        //[EnumName("Начальник цикла")]
         HeadOfCycle,
 
-        [EnumName("Начальник кафедры")]
+        //[EnumName("Начальник кафедры")]
         HeadOfCathedra,
 
-        [EnumName("Начальник факультета")]
+        //[EnumName("Начальник факультета")]
         HeadOfFaculty,
     }
 
     public enum MilitaryRank : short
     {
-        [EnumName("Младший лейтенант")]
+        //[EnumName("Младший лейтенант")]
         JuniorLieutenant,
 
-        [EnumName("Лейтенант")]
+        //[EnumName("Лейтенант")]
         Lieutenant,
 
-        [EnumName("Старший лейтенант")]
+        //[EnumName("Старший лейтенант")]
         SeniorLieutenant,
 
-        [EnumName("Капитан")]
+        //[EnumName("Капитан")]
         Captain,
 
-        [EnumName("Майор")]
+        //[EnumName("Майор")]
         Major,
 
-        [EnumName("Подполковник")]
+        //[EnumName("Подполковник")]
         LieutenantColonel,
 
-        [EnumName("Полковник")]
+        //[EnumName("Полковник")]
         Colonel,
     }
 
     public enum AcademicDegree : byte
     {
-        [EnumName("Отсутствует")]
+        //[EnumName("Отсутствует")]
         None,
 
-        [EnumName("Доцент")]
+        //[EnumName("Доцент")]
         Docent,
 
-        [EnumName("Профессор")]
+        //[EnumName("Профессор")]
         Professor
     }
 

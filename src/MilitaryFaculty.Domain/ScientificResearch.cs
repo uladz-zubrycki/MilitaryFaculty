@@ -6,10 +6,10 @@ namespace MilitaryFaculty.Domain
 {
     public enum MilitaryScientificSupportState
     {
-        [EnumName("Военно-научное сопровождение не проведено")]
+        ////[EnumName("Военно-научное сопровождение не проведено")]
         NotCompleted,
 
-        [EnumName("Военно-научное сопровождение проведено")]
+        ////[EnumName("Военно-научное сопровождение проведено")]
         Completed,
     }
 
