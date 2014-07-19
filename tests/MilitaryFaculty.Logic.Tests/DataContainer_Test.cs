@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Autofac;
+﻿using Autofac;
 using MilitaryFaculty.Application;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Reporting;
-using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.Excel;
-using MilitaryFaculty.Reporting.ReportDomain;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MilitaryFaculty.Logic.Tests
 {
