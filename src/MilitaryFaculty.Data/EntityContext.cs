@@ -11,7 +11,7 @@ namespace MilitaryFaculty.Data
         public DbSet<Exhibition> Exhibitions { get; set; }
         public DbSet<Professor> Professors { get; set; }
         public DbSet<Publication> Publications { get; set; }
-        public DbSet<Synopsis> Synopses { get; set; }
+        public DbSet<DissertationWork> Synopses { get; set; }
 
         public DbSet<ScientificRequest> ScientificRequests { get; set; }
         public DbSet<ScientificResearch> ScientificResearches { get; set; }

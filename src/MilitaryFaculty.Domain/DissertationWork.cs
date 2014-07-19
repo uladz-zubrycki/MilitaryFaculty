@@ -1,11 +1,10 @@
 ﻿using System;
-using System.ComponentModel;
 using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
-    public enum SynopsisDegree
+    public enum DissertationWorkDegree
     {
         [EnumName("Докторская")]
         Doctor,
@@ -14,7 +13,7 @@ namespace MilitaryFaculty.Domain
         Candidate
     }
 
-    public enum SynopsisType
+    public enum DissertationWorkType
     {
         [EnumName("Диссертация")]
         Dissertation,
@@ -28,27 +27,27 @@ namespace MilitaryFaculty.Domain
 
     // ReSharper disable DoNotCallOverridableMethodsInConstructor
     // Properties are virtual only for EntityFramework
-    public class Synopsis : UniqueEntity, IImitator<Synopsis>
+    public class DissertationWork : UniqueEntity, IImitator<DissertationWork>
     {
         public virtual Professor Author { get; set; }
         public virtual string Name { get; set; }
         public virtual DateTime Date { get; set; }
 
-        public virtual SynopsisType SynopsisType { get; set; }
-        public virtual SynopsisDegree SynopsisDegree { get; set; }
+        public virtual DissertationWorkType SynopsisType { get; set; }
+        public virtual DissertationWorkDegree SynopsisDegree { get; set; }
 
-        public Synopsis()
+        public DissertationWork()
         {
             Name = String.Empty;
             Date = DateTime.Now;
         }
 
-        public Synopsis(Synopsis other)
+        public DissertationWork(DissertationWork other)
         {
             Imitate(other);
         }
 
-        public void Imitate(Synopsis other)
+        public void Imitate(DissertationWork other)
         {
             if (other == null)
             {

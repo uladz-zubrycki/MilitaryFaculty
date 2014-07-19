@@ -73,7 +73,7 @@
     <Compile Include="ScientificExpertise.cs" />
     <Compile Include="ScientificRequest.cs" />
     <Compile Include="ScientificResearch.cs" />
-    <Compile Include="Synopsis.cs" />
+    <Compile Include="DissertationWork.cs" />
     <Compile Include="Base\UniqueEntity.cs" />
     <Compile Include="Publication.cs" />
   </ItemGroup>

@@ -108,7 +108,7 @@ namespace MilitaryFaculty.Domain
         public virtual ICollection<ScientificRequest> ScientificRequests { get; set; }
         public virtual ICollection<ScientificExpertise> ScientificExpertises { get; set; }
         public virtual ICollection<ImprovementSuggestion> ImprovementSuggestions { get; set; }
-        public virtual ICollection<Synopsis> Synopses { get; set; }
+        public virtual ICollection<DissertationWork> Synopses { get; set; }
         public virtual ICollection<AcademicDegreeChanging> AcademicDegreeChangings { get; set; }
         public virtual ICollection<Participation> Participations { get; set; }
 
@@ -133,7 +133,7 @@ namespace MilitaryFaculty.Domain
             ScientificRequests = new Collection<ScientificRequest>();
             ScientificExpertises = new Collection<ScientificExpertise>();
             ImprovementSuggestions = new Collection<ImprovementSuggestion>();
-            Synopses = new Collection<Synopsis>();
+            Synopses = new Collection<DissertationWork>();
             AcademicDegreeChangings = new Collection<AcademicDegreeChanging>();
             Participations = new Collection<Participation>();
         }

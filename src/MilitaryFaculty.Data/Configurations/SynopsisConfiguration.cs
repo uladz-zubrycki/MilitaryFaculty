@@ -5,7 +5,7 @@ using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Data 
 {
-    internal class SynopsisConfiguration : EntityTypeConfiguration<Synopsis>
+    internal class SynopsisConfiguration : EntityTypeConfiguration<DissertationWork>
     {
         public SynopsisConfiguration()
         {

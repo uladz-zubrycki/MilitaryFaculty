@@ -6,15 +6,15 @@ using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Reporting.Data.DataProviders
 {
-    public class SynopsesDataProvider : DataProvider<Synopsis>
+    public class DissertationWorksDataProvider : DataProvider<DissertationWork>
     {
-        public SynopsesDataProvider(IRepository<Synopsis> repository)
+        public DissertationWorksDataProvider(IRepository<DissertationWork> repository)
             : base(repository)
         {
         }
 
-        public SynopsesDataProvider(IRepository<Synopsis> repository,
-            Expression<Func<Synopsis, bool>> modificator)
+        public DissertationWorksDataProvider(IRepository<DissertationWork> repository,
+            Expression<Func<DissertationWork, bool>> modificator)
             : base(repository, modificator)
         {
         }
@@ -26,8 +26,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DocThesisesCount")]
         public double DoctorThesisesCount()
         {
-            return CountOf(s => s.SynopsisType == SynopsisType.Dissertation
-                                && s.SynopsisDegree == SynopsisDegree.Doctor);
+            return CountOf(s => s.SynopsisType == DissertationWorkType.Dissertation
+                                && s.SynopsisDegree == DissertationWorkDegree.Doctor);
         }
 
         /// <summary>
@@ -37,8 +37,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("CandThesisesCount")]
         public double CandidateThesisesCount()
         {
-            return CountOf(s => s.SynopsisType == SynopsisType.Dissertation
-                                && s.SynopsisDegree == SynopsisDegree.Candidate);
+            return CountOf(s => s.SynopsisType == DissertationWorkType.Dissertation
+                                && s.SynopsisDegree == DissertationWorkDegree.Candidate);
         }
 
         /// <summary>
@@ -48,8 +48,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DocEoCount")]
         public double DoctorsOfScienceExpertOpinionsCount()
         {
-            return CountOf(s => s.SynopsisType == SynopsisType.OpinionOnTheDissertation
-                                && s.SynopsisDegree == SynopsisDegree.Doctor);
+            return CountOf(s => s.SynopsisType == DissertationWorkType.OpinionOnTheDissertation
+                                && s.SynopsisDegree == DissertationWorkDegree.Doctor);
         }
 
         /// <summary>
@@ -59,8 +59,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("CandEoCount")]
         public double CandidatsExpertOpinionsCount()
         {
-            return CountOf(s => s.SynopsisType == SynopsisType.OpinionOnTheDissertation
-                                && s.SynopsisDegree == SynopsisDegree.Candidate);
+            return CountOf(s => s.SynopsisType == DissertationWorkType.OpinionOnTheDissertation
+                                && s.SynopsisDegree == DissertationWorkDegree.Candidate);
         }
 
         /// <summary>
@@ -70,8 +70,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("EssayReviewDosCount")]
         public double EssayReviewsByDosCount()
         {
-            return CountOf(s => s.SynopsisType == SynopsisType.ReviewedOnSynopsis
-                                && s.SynopsisDegree == SynopsisDegree.Doctor);
+            return CountOf(s => s.SynopsisType == DissertationWorkType.ReviewedOnSynopsis
+                                && s.SynopsisDegree == DissertationWorkDegree.Doctor);
         }
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("EssayReviewCanCount")]
         public double EssayReviewByCandidatsCount()
         {
-            return CountOf(s => s.SynopsisType == SynopsisType.ReviewedOnSynopsis
-                                && s.SynopsisDegree == SynopsisDegree.Candidate);
+            return CountOf(s => s.SynopsisType == DissertationWorkType.ReviewedOnSynopsis
+                                && s.SynopsisDegree == DissertationWorkDegree.Candidate);
         }
     }
 }

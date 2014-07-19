@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using MilitaryFaculty.Data;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Domain.Base;
 
 namespace MilitaryFaculty.Reporting.Data

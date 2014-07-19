@@ -69,7 +69,7 @@
     <Compile Include="DataProviders\ScientificExpertisesDataProvider.cs" />
     <Compile Include="DataProviders\ScientificRequestsDataProvider.cs" />
     <Compile Include="DataProviders\ScientificResearchesDataProvider.cs" />
-    <Compile Include="DataProviders\SynopsesDataProvider.cs" />
+    <Compile Include="DataProviders\DissertationWorksDataProvider.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="DataProviders\ProfessorsDataProvider.cs" />
     <Compile Include="DataProviders\PublicationsDataProvider.cs" />
