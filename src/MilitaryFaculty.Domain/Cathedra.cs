@@ -2,42 +2,31 @@
 using System.Collections.Generic;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum HistoricalWorkOrganization
     {
-        ////[EnumName("Военно-историческая работа не организована")]
         None,
-
-        ////[EnumName("Военно-историческая работа организована, но ведется с отдельными недостатками")]
         Custom,
-
-        ////[EnumName("Военно-историческая работа организована и ведется в соответствии с требованиями нормативных правовых актов")]
         Full,
     }
 
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum MilitaryScientificSocietyOrganization
     {
-        //[EnumName("Работа научного кружка курсантов (студентов) не организована")]
         None,
-
-        //[EnumName("Работа научного кружка курсантов (студентов) организована, но ведется с отдельными недостатками")]
         Custom,
-
-        //[EnumName("Работа научного кружка курсантов (студентов) организована и ведется в соответствии с требованиями нормативных правовых актов")]
         Full,
     }
 
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum ProfsOrganization
     {
-        //[EnumName("Подготовка научно-педагогических работников высшей квалификации не организована")]
         None,
-
-        //[EnumName("Подготовка научно-педагогических работников высшей квалификации организована, но ведется с отдельными недостатками")]
         Custom,
-
-        //[EnumName("Подготовка научно-педагогических работников высшей квалификации организована")]
         Full,
     }
 

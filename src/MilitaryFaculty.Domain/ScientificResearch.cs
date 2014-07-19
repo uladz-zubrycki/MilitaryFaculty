@@ -1,15 +1,14 @@
 ﻿using System;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum MilitaryScientificSupportState
     {
-        ////[EnumName("Военно-научное сопровождение не проведено")]
         NotCompleted,
-
-        ////[EnumName("Военно-научное сопровождение проведено")]
         Completed,
     }
 

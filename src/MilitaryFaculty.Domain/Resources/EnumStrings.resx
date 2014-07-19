@@ -117,10 +117,199 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AcademicDegree_Docent" xml:space="preserve">
+    <value>Доцент</value>
+  </data>
+  <data name="AcademicDegree_None" xml:space="preserve">
+    <value>Отсутствует</value>
+  </data>
+  <data name="AcademicDegree_Professor" xml:space="preserve">
+    <value>Профессор</value>
+  </data>
+  <data name="AcademicRank_CandidateOfScience" xml:space="preserve">
+    <value>Кандидат наук</value>
+  </data>
+  <data name="AcademicRank_DoctorOfScience" xml:space="preserve">
+    <value>Доктор наук</value>
+  </data>
+  <data name="AcademicRank_None" xml:space="preserve">
+    <value>Отсутствует</value>
+  </data>
+  <data name="AccordanceLevel_Fully" xml:space="preserve">
+    <value>Полностью соответствует</value>
+  </data>
+  <data name="AccordanceLevel_None" xml:space="preserve">
+    <value>Не соответствует</value>
+  </data>
+  <data name="AccordanceLevel_Partly" xml:space="preserve">
+    <value>Частично соответствует</value>
+  </data>
+  <data name="AwardType_FirstDegree" xml:space="preserve">
+    <value>Диплом первой степени</value>
+  </data>
+  <data name="AwardType_SecondDegree" xml:space="preserve">
+    <value>Диплом второй степени</value>
+  </data>
+  <data name="AwardType_ThirdDegree" xml:space="preserve">
+    <value>Диплом третьей степени</value>
+  </data>
+  <data name="AwardType_WithoutDegree" xml:space="preserve">
+    <value>Диплом (грамота)</value>
+  </data>
   <data name="BookType_Schoolbook" xml:space="preserve">
     <value>Учебник</value>
   </data>
   <data name="BookType_Tutorial" xml:space="preserve">
     <value>Учебное пособие</value>
+  </data>
+  <data name="DissertationWorkDegree_Candidate" xml:space="preserve">
+    <value>Кандидатская</value>
+  </data>
+  <data name="DissertationWorkDegree_Doctor" xml:space="preserve">
+    <value>Докторская</value>
+  </data>
+  <data name="DissertationWorkType_Dissertation" xml:space="preserve">
+    <value>Диссертация</value>
+  </data>
+  <data name="DissertationWorkType_OpinionOnTheDissertation" xml:space="preserve">
+    <value>Экспертное заключение по диссертации</value>
+  </data>
+  <data name="DissertationWorkType_ReviewedOnSynopsis" xml:space="preserve">
+    <value>Отзыв на автореферат</value>
+  </data>
+  <data name="EventLevel_International" xml:space="preserve">
+    <value>Международная</value>
+  </data>
+  <data name="EventLevel_Republican" xml:space="preserve">
+    <value>Республиканская</value>
+  </data>
+  <data name="EventLevel_University" xml:space="preserve">
+    <value>Вузовская</value>
+  </data>
+  <data name="HistoricalWorkOrganization_Custom" xml:space="preserve">
+    <value>Военно-историческая работа организована, но ведется с отдельными недостатками</value>
+  </data>
+  <data name="HistoricalWorkOrganization_Full" xml:space="preserve">
+    <value>Военно-историческая работа организована и ведется в соответствии с требованиями нормативных правовых актов</value>
+  </data>
+  <data name="HistoricalWorkOrganization_None" xml:space="preserve">
+    <value>Военно-историческая работа не организована</value>
+  </data>
+  <data name="JobPosition_Aspirant" xml:space="preserve">
+    <value>Аспирант</value>
+  </data>
+  <data name="JobPosition_Docent" xml:space="preserve">
+    <value>Доцент</value>
+  </data>
+  <data name="JobPosition_Doctorant" xml:space="preserve">
+    <value>Докторант</value>
+  </data>
+  <data name="JobPosition_HeadOfCathedra" xml:space="preserve">
+    <value>Начальник кафедры</value>
+  </data>
+  <data name="JobPosition_HeadOfCycle" xml:space="preserve">
+    <value>Начальник цикла</value>
+  </data>
+  <data name="JobPosition_HeadOfFaculty" xml:space="preserve">
+    <value>Начальник факультета</value>
+  </data>
+  <data name="JobPosition_Professor" xml:space="preserve">
+    <value>Профессор</value>
+  </data>
+  <data name="JobPosition_SeniorProfessor" xml:space="preserve">
+    <value>Старший преподаватель</value>
+  </data>
+  <data name="JobPosition_Student" xml:space="preserve">
+    <value>Курсант/Студент</value>
+  </data>
+  <data name="JobPosition_Teacher" xml:space="preserve">
+    <value>Преподаватель</value>
+  </data>
+  <data name="MilitaryRank_Captain" xml:space="preserve">
+    <value>Капитан</value>
+  </data>
+  <data name="MilitaryRank_Colonel" xml:space="preserve">
+    <value>Полковник</value>
+  </data>
+  <data name="MilitaryRank_JuniorLieutenant" xml:space="preserve">
+    <value>Младший лейтенант</value>
+  </data>
+  <data name="MilitaryRank_Lieutenant" xml:space="preserve">
+    <value>Лейтенант</value>
+  </data>
+  <data name="MilitaryRank_LieutenantColonel" xml:space="preserve">
+    <value>Подполковник</value>
+  </data>
+  <data name="MilitaryRank_Major" xml:space="preserve">
+    <value>Майор</value>
+  </data>
+  <data name="MilitaryRank_SeniorLieutenant" xml:space="preserve">
+    <value>Старший лейтенант</value>
+  </data>
+  <data name="MilitaryScientificSocietyOrganization_Custom" xml:space="preserve">
+    <value>Работа научного кружка курсантов (студентов) организована, но ведется с отдельными недостатками</value>
+  </data>
+  <data name="MilitaryScientificSocietyOrganization_Full" xml:space="preserve">
+    <value>Работа научного кружка курсантов (студентов) организована и ведется в соответствии с требованиями нормативных правовых актов</value>
+  </data>
+  <data name="MilitaryScientificSocietyOrganization_None" xml:space="preserve">
+    <value>Работа научного кружка курсантов (студентов) не организована</value>
+  </data>
+  <data name="MilitaryScientificSupportState_Completed" xml:space="preserve">
+    <value>Военно-научное сопровождение проведено</value>
+  </data>
+  <data name="MilitaryScientificSupportState_NotCompleted" xml:space="preserve">
+    <value>Военно-научное сопровождение не проведено</value>
+  </data>
+  <data name="ParticipationPlace_DefenceOfDissertationCounsil" xml:space="preserve">
+    <value>Специализированный совет по защите диссертаций</value>
+  </data>
+  <data name="ParticipationPlace_EditorialBoardsOfScientificPublications" xml:space="preserve">
+    <value>Редакционная коллегия научных изданий</value>
+  </data>
+  <data name="ParticipationPlace_HigherAttestationCommission" xml:space="preserve">
+    <value>Экспертный совет ВАК Беларуси</value>
+  </data>
+  <data name="ParticipationPlace_ResearchCounsil" xml:space="preserve">
+    <value>Военно-научный или научно-технический совет вуза</value>
+  </data>
+  <data name="ProfsOrganization_Custom" xml:space="preserve">
+    <value>Подготовка научно-педагогических работников высшей квалификации организована, но ведется с отдельными недостатками</value>
+  </data>
+  <data name="ProfsOrganization_Full" xml:space="preserve">
+    <value>Подготовка научно-педагогических работников высшей квалификации организована и ведется в соответствии с требованиями нормативных правовых актов</value>
+  </data>
+  <data name="ProfsOrganization_None" xml:space="preserve">
+    <value>Подготовка научно-педагогических работников высшей квалификации не организована</value>
+  </data>
+  <data name="PublicationType_Article" xml:space="preserve">
+    <value>Нерецензируемая научная статья</value>
+  </data>
+  <data name="PublicationType_Monograph" xml:space="preserve">
+    <value>Монография</value>
+  </data>
+  <data name="PublicationType_ReviewedArticle" xml:space="preserve">
+    <value>Рецензируемая научная статья</value>
+  </data>
+  <data name="PublicationType_Thesis" xml:space="preserve">
+    <value>Тезис докладов</value>
+  </data>
+  <data name="ScientificRequestResponce_Negative" xml:space="preserve">
+    <value>С отрицательным ответом</value>
+  </data>
+  <data name="ScientificRequestResponce_Positive" xml:space="preserve">
+    <value>С положительным ответом</value>
+  </data>
+  <data name="ScientificRequestType_Invention" xml:space="preserve">
+    <value>Заявка на изобретение</value>
+  </data>
+  <data name="ScientificRequestType_UtilityModel" xml:space="preserve">
+    <value>Заявка на полезную модель</value>
+  </data>
+  <data name="SuggestionState_Accepted" xml:space="preserve">
+    <value>Принята</value>
+  </data>
+  <data name="SuggestionState_Denied" xml:space="preserve">
+    <value>Не принята</value>
   </data>
 </root>

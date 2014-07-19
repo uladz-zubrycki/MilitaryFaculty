@@ -1,21 +1,16 @@
 ﻿using System;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum ParticipationPlace
     {
-        ////[EnumName("Экспертный совет ВАК Беларуси")]
         HigherAttestationCommission,
-
-        ////[EnumName("Специализированный совет по защите диссертаций")]
         DefenceOfDissertationCounsil,
-
-        ////[EnumName("Военно-научный или научно-технический совет вуза")]
         ResearchCounsil,
-
-        ////[EnumName("Редакционная коллегия научных изданий")]
         EditorialBoardsOfScientificPublications
     }
 

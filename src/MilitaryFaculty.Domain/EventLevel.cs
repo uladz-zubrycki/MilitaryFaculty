@@ -1,14 +1,13 @@
 ﻿using MilitaryFaculty.Common;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum EventLevel : byte
     {
-        ////[EnumName("Вузовская")] 
         University,
-        ////[EnumName("Республиканская")]
         Republican,
-        ////[EnumName("Международная")]
         International,
     }
 }

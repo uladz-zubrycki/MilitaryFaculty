@@ -1,21 +1,16 @@
 ﻿using System;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum AwardType
     {
-        ////[EnumName("Диплом первой степени")]
         FirstDegree,
-
-        ////[EnumName("Диплом второй степени (медаль)")]
         SecondDegree,
-
-        ////[EnumName("Диплом третьей степени")]
         ThirdDegree,
-
-        ////[EnumName("Диплом (грамота)")]
         WithoutDegree
     }
 

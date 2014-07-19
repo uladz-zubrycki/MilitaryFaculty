@@ -1,27 +1,22 @@
 ﻿using System;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum DissertationWorkDegree
     {
-        ////[EnumName("Докторская")]
         Doctor,
-
-        ////[EnumName("Кандидатская")]
         Candidate
     }
 
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum DissertationWorkType
     {
-        ////[EnumName("Диссертация")]
         Dissertation,
-
-        ////[EnumName("Экспертное заключение по диссертации")]
         OpinionOnTheDissertation,
-
-        ////[EnumName("Отзыв на автореферат")]
         ReviewedOnSynopsis
     }
 

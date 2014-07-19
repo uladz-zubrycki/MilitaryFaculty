@@ -3,87 +3,50 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
-    public enum AcademicRank : byte
+    [LocalizedEnum(typeof(EnumStrings))]
+    public enum AcademicRank
     {
-        //[EnumName("Отсутствует")]
         None,
-
-        //[EnumName("Кандидат наук")]
         CandidateOfScience,
-
-        //[EnumName("Доктор наук")]
         DoctorOfScience
     }
 
-    public enum JobPosition : byte
+    [LocalizedEnum(typeof(EnumStrings))]
+    public enum JobPosition
     {
-        //[EnumName("Курсант/Студент")]
         Student,
-
-        //[EnumName("Аспирант")]
         Aspirant,
-
-        //[EnumName("Докторант")]
         Doctorant,
-
-        //[EnumName("Преподаватель")]
         Teacher,
-
-        //[EnumName("Старший преподаватель")]
         SeniorProfessor,
-
-        //[EnumName("Доцент")]
         Docent,
-
-        //[EnumName("Профессор")]
         Professor,
-
-        //[EnumName("Начальник цикла")]
         HeadOfCycle,
-
-        //[EnumName("Начальник кафедры")]
         HeadOfCathedra,
-
-        //[EnumName("Начальник факультета")]
         HeadOfFaculty,
     }
 
-    public enum MilitaryRank : short
+    [LocalizedEnum(typeof(EnumStrings))]
+    public enum MilitaryRank
     {
-        //[EnumName("Младший лейтенант")]
         JuniorLieutenant,
-
-        //[EnumName("Лейтенант")]
         Lieutenant,
-
-        //[EnumName("Старший лейтенант")]
         SeniorLieutenant,
-
-        //[EnumName("Капитан")]
         Captain,
-
-        //[EnumName("Майор")]
         Major,
-
-        //[EnumName("Подполковник")]
         LieutenantColonel,
-
-        //[EnumName("Полковник")]
         Colonel,
     }
 
-    public enum AcademicDegree : byte
+    [LocalizedEnum(typeof(EnumStrings))]
+    public enum AcademicDegree
     {
-        //[EnumName("Отсутствует")]
         None,
-
-        //[EnumName("Доцент")]
         Docent,
-
-        //[EnumName("Профессор")]
         Professor
     }
 

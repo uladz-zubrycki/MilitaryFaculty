@@ -1,24 +1,21 @@
 ﻿using System;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum ScientificRequestResponce
     {
-        ////[EnumName("С отрицательным ответом")]
         Negative,
-
-        ////[EnumName("С положительным ответом")]
         Positive,
     }
 
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum ScientificRequestType
     {
-        ////[EnumName("Заявка на изобретение")]
         Invention,
-
-        ////[EnumName("Заявка на полезную модель")]
         UtilityModel
     }
 

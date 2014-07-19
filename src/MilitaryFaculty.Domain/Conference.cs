@@ -1,22 +1,19 @@
 ﻿using System;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
     /// <summary>
     ///     Evaluates some characteristic accordance to standart.
     /// </summary>
-    public enum AccordanceLevel : byte
+    [LocalizedEnum(typeof(EnumStrings))]
+    public enum AccordanceLevel
     {
-        //[EnumName("Не соответствует")]
-        None = 0,
-
-        //[EnumName("Частично соответствует")]
-        Partly = 1,
-
-        //[EnumName("Полностью соответствует")]
-        Fully = 2,
+        None,
+        Partly,
+        Fully,
     }
 
     public class ConferenceReport : IImitator<ConferenceReport>

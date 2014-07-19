@@ -1,21 +1,16 @@
 ﻿using System;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum PublicationType
     {
-        ////[EnumName("Монография")]
         Monograph,
-
-        ////[EnumName("Рецензируемая научная статья")]
         ReviewedArticle,
-
-        ////[EnumName("Нерецензируемая научная статья")]
         Article,
-
-        ////[EnumName("Тезис докладов")]k
         Thesis
     }
 
