@@ -1,8 +1,8 @@
 ﻿using System;
 using Autofac;
 using MilitaryFaculty.Application.Custom;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
-using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Presentation.ViewModels;
 using MilitaryFaculty.Presentation.Widgets.TreeView.Events;

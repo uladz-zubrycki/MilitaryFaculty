@@ -6,6 +6,7 @@ using ELW.Library.Math;
 using ELW.Library.Math.Expressions;
 using ELW.Library.Math.Tools;
 using MilitaryFaculty.Reporting.Data;
+using MilitaryFaculty.Reporting.Structure;
 
 namespace MilitaryFaculty.Reporting
 {

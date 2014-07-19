@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using MilitaryFaculty.Extensions;
+using MilitaryFaculty.Common;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {

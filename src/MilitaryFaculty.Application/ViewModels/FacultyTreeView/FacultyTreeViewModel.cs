@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Data.Events;
-using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Presentation.Widgets.TreeView;
 

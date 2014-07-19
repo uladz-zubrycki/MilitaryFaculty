@@ -2,9 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using MilitaryFaculty.Application.Custom;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Data.Events;
-using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
-using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {
@@ -18,8 +17,6 @@ namespace MilitaryFaculty.Domain
     // Properties are virtual only for EntityFramework
     public class ScientificResearch : UniqueEntity, IImitator<ScientificResearch>
     {
-        private MilitaryScientificSupportState _state;
-
         public virtual string Name { get; set; }
         public virtual DateTime Date { get; set; }
         public virtual Professor Author { get; set; }

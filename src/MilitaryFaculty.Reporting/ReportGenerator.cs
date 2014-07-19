@@ -1,8 +1,7 @@
 ﻿using System;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Reporting.Data;
-using MilitaryFaculty.Reporting.Providers;
-using MilitaryFaculty.Reporting.ReportDomain;
+using MilitaryFaculty.Reporting.Structure;
 
 namespace MilitaryFaculty.Reporting
 {

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using MilitaryFaculty.Extensions;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Widgets.TreeView
 {
+    // ReSharper disable UnassignedField.Compiler
     public class TreeItemViewModel<T> : ViewModel<T>, ITreeItemViewModel
         where T : class
     {
@@ -14,11 +15,9 @@ namespace MilitaryFaculty.Presentation.Widgets.TreeView
         /// </summary>
         private static readonly ITreeItemViewModel FakeChild = new TreeItemViewModel<object>();
 
-        // ReSharper disable UnassignedField.Compiler
         protected readonly TreeViewModel Owner;
         private bool _isExpanded; // accessed via SetValue method
         private bool _isSelected; // accessed via SetValue method
-        // ReSharper restore UnassignedField.Compiler
 
         private bool ChildrenLoaded
         {
@@ -31,8 +30,10 @@ namespace MilitaryFaculty.Presentation.Widgets.TreeView
             Parent = null;
         }
 
-        protected TreeItemViewModel(T model, TreeViewModel owner,
-                                    ITreeItemViewModel parent, bool isLazyLoadingEnabled)
+        protected TreeItemViewModel(T model,
+                                    TreeViewModel owner,
+                                    ITreeItemViewModel parent,
+                                    bool isLazyLoadingEnabled)
             : base(model)
         {
             if (model == null)
@@ -134,4 +135,5 @@ namespace MilitaryFaculty.Presentation.Widgets.TreeView
             Children.AddRange(LoadChildren());
         }
     }
+    // ReSharper restore UnassignedField.Compiler
 }

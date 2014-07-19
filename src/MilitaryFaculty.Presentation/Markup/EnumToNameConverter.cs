@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using MilitaryFaculty.Extensions;
+using MilitaryFaculty.Common;
 
 namespace MilitaryFaculty.Presentation.Markup
 {

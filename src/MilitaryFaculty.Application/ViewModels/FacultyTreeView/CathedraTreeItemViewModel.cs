@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using MilitaryFaculty.Application.Custom;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Data.Events;
-using MilitaryFaculty.Extensions;
 using MilitaryFaculty.Presentation.ViewModels;
 using MilitaryFaculty.Presentation.Widgets.TreeView;
 

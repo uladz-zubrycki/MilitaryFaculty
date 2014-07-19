@@ -1,5 +1,5 @@
 ﻿using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Extensions;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels

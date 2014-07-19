@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
-using MilitaryFaculty.Extensions;
 
 namespace MilitaryFaculty.Domain
 {

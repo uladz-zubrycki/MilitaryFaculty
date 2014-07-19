@@ -1,4 +1,4 @@
-﻿using MilitaryFaculty.Extensions;
+﻿using MilitaryFaculty.Common;
 
 namespace MilitaryFaculty.Domain
 {

@@ -68,9 +68,9 @@
     <Compile Include="ExcelReportingService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MilitaryFaculty.Extensions\MilitaryFaculty.Extensions.csproj">
+    <ProjectReference Include="..\MilitaryFaculty.Common\MilitaryFaculty.Common.csproj">
       <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
-      <Name>MilitaryFaculty.Extensions</Name>
+      <Name>MilitaryFaculty.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\MilitaryFaculty.Reporting.Data\MilitaryFaculty.Reporting.Data.csproj">
       <Project>{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}</Project>

@@ -8,7 +8,7 @@ using MilitaryFaculty.Domain;
 using MilitaryFaculty.Reporting;
 using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.Excel;
-using MilitaryFaculty.Reporting.Providers;
+using MilitaryFaculty.Reporting.Structure;
 
 namespace MilitaryFaculty.Application
 {
