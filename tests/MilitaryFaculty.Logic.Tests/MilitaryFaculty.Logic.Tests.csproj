@@ -98,14 +98,6 @@
       <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
       <Name>MilitaryFaculty.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\MilitaryFaculty.Reporting.Data\MilitaryFaculty.Reporting.Data.csproj">
-      <Project>{A621A9B6-11E8-4CC5-B1E9-4FAA4F534708}</Project>
-      <Name>MilitaryFaculty.Reporting.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\MilitaryFaculty.Reporting.Excel\MilitaryFaculty.Reporting.Excel.csproj">
-      <Project>{B9539664-9E26-4DE9-B14E-CFD5EB13F012}</Project>
-      <Name>MilitaryFaculty.Reporting.Excel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.csproj">
       <Project>{813e121e-1097-4a5a-b672-4ac98e21d4ee}</Project>
       <Name>MilitaryFaculty.Reporting</Name>

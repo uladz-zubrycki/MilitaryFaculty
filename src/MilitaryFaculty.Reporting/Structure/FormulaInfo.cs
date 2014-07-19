@@ -14,6 +14,7 @@ namespace MilitaryFaculty.Reporting.Structure
 
         public FormulaInfo(string name,
                            double maxValue,
+                           string expression,
                            IEnumerable<string> arguments,
                            IDictionary<string, double> coefficients)
         {
@@ -27,7 +28,7 @@ namespace MilitaryFaculty.Reporting.Structure
                 throw new ArgumentException();
             }
 
-            if (String.IsNullOrWhiteSpace(Expression))
+            if (String.IsNullOrWhiteSpace(expression))
             {
                 throw new ArgumentException();
             }
@@ -44,7 +45,7 @@ namespace MilitaryFaculty.Reporting.Structure
 
             Name = name;
             MaxValue = maxValue;
-            Expression = Expression.Replace(" ", "");
+            Expression = expression.Replace(" ", "");
             Arguments = arguments.ToList();
             Coefficients = new Dictionary<string, double>(coefficients);
         }

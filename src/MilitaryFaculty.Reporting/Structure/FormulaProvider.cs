@@ -47,6 +47,7 @@ namespace MilitaryFaculty.Reporting.Structure
 
                     return new FormulaInfo(name: xmlItem.Name,
                                            maxValue: xmlItem.MaxValue,
+                                           expression: xmlItem.Expression,
                                            arguments: arguments,
                                            coefficients: coefficients);
                 };
