@@ -6,10 +6,10 @@ namespace MilitaryFaculty.Domain
 {
     public enum SuggestionState
     {
-        [EnumName("Не принята")]
+        ////[EnumName("Не принята")]
         Denied,
 
-        [EnumName("Принята")]
+        ////[EnumName("Принята")]
         Accepted,
     }
 

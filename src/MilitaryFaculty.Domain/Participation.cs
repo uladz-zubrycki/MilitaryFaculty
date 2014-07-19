@@ -6,16 +6,16 @@ namespace MilitaryFaculty.Domain
 {
     public enum ParticipationPlace
     {
-        [EnumName("Экспертный совет ВАК Беларуси")]
+        ////[EnumName("Экспертный совет ВАК Беларуси")]
         HigherAttestationCommission,
 
-        [EnumName("Специализированный совет по защите диссертаций")]
+        ////[EnumName("Специализированный совет по защите диссертаций")]
         DefenceOfDissertationCounsil,
 
-        [EnumName("Военно-научный или научно-технический совет вуза")]
+        ////[EnumName("Военно-научный или научно-технический совет вуза")]
         ResearchCounsil,
 
-        [EnumName("Редакционная коллегия научных изданий")]
+        ////[EnumName("Редакционная коллегия научных изданий")]
         EditorialBoardsOfScientificPublications
     }
 

@@ -108,11 +108,6 @@
     <Compile Include="Custom\Commands\NavigationCommands\BaseNavigationModule.cs" />
     <Compile Include="Custom\Commands\NavigationCommands\ProfessorNavigationModule.cs" />
     <Compile Include="Custom\Commands\Browse.cs" />
-    <Compile Include="Resources\Enumerations.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Enumerations.resx</DependentUpon>
-    </Compile>
     <Compile Include="InjectionConfig.cs" />
     <Compile Include="ViewModels\AddEntityViewModel.cs" />
     <Compile Include="ViewModels\Book\AddBookViewModel.cs" />
@@ -217,27 +212,27 @@
     <Compile Include="Views\StartupView.xaml.cs">
       <DependentUpon>StartupView.xaml</DependentUpon>
     </Compile>
-    <Page Include="ViewResources\CathedraResources.xaml">
+    <Page Include="Resources\CathedraResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewResources\EntityResources.xaml">
+    <Page Include="Resources\EntityResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewResources\FacultyTreeResources.xaml">
+    <Page Include="Resources\FacultyTreeResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewResources\CommonResources.xaml">
+    <Page Include="Resources\CommonResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewResources\ApplicationResources.xaml">
+    <Page Include="Resources\ApplicationResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewResources\ProfessorResources.xaml">
+    <Page Include="Resources\ProfessorResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -369,10 +364,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Resources\Enumerations.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Enumerations.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

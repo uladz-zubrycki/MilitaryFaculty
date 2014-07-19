@@ -70,6 +70,11 @@
     <Compile Include="Professor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cathedra.cs" />
+    <Compile Include="Resources\EnumStrings.Designer.cs">
+      <DependentUpon>EnumStrings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="ScientificExpertise.cs" />
     <Compile Include="ScientificRequest.cs" />
     <Compile Include="ScientificResearch.cs" />
@@ -82,6 +87,12 @@
       <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
       <Name>MilitaryFaculty.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\EnumStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnumStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

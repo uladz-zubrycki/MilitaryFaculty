@@ -1,15 +1,14 @@
 ﻿using System;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum BookType
     {
-        [EnumName("Учебник")]
         Schoolbook,
-
-        [EnumName("Учебное пособие")]
         Tutorial
     }
 

@@ -6,22 +6,22 @@ namespace MilitaryFaculty.Domain
 {
     public enum DissertationWorkDegree
     {
-        [EnumName("Докторская")]
+        ////[EnumName("Докторская")]
         Doctor,
 
-        [EnumName("Кандидатская")]
+        ////[EnumName("Кандидатская")]
         Candidate
     }
 
     public enum DissertationWorkType
     {
-        [EnumName("Диссертация")]
+        ////[EnumName("Диссертация")]
         Dissertation,
 
-        [EnumName("Экспертное заключение по диссертации")]
+        ////[EnumName("Экспертное заключение по диссертации")]
         OpinionOnTheDissertation,
 
-        [EnumName("Отзыв на автореферат")]
+        ////[EnumName("Отзыв на автореферат")]
         ReviewedOnSynopsis
     }
 
