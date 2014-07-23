@@ -1,6 +1,10 @@
-﻿using System.Windows;
+﻿using System;
+using System.Linq;
+using System.Windows;
 using Autofac;
 using MilitaryFaculty.Application.ViewModels;
+using MilitaryFaculty.Common;
+using MilitaryFaculty.Domain.Base;
 
 namespace MilitaryFaculty.Application
 {
@@ -11,23 +15,20 @@ namespace MilitaryFaculty.Application
     {
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            WaitForSplashScreen();
-            StartApplication();
-        }
-
-        private static void WaitForSplashScreen()
-        {
-#if !DEBUG
-            Thread.SpinWait(500);
-#endif
-        }
-
-        private static void StartApplication()
-        {
+            InitializeGlobalCommands();
+            
             var container = InjectionConfig.Register(new ContainerBuilder());
             var view = new MainWindow { DataContext = new MainViewModel(container) };
             
             view.Show();
+        }
+
+        private static void InitializeGlobalCommands()
+        {
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            var types = assemblies.SelectMany(asm => asm.GetTypes());
+            var entityTypes = types.Where(type => type.IsSubclassOf(typeof(UniqueEntity)));
+            entityTypes.ForEach(GlobalCommands.CreateCommandsForEntity);
         }
     }
 }

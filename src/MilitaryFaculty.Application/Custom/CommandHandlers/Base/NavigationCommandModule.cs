@@ -2,13 +2,13 @@
 using MilitaryFaculty.Application.ViewModels;
 using MilitaryFaculty.Presentation.Commands;
 
-namespace MilitaryFaculty.Application.Custom
+namespace MilitaryFaculty.Application.Custom.CommandHandlers
 {
-    public abstract class BaseNavigationModule : ICommandModule
+    public abstract class NavigationCommandModule : ICommandModule
     {
         protected readonly MainViewModel ViewModel;
 
-        protected BaseNavigationModule(MainViewModel viewModel)
+        protected NavigationCommandModule(MainViewModel viewModel)
         {
             if (viewModel == null)
             {

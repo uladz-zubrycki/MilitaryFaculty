@@ -4,16 +4,16 @@ using MilitaryFaculty.Application.ViewModels;
 using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Presentation.ViewModels;
 
-namespace MilitaryFaculty.Application.Custom
+namespace MilitaryFaculty.Application.Custom.CommandHandlers
 {
-    public class CommonNavigationModule : BaseNavigationModule
+    public class NavigationHistory : NavigationCommandModule
     {
         private const int HistorySize = 10;
 
         private readonly LinkedList<ViewModel> _backHistory;
         private readonly LinkedList<ViewModel> _forwardHistory;
 
-        public CommonNavigationModule(MainViewModel viewModel)
+        public NavigationHistory(MainViewModel viewModel)
             : base(viewModel)
         {
             _backHistory = new LinkedList<ViewModel>();
@@ -29,11 +29,11 @@ namespace MilitaryFaculty.Application.Custom
                 throw new ArgumentNullException("sink");
             }
 
-            commands.AddCommand(Browse.Back,
+            commands.AddCommand(GlobalCommands.BrowseBack,
                                 OnBrowseBack,
                                 CanBrowseBack);
 
-            commands.AddCommand(Browse.Forward,
+            commands.AddCommand(GlobalCommands.BrowseForward,
                                 OnBrowseForward,
                                 CanBrowseForward);
         }

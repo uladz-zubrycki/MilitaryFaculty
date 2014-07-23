@@ -49,7 +49,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
             public override ICommand AddCommand
             {
-                get { return Do.ExhibitionAdd; }
+                get { return GlobalCommands.Add<Exhibition>(); }
             }
 
             protected override IEnumerable<ViewModel<Exhibition>> GetViewModels()
@@ -66,7 +66,7 @@ namespace MilitaryFaculty.Application.ViewModels
             public MainInfo(Exhibition model)
                 : base(model)
             {
-                this.Editable(Do.ExhibitionSave);
+                this.Editable(GlobalCommands.Save<Exhibition>());
             }
 
             public override string Title
@@ -136,7 +136,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 const string tooltip = "Удалить выставку";
                 const string imageSource = @"..\Content\remove.png";
 
-                return new ImagedCommandViewModel(Do.ExhibitionRemove,
+                return new ImagedCommandViewModel(GlobalCommands.Remove<Exhibition>(),
                                                   Model,
                                                   tooltip,
                                                   imageSource);
@@ -147,7 +147,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 const string tooltip = "Подробно";
                 const string imageSource = @"..\..\Content\details.png";
 
-                return new ImagedCommandViewModel(Browse.ExhibitionDetails,
+                return new ImagedCommandViewModel(GlobalCommands.BrowseDetails<Exhibition>(),
                                                   Model,
                                                   tooltip,
                                                   imageSource);

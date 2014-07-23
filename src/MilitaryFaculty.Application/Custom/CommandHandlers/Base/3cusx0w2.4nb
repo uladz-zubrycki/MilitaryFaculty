@@ -2,20 +2,19 @@
 using System.Windows;
 using System.Windows.Input;
 using MilitaryFaculty.Data;
-using MilitaryFaculty.Domain;
 using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Presentation.Commands;
 
-namespace MilitaryFaculty.Application.Custom
+namespace MilitaryFaculty.Application.Custom.Base
 {
     public abstract class EntityCommandModule<T> : ICommandModule
         where T : class, IUniqueEntity
     {
         private readonly IRepository<T> _repository;
 
-        protected abstract RoutedCommand AddCommand { get; }
-        protected abstract RoutedCommand SaveCommand { get; }
-        protected abstract RoutedCommand RemoveCommand { get; }
+        protected abstract bool SupportsAddCommand { get; }
+        protected abstract bool SupportsSaveCommand { get; }
+        protected abstract bool SupportsRemoveCommand { get; }
 
         protected EntityCommandModule(IRepository<T> repository)
         {
@@ -34,16 +33,25 @@ namespace MilitaryFaculty.Application.Custom
                 throw new ArgumentNullException("sink");
             }
 
-            commands.AddCommand<T>(AddCommand,
-                                   OnAddEntity,
-                                   CanAddEntity);
+            if (SupportsAddCommand)
+            {
+                commands.AddCommand<T>(AddCommand,
+                                       OnAddEntity,
+                                       CanAddEntity);
+            }
 
-            commands.AddCommand<T>(SaveCommand,
-                                   OnSaveEntity,
-                                   CanSaveEntity);
+            if (SupportsSaveCommand)
+            {
+                commands.AddCommand<T>(SaveCommand,
+                                       OnSaveEntity,
+                                       CanSaveEntity);
+            }
 
-            commands.AddCommand<T>(RemoveCommand,
-                                   OnRemoveEntity);
+            if (SupportsRemoveCommand)
+            {
+                commands.AddCommand<T>(RemoveCommand,
+                                       OnRemoveEntity);
+            }
         }
 
         protected abstract string GetRemovalMessage();
@@ -61,7 +69,7 @@ namespace MilitaryFaculty.Application.Custom
             }
 
             _repository.Create(entity);
-            Browse.Back.Execute(null, null);
+            GlobalCommands.BrowseBack.Execute(null, null);
         }
 
         private bool CanSaveEntity(T entity)

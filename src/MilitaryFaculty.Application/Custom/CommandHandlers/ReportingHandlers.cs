@@ -2,17 +2,16 @@
 using Microsoft.Win32;
 using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Reporting;
-using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.Excel;
 
-namespace MilitaryFaculty.Application.Custom
+namespace MilitaryFaculty.Application.Custom.CommandHandlers
 {
-    public class ReportingCommandModule : ICommandModule
+    public class ReportingHandlers : ICommandModule
     {
         private readonly IExcelReportingService _service;
         private readonly IReportGenerator _reportGenerator;
 
-        public ReportingCommandModule(IExcelReportingService service, IReportGenerator reportGenerator)
+        public ReportingHandlers(IExcelReportingService service, IReportGenerator reportGenerator)
         {
             if (service == null)
             {
@@ -29,7 +28,7 @@ namespace MilitaryFaculty.Application.Custom
 
         public void LoadModule(RoutedCommands commands)
         {
-            commands.AddCommand(Do.ReportGenerate, GenerateReport);
+            commands.AddCommand(GlobalCommands.GenerateReport, GenerateReport);
         }
 
         private void GenerateReport()

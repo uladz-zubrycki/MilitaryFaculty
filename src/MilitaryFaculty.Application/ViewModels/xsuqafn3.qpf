@@ -1,7 +1,6 @@
 ﻿using System;
 using Autofac;
 using MilitaryFaculty.Application.Custom;
-using MilitaryFaculty.Application.Custom.CommandHandlers;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
@@ -123,18 +122,18 @@ namespace MilitaryFaculty.Application.ViewModels
             //todo get module from container
             var modules = new ICommandModule[]
                           {
-                              new ProfessorHandlers(_professorRepository),
-                              new PublicationHandlers(_publicationRepository),
-                              new ConferenceHandlers(_conferenceRepository),
-                              new ExhibitionHandlers(_exhibitionRepository),
+                              new ProfessorCommandModule(_professorRepository),
+                              new PublicationCommandModule(_publicationRepository),
+                              new ConferenceCommandModule(_conferenceRepository),
+                              new ExhibitionCommandModule(_exhibitionRepository),
                               new BookHandlers(_bookRepository),
-                              new NavigationHistory(this),
-                              new PublicationNavigation(this),
-                              new ProfessorNavigation(this),
-                              new ConferenceNavigation(this),
-                              new BookNavigation(this),
-                              new ExhibitionNavigation(this),
-                              new ReportingHandlers(_excelService, _reportGenerator)
+                              new CommonNavigationModule(this),
+                              new PublicationNavigationModule(this),
+                              new ProfessorNavigationModule(this),
+                              new ConferenceNavigationModule(this),
+                              new BookNavigationModule(this),
+                              new ExhibitionNavigationModule(this),
+                              new ReportingCommandModule(_excelService, _reportGenerator)
                           };
 
             modules.ForEach(m => m.LoadModule(RoutedCommands));

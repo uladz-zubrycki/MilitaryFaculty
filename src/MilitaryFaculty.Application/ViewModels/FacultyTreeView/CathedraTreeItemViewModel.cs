@@ -5,17 +5,18 @@ using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Data.Events;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 using MilitaryFaculty.Presentation.Widgets.TreeView;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class CathedraTreeItemViewModel : TreeItemViewModel<Domain.Cathedra>
+    public class CathedraTreeItemViewModel : TreeItemViewModel<Cathedra>
     {
-        public CathedraTreeItemViewModel(Domain.Cathedra cathedra,
+        public CathedraTreeItemViewModel(Cathedra cathedra,
                                          TreeViewModel owner,
                                          ITreeItemViewModel parent,
-                                         IRepository<Domain.Professor> professorRepository)
+                                         IRepository<Professor> professorRepository)
             : base(cathedra, owner, parent, true)
         {
             if (professorRepository == null)
@@ -60,13 +61,13 @@ namespace MilitaryFaculty.Application.ViewModels
             const string tooltip = "Добавить преподавателя";
             const string imageSource = @"..\Content\add-user.png";
 
-            return new ImagedCommandViewModel(Browse.ProfessorAdd,
+            return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Professor>(),
                                               Model,
                                               tooltip,
                                               imageSource);
         }
 
-        private void OnProfessorCreated(object sender, ModifiedEntityEventArgs<Domain.Professor> e)
+        private void OnProfessorCreated(object sender, ModifiedEntityEventArgs<Professor> e)
         {
             var professor = e.ModifiedEntity;
 
@@ -76,7 +77,7 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        private void OnProfessorDeleted(object sender, ModifiedEntityEventArgs<Domain.Professor> e)
+        private void OnProfessorDeleted(object sender, ModifiedEntityEventArgs<Professor> e)
         {
             var professor = e.ModifiedEntity;
 
@@ -86,9 +87,9 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        public static CathedraTreeItemViewModel FromModel(Domain.Cathedra model,
+        public static CathedraTreeItemViewModel FromModel(Cathedra model,
                                                           TreeViewModel owner,
-                                                          IRepository<Domain.Professor> professorRepository)
+                                                          IRepository<Professor> professorRepository)
         {
             return new CathedraTreeItemViewModel(cathedra: model,
                                                  owner: owner,
@@ -96,8 +97,8 @@ namespace MilitaryFaculty.Application.ViewModels
                                                  professorRepository: professorRepository);
         }
 
-        public static Func<Domain.Cathedra, CathedraTreeItemViewModel> FromModel(TreeViewModel owner,
-                                                                          IRepository<Domain.Professor> professorRepository)
+        public static Func<Cathedra, CathedraTreeItemViewModel> FromModel(TreeViewModel owner,
+                                                                          IRepository<Professor> professorRepository)
         {
             return cathedra => FromModel(cathedra, owner, professorRepository);
         }

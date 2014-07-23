@@ -50,7 +50,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
             public override ICommand AddCommand
             {
-                get { return Do.ConferenceAdd; }
+                get { return GlobalCommands.Add<Conference>(); }
             }
 
             protected override IEnumerable<ViewModel<Conference>> GetViewModels()
@@ -68,7 +68,7 @@ namespace MilitaryFaculty.Application.ViewModels
             public MainInfo(Conference model)
                 : base(model)
             {
-                this.Editable(Do.ConferenceSave);
+                this.Editable(GlobalCommands.Save<Conference>());
             }
 
             public override string Title
@@ -103,7 +103,7 @@ namespace MilitaryFaculty.Application.ViewModels
             public Report(Conference model)
                 : base(model)
             {
-                this.Editable(Do.ConferenceSave);
+                this.Editable(GlobalCommands.Save<Conference>());
             }
 
             public override string Title
@@ -173,7 +173,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 const string tooltip = "Удалить конференцию";
                 const string imageSource = @"..\Content\remove.png";
 
-                return new ImagedCommandViewModel(Do.ConferenceRemove,
+                return new ImagedCommandViewModel(GlobalCommands.Remove<Conference>(),
                                                   Model,
                                                   tooltip,
                                                   imageSource);
@@ -184,7 +184,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 const string tooltip = "Подробно";
                 const string imageSource = @"..\..\Content\details.png";
 
-                return new ImagedCommandViewModel(Browse.ConferenceDetails,
+                return new ImagedCommandViewModel(GlobalCommands.BrowseDetails<Conference>(),
                                                   Model,
                                                   tooltip,
                                                   imageSource);

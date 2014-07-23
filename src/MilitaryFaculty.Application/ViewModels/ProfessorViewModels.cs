@@ -99,7 +99,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
             public override ICommand AddCommand
             {
-                get { return Do.ProfessorAdd; }
+                get { return GlobalCommands.Add<Professor>(); }
             }
 
             protected override IEnumerable<ViewModel<Professor>> GetViewModels()
@@ -117,7 +117,7 @@ namespace MilitaryFaculty.Application.ViewModels
             public ExtraInfo(Professor model)
                 : base(model)
             {
-                this.Editable(Do.ProfessorSave);
+                this.Editable(GlobalCommands.Save<Professor>());
             }
 
             public override string Title
@@ -152,7 +152,7 @@ namespace MilitaryFaculty.Application.ViewModels
             public MainInfo(Professor model)
                 : base(model)
             {
-                this.Editable(Do.ProfessorSave);
+                this.Editable(GlobalCommands.Save<Professor>());
             }
 
             public override string Title
@@ -233,7 +233,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 const string tooltip = "Добавить учебник";
                 const string imageSource = @"..\Content\add.png";
 
-                return new ImagedCommandViewModel(Browse.BookAdd,
+                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Book>(),
                                                   Model,
                                                   tooltip,
                                                   imageSource);
@@ -309,7 +309,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 const string tooltip = "Добавить конференцию";
                 const string imageSource = @"..\Content\add.png";
 
-                return new ImagedCommandViewModel(Browse.ConferenceAdd,
+                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Conference>(),
                                                   Model,
                                                   tooltip,
                                                   imageSource);
@@ -380,7 +380,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 const string tooltip = "Добавить научную выставку";
                 const string imageSource = @"..\Content\add.png";
 
-                return new ImagedCommandViewModel(Browse.ExhibitionAdd,
+                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Exhibition>(),
                                                   Model,
                                                   tooltip,
                                                   imageSource);
@@ -465,7 +465,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 const string tooltip = "Добавить публикацию";
                 const string imageSource = @"..\Content\add.png";
 
-                return new ImagedCommandViewModel(Browse.PublicationAdd,
+                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Publication>(),
                                                   Model,
                                                   tooltip,
                                                   imageSource);

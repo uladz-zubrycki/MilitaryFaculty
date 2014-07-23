@@ -1,4 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
+using MilitaryFaculty.Application.Custom;
+using MilitaryFaculty.Presentation.Commands;
 
 namespace MilitaryFaculty.Application
 {
@@ -10,6 +15,19 @@ namespace MilitaryFaculty.Application
         public MainWindow()
         {
             InitializeComponent();
+            InitializeGlobalCommands();
+        }
+
+        private void InitializeGlobalCommands()
+        {
+            Func<RoutedCommand, CommandBinding> createBinding =
+                cmd => new RoutedBinding {Command = cmd};
+
+            var globalCommands = GlobalCommands.GetCommands();
+            var bindings = globalCommands.Select(createBinding)
+                                         .ToList();
+
+            CommandBindings.AddRange(bindings);
         }
     }
 }

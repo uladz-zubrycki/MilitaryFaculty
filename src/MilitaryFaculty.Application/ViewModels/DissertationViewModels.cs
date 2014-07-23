@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
@@ -12,19 +15,19 @@ using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    internal static class BookView
+    internal static class DissertationView
     {
-        internal class Root : EntityRootViewModel<Book>
+        internal class Root : EntityRootViewModel<Dissertation>
         {
-            public Root(Book model)
+            public Root(Dissertation model)
                 : base(model)
             {
                 HeaderViewModel = new Header();
             }
 
-            protected override IEnumerable<ViewModel<Book>> GetViewModels()
+            protected override IEnumerable<ViewModel<Dissertation>> GetViewModels()
             {
-                return new ViewModel<Book>[]
+                return new ViewModel<Dissertation>[]
                    {
                        new MainInfo(Model),
                        new ExtraInfo(Model)
@@ -36,27 +39,27 @@ namespace MilitaryFaculty.Application.ViewModels
         {
             public override string Title
             {
-                get { return "Информация о книге"; }
+                get { return "Информация о диссертации"; }
             }
         }
 
-        internal class Add : AddEntityViewModel<Book>
+        internal class Add : AddEntityViewModel<Dissertation>
         {
-            public Add(Book model): base(model) { }
+            public Add(Dissertation model) : base(model) { }
 
             public override string Title
             {
-                get { return "Добавить учебник"; }
+                get { return "Добавить диссертацию"; }
             }
 
             public override ICommand AddCommand
             {
-                get { return GlobalCommands.Add<Book>(); }
+                get { return GlobalCommands.Add<Dissertation>(); }
             }
 
-            protected override IEnumerable<ViewModel<Book>> GetViewModels()
+            protected override IEnumerable<ViewModel<Dissertation>> GetViewModels()
             {
-                return new ViewModel<Book>[]
+                return new ViewModel<Dissertation>[]
                    {
                        new MainInfo(Model),
                        new ExtraInfo(Model)
@@ -64,12 +67,12 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class MainInfo : EntityViewModel<Book>
+        internal class MainInfo : EntityViewModel<Dissertation>
         {
-            public MainInfo(Book model)
+            public MainInfo(Dissertation model)
                 : base(model)
             {
-                this.Editable(GlobalCommands.Save<Book>());
+                this.Editable(GlobalCommands.Save<Dissertation>());
             }
 
             public override string Title
@@ -90,39 +93,26 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return Model.CreatedAt; }
                 set { SetModelProperty(m => m.CreatedAt, value); }
             }
-
-            [IntProperty(Label = "Количество страниц:")]
-            public int PagesCount
-            {
-                get { return Model.PagesCount; }
-                set { SetModelProperty(m => m.PagesCount, value); }
-            }
         }
 
-        internal class ExtraInfo : EntityViewModel<Book>
+        internal class ExtraInfo : EntityViewModel<Dissertation>
         {
-            public ExtraInfo(Book model)
+            public ExtraInfo(Dissertation model)
                 : base(model)
             {
-                this.Editable(GlobalCommands.Save<Book>());
+                this.Editable(GlobalCommands.Save<Dissertation>());
             }
 
             public override string Title
             {
                 get { return "Дополнительная информация"; }
             }
-
-            [EnumProperty(Label = "Тип книги:")]
-            public BookType BookType
-            {
-                get { return Model.BookType; }
-                set { SetModelProperty(m => m.BookType, value); }
-            }
+          
         }
 
-        internal class ListItem : ListItemViewModel<Book>
+        internal class ListItem : ListItemViewModel<Dissertation>
         {
-            public ListItem(Book model)
+            public ListItem(Dissertation model)
                 : base(model)
             {
                 TooltipViewModel = new ExtraInfo(Model);
@@ -131,7 +121,10 @@ namespace MilitaryFaculty.Application.ViewModels
 
             public override string PrimaryInfo
             {
-                get { return Model.PagesCount.ToString(CultureInfo.InvariantCulture) + "стр."; }
+                get
+                {
+                    throw new NotImplementedException();
+                }
             }
 
             public override string SecondaryInfo
@@ -153,7 +146,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 const string tooltip = "Удалить книгу";
                 const string imageSource = @"..\Content\remove.png";
 
-                return new ImagedCommandViewModel(GlobalCommands.Remove<Book>(),
+                return new ImagedCommandViewModel(GlobalCommands.Remove<Dissertation>(),
                                                   Model,
                                                   tooltip,
                                                   imageSource);
@@ -170,7 +163,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                                   imageSource);
             }
 
-            public static ListItem FromModel(Book model)
+            public static ListItem FromModel(Dissertation model)
             {
                 if (model == null)
                 {

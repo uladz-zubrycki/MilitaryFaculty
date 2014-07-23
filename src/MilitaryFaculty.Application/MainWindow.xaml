@@ -3,57 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:commands="clr-namespace:MilitaryFaculty.Presentation.Commands;assembly=MilitaryFaculty.Presentation"
         xmlns:c="clr-namespace:MilitaryFaculty.Application.Custom"
+        xmlns:application="clr-namespace:MilitaryFaculty.Application"
         Title="Научный рейтинг" Height="550" Width="830"
         WindowStartupLocation="CenterScreen"
         commands:RoutedBinding.RoutedCommands="{Binding RoutedCommands}">
-    <Window.CommandBindings>
-        <!--Application commands-->
-        <commands:RoutedBinding Command="{x:Static c:Do.ProfessorAdd}" />
-        <commands:RoutedBinding Command="{x:Static c:Do.ProfessorSave}" />
-        <commands:RoutedBinding Command="{x:Static c:Do.ProfessorRemove}" />
-       
-        <commands:RoutedBinding Command="{x:Static c:Do.ConferenceAdd}" />
-        <commands:RoutedBinding Command="{x:Static c:Do.ConferenceSave}" />
-        <commands:RoutedBinding Command="{x:Static c:Do.ConferenceRemove}" />
-       
-        <commands:RoutedBinding Command="{x:Static c:Do.PublicationAdd}" />
-        <commands:RoutedBinding Command="{x:Static c:Do.PublicationSave}" />
-        <commands:RoutedBinding Command="{x:Static c:Do.PublicationRemove}" />
-        
-        <commands:RoutedBinding Command="{x:Static c:Do.ExhibitionAdd}" />
-        <commands:RoutedBinding Command="{x:Static c:Do.ExhibitionSave}" />
-        <commands:RoutedBinding Command="{x:Static c:Do.ExhibitionRemove}" />
-       
-        <commands:RoutedBinding Command="{x:Static c:Do.BookAdd}" />
-        <commands:RoutedBinding Command="{x:Static c:Do.BookSave}" />
-        <commands:RoutedBinding Command="{x:Static c:Do.BookRemove}" />
-       
-        <commands:RoutedBinding Command="{x:Static c:Do.ReportGenerate}" />
-
-        <!--Common navigation commands-->
-        <commands:RoutedBinding Command="{x:Static c:Browse.Back}" />
-        <commands:RoutedBinding Command="{x:Static c:Browse.Forward}" />
-
-        <!--Professor navigation commands-->
-        <commands:RoutedBinding Command="{x:Static c:Browse.ProfessorAdd}" />
-
-        <!--Conference navigation commands-->
-        <commands:RoutedBinding Command="{x:Static c:Browse.ConferenceAdd}" />
-        <commands:RoutedBinding Command="{x:Static c:Browse.ConferenceDetails}" />
-
-        <!--Publication navigation commands-->
-        <commands:RoutedBinding Command="{x:Static c:Browse.PublicationAdd}" />
-        <commands:RoutedBinding Command="{x:Static c:Browse.PublicationDetails}" />
-
-        <!--Book navigation commands-->
-        <commands:RoutedBinding Command="{x:Static c:Browse.BookAdd}" />
-        <commands:RoutedBinding Command="{x:Static c:Browse.BookDetails}" />
-
-        <!--Exhibition navigation commands-->
-        <commands:RoutedBinding Command="{x:Static c:Browse.ExhibitionAdd}" />
-        <commands:RoutedBinding Command="{x:Static c:Browse.ExhibitionDetails}" />
-    </Window.CommandBindings>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -72,18 +25,18 @@
               Grid.ColumnSpan="2"
               BorderThickness="0">
             <Button Style="{StaticResource ImagedButtonStyle}"
-                    Command="c:Browse.Back">
+                    Command="application:GlobalCommands.BrowseBack">
                 <Image Style="{StaticResource NavigationImageStyle}"
                        Source="/Content/back.png" />
             </Button>
 
             <Button Style="{StaticResource ImagedButtonStyle}"
-                    Command="c:Browse.Forward">
+                    Command="application:GlobalCommands.BrowseForward">
                 <Image Style="{StaticResource NavigationImageStyle}"
                        Source="/Content/forward.png" />
             </Button>
 
-            <Button Command="c:Do.ReportGenerate"
+            <Button Command="application:GlobalCommands.GenerateReport"
                     Margin="10, 0"
                     Padding="2">
                 Создать отчёт

@@ -90,28 +90,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Custom\Commands\ApplicationCommands\EntityCommandModule.cs" />
-    <Compile Include="Custom\Commands\ApplicationCommands\BookCommandModule.cs" />
-    <Compile Include="Custom\Commands\ApplicationCommands\PublicationCommandModule.cs" />
-    <Compile Include="Custom\Commands\ApplicationCommands\ReportingCommandModule.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands\BookNavigationModule.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands\ExhibitionNavigationModule.cs" />
-    <Compile Include="Custom\Commands\ApplicationCommands\ExhibitionCommandModule.cs" />
-    <Compile Include="Custom\Commands\ApplicationCommands\ConferenceCommandModule.cs" />
-    <Compile Include="Custom\Commands\ApplicationCommands\ProfessorCommandModule.cs" />
-    <Compile Include="Custom\Commands\Do.cs" />
+    <Compile Include="Custom\CommandHandlers\Base\EntityCommandModule.cs" />
+    <Compile Include="Custom\CommandHandlers\Base\NavigationCommandModule.cs" />
+    <Compile Include="Custom\CommandHandlers\BookHandlers.cs" />
+    <Compile Include="Custom\CommandHandlers\PublicationHandlers.cs" />
+    <Compile Include="Custom\CommandHandlers\ReportingHandlers.cs" />
+    <Compile Include="Custom\CommandHandlers\ExhibitionHandlers.cs" />
+    <Compile Include="Custom\CommandHandlers\ConferenceHandlers.cs" />
+    <Compile Include="Custom\CommandHandlers\ProfessorHandlers.cs" />
+    <Compile Include="GlobalCommands.cs" />
     <Compile Include="Custom\EditableViewTemplateSelector.cs" />
     <Compile Include="Custom\GenericTemplateSelector.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands\PublicationNavigationModule.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands\ConferenceNavigationModule.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands\CommonNavigationModule.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands\BaseNavigationModule.cs" />
-    <Compile Include="Custom\Commands\NavigationCommands\ProfessorNavigationModule.cs" />
-    <Compile Include="Custom\Commands\Browse.cs" />
+    <Compile Include="Custom\CommandHandlers\NavigationHistory.cs" />
     <Compile Include="InjectionConfig.cs" />
     <Compile Include="ViewModels\Base\AddEntityViewModel.cs" />
     <Compile Include="ViewModels\BookViewModels.cs" />
     <Compile Include="ViewModels\Base\EntityRootViewModel.cs" />
+    <Compile Include="ViewModels\DissertationViewModels.cs" />
     <Compile Include="ViewModels\ExhibitionViewModels.cs" />
     <Compile Include="ViewModels\Base\ListItemViewModel.cs" />
     <Compile Include="ViewModels\PublicationViewModels.cs" />

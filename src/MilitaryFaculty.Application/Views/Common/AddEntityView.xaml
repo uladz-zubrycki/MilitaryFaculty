@@ -1,7 +1,8 @@
 ﻿<UserControl x:Class="MilitaryFaculty.Application.Views.AddEntityView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:c="clr-namespace:MilitaryFaculty.Application.Custom">
+             xmlns:c="clr-namespace:MilitaryFaculty.Application.Custom"
+             xmlns:application="clr-namespace:MilitaryFaculty.Application">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -37,7 +38,7 @@
                 Grid.Column="1"
                 Content="Отмена"
                 Style="{StaticResource SimpleButton}"
-                Command="{x:Static c:Browse.Back}"
+                Command="{x:Static application:GlobalCommands.BrowseBack}"
                 CommandParameter="{Binding Model}" />
         </Grid>
     </Grid>
