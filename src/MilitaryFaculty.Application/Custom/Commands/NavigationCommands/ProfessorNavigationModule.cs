@@ -15,8 +15,7 @@ namespace MilitaryFaculty.Application.Custom
 
         public override void LoadModule(RoutedCommands commands)
         {
-            commands.AddCommand<Cathedra>(Browse.ProfessorAdd,
-                                          OnBrowseProfessorAdd);
+            commands.AddCommand<Cathedra>(Browse.ProfessorAdd, OnBrowseProfessorAdd);
         }
 
         private void OnBrowseProfessorAdd(Cathedra cathedra)
@@ -27,7 +26,7 @@ namespace MilitaryFaculty.Application.Custom
             }
 
             var model = new Professor {Cathedra = cathedra};
-            ViewModel.WorkWindow = new AddProfessorViewModel(model);
+            ViewModel.WorkWindow = new ProfessorView.Add(model);
         }
     }
 }

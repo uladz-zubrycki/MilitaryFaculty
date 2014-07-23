@@ -8,122 +8,53 @@ namespace MilitaryFaculty.Reporting.Data
     //TODO: Need to refactor this class, too much hardcode!
     public class DataProvidersContainer
     {
-        private readonly AcademicDegreeChangingsDataProvider _academicDegreeChangings;
         private readonly BooksDataProvider _books;
         private readonly CathedrasDataProvider _cathedras;
         private readonly ConferencesDataProvider _conferences;
         private readonly DissertationWorksDataProvider _dissertationWorks;
         private readonly ExhibitionsDataProvider _exhibitions;
-        private readonly ImprovementSuggestionsDataProvider _improvementSuggestions;
-        private readonly ParticipationsDataProvider _participations;
         private readonly ProfessorsDataProvider _professors;
         private readonly PublicationsDataProvider _publications;
         private readonly ScientificExpertisesDataProvider _scientificExpertises;
-        private readonly ScientificRequestsDataProvider _scientificRequests;
-        private readonly ScientificResearchesDataProvider _scientificResearches;
+        private readonly InventiveApplicationsDataProvider _inventiveApplications;
+        private readonly ResearchesDataProvider _researches;
 
         public DataProvidersContainer(
-            AcademicDegreeChangingsDataProvider academicDegreeChanging,
             BooksDataProvider books,
             CathedrasDataProvider cathedras,
             ConferencesDataProvider conferences,
             DissertationWorksDataProvider dissertationWorks,
             ExhibitionsDataProvider exhibitions,
-            ImprovementSuggestionsDataProvider improvementSuggestions,
-            ParticipationsDataProvider participations,
             ProfessorsDataProvider professors,
             PublicationsDataProvider publications,
             ScientificExpertisesDataProvider scientificExpertises,
-            ScientificRequestsDataProvider scientificRequests,
-            ScientificResearchesDataProvider scientificResearches
+            InventiveApplicationsDataProvider inventiveApplications,
+            ResearchesDataProvider researches
             )
         {
-            #region ParametersCheching
-
-            if (academicDegreeChanging == null)
-            {
-                throw new ArgumentNullException("academicDegreeChanging");
-            }
-            if (books == null)
-            {
-                throw new ArgumentNullException("books");
-            }
-            if (cathedras == null)
-            {
-                throw new ArgumentNullException("cathedras");
-            }
-            if (conferences == null)
-            {
-                throw new ArgumentNullException("conferences");
-            }
-            if (exhibitions == null)
-            {
-                throw new ArgumentNullException("exhibitions");
-            }
-            if (improvementSuggestions == null)
-            {
-                throw new ArgumentNullException("improvementSuggestions");
-            }
-            if (participations == null)
-            {
-                throw new ArgumentNullException("participations");
-            }
-            if (professors == null)
-            {
-                throw new ArgumentNullException("professors");
-            }
-            if (publications == null)
-            {
-                throw new ArgumentNullException("publications");
-            }
-            if (scientificExpertises == null)
-            {
-                throw new ArgumentNullException("scientificExpertises");
-            }
-            if (scientificRequests == null)
-            {
-                throw new ArgumentNullException("scientificRequests");
-            }
-            if (scientificResearches == null)
-            {
-                throw new ArgumentNullException("scientificResearches");
-            }
-            if (dissertationWorks == null)
-            {
-                throw new ArgumentNullException("dissertationWorks");
-            }
-
-            #endregion //ParametersCheching
-
-            _academicDegreeChangings = academicDegreeChanging;
             _books = books;
             _cathedras = cathedras;
             _conferences = conferences;
             _exhibitions = exhibitions;
-            _improvementSuggestions = improvementSuggestions;
-            _participations = participations;
             _professors = professors;
             _publications = publications;
             _scientificExpertises = scientificExpertises;
-            _scientificRequests = scientificRequests;
-            _scientificResearches = scientificResearches;
+            _inventiveApplications = inventiveApplications;
+            _researches = researches;
             _dissertationWorks = dissertationWorks;
         }
 
         public void ClearModificators()
         {
-            _academicDegreeChangings.QueryModificator = null;
             _books.QueryModificator = null;
             _cathedras.QueryModificator = null;
             _conferences.QueryModificator = null;
             _exhibitions.QueryModificator = null;
-            _improvementSuggestions.QueryModificator = null;
-            _participations.QueryModificator = null;
             _professors.QueryModificator = null;
             _publications.QueryModificator = null;
             _scientificExpertises.QueryModificator = null;
-            _scientificRequests.QueryModificator = null;
-            _scientificResearches.QueryModificator = null;
+            _inventiveApplications.QueryModificator = null;
+            _researches.QueryModificator = null;
             _dissertationWorks.QueryModificator = null;
         }
 
@@ -139,75 +70,70 @@ namespace MilitaryFaculty.Reporting.Data
 
         public void SetProfessorModificator(Professor professor, TimeInterval interval)
         {
-            _academicDegreeChangings.QueryModificator = adc =>
-                adc.Target.Id == professor.Id
-                && adc.Date >= interval.From
-                && adc.Date <= interval.To;
-            _books.QueryModificator = b =>
-                b.Author.Id == professor.Id
-                && b.Date >= interval.From
-                && b.Date <= interval.To;
-            _cathedras.QueryModificator = null;
-            _conferences.QueryModificator = con =>
-                con.Curator.Id == professor.Id
-                && con.Date >= interval.From
-                && con.Date <= interval.To;
-            _dissertationWorks.QueryModificator = dw =>
-                dw.Author.Id == professor.Id
-                && dw.Date >= interval.From
-                && dw.Date <= interval.To;
-            _exhibitions.QueryModificator = exh =>
-                exh.Participant.Id == professor.Id
-                && exh.Date >= interval.From
-                && exh.Date <= interval.To;
-            _improvementSuggestions.QueryModificator = imsug =>
-                imsug.Author.Id == professor.Id
-                && imsug.Date >= interval.From
-                && imsug.Date <= interval.To;
-            _participations.QueryModificator = part =>
-                part.Participant.Id == professor.Id
-                && ((part.StartDate >= interval.From && part.StartDate <= interval.To)
-                    || (part.EndDate >= interval.From && part.EndDate <= interval.To)
-                    || (part.StartDate <= interval.From && part.EndDate >= interval.To));
-            _professors.QueryModificator = prof =>
-                prof.Id == professor.Id
-                && ((prof.EnrollDate >= interval.From && prof.EnrollDate <= interval.To)
-                    || (prof.DismissalDate >= interval.From && prof.DismissalDate <= interval.To)
-                    || (prof.EnrollDate <= interval.From && prof.DismissalDate >= interval.To));
-            _publications.QueryModificator = pub =>
-                pub.Author.Id == professor.Id
-                && pub.Date >= interval.From
-                && pub.Date <= interval.To;
-            _scientificExpertises.QueryModificator = se =>
-                se.Author.Id == professor.Id
-                && se.Date >= interval.From
-                && se.Date <= interval.To;
-            _scientificRequests.QueryModificator = srq =>
-                srq.Author.Id == professor.Id
-                && srq.Date >= interval.From
-                && srq.Date <= interval.To;
-            _scientificResearches.QueryModificator = srs =>
-                srs.Author.Id == professor.Id
-                && srs.Date >= interval.From
-                && srs.Date <= interval.To;
+          
+            //_books.QueryModificator = b =>
+            //    b.Author.Id == professor.Id
+            //    && b.CreatedAt >= interval.From
+            //    && b.CreatedAt <= interval.To;
+            //_cathedras.QueryModificator = null;
+            //_conferences.QueryModificator = con =>
+            //    con.Curator.Id == professor.Id
+            //    && con.Date >= interval.From
+            //    && con.Date <= interval.To;
+            //_dissertationWorks.QueryModificator = dw =>
+            //    dw.Author.Id == professor.Id
+            //    && dw.Date >= interval.From
+            //    && dw.Date <= interval.To;
+            //_exhibitions.QueryModificator = exh =>
+            //    exh.Participant.Id == professor.Id
+            //    && exh.Date >= interval.From
+            //    && exh.Date <= interval.To;
+           
+            //_improvementSuggestions.QueryModificator = imsug =>
+            //    imsug.Author.Id == professor.Id
+            //    && imsug.Date >= interval.From
+            //    && imsug.Date <= interval.To;
+            //_participations.QueryModificator = part =>
+            //    part.Participant.Id == professor.Id
+            //    && ((part.StartDate >= interval.From && part.StartDate <= interval.To)
+            //        || (part.EndDate >= interval.From && part.EndDate <= interval.To)
+            //        || (part.StartDate <= interval.From && part.EndDate >= interval.To));
+            //_professors.QueryModificator = prof =>
+            //    prof.Id == professor.Id
+            //    && ((prof.EnrollDate >= interval.From && prof.EnrollDate <= interval.To)
+            //        || (prof.DismissalDate >= interval.From && prof.DismissalDate <= interval.To)
+            //        || (prof.EnrollDate <= interval.From && prof.DismissalDate >= interval.To));
+            //_publications.QueryModificator = pub =>
+            //    pub.Author.Id == professor.Id
+            //    && pub.Date >= interval.From
+            //    && pub.Date <= interval.To;
+            //_scientificExpertises.QueryModificator = se =>
+            //    se.Author.Id == professor.Id
+            //    && se.Date >= interval.From
+            //    && se.Date <= interval.To;
+            //_inventiveApplications.QueryModificator = srq =>
+            //    srq.Author.Id == professor.Id
+            //    && srq.Date >= interval.From
+            //    && srq.Date <= interval.To;
+            //_researches.QueryModificator = srs =>
+            //    srs.Author.Id == professor.Id
+            //    && srs.Date >= interval.From
+            //    && srs.Date <= interval.To;
         }
 
         public IEnumerable<IDataProvider> GetProviders()
         {
             var providers = new IDataProvider[]
             {
-                _academicDegreeChangings,
                 _books,
                 _cathedras,
                 _conferences,
                 _exhibitions,
-                _improvementSuggestions,
-                _participations,
                 _professors,
                 _publications,
                 _scientificExpertises,
-                _scientificRequests,
-                _scientificResearches,
+                _inventiveApplications,
+                _researches,
                 _dissertationWorks
             };
 

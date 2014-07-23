@@ -135,47 +135,20 @@
   <data name="AcademicRank_None" xml:space="preserve">
     <value>Отсутствует</value>
   </data>
-  <data name="AccordanceLevel_Fully" xml:space="preserve">
-    <value>Полностью соответствует</value>
-  </data>
-  <data name="AccordanceLevel_None" xml:space="preserve">
-    <value>Не соответствует</value>
-  </data>
-  <data name="AccordanceLevel_Partly" xml:space="preserve">
-    <value>Частично соответствует</value>
-  </data>
-  <data name="AwardType_FirstDegree" xml:space="preserve">
-    <value>Диплом первой степени</value>
-  </data>
-  <data name="AwardType_SecondDegree" xml:space="preserve">
-    <value>Диплом второй степени</value>
-  </data>
-  <data name="AwardType_ThirdDegree" xml:space="preserve">
-    <value>Диплом третьей степени</value>
-  </data>
-  <data name="AwardType_WithoutDegree" xml:space="preserve">
-    <value>Диплом (грамота)</value>
-  </data>
   <data name="BookType_Schoolbook" xml:space="preserve">
     <value>Учебник</value>
   </data>
   <data name="BookType_Tutorial" xml:space="preserve">
     <value>Учебное пособие</value>
   </data>
-  <data name="DissertationWorkDegree_Candidate" xml:space="preserve">
-    <value>Кандидатская</value>
+  <data name="ConferenceAccordance_Fully" xml:space="preserve">
+    <value>Полностью соответствует</value>
   </data>
-  <data name="DissertationWorkDegree_Doctor" xml:space="preserve">
-    <value>Докторская</value>
+  <data name="ConferenceAccordance_None" xml:space="preserve">
+    <value>Не соответствует</value>
   </data>
-  <data name="DissertationWorkType_Dissertation" xml:space="preserve">
-    <value>Диссертация</value>
-  </data>
-  <data name="DissertationWorkType_OpinionOnTheDissertation" xml:space="preserve">
-    <value>Экспертное заключение по диссертации</value>
-  </data>
-  <data name="DissertationWorkType_ReviewedOnSynopsis" xml:space="preserve">
-    <value>Отзыв на автореферат</value>
+  <data name="ConferenceAccordance_Partly" xml:space="preserve">
+    <value>Частично соответствует</value>
   </data>
   <data name="EventLevel_International" xml:space="preserve">
     <value>Международная</value>
@@ -185,6 +158,18 @@
   </data>
   <data name="EventLevel_University" xml:space="preserve">
     <value>Вузовская</value>
+  </data>
+  <data name="ExhibitionAward_Certificate" xml:space="preserve">
+    <value>Диплом (грамота)</value>
+  </data>
+  <data name="ExhibitionAward_FirstDegree" xml:space="preserve">
+    <value>Диплом первой степени</value>
+  </data>
+  <data name="ExhibitionAward_SecondDegree" xml:space="preserve">
+    <value>Диплом второй степени</value>
+  </data>
+  <data name="ExhibitionAward_ThirdDegree" xml:space="preserve">
+    <value>Диплом третьей степени</value>
   </data>
   <data name="HistoricalWorkOrganization_Custom" xml:space="preserve">
     <value>Военно-историческая работа организована, но ведется с отдельными недостатками</value>

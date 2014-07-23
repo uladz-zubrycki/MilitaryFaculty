@@ -19,7 +19,7 @@ namespace MilitaryFaculty.Logic.Tests
         public void SetUp()
         {
         }
-        
+
         [Test]
         public void TestExcel()
         {

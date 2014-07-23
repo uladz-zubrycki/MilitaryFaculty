@@ -109,43 +109,15 @@
     <Compile Include="Custom\Commands\NavigationCommands\ProfessorNavigationModule.cs" />
     <Compile Include="Custom\Commands\Browse.cs" />
     <Compile Include="InjectionConfig.cs" />
-    <Compile Include="ViewModels\AddEntityViewModel.cs" />
-    <Compile Include="ViewModels\Book\AddBookViewModel.cs" />
-    <Compile Include="ViewModels\Book\BookExtraInfoViewModel.cs" />
-    <Compile Include="ViewModels\Book\BookInfoViewModel.cs" />
-    <Compile Include="ViewModels\Book\BookListItemViewModel.cs" />
-    <Compile Include="ViewModels\Book\BookRootViewModel.cs" />
-    <Compile Include="ViewModels\Book\BookHeaderViewModel.cs" />
-    <Compile Include="ViewModels\Conference\ConferenceHeaderViewModel.cs" />
-    <Compile Include="ViewModels\EntityRootViewModel.cs" />
-    <Compile Include="ViewModels\Exhibition\AddExhibitionViewModel.cs" />
-    <Compile Include="ViewModels\Exhibition\ExhibitionHeaderViewModel.cs" />
-    <Compile Include="ViewModels\Exhibition\ExhibitionInfoViewModel.cs" />
-    <Compile Include="ViewModels\Exhibition\ExhibitionListItemViewModel.cs" />
-    <Compile Include="ViewModels\Exhibition\ExhibitionRootViewModel.cs" />
-    <Compile Include="ViewModels\ListItemViewModel.cs" />
-    <Compile Include="ViewModels\Professor\ProfessorBooksViewModel.cs" />
-    <Compile Include="ViewModels\Professor\ProfessorExhibitionsViewModel.cs" />
-    <Compile Include="ViewModels\Professor\ProfessorHeaderViewModel.cs" />
-    <Compile Include="ViewModels\Publication\PublicationHeaderViewModel.cs" />
-    <Compile Include="ViewModels\Publication\PublicationAddViewModel.cs" />
-    <Compile Include="ViewModels\Publication\PublicationInfoViewModel.cs" />
-    <Compile Include="ViewModels\Publication\PublicationListItemViewModel.cs" />
-    <Compile Include="ViewModels\Publication\PublicationExtraInfoViewModel.cs" />
-    <Compile Include="ViewModels\Publication\PublicationRootViewModel.cs" />
-    <Compile Include="ViewModels\Cathedra\CathedraInfoViewModel.cs" />
-    <Compile Include="ViewModels\Conference\AddConferenceViewModel.cs" />
-    <Compile Include="ViewModels\Conference\ConferenceInfoViewModel.cs" />
-    <Compile Include="ViewModels\Conference\ConferenceListItemViewModel.cs" />
-    <Compile Include="ViewModels\Conference\ConferenceRootViewModel.cs" />
-    <Compile Include="ViewModels\Conference\ConferenceReportViewModel.cs" />
-    <Compile Include="ViewModels\Professor\ProfessorPublicationsViewModel.cs" />
-    <Compile Include="ViewModels\Professor\ProfessorInfoViewModel.cs" />
-    <Compile Include="ViewModels\Professor\ProfessorExtraInfoViewModel.cs" />
-    <Compile Include="ViewModels\Professor\ProfessorRootViewModel.cs" />
-    <Compile Include="ViewModels\Professor\ProfessorConferencesViewModel.cs" />
+    <Compile Include="ViewModels\Base\AddEntityViewModel.cs" />
+    <Compile Include="ViewModels\BookViewModels.cs" />
+    <Compile Include="ViewModels\Base\EntityRootViewModel.cs" />
+    <Compile Include="ViewModels\ExhibitionViewModels.cs" />
+    <Compile Include="ViewModels\Base\ListItemViewModel.cs" />
+    <Compile Include="ViewModels\PublicationViewModels.cs" />
+    <Compile Include="ViewModels\CathedraViewModels.cs" />
+    <Compile Include="ViewModels\ConferenceViewModels.cs" />
     <Compile Include="ViewModels\StartupViewModel.cs" />
-    <Compile Include="ViewModels\Main\WorkWindowChangedEventArgs.cs" />
     <Compile Include="Views\Common\DefaultView.xaml.cs">
       <DependentUpon>DefaultView.xaml</DependentUpon>
     </Compile>
@@ -328,9 +300,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\Professor\AddProfessorViewModel.cs" />
-    <Compile Include="ViewModels\Cathedra\CathedraViewModel.cs" />
-    <Compile Include="ViewModels\Main\MainViewModel.cs" />
+    <Compile Include="ViewModels\ProfessorViewModels.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\FacultyTreeView\CathedraTreeItemViewModel.cs" />
     <Compile Include="ViewModels\FacultyTreeView\FacultyTreeViewModel.cs" />
     <Compile Include="ViewModels\FacultyTreeView\ProfessorTreeItemViewModel.cs" />

@@ -114,7 +114,7 @@
     </Style>
 
     <Style x:Key="SimpleExpander" TargetType="Expander">
-        <Setter Property="IsExpanded" Value="False" />
+        <Setter Property="IsExpanded" Value="True" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Padding" Value="3 5" />

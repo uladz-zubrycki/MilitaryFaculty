@@ -74,12 +74,11 @@
     <Compile Include="Data\DataProviders\DissertationWorksDataProvider.cs" />
     <Compile Include="Data\DataProviders\ExhibitionsDataProvider.cs" />
     <Compile Include="Data\DataProviders\ImprovementSuggestionsDataProvider.cs" />
-    <Compile Include="Data\DataProviders\ParticipationsDataProvider.cs" />
     <Compile Include="Data\DataProviders\ProfessorsDataProvider.cs" />
     <Compile Include="Data\DataProviders\PublicationsDataProvider.cs" />
     <Compile Include="Data\DataProviders\ScientificExpertisesDataProvider.cs" />
-    <Compile Include="Data\DataProviders\ScientificRequestsDataProvider.cs" />
-    <Compile Include="Data\DataProviders\ScientificResearchesDataProvider.cs" />
+    <Compile Include="Data\DataProviders\InventiveApplicationsDataProvider.cs" />
+    <Compile Include="Data\DataProviders\ResearchesDataProvider.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\ReportDataProvider.cs" />
     <Compile Include="FormulaArgumentAttribute.cs" />

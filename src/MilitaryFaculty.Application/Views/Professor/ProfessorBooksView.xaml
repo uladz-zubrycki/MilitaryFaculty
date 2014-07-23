@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!--Monographs count-->
+        <!--SchoolBooks count-->
         <TextBlock
             Grid.Row="0"
             Grid.Column="0"
@@ -30,7 +30,7 @@
             Style="{StaticResource ValueTextBlock}"
             Text="{Binding Path=SchoolbooksCount}" />
 
-        <!--Reviewed articles count-->
+        <!--Tutorials count-->
         <TextBlock
             Grid.Row="1"
             Grid.Column="0"
@@ -45,7 +45,7 @@
         <ListBox
             Grid.Row="2"
             Grid.Column="0" Grid.ColumnSpan="2"
-            ItemsSource="{Binding Books}"
+            ItemsSource="{Binding Items}"
             Style="{StaticResource ItemListStyle}" />
     </Grid>
 </UserControl>

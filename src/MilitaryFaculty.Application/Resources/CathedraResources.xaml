@@ -2,11 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:viewModels="clr-namespace:MilitaryFaculty.Application.ViewModels"
                     xmlns:views="clr-namespace:MilitaryFaculty.Application.Views">
-    <DataTemplate DataType="{x:Type viewModels:CathedraViewModel}">
+    <DataTemplate DataType="{x:Type viewModels:CathedraView+Root}">
         <views:CathedraView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:CathedraInfoViewModel}">
+    <DataTemplate DataType="{x:Type viewModels:CathedraView+MainInfo}">
         <views:CathedraInfoView />
     </DataTemplate>
 </ResourceDictionary>

@@ -32,7 +32,7 @@ namespace MilitaryFaculty.Application.Custom
             }
 
             var model = new Book {Author = author};
-            ViewModel.WorkWindow = new AddBookViewModel(model);
+            ViewModel.WorkWindow = new BookView.Add(model);
         }
 
         private void OnBrowseBookDetails(Book book)
@@ -42,7 +42,7 @@ namespace MilitaryFaculty.Application.Custom
                 throw new ArgumentNullException("book");
             }
 
-            ViewModel.WorkWindow = new BookRootViewModel(book);
+            ViewModel.WorkWindow = new BookView.Root(book);
         }
     }
 }

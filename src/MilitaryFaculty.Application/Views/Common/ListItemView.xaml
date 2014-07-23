@@ -10,13 +10,11 @@
             <ColumnDefinition Width="0.7*" />
         </Grid.ColumnDefinitions>
 
-        <!--Date-->
         <TextBlock
             Grid.Column="0"
             Style="{StaticResource ValueTextBlock}"
             Text="{Binding PrimaryInfo}" />
 
-        <!--Name-->
         <TextBlock
             Grid.Column="1"
             Style="{StaticResource ValueMultilineTextblock}"

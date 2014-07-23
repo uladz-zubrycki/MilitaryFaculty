@@ -13,6 +13,7 @@ namespace MilitaryFaculty.Data.Tests
     public class EntityContext_Tests
     {
         [SetUp]
+
         public void SetUp()
         {
             const string conName = "Current";
@@ -30,9 +31,9 @@ namespace MilitaryFaculty.Data.Tests
         {
             var cathedras = new[]
                             {
-                                new Cathedra("Кафедра тактики"),
-                                new Cathedra("Кафедра связи"),
-                                new Cathedra("Кафедра ПВО")
+                                new Cathedra {Name = "Кафедра тактики"},
+                                new Cathedra {Name = "Кафедра связи"},
+                                new Cathedra {Name = "Кафедра ПВО"}
                             };
 
             foreach (var cathedra in cathedras)
@@ -57,6 +58,7 @@ namespace MilitaryFaculty.Data.Tests
                                      Cathedra = cathedra,
                                      MilitaryRank = MilitaryRank.Colonel,
                                      JobPosition = JobPosition.Professor,
+                                     EnrollmentDate = DateTime.Now
                                  },
                                  new Professor
                                  {
@@ -64,6 +66,7 @@ namespace MilitaryFaculty.Data.Tests
                                      Cathedra = cathedra,
                                      MilitaryRank = MilitaryRank.Colonel,
                                      JobPosition = JobPosition.Professor,
+                                     EnrollmentDate = DateTime.Now
                                  },
                                  new Professor
                                  {
@@ -71,6 +74,7 @@ namespace MilitaryFaculty.Data.Tests
                                      Cathedra = cathedra,
                                      MilitaryRank = MilitaryRank.Colonel,
                                      JobPosition = JobPosition.Professor,
+                                     EnrollmentDate = DateTime.Now
                                  },
                                  new Professor
                                  {
@@ -78,6 +82,7 @@ namespace MilitaryFaculty.Data.Tests
                                      Cathedra = cathedra,
                                      MilitaryRank = MilitaryRank.Colonel,
                                      JobPosition = JobPosition.Professor,
+                                     EnrollmentDate = DateTime.Now
                                  }
                              };
 
@@ -111,10 +116,10 @@ namespace MilitaryFaculty.Data.Tests
                                       EventLevel = EventLevel.University,
                                       ConferenceReport = new ConferenceReport
                                                          {
-                                                             OrganizationCorrectness = AccordanceLevel.Fully,
-                                                             ReportMaterials = AccordanceLevel.None,
-                                                             ThemeActuality = AccordanceLevel.Partly,
-                                                             ResultsUsage = AccordanceLevel.Partly
+                                                             OrganizationCorrectness = ConferenceAccordance.Fully,
+                                                             ReportMaterials = ConferenceAccordance.None,
+                                                             ThemeActuality = ConferenceAccordance.Partly,
+                                                             ResultsUsage = ConferenceAccordance.Partly
                                                          }
                                   },
                                   new Conference
@@ -125,10 +130,10 @@ namespace MilitaryFaculty.Data.Tests
                                       EventLevel = EventLevel.University,
                                       ConferenceReport = new ConferenceReport
                                                          {
-                                                             OrganizationCorrectness = AccordanceLevel.Fully,
-                                                             ReportMaterials = AccordanceLevel.None,
-                                                             ThemeActuality = AccordanceLevel.Partly,
-                                                             ResultsUsage = AccordanceLevel.Partly
+                                                             OrganizationCorrectness = ConferenceAccordance.Fully,
+                                                             ReportMaterials = ConferenceAccordance.None,
+                                                             ThemeActuality = ConferenceAccordance.Partly,
+                                                             ResultsUsage = ConferenceAccordance.Partly
                                                          }
                                   },
                                   new Conference
@@ -139,10 +144,10 @@ namespace MilitaryFaculty.Data.Tests
                                       EventLevel = EventLevel.University,
                                       ConferenceReport = new ConferenceReport
                                                          {
-                                                             OrganizationCorrectness = AccordanceLevel.Fully,
-                                                             ReportMaterials = AccordanceLevel.None,
-                                                             ThemeActuality = AccordanceLevel.Partly,
-                                                             ResultsUsage = AccordanceLevel.Partly
+                                                             OrganizationCorrectness = ConferenceAccordance.Fully,
+                                                             ReportMaterials = ConferenceAccordance.None,
+                                                             ThemeActuality = ConferenceAccordance.Partly,
+                                                             ResultsUsage = ConferenceAccordance.Partly
                                                          }
                                   }
                               };
@@ -173,6 +178,7 @@ namespace MilitaryFaculty.Data.Tests
                                        PagesCount = 228,
                                        PublicationType = PublicationType.Article,
                                        Author = professor1,
+                                       Date = DateTime.Now
                                    },
                                    new Publication
                                    {
@@ -180,6 +186,7 @@ namespace MilitaryFaculty.Data.Tests
                                        PagesCount = 141,
                                        PublicationType = PublicationType.Article,
                                        Author = professor1,
+                                       Date = DateTime.Now
                                    },
                                    new Publication
                                    {
@@ -190,6 +197,7 @@ namespace MilitaryFaculty.Data.Tests
                                        PagesCount = 1309,
                                        PublicationType = PublicationType.Article,
                                        Author = professor2,
+                                       Date = DateTime.Now
                                    }
                                };
 
@@ -215,7 +223,8 @@ namespace MilitaryFaculty.Data.Tests
                                 Name = "Воинский устав в картинках. Для детей дошкольного возраста.",
                                 PagesCount = 28,
                                 Author = professor1,
-                                BookType = BookType.Tutorial
+                                BookType = BookType.Tutorial,
+                                CreatedAt = DateTime.Now
                             },
                             new Book
                             {
@@ -223,6 +232,7 @@ namespace MilitaryFaculty.Data.Tests
                                 PagesCount = 1411,
                                 BookType = BookType.Schoolbook,
                                 Author = professor1,
+                                CreatedAt = DateTime.Now
                             }
                         };
 
@@ -247,13 +257,13 @@ namespace MilitaryFaculty.Data.Tests
                                   {
                                       Name = "Военная научная выставка.",
                                       Participant = professor1,
-                                      AwardType = AwardType.ThirdDegree,
+                                      Award = ExhibitionAward.ThirdDegree,
                                       Date = DateTime.Today
                                   },
                                   new Exhibition
                                   {
                                       Name = "Тибо 2001.",
-                                      AwardType = AwardType.FirstDegree,
+                                      Award = ExhibitionAward.FirstDegree,
                                       Participant = professor1,
                                       Date = DateTime.Today
                                   }
@@ -268,32 +278,6 @@ namespace MilitaryFaculty.Data.Tests
             context.SaveChanges();
         }
 
-        private static void SeedScientificResearches(EntityContext context)
-        {
-            var professor1 = context.Professors
-                                    .AsQueryable()
-                                    .Single(p => p.FullName.LastName == "Кашкаров");
-
-            var scientificResearches = new[]
-                              {
-                                  new ScientificResearch
-                                  {
-                                      Name = "Какая-то научная работа",
-                                      Author = professor1,
-                                      Date = DateTime.Today,
-                                      PagesCount = 50,
-                                      State = MilitaryScientificSupportState.Completed
-                                  }
-                              };
-
-
-            foreach (var research in scientificResearches)
-            {
-                context.ScientificResearches.Add(research);
-            }
-
-            context.SaveChanges();
-        }
 
         [Test]
         public void InitDatabase()
@@ -304,7 +288,6 @@ namespace MilitaryFaculty.Data.Tests
             SeedPublications(context);
             SeedBooks(context);
             SeedExhibitions(context);
-            SeedScientificResearches(context);
         }
     }
 }

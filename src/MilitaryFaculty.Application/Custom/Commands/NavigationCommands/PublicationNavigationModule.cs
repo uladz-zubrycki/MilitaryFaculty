@@ -20,11 +20,8 @@ namespace MilitaryFaculty.Application.Custom
                 throw new ArgumentNullException("sink");
             }
 
-            commands.AddCommand<Professor>(Browse.PublicationAdd,
-                                           OnBrowsePublicationAdd);
-
-            commands.AddCommand<Publication>(Browse.PublicationDetails,
-                                             OnBrowsePublicationDetails);
+            commands.AddCommand<Professor>(Browse.PublicationAdd, OnBrowsePublicationAdd);
+            commands.AddCommand<Publication>(Browse.PublicationDetails, OnBrowsePublicationDetails);
         }
 
         private void OnBrowsePublicationAdd(Professor author)
@@ -35,7 +32,7 @@ namespace MilitaryFaculty.Application.Custom
             }
 
             var model = new Publication {Author = author};
-            ViewModel.WorkWindow = new AddPublicationViewModel(model);
+            ViewModel.WorkWindow = new PublicationView.Add(model);
         }
 
         private void OnBrowsePublicationDetails(Publication publication)
@@ -45,7 +42,7 @@ namespace MilitaryFaculty.Application.Custom
                 throw new ArgumentNullException("publication");
             }
 
-            ViewModel.WorkWindow = new PublicationRootViewModel(publication);
+            ViewModel.WorkWindow = new PublicationView.Root(publication);
         }
     }
 }

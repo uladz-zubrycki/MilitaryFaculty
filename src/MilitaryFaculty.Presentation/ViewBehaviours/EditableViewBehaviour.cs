@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using MilitaryFaculty.Common;
-using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Presentation.ViewModels;
+using Omu.ValueInjecter;
 
 namespace MilitaryFaculty.Presentation.ViewBehaviours
 {
     public static class ViewModelExtensions
     {
         public static void Editable<T>(this ViewModel<T> @this, ICommand saveCommand)
-            where T : class, IImitator<T>, new()
+            where T : class, new()
         {
             if (@this == null)
             {
@@ -28,7 +28,7 @@ namespace MilitaryFaculty.Presentation.ViewBehaviours
     }
 
     public class EditableViewBehaviour<TModel> : IViewBehaviour
-        where TModel : class, IImitator<TModel>, new()
+        where TModel : class, new()
     {
         private readonly ImagedCommandViewModel _editCommandViewModel;
         private readonly ImagedCommandViewModel _saveCommandViewModel;
@@ -151,7 +151,7 @@ namespace MilitaryFaculty.Presentation.ViewBehaviours
 
         private void BackupModel()
         {
-            _modelBackup.Imitate(_viewModel.Model);
+            _modelBackup.InjectFrom(_viewModel.Model);
         }
 
         private void BackupCommands()
@@ -162,7 +162,7 @@ namespace MilitaryFaculty.Presentation.ViewBehaviours
 
         private void RestoreModel()
         {
-            _viewModel.Model.Imitate(_modelBackup);
+            _viewModel.Model.InjectFrom(_modelBackup);
         }
 
         private void RestoreCommands()

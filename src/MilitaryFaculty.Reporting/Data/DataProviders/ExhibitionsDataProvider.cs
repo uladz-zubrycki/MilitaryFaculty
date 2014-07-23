@@ -26,7 +26,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UnFirstDiplCount")]
         public double UniversityFirstDiplomasCount()
         {
-            return CountOf(e => e.AwardType == AwardType.FirstDegree);
+            return CountOf(e => e.Award == ExhibitionAward.FirstDegree);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UnSecondDiplCount")]
         public double UniversitySecondDiplomasCount()
         {
-            return CountOf(e => e.AwardType == AwardType.SecondDegree);
+            return CountOf(e => e.Award == ExhibitionAward.SecondDegree);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UnThirdDiplCount")]
         public double UniversityThirdDiplomasCount()
         {
-            return CountOf(e => e.AwardType == AwardType.ThirdDegree);
+            return CountOf(e => e.Award == ExhibitionAward.ThirdDegree);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UnLettersCommendationCount")]
         public double UniversityLettersOfCommendationCount()
         {
-            return CountOf(e => e.AwardType == AwardType.WithoutDegree);
+            return CountOf(e => e.Award == ExhibitionAward.Certificate);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ReFirstDiplCount")]
         public double RepublicanFirstDiplomasCount()
         {
-            return CountOf(e => e.AwardType == AwardType.FirstDegree);
+            return CountOf(e => e.Award == ExhibitionAward.FirstDegree);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ReSecondDiplCount")]
         public double RepublicanSecondDiplomasCount()
         {
-            return CountOf(e => e.AwardType == AwardType.SecondDegree);
+            return CountOf(e => e.Award == ExhibitionAward.SecondDegree);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ReThirdDiplCount")]
         public double RepublicanThirdDiplomasCount()
         {
-            return CountOf(e => e.AwardType == AwardType.ThirdDegree);
+            return CountOf(e => e.Award == ExhibitionAward.ThirdDegree);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ReLettersCommendationCount")]
         public double RepublicanLettersOfCommendationCount()
         {
-            return CountOf(e => e.AwardType == AwardType.WithoutDegree);
+            return CountOf(e => e.Award == ExhibitionAward.Certificate);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("InFirstDiplCount")]
         public double InternationalFirstDiplomasCount()
         {
-            return CountOf(e => e.AwardType == AwardType.FirstDegree);
+            return CountOf(e => e.Award == ExhibitionAward.FirstDegree);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("InSecondDiplCount")]
         public double InternationalSecondDiplomasCount()
         {
-            return CountOf(e => e.AwardType == AwardType.SecondDegree);
+            return CountOf(e => e.Award == ExhibitionAward.SecondDegree);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("InThirdDiplCount")]
         public double InternationalThirdDiplomasCount()
         {
-            return CountOf(e => e.AwardType == AwardType.ThirdDegree);
+            return CountOf(e => e.Award == ExhibitionAward.ThirdDegree);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("InLettersCommendationCount")]
         public double InternationalLettersOfCommendationCount()
         {
-            return CountOf(e => e.AwardType == AwardType.WithoutDegree);
+            return CountOf(e => e.Award == ExhibitionAward.Certificate);
         }
     }
 }

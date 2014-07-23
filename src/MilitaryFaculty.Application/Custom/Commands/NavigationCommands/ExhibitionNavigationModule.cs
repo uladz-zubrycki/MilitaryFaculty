@@ -20,11 +20,8 @@ namespace MilitaryFaculty.Application.Custom
                 throw new ArgumentNullException("sink");
             }
 
-            commands.AddCommand<Professor>(Browse.ExhibitionAdd,
-                                           OnBrowseExhibitionAdd);
-
-            commands.AddCommand<Exhibition>(Browse.ExhibitionDetails,
-                                            OnBrowseExhibitionDetails);
+            commands.AddCommand<Professor>(Browse.ExhibitionAdd, OnBrowseExhibitionAdd);
+            commands.AddCommand<Exhibition>(Browse.ExhibitionDetails, OnBrowseExhibitionDetails);
         }
 
         private void OnBrowseExhibitionAdd(Professor author)
@@ -35,7 +32,7 @@ namespace MilitaryFaculty.Application.Custom
             }
 
             var model = new Exhibition {Participant = author};
-            ViewModel.WorkWindow = new AddExhibitionViewModel(model);
+            ViewModel.WorkWindow = new ExhibitionView.Add(model);
         }
 
         private void OnBrowseExhibitionDetails(Exhibition publication)
@@ -45,7 +42,7 @@ namespace MilitaryFaculty.Application.Custom
                 throw new ArgumentNullException("publication");
             }
 
-            ViewModel.WorkWindow = new ExhibitionRootViewModel(publication);
+            ViewModel.WorkWindow = new ExhibitionView.Root(publication);
         }
     }
 }

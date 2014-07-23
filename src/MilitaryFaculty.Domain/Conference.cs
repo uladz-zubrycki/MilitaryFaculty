@@ -9,66 +9,39 @@ namespace MilitaryFaculty.Domain
     ///     Evaluates some characteristic accordance to standart.
     /// </summary>
     [LocalizedEnum(typeof(EnumStrings))]
-    public enum AccordanceLevel
+    public enum ConferenceAccordance
     {
         None,
         Partly,
         Fully,
     }
 
-    public class ConferenceReport : IImitator<ConferenceReport>
+    public class ConferenceReport 
     {
         /// <summary>
         ///     Evaluates conference theme actuality.
         /// </summary>
-        public AccordanceLevel ThemeActuality { get; set; }
+        public ConferenceAccordance ThemeActuality { get; set; }
     
         /// <summary>
         ///     Evaluates conference organization correctness.
         /// </summary>
-        public AccordanceLevel OrganizationCorrectness { get; set; }
+        public ConferenceAccordance OrganizationCorrectness { get; set; }
 
         /// <summary>
         ///     Evaluates availability of conference report materials.
         /// </summary>
-        public AccordanceLevel ReportMaterials { get; set; }
+        public ConferenceAccordance ReportMaterials { get; set; }
 
         /// <summary>
         ///     Evaluates level of conference results adoption.
         /// </summary>
-        public AccordanceLevel ResultsUsage { get; set; }
-
-        public ConferenceReport()
-        {
-            ThemeActuality = AccordanceLevel.None;
-            OrganizationCorrectness = AccordanceLevel.None;
-            ReportMaterials = AccordanceLevel.None;
-            ResultsUsage = AccordanceLevel.None;
-        }
-
-        public ConferenceReport(ConferenceReport other)
-            : this()
-        {
-            Imitate(other);
-        }
-
-        public void Imitate(ConferenceReport other)
-        {
-            if (other == null)
-            {
-                throw new ArgumentNullException("other");
-            }
-
-            ThemeActuality = other.ThemeActuality;
-            OrganizationCorrectness = other.OrganizationCorrectness;
-            ReportMaterials = other.ReportMaterials;
-            ResultsUsage = other.ResultsUsage;
-        }
+        public ConferenceAccordance ResultsUsage { get; set; }
     }
 
     // ReSharper disable DoNotCallOverridableMethodsInConstructor
     // Properties are virtual only for EntityFramework
-    public class Conference : UniqueEntity, IImitator<Conference>
+    public class Conference : UniqueEntity
     {
         public const int NameMaxLength = 200;
 
@@ -80,30 +53,8 @@ namespace MilitaryFaculty.Domain
 
         public Conference()
         {
-            Name = String.Empty;
-            ConferenceReport = new ConferenceReport();
             Date = DateTime.Now;
-        }
-
-        public Conference(Conference other)
-            : this()
-        {
-            Imitate(other);
-        }
-
-        public void Imitate(Conference other)
-        {
-            if (other == null)
-            {
-                throw new ArgumentNullException("other");
-            }
-
-            Id = other.Id;
-            Name = other.Name;
-            Date = other.Date;
-            Curator = other.Curator;
-            EventLevel = other.EventLevel;
-            ConferenceReport.Imitate(other.ConferenceReport);
+            ConferenceReport = new ConferenceReport();
         }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor

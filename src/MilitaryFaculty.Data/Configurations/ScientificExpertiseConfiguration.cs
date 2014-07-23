@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using MilitaryFaculty.Domain;
 
@@ -10,8 +11,9 @@ namespace MilitaryFaculty.Data
         {
             HasKey(m => m.Id);
             Property(m => m.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(m => m.Date).IsRequired();
+            Property(m => m.CreatedAt).IsRequired();
             Property(m => m.Name).IsRequired();
+            Property(m => m.Type).IsRequired();
 
             HasRequired(m => m.Author).WithMany(p => p.ScientificExpertises);
         }

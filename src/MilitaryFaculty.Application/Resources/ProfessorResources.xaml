@@ -2,23 +2,23 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:vm="clr-namespace:MilitaryFaculty.Application.ViewModels"
                     xmlns:views="clr-namespace:MilitaryFaculty.Application.Views">
-    <DataTemplate DataType="{x:Type vm:ProfessorHeaderViewModel}">
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Header}">
         <views:ProfessorHeaderView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:ProfessorConferencesViewModel}">
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Conferences}">
         <views:ProfessorConferencesView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:ProfessorPublicationsViewModel}">
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Publications}">
         <views:ProfessorPublicationsView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:ProfessorBooksViewModel}">
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Books}">
         <views:ProfessorBooksView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:ProfessorExhibitionsViewModel}">
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Exhibitions}">
         <views:ProfessorExhibitionsView />
     </DataTemplate>
 </ResourceDictionary>

@@ -8,17 +8,14 @@ namespace MilitaryFaculty.Data
         public DbSet<Book> Books { get; set; }
         public DbSet<Cathedra> Cathedras { get; set; }
         public DbSet<Conference> Conferences { get; set; }
+        public DbSet<Dissertation> Dissertations { get; set; }
+        public DbSet<EfficiencyProposal> EfficiencyProposals { get; set; }
         public DbSet<Exhibition> Exhibitions { get; set; }
+        public DbSet<InventiveApplication> InventiveApplications { get; set; }
         public DbSet<Professor> Professors { get; set; }
         public DbSet<Publication> Publications { get; set; }
-        public DbSet<DissertationWork> Synopses { get; set; }
-
-        public DbSet<ScientificRequest> ScientificRequests { get; set; }
-        public DbSet<ScientificResearch> ScientificResearches { get; set; }
-        public DbSet<ImprovementSuggestion> ImprovementSuggestions { get; set; }
-
-        public DbSet<AcademicDegreeChanging> AcademicDegreeChangings { get; set; }
-        public DbSet<Participation> Participations { get; set; }
+        public DbSet<Research> Researches { get; set; }
+        public DbSet<Review> Reviews { get; set; }
         public DbSet<ScientificExpertise> ScientificExpertises { get; set; }
 
         public EntityContext(string connectionString)

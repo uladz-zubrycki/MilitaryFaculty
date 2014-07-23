@@ -71,7 +71,7 @@
         <ListBox
             Grid.Row="4"
             Grid.Column="0" Grid.ColumnSpan="2"
-            ItemsSource="{Binding Publications}"
+            ItemsSource="{Binding Items}"
             Style="{StaticResource ItemListStyle}" />
     </Grid>
 </UserControl>

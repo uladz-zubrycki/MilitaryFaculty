@@ -58,29 +58,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcademicDegree.cs" />
+    <Compile Include="AcademicRank.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="Conference.cs" />
+    <Compile Include="EfficiencyProposal.cs" />
     <Compile Include="EventLevel.cs" />
     <Compile Include="Exhibition.cs" />
-    <Compile Include="Base\IImitator.cs" />
-    <Compile Include="ImprovementSuggestion.cs" />
-    <Compile Include="AcademicDegreeChanging.cs" />
     <Compile Include="FullName.cs" />
-    <Compile Include="Participation.cs" />
+    <Compile Include="InventiveApplication.cs" />
     <Compile Include="Professor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cathedra.cs" />
+    <Compile Include="Research.cs" />
     <Compile Include="Resources\EnumStrings.Designer.cs">
       <DependentUpon>EnumStrings.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ScientificExpertise.cs" />
-    <Compile Include="ScientificRequest.cs" />
-    <Compile Include="ScientificResearch.cs" />
-    <Compile Include="DissertationWork.cs" />
+    <Compile Include="Dissertation.cs" />
     <Compile Include="Base\UniqueEntity.cs" />
     <Compile Include="Publication.cs" />
+    <Compile Include="ScientificExpertise.cs" />
+    <Compile Include="Review.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MilitaryFaculty.Common\MilitaryFaculty.Common.csproj">
@@ -94,6 +94,7 @@
       <LastGenOutput>EnumStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

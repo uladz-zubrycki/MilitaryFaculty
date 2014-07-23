@@ -1,11 +1,10 @@
 ﻿using System;
-using MilitaryFaculty.Domain.Base;
 
 namespace MilitaryFaculty.Domain
 {
     // ReSharper disable DoNotCallOverridableMethodsInConstructor
     // Properties are virtual only for EntityFramework
-    public class FullName : IImitator<FullName>
+    public class FullName 
     {
         public const int FirstNameMaxLength = 50;
         public const int MiddleNameMaxLength = 50;
@@ -17,9 +16,6 @@ namespace MilitaryFaculty.Domain
 
         public FullName()
         {
-            FirstName = String.Empty;
-            MiddleName = String.Empty;
-            LastName = String.Empty;
         }
 
         public FullName(string firstName, string middleName, string lastName)
@@ -27,24 +23,6 @@ namespace MilitaryFaculty.Domain
             FirstName = firstName;
             MiddleName = middleName;
             LastName = lastName;
-        }
-
-        public FullName(FullName other)
-            : this()
-        {
-            Imitate(other);
-        }
-
-        public void Imitate(FullName other)
-        {
-            if (other == null)
-            {
-                throw new ArgumentNullException("other");
-            }
-
-            FirstName = other.FirstName;
-            MiddleName = other.MiddleName;
-            LastName = other.LastName;
         }
 
         public override string ToString()
