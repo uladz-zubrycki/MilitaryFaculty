@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using Autofac;
-using MilitaryFaculty.Application.ViewModels;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Presentation.ViewModels;
