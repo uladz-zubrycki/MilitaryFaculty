@@ -1,6 +1,5 @@
 ﻿using System;
 using Autofac;
-using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.Custom.CommandHandlers;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
@@ -30,11 +29,13 @@ namespace MilitaryFaculty.Application.ViewModels
         private readonly IRepository<Book> _bookRepository;
         private readonly IRepository<Cathedra> _cathedraRepository;
         private readonly IRepository<Conference> _conferenceRepository;
-        private readonly IExcelReportingService _excelService;
-        private readonly IReportGenerator _reportGenerator;
         private readonly IRepository<Exhibition> _exhibitionRepository;
         private readonly IRepository<Professor> _professorRepository;
         private readonly IRepository<Publication> _publicationRepository;
+        private readonly IRepository<Dissertation> _dissertationRepository;
+
+        private readonly IReportGenerator _reportGenerator;
+        private readonly IExcelReportingService _excelReportingService;
         private readonly ViewModel _workWindow;
 
         public FacultyTreeViewModel FacultyTree { get; private set; }
@@ -42,21 +43,25 @@ namespace MilitaryFaculty.Application.ViewModels
 
         public event EventHandler<WorkWindowChangedEventArgs> WorkWindowChanged;
 
-        public MainViewModel(IContainer container)
+        public MainViewModel(IRepository<Book> bookRepository,
+                             IRepository<Cathedra> cathedraRepository,
+                             IRepository<Conference> conferenceRepository,
+                             IRepository<Exhibition> exhibitionRepository,
+                             IRepository<Professor> professorRepository,
+                             IRepository<Publication> publicationRepository,
+                             IRepository<Dissertation> dissertationRepository,
+                             IExcelReportingService excelReportingService,
+                             IReportGenerator reportGenerator)
         {
-            if (container == null)
-            {
-                throw new ArgumentNullException("container");
-            }
-
-            _professorRepository = container.Resolve<IRepository<Professor>>();
-            _cathedraRepository = container.Resolve<IRepository<Cathedra>>();
-            _conferenceRepository = container.Resolve<IRepository<Conference>>();
-            _publicationRepository = container.Resolve<IRepository<Publication>>();
-            _exhibitionRepository = container.Resolve<IRepository<Exhibition>>();
-            _bookRepository = container.Resolve<IRepository<Book>>();
-            _excelService = container.Resolve<IExcelReportingService>();
-            _reportGenerator = container.Resolve<IReportGenerator>();
+            _bookRepository = bookRepository;
+            _cathedraRepository = cathedraRepository;
+            _conferenceRepository = conferenceRepository;
+            _exhibitionRepository = exhibitionRepository;
+            _professorRepository = professorRepository;
+            _publicationRepository = publicationRepository;
+            _dissertationRepository = dissertationRepository;
+            _excelReportingService = excelReportingService;
+            _reportGenerator = reportGenerator;
 
             _workWindow = new StartupViewModel();
 
@@ -99,10 +104,11 @@ namespace MilitaryFaculty.Application.ViewModels
             else if (model is Professor)
             {
                 WorkWindow = new ProfessorView.Root(model as Professor,
-                    _conferenceRepository,
-                    _publicationRepository,
-                    _exhibitionRepository,
-                    _bookRepository);
+                                                    _conferenceRepository,
+                                                    _publicationRepository,
+                                                    _exhibitionRepository,
+                                                    _bookRepository,
+                                                    _dissertationRepository);
             }
             else
             {
@@ -124,17 +130,20 @@ namespace MilitaryFaculty.Application.ViewModels
             var modules = new ICommandModule[]
                           {
                               new ProfessorHandlers(_professorRepository),
-                              new PublicationHandlers(_publicationRepository),
-                              new ConferenceHandlers(_conferenceRepository),
-                              new ExhibitionHandlers(_exhibitionRepository),
-                              new BookHandlers(_bookRepository),
-                              new NavigationHistory(this),
-                              new PublicationNavigation(this),
                               new ProfessorNavigation(this),
+                              new PublicationHandlers(_publicationRepository),
+                              new PublicationNavigation(this),
+                              new ConferenceHandlers(_conferenceRepository),
                               new ConferenceNavigation(this),
-                              new BookNavigation(this),
+                              new ExhibitionHandlers(_exhibitionRepository),
                               new ExhibitionNavigation(this),
-                              new ReportingHandlers(_excelService, _reportGenerator)
+                              new BookHandlers(_bookRepository),
+                              new BookNavigation(this),
+                              new DissertationHandlers(_dissertationRepository),
+                              new DissertationNavigation(this), 
+                              new NavigationHistory(this),
+
+                              new ReportingHandlers(_excelReportingService, _reportGenerator)
                           };
 
             modules.ForEach(m => m.LoadModule(RoutedCommands));

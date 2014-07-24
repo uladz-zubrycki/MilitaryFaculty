@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain;
@@ -87,7 +82,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 set { SetModelProperty(m => m.Name, value); }
             }
 
-            [DateProperty(Label = "Дата публикации:")]
+            [DateProperty(Label = "Дата защиты:")]
             public DateTime CreatedAt
             {
                 get { return Model.CreatedAt; }
@@ -97,8 +92,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
         internal class ExtraInfo : EntityViewModel<Dissertation>
         {
-            public ExtraInfo(Dissertation model)
-                : base(model)
+            public ExtraInfo(Dissertation model) : base(model)
             {
                 this.Editable(GlobalCommands.Save<Dissertation>());
             }
@@ -107,7 +101,12 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 get { return "Дополнительная информация"; }
             }
-          
+
+            [EnumProperty(Label = "Защищённая научная степень:")]
+            public AcademicRank TargetAcademiceRank
+            {
+                get { return Model.TargetAcademicRank; }
+            }
         }
 
         internal class ListItem : ListItemViewModel<Dissertation>
@@ -121,10 +120,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
             public override string PrimaryInfo
             {
-                get
-                {
-                    throw new NotImplementedException();
-                }
+                get { return Model.CreatedAt.ToShortDateString(); }
             }
 
             public override string SecondaryInfo
@@ -136,14 +132,14 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 Commands.AddRange(new[]
                               {
-                                  CreateBrowseBookCommand(),
-                                  CreateRemoveBookCommand()
+                                  CreateBrowseDissertationCommand(),
+                                  CreateRemoveDissertationCommand()
                               });
             }
 
-            private ImagedCommandViewModel CreateRemoveBookCommand()
+            private ImagedCommandViewModel CreateRemoveDissertationCommand()
             {
-                const string tooltip = "Удалить книгу";
+                const string tooltip = "Удалить диссертацию";
                 const string imageSource = @"..\Content\remove.png";
 
                 return new ImagedCommandViewModel(GlobalCommands.Remove<Dissertation>(),
@@ -152,12 +148,12 @@ namespace MilitaryFaculty.Application.ViewModels
                                                   imageSource);
             }
 
-            private ImagedCommandViewModel CreateBrowseBookCommand()
+            private ImagedCommandViewModel CreateBrowseDissertationCommand()
             {
                 const string tooltip = "Подробно";
                 const string imageSource = @"..\..\Content\details.png";
 
-                return new ImagedCommandViewModel(GlobalCommands.BrowseDetails<Book>(),
+                return new ImagedCommandViewModel(GlobalCommands.BrowseDetails<Dissertation>(),
                                                   Model,
                                                   tooltip,
                                                   imageSource);

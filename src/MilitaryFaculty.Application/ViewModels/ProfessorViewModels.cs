@@ -20,6 +20,7 @@ namespace MilitaryFaculty.Application.ViewModels
         internal class Root : EntityRootViewModel<Professor>
         {
             private readonly IRepository<Book> _bookRepository;
+            private readonly IRepository<Dissertation> _dissertationRepository;
             private readonly IRepository<Conference> _conferenceRepository;
             private readonly IRepository<Exhibition> _exhibitionRepository;
             private readonly IRepository<Publication> _publicationRepository;
@@ -28,7 +29,8 @@ namespace MilitaryFaculty.Application.ViewModels
                         IRepository<Conference> conferenceRepository,
                         IRepository<Publication> publicationRepository,
                         IRepository<Exhibition> exhibitionRepository,
-                        IRepository<Book> bookRepository)
+                        IRepository<Book> bookRepository,
+                        IRepository<Dissertation> dissertationRepository)
                 : base(model)
             {
                 if (conferenceRepository == null)
@@ -48,13 +50,19 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 if (bookRepository == null)
                 {
-                    throw new ArgumentNullException("bookRepository");
+                    throw new ArgumentNullException("dissertationRepository");
+                }
+
+                if (dissertationRepository == null)
+                {
+                    throw new ArgumentNullException("dissertationRepository");
                 }
 
                 _conferenceRepository = conferenceRepository;
                 _publicationRepository = publicationRepository;
                 _exhibitionRepository = exhibitionRepository;
                 _bookRepository = bookRepository;
+                _dissertationRepository = dissertationRepository;
 
                 HeaderViewModel = new Header(Model);
             }
@@ -67,7 +75,8 @@ namespace MilitaryFaculty.Application.ViewModels
                            new Conferences(Model, _conferenceRepository),
                            new Publications(Model, _publicationRepository),
                            new Exhibitions(Model, _exhibitionRepository),
-                           new Books(Model, _bookRepository)
+                           new Books(Model, _bookRepository),
+                           new Dissertations(Model, _dissertationRepository), 
                        };
             }
         }
@@ -410,7 +419,88 @@ namespace MilitaryFaculty.Application.ViewModels
                 Items.RemoveSingle(c => c.Model.Equals(exhibition));
             }
         }
-        
+
+        internal class Dissertations : ViewModel<Professor>
+        {
+            private readonly Lazy<ObservableCollection<DissertationView.ListItem>> _items;
+
+            public Dissertations(Professor model, IRepository<Dissertation> dissertationRepository)
+                : base(model)
+            {
+                if (dissertationRepository == null)
+                {
+                    throw new ArgumentNullException("conferenceRepository");
+                }
+
+                _items = Lazy.Create(InitializeItems);
+
+                dissertationRepository.EntityCreated += OnDissertationCreated;
+                dissertationRepository.EntityDeleted += OnDissertationDeleted;
+                Commands.Add(CreateAddDissertationCommand());
+            }
+
+            public override string Title
+            {
+                get { return "Защита диссертаций"; }
+            }
+
+            public int DoctorDissertationsCount
+            {
+                get { return Items.Count(vm => vm.Model.TargetAcademicRank == AcademicRank.DoctorOfScience); }
+            }
+
+            public int CandidateDissertationsCount
+            {
+                get { return Items.Count(vm => vm.Model.TargetAcademicRank == AcademicRank.CandidateOfScience); }
+            }
+
+            public ObservableCollection<DissertationView.ListItem> Items
+            {
+                get { return _items.Value; }
+            }
+
+            private ImagedCommandViewModel CreateAddDissertationCommand()
+            {
+                const string tooltip = "Добавить диссертацию";
+                const string imageSource = @"..\Content\add.png";
+
+                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Dissertation>(),
+                                                  Model,
+                                                  tooltip,
+                                                  imageSource);
+            }
+
+            private ObservableCollection<DissertationView.ListItem> InitializeItems()
+            {
+                var dissertations = Model.Dissertations
+                                         .Select(DissertationView.ListItem.FromModel)
+                                         .ToList();
+
+                var result = new ObservableCollection<DissertationView.ListItem>(dissertations);
+
+                result.CollectionChanged += (sender, args) =>
+                {
+                    //todo property name from expression
+                    OnPropertyChanged("DoctorDissertationsCount");
+                    OnPropertyChanged("CandidateDissertationsCount");
+                };
+
+                return result;
+            }
+
+            private void OnDissertationCreated(object sender, ModifiedEntityEventArgs<Dissertation> e)
+            {
+                var dissertation = e.ModifiedEntity;
+                Items.Add(new DissertationView.ListItem(dissertation));
+            }
+
+            private void OnDissertationDeleted(object sender, ModifiedEntityEventArgs<Dissertation> e)
+            {
+                var dissertation = e.ModifiedEntity;
+                Items.RemoveSingle(c => c.Model.Equals(dissertation));
+            }
+        }
+
         internal class Publications : ViewModel<Professor>
         {
             private readonly Lazy<ObservableCollection<PublicationView.ListItem>> _items;

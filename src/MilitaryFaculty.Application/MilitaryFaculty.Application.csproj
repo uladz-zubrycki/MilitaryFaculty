@@ -92,6 +92,7 @@
     </ApplicationDefinition>
     <Compile Include="Custom\CommandHandlers\Base\EntityCommandModule.cs" />
     <Compile Include="Custom\CommandHandlers\Base\NavigationCommandModule.cs" />
+    <Compile Include="Custom\CommandHandlers\DissertationHandlers.cs" />
     <Compile Include="Custom\CommandHandlers\BookHandlers.cs" />
     <Compile Include="Custom\CommandHandlers\PublicationHandlers.cs" />
     <Compile Include="Custom\CommandHandlers\ReportingHandlers.cs" />
@@ -125,6 +126,9 @@
     <Compile Include="Views\Common\ListItemView.xaml.cs">
       <DependentUpon>ListItemView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Common\ListView.xaml.cs">
+      <DependentUpon>ListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Common\PropertyViews\IntPropertyEditView.xaml.cs">
       <DependentUpon>IntPropertyEditView.xaml</DependentUpon>
     </Compile>
@@ -157,6 +161,9 @@
     </Compile>
     <Compile Include="Views\Cathedra\CathedraView.xaml.cs">
       <DependentUpon>CathedraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorDissertationsView.xaml.cs">
+      <DependentUpon>ProfessorDissertationsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Professor\ProfessorBooksView.xaml.cs">
       <DependentUpon>ProfessorBooksView.xaml</DependentUpon>
@@ -219,6 +226,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Common\ListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Common\PropertyViews\IntPropertyEditView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -256,6 +267,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Cathedra\CathedraInfoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorDissertationsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

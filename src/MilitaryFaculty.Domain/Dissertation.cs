@@ -11,6 +11,11 @@ namespace MilitaryFaculty.Domain
         public virtual Professor Author { get; set; }
         public virtual DateTime CreatedAt { get; set; }
         public virtual AcademicRank TargetAcademicRank { get; set; }
+
+        public Dissertation()
+        {
+            CreatedAt = DateTime.Now;
+        }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

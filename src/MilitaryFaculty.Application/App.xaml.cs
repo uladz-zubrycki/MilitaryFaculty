@@ -18,9 +18,12 @@ namespace MilitaryFaculty.Application
             InitializeGlobalCommands();
             
             var container = InjectionConfig.Register(new ContainerBuilder());
-            var view = new MainWindow { DataContext = new MainViewModel(container) };
-            
-            view.Show();
+         
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var view = new MainWindow { DataContext = scope.Resolve<MainViewModel>() };
+                view.Show();    
+            }
         }
 
         private static void InitializeGlobalCommands()

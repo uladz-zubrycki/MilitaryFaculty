@@ -6,6 +6,14 @@
                     xmlns:views="clr-namespace:MilitaryFaculty.Application.Views">
     <custom:GenericTemplateSelector x:Key="TemplateSelector" />
 
+    <DataTemplate DataType="{x:Type vm:ImagedCommandViewModel}">
+        <views:ImagedCommandView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ViewModel}">
+        <views:DefaultView />
+    </DataTemplate>
+
     <SolidColorBrush x:Key="BorderSolidBrush">
         <SolidColorBrush.Color>
             <Color A="255"
@@ -180,14 +188,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <DataTemplate DataType="{x:Type vm:ImagedCommandViewModel}">
-        <views:ImagedCommandView />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type vm:ViewModel}">
-        <views:DefaultView />
-    </DataTemplate>
 
     <Style x:Key="ItemStyle" TargetType="ItemsControl">
         <Setter Property="ItemTemplate">

@@ -3,6 +3,7 @@ using System.Configuration;
 using System.IO;
 using Autofac;
 using Autofac.Features.Indexed;
+using MilitaryFaculty.Application.ViewModels;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Reporting;
@@ -30,6 +31,8 @@ namespace MilitaryFaculty.Application
             RegisterProfessorReportTableProvider(builder);
             RegisterExcelReportingServices(builder);
             RegisterReportGenerator(builder);
+
+            builder.RegisterType<MainViewModel>().AsSelf();
 
             return builder.Build();
         }

@@ -6,25 +6,25 @@
                     xmlns:entity="clr-namespace:MilitaryFaculty.Presentation.ViewModels;assembly=MilitaryFaculty.Presentation">
 
     <!--Entity-->
-    <!--If Key is changed, update MilitaryFaculty.Custom.TemplateSelector also.-->
+    <!--If Key is changed, update MilitaryFaculty.Custom.GenericTemplateSelector also.-->
     <DataTemplate x:Key="EntityViewTemplate">
         <views:EntityView />
     </DataTemplate>
 
     <!--Main entity view-->
-    <!--If Key is changed, update MilitaryFaculty.Custom.TemplateSelector also.-->
+    <!--If Key is changed, update MilitaryFaculty.Custom.GenericTemplateSelector also.-->
     <DataTemplate x:Key="EntityRootViewTemplate">
         <views:EntityRootView />
     </DataTemplate>
 
     <!--Add entity-->
-    <!--If Key is changed, update MilitaryFaculty.Custom.TemplateSelector also.-->
+    <!--If Key is changed, update MilitaryFaculty.Custom.GenericTemplateSelector also.-->
     <DataTemplate x:Key="AddEntityViewTemplate">
         <views:AddEntityView />
     </DataTemplate>
 
     <!--List item entity-->
-    <!--If Key is changed, update MilitaryFaculty.Custom.TemplateSelector also.-->
+    <!--If Key is changed, update MilitaryFaculty.Custom.GenericTemplateSelector also.-->
     <DataTemplate x:Key="ListItemViewTemplate">
         <views:ListItemView />
     </DataTemplate>
