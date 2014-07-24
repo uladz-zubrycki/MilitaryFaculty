@@ -57,6 +57,7 @@ namespace MilitaryFaculty.Domain
         public Professor()
         {
             FullName = new FullName();
+            EnrollmentDate = DateTime.Now;
 
             Books = new List<Book>();
             Conferences = new List<Conference>();

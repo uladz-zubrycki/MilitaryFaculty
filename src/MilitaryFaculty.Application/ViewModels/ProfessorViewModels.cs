@@ -133,6 +133,48 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
+        internal class MainInfo : EntityViewModel<Professor>
+        {
+            public MainInfo(Professor model)
+                : base(model)
+            {
+                this.Editable(GlobalCommands.Save<Professor>());
+            }
+
+            public override string Title
+            {
+                get { return "Основная информация"; }
+            }
+
+            [TextProperty(Label = "Имя:")]
+            public string FirstName
+            {
+                get { return Model.FullName.FirstName; }
+                set { SetModelProperty(m => m.FullName.FirstName, value); }
+            }
+
+            [TextProperty(Label = "Фамилия:")]
+            public string LastName
+            {
+                get { return Model.FullName.LastName; }
+                set { SetModelProperty(m => m.FullName.LastName, value); }
+            }
+
+            [TextProperty(Label = "Отчество:")]
+            public string MiddleName
+            {
+                get { return Model.FullName.MiddleName; }
+                set { SetModelProperty(m => m.FullName.MiddleName, value); }
+            }
+
+            [EnumProperty(Label = "Звание:")]
+            public MilitaryRank MilitaryRank
+            {
+                get { return Model.MilitaryRank; }
+                set { SetModelProperty(m => m.MilitaryRank, value); }
+            }
+        }
+
         internal class ExtraInfo : EntityViewModel<Professor>
         {
             public ExtraInfo(Professor model)
@@ -144,6 +186,13 @@ namespace MilitaryFaculty.Application.ViewModels
             public override string Title
             {
                 get { return "Дополнительная информация"; }
+            }
+
+            [DateProperty(Label = "Дата трудоустройства:")]
+            public DateTime EnrollmentDate
+            {
+                get { return Model.EnrollmentDate; }
+                set { SetModelProperty(m => m.EnrollmentDate, value); }
             }
 
             [EnumProperty(Label = "Занимаемая должность:")]
@@ -165,48 +214,6 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 get { return Model.AcademicRank; }
                 set { SetModelProperty(m => m.AcademicRank, value); }
-            }
-        }
-
-        internal class MainInfo : EntityViewModel<Professor>
-        {
-            public MainInfo(Professor model)
-                : base(model)
-            {
-                this.Editable(GlobalCommands.Save<Professor>());
-            }
-
-            public override string Title
-            {
-                get { return "Базовая информация"; }
-            }
-
-            [TextProperty(Label = "Имя:")]
-            public string FirstName
-            {
-                get { return Model.FullName.FirstName; }
-                set { SetModelProperty(m => m.FullName.FirstName, value); }
-            }
-
-            [TextProperty(Label = "Отчество:")]
-            public string MiddleName
-            {
-                get { return Model.FullName.MiddleName; }
-                set { SetModelProperty(m => m.FullName.MiddleName, value); }
-            }
-
-            [TextProperty(Label = "Фамилия:")]
-            public string LastName
-            {
-                get { return Model.FullName.LastName; }
-                set { SetModelProperty(m => m.FullName.LastName, value); }
-            }
-
-            [EnumProperty(Label = "Звание:")]
-            public MilitaryRank MilitaryRank
-            {
-                get { return Model.MilitaryRank; }
-                set { SetModelProperty(m => m.MilitaryRank, value); }
             }
         }
 
