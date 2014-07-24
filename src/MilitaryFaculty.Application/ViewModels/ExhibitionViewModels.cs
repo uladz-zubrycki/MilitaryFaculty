@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
-using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain;
@@ -47,11 +46,6 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return "Добавить научную выставку "; }
             }
 
-            public override ICommand AddCommand
-            {
-                get { return GlobalCommands.Add<Exhibition>(); }
-            }
-
             protected override IEnumerable<ViewModel<Exhibition>> GetViewModels()
             {
                 return new[]
@@ -71,7 +65,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
             public override string Title
             {
-                get { return "Базовая информация"; }
+                get { return "Основная информация"; }
             }
 
             [TextProperty(Label = "Название:")]
@@ -126,12 +120,12 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 Commands.AddRange(new[]
                                   {
-                                      CreateBrowseExhibitionDetailsCommand(),
-                                      CreateRemoveExhibitionCommand()
+                                      CreateBrowseDetailsCommand(),
+                                      CreateRemoveCommand()
                                   });
             }
 
-            private ImagedCommandViewModel CreateRemoveExhibitionCommand()
+            private ImagedCommandViewModel CreateRemoveCommand()
             {
                 const string tooltip = "Удалить выставку";
                 const string imageSource = @"..\Content\remove.png";
@@ -142,7 +136,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                                   imageSource);
             }
 
-            private ImagedCommandViewModel CreateBrowseExhibitionDetailsCommand()
+            private ImagedCommandViewModel CreateBrowseDetailsCommand()
             {
                 const string tooltip = "Подробно";
                 const string imageSource = @"..\..\Content\details.png";

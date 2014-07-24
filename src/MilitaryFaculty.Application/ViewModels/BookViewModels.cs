@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Input;
-using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain;
@@ -47,11 +46,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public override string Title
             {
                 get { return "Добавить учебник"; }
-            }
-
-            public override ICommand AddCommand
-            {
-                get { return GlobalCommands.Add<Book>(); }
             }
 
             protected override IEnumerable<ViewModel<Book>> GetViewModels()
@@ -143,12 +137,12 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 Commands.AddRange(new[]
                               {
-                                  CreateBrowseBookCommand(),
-                                  CreateRemoveBookCommand()
+                                  CreateBrowseDetailsCommand(),
+                                  CreateRemoveCommand()
                               });
             }
 
-            private ImagedCommandViewModel CreateRemoveBookCommand()
+            private ImagedCommandViewModel CreateRemoveCommand()
             {
                 const string tooltip = "Удалить книгу";
                 const string imageSource = @"..\Content\remove.png";
@@ -159,7 +153,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                                   imageSource);
             }
 
-            private ImagedCommandViewModel CreateBrowseBookCommand()
+            private ImagedCommandViewModel CreateBrowseDetailsCommand()
             {
                 const string tooltip = "Подробно";
                 const string imageSource = @"..\..\Content\details.png";

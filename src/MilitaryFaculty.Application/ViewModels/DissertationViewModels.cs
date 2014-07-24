@@ -47,11 +47,6 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return "Добавить диссертацию"; }
             }
 
-            public override ICommand AddCommand
-            {
-                get { return GlobalCommands.Add<Dissertation>(); }
-            }
-
             protected override IEnumerable<ViewModel<Dissertation>> GetViewModels()
             {
                 return new ViewModel<Dissertation>[]
@@ -132,12 +127,12 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 Commands.AddRange(new[]
                               {
-                                  CreateBrowseDissertationCommand(),
-                                  CreateRemoveDissertationCommand()
+                                  CreateBrowseDetailsCommand(),
+                                  CreateRemoveCommand()
                               });
             }
 
-            private ImagedCommandViewModel CreateRemoveDissertationCommand()
+            private ImagedCommandViewModel CreateRemoveCommand()
             {
                 const string tooltip = "Удалить диссертацию";
                 const string imageSource = @"..\Content\remove.png";
@@ -148,7 +143,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                                   imageSource);
             }
 
-            private ImagedCommandViewModel CreateBrowseDissertationCommand()
+            private ImagedCommandViewModel CreateBrowseDetailsCommand()
             {
                 const string tooltip = "Подробно";
                 const string imageSource = @"..\..\Content\details.png";

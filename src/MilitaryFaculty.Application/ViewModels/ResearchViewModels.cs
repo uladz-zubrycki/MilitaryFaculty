@@ -9,22 +9,22 @@ using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    internal static class EfficiencyProposalView
+    internal static class ResearchView
     {
-        internal class Root : EntityRootViewModel<EfficiencyProposal>
+        internal class Root : EntityRootViewModel<Research>
         {
-            public Root(EfficiencyProposal model)
+            public Root(Research model)
                 : base(model)
             {
                 HeaderViewModel = new Header();
             }
 
-            protected override IEnumerable<ViewModel<EfficiencyProposal>> GetViewModels()
+            protected override IEnumerable<ViewModel<Research>> GetViewModels()
             {
-                return new ViewModel<EfficiencyProposal>[]
-                   {
-                       new MainInfo(Model),
-                   };
+                return new[]
+                       {
+                           new MainInfo(Model)
+                       };
             }
         }
 
@@ -32,34 +32,34 @@ namespace MilitaryFaculty.Application.ViewModels
         {
             public override string Title
             {
-                get { return "Информация о рационализаторском предложении"; }
+                get { return "Информация о НИР"; }
             }
         }
 
-        internal class Add : AddEntityViewModel<EfficiencyProposal>
+        internal class Add : AddEntityViewModel<Research>
         {
-            public Add(EfficiencyProposal model) : base(model) { }
+            public Add(Research model) : base(model) { }
 
             public override string Title
             {
-                get { return "Добавить рационализаторское предложение"; }
+                get { return "Добавить НИР "; }
             }
 
-            protected override IEnumerable<ViewModel<EfficiencyProposal>> GetViewModels()
+            protected override IEnumerable<ViewModel<Research>> GetViewModels()
             {
-                return new ViewModel<EfficiencyProposal>[]
-                   {
-                       new MainInfo(Model),
-                   };
+                return new[]
+                       {
+                           new MainInfo(Model)
+                       };
             }
         }
 
-        internal class MainInfo : EntityViewModel<EfficiencyProposal>
+        internal class MainInfo : EntityViewModel<Research>
         {
-            public MainInfo(EfficiencyProposal model)
+            public MainInfo(Research model)
                 : base(model)
             {
-                this.Editable(GlobalCommands.Save<EfficiencyProposal>());
+                this.Editable(GlobalCommands.Save<Research>());
             }
 
             public override string Title
@@ -67,28 +67,28 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return "Основная информация"; }
             }
 
-            [TextProperty(Label = "Предложение:")]
-            public string Text
+            [TextProperty(Label = "Название:")]
+            public string Name
             {
-                get { return Model.Text; }
-                set { SetModelProperty(m => m.Text, value); }
+                get { return Model.Name; }
+                set { SetModelProperty(m => m.Name, value); }
             }
 
-            [DateProperty(Label = "Дата:")]
-            public DateTime CreatedAt
+            [DateProperty(Label = "Дата проведения:")]
+            public DateTime Date
             {
                 get { return Model.CreatedAt; }
                 set { SetModelProperty(m => m.CreatedAt, value); }
             }
         }
 
-        internal class ListItem : ListItemViewModel<EfficiencyProposal>
+        internal class ListItem : ListItemViewModel<Research>
         {
-            public ListItem(EfficiencyProposal model)
+            public ListItem(Research model)
                 : base(model)
             {
-                TooltipViewModel = new MainInfo(model);
                 InitCommands();
+                TooltipViewModel = new MainInfo(Model);
             }
 
             public override string PrimaryInfo
@@ -98,24 +98,24 @@ namespace MilitaryFaculty.Application.ViewModels
 
             public override string SecondaryInfo
             {
-                get { return Model.Text; }
+                get { return Model.Name; }
             }
 
             private void InitCommands()
             {
                 Commands.AddRange(new[]
-                              {
-                                  CreateBrowseDetailsCommand(),
-                                  CreateRemoveCommand()
-                              });
+                                  {
+                                      CreateBrowseDetailsCommand(),
+                                      CreateRemoveCommand()
+                                  });
             }
 
             private ImagedCommandViewModel CreateRemoveCommand()
             {
-                const string tooltip = "Удалить предложение";
+                const string tooltip = "Удалить НИР";
                 const string imageSource = @"..\Content\remove.png";
 
-                return new ImagedCommandViewModel(GlobalCommands.Remove<EfficiencyProposal>(),
+                return new ImagedCommandViewModel(GlobalCommands.Remove<Research>(),
                                                   Model,
                                                   tooltip,
                                                   imageSource);
@@ -126,22 +126,16 @@ namespace MilitaryFaculty.Application.ViewModels
                 const string tooltip = "Подробно";
                 const string imageSource = @"..\Content\details.png";
 
-                return new ImagedCommandViewModel(GlobalCommands.BrowseDetails<EfficiencyProposal>(),
+                return new ImagedCommandViewModel(GlobalCommands.BrowseDetails<Research>(),
                                                   Model,
                                                   tooltip,
                                                   imageSource);
             }
 
-            public static ListItem FromModel(EfficiencyProposal model)
+            public static ListItem FromModel(Research model)
             {
-                if (model == null)
-                {
-                    throw new ArgumentNullException("model");
-                }
-
                 return new ListItem(model);
             }
         }
     }
 }
-

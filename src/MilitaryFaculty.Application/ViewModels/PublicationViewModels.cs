@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Input;
-using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain;
@@ -46,11 +44,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public override string Title
             {
                 get { return "Добавить публикацию"; }
-            }
-
-            public override ICommand AddCommand
-            {
-                get { return GlobalCommands.Add<Publication>(); }
             }
 
             protected override IEnumerable<ViewModel<Publication>> GetViewModels()
@@ -135,12 +128,12 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 Commands.AddRange(new[]
                                   {
-                                      CreateBrowsePublicationCommand(),
-                                      CreateRemovePublicationCommand()
+                                      CreateBrowseDetailsCommand(),
+                                      CreateRemoveCommand()
                                   });
             }
 
-            private ImagedCommandViewModel CreateRemovePublicationCommand()
+            private ImagedCommandViewModel CreateRemoveCommand()
             {
                 const string tooltip = "Удалить публикацию";
                 const string imageSource = @"..\Content\remove.png";
@@ -151,7 +144,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                                   imageSource);
             }
 
-            private ImagedCommandViewModel CreateBrowsePublicationCommand()
+            private ImagedCommandViewModel CreateBrowseDetailsCommand()
             {
                 const string tooltip = "Подробно";
                 const string imageSource = @"..\..\Content\details.png";

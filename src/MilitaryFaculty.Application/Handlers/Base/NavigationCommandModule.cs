@@ -2,7 +2,7 @@
 using MilitaryFaculty.Application.ViewModels;
 using MilitaryFaculty.Presentation.Commands;
 
-namespace MilitaryFaculty.Application.Custom.CommandHandlers
+namespace MilitaryFaculty.Application.Handlers
 {
     public abstract class NavigationCommandModule : ICommandModule
     {
