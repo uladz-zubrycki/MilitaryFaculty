@@ -95,6 +95,7 @@
     <Compile Include="Custom\CommandHandlers\DissertationHandlers.cs" />
     <Compile Include="Custom\CommandHandlers\BookHandlers.cs" />
     <Compile Include="Custom\CommandHandlers\InventiveApplicationHandlers.cs" />
+    <Compile Include="Custom\CommandHandlers\EfficiencyProposalHandlers.cs" />
     <Compile Include="Custom\CommandHandlers\PublicationHandlers.cs" />
     <Compile Include="Custom\CommandHandlers\ReportingHandlers.cs" />
     <Compile Include="Custom\CommandHandlers\ExhibitionHandlers.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="ViewModels\BookViewModels.cs" />
     <Compile Include="ViewModels\Base\EntityRootViewModel.cs" />
     <Compile Include="ViewModels\DissertationViewModels.cs" />
+    <Compile Include="ViewModels\EfficiencyProposalViewModels.cs" />
     <Compile Include="ViewModels\ExhibitionViewModels.cs" />
     <Compile Include="ViewModels\Base\ListItemViewModel.cs" />
     <Compile Include="ViewModels\InventiveApplicationViewModels.cs" />
@@ -163,6 +165,9 @@
     </Compile>
     <Compile Include="Views\Cathedra\CathedraView.xaml.cs">
       <DependentUpon>CathedraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorEfficiencyProposalsView.xaml.cs">
+      <DependentUpon>ProfessorEfficiencyProposalsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Professor\ProfessorDissertationsView.xaml.cs">
       <DependentUpon>ProfessorDissertationsView.xaml</DependentUpon>
@@ -272,6 +277,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Cathedra\CathedraInfoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorEfficiencyProposalsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -24,6 +24,7 @@ namespace MilitaryFaculty.Application.ViewModels
             private readonly IRepository<Exhibition> _exhibitionRepository;
             private readonly IRepository<Publication> _publicationRepository;
             private readonly IRepository<InventiveApplication> _inventiveApplicationsRepository;
+            private readonly IRepository<EfficiencyProposal> _efficiencyProposalRepository;
 
             public Root(Professor model,
                         IRepository<Conference> conferenceRepository,
@@ -31,7 +32,8 @@ namespace MilitaryFaculty.Application.ViewModels
                         IRepository<Exhibition> exhibitionRepository,
                         IRepository<Book> bookRepository,
                         IRepository<Dissertation> dissertationRepository,
-                        IRepository<InventiveApplication> inventiveApplicationsRepository)
+                        IRepository<InventiveApplication> inventiveApplicationsRepository, 
+                        IRepository<EfficiencyProposal> efficiencyProposalRepository)
                 : base(model)
             {
                 if (conferenceRepository == null)
@@ -70,6 +72,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 _bookRepository = bookRepository;
                 _dissertationRepository = dissertationRepository;
                 _inventiveApplicationsRepository = inventiveApplicationsRepository;
+                _efficiencyProposalRepository = efficiencyProposalRepository;
 
                 HeaderViewModel = new Header(Model);
             }
@@ -85,6 +88,7 @@ namespace MilitaryFaculty.Application.ViewModels
                            new Books(Model, _bookRepository),
                            new Dissertations(Model, _dissertationRepository), 
                            new InventiveApplications(Model, _inventiveApplicationsRepository), 
+                           new EfficiencyProposals(Model, _efficiencyProposalRepository), 
                        };
             }
         }
@@ -605,6 +609,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 return Items.Count(vm => vm.Model.PublicationType == type);
             }
         }
+
         internal class InventiveApplications : ViewModel<Professor>
         {
             private readonly Lazy<ObservableCollection<InventiveApplicationView.ListItem>> _items;
@@ -716,6 +721,77 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 return Items.Count(vm => vm.Model.Type == type &&
                                          vm.Model.Status == status);
+            }
+        }
+
+        internal class EfficiencyProposals : ViewModel<Professor>
+        {
+            private readonly Lazy<ObservableCollection<EfficiencyProposalView.ListItem>> _items;
+
+            public EfficiencyProposals(Professor model, IRepository<EfficiencyProposal> efficiencyProposalRepository)
+                : base(model)
+            {
+                if (efficiencyProposalRepository == null)
+                {
+                    throw new ArgumentNullException("efficiencyProposalRepository");
+                }
+
+                _items = Lazy.Create(InitializeItems);
+
+                efficiencyProposalRepository.EntityCreated += OnEfficiencyProposalCreated;
+                efficiencyProposalRepository.EntityDeleted += OnEfficiencyProposalDeleted;
+                Commands.Add(CreateAddInventiveApplicationCommand());
+            }
+
+            public override string Title
+            {
+                get { return "Результативность рационализаторской работы"; }
+            }
+
+            public int ProposalsCount
+            {
+                get { return Items.Count; }
+            }
+
+            public ObservableCollection<EfficiencyProposalView.ListItem> Items
+            {
+                get { return _items.Value; }
+            }
+
+            private ImagedCommandViewModel CreateAddInventiveApplicationCommand()
+            {
+                const string tooltip = "Добавить рационализаторское предложение";
+                const string imageSource = @"..\Content\add.png";
+
+                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<EfficiencyProposal>(),
+                                                  Model,
+                                                  tooltip,
+                                                  imageSource);
+            }
+
+            private ObservableCollection<EfficiencyProposalView.ListItem> InitializeItems()
+            {
+                var efficiencyProposals = Model.EfficiencyProposals
+                                               .Select(EfficiencyProposalView.ListItem.FromModel)
+                                               .ToList();
+
+                var result = new ObservableCollection<EfficiencyProposalView.ListItem>(efficiencyProposals);
+
+                result.CollectionChanged += (sender, e) => OnPropertyChanged("ProposalsCount");
+
+                return result;
+            }
+
+            private void OnEfficiencyProposalCreated(object sender, ModifiedEntityEventArgs<EfficiencyProposal> e)
+            {
+                var efficiencyProposal = e.ModifiedEntity;
+                Items.Add(new EfficiencyProposalView.ListItem(efficiencyProposal));
+            }
+
+            private void OnEfficiencyProposalDeleted(object sender, ModifiedEntityEventArgs<EfficiencyProposal> e)
+            {
+                var efficiencyProposal = e.ModifiedEntity;
+                Items.RemoveSingle(c => c.Model.Equals(efficiencyProposal));
             }
         }
     }

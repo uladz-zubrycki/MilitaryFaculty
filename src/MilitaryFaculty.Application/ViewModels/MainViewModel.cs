@@ -33,7 +33,8 @@ namespace MilitaryFaculty.Application.ViewModels
         private readonly IRepository<Professor> _professorRepository;
         private readonly IRepository<Publication> _publicationRepository;
         private readonly IRepository<Dissertation> _dissertationRepository;
-        private readonly IRepository<InventiveApplication> _inventiveApplicationsRepository;
+        private readonly IRepository<InventiveApplication> _inventiveApplicationRepository;
+        private readonly IRepository<EfficiencyProposal> _efficiencyProposalRepository;
 
         private readonly IReportGenerator _reportGenerator;
         private readonly IExcelReportingService _excelReportingService;
@@ -51,7 +52,8 @@ namespace MilitaryFaculty.Application.ViewModels
                              IRepository<Professor> professorRepository,
                              IRepository<Publication> publicationRepository,
                              IRepository<Dissertation> dissertationRepository,
-                             IRepository<InventiveApplication> inventiveApplicationsRepository,
+                             IRepository<InventiveApplication> inventiveApplicationRepository,
+                             IRepository<EfficiencyProposal> efficiencyProposalRepository,
                              IExcelReportingService excelReportingService,
                              IReportGenerator reportGenerator)
         {
@@ -62,9 +64,10 @@ namespace MilitaryFaculty.Application.ViewModels
             _professorRepository = professorRepository;
             _publicationRepository = publicationRepository;
             _dissertationRepository = dissertationRepository;
-            _inventiveApplicationsRepository = inventiveApplicationsRepository;
+            _inventiveApplicationRepository = inventiveApplicationRepository;
             _excelReportingService = excelReportingService;
             _reportGenerator = reportGenerator;
+            _efficiencyProposalRepository = efficiencyProposalRepository;
 
             _workWindow = new StartupViewModel();
 
@@ -112,7 +115,8 @@ namespace MilitaryFaculty.Application.ViewModels
                                                     _exhibitionRepository,
                                                     _bookRepository,
                                                     _dissertationRepository,
-                                                    _inventiveApplicationsRepository);
+                                                    _inventiveApplicationRepository,
+                                                    _efficiencyProposalRepository);
             }
             else
             {
@@ -145,8 +149,10 @@ namespace MilitaryFaculty.Application.ViewModels
                               new BookNavigation(this),
                               new DissertationHandlers(_dissertationRepository),
                               new DissertationNavigation(this), 
-                              new InventiveApplicationHandlers(_inventiveApplicationsRepository),
+                              new InventiveApplicationHandlers(_inventiveApplicationRepository),
                               new InventiveApplicationNavigation(this), 
+                              new EfficiencyProposalHandlers(_efficiencyProposalRepository),
+                              new EfficiencyProposalNavigation(this), 
                               new NavigationHistory(this),
 
                               new ReportingHandlers(_excelReportingService, _reportGenerator)
