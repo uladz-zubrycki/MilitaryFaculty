@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain;
@@ -87,8 +88,10 @@ namespace MilitaryFaculty.Application.ViewModels
             public ListItem(Research model)
                 : base(model)
             {
-                InitCommands();
                 TooltipViewModel = new MainInfo(Model);
+
+                this.Removable(GlobalCommands.Remove<Research>());
+                this.Browsable(GlobalCommands.BrowseDetails<Research>());
             }
 
             public override string PrimaryInfo
@@ -99,37 +102,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public override string SecondaryInfo
             {
                 get { return Model.Name; }
-            }
-
-            private void InitCommands()
-            {
-                Commands.AddRange(new[]
-                                  {
-                                      CreateBrowseDetailsCommand(),
-                                      CreateRemoveCommand()
-                                  });
-            }
-
-            private ImagedCommandViewModel CreateRemoveCommand()
-            {
-                const string tooltip = "Удалить НИР";
-                const string imageSource = @"..\Content\remove.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.Remove<Research>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
-            }
-
-            private ImagedCommandViewModel CreateBrowseDetailsCommand()
-            {
-                const string tooltip = "Подробно";
-                const string imageSource = @"..\Content\details.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseDetails<Research>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             public static ListItem FromModel(Research model)

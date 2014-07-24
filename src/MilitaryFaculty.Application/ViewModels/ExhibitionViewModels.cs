@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain;
@@ -102,8 +103,10 @@ namespace MilitaryFaculty.Application.ViewModels
             public ListItem(Exhibition model)
                 : base(model)
             {
-                InitCommands();
                 TooltipViewModel = new MainInfo(Model);
+
+                this.Removable(GlobalCommands.Remove<Exhibition>());
+                this.Browsable(GlobalCommands.BrowseDetails<Exhibition>());
             }
 
             public override string PrimaryInfo
@@ -114,37 +117,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public override string SecondaryInfo
             {
                 get { return Model.Name; }
-            }
-
-            private void InitCommands()
-            {
-                Commands.AddRange(new[]
-                                  {
-                                      CreateBrowseDetailsCommand(),
-                                      CreateRemoveCommand()
-                                  });
-            }
-
-            private ImagedCommandViewModel CreateRemoveCommand()
-            {
-                const string tooltip = "Удалить выставку";
-                const string imageSource = @"..\Content\remove.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.Remove<Exhibition>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
-            }
-
-            private ImagedCommandViewModel CreateBrowseDetailsCommand()
-            {
-                const string tooltip = "Подробно";
-                const string imageSource = @"..\..\Content\details.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseDetails<Exhibition>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             public static ListItem FromModel(Exhibition model)

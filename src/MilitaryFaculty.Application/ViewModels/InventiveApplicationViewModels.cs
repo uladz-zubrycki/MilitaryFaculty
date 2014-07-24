@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain;
@@ -118,7 +119,9 @@ namespace MilitaryFaculty.Application.ViewModels
                 : base(model)
             {
                 TooltipViewModel = new ExtraInfo(Model);
-                InitCommands();
+
+                this.Removable(GlobalCommands.Remove<InventiveApplication>());
+                this.Browsable(GlobalCommands.BrowseDetails<InventiveApplication>());
             }
 
             public override string PrimaryInfo
@@ -129,37 +132,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public override string SecondaryInfo
             {
                 get { return Model.Name; }
-            }
-
-            private void InitCommands()
-            {
-                Commands.AddRange(new[]
-                              {
-                                  CreateBrowseDetailsCommand(),
-                                  CreateRemoveCommand()
-                              });
-            }
-
-            private ImagedCommandViewModel CreateRemoveCommand()
-            {
-                const string tooltip = "Удалить заявку";
-                const string imageSource = @"..\Content\remove.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.Remove<InventiveApplication>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
-            }
-
-            private ImagedCommandViewModel CreateBrowseDetailsCommand()
-            {
-                const string tooltip = "Подробно";
-                const string imageSource = @"..\..\Content\details.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseDetails<InventiveApplication>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             public static ListItem FromModel(InventiveApplication model)

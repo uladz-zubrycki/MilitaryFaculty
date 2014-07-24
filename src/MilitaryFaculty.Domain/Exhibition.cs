@@ -25,6 +25,11 @@ namespace MilitaryFaculty.Domain
         public virtual Professor Participant { get; set; }
         public virtual ExhibitionAward Award { get; set; }
         public virtual EventLevel EventLevel { get; set; }
+
+        public Exhibition()
+        {
+            Date = DateTime.Now;
+        }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

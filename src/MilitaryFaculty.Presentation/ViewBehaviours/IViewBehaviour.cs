@@ -6,4 +6,9 @@ namespace MilitaryFaculty.Presentation.ViewBehaviours
     {
         void Inject(ViewModel viewModel);
     }
+
+    public interface IViewBehaviour<T> where T : class
+    {
+        void Inject(ViewModel<T> viewModel);
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using MilitaryFaculty.Domain;
 using NUnit.Framework;
@@ -26,6 +27,13 @@ namespace MilitaryFaculty.Data.Tests
         }
 
         private EntityContext context;
+
+        [Test]
+        public void test()
+        {
+            var t = Path.Combine("fdfd", "fds");
+            var tt = 42;
+        }
 
         private static void SeedCathedras(EntityContext context)
         {
@@ -178,7 +186,7 @@ namespace MilitaryFaculty.Data.Tests
                                        PagesCount = 228,
                                        PublicationType = PublicationType.Article,
                                        Author = professor1,
-                                       Date = DateTime.Now
+                                       CreatedAt = DateTime.Now
                                    },
                                    new Publication
                                    {
@@ -186,7 +194,7 @@ namespace MilitaryFaculty.Data.Tests
                                        PagesCount = 141,
                                        PublicationType = PublicationType.Article,
                                        Author = professor1,
-                                       Date = DateTime.Now
+                                       CreatedAt = DateTime.Now
                                    },
                                    new Publication
                                    {
@@ -197,7 +205,7 @@ namespace MilitaryFaculty.Data.Tests
                                        PagesCount = 1309,
                                        PublicationType = PublicationType.Article,
                                        Author = professor2,
-                                       Date = DateTime.Now
+                                       CreatedAt = DateTime.Now
                                    }
                                };
 

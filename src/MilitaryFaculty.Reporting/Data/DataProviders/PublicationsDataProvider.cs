@@ -13,24 +13,24 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         public override void SetFacultyModificator(TimeInterval interval)
         {
             QueryModificator = publication =>
-                publication.Date >= interval.From
-                && publication.Date <= interval.To;
+                publication.CreatedAt >= interval.From
+                && publication.CreatedAt <= interval.To;
         }
 
         public override void SetCathedraModificator(Cathedra cathedra, TimeInterval interval)
         {
             QueryModificator = publication =>
                 publication.Author.Cathedra.Id == cathedra.Id
-                && publication.Date >= interval.From
-                && publication.Date <= interval.To;
+                && publication.CreatedAt >= interval.From
+                && publication.CreatedAt <= interval.To;
         }
 
         public override void SetProfessorModificator(Professor professor, TimeInterval interval)
         {
             QueryModificator = publication =>
                 publication.Author.Id == professor.Id
-                && publication.Date >= interval.From
-                && publication.Date <= interval.To;
+                && publication.CreatedAt >= interval.From
+                && publication.CreatedAt <= interval.To;
         }
 
         /// <summary>

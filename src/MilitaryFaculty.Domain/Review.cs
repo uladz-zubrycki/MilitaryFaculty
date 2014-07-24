@@ -18,6 +18,11 @@ namespace MilitaryFaculty.Domain
         public DateTime CreatedAt { get; set; }
         public ReviewType Type { get; set; }
         public AcademicRank TargetAcademicRank { get; set; }
+
+        public Review()
+        {
+            CreatedAt = DateTime.Now;
+        }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }
