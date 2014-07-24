@@ -28,7 +28,7 @@
             Grid.Row="0"
             Grid.Column="1"
             Style="{StaticResource ValueTextBlock}"
-            Text="{Binding Path=SchoolbooksCount}" />
+            Text="{Binding SchoolbooksCount}" />
 
         <!--Tutorials count-->
         <TextBlock

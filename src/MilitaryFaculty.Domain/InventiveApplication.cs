@@ -1,14 +1,18 @@
 ﻿using System;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum InventiveApplicationType
     {
         Invention,
         UtilityModel
     }
 
+    [LocalizedEnum(typeof(EnumStrings))]
     public enum InventiveApplicationStatus
     {
         Applied,
@@ -24,6 +28,11 @@ namespace MilitaryFaculty.Domain
         public virtual DateTime CreatedAt { get; set; }
         public virtual InventiveApplicationType Type { get; set; }
         public virtual InventiveApplicationStatus Status { get; set; }
+
+        public InventiveApplication()
+        {
+            CreatedAt = DateTime.Now;
+        }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

@@ -25,4 +25,12 @@
     <DataTemplate DataType="{x:Type vm:ProfessorView+Dissertations}">
         <views:ProfessorDissertationsView />
     </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProfessorView+InventiveApplications}">
+        <views:ProfessorInventiveApplicationsView />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:ProfessorView+EfficiencyProposals}">
+        <views:ProfessorEfficiencyProposalsView />
+    </DataTemplate>
 </ResourceDictionary>

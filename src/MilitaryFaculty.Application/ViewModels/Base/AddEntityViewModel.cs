@@ -8,7 +8,10 @@ namespace MilitaryFaculty.Application.ViewModels.Base
     public abstract class AddEntityViewModel<T> : ComplexViewModel<T>
         where T : UniqueEntity
     {
-        public abstract ICommand AddCommand { get; }
+        public virtual ICommand AddCommand
+        {
+            get { return GlobalCommands.Add<T>(); }
+        }
 
         protected AddEntityViewModel(T model)
             : base(model)

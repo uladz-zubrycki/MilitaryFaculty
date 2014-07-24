@@ -7,11 +7,14 @@ namespace MilitaryFaculty.Domain
     // Properties are virtual only for EntityFramework
     public class EfficiencyProposal: UniqueEntity
     {
-        public virtual string Name { get; set; }
+        public virtual string Text { get; set; }
         public virtual Professor Author { get; set; }
         public virtual DateTime CreatedAt { get; set; }
+
+        public EfficiencyProposal()
+        {
+            CreatedAt = DateTime.Now;
+        }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor
-
-   
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
@@ -24,13 +23,17 @@ namespace MilitaryFaculty.Application.ViewModels
             private readonly IRepository<Conference> _conferenceRepository;
             private readonly IRepository<Exhibition> _exhibitionRepository;
             private readonly IRepository<Publication> _publicationRepository;
+            private readonly IRepository<InventiveApplication> _inventiveApplicationsRepository;
+            private readonly IRepository<EfficiencyProposal> _efficiencyProposalRepository;
 
             public Root(Professor model,
                         IRepository<Conference> conferenceRepository,
                         IRepository<Publication> publicationRepository,
                         IRepository<Exhibition> exhibitionRepository,
                         IRepository<Book> bookRepository,
-                        IRepository<Dissertation> dissertationRepository)
+                        IRepository<Dissertation> dissertationRepository,
+                        IRepository<InventiveApplication> inventiveApplicationsRepository, 
+                        IRepository<EfficiencyProposal> efficiencyProposalRepository)
                 : base(model)
             {
                 if (conferenceRepository == null)
@@ -58,11 +61,18 @@ namespace MilitaryFaculty.Application.ViewModels
                     throw new ArgumentNullException("dissertationRepository");
                 }
 
+                if (inventiveApplicationsRepository == null)
+                {
+                    throw new ArgumentNullException("inventiveApplicationsRepository");
+                }
+
                 _conferenceRepository = conferenceRepository;
                 _publicationRepository = publicationRepository;
                 _exhibitionRepository = exhibitionRepository;
                 _bookRepository = bookRepository;
                 _dissertationRepository = dissertationRepository;
+                _inventiveApplicationsRepository = inventiveApplicationsRepository;
+                _efficiencyProposalRepository = efficiencyProposalRepository;
 
                 HeaderViewModel = new Header(Model);
             }
@@ -77,6 +87,8 @@ namespace MilitaryFaculty.Application.ViewModels
                            new Exhibitions(Model, _exhibitionRepository),
                            new Books(Model, _bookRepository),
                            new Dissertations(Model, _dissertationRepository), 
+                           new InventiveApplications(Model, _inventiveApplicationsRepository), 
+                           new EfficiencyProposals(Model, _efficiencyProposalRepository), 
                        };
             }
         }
@@ -121,6 +133,48 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
+        internal class MainInfo : EntityViewModel<Professor>
+        {
+            public MainInfo(Professor model)
+                : base(model)
+            {
+                this.Editable(GlobalCommands.Save<Professor>());
+            }
+
+            public override string Title
+            {
+                get { return "Основная информация"; }
+            }
+
+            [TextProperty(Label = "Имя:")]
+            public string FirstName
+            {
+                get { return Model.FullName.FirstName; }
+                set { SetModelProperty(m => m.FullName.FirstName, value); }
+            }
+
+            [TextProperty(Label = "Фамилия:")]
+            public string LastName
+            {
+                get { return Model.FullName.LastName; }
+                set { SetModelProperty(m => m.FullName.LastName, value); }
+            }
+
+            [TextProperty(Label = "Отчество:")]
+            public string MiddleName
+            {
+                get { return Model.FullName.MiddleName; }
+                set { SetModelProperty(m => m.FullName.MiddleName, value); }
+            }
+
+            [EnumProperty(Label = "Звание:")]
+            public MilitaryRank MilitaryRank
+            {
+                get { return Model.MilitaryRank; }
+                set { SetModelProperty(m => m.MilitaryRank, value); }
+            }
+        }
+
         internal class ExtraInfo : EntityViewModel<Professor>
         {
             public ExtraInfo(Professor model)
@@ -132,6 +186,13 @@ namespace MilitaryFaculty.Application.ViewModels
             public override string Title
             {
                 get { return "Дополнительная информация"; }
+            }
+
+            [DateProperty(Label = "Дата трудоустройства:")]
+            public DateTime EnrollmentDate
+            {
+                get { return Model.EnrollmentDate; }
+                set { SetModelProperty(m => m.EnrollmentDate, value); }
             }
 
             [EnumProperty(Label = "Занимаемая должность:")]
@@ -153,48 +214,6 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 get { return Model.AcademicRank; }
                 set { SetModelProperty(m => m.AcademicRank, value); }
-            }
-        }
-
-        internal class MainInfo : EntityViewModel<Professor>
-        {
-            public MainInfo(Professor model)
-                : base(model)
-            {
-                this.Editable(GlobalCommands.Save<Professor>());
-            }
-
-            public override string Title
-            {
-                get { return "Базовая информация"; }
-            }
-
-            [TextProperty(Label = "Имя:")]
-            public string FirstName
-            {
-                get { return Model.FullName.FirstName; }
-                set { SetModelProperty(m => m.FullName.FirstName, value); }
-            }
-
-            [TextProperty(Label = "Отчество:")]
-            public string MiddleName
-            {
-                get { return Model.FullName.MiddleName; }
-                set { SetModelProperty(m => m.FullName.MiddleName, value); }
-            }
-
-            [TextProperty(Label = "Фамилия:")]
-            public string LastName
-            {
-                get { return Model.FullName.LastName; }
-                set { SetModelProperty(m => m.FullName.LastName, value); }
-            }
-
-            [EnumProperty(Label = "Звание:")]
-            public MilitaryRank MilitaryRank
-            {
-                get { return Model.MilitaryRank; }
-                set { SetModelProperty(m => m.MilitaryRank, value); }
             }
         }
 
@@ -510,7 +529,7 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 if (publicationRepository == null)
                 {
-                    throw new ArgumentNullException("publicationRepository");
+                    throw new ArgumentNullException("inventiveApplicationRepository");
                 }
 
                 _items = Lazy.Create(InitializeItems);
@@ -569,13 +588,13 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 var result = new ObservableCollection<PublicationView.ListItem>(publications);
                 result.CollectionChanged += (sender, args) =>
-                                            {
-                                                //todo property name from expression 
-                                                OnPropertyChanged("MonographsCount");
-                                                OnPropertyChanged("ReviewedArticlesCount");
-                                                OnPropertyChanged("ArticlesCount");
-                                                OnPropertyChanged("ThesisesCount");
-                                            };
+                {
+                    //todo property name from expression 
+                    OnPropertyChanged("MonographsCount");
+                    OnPropertyChanged("ReviewedArticlesCount");
+                    OnPropertyChanged("ArticlesCount");
+                    OnPropertyChanged("ThesisesCount");
+                };
 
                 return result;
             }
@@ -595,6 +614,191 @@ namespace MilitaryFaculty.Application.ViewModels
             private int GetPublicationsCount(PublicationType type)
             {
                 return Items.Count(vm => vm.Model.PublicationType == type);
+            }
+        }
+
+        internal class InventiveApplications : ViewModel<Professor>
+        {
+            private readonly Lazy<ObservableCollection<InventiveApplicationView.ListItem>> _items;
+
+            public InventiveApplications(Professor model, IRepository<InventiveApplication> inventiveApplicationRepository)
+                : base(model)
+            {
+                if (inventiveApplicationRepository == null)
+                {
+                    throw new ArgumentNullException("inventiveApplicationRepository");
+                }
+
+                _items = Lazy.Create(InitializeItems);
+
+                inventiveApplicationRepository.EntityCreated += OnInventiveApplicationCreated;
+                inventiveApplicationRepository.EntityDeleted += OnInventiveApplicationDeleted;
+                Commands.Add(CreateAddInventiveApplicationCommand());
+            }
+
+            public override string Title
+            {
+                get { return "Результативность изобретательской работы"; }
+            }
+
+            public ObservableCollection<InventiveApplicationView.ListItem> Items
+            {
+                get { return _items.Value; }
+            }
+
+            public int AppliedInventionApplicationsCount
+            {
+                get
+                {
+                    return GetApplicationsCount(InventiveApplicationType.Invention,
+                                                InventiveApplicationStatus.Applied);
+                }
+            }
+
+            public int AppliedUtilityModelApplicationsCount
+            {
+                get
+                {
+                    return GetApplicationsCount(InventiveApplicationType.UtilityModel,
+                                                InventiveApplicationStatus.Applied);
+                }
+            }
+
+            public int AcceptedInventionApplicationsCount
+            {
+                get
+                {
+                    return GetApplicationsCount(InventiveApplicationType.Invention,
+                                                InventiveApplicationStatus.Accepted);
+                }
+            }
+
+            public int AcceptedUtilityModelApplicationsCount
+            {
+                get
+                {
+                    return GetApplicationsCount(InventiveApplicationType.UtilityModel,
+                                                InventiveApplicationStatus.Accepted);
+                }
+            }
+
+            private ImagedCommandViewModel CreateAddInventiveApplicationCommand()
+            {
+                const string tooltip = "Добавить заявку";
+                const string imageSource = @"..\Content\add.png";
+
+                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<InventiveApplication>(),
+                                                  Model,
+                                                  tooltip,
+                                                  imageSource);
+            }
+
+            private ObservableCollection<InventiveApplicationView.ListItem> InitializeItems()
+            {
+                var inventiveApplications = Model.InventiveApplications
+                                                 .Select(InventiveApplicationView.ListItem.FromModel)
+                                                 .ToList();
+
+                var result = new ObservableCollection<InventiveApplicationView.ListItem>(inventiveApplications);
+                result.CollectionChanged += (sender, args) =>
+                {
+                    //todo property name from expression 
+                    OnPropertyChanged("AppliedInventionApplicationsCount");
+                    OnPropertyChanged("AppliedUtilityModelApplicationsCount");
+                    OnPropertyChanged("AcceptedInventionApplicationsCount");
+                    OnPropertyChanged("AcceptedUtilityModelApplicationsCount");
+                };
+
+                return result;
+            }
+
+            private void OnInventiveApplicationCreated(object sender, ModifiedEntityEventArgs<InventiveApplication> e)
+            {
+                var inventiveApplication = e.ModifiedEntity;
+                Items.Add(new InventiveApplicationView.ListItem(inventiveApplication));
+            }
+
+            private void OnInventiveApplicationDeleted(object sender, ModifiedEntityEventArgs<InventiveApplication> e)
+            {
+                var inventiveApplication = e.ModifiedEntity;
+                Items.RemoveSingle(c => c.Model.Equals(inventiveApplication));
+            }
+
+            private int GetApplicationsCount(InventiveApplicationType type, InventiveApplicationStatus status)
+            {
+                return Items.Count(vm => vm.Model.Type == type &&
+                                         vm.Model.Status == status);
+            }
+        }
+
+        internal class EfficiencyProposals : ViewModel<Professor>
+        {
+            private readonly Lazy<ObservableCollection<EfficiencyProposalView.ListItem>> _items;
+
+            public EfficiencyProposals(Professor model, IRepository<EfficiencyProposal> efficiencyProposalRepository)
+                : base(model)
+            {
+                if (efficiencyProposalRepository == null)
+                {
+                    throw new ArgumentNullException("efficiencyProposalRepository");
+                }
+
+                _items = Lazy.Create(InitializeItems);
+
+                efficiencyProposalRepository.EntityCreated += OnEfficiencyProposalCreated;
+                efficiencyProposalRepository.EntityDeleted += OnEfficiencyProposalDeleted;
+                Commands.Add(CreateAddInventiveApplicationCommand());
+            }
+
+            public override string Title
+            {
+                get { return "Результативность рационализаторской работы"; }
+            }
+
+            public int ProposalsCount
+            {
+                get { return Items.Count; }
+            }
+
+            public ObservableCollection<EfficiencyProposalView.ListItem> Items
+            {
+                get { return _items.Value; }
+            }
+
+            private ImagedCommandViewModel CreateAddInventiveApplicationCommand()
+            {
+                const string tooltip = "Добавить рационализаторское предложение";
+                const string imageSource = @"..\Content\add.png";
+
+                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<EfficiencyProposal>(),
+                                                  Model,
+                                                  tooltip,
+                                                  imageSource);
+            }
+
+            private ObservableCollection<EfficiencyProposalView.ListItem> InitializeItems()
+            {
+                var efficiencyProposals = Model.EfficiencyProposals
+                                               .Select(EfficiencyProposalView.ListItem.FromModel)
+                                               .ToList();
+
+                var result = new ObservableCollection<EfficiencyProposalView.ListItem>(efficiencyProposals);
+
+                result.CollectionChanged += (sender, e) => OnPropertyChanged("ProposalsCount");
+
+                return result;
+            }
+
+            private void OnEfficiencyProposalCreated(object sender, ModifiedEntityEventArgs<EfficiencyProposal> e)
+            {
+                var efficiencyProposal = e.ModifiedEntity;
+                Items.Add(new EfficiencyProposalView.ListItem(efficiencyProposal));
+            }
+
+            private void OnEfficiencyProposalDeleted(object sender, ModifiedEntityEventArgs<EfficiencyProposal> e)
+            {
+                var efficiencyProposal = e.ModifiedEntity;
+                Items.RemoveSingle(c => c.Model.Equals(efficiencyProposal));
             }
         }
     }

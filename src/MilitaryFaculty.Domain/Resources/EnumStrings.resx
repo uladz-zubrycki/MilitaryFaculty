@@ -180,6 +180,18 @@
   <data name="HistoricalWorkOrganization_None" xml:space="preserve">
     <value>Военно-историческая работа не организована</value>
   </data>
+  <data name="InventiveApplicationStatus_Accepted" xml:space="preserve">
+    <value>Одобрена</value>
+  </data>
+  <data name="InventiveApplicationStatus_Applied" xml:space="preserve">
+    <value>Подана</value>
+  </data>
+  <data name="InventiveApplicationType_Invention" xml:space="preserve">
+    <value>Заявка на изобретение</value>
+  </data>
+  <data name="InventiveApplicationType_UtilityModel" xml:space="preserve">
+    <value>Заявка на полезную модель</value>
+  </data>
   <data name="JobPosition_Aspirant" xml:space="preserve">
     <value>Аспирант</value>
   </data>
@@ -278,18 +290,6 @@
   </data>
   <data name="PublicationType_Thesis" xml:space="preserve">
     <value>Тезис докладов</value>
-  </data>
-  <data name="ScientificRequestResponce_Negative" xml:space="preserve">
-    <value>С отрицательным ответом</value>
-  </data>
-  <data name="ScientificRequestResponce_Positive" xml:space="preserve">
-    <value>С положительным ответом</value>
-  </data>
-  <data name="ScientificRequestType_Invention" xml:space="preserve">
-    <value>Заявка на изобретение</value>
-  </data>
-  <data name="ScientificRequestType_UtilityModel" xml:space="preserve">
-    <value>Заявка на полезную модель</value>
   </data>
   <data name="SuggestionState_Accepted" xml:space="preserve">
     <value>Принята</value>
