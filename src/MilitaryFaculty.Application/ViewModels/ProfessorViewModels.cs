@@ -115,7 +115,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public MilitaryRank MilitaryRank
             {
                 get { return Model.MilitaryRank; }
-                set { SetModelProperty(m => m.MilitaryRank, value); }
             }
         }
      
@@ -171,13 +170,6 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return Model.FullName.MiddleName; }
                 set { SetModelProperty(m => m.FullName.MiddleName, value); }
             }
-
-            [EnumProperty(Label = "Звание:")]
-            public MilitaryRank MilitaryRank
-            {
-                get { return Model.MilitaryRank; }
-                set { SetModelProperty(m => m.MilitaryRank, value); }
-            }
         }
 
         internal class ExtraInfo : EntityViewModel<Professor>
@@ -193,18 +185,25 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return "Дополнительная информация"; }
             }
 
-            [DateProperty(Label = "Дата трудоустройства:")]
-            public DateTime EnrollmentDate
-            {
-                get { return Model.EnrollmentDate; }
-                set { SetModelProperty(m => m.EnrollmentDate, value); }
-            }
-
             [EnumProperty(Label = "Занимаемая должность:")]
             public JobPosition JobPosition
             {
                 get { return Model.JobPosition; }
                 set { SetModelProperty(m => m.JobPosition, value); }
+            }
+
+            [EnumProperty(Label = "Звание:")]
+            public MilitaryRank MilitaryRank
+            {
+                get { return Model.MilitaryRank; }
+                set { SetModelProperty(m => m.MilitaryRank, value); }
+            }
+
+            [DateProperty(Label = "Дата трудоустройства:")]
+            public DateTime EnrollmentDate
+            {
+                get { return Model.EnrollmentDate; }
+                set { SetModelProperty(m => m.EnrollmentDate, value); }
             }
 
             [EnumProperty(Label = "Учёное звание:")]

@@ -21,13 +21,13 @@ namespace MilitaryFaculty.Application.Custom
             }
 
             const string editTooltip = "Редактировать";
-            const string editImageSource = @"..\Content\edit.png";
+            const string editImageSource = @"\Content\edit.png";
 
             const string saveTooltip = "Ок";
-            const string saveImageSource = @"..\Content\ok.png";
+            const string saveImageSource = @"\Content\ok.png";
 
             const string cancelTooltip = "Отмена";
-            const string cancelImageSource = @"..\Content\cancel.png";
+            const string cancelImageSource = @"\Content\cancel.png";
 
             var behaviour =
                 new EditableViewBehaviour<T>(saveCommand,
@@ -55,8 +55,8 @@ namespace MilitaryFaculty.Application.Custom
                 throw new ArgumentNullException("browseDetailsCommand");
             }
 
-            const string imageSource = @"..\Content\remove.png";
             const string tooltip = "Удалить";
+            const string imageSource = @"\Content\remove.png";
 
             var behaviour = new HasCommandViewBehaviour<T>(removeCommand,
                                                            tooltip,
@@ -79,8 +79,8 @@ namespace MilitaryFaculty.Application.Custom
                 throw new ArgumentNullException("browseDetailsCommand");
             }
 
-            const string imageSource = @"..\Content\details.png";
             const string tooltip = "Подробно";
+            const string imageSource = @"\Content\details.png";
 
             var behaviour = new HasCommandViewBehaviour<T>(browseDetailsCommand,
                                                            tooltip,

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using MilitaryFaculty.Domain;
 using NUnit.Framework;
@@ -26,6 +27,13 @@ namespace MilitaryFaculty.Data.Tests
         }
 
         private EntityContext context;
+
+        [Test]
+        public void test()
+        {
+            var t = Path.Combine("fdfd", "fds");
+            var tt = 42;
+        }
 
         private static void SeedCathedras(EntityContext context)
         {
