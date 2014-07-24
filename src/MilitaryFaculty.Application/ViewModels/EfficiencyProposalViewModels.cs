@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain;
@@ -22,9 +23,9 @@ namespace MilitaryFaculty.Application.ViewModels
             protected override IEnumerable<ViewModel<EfficiencyProposal>> GetViewModels()
             {
                 return new ViewModel<EfficiencyProposal>[]
-                   {
-                       new MainInfo(Model),
-                   };
+                       {
+                           new MainInfo(Model),
+                       };
             }
         }
 
@@ -88,7 +89,9 @@ namespace MilitaryFaculty.Application.ViewModels
                 : base(model)
             {
                 TooltipViewModel = new MainInfo(model);
-                InitCommands();
+
+                this.Removable(GlobalCommands.Remove<EfficiencyProposal>());
+                this.Browsable(GlobalCommands.BrowseDetails<EfficiencyProposal>());
             }
 
             public override string PrimaryInfo
@@ -99,37 +102,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public override string SecondaryInfo
             {
                 get { return Model.Text; }
-            }
-
-            private void InitCommands()
-            {
-                Commands.AddRange(new[]
-                              {
-                                  CreateBrowseDetailsCommand(),
-                                  CreateRemoveCommand()
-                              });
-            }
-
-            private ImagedCommandViewModel CreateRemoveCommand()
-            {
-                const string tooltip = "Удалить предложение";
-                const string imageSource = @"..\Content\remove.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.Remove<EfficiencyProposal>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
-            }
-
-            private ImagedCommandViewModel CreateBrowseDetailsCommand()
-            {
-                const string tooltip = "Подробно";
-                const string imageSource = @"..\Content\details.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseDetails<EfficiencyProposal>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             public static ListItem FromModel(EfficiencyProposal model)

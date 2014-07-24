@@ -19,10 +19,15 @@ namespace MilitaryFaculty.Domain
     public class Publication : UniqueEntity
     {
         public virtual string Name { get; set; }
-        public virtual DateTime Date { get; set; }
+        public virtual DateTime CreatedAt { get; set; }
         public virtual Professor Author { get; set; }
         public virtual PublicationType PublicationType { get; set; }
         public virtual int PagesCount { get; set; }
+
+        public Publication()
+        {
+            CreatedAt = DateTime.Now;
+        }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

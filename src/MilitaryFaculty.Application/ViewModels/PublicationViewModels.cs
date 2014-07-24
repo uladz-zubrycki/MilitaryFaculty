@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
-using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Attributes;
-using MilitaryFaculty.Presentation.ViewBehaviours;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
@@ -76,6 +75,13 @@ namespace MilitaryFaculty.Application.ViewModels
                 set { SetModelProperty(m => m.Name, value); }
             }
 
+            [DateProperty(Label = "Дата публикации:")]
+            public DateTime CreatedAt
+            {
+                get { return Model.CreatedAt; }
+                set { SetModelProperty(m => m.CreatedAt, value); }
+            }
+
             [IntProperty(Label = "Количество страниц:")]
             public int PagesCount
             {
@@ -111,7 +117,9 @@ namespace MilitaryFaculty.Application.ViewModels
                 : base(model)
             {
                 TooltipViewModel = new ExtraInfo(Model);
-                InitCommands();
+
+                this.Removable(GlobalCommands.Remove<Publication>());
+                this.Browsable(GlobalCommands.BrowseDetails<Publication>());
             }
 
             public override string PrimaryInfo
@@ -122,37 +130,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public override string SecondaryInfo
             {
                 get { return Model.Name; }
-            }
-
-            private void InitCommands()
-            {
-                Commands.AddRange(new[]
-                                  {
-                                      CreateBrowseDetailsCommand(),
-                                      CreateRemoveCommand()
-                                  });
-            }
-
-            private ImagedCommandViewModel CreateRemoveCommand()
-            {
-                const string tooltip = "Удалить публикацию";
-                const string imageSource = @"..\Content\remove.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.Remove<Publication>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
-            }
-
-            private ImagedCommandViewModel CreateBrowseDetailsCommand()
-            {
-                const string tooltip = "Подробно";
-                const string imageSource = @"..\..\Content\details.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseDetails<Publication>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             public static ListItem FromModel(Publication model)

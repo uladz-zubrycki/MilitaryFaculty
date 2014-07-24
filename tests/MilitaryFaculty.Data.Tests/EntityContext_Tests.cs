@@ -178,7 +178,7 @@ namespace MilitaryFaculty.Data.Tests
                                        PagesCount = 228,
                                        PublicationType = PublicationType.Article,
                                        Author = professor1,
-                                       Date = DateTime.Now
+                                       CreatedAt = DateTime.Now
                                    },
                                    new Publication
                                    {
@@ -186,7 +186,7 @@ namespace MilitaryFaculty.Data.Tests
                                        PagesCount = 141,
                                        PublicationType = PublicationType.Article,
                                        Author = professor1,
-                                       Date = DateTime.Now
+                                       CreatedAt = DateTime.Now
                                    },
                                    new Publication
                                    {
@@ -197,7 +197,7 @@ namespace MilitaryFaculty.Data.Tests
                                        PagesCount = 1309,
                                        PublicationType = PublicationType.Article,
                                        Author = professor2,
-                                       Date = DateTime.Now
+                                       CreatedAt = DateTime.Now
                                    }
                                };
 

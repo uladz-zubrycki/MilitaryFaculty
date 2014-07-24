@@ -8,26 +8,13 @@ using Omu.ValueInjecter;
 
 namespace MilitaryFaculty.Presentation.ViewBehaviours
 {
-    public static class ViewModelExtensions
+    public enum EditableViewMode
     {
-        public static void Editable<T>(this ViewModel<T> @this, ICommand saveCommand)
-            where T : class, new()
-        {
-            if (@this == null)
-            {
-                throw new ArgumentNullException("this");
-            }
-
-            if (saveCommand == null)
-            {            
-                throw new ArgumentNullException("saveCommand");
-            }
-
-            new EditableViewBehaviour<T>(saveCommand).Inject(@this);
-        }
+        Display,
+        Edit
     }
 
-    public class EditableViewBehaviour<TModel> : IViewBehaviour
+    public class EditableViewBehaviour<TModel> : IViewBehaviour<TModel>
         where TModel : class, new()
     {
         private readonly ImagedCommandViewModel _editCommandViewModel;
@@ -35,32 +22,23 @@ namespace MilitaryFaculty.Presentation.ViewBehaviours
         private readonly ImagedCommandViewModel _cancelCommandViewModel;
         private readonly List<CommandViewModel> _commandsBackup;
         private readonly TModel _modelBackup;
-
+        
         private ViewModel<TModel> _viewModel;
 
-        public EditableViewBehaviour(ICommand saveCommand)
+        public EditableViewBehaviour(ICommand saveCommand,
+                                     string saveTooltip,
+                                     string saveImageSource,
+                                     string editTooltip,
+                                     string editImageSource,
+                                     string cancelTooltip,
+                                     string cancelImageSource)
         {
-            if (saveCommand == null)
-            {
-                throw new ArgumentNullException("saveCommand");
-            }
+            _saveCommandViewModel = CreateSaveCommand(saveCommand, saveTooltip, saveImageSource);
+            _editCommandViewModel = CreateEditCommand(editTooltip, editImageSource);
+            _cancelCommandViewModel = CreateCancelCommand(cancelTooltip, cancelImageSource);
 
             _commandsBackup = new List<CommandViewModel>();
             _modelBackup = new TModel();
-
-            _saveCommandViewModel = CreateSaveCommand(saveCommand);
-            _editCommandViewModel = CreateEditCommand();
-            _cancelCommandViewModel = CreateCancelCommand();
-        }
-
-        void IViewBehaviour.Inject(ViewModel viewModel)
-        {
-            if (viewModel == null)
-            {
-                throw new ArgumentNullException("viewModel");
-            }
-
-            Inject((ViewModel<TModel>) viewModel);
         }
 
         public void Inject(ViewModel<TModel> viewModel)
@@ -75,10 +53,18 @@ namespace MilitaryFaculty.Presentation.ViewBehaviours
             _viewModel.Commands.Add(_editCommandViewModel);
         }
 
-        private ImagedCommandViewModel CreateCancelCommand()
+        private ImagedCommandViewModel CreateCancelCommand(string cancelTooltip,
+                                                           string cancelImageSource)
         {
-            const string tooltip = "Отмена";
-            const string imagePath = @"..\Content\cancel.png";
+            if (String.IsNullOrEmpty(cancelTooltip))
+            {
+                throw new ArgumentNullException("cancelTooltip");
+            }
+
+            if (String.IsNullOrEmpty(cancelImageSource))
+            {
+                throw new ArgumentNullException("cancelImageSource");
+            }
 
             Action cancel =
                 () =>
@@ -90,42 +76,63 @@ namespace MilitaryFaculty.Presentation.ViewBehaviours
             var command = new Command(cancel);
 
             return new ImagedCommandViewModel(command,
-                                              tooltip,
-                                              imagePath);
+                                              cancelTooltip,
+                                              cancelImageSource);
         }
 
-        private ImagedCommandViewModel CreateSaveCommand(ICommand applyCommand)
+        private ImagedCommandViewModel CreateSaveCommand(ICommand command,
+                                                         string tooltip,
+                                                         string imageSource)
         {
-            const string tooltip = "Ок";
-            const string imagePath = @"..\Content\ok.png";
+            if (command == null)
+            {
+                throw new ArgumentNullException("saveCommand");
+            }
+
+            if (String.IsNullOrEmpty(tooltip))
+            {
+                throw new ArgumentNullException("saveTooltip");
+            }
+
+            if (String.IsNullOrEmpty(imageSource))
+            {
+                throw new ArgumentNullException("saveImageSource");
+            }
 
             Action save =
                 () =>
                 {
-                    applyCommand.Execute(_viewModel.Model);
+                    command.Execute(_viewModel.Model);
                     ToDisplayMode();
                 };
 
             Func<bool> canSave =
-                () => applyCommand.CanExecute(_viewModel.Model);
+                () => command.CanExecute(_viewModel.Model);
 
-            var command = new Command(save, canSave);
-
-            return new ImagedCommandViewModel(command,
-                                              tooltip,
-                                              imagePath);
+            var saveCommand = new Command(save, canSave);
+            var commandViewModel = new ImagedCommandViewModel(saveCommand,
+                                                              tooltip,
+                                                              imageSource);
+            return commandViewModel;
         }
 
-        private ImagedCommandViewModel CreateEditCommand()
+        private ImagedCommandViewModel CreateEditCommand(string tooltip, string imageSource)
         {
-            const string tooltip = "Редактировать";
-            const string imagePath = @"..\Content\edit.png";
+            if (String.IsNullOrEmpty(tooltip))
+            {
+                throw new ArgumentNullException("saveTooltip");
+            }
 
-            var command = new Command(ToEditMode);
+            if (String.IsNullOrEmpty(imageSource))
+            {
+                throw new ArgumentNullException("saveImageSource");
+            }
 
-            return new ImagedCommandViewModel(command,
-                                              tooltip,
-                                              imagePath);
+            var editCommand = new Command(ToEditMode);
+            var commandViewModel = new ImagedCommandViewModel(editCommand,
+                                                              tooltip,
+                                                              imageSource);
+            return commandViewModel;
         }
 
         private void ToDisplayMode()

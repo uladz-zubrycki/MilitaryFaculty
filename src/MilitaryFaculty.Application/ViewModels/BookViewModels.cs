@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Windows.Input;
+using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
-using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Attributes;
-using MilitaryFaculty.Presentation.ViewBehaviours;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
@@ -120,7 +118,9 @@ namespace MilitaryFaculty.Application.ViewModels
                 : base(model)
             {
                 TooltipViewModel = new ExtraInfo(Model);
-                InitCommands();
+
+                this.Removable(GlobalCommands.Remove<Book>());
+                this.Browsable(GlobalCommands.BrowseDetails<Book>());
             }
 
             public override string PrimaryInfo
@@ -131,37 +131,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public override string SecondaryInfo
             {
                 get { return Model.Name; }
-            }
-
-            private void InitCommands()
-            {
-                Commands.AddRange(new[]
-                              {
-                                  CreateBrowseDetailsCommand(),
-                                  CreateRemoveCommand()
-                              });
-            }
-
-            private ImagedCommandViewModel CreateRemoveCommand()
-            {
-                const string tooltip = "Удалить книгу";
-                const string imageSource = @"..\Content\remove.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.Remove<Book>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
-            }
-
-            private ImagedCommandViewModel CreateBrowseDetailsCommand()
-            {
-                const string tooltip = "Подробно";
-                const string imageSource = @"..\..\Content\details.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseDetails<Book>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             public static ListItem FromModel(Book model)

@@ -61,8 +61,8 @@
     <Compile Include="Markup\ParametrizedConverter.cs" />
     <Compile Include="Extensions\ServiceProviderExtensions.cs" />
     <Compile Include="ViewBehaviours\EditableViewBehaviour.cs" />
-    <Compile Include="ViewBehaviours\EditableViewMode.cs" />
     <Compile Include="ViewBehaviours\IViewBehaviour.cs" />
+    <Compile Include="ViewBehaviours\HasCommandViewBehaviour.cs" />
     <Compile Include="ViewModels\CommandViewModel.cs" />
     <Compile Include="ViewModels\ComplexViewModel.cs" />
     <Compile Include="ViewModels\EntityViewModel.cs" />

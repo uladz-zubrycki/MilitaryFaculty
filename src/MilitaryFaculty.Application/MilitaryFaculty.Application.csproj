@@ -90,6 +90,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Custom\ViewModelExtensions.cs" />
     <Compile Include="Handlers\Base\EntityCommandModule.cs" />
     <Compile Include="Handlers\Base\NavigationCommandModule.cs" />
     <Compile Include="Handlers\DissertationHandlers.cs" />

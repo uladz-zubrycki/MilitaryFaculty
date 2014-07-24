@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
+using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
@@ -237,6 +238,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 bookRepository.EntityCreated += OnBookCreated;
                 bookRepository.EntityDeleted += OnBookDeleted;
+
                 Commands.Add(CreateAddCommand());
             }
 
@@ -291,13 +293,21 @@ namespace MilitaryFaculty.Application.ViewModels
             private void OnBookCreated(object sender, ModifiedEntityEventArgs<Book> e)
             {
                 var book = e.ModifiedEntity;
-                Items.Add(new BookView.ListItem(book));
+
+                if (book.Author.Equals(Model))
+                {
+                    Items.Add(new BookView.ListItem(book));
+                }
             }
 
             private void OnBookDeleted(object sender, ModifiedEntityEventArgs<Book> e)
             {
                 var book = e.ModifiedEntity;
-                Items.RemoveSingle(c => c.Model.Equals(book));
+
+                if (book.Author.Equals(Model))
+                {
+                    Items.RemoveSingle(c => c.Model.Equals(book));
+                }
             }
         }
 
@@ -362,13 +372,21 @@ namespace MilitaryFaculty.Application.ViewModels
             private void OnConferenceCreated(object sender, ModifiedEntityEventArgs<Conference> e)
             {
                 var conference = e.ModifiedEntity;
-                Items.Add(new ConferenceView.ListItem(conference));
+
+                if (conference.Curator.Equals(Model))
+                {
+                    Items.Add(new ConferenceView.ListItem(conference));
+                }
             }
 
             private void OnConferenceDeleted(object sender, ModifiedEntityEventArgs<Conference> e)
             {
                 var conference = e.ModifiedEntity;
-                Items.RemoveSingle(c => c.Model.Equals(conference));
+
+                if (conference.Curator.Equals(Model))
+                {
+                    Items.RemoveSingle(c => c.Model.Equals(conference));
+                }
             }
         }
 
@@ -433,13 +451,21 @@ namespace MilitaryFaculty.Application.ViewModels
             private void OnExhibitionCreated(object sender, ModifiedEntityEventArgs<Exhibition> e)
             {
                 var exhibition = e.ModifiedEntity;
-                Items.Add(new ExhibitionView.ListItem(exhibition));
+
+                if (exhibition.Participant.Equals(Model))
+                {
+                    Items.Add(new ExhibitionView.ListItem(exhibition));
+                }
             }
 
             private void OnExhibitionDeleted(object sender, ModifiedEntityEventArgs<Exhibition> e)
             {
                 var exhibition = e.ModifiedEntity;
-                Items.RemoveSingle(c => c.Model.Equals(exhibition));
+
+                if (exhibition.Participant.Equals(Model))
+                {
+                    Items.RemoveSingle(c => c.Model.Equals(exhibition));
+                }
             }
         }
 
@@ -514,13 +540,21 @@ namespace MilitaryFaculty.Application.ViewModels
             private void OnDissertationCreated(object sender, ModifiedEntityEventArgs<Dissertation> e)
             {
                 var dissertation = e.ModifiedEntity;
-                Items.Add(new DissertationView.ListItem(dissertation));
+
+                if (dissertation.Author.Equals(Model))
+                {
+                    Items.Add(new DissertationView.ListItem(dissertation));
+                }
             }
 
             private void OnDissertationDeleted(object sender, ModifiedEntityEventArgs<Dissertation> e)
             {
                 var dissertation = e.ModifiedEntity;
-                Items.RemoveSingle(c => c.Model.Equals(dissertation));
+
+                if (dissertation.Author.Equals(Model))
+                {
+                    Items.RemoveSingle(c => c.Model.Equals(dissertation));
+                }
             }
         }
 
@@ -540,6 +574,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 publicationRepository.EntityCreated += OnPublicationCreated;
                 publicationRepository.EntityDeleted += OnPublicationDeleted;
+
                 Commands.Add(CreateAddCommand());
             }
 
@@ -606,13 +641,21 @@ namespace MilitaryFaculty.Application.ViewModels
             private void OnPublicationCreated(object sender, ModifiedEntityEventArgs<Publication> e)
             {
                 var publication = e.ModifiedEntity;
-                Items.Add(new PublicationView.ListItem(publication));
+
+                if (publication.Author.Equals(Model))
+                {
+                    Items.Add(new PublicationView.ListItem(publication));
+                }
             }
 
             private void OnPublicationDeleted(object sender, ModifiedEntityEventArgs<Publication> e)
             {
                 var publication = e.ModifiedEntity;
-                Items.RemoveSingle(c => c.Model.Equals(publication));
+
+                if (publication.Author.Equals(Model))
+                {
+                    Items.RemoveSingle(c => c.Model.Equals(publication));
+                }
             }
 
             private int GetPublicationsCount(PublicationType type)
@@ -705,6 +748,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                                  .ToList();
 
                 var result = new ObservableCollection<InventiveApplicationView.ListItem>(inventiveApplications);
+                
                 result.CollectionChanged += (sender, args) =>
                 {
                     //todo property name from expression 
@@ -720,13 +764,21 @@ namespace MilitaryFaculty.Application.ViewModels
             private void OnInventiveApplicationCreated(object sender, ModifiedEntityEventArgs<InventiveApplication> e)
             {
                 var inventiveApplication = e.ModifiedEntity;
-                Items.Add(new InventiveApplicationView.ListItem(inventiveApplication));
+
+                if (inventiveApplication.Author.Equals(Model))
+                {
+                    Items.Add(new InventiveApplicationView.ListItem(inventiveApplication));
+                }
             }
 
             private void OnInventiveApplicationDeleted(object sender, ModifiedEntityEventArgs<InventiveApplication> e)
             {
                 var inventiveApplication = e.ModifiedEntity;
-                Items.RemoveSingle(c => c.Model.Equals(inventiveApplication));
+
+                if (inventiveApplication.Equals(Model))
+                {
+                    Items.RemoveSingle(c => c.Model.Equals(inventiveApplication));
+                }
             }
 
             private int GetApplicationsCount(InventiveApplicationType type, InventiveApplicationStatus status)
@@ -752,6 +804,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 efficiencyProposalRepository.EntityCreated += OnEfficiencyProposalCreated;
                 efficiencyProposalRepository.EntityDeleted += OnEfficiencyProposalDeleted;
+
                 Commands.Add(CreateAddCommand());
             }
 
@@ -788,7 +841,6 @@ namespace MilitaryFaculty.Application.ViewModels
                                                .ToList();
 
                 var result = new ObservableCollection<EfficiencyProposalView.ListItem>(efficiencyProposals);
-
                 result.CollectionChanged += (sender, e) => OnPropertyChanged("ProposalsCount");
 
                 return result;
@@ -797,13 +849,21 @@ namespace MilitaryFaculty.Application.ViewModels
             private void OnEfficiencyProposalCreated(object sender, ModifiedEntityEventArgs<EfficiencyProposal> e)
             {
                 var efficiencyProposal = e.ModifiedEntity;
-                Items.Add(new EfficiencyProposalView.ListItem(efficiencyProposal));
+
+                if (efficiencyProposal.Author.Equals(Model))
+                {
+                    Items.Add(new EfficiencyProposalView.ListItem(efficiencyProposal));
+                }
             }
 
             private void OnEfficiencyProposalDeleted(object sender, ModifiedEntityEventArgs<EfficiencyProposal> e)
             {
                 var efficiencyProposal = e.ModifiedEntity;
-                Items.RemoveSingle(c => c.Model.Equals(efficiencyProposal));
+
+                if (efficiencyProposal.Author.Equals(Model))
+                {
+                    Items.RemoveSingle(c => c.Model.Equals(efficiencyProposal));
+                }
             }
         }
 
@@ -821,8 +881,9 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 _items = Lazy.Create(InitializeItems);
 
-                researchRepository.EntityCreated += OnItemCreated;
-                researchRepository.EntityDeleted += OnItemDeleted;
+                researchRepository.EntityCreated += OnResearchCreated;
+                researchRepository.EntityDeleted += OnResearchDeleted;
+
                 Commands.Add(CreateAddCommand());
             }
 
@@ -859,22 +920,29 @@ namespace MilitaryFaculty.Application.ViewModels
                                       .ToList();
 
                 var result = new ObservableCollection<ResearchView.ListItem>(researches);
-
                 result.CollectionChanged += (sender, e) => OnPropertyChanged("ResearchesCount");
 
                 return result;
             }
 
-            private void OnItemCreated(object sender, ModifiedEntityEventArgs<Research> e)
+            private void OnResearchCreated(object sender, ModifiedEntityEventArgs<Research> e)
             {
                 var research = e.ModifiedEntity;
-                Items.Add(new ResearchView.ListItem(research));
+
+                if (research.Author.Equals(Model))
+                {
+                    Items.Add(new ResearchView.ListItem(research));
+                }
             }
 
-            private void OnItemDeleted(object sender, ModifiedEntityEventArgs<Research> e)
+            private void OnResearchDeleted(object sender, ModifiedEntityEventArgs<Research> e)
             {
                 var research = e.ModifiedEntity;
-                Items.RemoveSingle(c => c.Model.Equals(research));
+
+                if (research.Author.Equals(Model))
+                {
+                    Items.RemoveSingle(c => c.Model.Equals(research));
+                }
             }
         }
     }

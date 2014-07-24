@@ -18,6 +18,11 @@ namespace MilitaryFaculty.Domain
         public virtual Professor Author { get; set; }
         public virtual DateTime CreatedAt { get; set; }
         public virtual ScientificExpertiseType Type { get; set; }
+
+        public ScientificExpertise()
+        {
+            CreatedAt = DateTime.Now;
+        }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }
