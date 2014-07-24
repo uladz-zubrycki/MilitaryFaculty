@@ -71,11 +71,12 @@
     <Compile Include="Data\DataProviders\BooksDataProvider.cs" />
     <Compile Include="Data\DataProviders\CathedrasDataProvider.cs" />
     <Compile Include="Data\DataProviders\ConferencesDataProvider.cs" />
-    <Compile Include="Data\DataProviders\DissertationWorksDataProvider.cs" />
+    <Compile Include="Data\DataProviders\DissertationDataProvider.cs" />
     <Compile Include="Data\DataProviders\ExhibitionsDataProvider.cs" />
-    <Compile Include="Data\DataProviders\ImprovementSuggestionsDataProvider.cs" />
+    <Compile Include="Data\DataProviders\EfficiencyProposalsDataProvider.cs" />
     <Compile Include="Data\DataProviders\ProfessorsDataProvider.cs" />
     <Compile Include="Data\DataProviders\PublicationsDataProvider.cs" />
+    <Compile Include="Data\DataProviders\ReviewDataProvider.cs" />
     <Compile Include="Data\DataProviders\ScientificExpertisesDataProvider.cs" />
     <Compile Include="Data\DataProviders\InventiveApplicationsDataProvider.cs" />
     <Compile Include="Data\DataProviders\ResearchesDataProvider.cs" />

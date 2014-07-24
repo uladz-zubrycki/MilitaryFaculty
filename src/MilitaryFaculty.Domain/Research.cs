@@ -1,9 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
+    [LocalizedEnum(typeof(EnumStrings))]
+    public enum ResearchMaintainState
+    {
+        NotPerformed,
+        Performed
+    }
+
     // ReSharper disable DoNotCallOverridableMethodsInConstructor
     // Properties are virtual only for EntityFramework
     public class Research: UniqueEntity
@@ -11,12 +19,11 @@ namespace MilitaryFaculty.Domain
         public string Name { get; set; }
         public Professor Author { get; set; }
         public DateTime CreatedAt { get; set; }
-        public ICollection<Professor> Maintaners { get; set; }
+        public ResearchMaintainState MaintainState { get; set; }
 
         public Research()
         {
             CreatedAt = DateTime.Now;
-            Maintaners = new List<Professor>();
         }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor
