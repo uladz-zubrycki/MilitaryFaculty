@@ -135,12 +135,12 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 Commands.AddRange(new[]
                               {
-                                  CreateBrowseInventiveApplicationCommand(),
-                                  CreateRemoveInventiveApplicationCommand()
+                                  CreateBrowseDetailsCommand(),
+                                  CreateRemoveCommand()
                               });
             }
 
-            private ImagedCommandViewModel CreateRemoveInventiveApplicationCommand()
+            private ImagedCommandViewModel CreateRemoveCommand()
             {
                 const string tooltip = "Удалить заявку";
                 const string imageSource = @"..\Content\remove.png";
@@ -151,7 +151,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                                   imageSource);
             }
 
-            private ImagedCommandViewModel CreateBrowseInventiveApplicationCommand()
+            private ImagedCommandViewModel CreateBrowseDetailsCommand()
             {
                 const string tooltip = "Подробно";
                 const string imageSource = @"..\..\Content\details.png";

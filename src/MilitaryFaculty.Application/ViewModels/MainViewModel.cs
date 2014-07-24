@@ -1,6 +1,6 @@
 ﻿using System;
 using Autofac;
-using MilitaryFaculty.Application.Custom.CommandHandlers;
+using MilitaryFaculty.Application.Handlers;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
@@ -39,6 +39,7 @@ namespace MilitaryFaculty.Application.ViewModels
         private readonly IReportGenerator _reportGenerator;
         private readonly IExcelReportingService _excelReportingService;
         private readonly ViewModel _workWindow;
+        private readonly IRepository<Research> _researchRepository;
 
         public FacultyTreeViewModel FacultyTree { get; private set; }
         public RoutedCommands RoutedCommands { get; private set; }
@@ -55,7 +56,8 @@ namespace MilitaryFaculty.Application.ViewModels
                              IRepository<InventiveApplication> inventiveApplicationRepository,
                              IRepository<EfficiencyProposal> efficiencyProposalRepository,
                              IExcelReportingService excelReportingService,
-                             IReportGenerator reportGenerator)
+                             IReportGenerator reportGenerator, 
+            IRepository<Research> researchRepository)
         {
             _bookRepository = bookRepository;
             _cathedraRepository = cathedraRepository;
@@ -65,6 +67,8 @@ namespace MilitaryFaculty.Application.ViewModels
             _publicationRepository = publicationRepository;
             _dissertationRepository = dissertationRepository;
             _inventiveApplicationRepository = inventiveApplicationRepository;
+            _researchRepository = researchRepository;
+
             _excelReportingService = excelReportingService;
             _reportGenerator = reportGenerator;
             _efficiencyProposalRepository = efficiencyProposalRepository;
@@ -116,7 +120,8 @@ namespace MilitaryFaculty.Application.ViewModels
                                                     _bookRepository,
                                                     _dissertationRepository,
                                                     _inventiveApplicationRepository,
-                                                    _efficiencyProposalRepository);
+                                                    _efficiencyProposalRepository,
+                                                    _researchRepository);
             }
             else
             {
@@ -153,6 +158,8 @@ namespace MilitaryFaculty.Application.ViewModels
                               new InventiveApplicationNavigation(this), 
                               new EfficiencyProposalHandlers(_efficiencyProposalRepository),
                               new EfficiencyProposalNavigation(this), 
+                              new ResearchHandlers(_researchRepository),
+                              new ResearchNavigation(this), 
                               new NavigationHistory(this),
 
                               new ReportingHandlers(_excelReportingService, _reportGenerator)

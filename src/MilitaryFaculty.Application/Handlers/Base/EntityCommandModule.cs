@@ -5,7 +5,7 @@ using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Presentation.Commands;
 
-namespace MilitaryFaculty.Application.Custom.CommandHandlers
+namespace MilitaryFaculty.Application.Handlers
 {
     public abstract class EntityCommandModule<T> : ICommandModule
         where T : class, IUniqueEntity

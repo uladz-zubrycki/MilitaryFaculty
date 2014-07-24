@@ -15,6 +15,7 @@ namespace MilitaryFaculty.Domain
 
         public Research()
         {
+            CreatedAt = DateTime.Now;
             Maintaners = new List<Professor>();
         }
     }

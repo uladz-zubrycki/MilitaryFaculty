@@ -25,6 +25,7 @@ namespace MilitaryFaculty.Application.ViewModels
             private readonly IRepository<Publication> _publicationRepository;
             private readonly IRepository<InventiveApplication> _inventiveApplicationsRepository;
             private readonly IRepository<EfficiencyProposal> _efficiencyProposalRepository;
+            private readonly IRepository<Research> _researchRepository;
 
             public Root(Professor model,
                         IRepository<Conference> conferenceRepository,
@@ -33,7 +34,8 @@ namespace MilitaryFaculty.Application.ViewModels
                         IRepository<Book> bookRepository,
                         IRepository<Dissertation> dissertationRepository,
                         IRepository<InventiveApplication> inventiveApplicationsRepository, 
-                        IRepository<EfficiencyProposal> efficiencyProposalRepository)
+                        IRepository<EfficiencyProposal> efficiencyProposalRepository, 
+                        IRepository<Research> researchRepository)
                 : base(model)
             {
                 if (conferenceRepository == null)
@@ -66,6 +68,11 @@ namespace MilitaryFaculty.Application.ViewModels
                     throw new ArgumentNullException("inventiveApplicationsRepository");
                 }
 
+                if (researchRepository == null)
+                {
+                    throw new ArgumentNullException("researchRepository");
+                }
+
                 _conferenceRepository = conferenceRepository;
                 _publicationRepository = publicationRepository;
                 _exhibitionRepository = exhibitionRepository;
@@ -73,6 +80,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 _dissertationRepository = dissertationRepository;
                 _inventiveApplicationsRepository = inventiveApplicationsRepository;
                 _efficiencyProposalRepository = efficiencyProposalRepository;
+                _researchRepository = researchRepository;
 
                 HeaderViewModel = new Header(Model);
             }
@@ -88,7 +96,8 @@ namespace MilitaryFaculty.Application.ViewModels
                            new Books(Model, _bookRepository),
                            new Dissertations(Model, _dissertationRepository), 
                            new InventiveApplications(Model, _inventiveApplicationsRepository), 
-                           new EfficiencyProposals(Model, _efficiencyProposalRepository), 
+                           new EfficiencyProposals(Model, _efficiencyProposalRepository),
+                           new Researches(Model, _researchRepository), 
                        };
             }
         }
@@ -116,11 +125,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public override string Title
             {
                 get { return "Добавить преподавателя:"; }
-            }
-
-            public override ICommand AddCommand
-            {
-                get { return GlobalCommands.Add<Professor>(); }
             }
 
             protected override IEnumerable<ViewModel<Professor>> GetViewModels()
@@ -233,7 +237,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 bookRepository.EntityCreated += OnBookCreated;
                 bookRepository.EntityDeleted += OnBookDeleted;
-                Commands.Add(CreateAddBookCommand());
+                Commands.Add(CreateAddCommand());
             }
 
             public override string Title
@@ -256,7 +260,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return Items.Count(vm => vm.Model.BookType == BookType.Tutorial); }
             }
 
-            private ImagedCommandViewModel CreateAddBookCommand()
+            private ImagedCommandViewModel CreateAddCommand()
             {
                 const string tooltip = "Добавить учебник";
                 const string imageSource = @"..\Content\add.png";
@@ -314,7 +318,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 conferenceRepository.EntityCreated += OnConferenceCreated;
                 conferenceRepository.EntityDeleted += OnConferenceDeleted;
 
-                Commands.Add(CreateAddConferenceCommand());
+                Commands.Add(CreateAddCommand());
             }
 
             public ObservableCollection<ConferenceView.ListItem> Items
@@ -332,7 +336,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return Items.Count; }
             }
 
-            private ImagedCommandViewModel CreateAddConferenceCommand()
+            private ImagedCommandViewModel CreateAddCommand()
             {
                 const string tooltip = "Добавить конференцию";
                 const string imageSource = @"..\Content\add.png";
@@ -385,7 +389,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 exhibitionRepository.EntityCreated += OnExhibitionCreated;
                 exhibitionRepository.EntityDeleted += OnExhibitionDeleted;
 
-                Commands.Add(CreateAddExhibitionCommand());
+                Commands.Add(CreateAddCommand());
             }
 
             public override string Title
@@ -403,7 +407,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return Items.Count; }
             }
 
-            private ImagedCommandViewModel CreateAddExhibitionCommand()
+            private ImagedCommandViewModel CreateAddCommand()
             {
                 const string tooltip = "Добавить научную выставку";
                 const string imageSource = @"..\Content\add.png";
@@ -455,7 +459,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 dissertationRepository.EntityCreated += OnDissertationCreated;
                 dissertationRepository.EntityDeleted += OnDissertationDeleted;
-                Commands.Add(CreateAddDissertationCommand());
+                Commands.Add(CreateAddCommand());
             }
 
             public override string Title
@@ -478,7 +482,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return _items.Value; }
             }
 
-            private ImagedCommandViewModel CreateAddDissertationCommand()
+            private ImagedCommandViewModel CreateAddCommand()
             {
                 const string tooltip = "Добавить диссертацию";
                 const string imageSource = @"..\Content\add.png";
@@ -536,7 +540,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 publicationRepository.EntityCreated += OnPublicationCreated;
                 publicationRepository.EntityDeleted += OnPublicationDeleted;
-                Commands.Add(CreateAddPublicationCommand());
+                Commands.Add(CreateAddCommand());
             }
 
             public override string Title
@@ -569,7 +573,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return GetPublicationsCount(PublicationType.Thesis); }
             }
 
-            private ImagedCommandViewModel CreateAddPublicationCommand()
+            private ImagedCommandViewModel CreateAddCommand()
             {
                 const string tooltip = "Добавить публикацию";
                 const string imageSource = @"..\Content\add.png";
@@ -633,7 +637,8 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 inventiveApplicationRepository.EntityCreated += OnInventiveApplicationCreated;
                 inventiveApplicationRepository.EntityDeleted += OnInventiveApplicationDeleted;
-                Commands.Add(CreateAddInventiveApplicationCommand());
+
+                Commands.Add(CreateAddCommand());
             }
 
             public override string Title
@@ -682,7 +687,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 }
             }
 
-            private ImagedCommandViewModel CreateAddInventiveApplicationCommand()
+            private ImagedCommandViewModel CreateAddCommand()
             {
                 const string tooltip = "Добавить заявку";
                 const string imageSource = @"..\Content\add.png";
@@ -740,14 +745,14 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 if (efficiencyProposalRepository == null)
                 {
-                    throw new ArgumentNullException("efficiencyProposalRepository");
+                    throw new ArgumentNullException("researchRepository");
                 }
 
                 _items = Lazy.Create(InitializeItems);
 
                 efficiencyProposalRepository.EntityCreated += OnEfficiencyProposalCreated;
                 efficiencyProposalRepository.EntityDeleted += OnEfficiencyProposalDeleted;
-                Commands.Add(CreateAddInventiveApplicationCommand());
+                Commands.Add(CreateAddCommand());
             }
 
             public override string Title
@@ -765,7 +770,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return _items.Value; }
             }
 
-            private ImagedCommandViewModel CreateAddInventiveApplicationCommand()
+            private ImagedCommandViewModel CreateAddCommand()
             {
                 const string tooltip = "Добавить рационализаторское предложение";
                 const string imageSource = @"..\Content\add.png";
@@ -799,6 +804,77 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 var efficiencyProposal = e.ModifiedEntity;
                 Items.RemoveSingle(c => c.Model.Equals(efficiencyProposal));
+            }
+        }
+
+        internal class Researches : ViewModel<Professor>
+        {
+            private readonly Lazy<ObservableCollection<ResearchView.ListItem>> _items;
+
+            public Researches(Professor model, IRepository<Research> researchRepository)
+                : base(model)
+            {
+                if (researchRepository == null)
+                {
+                    throw new ArgumentNullException("researchRepository");
+                }
+
+                _items = Lazy.Create(InitializeItems);
+
+                researchRepository.EntityCreated += OnItemCreated;
+                researchRepository.EntityDeleted += OnItemDeleted;
+                Commands.Add(CreateAddCommand());
+            }
+
+            public override string Title
+            {
+                get { return "Проведение НИР"; }
+            }
+
+            public int ResearchesCount
+            {
+                get { return Items.Count; }
+            }
+
+            public ObservableCollection<ResearchView.ListItem> Items
+            {
+                get { return _items.Value; }
+            }
+
+            private ImagedCommandViewModel CreateAddCommand()
+            {
+                const string tooltip = "Добавить НИР";
+                const string imageSource = @"..\Content\add.png";
+
+                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Research>(),
+                                                  Model,
+                                                  tooltip,
+                                                  imageSource);
+            }
+
+            private ObservableCollection<ResearchView.ListItem> InitializeItems()
+            {
+                var researches = Model.Researches
+                                      .Select(ResearchView.ListItem.FromModel)
+                                      .ToList();
+
+                var result = new ObservableCollection<ResearchView.ListItem>(researches);
+
+                result.CollectionChanged += (sender, e) => OnPropertyChanged("ResearchesCount");
+
+                return result;
+            }
+
+            private void OnItemCreated(object sender, ModifiedEntityEventArgs<Research> e)
+            {
+                var research = e.ModifiedEntity;
+                Items.Add(new ResearchView.ListItem(research));
+            }
+
+            private void OnItemDeleted(object sender, ModifiedEntityEventArgs<Research> e)
+            {
+                var research = e.ModifiedEntity;
+                Items.RemoveSingle(c => c.Model.Equals(research));
             }
         }
     }

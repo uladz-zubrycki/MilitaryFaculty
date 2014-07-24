@@ -4,7 +4,7 @@ using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Reporting;
 using MilitaryFaculty.Reporting.Excel;
 
-namespace MilitaryFaculty.Application.Custom.CommandHandlers
+namespace MilitaryFaculty.Application.Handlers
 {
     public class ReportingHandlers : ICommandModule
     {

@@ -4,7 +4,7 @@ using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Commands;
 
-namespace MilitaryFaculty.Application.Custom.CommandHandlers
+namespace MilitaryFaculty.Application.Handlers
 {
     public class PublicationHandlers : EntityCommandModule<Publication>
     {

@@ -4,7 +4,7 @@ using MilitaryFaculty.Application.ViewModels;
 using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Presentation.ViewModels;
 
-namespace MilitaryFaculty.Application.Custom.CommandHandlers
+namespace MilitaryFaculty.Application.Handlers
 {
     public class NavigationHistory : NavigationCommandModule
     {

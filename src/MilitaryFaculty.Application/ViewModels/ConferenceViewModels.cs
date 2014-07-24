@@ -48,11 +48,6 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return "Добавить конференцию"; }
             }
 
-            public override ICommand AddCommand
-            {
-                get { return GlobalCommands.Add<Conference>(); }
-            }
-
             protected override IEnumerable<ViewModel<Conference>> GetViewModels()
             {
                 return new ViewModel<Conference>[]
@@ -73,7 +68,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
             public override string Title
             {
-                get { return "Базовая информация"; }
+                get { return "Основная информация"; }
             }
 
             [EnumProperty(Label = "Уровень мероприятия:")]
@@ -163,12 +158,12 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 Commands.AddRange(new[]
                               {
-                                  CreateBrowseConferenceDetailsCommand(),
-                                  CreateRemoveConferenceCommand()
+                                  CreateBrowseDetailsCommand(),
+                                  CreateRemoveCommand()
                               });
             }
 
-            private ImagedCommandViewModel CreateRemoveConferenceCommand()
+            private ImagedCommandViewModel CreateRemoveCommand()
             {
                 const string tooltip = "Удалить конференцию";
                 const string imageSource = @"..\Content\remove.png";
@@ -179,7 +174,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                                   imageSource);
             }
 
-            private ImagedCommandViewModel CreateBrowseConferenceDetailsCommand()
+            private ImagedCommandViewModel CreateBrowseDetailsCommand()
             {
                 const string tooltip = "Подробно";
                 const string imageSource = @"..\..\Content\details.png";

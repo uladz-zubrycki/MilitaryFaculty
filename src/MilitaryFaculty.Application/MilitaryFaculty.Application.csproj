@@ -90,21 +90,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Custom\CommandHandlers\Base\EntityCommandModule.cs" />
-    <Compile Include="Custom\CommandHandlers\Base\NavigationCommandModule.cs" />
-    <Compile Include="Custom\CommandHandlers\DissertationHandlers.cs" />
-    <Compile Include="Custom\CommandHandlers\BookHandlers.cs" />
-    <Compile Include="Custom\CommandHandlers\InventiveApplicationHandlers.cs" />
-    <Compile Include="Custom\CommandHandlers\EfficiencyProposalHandlers.cs" />
-    <Compile Include="Custom\CommandHandlers\PublicationHandlers.cs" />
-    <Compile Include="Custom\CommandHandlers\ReportingHandlers.cs" />
-    <Compile Include="Custom\CommandHandlers\ExhibitionHandlers.cs" />
-    <Compile Include="Custom\CommandHandlers\ConferenceHandlers.cs" />
-    <Compile Include="Custom\CommandHandlers\ProfessorHandlers.cs" />
+    <Compile Include="Handlers\Base\EntityCommandModule.cs" />
+    <Compile Include="Handlers\Base\NavigationCommandModule.cs" />
+    <Compile Include="Handlers\DissertationHandlers.cs" />
+    <Compile Include="Handlers\BookHandlers.cs" />
+    <Compile Include="Handlers\InventiveApplicationHandlers.cs" />
+    <Compile Include="Handlers\EfficiencyProposalHandlers.cs" />
+    <Compile Include="Handlers\ResearchHandlers.cs" />
+    <Compile Include="Handlers\PublicationHandlers.cs" />
+    <Compile Include="Handlers\ReportingHandlers.cs" />
+    <Compile Include="Handlers\ExhibitionHandlers.cs" />
+    <Compile Include="Handlers\ConferenceHandlers.cs" />
+    <Compile Include="Handlers\ProfessorHandlers.cs" />
     <Compile Include="GlobalCommands.cs" />
     <Compile Include="Custom\EditableViewTemplateSelector.cs" />
     <Compile Include="Custom\GenericTemplateSelector.cs" />
-    <Compile Include="Custom\CommandHandlers\NavigationHistory.cs" />
+    <Compile Include="Handlers\NavigationHistory.cs" />
     <Compile Include="InjectionConfig.cs" />
     <Compile Include="ViewModels\Base\AddEntityViewModel.cs" />
     <Compile Include="ViewModels\BookViewModels.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="ViewModels\PublicationViewModels.cs" />
     <Compile Include="ViewModels\CathedraViewModels.cs" />
     <Compile Include="ViewModels\ConferenceViewModels.cs" />
+    <Compile Include="ViewModels\ResearchViewModels.cs" />
     <Compile Include="ViewModels\StartupViewModel.cs" />
     <Compile Include="Views\Common\DefaultView.xaml.cs">
       <DependentUpon>DefaultView.xaml</DependentUpon>
@@ -186,6 +188,9 @@
     </Compile>
     <Compile Include="Views\Professor\ProfessorInventiveApplicationsView.xaml.cs">
       <DependentUpon>ProfessorInventiveApplicationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorResearchesView.xaml.cs">
+      <DependentUpon>ProfessorResearchesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Professor\ProfessorPublicationsView.xaml.cs">
       <DependentUpon>ProfessorPublicationsView.xaml</DependentUpon>
@@ -305,6 +310,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Professor\ProfessorInventiveApplicationsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorResearchesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
