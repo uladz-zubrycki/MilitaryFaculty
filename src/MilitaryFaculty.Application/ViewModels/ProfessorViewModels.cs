@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
@@ -24,13 +23,15 @@ namespace MilitaryFaculty.Application.ViewModels
             private readonly IRepository<Conference> _conferenceRepository;
             private readonly IRepository<Exhibition> _exhibitionRepository;
             private readonly IRepository<Publication> _publicationRepository;
+            private readonly IRepository<InventiveApplication> _inventiveApplicationsRepository;
 
             public Root(Professor model,
                         IRepository<Conference> conferenceRepository,
                         IRepository<Publication> publicationRepository,
                         IRepository<Exhibition> exhibitionRepository,
                         IRepository<Book> bookRepository,
-                        IRepository<Dissertation> dissertationRepository)
+                        IRepository<Dissertation> dissertationRepository,
+                        IRepository<InventiveApplication> inventiveApplicationsRepository)
                 : base(model)
             {
                 if (conferenceRepository == null)
@@ -58,11 +59,17 @@ namespace MilitaryFaculty.Application.ViewModels
                     throw new ArgumentNullException("dissertationRepository");
                 }
 
+                if (inventiveApplicationsRepository == null)
+                {
+                    throw new ArgumentNullException("inventiveApplicationsRepository");
+                }
+
                 _conferenceRepository = conferenceRepository;
                 _publicationRepository = publicationRepository;
                 _exhibitionRepository = exhibitionRepository;
                 _bookRepository = bookRepository;
                 _dissertationRepository = dissertationRepository;
+                _inventiveApplicationsRepository = inventiveApplicationsRepository;
 
                 HeaderViewModel = new Header(Model);
             }
@@ -77,6 +84,7 @@ namespace MilitaryFaculty.Application.ViewModels
                            new Exhibitions(Model, _exhibitionRepository),
                            new Books(Model, _bookRepository),
                            new Dissertations(Model, _dissertationRepository), 
+                           new InventiveApplications(Model, _inventiveApplicationsRepository), 
                        };
             }
         }
@@ -510,7 +518,7 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 if (publicationRepository == null)
                 {
-                    throw new ArgumentNullException("publicationRepository");
+                    throw new ArgumentNullException("inventiveApplicationRepository");
                 }
 
                 _items = Lazy.Create(InitializeItems);
@@ -569,13 +577,13 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 var result = new ObservableCollection<PublicationView.ListItem>(publications);
                 result.CollectionChanged += (sender, args) =>
-                                            {
-                                                //todo property name from expression 
-                                                OnPropertyChanged("MonographsCount");
-                                                OnPropertyChanged("ReviewedArticlesCount");
-                                                OnPropertyChanged("ArticlesCount");
-                                                OnPropertyChanged("ThesisesCount");
-                                            };
+                {
+                    //todo property name from expression 
+                    OnPropertyChanged("MonographsCount");
+                    OnPropertyChanged("ReviewedArticlesCount");
+                    OnPropertyChanged("ArticlesCount");
+                    OnPropertyChanged("ThesisesCount");
+                };
 
                 return result;
             }
@@ -595,6 +603,119 @@ namespace MilitaryFaculty.Application.ViewModels
             private int GetPublicationsCount(PublicationType type)
             {
                 return Items.Count(vm => vm.Model.PublicationType == type);
+            }
+        }
+        internal class InventiveApplications : ViewModel<Professor>
+        {
+            private readonly Lazy<ObservableCollection<InventiveApplicationView.ListItem>> _items;
+
+            public InventiveApplications(Professor model, IRepository<InventiveApplication> inventiveApplicationRepository)
+                : base(model)
+            {
+                if (inventiveApplicationRepository == null)
+                {
+                    throw new ArgumentNullException("inventiveApplicationRepository");
+                }
+
+                _items = Lazy.Create(InitializeItems);
+
+                inventiveApplicationRepository.EntityCreated += OnInventiveApplicationCreated;
+                inventiveApplicationRepository.EntityDeleted += OnInventiveApplicationDeleted;
+                Commands.Add(CreateAddInventiveApplicationCommand());
+            }
+
+            public override string Title
+            {
+                get { return "Результативность изобретательской работы"; }
+            }
+
+            public ObservableCollection<InventiveApplicationView.ListItem> Items
+            {
+                get { return _items.Value; }
+            }
+
+            public int AppliedInventionApplicationsCount
+            {
+                get
+                {
+                    return GetApplicationsCount(InventiveApplicationType.Invention,
+                                                InventiveApplicationStatus.Applied);
+                }
+            }
+
+            public int AppliedUtilityModelApplicationsCount
+            {
+                get
+                {
+                    return GetApplicationsCount(InventiveApplicationType.UtilityModel,
+                                                InventiveApplicationStatus.Applied);
+                }
+            }
+
+            public int AcceptedInventionApplicationsCount
+            {
+                get
+                {
+                    return GetApplicationsCount(InventiveApplicationType.Invention,
+                                                InventiveApplicationStatus.Accepted);
+                }
+            }
+
+            public int AcceptedUtilityModelApplicationsCount
+            {
+                get
+                {
+                    return GetApplicationsCount(InventiveApplicationType.UtilityModel,
+                                                InventiveApplicationStatus.Accepted);
+                }
+            }
+
+            private ImagedCommandViewModel CreateAddInventiveApplicationCommand()
+            {
+                const string tooltip = "Добавить заявку";
+                const string imageSource = @"..\Content\add.png";
+
+                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<InventiveApplication>(),
+                                                  Model,
+                                                  tooltip,
+                                                  imageSource);
+            }
+
+            private ObservableCollection<InventiveApplicationView.ListItem> InitializeItems()
+            {
+                var inventiveApplications = Model.InventiveApplications
+                                                 .Select(InventiveApplicationView.ListItem.FromModel)
+                                                 .ToList();
+
+                var result = new ObservableCollection<InventiveApplicationView.ListItem>(inventiveApplications);
+                result.CollectionChanged += (sender, args) =>
+                {
+                    //todo property name from expression 
+                    OnPropertyChanged("AppliedInventionApplicationsCount");
+                    OnPropertyChanged("AppliedUtilityModelApplicationsCount");
+                    OnPropertyChanged("AcceptedInventionApplicationsCount");
+                    OnPropertyChanged("AcceptedUtilityModelApplicationsCount");
+                };
+
+                return result;
+            }
+
+            private void OnInventiveApplicationCreated(object sender, ModifiedEntityEventArgs<InventiveApplication> e)
+            {
+                var inventiveApplication = e.ModifiedEntity;
+                Items.Add(new InventiveApplicationView.ListItem(inventiveApplication));
+            }
+
+            private void OnInventiveApplicationDeleted(object sender, ModifiedEntityEventArgs<InventiveApplication> e)
+            {
+                var inventiveApplication = e.ModifiedEntity;
+                Items.RemoveSingle(c => c.Model.Equals(inventiveApplication));
+            }
+
+            private int GetApplicationsCount(InventiveApplicationType type, InventiveApplicationStatus status)
+            {
+                return Items.Count(vm => vm.Model.Type == type &&
+                                         vm.Model.Status == status);
             }
         }
     }

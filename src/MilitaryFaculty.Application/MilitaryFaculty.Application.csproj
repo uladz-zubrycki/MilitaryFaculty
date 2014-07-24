@@ -94,6 +94,7 @@
     <Compile Include="Custom\CommandHandlers\Base\NavigationCommandModule.cs" />
     <Compile Include="Custom\CommandHandlers\DissertationHandlers.cs" />
     <Compile Include="Custom\CommandHandlers\BookHandlers.cs" />
+    <Compile Include="Custom\CommandHandlers\InventiveApplicationHandlers.cs" />
     <Compile Include="Custom\CommandHandlers\PublicationHandlers.cs" />
     <Compile Include="Custom\CommandHandlers\ReportingHandlers.cs" />
     <Compile Include="Custom\CommandHandlers\ExhibitionHandlers.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="ViewModels\DissertationViewModels.cs" />
     <Compile Include="ViewModels\ExhibitionViewModels.cs" />
     <Compile Include="ViewModels\Base\ListItemViewModel.cs" />
+    <Compile Include="ViewModels\InventiveApplicationViewModels.cs" />
     <Compile Include="ViewModels\PublicationViewModels.cs" />
     <Compile Include="ViewModels\CathedraViewModels.cs" />
     <Compile Include="ViewModels\ConferenceViewModels.cs" />
@@ -176,6 +178,9 @@
     </Compile>
     <Compile Include="Views\ImagedCommandView.xaml.cs">
       <DependentUpon>ImagedCommandView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorInventiveApplicationsView.xaml.cs">
+      <DependentUpon>ProfessorInventiveApplicationsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Professor\ProfessorPublicationsView.xaml.cs">
       <DependentUpon>ProfessorPublicationsView.xaml</DependentUpon>
@@ -289,6 +294,10 @@
     <Page Include="Views\ImagedCommandView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Professor\ProfessorInventiveApplicationsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Professor\ProfessorPublicationsView.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -33,6 +33,7 @@ namespace MilitaryFaculty.Application.ViewModels
         private readonly IRepository<Professor> _professorRepository;
         private readonly IRepository<Publication> _publicationRepository;
         private readonly IRepository<Dissertation> _dissertationRepository;
+        private readonly IRepository<InventiveApplication> _inventiveApplicationsRepository;
 
         private readonly IReportGenerator _reportGenerator;
         private readonly IExcelReportingService _excelReportingService;
@@ -50,6 +51,7 @@ namespace MilitaryFaculty.Application.ViewModels
                              IRepository<Professor> professorRepository,
                              IRepository<Publication> publicationRepository,
                              IRepository<Dissertation> dissertationRepository,
+                             IRepository<InventiveApplication> inventiveApplicationsRepository,
                              IExcelReportingService excelReportingService,
                              IReportGenerator reportGenerator)
         {
@@ -60,6 +62,7 @@ namespace MilitaryFaculty.Application.ViewModels
             _professorRepository = professorRepository;
             _publicationRepository = publicationRepository;
             _dissertationRepository = dissertationRepository;
+            _inventiveApplicationsRepository = inventiveApplicationsRepository;
             _excelReportingService = excelReportingService;
             _reportGenerator = reportGenerator;
 
@@ -108,7 +111,8 @@ namespace MilitaryFaculty.Application.ViewModels
                                                     _publicationRepository,
                                                     _exhibitionRepository,
                                                     _bookRepository,
-                                                    _dissertationRepository);
+                                                    _dissertationRepository,
+                                                    _inventiveApplicationsRepository);
             }
             else
             {
@@ -141,6 +145,8 @@ namespace MilitaryFaculty.Application.ViewModels
                               new BookNavigation(this),
                               new DissertationHandlers(_dissertationRepository),
                               new DissertationNavigation(this), 
+                              new InventiveApplicationHandlers(_inventiveApplicationsRepository),
+                              new InventiveApplicationNavigation(this), 
                               new NavigationHistory(this),
 
                               new ReportingHandlers(_excelReportingService, _reportGenerator)

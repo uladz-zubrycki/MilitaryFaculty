@@ -250,6 +250,42 @@ namespace MilitaryFaculty.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Одобрена.
+        /// </summary>
+        internal static string InventiveApplicationStatus_Accepted {
+            get {
+                return ResourceManager.GetString("InventiveApplicationStatus_Accepted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подана.
+        /// </summary>
+        internal static string InventiveApplicationStatus_Applied {
+            get {
+                return ResourceManager.GetString("InventiveApplicationStatus_Applied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Заявка на изобретение.
+        /// </summary>
+        internal static string InventiveApplicationType_Invention {
+            get {
+                return ResourceManager.GetString("InventiveApplicationType_Invention", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Заявка на полезную модель.
+        /// </summary>
+        internal static string InventiveApplicationType_UtilityModel {
+            get {
+                return ResourceManager.GetString("InventiveApplicationType_UtilityModel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Аспирант.
         /// </summary>
         internal static string JobPosition_Aspirant {
@@ -543,42 +579,6 @@ namespace MilitaryFaculty.Domain.Resources {
         internal static string PublicationType_Thesis {
             get {
                 return ResourceManager.GetString("PublicationType_Thesis", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to С отрицательным ответом.
-        /// </summary>
-        internal static string ScientificRequestResponce_Negative {
-            get {
-                return ResourceManager.GetString("ScientificRequestResponce_Negative", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to С положительным ответом.
-        /// </summary>
-        internal static string ScientificRequestResponce_Positive {
-            get {
-                return ResourceManager.GetString("ScientificRequestResponce_Positive", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Заявка на изобретение.
-        /// </summary>
-        internal static string ScientificRequestType_Invention {
-            get {
-                return ResourceManager.GetString("ScientificRequestType_Invention", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Заявка на полезную модель.
-        /// </summary>
-        internal static string ScientificRequestType_UtilityModel {
-            get {
-                return ResourceManager.GetString("ScientificRequestType_UtilityModel", resourceCulture);
             }
         }
         
