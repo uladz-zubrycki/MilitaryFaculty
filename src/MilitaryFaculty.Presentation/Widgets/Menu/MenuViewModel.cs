@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 using MilitaryFaculty.Presentation.Annotations;
+using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Widgets.Menu
@@ -18,7 +20,10 @@ namespace MilitaryFaculty.Presentation.Widgets.Menu
             }
 
             Items = items.ToList();
+            ShowCommand = new Command(Show);
         }
+
+        public ICommand ShowCommand { get; set; }
 
         public IList<MenuItemViewModel> Items { get; private set; }
 
@@ -26,6 +31,11 @@ namespace MilitaryFaculty.Presentation.Widgets.Menu
         {
             get { return _isOpen; }
             set { SetValue(() => _isOpen, value); }
+        }
+
+        private void Show()
+        {
+            IsOpen = true;
         }
     }
 }

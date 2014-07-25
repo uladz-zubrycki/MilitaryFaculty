@@ -119,21 +119,13 @@ namespace MilitaryFaculty.Application.ViewModels
             public Header(Professor model) : base(model)
             {
                 ProfessorMenu = CreateProfessorMenu();
-                ShowMenuCommand = new Command(ShowMenu);
             }
 
             public MenuViewModel ProfessorMenu { get; private set; }
 
-            public ICommand ShowMenuCommand { get; private set; }
-
             public string FullName
             {
                 get { return Model.FullName.ToString(); }
-            }
-
-            private void ShowMenu()
-            {
-                ProfessorMenu.IsOpen = true;
             }
 
             private MenuViewModel CreateProfessorMenu()
@@ -506,8 +498,8 @@ namespace MilitaryFaculty.Application.ViewModels
             private ObservableCollection<CouncilParticipationView.ListItem> InitializeItems()
             {
                 var councilParticipations = Model.CouncilsParticipations
-                                       .Select(CouncilParticipationView.ListItem.FromModel)
-                                       .ToList();
+                                                 .Select(CouncilParticipationView.ListItem.FromModel)
+                                                 .ToList();
 
                 var result = new ObservableCollection<CouncilParticipationView.ListItem>(councilParticipations);
                 result.CollectionChanged += (sender, args) => OnPropertyChanged("CouncilParicipationsCount");

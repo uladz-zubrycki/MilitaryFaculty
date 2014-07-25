@@ -3,13 +3,18 @@
                     xmlns:vm="clr-namespace:MilitaryFaculty.Presentation.ViewModels;assembly=MilitaryFaculty.Presentation"
                     xmlns:markup="clr-namespace:MilitaryFaculty.Presentation.Markup;assembly=MilitaryFaculty.Presentation"
                     xmlns:custom="clr-namespace:MilitaryFaculty.Application.Custom"
-                    xmlns:views="clr-namespace:MilitaryFaculty.Application.Views">
+                    xmlns:views="clr-namespace:MilitaryFaculty.Application.Views"
+                    xmlns:menu="clr-namespace:MilitaryFaculty.Presentation.Widgets.Menu;assembly=MilitaryFaculty.Presentation">
     <custom:GenericTemplateSelector x:Key="TemplateSelector" />
 
     <DataTemplate DataType="{x:Type vm:ImagedCommandViewModel}">
         <views:ImagedCommand />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type menu:MenuViewModel}">
+        <views:EntityMenu />
+    </DataTemplate>
+    
     <DataTemplate DataType="{x:Type vm:ViewModel}">
         <views:DefaultView />
     </DataTemplate>
