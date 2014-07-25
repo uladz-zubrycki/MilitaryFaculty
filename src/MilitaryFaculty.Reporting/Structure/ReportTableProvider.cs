@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Reporting.Structure.XmlDomain;
 
-namespace MilitaryFaculty.Reporting
+namespace MilitaryFaculty.Reporting.Structure
 {
     public class ReportTableProvider : IReportTableProvider
     {

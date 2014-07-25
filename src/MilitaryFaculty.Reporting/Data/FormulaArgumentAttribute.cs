@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MilitaryFaculty.Reporting
+namespace MilitaryFaculty.Reporting.Data
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class FormulaArgumentAttribute : Attribute

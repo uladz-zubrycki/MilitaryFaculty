@@ -20,24 +20,24 @@ namespace MilitaryFaculty.Reporting
             _reportDataProvider = reportDataProvider;
         }
 
-        public Report GenerateFacultyReport(TimeInterval interval)
+        public Reporting.Report.Report GenerateFacultyReport(TimeInterval interval)
         {
             _reportDataProvider.ReportDataProvidersContainer.SetFacultyModificator(interval);
-            return new Report("Факультет", _reportTableResolver(typeof (Cathedra)), _formulaProvider,
+            return new Reporting.Report.Report("Факультет", _reportTableResolver(typeof (Cathedra)), _formulaProvider,
                 _reportDataProvider);
         }
 
-        public Report GenerateCathedraReport(Cathedra cathedra, TimeInterval interval)
+        public Reporting.Report.Report GenerateCathedraReport(Cathedra cathedra, TimeInterval interval)
         {
             _reportDataProvider.ReportDataProvidersContainer.SetCathedraModificator(cathedra, interval);
-            return new Report(cathedra.Name, _reportTableResolver(typeof (Cathedra)), _formulaProvider,
+            return new Reporting.Report.Report(cathedra.Name, _reportTableResolver(typeof (Cathedra)), _formulaProvider,
                 _reportDataProvider);
         }
 
-        public Report GenerateProfessorReport(Professor professor, TimeInterval interval)
+        public Reporting.Report.Report GenerateProfessorReport(Professor professor, TimeInterval interval)
         {
             _reportDataProvider.ReportDataProvidersContainer.SetProfessorModificator(professor, interval);
-            return new Report(professor.FullName.ToString(), _reportTableResolver(typeof (Professor)), _formulaProvider,
+            return new Reporting.Report.Report(professor.FullName.ToString(), _reportTableResolver(typeof (Professor)), _formulaProvider,
                 _reportDataProvider);
         }
     }

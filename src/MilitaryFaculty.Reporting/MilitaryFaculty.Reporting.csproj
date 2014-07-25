@@ -83,7 +83,8 @@
     <Compile Include="Data\DataProviders\ResearchesDataProvider.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\ReportDataProvider.cs" />
-    <Compile Include="FormulaArgumentAttribute.cs" />
+    <Compile Include="Data\FormulaArgumentAttribute.cs" />
+    <Compile Include="Report\ReportTable.cs" />
     <Compile Include="TimeInterval.cs" />
     <Compile Include="Excel\ExcelReportingService.cs" />
     <Compile Include="Excel\ExcelWriter.cs" />
@@ -93,18 +94,17 @@
     <Compile Include="Structure\FormulaProvider.cs" />
     <Compile Include="Structure\IFormulaProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IReportTableProvider.cs" />
+    <Compile Include="Structure\IReportTableProvider.cs" />
     <Compile Include="ReportGenerator.cs" />
-    <Compile Include="ReportTableProvider.cs" />
-    <Compile Include="ReportRow.cs" />
-    <Compile Include="ReportGroup.cs" />
-    <Compile Include="ReportTable.cs" />
+    <Compile Include="Structure\ReportTableProvider.cs" />
+    <Compile Include="Report\ReportRow.cs" />
+    <Compile Include="Report\ReportGroup.cs" />
     <Compile Include="Structure\XmlDomain\XArgument.cs" />
     <Compile Include="Structure\XmlDomain\XCoefficient.cs" />
     <Compile Include="Structure\XmlDomain\XFormula.cs" />
     <Compile Include="Structure\XmlDomain\XReportTable.cs" />
     <Compile Include="Structure\XmlDomain\XReportTableGroup.cs" />
-    <Compile Include="Report.cs" />
+    <Compile Include="Report\Report.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MilitaryFaculty.Common\MilitaryFaculty.Common.csproj">

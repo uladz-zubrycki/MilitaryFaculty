@@ -4,6 +4,7 @@ using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Reporting;
 using MilitaryFaculty.Reporting.Excel;
+using MilitaryFaculty.Reporting.Report;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
