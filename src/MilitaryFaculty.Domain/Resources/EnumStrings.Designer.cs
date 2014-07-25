@@ -466,24 +466,6 @@ namespace MilitaryFaculty.Domain.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Военно-научное сопровождение проведено.
-        /// </summary>
-        internal static string MilitaryScientificSupportState_Completed {
-            get {
-                return ResourceManager.GetString("MilitaryScientificSupportState_Completed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Военно-научное сопровождение не проведено.
-        /// </summary>
-        internal static string MilitaryScientificSupportState_NotCompleted {
-            get {
-                return ResourceManager.GetString("MilitaryScientificSupportState_NotCompleted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Специализированный совет по защите диссертаций.
         /// </summary>
         internal static string ParticipationPlace_DefenceOfDissertationCounsil {
@@ -579,6 +561,24 @@ namespace MilitaryFaculty.Domain.Resources {
         internal static string PublicationType_Thesis {
             get {
                 return ResourceManager.GetString("PublicationType_Thesis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не проведено.
+        /// </summary>
+        internal static string ResearchMaintainState_NotPerformed {
+            get {
+                return ResourceManager.GetString("ResearchMaintainState_NotPerformed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Проведено.
+        /// </summary>
+        internal static string ResearchMaintainState_Performed {
+            get {
+                return ResourceManager.GetString("ResearchMaintainState_Performed", resourceCulture);
             }
         }
         

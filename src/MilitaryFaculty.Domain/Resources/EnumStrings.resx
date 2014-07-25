@@ -252,12 +252,6 @@
   <data name="MilitaryScientificSocietyOrganization_None" xml:space="preserve">
     <value>Работа научного кружка курсантов (студентов) не организована</value>
   </data>
-  <data name="MilitaryScientificSupportState_Completed" xml:space="preserve">
-    <value>Военно-научное сопровождение проведено</value>
-  </data>
-  <data name="MilitaryScientificSupportState_NotCompleted" xml:space="preserve">
-    <value>Военно-научное сопровождение не проведено</value>
-  </data>
   <data name="ParticipationPlace_DefenceOfDissertationCounsil" xml:space="preserve">
     <value>Специализированный совет по защите диссертаций</value>
   </data>
@@ -290,6 +284,12 @@
   </data>
   <data name="PublicationType_Thesis" xml:space="preserve">
     <value>Тезис докладов</value>
+  </data>
+  <data name="ResearchMaintainState_NotPerformed" xml:space="preserve">
+    <value>Не проведено</value>
+  </data>
+  <data name="ResearchMaintainState_Performed" xml:space="preserve">
+    <value>Проведено</value>
   </data>
   <data name="SuggestionState_Accepted" xml:space="preserve">
     <value>Принята</value>

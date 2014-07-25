@@ -22,9 +22,10 @@ namespace MilitaryFaculty.Application.ViewModels
 
             protected override IEnumerable<ViewModel<Research>> GetViewModels()
             {
-                return new[]
+                return new ViewModel<Research>[]
                        {
-                           new MainInfo(Model)
+                           new MainInfo(Model),
+                           new ExtraInfo(Model)
                        };
             }
         }
@@ -48,9 +49,10 @@ namespace MilitaryFaculty.Application.ViewModels
 
             protected override IEnumerable<ViewModel<Research>> GetViewModels()
             {
-                return new[]
+                return new ViewModel<Research>[]
                        {
-                           new MainInfo(Model)
+                           new MainInfo(Model),
+                           new ExtraInfo(Model)
                        };
             }
         }
@@ -80,6 +82,27 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 get { return Model.CreatedAt; }
                 set { SetModelProperty(m => m.CreatedAt, value); }
+            }
+        }
+
+        internal class ExtraInfo : EntityViewModel<Research>
+        {
+            public ExtraInfo(Research model)
+                : base(model)
+            {
+                this.Editable(GlobalCommands.Save<Research>());
+            }
+
+            public override string Title
+            {
+                get { return "Дополнительная информация"; }
+            }
+
+            [EnumProperty(Label = "Научное сопровождение:")]
+            public ResearchMaintainState Status
+            {
+                get { return Model.MaintainState; }
+                set { SetModelProperty(m => m.MaintainState, value); }
             }
         }
 
