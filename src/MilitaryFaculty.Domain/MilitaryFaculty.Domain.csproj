@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="AcademicDegree.cs" />
     <Compile Include="AcademicRank.cs" />
+    <Compile Include="ApplicationStatus.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="Conference.cs" />
     <Compile Include="EfficiencyProposal.cs" />

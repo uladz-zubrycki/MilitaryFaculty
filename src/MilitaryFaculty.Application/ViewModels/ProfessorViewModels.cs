@@ -698,7 +698,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 get
                 {
                     return GetApplicationsCount(InventiveApplicationType.Invention,
-                                                InventiveApplicationStatus.Applied);
+                                                ApplicationStatus.Applied);
                 }
             }
 
@@ -707,7 +707,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 get
                 {
                     return GetApplicationsCount(InventiveApplicationType.UtilityModel,
-                                                InventiveApplicationStatus.Applied);
+                                                ApplicationStatus.Applied);
                 }
             }
 
@@ -716,7 +716,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 get
                 {
                     return GetApplicationsCount(InventiveApplicationType.Invention,
-                                                InventiveApplicationStatus.Accepted);
+                                                ApplicationStatus.Accepted);
                 }
             }
 
@@ -725,7 +725,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 get
                 {
                     return GetApplicationsCount(InventiveApplicationType.UtilityModel,
-                                                InventiveApplicationStatus.Accepted);
+                                                ApplicationStatus.Accepted);
                 }
             }
 
@@ -780,7 +780,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 }
             }
 
-            private int GetApplicationsCount(InventiveApplicationType type, InventiveApplicationStatus status)
+            private int GetApplicationsCount(InventiveApplicationType type, ApplicationStatus status)
             {
                 return Items.Count(vm => vm.Model.Type == type &&
                                          vm.Model.Status == status);

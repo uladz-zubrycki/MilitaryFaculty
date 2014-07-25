@@ -1,5 +1,7 @@
 ﻿using System;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
+using MilitaryFaculty.Domain.Resources;
 
 namespace MilitaryFaculty.Domain
 {
@@ -10,6 +12,7 @@ namespace MilitaryFaculty.Domain
         public virtual string Text { get; set; }
         public virtual Professor Author { get; set; }
         public virtual DateTime CreatedAt { get; set; }
+        public virtual ApplicationStatus Status { get; set; }
 
         public EfficiencyProposal()
         {

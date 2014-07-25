@@ -135,6 +135,12 @@
   <data name="AcademicRank_None" xml:space="preserve">
     <value>Отсутствует</value>
   </data>
+  <data name="ApplicationStatus_Accepted" xml:space="preserve">
+    <value>Одобрено</value>
+  </data>
+  <data name="ApplicationStatus_Applied" xml:space="preserve">
+    <value>Рассматривается</value>
+  </data>
   <data name="BookType_Schoolbook" xml:space="preserve">
     <value>Учебник</value>
   </data>
@@ -179,12 +185,6 @@
   </data>
   <data name="HistoricalWorkOrganization_None" xml:space="preserve">
     <value>Военно-историческая работа не организована</value>
-  </data>
-  <data name="InventiveApplicationStatus_Accepted" xml:space="preserve">
-    <value>Одобрена</value>
-  </data>
-  <data name="InventiveApplicationStatus_Applied" xml:space="preserve">
-    <value>Подана</value>
   </data>
   <data name="InventiveApplicationType_Invention" xml:space="preserve">
     <value>Заявка на изобретение</value>
