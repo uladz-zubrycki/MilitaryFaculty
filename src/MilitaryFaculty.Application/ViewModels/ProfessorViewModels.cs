@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows.Input;
 using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
@@ -10,7 +9,6 @@ using MilitaryFaculty.Data;
 using MilitaryFaculty.Data.Events;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Attributes;
-using MilitaryFaculty.Presentation.ViewBehaviours;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
@@ -110,11 +108,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public string FullName
             {
                 get { return Model.FullName.ToString(); }
-            }
-
-            public MilitaryRank MilitaryRank
-            {
-                get { return Model.MilitaryRank; }
             }
         }
      
@@ -238,7 +231,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 bookRepository.EntityCreated += OnBookCreated;
                 bookRepository.EntityDeleted += OnBookDeleted;
 
-                Commands.Add(CreateAddCommand());
+                this.Addable(GlobalCommands.BrowseAdd<Book>());
             }
 
             public override string Title
@@ -259,17 +252,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public int TutorialsCount
             {
                 get { return Items.Count(vm => vm.Model.BookType == BookType.Tutorial); }
-            }
-
-            private ImagedCommandViewModel CreateAddCommand()
-            {
-                const string tooltip = "Добавить учебник";
-                const string imageSource = @"..\Content\add.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Book>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             private ObservableCollection<BookView.ListItem> InitializeItems()
@@ -327,7 +309,8 @@ namespace MilitaryFaculty.Application.ViewModels
                 conferenceRepository.EntityCreated += OnConferenceCreated;
                 conferenceRepository.EntityDeleted += OnConferenceDeleted;
 
-                Commands.Add(CreateAddCommand());
+
+                this.Addable(GlobalCommands.BrowseAdd<Conference>());
             }
 
             public ObservableCollection<ConferenceView.ListItem> Items
@@ -343,17 +326,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public int ConferencesCount
             {
                 get { return Items.Count; }
-            }
-
-            private ImagedCommandViewModel CreateAddCommand()
-            {
-                const string tooltip = "Добавить конференцию";
-                const string imageSource = @"..\Content\add.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Conference>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             private ObservableCollection<ConferenceView.ListItem> InitializeItems()
@@ -406,7 +378,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 exhibitionRepository.EntityCreated += OnExhibitionCreated;
                 exhibitionRepository.EntityDeleted += OnExhibitionDeleted;
 
-                Commands.Add(CreateAddCommand());
+                this.Addable(GlobalCommands.BrowseAdd<Exhibition>());
             }
 
             public override string Title
@@ -422,17 +394,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public int ExhibitionsCount
             {
                 get { return Items.Count; }
-            }
-
-            private ImagedCommandViewModel CreateAddCommand()
-            {
-                const string tooltip = "Добавить научную выставку";
-                const string imageSource = @"..\Content\add.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Exhibition>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             private ObservableCollection<ExhibitionView.ListItem> InitializeItems()
@@ -484,7 +445,8 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 dissertationRepository.EntityCreated += OnDissertationCreated;
                 dissertationRepository.EntityDeleted += OnDissertationDeleted;
-                Commands.Add(CreateAddCommand());
+
+                this.Addable(GlobalCommands.BrowseAdd<Dissertation>());
             }
 
             public override string Title
@@ -505,17 +467,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public ObservableCollection<DissertationView.ListItem> Items
             {
                 get { return _items.Value; }
-            }
-
-            private ImagedCommandViewModel CreateAddCommand()
-            {
-                const string tooltip = "Добавить диссертацию";
-                const string imageSource = @"..\Content\add.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Dissertation>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             private ObservableCollection<DissertationView.ListItem> InitializeItems()
@@ -574,7 +525,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 publicationRepository.EntityCreated += OnPublicationCreated;
                 publicationRepository.EntityDeleted += OnPublicationDeleted;
 
-                Commands.Add(CreateAddCommand());
+                this.Addable(GlobalCommands.BrowseAdd<Publication>());
             }
 
             public override string Title
@@ -606,18 +557,7 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 get { return GetPublicationsCount(PublicationType.Thesis); }
             }
-
-            private ImagedCommandViewModel CreateAddCommand()
-            {
-                const string tooltip = "Добавить публикацию";
-                const string imageSource = @"..\Content\add.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Publication>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
-            }
-
+           
             private ObservableCollection<PublicationView.ListItem> InitializeItems()
             {
                 var publications = Model.Publications
@@ -680,7 +620,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 inventiveApplicationRepository.EntityCreated += OnInventiveApplicationCreated;
                 inventiveApplicationRepository.EntityDeleted += OnInventiveApplicationDeleted;
 
-                Commands.Add(CreateAddCommand());
+                this.Addable(GlobalCommands.BrowseAdd<InventiveApplication>());
             }
 
             public override string Title
@@ -727,17 +667,6 @@ namespace MilitaryFaculty.Application.ViewModels
                     return GetApplicationsCount(InventiveApplicationType.UtilityModel,
                                                 InventiveApplicationStatus.Accepted);
                 }
-            }
-
-            private ImagedCommandViewModel CreateAddCommand()
-            {
-                const string tooltip = "Добавить заявку";
-                const string imageSource = @"..\Content\add.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<InventiveApplication>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             private ObservableCollection<InventiveApplicationView.ListItem> InitializeItems()
@@ -804,7 +733,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 efficiencyProposalRepository.EntityCreated += OnEfficiencyProposalCreated;
                 efficiencyProposalRepository.EntityDeleted += OnEfficiencyProposalDeleted;
 
-                Commands.Add(CreateAddCommand());
+                this.Addable(GlobalCommands.BrowseAdd<EfficiencyProposal>());
             }
 
             public override string Title
@@ -820,17 +749,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public ObservableCollection<EfficiencyProposalView.ListItem> Items
             {
                 get { return _items.Value; }
-            }
-
-            private ImagedCommandViewModel CreateAddCommand()
-            {
-                const string tooltip = "Добавить рационализаторское предложение";
-                const string imageSource = @"..\Content\add.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<EfficiencyProposal>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             private ObservableCollection<EfficiencyProposalView.ListItem> InitializeItems()
@@ -883,7 +801,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 researchRepository.EntityCreated += OnResearchCreated;
                 researchRepository.EntityDeleted += OnResearchDeleted;
 
-                Commands.Add(CreateAddCommand());
+                this.Addable(GlobalCommands.BrowseAdd<Research>());
             }
 
             public override string Title
@@ -899,17 +817,6 @@ namespace MilitaryFaculty.Application.ViewModels
             public ObservableCollection<ResearchView.ListItem> Items
             {
                 get { return _items.Value; }
-            }
-
-            private ImagedCommandViewModel CreateAddCommand()
-            {
-                const string tooltip = "Добавить НИР";
-                const string imageSource = @"..\Content\add.png";
-
-                return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Research>(),
-                                                  Model,
-                                                  tooltip,
-                                                  imageSource);
             }
 
             private ObservableCollection<ResearchView.ListItem> InitializeItems()

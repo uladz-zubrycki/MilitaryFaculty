@@ -2,7 +2,6 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:commands="clr-namespace:MilitaryFaculty.Presentation.Commands;assembly=MilitaryFaculty.Presentation"
-        xmlns:c="clr-namespace:MilitaryFaculty.Application.Custom"
         xmlns:application="clr-namespace:MilitaryFaculty.Application"
         Title="Научный рейтинг" Height="550" Width="830"
         WindowStartupLocation="CenterScreen"
@@ -27,13 +26,13 @@
             <Button Style="{StaticResource ImagedButtonStyle}"
                     Command="application:GlobalCommands.BrowseBack">
                 <Image Style="{StaticResource NavigationImageStyle}"
-                       Source="/Content/back.png" />
+                       Source="/Content/images/back.png" />
             </Button>
 
             <Button Style="{StaticResource ImagedButtonStyle}"
                     Command="application:GlobalCommands.BrowseForward">
                 <Image Style="{StaticResource NavigationImageStyle}"
-                       Source="/Content/forward.png" />
+                       Source="/Content/images/forward.png" />
             </Button>
 
             <Button Command="application:GlobalCommands.GenerateReport"

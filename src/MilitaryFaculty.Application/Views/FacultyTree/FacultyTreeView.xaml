@@ -41,7 +41,7 @@
                     IsDefault="True"
                     Command="{Binding SearchCommand}">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="..\..\Content\search.png"
+                    <Image Source="\Content\images\search.png"
                            Width="13"
                            Margin="0 0 5 0" />
                     <TextBlock Text="Искать" />

@@ -59,7 +59,7 @@ namespace MilitaryFaculty.Application.ViewModels
         private ImagedCommandViewModel CreateAddProffessorCommand()
         {
             const string tooltip = "Добавить преподавателя";
-            const string imageSource = @"..\Content\add-user.png";
+            const string imageSource = @"\Content\images\add-user.png";
 
             return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Professor>(),
                                               Model,
