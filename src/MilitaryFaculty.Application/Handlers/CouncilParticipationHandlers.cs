@@ -40,18 +40,18 @@ namespace MilitaryFaculty.Application.Handlers
                                            OnBrowseAdd);
 
             commands.AddCommand<CouncilParticipation>(GlobalCommands.BrowseDetails<CouncilParticipation>(),
-                                                     OnBrowseDetails);
+                                                      OnBrowseDetails);
         }
 
-        private void OnBrowseAdd(Professor author)
+        private void OnBrowseAdd(Professor participant)
         {
-            if (author == null)
+            if (participant == null)
             {
-                throw new ArgumentNullException("author");
+                throw new ArgumentNullException("participant");
             }
 
-            var model = new Research { Author = author };
-            ViewModel.WorkWindow = new ResearchView.Add(model);
+            var model = new CouncilParticipation { Participant = participant };
+            ViewModel.WorkWindow = new CouncilParticipationView.Add(model);
         }
 
         private void OnBrowseDetails(CouncilParticipation participation)

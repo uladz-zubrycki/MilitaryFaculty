@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:commands="clr-namespace:MilitaryFaculty.Presentation.Commands;assembly=MilitaryFaculty.Presentation"
         xmlns:application="clr-namespace:MilitaryFaculty.Application"
-        Title="Научный рейтинг" Height="550" Width="830"
+        Title="Научный рейтинг" Height="600" MinWidth="870"
         WindowStartupLocation="CenterScreen"
         commands:RoutedBinding.RoutedCommands="{Binding RoutedCommands}">
     <Grid>

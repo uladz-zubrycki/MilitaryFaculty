@@ -506,8 +506,8 @@ namespace MilitaryFaculty.Application.ViewModels
             private ObservableCollection<CouncilParticipationView.ListItem> InitializeItems()
             {
                 var councilParticipations = Model.CouncilsParticipations
-                                       .Select(CouncilParticipationView.ListItem.FromModel)
-                                       .ToList();
+                                                 .Select(CouncilParticipationView.ListItem.FromModel)
+                                                 .ToList();
 
                 var result = new ObservableCollection<CouncilParticipationView.ListItem>(councilParticipations);
                 result.CollectionChanged += (sender, args) => OnPropertyChanged("CouncilParicipationsCount");
