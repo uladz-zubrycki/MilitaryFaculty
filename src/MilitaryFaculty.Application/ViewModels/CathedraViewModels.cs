@@ -2,6 +2,7 @@
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
+using MilitaryFaculty.Presentation.Widgets.Menu;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
@@ -9,7 +10,10 @@ namespace MilitaryFaculty.Application.ViewModels
     {
         internal class Root : EntityRootViewModel<Cathedra>
         {
-            public Root(Cathedra model) : base(model) { }
+            public Root(Cathedra model) : base(model)
+            {
+                HeaderViewModel = new Header(model);
+            }
 
             protected override IEnumerable<ViewModel<Cathedra>> GetViewModels()
             {
@@ -17,6 +21,30 @@ namespace MilitaryFaculty.Application.ViewModels
                        {
                            new MainInfo(Model)
                        };
+            }
+        }
+
+        internal class Header: ViewModel<Cathedra>
+        {
+            public Header(Cathedra model) : base(model)
+            {
+                CathedraMenu = CreateCathedraMenu();
+            }
+
+            public MenuViewModel CathedraMenu { get; private set; }
+
+            private MenuViewModel CreateCathedraMenu()
+            {
+                var menuItems =
+                    new[]
+                    {
+                        new MenuItemViewModel("Создать отчёт", GlobalCommands.GenerateReport, Model),
+                    };
+
+                var menu = new MenuViewModel(menuItems);
+
+                return menu;
+
             }
         }
 

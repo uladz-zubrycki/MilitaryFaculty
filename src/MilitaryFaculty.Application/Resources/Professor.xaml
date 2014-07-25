@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:MilitaryFaculty.Application.ViewModels"
+                    xmlns:views="clr-namespace:MilitaryFaculty.Application.Views">
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Header}">
+        <views:Header />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Conferences}">
+        <views:Conferences />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Publications}">
+        <views:Publications />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Books}">
+        <views:Books />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Exhibitions}">
+        <views:Exhibitions />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProfessorView+CouncilParticipations}">
+        <views:CouncilParticipations />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Dissertations}">
+        <views:Dissertations />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProfessorView+InventiveApplications}">
+        <views:InventiveApplications />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:ProfessorView+EfficiencyProposals}">
+        <views:EfficiencyProposals />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Researches}">
+        <views:Researches />
+    </DataTemplate>
+</ResourceDictionary>

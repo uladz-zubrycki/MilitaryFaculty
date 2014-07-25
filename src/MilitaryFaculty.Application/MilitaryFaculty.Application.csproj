@@ -123,174 +123,157 @@
     <Compile Include="ViewModels\ConferenceViewModels.cs" />
     <Compile Include="ViewModels\ResearchViewModels.cs" />
     <Compile Include="ViewModels\StartupViewModel.cs" />
-    <Compile Include="Views\Common\DefaultView.xaml.cs">
-      <DependentUpon>DefaultView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\Default.xaml.cs">
+      <DependentUpon>Default.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\EntityRootView.xaml.cs">
-      <DependentUpon>EntityRootView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\Root.xaml.cs">
+      <DependentUpon>Root.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\EntityView.xaml.cs">
-      <DependentUpon>EntityView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\Properties.xaml.cs">
+      <DependentUpon>Properties.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\ListItemView.xaml.cs">
-      <DependentUpon>ListItemView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\ListItem.xaml.cs">
+      <DependentUpon>ListItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\ListView.xaml.cs">
-      <DependentUpon>ListView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\PropertyViews\IntPropertyEdit.xaml.cs">
+      <DependentUpon>IntPropertyEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\PropertyViews\IntPropertyEditView.xaml.cs">
-      <DependentUpon>IntPropertyEditView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\PropertyViews\IntProperty.xaml.cs">
+      <DependentUpon>IntProperty.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\PropertyViews\IntPropertyView.xaml.cs">
-      <DependentUpon>IntPropertyView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\PropertyViews\DatePropertyEdit.xaml.cs">
+      <DependentUpon>DatePropertyEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\PropertyViews\DatePropertyEditView.xaml.cs">
-      <DependentUpon>DatePropertyEditView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\PropertyViews\EnumPropertyEdit.xaml.cs">
+      <DependentUpon>EnumPropertyEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\PropertyViews\EnumPropertyEditView.xaml.cs">
-      <DependentUpon>EnumPropertyEditView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\PropertyViews\TextPropertyEdit.xaml.cs">
+      <DependentUpon>TextPropertyEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\PropertyViews\TextPropertyEditView.xaml.cs">
-      <DependentUpon>TextPropertyEditView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\PropertyViews\DateProperty.xaml.cs">
+      <DependentUpon>DateProperty.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\PropertyViews\DatePropertyView.xaml.cs">
-      <DependentUpon>DatePropertyView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\PropertyViews\EnumProperty.xaml.cs">
+      <DependentUpon>EnumProperty.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\PropertyViews\EnumPropertyView.xaml.cs">
-      <DependentUpon>EnumPropertyView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\PropertyViews\TextProperty.xaml.cs">
+      <DependentUpon>TextProperty.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\PropertyViews\TextPropertyView.xaml.cs">
-      <DependentUpon>TextPropertyView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Common\AddEntityView.xaml.cs">
-      <DependentUpon>AddEntityView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cathedra\CathedraInfoView.xaml.cs">
-      <DependentUpon>CathedraInfoView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cathedra\CathedraView.xaml.cs">
-      <DependentUpon>CathedraView.xaml</DependentUpon>
+    <Compile Include="Views\Entity\Add.xaml.cs">
+      <DependentUpon>Add.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EntityMenu.xaml.cs">
       <DependentUpon>EntityMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorCouncilParticipations.xaml.cs">
-      <DependentUpon>ProfessorCouncilParticipations.xaml</DependentUpon>
+    <Compile Include="Views\Professor\CouncilParticipations.xaml.cs">
+      <DependentUpon>CouncilParticipations.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorEfficiencyProposals.xaml.cs">
-      <DependentUpon>ProfessorEfficiencyProposals.xaml</DependentUpon>
+    <Compile Include="Views\Professor\EfficiencyProposals.xaml.cs">
+      <DependentUpon>EfficiencyProposals.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorDissertations.xaml.cs">
-      <DependentUpon>ProfessorDissertations.xaml</DependentUpon>
+    <Compile Include="Views\Professor\Dissertations.xaml.cs">
+      <DependentUpon>Dissertations.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorBooks.xaml.cs">
-      <DependentUpon>ProfessorBooks.xaml</DependentUpon>
+    <Compile Include="Views\Professor\Books.xaml.cs">
+      <DependentUpon>Books.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorExhibitions.xaml.cs">
-      <DependentUpon>ProfessorExhibitions.xaml</DependentUpon>
+    <Compile Include="Views\Professor\Exhibitions.xaml.cs">
+      <DependentUpon>Exhibitions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorHeader.xaml.cs">
-      <DependentUpon>ProfessorHeader.xaml</DependentUpon>
+    <Compile Include="Views\Professor\Header.xaml.cs">
+      <DependentUpon>Header.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ImagedCommand.xaml.cs">
       <DependentUpon>ImagedCommand.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorInventiveApplications.xaml.cs">
-      <DependentUpon>ProfessorInventiveApplications.xaml</DependentUpon>
+    <Compile Include="Views\Professor\InventiveApplications.xaml.cs">
+      <DependentUpon>InventiveApplications.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorResearches.xaml.cs">
-      <DependentUpon>ProfessorResearches.xaml</DependentUpon>
+    <Compile Include="Views\Professor\Researches.xaml.cs">
+      <DependentUpon>Researches.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorPublications.xaml.cs">
-      <DependentUpon>ProfessorPublications.xaml</DependentUpon>
+    <Compile Include="Views\Professor\Publications.xaml.cs">
+      <DependentUpon>Publications.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorConferences.xaml.cs">
-      <DependentUpon>ProfessorConferences.xaml</DependentUpon>
+    <Compile Include="Views\Professor\Conferences.xaml.cs">
+      <DependentUpon>Conferences.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\About.xaml.cs">
-      <DependentUpon>About.xaml</DependentUpon>
+    <Compile Include="Views\Startup.xaml.cs">
+      <DependentUpon>Startup.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resources\CathedraResources.xaml">
+    <Page Include="Resources\Cathedra.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\EntityResources.xaml">
+    <Page Include="Resources\Entity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\FacultyTreeResources.xaml">
+    <Page Include="Resources\FacultyTree.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\CommonResources.xaml">
+    <Page Include="Resources\Common.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\ApplicationResources.xaml">
+    <Page Include="Resources\Application.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\ProfessorResources.xaml">
+    <Page Include="Resources\Professor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Common\DefaultView.xaml">
+    <Page Include="Views\Entity\Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Common\EntityRootView.xaml">
+    <Page Include="Views\Entity\Root.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Common\EntityView.xaml">
+    <Page Include="Views\Entity\Properties.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Common\ListItemView.xaml">
+    <Page Include="Views\Entity\ListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Common\ListView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Common\PropertyViews\IntPropertyEditView.xaml">
+    <Page Include="Views\Entity\PropertyViews\IntPropertyEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Common\PropertyViews\IntPropertyView.xaml">
+    <Page Include="Views\Entity\PropertyViews\IntProperty.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Common\PropertyViews\DatePropertyEditView.xaml">
+    <Page Include="Views\Entity\PropertyViews\DatePropertyEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Common\PropertyViews\EnumPropertyEditView.xaml">
+    <Page Include="Views\Entity\PropertyViews\EnumPropertyEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Common\PropertyViews\TextPropertyEditView.xaml">
+    <Page Include="Views\Entity\PropertyViews\TextPropertyEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Common\PropertyViews\DatePropertyView.xaml">
+    <Page Include="Views\Entity\PropertyViews\DateProperty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Common\PropertyViews\EnumPropertyView.xaml">
+    <Page Include="Views\Entity\PropertyViews\EnumProperty.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Common\PropertyViews\TextPropertyView.xaml">
+    <Page Include="Views\Entity\PropertyViews\TextProperty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Common\AddEntityView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cathedra\CathedraInfoView.xaml">
+    <Page Include="Views\Entity\Add.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -298,27 +281,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Professor\ProfessorCouncilParticipations.xaml">
+    <Page Include="Views\Professor\CouncilParticipations.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Professor\ProfessorEfficiencyProposals.xaml">
+    <Page Include="Views\Professor\EfficiencyProposals.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Professor\ProfessorDissertations.xaml">
+    <Page Include="Views\Professor\Dissertations.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Professor\ProfessorBooks.xaml">
+    <Page Include="Views\Professor\Books.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Professor\ProfessorExhibitions.xaml">
+    <Page Include="Views\Professor\Exhibitions.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Professor\ProfessorHeader.xaml">
+    <Page Include="Views\Professor\Header.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -326,23 +309,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Professor\ProfessorInventiveApplications.xaml">
+    <Page Include="Views\Professor\InventiveApplications.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Professor\ProfessorResearches.xaml">
+    <Page Include="Views\Professor\Researches.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Professor\ProfessorPublications.xaml">
+    <Page Include="Views\Professor\Publications.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Cathedra\CathedraView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\FacultyTree\FacultyTreeView.xaml">
+    <Page Include="Views\FacultyTree.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -359,18 +338,18 @@
     <Compile Include="ViewModels\FacultyTreeView\CathedraTreeItemViewModel.cs" />
     <Compile Include="ViewModels\FacultyTreeView\FacultyTreeViewModel.cs" />
     <Compile Include="ViewModels\FacultyTreeView\ProfessorTreeItemViewModel.cs" />
-    <Compile Include="Views\FacultyTree\FacultyTreeView.xaml.cs">
-      <DependentUpon>FacultyTreeView.xaml</DependentUpon>
+    <Compile Include="Views\FacultyTree.xaml.cs">
+      <DependentUpon>FacultyTree.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Professor\ProfessorConferences.xaml">
+    <Page Include="Views\Professor\Conferences.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\About.xaml">
+    <Page Include="Views\Startup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -496,6 +475,9 @@
     <SplashScreen Include="Content\images\splash-screen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Cathedra\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

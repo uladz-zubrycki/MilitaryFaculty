@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="MilitaryFaculty.Application.Views.ListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="0.7*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock
+            Grid.Column="0"
+            Style="{StaticResource ValueTextBlock}"
+            Text="{Binding PrimaryInfo}" />
+
+        <TextBlock
+            Grid.Column="1"
+            Style="{StaticResource ValueMultilineTextblock}"
+            Text="{Binding SecondaryInfo}" />
+
+        <Grid.ToolTip>
+            <ToolTip Placement="Bottom"
+                     HorizontalContentAlignment="Center"
+                     ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                <ContentControl
+                    Content="{Binding TooltipViewModel}"
+                    ContentTemplateSelector="{StaticResource TemplateSelector}" />
+            </ToolTip>
+        </Grid.ToolTip>
+    </Grid>
+</UserControl>
