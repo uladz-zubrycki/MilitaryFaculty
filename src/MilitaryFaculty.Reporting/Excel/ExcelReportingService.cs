@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using MilitaryFaculty.Common;
+using MilitaryFaculty.Reporting.Report;
 using OfficeOpenXml;
 
 namespace MilitaryFaculty.Reporting.Excel
 {
     public class ExcelReportingService : IExcelReportingService
     {
-        public void ExportReport(string filePath, Report reportObject)
+        public void ExportReport(string filePath, Report.Report reportObject)
         {
             if (String.IsNullOrWhiteSpace(filePath))
             {
@@ -34,7 +35,7 @@ namespace MilitaryFaculty.Reporting.Excel
             }
         }
 
-        public void ExportReport(string filePath, ICollection<Report> reportObjects)
+        public void ExportReport(string filePath, ICollection<Report.Report> reportObjects)
         {
             if (String.IsNullOrWhiteSpace(filePath))
             {
@@ -49,7 +50,7 @@ namespace MilitaryFaculty.Reporting.Excel
                 throw new ArgumentException("reportObject");
             }
 
-            var curObject = Report.Unify(reportObjects);
+            var curObject = Report.Report.Unify(reportObjects);
 
             ExportReport(filePath, curObject);
         }
