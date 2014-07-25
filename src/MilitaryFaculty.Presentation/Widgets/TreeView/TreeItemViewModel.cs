@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using MilitaryFaculty.Common;
+using MilitaryFaculty.Presentation.Annotations;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Presentation.Widgets.TreeView
 {
-    // ReSharper disable UnassignedField.Compiler
     public class TreeItemViewModel<T> : ViewModel<T>, ITreeItemViewModel
         where T : class
     {
@@ -16,14 +16,9 @@ namespace MilitaryFaculty.Presentation.Widgets.TreeView
         private static readonly ITreeItemViewModel FakeChild = new TreeItemViewModel<object>();
 
         protected readonly TreeViewModel Owner;
-        private bool _isExpanded; // accessed via SetValue method
-        private bool _isSelected; // accessed via SetValue method
-
-        private bool ChildrenLoaded
-        {
-            get { return !(Children.Contains(FakeChild)); }
-        }
-
+        [UsedImplicitly] private bool _isExpanded; 
+        [UsedImplicitly] private bool _isSelected; 
+        
         private TreeItemViewModel()
         {
             Owner = null;
@@ -58,6 +53,11 @@ namespace MilitaryFaculty.Presentation.Widgets.TreeView
 
         public ITreeItemViewModel Parent { get; private set; }
         public ObservableCollection<ITreeItemViewModel> Children { get; private set; }
+
+        private bool ChildrenLoaded
+        {
+            get { return !(Children.Contains(FakeChild)); }
+        }
 
         object ITreeItemViewModel.Model
         {
@@ -135,5 +135,4 @@ namespace MilitaryFaculty.Presentation.Widgets.TreeView
             Children.AddRange(LoadChildren());
         }
     }
-    // ReSharper restore UnassignedField.Compiler
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MilitaryFaculty.Presentation.Annotations;
 using MilitaryFaculty.Presentation.ViewModels;
 using MilitaryFaculty.Presentation.Widgets.TreeView.Events;
 
@@ -8,7 +9,7 @@ namespace MilitaryFaculty.Presentation.Widgets.TreeView
 {
     public abstract class TreeViewModel : ViewModel, ITreeViewModel
     {
-        private ITreeItemViewModel _selected;
+        [UsedImplicitly] private ITreeItemViewModel _selected;
 
         public abstract IEnumerable<ITreeItemViewModel> Items { get; }
 

@@ -7,7 +7,9 @@ namespace MilitaryFaculty.Presentation.ViewModels
     {
         public string ImageSource { get; private set; }
 
-        public ImagedCommandViewModel(ICommand model, string tooltip, string imageSrc)
+        public ImagedCommandViewModel(ICommand model,
+                                      string tooltip,
+                                      string imageSrc)
             : base(model, tooltip)
         {
             if (imageSrc == null)
@@ -18,7 +20,10 @@ namespace MilitaryFaculty.Presentation.ViewModels
             ImageSource = imageSrc;
         }
 
-        public ImagedCommandViewModel(ICommand model, object parameter, string tooltip, string imageSrc)
+        public ImagedCommandViewModel(ICommand model,
+                                      object parameter,
+                                      string tooltip,
+                                      string imageSrc)
             : base(model, parameter, tooltip)
         {
             if (imageSrc == null)

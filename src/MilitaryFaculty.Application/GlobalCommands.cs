@@ -26,6 +26,7 @@ namespace MilitaryFaculty.Application
         public static readonly RoutedCommand GenerateReport = new RoutedCommand();
         public static readonly RoutedCommand BrowseForward = new RoutedCommand();
         public static readonly RoutedCommand BrowseBack = new RoutedCommand();
+        public static readonly RoutedCommand DismissProfessor = new RoutedCommand();
 
         public static RoutedCommand Add<T>()
         {
@@ -90,6 +91,7 @@ namespace MilitaryFaculty.Application
                                               .Union(new[]
                                                      {
                                                          GenerateReport,
+                                                         DismissProfessor,
                                                          BrowseBack,
                                                          BrowseForward
                                                      })

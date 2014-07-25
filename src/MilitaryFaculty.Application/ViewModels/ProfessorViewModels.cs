@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
+using System.Windows.Media.Media3D;
 using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
 using MilitaryFaculty.Common;
@@ -9,7 +11,9 @@ using MilitaryFaculty.Data;
 using MilitaryFaculty.Data.Events;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Attributes;
+using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Presentation.ViewModels;
+using MilitaryFaculty.Presentation.Widgets.Menu;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
@@ -103,11 +107,37 @@ namespace MilitaryFaculty.Application.ViewModels
 
         internal class Header : ViewModel<Professor>
         {
-            public Header(Professor model) : base(model) { }
+            public Header(Professor model) : base(model)
+            {
+                ProfessorMenu = CreateProfessorMenu();
+                ShowMenuCommand = new Command(ShowMenu);
+            }
+
+            public MenuViewModel ProfessorMenu { get; private set; }
+
+            public ICommand ShowMenuCommand { get; private set; }
 
             public string FullName
             {
                 get { return Model.FullName.ToString(); }
+            }
+
+            private void ShowMenu()
+            {
+                ProfessorMenu.IsOpen = true;
+            }
+
+            private MenuViewModel CreateProfessorMenu()
+            {
+                var menuItems =
+                    new[]
+                    {
+                        new MenuItemViewModel("Создать отчёт", GlobalCommands.GenerateReport, Model),
+                        new MenuItemViewModel("Уволить", GlobalCommands.DismissProfessor, Model),
+                        new MenuItemViewModel("Удалить", GlobalCommands.Remove<Professor>(), Model)
+                    };
+
+                return new MenuViewModel(menuItems);
             }
         }
      

@@ -60,6 +60,7 @@
     <Compile Include="Markup\IntToStringConverter.cs" />
     <Compile Include="Markup\ParametrizedConverter.cs" />
     <Compile Include="Extensions\ServiceProviderExtensions.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewBehaviours\EditableViewBehaviour.cs" />
     <Compile Include="ViewBehaviours\IViewBehaviour.cs" />
     <Compile Include="ViewBehaviours\HasCommandViewBehaviour.cs" />
@@ -78,6 +79,8 @@
     <Compile Include="ViewModels\PropertyViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="ViewModels\ViewModel{T}.cs" />
+    <Compile Include="Widgets\Menu\MenuViewModel.cs" />
+    <Compile Include="Widgets\Menu\MenuItemViewModel.cs" />
     <Compile Include="Widgets\TreeView\Events\SelectedChangedEventArgs.cs" />
     <Compile Include="Widgets\TreeView\ITreeItemViewModel.cs" />
     <Compile Include="Widgets\TreeView\ITreeViewModel.cs" />
