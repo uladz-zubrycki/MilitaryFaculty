@@ -7,7 +7,7 @@
     <custom:GenericTemplateSelector x:Key="TemplateSelector" />
 
     <DataTemplate DataType="{x:Type vm:ImagedCommandViewModel}">
-        <views:ImagedCommandView />
+        <views:ImagedCommand />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ViewModel}">
@@ -329,5 +329,49 @@
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemStyle}" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="FontAwesomeTextBlock">
+        <Setter Property="FontFamily" Value="/Content/fonts/#FontAwesome" />
+        <Setter Property="FontSize" Value="21" />
+        <Setter Property="Foreground" Value="#404040"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseDirectlyOver" Value="True">
+                <Setter Property="FontSize" Value="23" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="EntityMenuButton">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Padding" Value="0 8"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="_PART_GRID" 
+                                  Background="{TemplateBinding Background}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                  VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <TextBlock Text="{TemplateBinding Content}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            Margin="{TemplateBinding Padding}"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            Cursor="{TemplateBinding Property=Cursor}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="_PART_GRID" Value="CornflowerBlue"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding IsEnabled}" Value="False">
+                            <Setter Property="Foreground" Value="DimGray"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

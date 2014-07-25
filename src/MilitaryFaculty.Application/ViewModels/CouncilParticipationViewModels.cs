@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Input;
 using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
-using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Attributes;
-using MilitaryFaculty.Presentation.ViewBehaviours;
 using MilitaryFaculty.Presentation.ViewModels;
 
 namespace MilitaryFaculty.Application.ViewModels
@@ -34,7 +31,7 @@ namespace MilitaryFaculty.Application.ViewModels
         {
             public override string Title
             {
-                get { return "Информация о научной выставке"; }
+                get { return "Информация о участии в советах"; }
             }
         }
 
@@ -44,7 +41,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
             public override string Title
             {
-                get { return "Добавить научную выставку "; }
+                get { return "Добавить участие в советах "; }
             }
 
             protected override IEnumerable<ViewModel<CouncilParticipation>> GetViewModels()

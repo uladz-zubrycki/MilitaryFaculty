@@ -5,9 +5,9 @@ namespace MilitaryFaculty.Application.Views
     /// <summary>
     ///     Interaction logic for ProfessorInfoView.xaml
     /// </summary>
-    public partial class ProfessorResearchesView : UserControl
+    public partial class ProfessorCouncilParticipations : UserControl
     {
-        public ProfessorResearchesView()
+        public ProfessorCouncilParticipations()
         {
             InitializeComponent();
         }

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="MilitaryFaculty.Application.Views.ProfessorEfficiencyProposalsView"
+﻿<UserControl x:Class="MilitaryFaculty.Application.Views.ProfessorExhibitions"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -17,16 +17,17 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <!--Exhibitions count-->
         <TextBlock
             Grid.Row="0"
             Grid.Column="0"
             Style="{StaticResource LabelTextBlock}"
-            Text="Сделано рационализаторских предложений:" />
+            Text="Посещено научных выставок:" />
         <TextBlock
             Grid.Row="0"
             Grid.Column="1"
             Style="{StaticResource ValueTextBlock}"
-            Text="{Binding ProposalsCount}" />
+            Text="{Binding ExhibitionsCount}" />
 
         <ListBox
             Grid.Row="1"

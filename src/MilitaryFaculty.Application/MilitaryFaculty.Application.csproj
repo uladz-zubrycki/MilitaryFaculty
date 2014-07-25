@@ -97,6 +97,7 @@
     <Compile Include="Handlers\BookHandlers.cs" />
     <Compile Include="Handlers\InventiveApplicationHandlers.cs" />
     <Compile Include="Handlers\EfficiencyProposalHandlers.cs" />
+    <Compile Include="Handlers\CouncilParticipationHandlers.cs" />
     <Compile Include="Handlers\ResearchHandlers.cs" />
     <Compile Include="Handlers\PublicationHandlers.cs" />
     <Compile Include="Handlers\ReportingHandlers.cs" />
@@ -170,41 +171,44 @@
     <Compile Include="Views\Cathedra\CathedraView.xaml.cs">
       <DependentUpon>CathedraView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorCouncilParticipationView.xaml.cs">
-      <DependentUpon>ProfessorCouncilParticipationView.xaml</DependentUpon>
+    <Compile Include="Views\EntityMenu.xaml.cs">
+      <DependentUpon>EntityMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorEfficiencyProposalsView.xaml.cs">
-      <DependentUpon>ProfessorEfficiencyProposalsView.xaml</DependentUpon>
+    <Compile Include="Views\Professor\ProfessorCouncilParticipations.xaml.cs">
+      <DependentUpon>ProfessorCouncilParticipations.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorDissertationsView.xaml.cs">
-      <DependentUpon>ProfessorDissertationsView.xaml</DependentUpon>
+    <Compile Include="Views\Professor\ProfessorEfficiencyProposals.xaml.cs">
+      <DependentUpon>ProfessorEfficiencyProposals.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorBooksView.xaml.cs">
-      <DependentUpon>ProfessorBooksView.xaml</DependentUpon>
+    <Compile Include="Views\Professor\ProfessorDissertations.xaml.cs">
+      <DependentUpon>ProfessorDissertations.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorExhibitionsView.xaml.cs">
-      <DependentUpon>ProfessorExhibitionsView.xaml</DependentUpon>
+    <Compile Include="Views\Professor\ProfessorBooks.xaml.cs">
+      <DependentUpon>ProfessorBooks.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorHeaderView.xaml.cs">
-      <DependentUpon>ProfessorHeaderView.xaml</DependentUpon>
+    <Compile Include="Views\Professor\ProfessorExhibitions.xaml.cs">
+      <DependentUpon>ProfessorExhibitions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ImagedCommandView.xaml.cs">
-      <DependentUpon>ImagedCommandView.xaml</DependentUpon>
+    <Compile Include="Views\Professor\ProfessorHeader.xaml.cs">
+      <DependentUpon>ProfessorHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorInventiveApplicationsView.xaml.cs">
-      <DependentUpon>ProfessorInventiveApplicationsView.xaml</DependentUpon>
+    <Compile Include="Views\ImagedCommand.xaml.cs">
+      <DependentUpon>ImagedCommand.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorResearchesView.xaml.cs">
-      <DependentUpon>ProfessorResearchesView.xaml</DependentUpon>
+    <Compile Include="Views\Professor\ProfessorInventiveApplications.xaml.cs">
+      <DependentUpon>ProfessorInventiveApplications.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorPublicationsView.xaml.cs">
-      <DependentUpon>ProfessorPublicationsView.xaml</DependentUpon>
+    <Compile Include="Views\Professor\ProfessorResearches.xaml.cs">
+      <DependentUpon>ProfessorResearches.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Professor\ProfessorConferencesView.xaml.cs">
-      <DependentUpon>ProfessorConferencesView.xaml</DependentUpon>
+    <Compile Include="Views\Professor\ProfessorPublications.xaml.cs">
+      <DependentUpon>ProfessorPublications.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StartupView.xaml.cs">
-      <DependentUpon>StartupView.xaml</DependentUpon>
+    <Compile Include="Views\Professor\ProfessorConferences.xaml.cs">
+      <DependentUpon>ProfessorConferences.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\CathedraResources.xaml">
       <SubType>Designer</SubType>
@@ -290,43 +294,47 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Professor\ProfessorCouncilParticipationView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Professor\ProfessorEfficiencyProposalsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Professor\ProfessorDissertationsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Professor\ProfessorBooksView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Professor\ProfessorExhibitionsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Professor\ProfessorHeaderView.xaml">
+    <Page Include="Views\EntityMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ImagedCommandView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Professor\ProfessorInventiveApplicationsView.xaml">
+    <Page Include="Views\Professor\ProfessorCouncilParticipations.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Professor\ProfessorResearchesView.xaml">
+    <Page Include="Views\Professor\ProfessorEfficiencyProposals.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Professor\ProfessorPublicationsView.xaml">
+    <Page Include="Views\Professor\ProfessorDissertations.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorBooks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorExhibitions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ImagedCommand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Professor\ProfessorInventiveApplications.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorResearches.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorPublications.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -358,11 +366,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Professor\ProfessorConferencesView.xaml">
+    <Page Include="Views\Professor\ProfessorConferences.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\StartupView.xaml">
+    <Page Include="Views\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
