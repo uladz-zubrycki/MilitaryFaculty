@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.ViewModels;
 using MilitaryFaculty.Presentation.Widgets.TreeView;
@@ -25,7 +24,7 @@ namespace MilitaryFaculty.Application.ViewModels
         private ImagedCommandViewModel CreateRemoveProfessorCommand()
         {
             const string tooltip = "Удалить преподавателя";
-            const string imageSource = @"..\Content\remove.png";
+            const string imageSource = @"\Content\images\remove.png";
 
             return new ImagedCommandViewModel(GlobalCommands.Remove<Professor>(),
                                               Model,

@@ -28,13 +28,6 @@ namespace MilitaryFaculty.Data.Tests
 
         private EntityContext context;
 
-        [Test]
-        public void test()
-        {
-            var t = Path.Combine("fdfd", "fds");
-            var tt = 42;
-        }
-
         private static void SeedCathedras(EntityContext context)
         {
             var cathedras = new[]

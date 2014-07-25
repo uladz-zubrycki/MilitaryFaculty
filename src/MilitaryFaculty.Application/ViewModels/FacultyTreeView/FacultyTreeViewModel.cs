@@ -7,6 +7,7 @@ using System.Windows.Input;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Data.Events;
+using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Presentation.Widgets.TreeView;
 
@@ -14,12 +15,36 @@ namespace MilitaryFaculty.Application.ViewModels
 {
     public class FacultyTreeViewModel : TreeViewModel
     {
-        private readonly IRepository<Domain.Cathedra> _cathedraRepository;
-        private readonly IRepository<Domain.Professor> _professorRepository;
+        private readonly IRepository<Cathedra> _cathedraRepository;
+        private readonly IRepository<Professor> _professorRepository;
         private readonly Lazy<ObservableCollection<CathedraTreeItemViewModel>> _cathedras;
 
         private IEnumerator<ITreeItemViewModel> _searchEnumerator;
         private string _searchString;
+
+        public FacultyTreeViewModel(IRepository<Professor> professorRepository,
+                                    IRepository<Cathedra> cathedraRepository)
+        {
+            if (professorRepository == null)
+            {
+                throw new ArgumentNullException("professorRepository");
+            }
+
+            if (cathedraRepository == null)
+            {
+                throw new ArgumentNullException("cathedraRepository");
+            }
+
+            _cathedras = Lazy.Create(CreateCathedrasViewModel);
+
+            _professorRepository = professorRepository;
+            _cathedraRepository = cathedraRepository;
+
+            cathedraRepository.EntityCreated += OnCathedraCreated;
+            cathedraRepository.EntityDeleted += OnCathedraDeleted;
+
+            SearchCommand = new Command(OnSearch, CanSearch);
+        }
 
         public ICommand SearchCommand { get; private set; }
 
@@ -56,30 +81,6 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 _searchEnumerator = null;
             }
-        }
-
-        public FacultyTreeViewModel(IRepository<Domain.Professor> professorRepository,
-                                    IRepository<Domain.Cathedra> cathedraRepository)
-        {
-            if (professorRepository == null)
-            {
-                throw new ArgumentNullException("professorRepository");
-            }
-
-            if (cathedraRepository == null)
-            {
-                throw new ArgumentNullException("cathedraRepository");
-            }
-
-            _cathedras = Lazy.Create(CreateCathedrasViewModel);
-
-            _professorRepository = professorRepository;
-            _cathedraRepository = cathedraRepository;
-
-            cathedraRepository.EntityCreated += OnCathedraCreated;
-            cathedraRepository.EntityDeleted += OnCathedraDeleted;
-
-            SearchCommand = new Command(OnSearch, CanSearch);
         }
 
         protected void OnSearch()
@@ -137,7 +138,7 @@ namespace MilitaryFaculty.Application.ViewModels
             return criteria;
         }
 
-        private void OnCathedraCreated(object sender, ModifiedEntityEventArgs<Domain.Cathedra> e)
+        private void OnCathedraCreated(object sender, ModifiedEntityEventArgs<Cathedra> e)
         {
             var cathedra = e.ModifiedEntity;
             var cathedraViewModel = CathedraTreeItemViewModel.FromModel(
@@ -148,7 +149,7 @@ namespace MilitaryFaculty.Application.ViewModels
             Cathedras.Add(cathedraViewModel);
         }
 
-        private void OnCathedraDeleted(object sender, ModifiedEntityEventArgs<Domain.Cathedra> e)
+        private void OnCathedraDeleted(object sender, ModifiedEntityEventArgs<Cathedra> e)
         {
             var cathedra = e.ModifiedEntity;
             Cathedras.RemoveSingle(c => c.Model.Equals(cathedra));
