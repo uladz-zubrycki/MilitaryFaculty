@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Reporting.Data
@@ -8,14 +9,14 @@ namespace MilitaryFaculty.Reporting.Data
     {
         private readonly ICollection<IDataProvider> _dataProviders;
 
-        public DataProvidersContainer()
+        public DataProvidersContainer(IEnumerable<IDataProvider> providers)
         {
-            _dataProviders = new Collection<IDataProvider>();
-        }
+            if (providers == null)
+            {
+                throw new ArgumentNullException("providers");
+            }
 
-        public void AddDataProvider(IDataProvider dataProvider)
-        {
-            _dataProviders.Add(dataProvider);
+            _dataProviders = providers.ToList();
         }
 
         public IEnumerable<IDataProvider> GetProviders()

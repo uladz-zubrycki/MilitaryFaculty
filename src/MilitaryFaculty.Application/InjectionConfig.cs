@@ -122,7 +122,7 @@ namespace MilitaryFaculty.Application
 
             builder.RegisterAssemblyTypes(typeof (DataProvidersContainer).Assembly)
                    .Where(type => typeof (IDataProvider).IsAssignableFrom(type))
-                   .AsSelf();
+                   .As<IDataProvider>();
         }
 
         private static void RegisterExcelReportingServices(ContainerBuilder builder)
