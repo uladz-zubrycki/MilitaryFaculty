@@ -1,6 +1,5 @@
 ﻿using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
-using MilitaryFaculty.Domain.Base;
 
 namespace MilitaryFaculty.Reporting.Data.DataProviders
 {
