@@ -41,7 +41,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("SrwCount")]
         public double ScientificResearchWorksCount()
         {
-            return CountOf(w => true);
+            return QueryableCollection.Count();
         }
 
         /// <summary>

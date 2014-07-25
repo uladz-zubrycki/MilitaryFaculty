@@ -32,6 +32,7 @@ namespace MilitaryFaculty.Application.ViewModels
         private readonly IRepository<Exhibition> _exhibitionRepository;
         private readonly IRepository<Professor> _professorRepository;
         private readonly IRepository<Publication> _publicationRepository;
+        private readonly IRepository<CouncilParticipation> _councilParticipationRepository;
         private readonly IRepository<Dissertation> _dissertationRepository;
         private readonly IRepository<InventiveApplication> _inventiveApplicationRepository;
         private readonly IRepository<EfficiencyProposal> _efficiencyProposalRepository;
@@ -47,16 +48,17 @@ namespace MilitaryFaculty.Application.ViewModels
         public event EventHandler<WorkWindowChangedEventArgs> WorkWindowChanged;
 
         public MainViewModel(IRepository<Book> bookRepository,
-                             IRepository<Cathedra> cathedraRepository,
-                             IRepository<Conference> conferenceRepository,
-                             IRepository<Exhibition> exhibitionRepository,
-                             IRepository<Professor> professorRepository,
-                             IRepository<Publication> publicationRepository,
-                             IRepository<Dissertation> dissertationRepository,
-                             IRepository<InventiveApplication> inventiveApplicationRepository,
-                             IRepository<EfficiencyProposal> efficiencyProposalRepository,
-                             IExcelReportingService excelReportingService,
-                             IReportGenerator reportGenerator, 
+            IRepository<Cathedra> cathedraRepository,
+            IRepository<Conference> conferenceRepository,
+            IRepository<Exhibition> exhibitionRepository,
+            IRepository<Professor> professorRepository,
+            IRepository<Publication> publicationRepository,
+            IRepository<CouncilParticipation> councilParticipationRepository,
+            IRepository<Dissertation> dissertationRepository,
+            IRepository<InventiveApplication> inventiveApplicationRepository,
+            IRepository<EfficiencyProposal> efficiencyProposalRepository,
+            IExcelReportingService excelReportingService,
+            IReportGenerator reportGenerator,
             IRepository<Research> researchRepository)
         {
             _bookRepository = bookRepository;
@@ -65,6 +67,7 @@ namespace MilitaryFaculty.Application.ViewModels
             _exhibitionRepository = exhibitionRepository;
             _professorRepository = professorRepository;
             _publicationRepository = publicationRepository;
+            _councilParticipationRepository = councilParticipationRepository;
             _dissertationRepository = dissertationRepository;
             _inventiveApplicationRepository = inventiveApplicationRepository;
             _researchRepository = researchRepository;
@@ -114,14 +117,15 @@ namespace MilitaryFaculty.Application.ViewModels
             else if (model is Professor)
             {
                 WorkWindow = new ProfessorView.Root(model as Professor,
-                                                    _conferenceRepository,
-                                                    _publicationRepository,
-                                                    _exhibitionRepository,
-                                                    _bookRepository,
-                                                    _dissertationRepository,
-                                                    _inventiveApplicationRepository,
-                                                    _efficiencyProposalRepository,
-                                                    _researchRepository);
+                    _conferenceRepository,
+                    _publicationRepository,
+                    _exhibitionRepository,
+                    _bookRepository,
+                    _councilParticipationRepository,
+                    _dissertationRepository,
+                    _inventiveApplicationRepository,
+                    _efficiencyProposalRepository,
+                    _researchRepository);
             }
             else
             {
@@ -141,29 +145,28 @@ namespace MilitaryFaculty.Application.ViewModels
 
             //todo get module from container
             var modules = new ICommandModule[]
-                          {
-                              new ProfessorHandlers(_professorRepository),
-                              new ProfessorNavigation(this),
-                              new PublicationHandlers(_publicationRepository),
-                              new PublicationNavigation(this),
-                              new ConferenceHandlers(_conferenceRepository),
-                              new ConferenceNavigation(this),
-                              new ExhibitionHandlers(_exhibitionRepository),
-                              new ExhibitionNavigation(this),
-                              new BookHandlers(_bookRepository),
-                              new BookNavigation(this),
-                              new DissertationHandlers(_dissertationRepository),
-                              new DissertationNavigation(this), 
-                              new InventiveApplicationHandlers(_inventiveApplicationRepository),
-                              new InventiveApplicationNavigation(this), 
-                              new EfficiencyProposalHandlers(_efficiencyProposalRepository),
-                              new EfficiencyProposalNavigation(this), 
-                              new ResearchHandlers(_researchRepository),
-                              new ResearchNavigation(this), 
-                              new NavigationHistory(this),
-
-                              new ReportingHandlers(_excelReportingService, _reportGenerator)
-                          };
+            {
+                new ProfessorHandlers(_professorRepository),
+                new ProfessorNavigation(this),
+                new PublicationHandlers(_publicationRepository),
+                new PublicationNavigation(this),
+                new ConferenceHandlers(_conferenceRepository),
+                new ConferenceNavigation(this),
+                new ExhibitionHandlers(_exhibitionRepository),
+                new ExhibitionNavigation(this),
+                new BookHandlers(_bookRepository),
+                new BookNavigation(this),
+                new DissertationHandlers(_dissertationRepository),
+                new DissertationNavigation(this),
+                new InventiveApplicationHandlers(_inventiveApplicationRepository),
+                new InventiveApplicationNavigation(this),
+                new EfficiencyProposalHandlers(_efficiencyProposalRepository),
+                new EfficiencyProposalNavigation(this),
+                new ResearchHandlers(_researchRepository),
+                new ResearchNavigation(this),
+                new NavigationHistory(this),
+                new ReportingHandlers(_excelReportingService, _reportGenerator)
+            };
 
             modules.ForEach(m => m.LoadModule(RoutedCommands));
         }

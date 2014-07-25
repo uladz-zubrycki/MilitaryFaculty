@@ -8,6 +8,7 @@ namespace MilitaryFaculty.Data
         public DbSet<Book> Books { get; set; }
         public DbSet<Cathedra> Cathedras { get; set; }
         public DbSet<Conference> Conferences { get; set; }
+        public DbSet<CouncilParticipation> CouncilParticipations { get; set; }
         public DbSet<Dissertation> Dissertations { get; set; }
         public DbSet<EfficiencyProposal> EfficiencyProposals { get; set; }
         public DbSet<Exhibition> Exhibitions { get; set; }

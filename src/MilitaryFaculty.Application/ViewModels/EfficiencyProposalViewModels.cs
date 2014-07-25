@@ -25,6 +25,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 return new ViewModel<EfficiencyProposal>[]
                        {
                            new MainInfo(Model),
+                           new ExtraInfo(Model), 
                        };
             }
         }
@@ -51,6 +52,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 return new ViewModel<EfficiencyProposal>[]
                    {
                        new MainInfo(Model),
+                       new ExtraInfo(Model), 
                    };
             }
         }
@@ -80,6 +82,27 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 get { return Model.CreatedAt; }
                 set { SetModelProperty(m => m.CreatedAt, value); }
+            }
+        }
+
+        internal class ExtraInfo : EntityViewModel<EfficiencyProposal>
+        {
+            public ExtraInfo(EfficiencyProposal model)
+                : base(model)
+            {
+                this.Editable(GlobalCommands.Save<EfficiencyProposal>());
+            }
+
+            public override string Title
+            {
+                get { return "Дополнительная информация"; }
+            }
+
+            [EnumProperty(Label = "Статус предложения:")]
+            public ApplicationStatus Status
+            {
+                get { return Model.Status; }
+                set { SetModelProperty(m => m.Status, value); }
             }
         }
 

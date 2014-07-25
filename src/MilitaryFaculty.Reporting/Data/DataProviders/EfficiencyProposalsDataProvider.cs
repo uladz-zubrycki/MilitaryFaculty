@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using MilitaryFaculty.Data;
+﻿using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Reporting.Data.DataProviders
@@ -35,13 +34,13 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         }
 
         /// <summary>
-        ///     Количество принятих рационализаторских предложений
+        ///     Количество принятых рационализаторских предложений
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ImprovSuggCount")]
         public double ImprovementSuggestionsCount()
         {
-            return QueryableCollection.Count();
+            return CountOf(ep => ep.Status == ApplicationStatus.Accepted);
         }
     }
 }

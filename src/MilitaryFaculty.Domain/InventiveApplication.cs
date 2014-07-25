@@ -12,13 +12,6 @@ namespace MilitaryFaculty.Domain
         UtilityModel
     }
 
-    [LocalizedEnum(typeof(EnumStrings))]
-    public enum InventiveApplicationStatus
-    {
-        Applied,
-        Accepted
-    }
-
     // ReSharper disable DoNotCallOverridableMethodsInConstructor
     // Properties are virtual only for EntityFramework
     public class InventiveApplication : UniqueEntity
@@ -27,7 +20,7 @@ namespace MilitaryFaculty.Domain
         public virtual Professor Author { get; set; }
         public virtual DateTime CreatedAt { get; set; }
         public virtual InventiveApplicationType Type { get; set; }
-        public virtual InventiveApplicationStatus Status { get; set; }
+        public virtual ApplicationStatus Status { get; set; }
 
         public InventiveApplication()
         {

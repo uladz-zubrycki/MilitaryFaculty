@@ -106,7 +106,7 @@ namespace MilitaryFaculty.Application.ViewModels
             }
 
             [EnumProperty(Label = "Статус заявки:")]
-            public InventiveApplicationStatus Status
+            public ApplicationStatus Status
             {
                 get { return Model.Status; }
                 set { SetModelProperty(m => m.Status, value); }

@@ -135,6 +135,12 @@
   <data name="AcademicRank_None" xml:space="preserve">
     <value>Отсутствует</value>
   </data>
+  <data name="ApplicationStatus_Accepted" xml:space="preserve">
+    <value>Одобрено</value>
+  </data>
+  <data name="ApplicationStatus_Applied" xml:space="preserve">
+    <value>Рассматривается</value>
+  </data>
   <data name="BookType_Schoolbook" xml:space="preserve">
     <value>Учебник</value>
   </data>
@@ -149,6 +155,18 @@
   </data>
   <data name="ConferenceAccordance_Partly" xml:space="preserve">
     <value>Частично соответствует</value>
+  </data>
+  <data name="CouncilType_DefenceOfDissertationsCouncil" xml:space="preserve">
+    <value>Специализированный совет по защите диссертаций</value>
+  </data>
+  <data name="CouncilType_EditorialBoardCouncil" xml:space="preserve">
+    <value>Редакционная коллегия научных изданий</value>
+  </data>
+  <data name="CouncilType_ResearchCounsil" xml:space="preserve">
+    <value>Военно-научный или научно-технический совет вуза</value>
+  </data>
+  <data name="CouncilType_SupremeCertificationCommissionCouncil" xml:space="preserve">
+    <value>Экспертный совет ВАК Беларуси</value>
   </data>
   <data name="EventLevel_International" xml:space="preserve">
     <value>Международная</value>
@@ -179,12 +197,6 @@
   </data>
   <data name="HistoricalWorkOrganization_None" xml:space="preserve">
     <value>Военно-историческая работа не организована</value>
-  </data>
-  <data name="InventiveApplicationStatus_Accepted" xml:space="preserve">
-    <value>Одобрена</value>
-  </data>
-  <data name="InventiveApplicationStatus_Applied" xml:space="preserve">
-    <value>Подана</value>
   </data>
   <data name="InventiveApplicationType_Invention" xml:space="preserve">
     <value>Заявка на изобретение</value>
@@ -252,24 +264,6 @@
   <data name="MilitaryScientificSocietyOrganization_None" xml:space="preserve">
     <value>Работа научного кружка курсантов (студентов) не организована</value>
   </data>
-  <data name="MilitaryScientificSupportState_Completed" xml:space="preserve">
-    <value>Военно-научное сопровождение проведено</value>
-  </data>
-  <data name="MilitaryScientificSupportState_NotCompleted" xml:space="preserve">
-    <value>Военно-научное сопровождение не проведено</value>
-  </data>
-  <data name="ParticipationPlace_DefenceOfDissertationCounsil" xml:space="preserve">
-    <value>Специализированный совет по защите диссертаций</value>
-  </data>
-  <data name="ParticipationPlace_EditorialBoardsOfScientificPublications" xml:space="preserve">
-    <value>Редакционная коллегия научных изданий</value>
-  </data>
-  <data name="ParticipationPlace_HigherAttestationCommission" xml:space="preserve">
-    <value>Экспертный совет ВАК Беларуси</value>
-  </data>
-  <data name="ParticipationPlace_ResearchCounsil" xml:space="preserve">
-    <value>Военно-научный или научно-технический совет вуза</value>
-  </data>
   <data name="ProfsOrganization_Custom" xml:space="preserve">
     <value>Подготовка научно-педагогических работников высшей квалификации организована, но ведется с отдельными недостатками</value>
   </data>
@@ -290,6 +284,12 @@
   </data>
   <data name="PublicationType_Thesis" xml:space="preserve">
     <value>Тезис докладов</value>
+  </data>
+  <data name="ResearchMaintainState_NotPerformed" xml:space="preserve">
+    <value>Не проведено</value>
+  </data>
+  <data name="ResearchMaintainState_Performed" xml:space="preserve">
+    <value>Проведено</value>
   </data>
   <data name="SuggestionState_Accepted" xml:space="preserve">
     <value>Принята</value>

@@ -61,7 +61,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         public double PositiveInnovationsCount()
         {
             return CountOf(ia => ia.Type == InventiveApplicationType.Invention
-                                 && ia.Status == InventiveApplicationStatus.Accepted);
+                                 && ia.Status == ApplicationStatus.Accepted);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         public double PositiveUsefulModelsCount()
         {
             return CountOf(ia => ia.Type == InventiveApplicationType.UtilityModel
-                                 && ia.Status == InventiveApplicationStatus.Accepted);
+                                 && ia.Status == ApplicationStatus.Accepted);
         }
     }
 }

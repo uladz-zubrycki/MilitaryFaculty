@@ -12,6 +12,7 @@ namespace MilitaryFaculty.Data
             Property(m => m.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(m => m.Text).IsRequired();
             Property(m => m.CreatedAt).IsRequired();
+            Property(m => m.Status).IsRequired();
 
             HasRequired(m => m.Author).WithMany(p => p.EfficiencyProposals);
         }

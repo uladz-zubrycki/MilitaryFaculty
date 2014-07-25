@@ -140,7 +140,7 @@
     </Coefficients>
   </Formula>
 
-  <Formula name="Издано: учебных пособий с графами Министерства образования, Министерства обороны"
+  <Formula name="Издано: учебных пособий с грифами Министерства образования, Министерства обороны"
            id="232"
            expression="TotalTutorialsPc / ProfsCount * coeff1 * coeff2"
            maxValue="0">
@@ -210,7 +210,7 @@
     </Coefficients>
   </Formula>
 
-  <Formula name="Выступление ППС на вузовской конферекции"
+  <Formula name="Выступление ППС на вузовской конференции"
            id="311"
            expression="UnConfProfsCount / ProfsCount * coeff1 * coeff2"
            maxValue="100">
@@ -238,7 +238,7 @@
     </Coefficients>
   </Formula>
 
-  <Formula name="Выступление ППС на республиканской конферекции"
+  <Formula name="Выступление ППС на республиканской конференции"
            id="313"
            expression="ReConfProfsCount / ProfsCount * coeff1 * coeff2"
            maxValue="200">
@@ -266,7 +266,7 @@
     </Coefficients>
   </Formula>
 
-  <Formula name="Выступление ППС на международной конферекции"
+  <Formula name="Выступление ППС на международной конференции"
            id="315"
            expression="InConfProfsCount / ProfsCount * coeff1 * coeff2"
            maxValue="300">

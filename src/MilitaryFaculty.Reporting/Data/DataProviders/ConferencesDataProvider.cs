@@ -34,7 +34,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         }
 
         /// <summary>
-        ///     Выступление ППС на вузовской конферекции
+        ///     Выступление ППС на вузовской конференции
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("UnConfProfsCount")]
@@ -55,7 +55,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         }
 
         /// <summary>
-        ///     Выступление ППС на республиканской конферекции
+        ///     Выступление ППС на республиканской конференции
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ReConfProfsCount")]
@@ -75,7 +75,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         }
 
         /// <summary>
-        ///     Выступление ППС на международной конферекции
+        ///     Выступление ППС на международной конференции
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("InConfProfsCount")]

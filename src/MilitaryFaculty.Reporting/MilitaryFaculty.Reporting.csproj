@@ -71,6 +71,7 @@
     <Compile Include="Data\DataProviders\BooksDataProvider.cs" />
     <Compile Include="Data\DataProviders\CathedrasDataProvider.cs" />
     <Compile Include="Data\DataProviders\ConferencesDataProvider.cs" />
+    <Compile Include="Data\DataProviders\CouncilParticipationDataProvider.cs" />
     <Compile Include="Data\DataProviders\DissertationDataProvider.cs" />
     <Compile Include="Data\DataProviders\ExhibitionsDataProvider.cs" />
     <Compile Include="Data\DataProviders\EfficiencyProposalsDataProvider.cs" />

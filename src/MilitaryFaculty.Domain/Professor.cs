@@ -45,6 +45,7 @@ namespace MilitaryFaculty.Domain
 
         public virtual ICollection<Book> Books { get; set; }
         public virtual ICollection<Conference> Conferences { get; set; }
+        public virtual ICollection<CouncilParticipation> CouncilsParticipations { get; set; }
         public virtual ICollection<Dissertation> Dissertations { get; set; }
         public virtual ICollection<EfficiencyProposal> EfficiencyProposals { get; set; }
         public virtual ICollection<Exhibition> Exhibitions { get; set; }
@@ -61,6 +62,7 @@ namespace MilitaryFaculty.Domain
 
             Books = new List<Book>();
             Conferences = new List<Conference>();
+            CouncilsParticipations = new List<CouncilParticipation>();
             Dissertations = new List<Dissertation>();
             EfficiencyProposals = new List<EfficiencyProposal>();
             Exhibitions = new List<Exhibition>();
