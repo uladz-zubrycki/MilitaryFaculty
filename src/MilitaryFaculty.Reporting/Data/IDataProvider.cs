@@ -1,7 +1,11 @@
-﻿namespace MilitaryFaculty.Reporting.Data
+﻿using MilitaryFaculty.Domain;
+
+namespace MilitaryFaculty.Reporting.Data
 {
     public interface IDataProvider
     {
-        //Empty
+        void SetFacultyModificator(TimeInterval interval);
+        void SetCathedraModificator(Cathedra cathedra, TimeInterval interval);
+        void SetProfessorModificator(Professor professor, TimeInterval interval);
     }
 }

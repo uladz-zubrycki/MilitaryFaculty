@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq.Expressions;
-using MilitaryFaculty.Common;
-using MilitaryFaculty.Data;
+﻿using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Reporting.Data.DataProviders
@@ -13,10 +10,27 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         {
         }
 
-        public ConferencesDataProvider(IRepository<Conference> repository,
-                                       Expression<Func<Conference, bool>> modificator)
-            : base(repository, modificator)
+        public override void SetFacultyModificator(TimeInterval interval)
         {
+            QueryModificator = conference =>
+                conference.Date >= interval.From
+                && conference.Date <= interval.To;
+        }
+
+        public override void SetCathedraModificator(Cathedra cathedra, TimeInterval interval)
+        {
+            QueryModificator = conference =>
+                conference.Curator.Cathedra.Id == cathedra.Id
+                && conference.Date >= interval.From
+                && conference.Date <= interval.To;
+        }
+
+        public override void SetProfessorModificator(Professor professor, TimeInterval interval)
+        {
+            QueryModificator = conference =>
+                conference.Curator.Id == professor.Id
+                && conference.Date >= interval.From
+                && conference.Date <= interval.To;
         }
 
         /// <summary>

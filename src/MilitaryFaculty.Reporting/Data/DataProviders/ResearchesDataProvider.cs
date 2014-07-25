@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 
@@ -13,10 +11,27 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         {
         }
 
-        public ResearchesDataProvider(IRepository<Research> repository,
-            Expression<Func<Research, bool>> modificator)
-            : base(repository, modificator)
+        public override void SetFacultyModificator(TimeInterval interval)
         {
+            QueryModificator = research =>
+                research.CreatedAt >= interval.From
+                && research.CreatedAt <= interval.To;
+        }
+
+        public override void SetCathedraModificator(Cathedra cathedra, TimeInterval interval)
+        {
+            QueryModificator = research =>
+                research.Author.Cathedra.Id == cathedra.Id
+                && research.CreatedAt >= interval.From
+                && research.CreatedAt <= interval.To;
+        }
+
+        public override void SetProfessorModificator(Professor professor, TimeInterval interval)
+        {
+            QueryModificator = research =>
+                research.Author.Id == professor.Id
+                && research.CreatedAt >= interval.From
+                && research.CreatedAt <= interval.To;
         }
 
         /// <summary>
@@ -36,8 +51,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("MssCount")]
         public double MilitaryScientificSupportsCount()
         {
-            throw new NotImplementedException();
-            //return CountOf(w => w.State == MilitaryScientificSupportState.Completed);
+            return CountOf(w => w.MaintainState == ResearchMaintainState.Performed);
         }
 
         /// <summary>

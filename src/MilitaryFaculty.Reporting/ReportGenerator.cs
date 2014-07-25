@@ -20,42 +20,25 @@ namespace MilitaryFaculty.Reporting
             _reportDataProvider = reportDataProvider;
         }
 
-        public virtual Report CreateReportObject()
+        public Report GenerateFacultyReport(TimeInterval interval)
         {
-            return null;
+            _reportDataProvider.ReportDataProvidersContainer.SetFacultyModificator(interval);
+            return new Report("Факультет", _reportTableResolver(typeof (Cathedra)), _formulaProvider,
+                _reportDataProvider);
         }
 
-        public Report Generate(object entity, TimeInterval interval)
+        public Report GenerateCathedraReport(Cathedra cathedra, TimeInterval interval)
         {
-            if (interval == null)
-            {
-                throw new ArgumentNullException("interval");
-            }
+            _reportDataProvider.ReportDataProvidersContainer.SetCathedraModificator(cathedra, interval);
+            return new Report(cathedra.Name, _reportTableResolver(typeof (Cathedra)), _formulaProvider,
+                _reportDataProvider);
+        }
 
-            //For faculty object
-            if (entity == null)
-            {
-                _reportDataProvider.ReportDataProvidersContainer.ClearModificators();
-                return new Report("Faculty", _reportTableResolver(typeof (Cathedra)), _formulaProvider,
-                    _reportDataProvider);
-            }
-            if (entity is Cathedra)
-            {
-                var cathedra = (Cathedra) entity;
-                //TODO: Cathedra report
-                _reportDataProvider.ReportDataProvidersContainer.ClearModificators();
-                return new Report(cathedra.Name, _reportTableResolver(typeof (Cathedra)),
-                    _formulaProvider, _reportDataProvider);
-            }
-            if (entity is Professor)
-            {
-                var professor = (Professor) entity;
-                _reportDataProvider.ReportDataProvidersContainer.SetProfessorModificator(professor, interval);
-                return new Report(professor.FullName.ToString(),
-                    _reportTableResolver(typeof (Professor)), _formulaProvider, _reportDataProvider);
-            }
-
-            throw new ArgumentException("Type of entity is not supported.");
+        public Report GenerateProfessorReport(Professor professor, TimeInterval interval)
+        {
+            _reportDataProvider.ReportDataProvidersContainer.SetProfessorModificator(professor, interval);
+            return new Report(professor.FullName.ToString(), _reportTableResolver(typeof (Professor)), _formulaProvider,
+                _reportDataProvider);
         }
     }
 }

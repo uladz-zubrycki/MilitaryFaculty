@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
-using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 
@@ -13,10 +11,30 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         {
         }
 
-        public ProfessorsDataProvider(IRepository<Professor> repository,
-            Expression<Func<Professor, bool>> modificator)
-            : base(repository, modificator)
+        public override void SetFacultyModificator(TimeInterval interval)
         {
+            QueryModificator = p =>
+                (p.EnrollmentDate >= interval.From && p.EnrollmentDate <= interval.To)
+                || (p.DismissalDate >= interval.From && p.DismissalDate <= interval.To)
+                || (p.EnrollmentDate <= interval.From && p.DismissalDate >= interval.To);
+        }
+
+        public override void SetCathedraModificator(Cathedra cathedra, TimeInterval interval)
+        {
+            QueryModificator = p =>
+                p.Cathedra.Id == cathedra.Id
+                && ((p.EnrollmentDate >= interval.From && p.EnrollmentDate <= interval.To)
+                    || (p.DismissalDate >= interval.From && p.DismissalDate <= interval.To)
+                    || (p.EnrollmentDate <= interval.From && p.DismissalDate >= interval.To));
+        }
+
+        public override void SetProfessorModificator(Professor professor, TimeInterval interval)
+        {
+            QueryModificator = p =>
+                p.Id == professor.Id
+                && ((p.EnrollmentDate >= interval.From && p.EnrollmentDate <= interval.To)
+                    || (p.DismissalDate >= interval.From && p.DismissalDate <= interval.To)
+                    || (p.EnrollmentDate <= interval.From && p.DismissalDate >= interval.To));
         }
 
         /// <summary>

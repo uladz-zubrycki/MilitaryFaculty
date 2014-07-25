@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq.Expressions;
-using MilitaryFaculty.Common;
-using MilitaryFaculty.Data;
+﻿using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Reporting.Data.DataProviders
@@ -13,10 +10,27 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         {
         }
 
-        public InventiveApplicationsDataProvider(IRepository<InventiveApplication> repository,
-            Expression<Func<InventiveApplication, bool>> modificator)
-            : base(repository, modificator)
+        public override void SetFacultyModificator(TimeInterval interval)
         {
+            QueryModificator = inventiveApplication =>
+                inventiveApplication.CreatedAt >= interval.From
+                && inventiveApplication.CreatedAt <= interval.To;
+        }
+
+        public override void SetCathedraModificator(Cathedra cathedra, TimeInterval interval)
+        {
+            QueryModificator = inventiveApplication =>
+                inventiveApplication.Author.Cathedra.Id == cathedra.Id
+                && inventiveApplication.CreatedAt >= interval.From
+                && inventiveApplication.CreatedAt <= interval.To;
+        }
+
+        public override void SetProfessorModificator(Professor professor, TimeInterval interval)
+        {
+            QueryModificator = inventiveApplication =>
+                inventiveApplication.Author.Id == professor.Id
+                && inventiveApplication.CreatedAt >= interval.From
+                && inventiveApplication.CreatedAt <= interval.To;
         }
 
         /// <summary>
@@ -26,8 +40,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("InnCount")]
         public double InnovationsCount()
         {
-            throw new NotImplementedException();
-            //return CountOf(r => r.ScientificType == ScientificRequestType.Invention);
+            return CountOf(ia => ia.Type == InventiveApplicationType.Invention);
         }
 
         /// <summary>
@@ -37,8 +50,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UsModCount")]
         public double UsefulModelsCount()
         {
-            throw new NotImplementedException();
-            //return CountOf(r => r.ScientificType == ScientificRequestType.UtilityModel);
+            return CountOf(ia => ia.Type == InventiveApplicationType.UtilityModel);
         }
 
         /// <summary>
@@ -48,10 +60,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("PosInnCount")]
         public double PositiveInnovationsCount()
         {
-            throw new NotImplementedException();
-
-            //return CountOf(r => r.ScientificType == ScientificRequestType.Invention
-            //                    && r.ScientificResponce == ScientificRequestResponce.Positive);
+            return CountOf(ia => ia.Type == InventiveApplicationType.Invention
+                                 && ia.Status == InventiveApplicationStatus.Accepted);
         }
 
         /// <summary>
@@ -61,10 +71,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("PosUsModCount")]
         public double PositiveUsefulModelsCount()
         {
-            throw new NotImplementedException();
-
-            //return CountOf(r => r.ScientificType == ScientificRequestType.UtilityModel
-            //                    && r.ScientificResponce == ScientificRequestResponce.Positive);
+            return CountOf(ia => ia.Type == InventiveApplicationType.UtilityModel
+                                 && ia.Status == InventiveApplicationStatus.Accepted);
         }
     }
 }

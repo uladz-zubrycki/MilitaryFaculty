@@ -1,7 +1,11 @@
-﻿namespace MilitaryFaculty.Reporting
+﻿using MilitaryFaculty.Domain;
+
+namespace MilitaryFaculty.Reporting
 {
     public interface IReportGenerator
     {
-        Report Generate(object entity, TimeInterval interval);
+        Report GenerateFacultyReport(TimeInterval interval);
+        Report GenerateCathedraReport(Cathedra cathedra, TimeInterval interval);
+        Report GenerateProfessorReport(Professor professor, TimeInterval interval);
     }
 }

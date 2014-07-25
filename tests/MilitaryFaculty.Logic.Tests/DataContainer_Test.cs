@@ -32,11 +32,11 @@ namespace MilitaryFaculty.Logic.Tests
 
             var reports = new List<Report>();
             var prof = professorRepository.Table.Single(p => p.FullName.LastName.StartsWith("Кашкаров"));
-            reports.Add(reportGenerator.Generate(prof, interval));
+            reports.Add(reportGenerator.GenerateProfessorReport(prof, interval));
             prof = professorRepository.Table.Single(p => p.FullName.LastName.StartsWith("Касанин"));
-            reports.Add(reportGenerator.Generate(prof, interval));
+            reports.Add(reportGenerator.GenerateProfessorReport(prof, interval));
 
-            var report = reportGenerator.Generate(null, interval);
+            var report = reportGenerator.GenerateFacultyReport(interval);
 
             //Generation
             excelService.ExportReport(@"D:\1.xlsx", reports);

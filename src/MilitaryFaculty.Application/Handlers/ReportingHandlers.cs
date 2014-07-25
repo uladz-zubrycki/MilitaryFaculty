@@ -45,7 +45,7 @@ namespace MilitaryFaculty.Application.Handlers
                 var filename = dialog.FileName;
 
                 //TODO: generate true report (add timeinterval and entity)
-                var report = _reportGenerator.Generate(null, new TimeInterval(new DateTime(2000, 1, 1), DateTime.Now));
+                var report = _reportGenerator.GenerateFacultyReport(new TimeInterval(new DateTime(2000, 1, 1), DateTime.Now));
 
                 _service.ExportReport(filename, report);
             }
