@@ -119,21 +119,13 @@ namespace MilitaryFaculty.Application.ViewModels
             public Header(Professor model) : base(model)
             {
                 ProfessorMenu = CreateProfessorMenu();
-                ShowMenuCommand = new Command(ShowMenu);
             }
 
             public MenuViewModel ProfessorMenu { get; private set; }
 
-            public ICommand ShowMenuCommand { get; private set; }
-
             public string FullName
             {
                 get { return Model.FullName.ToString(); }
-            }
-
-            private void ShowMenu()
-            {
-                ProfessorMenu.IsOpen = true;
             }
 
             private MenuViewModel CreateProfessorMenu()
