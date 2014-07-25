@@ -156,6 +156,18 @@
   <data name="ConferenceAccordance_Partly" xml:space="preserve">
     <value>Частично соответствует</value>
   </data>
+  <data name="CouncilType_DefenceOfDissertationsCouncil" xml:space="preserve">
+    <value>Специализированный совет по защите диссертаций</value>
+  </data>
+  <data name="CouncilType_EditorialBoardCouncil" xml:space="preserve">
+    <value>Редакционная коллегия научных изданий</value>
+  </data>
+  <data name="CouncilType_ResearchCounsil" xml:space="preserve">
+    <value>Военно-научный или научно-технический совет вуза</value>
+  </data>
+  <data name="CouncilType_SupremeCertificationCommissionCouncil" xml:space="preserve">
+    <value>Экспертный совет ВАК Беларуси</value>
+  </data>
   <data name="EventLevel_International" xml:space="preserve">
     <value>Международная</value>
   </data>
@@ -251,18 +263,6 @@
   </data>
   <data name="MilitaryScientificSocietyOrganization_None" xml:space="preserve">
     <value>Работа научного кружка курсантов (студентов) не организована</value>
-  </data>
-  <data name="ParticipationPlace_DefenceOfDissertationCounsil" xml:space="preserve">
-    <value>Специализированный совет по защите диссертаций</value>
-  </data>
-  <data name="ParticipationPlace_EditorialBoardsOfScientificPublications" xml:space="preserve">
-    <value>Редакционная коллегия научных изданий</value>
-  </data>
-  <data name="ParticipationPlace_HigherAttestationCommission" xml:space="preserve">
-    <value>Экспертный совет ВАК Беларуси</value>
-  </data>
-  <data name="ParticipationPlace_ResearchCounsil" xml:space="preserve">
-    <value>Военно-научный или научно-технический совет вуза</value>
   </data>
   <data name="ProfsOrganization_Custom" xml:space="preserve">
     <value>Подготовка научно-педагогических работников высшей квалификации организована, но ведется с отдельными недостатками</value>

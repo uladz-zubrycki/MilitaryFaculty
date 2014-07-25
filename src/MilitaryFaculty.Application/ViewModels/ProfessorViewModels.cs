@@ -20,6 +20,7 @@ namespace MilitaryFaculty.Application.ViewModels
             private readonly IRepository<Book> _bookRepository;
             private readonly IRepository<Dissertation> _dissertationRepository;
             private readonly IRepository<Conference> _conferenceRepository;
+            private readonly IRepository<CouncilParticipation> _councilParticipationRepository;
             private readonly IRepository<Exhibition> _exhibitionRepository;
             private readonly IRepository<Publication> _publicationRepository;
             private readonly IRepository<InventiveApplication> _inventiveApplicationsRepository;
@@ -31,6 +32,7 @@ namespace MilitaryFaculty.Application.ViewModels
                         IRepository<Publication> publicationRepository,
                         IRepository<Exhibition> exhibitionRepository,
                         IRepository<Book> bookRepository,
+                        IRepository<CouncilParticipation> councilParticipationRepository,
                         IRepository<Dissertation> dissertationRepository,
                         IRepository<InventiveApplication> inventiveApplicationsRepository, 
                         IRepository<EfficiencyProposal> efficiencyProposalRepository, 
@@ -56,6 +58,8 @@ namespace MilitaryFaculty.Application.ViewModels
                 {
                     throw new ArgumentNullException("dissertationRepository");
                 }
+                if (councilParticipationRepository == null)
+                    throw new ArgumentNullException("councilParticipationRepository");
 
                 if (dissertationRepository == null)
                 {
@@ -76,6 +80,7 @@ namespace MilitaryFaculty.Application.ViewModels
                 _publicationRepository = publicationRepository;
                 _exhibitionRepository = exhibitionRepository;
                 _bookRepository = bookRepository;
+                _councilParticipationRepository = councilParticipationRepository;
                 _dissertationRepository = dissertationRepository;
                 _inventiveApplicationsRepository = inventiveApplicationsRepository;
                 _efficiencyProposalRepository = efficiencyProposalRepository;
@@ -93,6 +98,7 @@ namespace MilitaryFaculty.Application.ViewModels
                            new Publications(Model, _publicationRepository),
                            new Exhibitions(Model, _exhibitionRepository),
                            new Books(Model, _bookRepository),
+                           new CouncilParticipations(Model, _councilParticipationRepository),
                            new Dissertations(Model, _dissertationRepository), 
                            new InventiveApplications(Model, _inventiveApplicationsRepository), 
                            new EfficiencyProposals(Model, _efficiencyProposalRepository),
@@ -425,6 +431,72 @@ namespace MilitaryFaculty.Application.ViewModels
                 if (exhibition.Participant.Equals(Model))
                 {
                     Items.RemoveSingle(c => c.Model.Equals(exhibition));
+                }
+            }
+        }
+
+        internal class CouncilParticipations : ViewModel<Professor>
+        {
+            private readonly Lazy<ObservableCollection<CouncilParticipationView.ListItem>> _items;
+
+            public CouncilParticipations(Professor model, IRepository<CouncilParticipation> councilParticipationRepository)
+                : base(model)
+            {
+                if (councilParticipationRepository == null)
+                    throw new ArgumentNullException("councilParticipationRepository");
+
+                _items = Lazy.Create(InitializeItems);
+
+                councilParticipationRepository.EntityCreated += OnCouncilParticipationCreated;
+                councilParticipationRepository.EntityDeleted += OnCouncilParticipationDeleted;
+
+                this.Addable(GlobalCommands.BrowseAdd<Exhibition>());
+            }
+
+            public override string Title
+            {
+                get { return "Участие в научных советах"; }
+            }
+
+            public ObservableCollection<CouncilParticipationView.ListItem> Items
+            {
+                get { return _items.Value; }
+            }
+
+            public int CouncilParticipationsCount
+            {
+                get { return Items.Count; }
+            }
+
+            private ObservableCollection<CouncilParticipationView.ListItem> InitializeItems()
+            {
+                var councilParticipations = Model.CouncilsParticipations
+                                       .Select(CouncilParticipationView.ListItem.FromModel)
+                                       .ToList();
+
+                var result = new ObservableCollection<CouncilParticipationView.ListItem>(councilParticipations);
+                result.CollectionChanged += (sender, args) => OnPropertyChanged("CouncilParicipationsCount");
+
+                return result;
+            }
+
+            private void OnCouncilParticipationCreated(object sender, ModifiedEntityEventArgs<CouncilParticipation> e)
+            {
+                var councilParticipations = e.ModifiedEntity;
+
+                if (councilParticipations.Participant.Equals(Model))
+                {
+                    Items.Add(new CouncilParticipationView.ListItem(councilParticipations));
+                }
+            }
+
+            private void OnCouncilParticipationDeleted(object sender, ModifiedEntityEventArgs<CouncilParticipation> e)
+            {
+                var councilParticipations = e.ModifiedEntity;
+
+                if (councilParticipations.Participant.Equals(Model))
+                {
+                    Items.RemoveSingle(c => c.Model.Equals(councilParticipations));
                 }
             }
         }

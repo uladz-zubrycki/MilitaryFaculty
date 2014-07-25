@@ -178,6 +178,42 @@ namespace MilitaryFaculty.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Специализированный совет по защите диссертаций.
+        /// </summary>
+        internal static string CouncilType_DefenceOfDissertationsCouncil {
+            get {
+                return ResourceManager.GetString("CouncilType_DefenceOfDissertationsCouncil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редакционная коллегия научных изданий.
+        /// </summary>
+        internal static string CouncilType_EditorialBoardCouncil {
+            get {
+                return ResourceManager.GetString("CouncilType_EditorialBoardCouncil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Военно-научный или научно-технический совет вуза.
+        /// </summary>
+        internal static string CouncilType_ResearchCounsil {
+            get {
+                return ResourceManager.GetString("CouncilType_ResearchCounsil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Экспертный совет ВАК Беларуси.
+        /// </summary>
+        internal static string CouncilType_SupremeCertificationCommissionCouncil {
+            get {
+                return ResourceManager.GetString("CouncilType_SupremeCertificationCommissionCouncil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Международная.
         /// </summary>
         internal static string EventLevel_International {
@@ -462,42 +498,6 @@ namespace MilitaryFaculty.Domain.Resources {
         internal static string MilitaryScientificSocietyOrganization_None {
             get {
                 return ResourceManager.GetString("MilitaryScientificSocietyOrganization_None", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Специализированный совет по защите диссертаций.
-        /// </summary>
-        internal static string ParticipationPlace_DefenceOfDissertationCounsil {
-            get {
-                return ResourceManager.GetString("ParticipationPlace_DefenceOfDissertationCounsil", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Редакционная коллегия научных изданий.
-        /// </summary>
-        internal static string ParticipationPlace_EditorialBoardsOfScientificPublications {
-            get {
-                return ResourceManager.GetString("ParticipationPlace_EditorialBoardsOfScientificPublications", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Экспертный совет ВАК Беларуси.
-        /// </summary>
-        internal static string ParticipationPlace_HigherAttestationCommission {
-            get {
-                return ResourceManager.GetString("ParticipationPlace_HigherAttestationCommission", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Военно-научный или научно-технический совет вуза.
-        /// </summary>
-        internal static string ParticipationPlace_ResearchCounsil {
-            get {
-                return ResourceManager.GetString("ParticipationPlace_ResearchCounsil", resourceCulture);
             }
         }
         

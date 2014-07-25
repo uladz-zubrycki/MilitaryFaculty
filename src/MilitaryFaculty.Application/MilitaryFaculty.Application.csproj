@@ -111,6 +111,7 @@
     <Compile Include="ViewModels\Base\AddEntityViewModel.cs" />
     <Compile Include="ViewModels\BookViewModels.cs" />
     <Compile Include="ViewModels\Base\EntityRootViewModel.cs" />
+    <Compile Include="ViewModels\CouncilParticipationViewModels.cs" />
     <Compile Include="ViewModels\DissertationViewModels.cs" />
     <Compile Include="ViewModels\EfficiencyProposalViewModels.cs" />
     <Compile Include="ViewModels\ExhibitionViewModels.cs" />
@@ -168,6 +169,9 @@
     </Compile>
     <Compile Include="Views\Cathedra\CathedraView.xaml.cs">
       <DependentUpon>CathedraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Professor\ProfessorCouncilParticipationView.xaml.cs">
+      <DependentUpon>ProfessorCouncilParticipationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Professor\ProfessorEfficiencyProposalsView.xaml.cs">
       <DependentUpon>ProfessorEfficiencyProposalsView.xaml</DependentUpon>
@@ -283,6 +287,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Cathedra\CathedraInfoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Professor\ProfessorCouncilParticipationView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

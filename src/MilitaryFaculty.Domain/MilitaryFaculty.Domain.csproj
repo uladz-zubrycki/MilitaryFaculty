@@ -68,6 +68,7 @@
     <Compile Include="Exhibition.cs" />
     <Compile Include="FullName.cs" />
     <Compile Include="InventiveApplication.cs" />
+    <Compile Include="CouncilParticipation.cs" />
     <Compile Include="Professor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cathedra.cs" />

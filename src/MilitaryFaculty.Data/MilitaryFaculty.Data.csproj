@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\BookConfiguration.cs" />
+    <Compile Include="Configurations\CouncilParticipationConfiguration.cs" />
     <Compile Include="Configurations\DissertationConfiguration.cs" />
     <Compile Include="Configurations\EfficiencyProposalConfiguration.cs" />
     <Compile Include="Configurations\ExhibitionConfiguration.cs" />

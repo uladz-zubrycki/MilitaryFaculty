@@ -22,6 +22,10 @@
         <views:ProfessorExhibitionsView />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:ProfessorView+Exhibitions}">
+        <views:ProfessorCouncilParticipationView />
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:ProfessorView+Dissertations}">
         <views:ProfessorDissertationsView />
     </DataTemplate>
