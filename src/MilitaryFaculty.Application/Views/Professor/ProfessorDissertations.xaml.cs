@@ -3,11 +3,11 @@
 namespace MilitaryFaculty.Application.Views
 {
     /// <summary>
-    ///     Interaction logic for ProfessorHeaderViewModel.xaml
+    ///     Interaction logic for ProfessorInfoView.xaml
     /// </summary>
-    public partial class ProfessorHeaderView : UserControl
+    public partial class ProfessorDissertations : UserControl
     {
-        public ProfessorHeaderView()
+        public ProfessorDissertations()
         {
             InitializeComponent();
         }

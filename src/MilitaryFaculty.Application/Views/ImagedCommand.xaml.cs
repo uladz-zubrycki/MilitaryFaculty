@@ -3,11 +3,11 @@
 namespace MilitaryFaculty.Application.Views
 {
     /// <summary>
-    ///     Interaction logic for ImagedCommandView.xaml
+    ///     Interaction logic for ImagedCommand.xaml
     /// </summary>
-    public partial class ImagedCommandView : UserControl
+    public partial class ImagedCommand : UserControl
     {
-        public ImagedCommandView()
+        public ImagedCommand()
         {
             InitializeComponent();
         }

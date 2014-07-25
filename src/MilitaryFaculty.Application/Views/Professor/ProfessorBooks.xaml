@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="MilitaryFaculty.Application.Views.ProfessorInventiveApplicationsView"
+﻿<UserControl x:Class="MilitaryFaculty.Application.Views.ProfessorBooks"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -16,56 +16,34 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <!--SchoolBooks count-->
         <TextBlock
             Grid.Row="0"
             Grid.Column="0"
             Style="{StaticResource LabelTextBlock}"
-            Text="Подано заявок на изобретение:" />
+            Text="Издано учебников:" />
         <TextBlock
             Grid.Row="0"
             Grid.Column="1"
             Style="{StaticResource ValueTextBlock}"
-            Text="{Binding AppliedInventionApplicationsCount}" />
+            Text="{Binding SchoolbooksCount}" />
 
+        <!--Tutorials count-->
         <TextBlock
             Grid.Row="1"
             Grid.Column="0"
             Style="{StaticResource LabelTextBlock}"
-            Text="Подано заявок на полезную модель:" />
+            Text="Издано учебных пособий:" />
         <TextBlock
             Grid.Row="1"
             Grid.Column="1"
             Style="{StaticResource ValueTextBlock}"
-            Text="{Binding AppliedUtilityModelApplicationsCount}" />
-
-        <TextBlock
-            Grid.Row="2"
-            Grid.Column="0"
-            Style="{StaticResource LabelTextBlock}"
-            Text="Одобрено заявок на изобретение:" />
-        <TextBlock
-            Grid.Row="2"
-            Grid.Column="1"
-            Style="{StaticResource ValueTextBlock}"
-            Text="{Binding AcceptedInventionApplicationsCount}" />
-
-        <TextBlock
-            Grid.Row="3"
-            Grid.Column="0"
-            Style="{StaticResource LabelTextBlock}"
-            Text="Одобрено заявок на полезную модель:" />
-        <TextBlock
-            Grid.Row="3"
-            Grid.Column="1"
-            Style="{StaticResource ValueTextBlock}"
-            Text="{Binding AcceptedUtilityModelApplicationsCount}" />
+            Text="{Binding TutorialsCount}" />
 
         <ListBox
-            Grid.Row="4"
+            Grid.Row="2"
             Grid.Column="0" Grid.ColumnSpan="2"
             ItemsSource="{Binding Items}"
             Style="{StaticResource ItemListStyle}" />

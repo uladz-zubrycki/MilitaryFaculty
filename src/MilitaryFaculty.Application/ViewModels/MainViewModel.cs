@@ -1,5 +1,4 @@
 ﻿using System;
-using Autofac;
 using MilitaryFaculty.Application.Handlers;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
@@ -145,28 +144,30 @@ namespace MilitaryFaculty.Application.ViewModels
 
             //todo get module from container
             var modules = new ICommandModule[]
-            {
-                new ProfessorHandlers(_professorRepository),
-                new ProfessorNavigation(this),
-                new PublicationHandlers(_publicationRepository),
-                new PublicationNavigation(this),
-                new ConferenceHandlers(_conferenceRepository),
-                new ConferenceNavigation(this),
-                new ExhibitionHandlers(_exhibitionRepository),
-                new ExhibitionNavigation(this),
-                new BookHandlers(_bookRepository),
-                new BookNavigation(this),
-                new DissertationHandlers(_dissertationRepository),
-                new DissertationNavigation(this),
-                new InventiveApplicationHandlers(_inventiveApplicationRepository),
-                new InventiveApplicationNavigation(this),
-                new EfficiencyProposalHandlers(_efficiencyProposalRepository),
-                new EfficiencyProposalNavigation(this),
-                new ResearchHandlers(_researchRepository),
-                new ResearchNavigation(this),
-                new NavigationHistory(this),
-                new ReportingHandlers(_excelReportingService, _reportGenerator)
-            };
+                          {
+                              new ProfessorHandlers(_professorRepository),
+                              new ProfessorNavigation(this),
+                              new PublicationHandlers(_publicationRepository),
+                              new PublicationNavigation(this),
+                              new ConferenceHandlers(_conferenceRepository),
+                              new ConferenceNavigation(this),
+                              new ExhibitionHandlers(_exhibitionRepository),
+                              new ExhibitionNavigation(this),
+                              new BookHandlers(_bookRepository),
+                              new BookNavigation(this),
+                              new DissertationHandlers(_dissertationRepository),
+                              new DissertationNavigation(this),
+                              new InventiveApplicationHandlers(_inventiveApplicationRepository),
+                              new InventiveApplicationNavigation(this),
+                              new EfficiencyProposalHandlers(_efficiencyProposalRepository),
+                              new EfficiencyProposalNavigation(this),
+                              new CouncilParticipationHandlers(_councilParticipationRepository),
+                              new CouncilParticipationNavigation(this),
+                              new ResearchHandlers(_researchRepository),
+                              new ResearchNavigation(this),
+                              new NavigationHistory(this),
+                              new ReportingHandlers(_excelReportingService, _reportGenerator)
+                          };
 
             modules.ForEach(m => m.LoadModule(RoutedCommands));
         }

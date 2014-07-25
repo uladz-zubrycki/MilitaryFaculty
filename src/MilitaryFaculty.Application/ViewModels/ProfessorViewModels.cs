@@ -62,8 +62,11 @@ namespace MilitaryFaculty.Application.ViewModels
                 {
                     throw new ArgumentNullException("dissertationRepository");
                 }
+
                 if (councilParticipationRepository == null)
+                {
                     throw new ArgumentNullException("councilParticipationRepository");
+                }
 
                 if (dissertationRepository == null)
                 {
@@ -473,14 +476,16 @@ namespace MilitaryFaculty.Application.ViewModels
                 : base(model)
             {
                 if (councilParticipationRepository == null)
+                {
                     throw new ArgumentNullException("councilParticipationRepository");
+                }
 
                 _items = Lazy.Create(InitializeItems);
 
                 councilParticipationRepository.EntityCreated += OnCouncilParticipationCreated;
                 councilParticipationRepository.EntityDeleted += OnCouncilParticipationDeleted;
 
-                this.Addable(GlobalCommands.BrowseAdd<Exhibition>());
+                this.Addable(GlobalCommands.BrowseAdd<CouncilParticipation>());
             }
 
             public override string Title

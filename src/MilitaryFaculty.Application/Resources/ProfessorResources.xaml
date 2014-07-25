@@ -3,42 +3,42 @@
                     xmlns:vm="clr-namespace:MilitaryFaculty.Application.ViewModels"
                     xmlns:views="clr-namespace:MilitaryFaculty.Application.Views">
     <DataTemplate DataType="{x:Type vm:ProfessorView+Header}">
-        <views:ProfessorHeaderView />
+        <views:ProfessorHeader />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+Conferences}">
-        <views:ProfessorConferencesView />
+        <views:ProfessorConferences />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+Publications}">
-        <views:ProfessorPublicationsView />
+        <views:ProfessorPublications />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+Books}">
-        <views:ProfessorBooksView />
+        <views:ProfessorBooks />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+Exhibitions}">
-        <views:ProfessorExhibitionsView />
+        <views:ProfessorExhibitions />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:ProfessorView+Exhibitions}">
-        <views:ProfessorCouncilParticipationView />
+    <DataTemplate DataType="{x:Type vm:ProfessorView+CouncilParticipations}">
+        <views:ProfessorCouncilParticipations />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+Dissertations}">
-        <views:ProfessorDissertationsView />
+        <views:ProfessorDissertations />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+InventiveApplications}">
-        <views:ProfessorInventiveApplicationsView />
+        <views:ProfessorInventiveApplications />
     </DataTemplate>
     
     <DataTemplate DataType="{x:Type vm:ProfessorView+EfficiencyProposals}">
-        <views:ProfessorEfficiencyProposalsView />
+        <views:ProfessorEfficiencyProposals />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+Researches}">
-        <views:ProfessorResearchesView />
+        <views:ProfessorResearches />
     </DataTemplate>
 </ResourceDictionary>

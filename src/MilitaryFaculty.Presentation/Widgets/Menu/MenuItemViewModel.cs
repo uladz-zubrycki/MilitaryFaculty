@@ -7,15 +7,9 @@ namespace MilitaryFaculty.Presentation.Widgets.Menu
 {
     public class MenuItemViewModel: ViewModel
     {
-        [UsedImplicitly] private bool _isEnabled;
-
-        public MenuItemViewModel(string text, ICommand command, object commandParameter)
-            : this(text, command, commandParameter, true) { }
-
         public MenuItemViewModel(string text,
                                  ICommand command,
-                                 object commandParameter,
-                                 bool isEnabled)
+                                 object commandParameter)
         {
             if (command == null)
             {
@@ -26,8 +20,6 @@ namespace MilitaryFaculty.Presentation.Widgets.Menu
             {
                 throw new ArgumentException("text");
             }
-
-            _isEnabled = isEnabled;
 
             Command = command;
             CommandParameter = commandParameter;
@@ -42,8 +34,7 @@ namespace MilitaryFaculty.Presentation.Widgets.Menu
 
         public bool IsEnabled
         {
-            get { return _isEnabled; }
-            set { SetValue(() => _isEnabled, value); }
+            get { return Command.CanExecute(CommandParameter); }
         }
     }
 }

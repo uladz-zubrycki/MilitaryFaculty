@@ -11,6 +11,6 @@
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type vm:StartupViewModel}">
-        <views:StartupView />
+        <views:About />
     </DataTemplate>
 </ResourceDictionary>
