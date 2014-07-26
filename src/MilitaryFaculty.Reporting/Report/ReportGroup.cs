@@ -5,7 +5,7 @@ using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.Structure;
 using MilitaryFaculty.Reporting.Structure.XmlDomain;
 
-namespace MilitaryFaculty.Reporting.Report
+namespace MilitaryFaculty.Reporting
 {
     public class ReportGroup
     {
@@ -79,6 +79,10 @@ namespace MilitaryFaculty.Reporting.Report
 
         private static void CheckNames(ICollection<ReportGroup> reportGroups)
         {
+            if (reportGroups == null)
+            {
+                throw new ArgumentNullException("reportGroups");
+            }
             if (reportGroups.Any(reportGroup => reportGroup.Name != reportGroups.First().Name))
             {
                 throw new Exception("Groups discrepancy");

@@ -4,7 +4,7 @@ using System.Linq;
 using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.Structure;
 
-namespace MilitaryFaculty.Reporting.Report
+namespace MilitaryFaculty.Reporting
 {
     public class Report
     {

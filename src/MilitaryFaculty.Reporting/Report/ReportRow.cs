@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using MilitaryFaculty.Common;
 
-namespace MilitaryFaculty.Reporting.Report
+namespace MilitaryFaculty.Reporting
 {
     public class ReportRow
     {

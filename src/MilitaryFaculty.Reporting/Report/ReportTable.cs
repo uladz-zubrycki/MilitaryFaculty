@@ -5,7 +5,7 @@ using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.Structure;
 using MilitaryFaculty.Reporting.Structure.XmlDomain;
 
-namespace MilitaryFaculty.Reporting.Report
+namespace MilitaryFaculty.Reporting
 {
     public class ReportTable
     {

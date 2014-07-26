@@ -24,7 +24,7 @@ namespace MilitaryFaculty.Reporting
             }
             if (reportDataProvider == null)
             {
-                throw new ArgumentNullException("ReportDataProvider");
+                throw new ArgumentNullException("reportDataProvider");
             }
 
             _reportDataProvider = reportDataProvider;
