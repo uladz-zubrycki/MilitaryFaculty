@@ -80,28 +80,6 @@ namespace MilitaryFaculty.Application.Handlers
             return _forwardHistory != null && _forwardHistory.Count > 0;
         }
 
-        private void AddToHistory(LinkedList<ViewModel> history, ViewModel viewModel)
-        {
-            if (viewModel == null)
-            {
-                throw new ArgumentNullException("viewModel");
-            }
-
-            if (history.Count >= HistorySize)
-            {
-                _forwardHistory.RemoveLast();
-            }
-
-            if (history.IsEmpty())
-            {
-                history.AddFirst(viewModel);
-            }
-            else if (history.First.Value != viewModel)
-            {
-                history.AddFirst(viewModel);
-            }
-        }
-
         private bool IsChangedByBrowseForward(WorkWindowChangedEventArgs e)
         {
             return _forwardHistory.First != null &&
@@ -112,6 +90,28 @@ namespace MilitaryFaculty.Application.Handlers
         {
             return _backHistory.First != null &&
                    e.NewValue == _backHistory.First.Value;
+        }
+
+        private static void AddToHistory(LinkedList<ViewModel> history, ViewModel viewModel)
+        {
+            if (viewModel == null)
+            {
+                throw new ArgumentNullException("viewModel");
+            }
+
+            if (history.Count >= HistorySize)
+            {
+                history.RemoveLast();
+            }
+
+            if (history.IsEmpty())
+            {
+                history.AddFirst(viewModel);
+            }
+            else if (history.First.Value != viewModel)
+            {
+                history.AddFirst(viewModel);
+            }
         }
     }
 }
