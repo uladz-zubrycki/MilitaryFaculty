@@ -21,6 +21,8 @@ namespace MilitaryFaculty.Data.Configurations
             HasKey(m => m.Id);
             Property(m => m.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(m => m.Value).IsRequired();
+
+            HasRequired(m => m.Definition);
         }
     }
 
