@@ -4,6 +4,7 @@ using System.Windows.Input;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Presentation.ViewModels;
+using MilitaryFaculty.Presentation.Widgets.Command;
 using Omu.ValueInjecter;
 
 namespace MilitaryFaculty.Presentation.ViewBehaviours
@@ -73,7 +74,7 @@ namespace MilitaryFaculty.Presentation.ViewBehaviours
                     ToDisplayMode();
                 };
 
-            var command = new Command(cancel);
+            var command = new SimpleCommand(cancel);
 
             return new ImagedCommandViewModel(command,
                                               cancelTooltip,
@@ -109,7 +110,7 @@ namespace MilitaryFaculty.Presentation.ViewBehaviours
             Func<bool> canSave =
                 () => command.CanExecute(_viewModel.Model);
 
-            var saveCommand = new Command(save, canSave);
+            var saveCommand = new SimpleCommand(save, canSave);
             var commandViewModel = new ImagedCommandViewModel(saveCommand,
                                                               tooltip,
                                                               imageSource);
@@ -128,7 +129,7 @@ namespace MilitaryFaculty.Presentation.ViewBehaviours
                 throw new ArgumentNullException("saveImageSource");
             }
 
-            var editCommand = new Command(ToEditMode);
+            var editCommand = new SimpleCommand(ToEditMode);
             var commandViewModel = new ImagedCommandViewModel(editCommand,
                                                               tooltip,
                                                               imageSource);

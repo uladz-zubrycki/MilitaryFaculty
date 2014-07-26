@@ -1,5 +1,6 @@
 ﻿using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
+using EfficiencyProposal = MilitaryFaculty.Domain.EfficiencyProposal;
 
 namespace MilitaryFaculty.Reporting.Data.DataProviders
 {

@@ -1,8 +1,10 @@
 ﻿using System;
+using MilitaryFaculty.Application.AppStartup;
 using MilitaryFaculty.Application.ViewModels;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Commands;
+using EfficiencyProposal = MilitaryFaculty.Domain.EfficiencyProposal;
 
 namespace MilitaryFaculty.Application.Handlers
 {

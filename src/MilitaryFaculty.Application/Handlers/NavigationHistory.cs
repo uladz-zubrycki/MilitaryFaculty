@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using MilitaryFaculty.Application.AppStartup;
 using MilitaryFaculty.Application.ViewModels;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Presentation.Commands;
 using MilitaryFaculty.Presentation.ViewModels;
 
@@ -45,13 +48,14 @@ namespace MilitaryFaculty.Application.Handlers
                 return;
             }
 
-            AddToBackHistory(e.OldValue);
+            _forwardHistory.Clear();
+            AddToHistory(_backHistory, e.OldValue);
         }
 
         private void OnBrowseBack()
         {
             var previous = _backHistory.First.Value;
-            AddToForwardHistory(ViewModel.WorkWindow);
+            AddToHistory(_forwardHistory, ViewModel.WorkWindow);
             ViewModel.WorkWindow = previous;
 
             _backHistory.RemoveFirst();
@@ -65,7 +69,7 @@ namespace MilitaryFaculty.Application.Handlers
         private void OnBrowseForward()
         {
             var next = _forwardHistory.First.Value;
-            AddToBackHistory(ViewModel.WorkWindow);
+            AddToHistory(_backHistory, ViewModel.WorkWindow);
             ViewModel.WorkWindow = next;
 
             _forwardHistory.RemoveFirst();
@@ -76,34 +80,26 @@ namespace MilitaryFaculty.Application.Handlers
             return _forwardHistory != null && _forwardHistory.Count > 0;
         }
 
-        private void AddToBackHistory(ViewModel viewModel)
+        private void AddToHistory(LinkedList<ViewModel> history, ViewModel viewModel)
         {
             if (viewModel == null)
             {
                 throw new ArgumentNullException("viewModel");
             }
 
-            if (_backHistory.Count >= HistorySize)
-            {
-                _backHistory.RemoveLast();
-            }
-
-            _backHistory.AddFirst(viewModel);
-        }
-
-        private void AddToForwardHistory(ViewModel viewModel)
-        {
-            if (viewModel == null)
-            {
-                throw new ArgumentNullException("viewModel");
-            }
-
-            if (_forwardHistory.Count >= HistorySize)
+            if (history.Count >= HistorySize)
             {
                 _forwardHistory.RemoveLast();
             }
 
-            _forwardHistory.AddFirst(viewModel);
+            if (history.IsEmpty())
+            {
+                history.AddFirst(viewModel);
+            }
+            else if (history.First.Value != viewModel)
+            {
+                history.AddFirst(viewModel);
+            }
         }
 
         private bool IsChangedByBrowseForward(WorkWindowChangedEventArgs e)

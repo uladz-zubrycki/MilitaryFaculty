@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using MilitaryFaculty.Presentation.Widgets.Command;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {

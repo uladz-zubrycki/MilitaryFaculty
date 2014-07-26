@@ -1,8 +1,10 @@
 ﻿using System;
+using MilitaryFaculty.Application.AppStartup;
 using MilitaryFaculty.Application.ViewModels;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Presentation.Commands;
+using Dissertation = MilitaryFaculty.Domain.Dissertation;
 
 namespace MilitaryFaculty.Application.Handlers
 {

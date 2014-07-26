@@ -16,15 +16,15 @@ namespace MilitaryFaculty.Domain
     // Properties are virtual only for EntityFramework
     public class Research: UniqueEntity
     {
-        public string Name { get; set; }
-        public Professor Author { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public ResearchMaintainState MaintainState { get; set; }
-
         public Research()
         {
             CreatedAt = DateTime.Now;
         }
+
+        public string Name { get; set; }
+        public Professor Author { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public ResearchMaintainState MaintainState { get; set; }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

@@ -12,27 +12,27 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         public override void SetFacultyModificator(TimeInterval interval)
         {
             QueryModificator = cp =>
-                (cp.Start >= interval.From && cp.Start <= interval.To)
-                || (cp.End >= interval.From && cp.End <= interval.To)
-                || (cp.Start <= interval.From && cp.End >= interval.To);
+                (cp.StartDate >= interval.From && cp.StartDate <= interval.To)
+                || (cp.EndDate >= interval.From && cp.EndDate <= interval.To)
+                || (cp.StartDate <= interval.From && cp.EndDate >= interval.To);
         }
 
         public override void SetCathedraModificator(Cathedra cathedra, TimeInterval interval)
         {
             QueryModificator = cp =>
                 cp.Participant.Cathedra.Id == cathedra.Id
-                && (cp.Start >= interval.From && cp.Start <= interval.To)
-                || (cp.End >= interval.From && cp.End <= interval.To)
-                || (cp.Start <= interval.From && cp.End >= interval.To);
+                && (cp.StartDate >= interval.From && cp.StartDate <= interval.To)
+                || (cp.EndDate >= interval.From && cp.EndDate <= interval.To)
+                || (cp.StartDate <= interval.From && cp.EndDate >= interval.To);
         }
 
         public override void SetProfessorModificator(Professor professor, TimeInterval interval)
         {
             QueryModificator = cp =>
                 cp.Participant.Id == professor.Id
-                && (cp.Start >= interval.From && cp.Start <= interval.To)
-                || (cp.End >= interval.From && cp.End <= interval.To)
-                || (cp.Start <= interval.From && cp.End >= interval.To);
+                && (cp.StartDate >= interval.From && cp.StartDate <= interval.To)
+                || (cp.EndDate >= interval.From && cp.EndDate <= interval.To)
+                || (cp.StartDate <= interval.From && cp.EndDate >= interval.To);
         }
 
         /// <summary>

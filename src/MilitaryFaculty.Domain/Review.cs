@@ -13,16 +13,16 @@ namespace MilitaryFaculty.Domain
     // Properties are virtual only for EntityFramework
     public class Review: UniqueEntity
     {
+        public Review()
+        {
+            CreatedAt = DateTime.Now;
+        }
+
         public string Name { get; set; }
         public Professor Author { get; set; }
         public DateTime CreatedAt { get; set; }
         public ReviewType Type { get; set; }
         public AcademicRank TargetAcademicRank { get; set; }
-
-        public Review()
-        {
-            CreatedAt = DateTime.Now;
-        }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

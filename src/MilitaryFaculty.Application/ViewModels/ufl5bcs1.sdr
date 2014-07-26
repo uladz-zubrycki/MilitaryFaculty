@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using MilitaryFaculty.Domain;
+using MilitaryFaculty.Presentation.ViewModels;
+
+namespace MilitaryFaculty.Application.ViewModels
+{
+    internal class CathedraRateViewModel : ViewModel<CathedraRate>
+    {
+        public CathedraRateViewModel(CathedraRate model) : base(model)  { }
+
+        public string Name { get { return Model.Name; } }
+        public int MaxValue { get { return Model.MaxValue; } }
+
+        public int Value
+        {
+            get { return Model.Value; }
+            set { SetModelProperty(m => m.Value, value); }
+        }
+
+        public static CathedraRateViewModel Create(CathedraRate model)
+        {
+            return new CathedraRateViewModel(model);
+        }
+    }
+
+    internal class CathedraRankViewModel: ViewModel<CathedraRank>
+    {
+        public CathedraRankViewModel(CathedraRank model) : base(model)
+        {
+            Rates = CreateRatesViewModels(model);
+        }
+
+        public IEnumerable<ViewModel> Rates { get; private set; }
+        
+        public DateTime CreatedAt
+        {
+            get { return Model.CreatedAt; }
+            set { SetModelProperty(m => m.CreatedAt, value); }
+        }
+
+        private static IEnumerable<ViewModel> CreateRatesViewModels(CathedraRank model)
+        {
+            var resutl = model.Rates.Select(CathedraRateViewModel.Create);
+        }
+    }
+}

@@ -67,7 +67,7 @@ namespace MilitaryFaculty.Presentation.Commands
                 throw new ArgumentNullException("execute");
             }
 
-            _commands[command] = new Command(execute, canExecute);
+            _commands[command] = new SimpleCommand(execute, canExecute);
         }
 
         public void AddCommand<T>(RoutedCommand command, Action<T> execute)
@@ -86,7 +86,7 @@ namespace MilitaryFaculty.Presentation.Commands
                 throw new ArgumentNullException("execute");
             }
 
-            _commands[command] = new Command<T>(execute, canExecute);
+            _commands[command] = new SimpleCommand<T>(execute, canExecute);
         }
 
         public void RemoveCommand(RoutedCommand command)

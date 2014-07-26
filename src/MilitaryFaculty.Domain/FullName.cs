@@ -10,20 +10,20 @@ namespace MilitaryFaculty.Domain
         public const int MiddleNameMaxLength = 50;
         public const int LastNameMaxLength = 50;
 
-        public virtual string FirstName { get; set; }
-        public virtual string MiddleName { get; set; }
-        public virtual string LastName { get; set; }
-
-        public FullName()
-        {
-        }
-
         public FullName(string firstName, string middleName, string lastName)
         {
             FirstName = firstName;
             MiddleName = middleName;
             LastName = lastName;
         }
+
+        public FullName()
+        {
+        }
+
+        public virtual string FirstName { get; set; }
+        public virtual string MiddleName { get; set; }
+        public virtual string LastName { get; set; }
 
         public override string ToString()
         {

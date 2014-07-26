@@ -1,5 +1,6 @@
 ﻿using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
+using Dissertation = MilitaryFaculty.Domain.Dissertation;
 
 namespace MilitaryFaculty.Reporting.Data.DataProviders
 {

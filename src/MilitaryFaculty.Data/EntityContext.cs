@@ -18,6 +18,9 @@ namespace MilitaryFaculty.Data
         public DbSet<Research> Researches { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<ScientificExpertise> ScientificExpertises { get; set; }
+        public DbSet<ScienceRank> ScientificRanks { get; set; }
+        public DbSet<ScienceRankMetric> ScientificRankMetrics { get; set; }
+        public DbSet<ScienceRankMetricDefinition> ScientificRankMetricDefinitions { get; set; }
 
         public EntityContext(string connectionString)
             : base(connectionString)

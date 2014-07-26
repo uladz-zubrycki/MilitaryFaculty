@@ -108,21 +108,29 @@
     <Compile Include="Custom\EditableViewTemplateSelector.cs" />
     <Compile Include="Custom\GenericTemplateSelector.cs" />
     <Compile Include="Handlers\NavigationHistory.cs" />
+    <Compile Include="Handlers\ScienceRankHandlers.cs" />
     <Compile Include="InjectionConfig.cs" />
     <Compile Include="ViewModels\Base\AddEntityViewModel.cs" />
-    <Compile Include="ViewModels\BookViewModels.cs" />
+    <Compile Include="ViewModels\Book.cs" />
     <Compile Include="ViewModels\Base\EntityRootViewModel.cs" />
-    <Compile Include="ViewModels\CouncilParticipationViewModels.cs" />
-    <Compile Include="ViewModels\DissertationViewModels.cs" />
-    <Compile Include="ViewModels\EfficiencyProposalViewModels.cs" />
-    <Compile Include="ViewModels\ExhibitionViewModels.cs" />
+    <Compile Include="ViewModels\ScienceRank.cs" />
+    <Compile Include="ViewModels\CouncilParticipation.cs" />
+    <Compile Include="ViewModels\Dissertation.cs" />
+    <Compile Include="ViewModels\EfficiencyProposal.cs" />
+    <Compile Include="ViewModels\Exhibition.cs" />
     <Compile Include="ViewModels\Base\ListItemViewModel.cs" />
-    <Compile Include="ViewModels\InventiveApplicationViewModels.cs" />
-    <Compile Include="ViewModels\PublicationViewModels.cs" />
-    <Compile Include="ViewModels\CathedraViewModels.cs" />
-    <Compile Include="ViewModels\ConferenceViewModels.cs" />
-    <Compile Include="ViewModels\ResearchViewModels.cs" />
-    <Compile Include="ViewModels\StartupViewModel.cs" />
+    <Compile Include="ViewModels\InventiveApplication.cs" />
+    <Compile Include="ViewModels\Publication.cs" />
+    <Compile Include="ViewModels\Cathedra.cs" />
+    <Compile Include="ViewModels\Conference.cs" />
+    <Compile Include="ViewModels\ResearchView.cs" />
+    <Compile Include="StartupViewModel.cs" />
+    <Compile Include="Views\Cathedra\ScienceRanks.xaml.cs">
+      <DependentUpon>ScienceRanks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cathedra\Header.xaml.cs">
+      <DependentUpon>Header.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Entity\Default.xaml.cs">
       <DependentUpon>Default.xaml</DependentUpon>
     </Compile>
@@ -135,34 +143,34 @@
     <Compile Include="Views\Entity\ListItem.xaml.cs">
       <DependentUpon>ListItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Entity\PropertyViews\IntPropertyEdit.xaml.cs">
+    <Compile Include="Views\Entity\Properties\IntPropertyEdit.xaml.cs">
       <DependentUpon>IntPropertyEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Entity\PropertyViews\IntProperty.xaml.cs">
+    <Compile Include="Views\Entity\Properties\IntProperty.xaml.cs">
       <DependentUpon>IntProperty.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Entity\PropertyViews\DatePropertyEdit.xaml.cs">
+    <Compile Include="Views\Entity\Properties\DatePropertyEdit.xaml.cs">
       <DependentUpon>DatePropertyEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Entity\PropertyViews\EnumPropertyEdit.xaml.cs">
+    <Compile Include="Views\Entity\Properties\EnumPropertyEdit.xaml.cs">
       <DependentUpon>EnumPropertyEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Entity\PropertyViews\TextPropertyEdit.xaml.cs">
+    <Compile Include="Views\Entity\Properties\TextPropertyEdit.xaml.cs">
       <DependentUpon>TextPropertyEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Entity\PropertyViews\DateProperty.xaml.cs">
+    <Compile Include="Views\Entity\Properties\DateProperty.xaml.cs">
       <DependentUpon>DateProperty.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Entity\PropertyViews\EnumProperty.xaml.cs">
+    <Compile Include="Views\Entity\Properties\EnumProperty.xaml.cs">
       <DependentUpon>EnumProperty.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Entity\PropertyViews\TextProperty.xaml.cs">
+    <Compile Include="Views\Entity\Properties\TextProperty.xaml.cs">
       <DependentUpon>TextProperty.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Entity\Add.xaml.cs">
       <DependentUpon>Add.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EntityMenu.xaml.cs">
+    <Compile Include="Views\Widgets\EntityMenu.xaml.cs">
       <DependentUpon>EntityMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Professor\CouncilParticipations.xaml.cs">
@@ -183,7 +191,7 @@
     <Compile Include="Views\Professor\Header.xaml.cs">
       <DependentUpon>Header.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ImagedCommand.xaml.cs">
+    <Compile Include="Views\Widgets\ImagedCommand.xaml.cs">
       <DependentUpon>ImagedCommand.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Professor\InventiveApplications.xaml.cs">
@@ -198,7 +206,7 @@
     <Compile Include="Views\Professor\Conferences.xaml.cs">
       <DependentUpon>Conferences.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Startup.xaml.cs">
+    <Compile Include="Startup.xaml.cs">
       <DependentUpon>Startup.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\Cathedra.xaml">
@@ -209,7 +217,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\FacultyTree.xaml">
+    <Page Include="Resources\Widgets\EntityMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Widgets\FacultyTree.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,6 +236,14 @@
     <Page Include="Resources\Professor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Cathedra\ScienceRanks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Cathedra\Header.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Entity\Default.xaml">
       <SubType>Designer</SubType>
@@ -241,35 +261,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Entity\PropertyViews\IntPropertyEdit.xaml">
+    <Page Include="Views\Entity\Properties\IntPropertyEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Entity\PropertyViews\IntProperty.xaml">
+    <Page Include="Views\Entity\Properties\IntProperty.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Entity\PropertyViews\DatePropertyEdit.xaml">
+    <Page Include="Views\Entity\Properties\DatePropertyEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Entity\PropertyViews\EnumPropertyEdit.xaml">
+    <Page Include="Views\Entity\Properties\EnumPropertyEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Entity\PropertyViews\TextPropertyEdit.xaml">
+    <Page Include="Views\Entity\Properties\TextPropertyEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Entity\PropertyViews\DateProperty.xaml">
+    <Page Include="Views\Entity\Properties\DateProperty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Entity\PropertyViews\EnumProperty.xaml">
+    <Page Include="Views\Entity\Properties\EnumProperty.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Entity\PropertyViews\TextProperty.xaml">
+    <Page Include="Views\Entity\Properties\TextProperty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -277,7 +297,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\EntityMenu.xaml">
+    <Page Include="Views\Widgets\EntityMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -305,7 +325,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ImagedCommand.xaml">
+    <Page Include="Views\Widgets\ImagedCommand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -321,7 +341,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\FacultyTree.xaml">
+    <Page Include="Views\Widgets\FacultyTree.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -333,12 +353,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\ProfessorViewModels.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\FacultyTreeView\CathedraTreeItemViewModel.cs" />
-    <Compile Include="ViewModels\FacultyTreeView\FacultyTreeViewModel.cs" />
-    <Compile Include="ViewModels\FacultyTreeView\ProfessorTreeItemViewModel.cs" />
-    <Compile Include="Views\FacultyTree.xaml.cs">
+    <Compile Include="ViewModels\Professor.cs" />
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="ViewModels\FacultyTree\CathedraTreeItemViewModel.cs" />
+    <Compile Include="ViewModels\FacultyTree\FacultyTreeViewModel.cs" />
+    <Compile Include="ViewModels\FacultyTree\ProfessorTreeItemViewModel.cs" />
+    <Compile Include="Views\Widgets\FacultyTree.xaml.cs">
       <DependentUpon>FacultyTree.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -349,7 +369,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Startup.xaml">
+    <Page Include="Startup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -476,9 +496,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Cathedra\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

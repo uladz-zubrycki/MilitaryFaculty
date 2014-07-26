@@ -2,11 +2,11 @@
 using System.Data.Entity.ModelConfiguration;
 using MilitaryFaculty.Domain;
 
-namespace MilitaryFaculty.Data
+namespace MilitaryFaculty.Data.Configurations
 {
-    internal class ConferenceReportConfiguration : ComplexTypeConfiguration<ConferenceReport>
+    internal class ConferenceReport : ComplexTypeConfiguration<Domain.ConferenceReport>
     {
-        public ConferenceReportConfiguration()
+        public ConferenceReport()
         {
             Property(m => m.OrganizationCorrectness).IsRequired();
             Property(m => m.ReportMaterials).IsRequired();

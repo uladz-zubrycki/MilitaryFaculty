@@ -19,14 +19,14 @@ namespace MilitaryFaculty.Domain
     public class CouncilParticipation : UniqueEntity
     {
         public virtual string Name { get; set; }
-        public virtual Professor Participant { get; set; }
-        public virtual DateTime Start { get; set; }
-        public virtual DateTime End { get; set; }
         public virtual CouncilType Type { get; set; }
+        public virtual Professor Participant { get; set; }
+        public virtual DateTime StartDate { get; set; }
+        public virtual DateTime? EndDate { get; set; }
 
         public CouncilParticipation()
         {
-            Start = DateTime.Now;
+            StartDate = DateTime.Now;
         }
     }
 

@@ -3,70 +3,71 @@
                     xmlns:viewBehaviours="clr-namespace:MilitaryFaculty.Presentation.ViewBehaviours;assembly=MilitaryFaculty.Presentation"
                     xmlns:views="clr-namespace:MilitaryFaculty.Application.Views"
                     xmlns:custom="clr-namespace:MilitaryFaculty.Application.Custom"
-                    xmlns:entity="clr-namespace:MilitaryFaculty.Presentation.ViewModels;assembly=MilitaryFaculty.Presentation">
+                    xmlns:properties="clr-namespace:MilitaryFaculty.Presentation.ViewModels.Properties;assembly=MilitaryFaculty.Presentation"
+                    xmlns:entity="clr-namespace:MilitaryFaculty.Application.Views.Entity">
 
     <!--Entity-->
     <!--If Key is changed, update MilitaryFaculty.Custom.GenericTemplateSelector also.-->
     <DataTemplate x:Key="EntityViewTemplate">
-        <views:Properties />
+        <entity:Properties />
     </DataTemplate>
 
     <!--Main entity view-->
     <!--If Key is changed, update MilitaryFaculty.Custom.GenericTemplateSelector also.-->
     <DataTemplate x:Key="EntityRootViewTemplate">
-        <views:Root />
+        <entity:Root />
     </DataTemplate>
 
     <!--Add entity-->
     <!--If Key is changed, update MilitaryFaculty.Custom.GenericTemplateSelector also.-->
     <DataTemplate x:Key="AddEntityViewTemplate">
-        <views:Add />
+        <entity:Add />
     </DataTemplate>
 
     <!--List item entity-->
     <!--If Key is changed, update MilitaryFaculty.Custom.GenericTemplateSelector also.-->
     <DataTemplate x:Key="ListItemViewTemplate">
-        <views:ListItem />
+        <entity:ListItem />
     </DataTemplate>
 
     <!--Text Property display mode-->
     <DataTemplate x:Key="TextPropertyDisplayTemplate">
-        <views:TextProperty />
+        <entity:TextProperty />
     </DataTemplate>
 
     <!--Text Property edit mode-->
     <DataTemplate x:Key="TextPropertyEditTemplate">
-        <views:TextPropertyEdit />
+        <entity:TextPropertyEdit />
     </DataTemplate>
 
     <!--Enum Property display mode-->
     <DataTemplate x:Key="EnumPropertyDisplayTemplate">
-        <views:EnumProperty />
+        <entity:EnumProperty />
     </DataTemplate>
 
     <!--Enum Property edit mode-->
     <DataTemplate x:Key="EnumPropertyEditTemplate">
-        <views:EnumPropertyEdit />
+        <entity:EnumPropertyEdit />
     </DataTemplate>
 
     <!--Int Property display mode-->
     <DataTemplate x:Key="IntPropertyDisplayTemplate">
-        <views:IntProperty />
+        <entity:IntProperty />
     </DataTemplate>
 
     <!--Int Property edit mode-->
     <DataTemplate x:Key="IntPropertyEditTemplate">
-        <views:IntPropertyEdit />
+        <entity:IntPropertyEdit />
     </DataTemplate>
 
     <!--Date Property display mode-->
     <DataTemplate x:Key="DatePropertyDisplayTemplate">
-        <views:DateProperty />
+        <entity:DateProperty />
     </DataTemplate>
 
     <!--Date Property edit mode-->
     <DataTemplate x:Key="DatePropertyEditTemplate">
-        <views:DatePropertyEdit />
+        <entity:DatePropertyEdit />
     </DataTemplate>
 
     <!--String-->
@@ -94,7 +95,7 @@
         EditViewTemplate="{StaticResource DatePropertyEditTemplate}" />
 
     <!--String-->
-    <DataTemplate DataType="{x:Type entity:TextPropertyViewModel}">
+    <DataTemplate DataType="{x:Type properties:TextPropertyViewModel}">
         <ContentPresenter x:Name="ContentPresenter"
                           ContentTemplateSelector="{StaticResource StringPropertyTemplateSelector}" />
         <DataTemplate.Triggers>
@@ -110,7 +111,7 @@
     </DataTemplate>
 
     <!--Enum-->
-    <DataTemplate DataType="{x:Type entity:EnumPropertyViewModel}">
+    <DataTemplate DataType="{x:Type properties:EnumPropertyViewModel}">
         <ContentPresenter x:Name="ContentPresenter"
                           ContentTemplateSelector="{StaticResource EnumPropertyTemplateSelector}" />
         <DataTemplate.Triggers>
@@ -126,7 +127,7 @@
     </DataTemplate>
 
     <!--Int-->
-    <DataTemplate DataType="{x:Type entity:IntPropertyViewModel}">
+    <DataTemplate DataType="{x:Type properties:IntPropertyViewModel}">
         <ContentPresenter x:Name="ContentPresenter"
                           ContentTemplateSelector="{StaticResource IntPropertyTemplateSelector}" />
         <DataTemplate.Triggers>
@@ -142,7 +143,7 @@
     </DataTemplate>
 
     <!--Date-->
-    <DataTemplate DataType="{x:Type entity:DatePropertyViewModel}">
+    <DataTemplate DataType="{x:Type properties:DatePropertyViewModel}">
         <ContentPresenter x:Name="ContentPresenter"
                           ContentTemplateSelector="{StaticResource DatePropertyTemplateSelector}" />
         <DataTemplate.Triggers>

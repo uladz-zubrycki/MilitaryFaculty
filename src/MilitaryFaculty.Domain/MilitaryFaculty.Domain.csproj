@@ -58,10 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcademicDegree.cs" />
-    <Compile Include="AcademicRank.cs" />
-    <Compile Include="ApplicationStatus.cs" />
     <Compile Include="Book.cs" />
+    <Compile Include="CathedraRank .backup.cs" />
+    <Compile Include="CommonEnums.cs" />
+    <Compile Include="ScienceRank.cs" />
     <Compile Include="Conference.cs" />
     <Compile Include="EfficiencyProposal.cs" />
     <Compile Include="EventLevel.cs" />

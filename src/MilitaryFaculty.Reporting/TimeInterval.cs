@@ -19,7 +19,7 @@ namespace MilitaryFaculty.Reporting
             }
             if (from > to)
             {
-                throw new ArgumentException("Start date is later than end date.");
+                throw new ArgumentException("StartDate date is later than end date.");
             }
 
             From = from;

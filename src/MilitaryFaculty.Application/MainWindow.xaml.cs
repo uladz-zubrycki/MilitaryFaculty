@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using MilitaryFaculty.Presentation.Commands;
 
-namespace MilitaryFaculty.Application
+namespace MilitaryFaculty.Application.AppStartup
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml

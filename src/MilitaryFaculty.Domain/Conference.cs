@@ -45,17 +45,17 @@ namespace MilitaryFaculty.Domain
     {
         public const int NameMaxLength = 200;
 
-        public virtual string Name { get; set; }
-        public virtual DateTime Date { get; set; }
-        public virtual Professor Curator { get; set; }
-        public virtual ConferenceReport ConferenceReport { get; set; }
-        public virtual EventLevel EventLevel { get; set; }
-
         public Conference()
         {
             Date = DateTime.Now;
             ConferenceReport = new ConferenceReport();
         }
+
+        public virtual string Name { get; set; }
+        public virtual DateTime Date { get; set; }
+        public virtual Professor Curator { get; set; }
+        public virtual ConferenceReport ConferenceReport { get; set; }
+        public virtual EventLevel EventLevel { get; set; }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

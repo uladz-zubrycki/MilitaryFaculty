@@ -10,16 +10,16 @@ namespace MilitaryFaculty.Application.Handlers
     public abstract class EntityCommandModule<T> : ICommandModule
         where T : class, IUniqueEntity
     {
-        private readonly IRepository<T> _repository;
+        protected readonly IRepository<T> Repository;
 
         protected EntityCommandModule(IRepository<T> repository)
         {
             if (repository == null)
             {
-                throw new ArgumentNullException("repository");
+                throw new ArgumentNullException("_scienceRankRepository");
             }
 
-            _repository = repository;
+            Repository = repository;
         }
 
         public void LoadModule(RoutedCommands commands)
@@ -81,6 +81,21 @@ namespace MilitaryFaculty.Application.Handlers
             return true;
         }
 
+        protected virtual void AddEntity(T entity)
+        {
+            Repository.Create(entity);
+        }
+
+        protected virtual void SaveEntity(T entity)
+        {
+            Repository.Update(entity);
+        }
+
+        protected virtual void RemoveEntity(T entity)
+        {
+            Repository.Delete(entity.Id);
+        }
+
         private void OnAddEntity(T entity)
         {
             if (entity == null)
@@ -88,7 +103,7 @@ namespace MilitaryFaculty.Application.Handlers
                 throw new ArgumentNullException("entity");
             }
 
-            _repository.Create(entity);
+            AddEntity(entity);
             GlobalCommands.BrowseBack.Execute(null, null);
         }
 
@@ -99,7 +114,7 @@ namespace MilitaryFaculty.Application.Handlers
                 throw new ArgumentNullException("entity");
             }
 
-            _repository.Update(entity);
+            SaveEntity(entity);
         }
 
         private void OnRemoveEntity(T entity)
@@ -109,14 +124,16 @@ namespace MilitaryFaculty.Application.Handlers
                 throw new ArgumentNullException("entity");
             }
 
-            var message = GetRemovalMessage(entity);
             const string title = "Подтверждение удаления";
+            var message = GetRemovalMessage(entity);
 
-            var userInput = MessageBox.Show(message, title, MessageBoxButton.OKCancel);
+            var userInput = MessageBox.Show(message,
+                                            title,
+                                            MessageBoxButton.OKCancel);
 
             if (userInput != MessageBoxResult.Cancel)
             {
-                _repository.Delete(entity.Id);
+                RemoveEntity(entity);
             }
         }
     }

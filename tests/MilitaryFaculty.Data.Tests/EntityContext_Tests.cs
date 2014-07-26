@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using MilitaryFaculty.Domain;
 using NUnit.Framework;
@@ -14,7 +14,6 @@ namespace MilitaryFaculty.Data.Tests
     public class EntityContext_Tests
     {
         [SetUp]
-
         public void SetUp()
         {
             const string conName = "Current";
@@ -44,6 +43,7 @@ namespace MilitaryFaculty.Data.Tests
 
             context.SaveChanges();
         }
+
 
         private static void SeedProfessors(EntityContext context)
         {
@@ -280,6 +280,50 @@ namespace MilitaryFaculty.Data.Tests
         }
 
 
+        private static void SeedScienceRankMetricDefinitions(EntityContext context)
+        {
+            var definitions =
+                new Dictionary<string, int>
+                {
+                    {"Полнота разработки планирующих документов", 0},
+                    {"Уровень организации международных конференций", 0},
+                    {"Уровень организации республиканских конференций", 0},
+                    {"Уровень организации вузовских конференций", 0},
+                    {"Уровень организации республиканских семинаров", 0},
+                    {"Уровень организации вузовских семинаров", 0},
+                    {
+                        "Уровень организации подготовки научно-педагогических работников " +
+                        "высшей квалификации",
+                        0
+                    },
+                    {"Уровень организации военно-исторической работы", 0},
+                    {"Уровень организации работы научных кружков", 0},
+                    {
+                        "Другие частные показатели, характеризующие качество " +
+                        "организации научной работы",
+                        0
+                    },
+                    {
+                        "Другие частные показатели, характеризующие проведение " +
+                        "научных исследований",
+                        0
+                    },
+                    {
+                        "Другие частные показатели, характеризующие подготовку " +
+                        "и аттестацию работников высшей квалификации",
+                        0
+                    }
+                };
+
+            foreach (var pair in definitions)
+            {
+                context.ScientificRankMetricDefinitions.Add(new ScienceRankMetricDefinition(pair.Key, pair.Value));
+            }
+
+            context.SaveChanges();
+        }
+
+
         [Test]
         public void InitDatabase()
         {
@@ -289,6 +333,7 @@ namespace MilitaryFaculty.Data.Tests
             SeedPublications(context);
             SeedBooks(context);
             SeedExhibitions(context);
+            SeedScienceRankMetricDefinitions(context);
         }
     }
 }

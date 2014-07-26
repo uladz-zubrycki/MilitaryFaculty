@@ -4,19 +4,18 @@
                     xmlns:markup="clr-namespace:MilitaryFaculty.Presentation.Markup;assembly=MilitaryFaculty.Presentation"
                     xmlns:custom="clr-namespace:MilitaryFaculty.Application.Custom"
                     xmlns:views="clr-namespace:MilitaryFaculty.Application.Views"
-                    xmlns:menu="clr-namespace:MilitaryFaculty.Presentation.Widgets.Menu;assembly=MilitaryFaculty.Presentation">
+                    xmlns:menu="clr-namespace:MilitaryFaculty.Presentation.Widgets.Menu;assembly=MilitaryFaculty.Presentation"
+                    xmlns:widgets="clr-namespace:MilitaryFaculty.Application.Views.Widgets"
+                    xmlns:command="clr-namespace:MilitaryFaculty.Presentation.Widgets.Command;assembly=MilitaryFaculty.Presentation"
+                    xmlns:entity="clr-namespace:MilitaryFaculty.Application.Views.Entity">
     <custom:GenericTemplateSelector x:Key="TemplateSelector" />
 
-    <DataTemplate DataType="{x:Type vm:ImagedCommandViewModel}">
-        <views:ImagedCommand />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type menu:MenuViewModel}">
-        <views:EntityMenu />
+    <DataTemplate DataType="{x:Type command:ImagedCommandViewModel}">
+        <widgets:ImagedCommand />
     </DataTemplate>
     
     <DataTemplate DataType="{x:Type vm:ViewModel}">
-        <views:Default />
+        <entity:Default />
     </DataTemplate>
 
     <SolidColorBrush x:Key="BorderSolidBrush">
@@ -63,6 +62,7 @@
         <Setter Property="Padding" Value="4 6" />
         <Setter Property="Margin" Value="2, 2" />
         <Setter Property="FontSize" Value="13" />
+        <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
 
     <Style x:Key="ValueTextBlock" TargetType="TextBlock" BasedOn="{StaticResource LabelTextBlock}">
@@ -345,38 +345,5 @@
                 <Setter Property="FontSize" Value="23" />
             </Trigger>
         </Style.Triggers>
-    </Style>
-
-    <Style TargetType="Button" x:Key="EntityMenuButton">
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="Padding" Value="0 8"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Grid Name="_PART_GRID" 
-                                  Background="{TemplateBinding Background}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                  VerticalAlignment="{TemplateBinding VerticalAlignment}">
-                        <TextBlock Text="{TemplateBinding Content}"
-                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                            Margin="{TemplateBinding Padding}"
-                                            Foreground="{TemplateBinding Foreground}"
-                                            Cursor="{TemplateBinding Property=Cursor}"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="_PART_GRID" Value="CornflowerBlue"/>
-                        </Trigger>
-                        <DataTrigger Binding="{Binding IsEnabled}" Value="False">
-                            <Setter Property="Foreground" Value="DimGray"/>
-                        </DataTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
     </Style>
 </ResourceDictionary>

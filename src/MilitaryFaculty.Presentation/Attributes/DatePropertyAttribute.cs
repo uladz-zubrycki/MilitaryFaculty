@@ -1,5 +1,6 @@
 ﻿using System;
 using MilitaryFaculty.Presentation.ViewModels;
+using MilitaryFaculty.Presentation.ViewModels.Properties;
 
 namespace MilitaryFaculty.Presentation.Attributes
 {

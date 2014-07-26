@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace MilitaryFaculty.Application.Views
+namespace MilitaryFaculty.Application.Views.Professor
 {
     /// <summary>
     ///     Interaction logic for ProfessorHeaderViewModel.xaml

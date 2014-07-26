@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using MilitaryFaculty.Presentation.ViewModels;
+using MilitaryFaculty.Presentation.Widgets.Command;
 
 namespace MilitaryFaculty.Presentation.ViewBehaviours
 {

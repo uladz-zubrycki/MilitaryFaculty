@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using MilitaryFaculty.Application;
+using MilitaryFaculty.Application.AppStartup;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Reporting;

@@ -1,44 +1,45 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:vm="clr-namespace:MilitaryFaculty.Application.ViewModels"
-                    xmlns:views="clr-namespace:MilitaryFaculty.Application.Views">
+                    xmlns:views="clr-namespace:MilitaryFaculty.Application.Views"
+                    xmlns:professor="clr-namespace:MilitaryFaculty.Application.Views.Professor">
     <DataTemplate DataType="{x:Type vm:ProfessorView+Header}">
-        <views:Header />
+        <professor:Header />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+Conferences}">
-        <views:Conferences />
+        <professor:Conferences />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+Publications}">
-        <views:Publications />
+        <professor:Publications />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+Books}">
-        <views:Books />
+        <professor:Books />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+Exhibitions}">
-        <views:Exhibitions />
+        <professor:Exhibitions />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+CouncilParticipations}">
-        <views:CouncilParticipations />
+        <professor:CouncilParticipations />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+Dissertations}">
-        <views:Dissertations />
+        <professor:Dissertations />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+InventiveApplications}">
-        <views:InventiveApplications />
+        <professor:InventiveApplications />
     </DataTemplate>
     
     <DataTemplate DataType="{x:Type vm:ProfessorView+EfficiencyProposals}">
-        <views:EfficiencyProposals />
+        <professor:EfficiencyProposals />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ProfessorView+Researches}">
-        <views:Researches />
+        <professor:Researches />
     </DataTemplate>
 </ResourceDictionary>

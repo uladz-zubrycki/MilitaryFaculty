@@ -2,11 +2,10 @@
 using System.Linq;
 using System.Windows;
 using Autofac;
-using MilitaryFaculty.Application.ViewModels;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
 
-namespace MilitaryFaculty.Application
+namespace MilitaryFaculty.Application.AppStartup
 {
     /// <summary>
     ///     Interaction logic for App.xaml

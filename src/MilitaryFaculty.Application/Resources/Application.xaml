@@ -1,16 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:vm="clr-namespace:MilitaryFaculty.Application.ViewModels"
-                    xmlns:views="clr-namespace:MilitaryFaculty.Application.Views">
+                    xmlns:application="clr-namespace:MilitaryFaculty.Application">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Resources/Common.xaml" />
         <ResourceDictionary Source="/Resources/Entity.xaml" />
         <ResourceDictionary Source="/Resources/Cathedra.xaml" />
         <ResourceDictionary Source="/Resources/Professor.xaml" />
-        <ResourceDictionary Source="/Resources/FacultyTree.xaml" />
-        <ResourceDictionary Source="/Resources/Common.xaml" />
+        <ResourceDictionary Source="/Resources/Widgets/FacultyTree.xaml" />
+        <ResourceDictionary Source="/Resources/Widgets/EntityMenu.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate DataType="{x:Type vm:StartupViewModel}">
-        <views:Startup />
+    <DataTemplate DataType="{x:Type application:StartupViewModel}">
+        <application:Startup />
     </DataTemplate>
 </ResourceDictionary>

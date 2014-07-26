@@ -67,21 +67,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configurations\BookConfiguration.cs" />
-    <Compile Include="Configurations\CouncilParticipationConfiguration.cs" />
-    <Compile Include="Configurations\DissertationConfiguration.cs" />
-    <Compile Include="Configurations\EfficiencyProposalConfiguration.cs" />
-    <Compile Include="Configurations\ExhibitionConfiguration.cs" />
-    <Compile Include="Configurations\InventiveApplicationConfiguration.cs" />
-    <Compile Include="Configurations\PublicationConfiguration.cs" />
-    <Compile Include="Configurations\CathedraConfiguration.cs" />
-    <Compile Include="Configurations\FullNameConfiguration.cs" />
-    <Compile Include="Configurations\ResearchConfiguration.cs" />
-    <Compile Include="Configurations\ReviewConfiguration.cs" />
-    <Compile Include="Configurations\ScientificExpertiseConfiguration.cs" />
+    <Compile Include="Configurations\Book.cs" />
+    <Compile Include="Configurations\CouncilParticipation.cs" />
+    <Compile Include="Configurations\Dissertation.cs" />
+    <Compile Include="Configurations\EfficiencyProposal.cs" />
+    <Compile Include="Configurations\Exhibition.cs" />
+    <Compile Include="Configurations\InventiveApplication.cs" />
+    <Compile Include="Configurations\Publication.cs" />
+    <Compile Include="Configurations\Cathedra.cs" />
+    <Compile Include="Configurations\FullName.cs" />
+    <Compile Include="Configurations\Research.cs" />
+    <Compile Include="Configurations\Review.cs" />
+    <Compile Include="Configurations\ScienceRank.cs" />
+    <Compile Include="Configurations\ScientificExpertise.cs" />
     <Compile Include="EntityContext.cs" />
     <Compile Include="Configurations\ConferenceConfiguration.cs" />
-    <Compile Include="Configurations\ProfessorConfiguration.cs" />
+    <Compile Include="Configurations\Professor.cs" />
     <Compile Include="Events\ModifiedEntityEventArgs.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -20,7 +20,7 @@ namespace MilitaryFaculty.Presentation.Widgets.Menu
             }
 
             Items = items.ToList();
-            ShowCommand = new Command(Show);
+            ShowCommand = new SimpleCommand(Show);
         }
 
         public ICommand ShowCommand { get; set; }

@@ -47,10 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\PropertyAttribute.cs" />
-    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\SimpleCommand.cs" />
     <Compile Include="Commands\RoutedCommands.cs" />
     <Compile Include="Commands\RoutedBinding.cs" />
-    <Compile Include="Commands\Command{T}.cs" />
+    <Compile Include="Commands\SimpleCommand{T}.cs" />
     <Compile Include="Commands\ICommandModule.cs" />
     <Compile Include="Markup\BoolToVisibilityConverter.cs" />
     <Compile Include="Markup\Converter.cs" />
@@ -64,19 +64,19 @@
     <Compile Include="ViewBehaviours\EditableViewBehaviour.cs" />
     <Compile Include="ViewBehaviours\IViewBehaviour.cs" />
     <Compile Include="ViewBehaviours\HasCommandViewBehaviour.cs" />
-    <Compile Include="ViewModels\CommandViewModel.cs" />
+    <Compile Include="Widgets\Command\CommandViewModel.cs" />
     <Compile Include="ViewModels\ComplexViewModel.cs" />
     <Compile Include="ViewModels\EntityViewModel.cs" />
     <Compile Include="Attributes\DatePropertyAttribute.cs" />
-    <Compile Include="ViewModels\DatePropertyViewModel.cs" />
+    <Compile Include="ViewModels\Properties\DatePropertyViewModel.cs" />
     <Compile Include="Attributes\EnumPropertyAttribute.cs" />
-    <Compile Include="ViewModels\EnumPropertyViewModel.cs" />
+    <Compile Include="ViewModels\Properties\EnumPropertyViewModel.cs" />
     <Compile Include="Attributes\IntPropertyAttribute.cs" />
-    <Compile Include="ViewModels\IntPropertyViewModel.cs" />
+    <Compile Include="ViewModels\Properties\IntPropertyViewModel.cs" />
     <Compile Include="Attributes\TextPropertyAttribute.cs" />
-    <Compile Include="ViewModels\TextPropertyViewModel.cs" />
-    <Compile Include="ViewModels\ImagedCommandViewModel.cs" />
-    <Compile Include="ViewModels\PropertyViewModel.cs" />
+    <Compile Include="ViewModels\Properties\TextPropertyViewModel.cs" />
+    <Compile Include="Widgets\Command\ImagedCommandViewModel.cs" />
+    <Compile Include="ViewModels\Properties\PropertyViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="ViewModels\ViewModel{T}.cs" />
     <Compile Include="Widgets\Menu\MenuViewModel.cs" />

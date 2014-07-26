@@ -1,4 +1,5 @@
 ﻿using System;
+using MilitaryFaculty.Application.AppStartup;
 using MilitaryFaculty.Application.ViewModels;
 using MilitaryFaculty.Presentation.Commands;
 

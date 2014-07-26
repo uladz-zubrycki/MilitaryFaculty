@@ -12,13 +12,15 @@ namespace MilitaryFaculty.Domain
     {
         public const int NameMaxLength = 50;
 
-        public virtual string Name { get; set; }
-        public virtual ICollection<Professor> Professors { get; set; }
-
         public Cathedra()
         {
             Professors = new List<Professor>();
+            ScienceRanks = new List<ScienceRank>();
         }
+
+        public virtual string Name { get; set; }
+        public virtual ICollection<Professor> Professors { get; set; }
+        public virtual ICollection<ScienceRank> ScienceRanks { get; set; }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor
 }

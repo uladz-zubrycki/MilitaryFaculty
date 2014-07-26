@@ -3,7 +3,6 @@ using System.Configuration;
 using System.IO;
 using Autofac;
 using Autofac.Features.Indexed;
-using MilitaryFaculty.Application.ViewModels;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 using MilitaryFaculty.Reporting;
@@ -11,7 +10,7 @@ using MilitaryFaculty.Reporting.Data;
 using MilitaryFaculty.Reporting.Excel;
 using MilitaryFaculty.Reporting.Structure;
 
-namespace MilitaryFaculty.Application
+namespace MilitaryFaculty.Application.AppStartup
 {
     public static class InjectionConfig
     {
