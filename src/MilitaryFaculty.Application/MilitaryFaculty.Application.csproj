@@ -9,12 +9,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MilitaryFaculty.Application</RootNamespace>
     <AssemblyName>MilitaryFaculty.Application</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -56,19 +57,25 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac">
-      <HintPath>..\..\packages\Autofac.3.1.1\lib\net40\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServerCompact">
-      <HintPath>..\..\packages\EntityFramework.SqlServerCompact.6.1.1\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.SqlServerCompact.6.1.1\lib\net40\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=3.1.3.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EPPlus.3.1.3.3\lib\net35\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -417,28 +424,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MilitaryFaculty.Common\MilitaryFaculty.Common.csproj">
-      <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
-      <Name>MilitaryFaculty.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj">
-      <Project>{64CF86E4-FCB8-40F5-B9D8-BF403BE66858}</Project>
-      <Name>MilitaryFaculty.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
-      <Project>{6D238556-9B46-46DE-BDC9-0BB085627089}</Project>
-      <Name>MilitaryFaculty.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MilitaryFaculty.Presentation\MilitaryFaculty.Presentation.csproj">
-      <Project>{1F175083-DFF1-452F-AE20-C1C93D59765F}</Project>
-      <Name>MilitaryFaculty.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.csproj">
-      <Project>{813E121E-1097-4A5A-B672-4AC98E21D4EE}</Project>
-      <Name>MilitaryFaculty.Reporting</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Content\images\add.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -507,7 +492,28 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MilitaryFaculty.Common\MilitaryFaculty.Common.csproj">
+      <Project>{e24cb60a-d2b9-41ee-9da9-883ed119e9ab}</Project>
+      <Name>MilitaryFaculty.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Data\MilitaryFaculty.Data.csproj">
+      <Project>{64cf86e4-fcb8-40f5-b9d8-bf403be66858}</Project>
+      <Name>MilitaryFaculty.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Domain\MilitaryFaculty.Domain.csproj">
+      <Project>{6d238556-9b46-46de-bdc9-0bb085627089}</Project>
+      <Name>MilitaryFaculty.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Presentation\MilitaryFaculty.Presentation.csproj">
+      <Project>{1f175083-dff1-452f-ae20-c1c93d59765f}</Project>
+      <Name>MilitaryFaculty.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.csproj">
+      <Project>{813e121e-1097-4a5a-b672-4ac98e21d4ee}</Project>
+      <Name>MilitaryFaculty.Reporting</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

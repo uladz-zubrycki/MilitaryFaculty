@@ -23,7 +23,7 @@ namespace MilitaryFaculty.Reporting.Data
 
             ReportDataProvidersContainer = dataProvidersContainer;
 
-            foreach (var provider in ReportDataProvidersContainer.GetProviders())
+            foreach (IDataProvider provider in ReportDataProvidersContainer.GetProviders())
             {
                 RegisterDataProvider(provider);
             }
@@ -31,7 +31,7 @@ namespace MilitaryFaculty.Reporting.Data
 
         public double GetValue(string key)
         {
-            var evaluator = _evaluators[key];
+            Func<double> evaluator = _evaluators[key];
 
             return evaluator();
         }
@@ -43,15 +43,15 @@ namespace MilitaryFaculty.Reporting.Data
                 throw new ArgumentNullException("provider");
             }
 
-            var type = provider.GetType();
-            var methods = type.GetMethods()
-                              .Where(IsEvaluator)
-                              .ToList();
+            Type type = provider.GetType();
+            List<MethodInfo> methods = type.GetMethods()
+                                           .Where(IsEvaluator)
+                                           .ToList();
 
-            foreach (var method in methods)
+            foreach (MethodInfo method in methods)
             {
-                var key = GetArgumentName(method);
-                var evaluator = CreateEvaluator(method, provider);
+                string key = GetArgumentName(method);
+                Func<double> evaluator = CreateEvaluator(method, provider);
 
                 if (_evaluators.ContainsKey(key))
                 {
@@ -69,7 +69,9 @@ namespace MilitaryFaculty.Reporting.Data
                 throw new ArgumentNullException("info");
             }
 
-            var attr = info.GetCustomAttribute<FormulaArgumentAttribute>();
+            var attr =
+                (FormulaArgumentAttribute)
+                    info.GetCustomAttributes(typeof (FormulaArgumentAttribute), true).First();
 
             return attr.Name;
         }

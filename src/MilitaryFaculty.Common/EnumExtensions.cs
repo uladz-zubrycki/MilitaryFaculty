@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using System.Resources;
 
@@ -20,7 +21,7 @@ namespace MilitaryFaculty.Common
 
             var enumType = value.GetType();
             var enumFieldName = Enum.GetName(enumType, value);
-            var localizationAttr = enumType.GetCustomAttribute<LocalizedEnumAttribute>();
+            var localizationAttr = (LocalizedEnumAttribute) enumType.GetCustomAttributes(typeof (LocalizedEnumAttribute), false).FirstOrDefault();
 
             if (localizationAttr == null)
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 
 namespace MilitaryFaculty.Common
@@ -13,8 +14,8 @@ namespace MilitaryFaculty.Common
                 throw new ArgumentNullException("this");
             }
 
-            var attr = @this.GetCustomAttribute<TAttribute>();
-            
+            var attr = @this.GetCustomAttributes(typeof (TAttribute), true).FirstOrDefault();
+
             return attr != null;
         }
     }
