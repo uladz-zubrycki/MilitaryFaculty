@@ -25,10 +25,10 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
                 && conference.Date <= interval.To;
         }
 
-        public override void SetProfessorModificator(Professor professor, TimeInterval interval)
+        public override void SetPersonModificator(Person person, TimeInterval interval)
         {
             QueryModificator = conference =>
-                conference.Curator.Id == professor.Id
+                conference.Curator.Id == person.Id
                 && conference.Date >= interval.From
                 && conference.Date <= interval.To;
         }
@@ -40,7 +40,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UnConfProfsCount")]
         public double UniversityConferenceProfessorsCount()
         {
-            return CountOf(c => c.EventLevel == EventLevel.University);
+            return CountOf(c => c.EventLevel == EventLevel.University
+                                && c.Curator.JobPosition != JobPosition.Сadet);
         }
 
         /// <summary>
@@ -50,8 +51,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UnConfStudsCount")]
         public double UniversityConferenceStudentsCount()
         {
-            //TODO: Выступления курсантов
-            return CountOf(c => c.EventLevel == EventLevel.University);
+            return CountOf(c => c.EventLevel == EventLevel.University
+                                && c.Curator.JobPosition == JobPosition.Сadet);
         }
 
         /// <summary>
@@ -61,7 +62,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ReConfProfsCount")]
         public double RepublicanConferenceProfessorsCount()
         {
-            return CountOf(c => c.EventLevel == EventLevel.Republican);
+            return CountOf(c => c.EventLevel == EventLevel.Republican
+                                && c.Curator.JobPosition != JobPosition.Сadet);
         }
 
         /// <summary>
@@ -71,7 +73,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ReConfStudsCount")]
         public double RepublicanConferenceStudentsCount()
         {
-            return CountOf(c => c.EventLevel == EventLevel.Republican);
+            return CountOf(c => c.EventLevel == EventLevel.Republican
+                                && c.Curator.JobPosition == JobPosition.Сadet);
         }
 
         /// <summary>
@@ -81,7 +84,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("InConfProfsCount")]
         public double InternationalConferenceProfessorsCount()
         {
-            return CountOf(c => c.EventLevel == EventLevel.International);
+            return CountOf(c => c.EventLevel == EventLevel.International
+                                && c.Curator.JobPosition != JobPosition.Сadet);
         }
 
         /// <summary>
@@ -91,7 +95,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("InConfStudsCount")]
         public double InternationalConferenceStudentsCount()
         {
-            return CountOf(c => c.EventLevel == EventLevel.International);
+            return CountOf(c => c.EventLevel == EventLevel.International
+                                && c.Curator.JobPosition != JobPosition.Сadet);
         }
     }
 }

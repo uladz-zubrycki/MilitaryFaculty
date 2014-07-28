@@ -9,6 +9,10 @@ namespace MilitaryFaculty.Domain
     [LocalizedEnum(typeof(EnumStrings))]
     public enum JobPosition
     {
+        Сadet,
+        AdjunctFullTime,
+        AdjunctPartTime,
+        Doctoral,
         Teacher,
         SeniorProfessor,
         Docent,
@@ -21,6 +25,7 @@ namespace MilitaryFaculty.Domain
     [LocalizedEnum(typeof(EnumStrings))]
     public enum MilitaryRank
     {
+        None,
         JuniorLieutenant,
         Lieutenant,
         SeniorLieutenant,
@@ -32,13 +37,14 @@ namespace MilitaryFaculty.Domain
 
     // ReSharper disable DoNotCallOverridableMethodsInConstructor
     // Properties are virtual only for EntityFramework
-    public class Professor : UniqueEntity
+    public class Person : UniqueEntity
     {
-        public Professor()
+        public Person()
         {
             FullName = new FullName();
             EnrollmentDate = DateTime.Now;
 
+            AcademicDegreePromotions = new List<AcademicDegreePromotion>();
             Books = new List<Book>();
             Conferences = new List<Conference>();
             CouncilsParticipations = new List<CouncilParticipation>();
@@ -60,6 +66,7 @@ namespace MilitaryFaculty.Domain
         public virtual JobPosition JobPosition { get; set; }
         public virtual AcademicRank AcademicRank { get; set; }
         public virtual AcademicDegree AcademicDegree { get; set; }
+        public virtual ICollection<AcademicDegreePromotion> AcademicDegreePromotions { get; set; }
         public virtual ICollection<Book> Books { get; set; }
         public virtual ICollection<Conference> Conferences { get; set; }
         public virtual ICollection<CouncilParticipation> CouncilsParticipations { get; set; }

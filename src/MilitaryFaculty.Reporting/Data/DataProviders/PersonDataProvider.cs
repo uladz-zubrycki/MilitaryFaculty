@@ -4,9 +4,9 @@ using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Reporting.Data.DataProviders
 {
-    public class ProfessorsDataProvider : DataProvider<Professor>
+    public class PersonDataProvider : DataProvider<Person>
     {
-        public ProfessorsDataProvider(IRepository<Professor> professorRepository)
+        public PersonDataProvider(IRepository<Person> professorRepository)
             : base(professorRepository)
         {
         }
@@ -28,10 +28,10 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
                     || (p.EnrollmentDate <= interval.From && p.DismissalDate >= interval.To));
         }
 
-        public override void SetProfessorModificator(Professor professor, TimeInterval interval)
+        public override void SetPersonModificator(Person person, TimeInterval interval)
         {
             QueryModificator = p =>
-                p.Id == professor.Id
+                p.Id == person.Id
                 && ((p.EnrollmentDate >= interval.From && p.EnrollmentDate <= interval.To)
                     || (p.DismissalDate >= interval.From && p.DismissalDate <= interval.To)
                     || (p.EnrollmentDate <= interval.From && p.DismissalDate >= interval.To));
@@ -44,7 +44,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ProfsCount")]
         public double ProfessorsCount()
         {
-            return CountOf(x => true);
+            return CountOf(p => p.JobPosition >= JobPosition.Professor);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DocsCount")]
         public double DoctoralCandidatesCount()
         {
-            return 1;
+            return CountOf(p => p.JobPosition == JobPosition.Doctoral);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("AdjCountFt")]
         public double AdjunctsCountFullTime()
         {
-            return 1;
+            return CountOf(p => p.JobPosition == JobPosition.AdjunctFullTime);
         }
 
         /// <summary>
@@ -74,27 +74,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("AdjCountExt")]
         public double AdjunctsCountExtramural()
         {
-            return 1;
-        }
-
-        /// <summary>
-        ///     Количество соискателей ученой степени доктора наук
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("ApplDoctCount")]
-        public double ApplicantForDoctorsCount()
-        {
-            return 1;
-        }
-
-        /// <summary>
-        ///     Количество соискателей ученой степени кандидата наук
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("ApplCandCount")]
-        public double ApplicantForCandidatsCount()
-        {
-            return 1;
+            return CountOf(p => p.JobPosition == JobPosition.AdjunctPartTime);
         }
 
         /// <summary>
@@ -114,11 +94,11 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ProfPostsSubsCount")]
         public double ProfessorPostsSubstitutionCount()
         {
-            return 1;
+            return CountOf(p => p.JobPosition == JobPosition.Professor);
         }
 
         /// <summary>
-        ///     Количество доцектов
+        ///     Количество доцентов
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("DocentPostsCount")]
@@ -134,7 +114,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DocentPostsSubsCount")]
         public double DocentPostsSubstitutionCount()
         {
-            return 1;
+            return CountOf(p => p.JobPosition == JobPosition.Docent);
         }
 
         /// <summary>
@@ -168,23 +148,24 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         }
 
         /// <summary>
-        ///     Количество научных работников высшей квалификации из числа ППС,
-        ///     осуществляющих научное консультирование
+        ///     Количество ППС, осуществляющих научное руководство докторских
         /// </summary>
         /// <returns></returns>
-        [FormulaArgument("SaHqProfsCount")]
-        public double ScientificAdviceHqProfsCount()
+        [FormulaArgument("SaHqProfsCountDoc")]
+        public double ScientificAdviceProfsCount()
         {
+            //TODO
             return 1;
         }
 
         /// <summary>
-        ///     Количество ППС, осуществляющих научное руководство
+        ///     Количество ППС, осуществляющих научное руководство кандидатских
         /// </summary>
         /// <returns></returns>
-        [FormulaArgument("SaProfsCount")]
-        public double ScientificAdviceProfsCount()
+        [FormulaArgument("SaHqProfsCountCand")]
+        public double ScientificAdviceHqProfsCount()
         {
+            //TODO
             return 1;
         }
 

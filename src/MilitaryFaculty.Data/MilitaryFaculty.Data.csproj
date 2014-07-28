@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\AcademicDegreePromotion.cs" />
     <Compile Include="Configurations\Book.cs" />
     <Compile Include="Configurations\CouncilParticipation.cs" />
     <Compile Include="Configurations\Dissertation.cs" />

@@ -14,12 +14,12 @@ namespace MilitaryFaculty.Domain
 
         public Cathedra()
         {
-            Professors = new List<Professor>();
+            Professors = new List<Person>();
             ScienceRanks = new List<ScienceRank>();
         }
 
         public virtual string Name { get; set; }
-        public virtual ICollection<Professor> Professors { get; set; }
+        public virtual ICollection<Person> Professors { get; set; }
         public virtual ICollection<ScienceRank> ScienceRanks { get; set; }
     }
     // ReSharper restore DoNotCallOverridableMethodsInConstructor

@@ -20,7 +20,7 @@ namespace MilitaryFaculty.Domain
     {
         public virtual string Name { get; set; }
         public virtual DateTime CreatedAt { get; set; }
-        public virtual Professor Author { get; set; }
+        public virtual Person Author { get; set; }
         public virtual PublicationType PublicationType { get; set; }
         public virtual int PagesCount { get; set; }
 

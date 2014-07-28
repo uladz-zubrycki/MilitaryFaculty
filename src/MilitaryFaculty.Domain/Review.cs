@@ -19,7 +19,7 @@ namespace MilitaryFaculty.Domain
         }
 
         public string Name { get; set; }
-        public Professor Author { get; set; }
+        public Person Author { get; set; }
         public DateTime CreatedAt { get; set; }
         public ReviewType Type { get; set; }
         public AcademicRank TargetAcademicRank { get; set; }

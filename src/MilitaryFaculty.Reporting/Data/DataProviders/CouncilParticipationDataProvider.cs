@@ -26,10 +26,10 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
                 || (cp.StartDate <= interval.From && cp.EndDate >= interval.To);
         }
 
-        public override void SetProfessorModificator(Professor professor, TimeInterval interval)
+        public override void SetPersonModificator(Person person, TimeInterval interval)
         {
             QueryModificator = cp =>
-                cp.Participant.Id == professor.Id
+                cp.Participant.Id == person.Id
                 && (cp.StartDate >= interval.From && cp.StartDate <= interval.To)
                 || (cp.EndDate >= interval.From && cp.EndDate <= interval.To)
                 || (cp.StartDate <= interval.From && cp.EndDate >= interval.To);

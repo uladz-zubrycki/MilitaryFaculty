@@ -16,13 +16,13 @@ namespace MilitaryFaculty.Application.ViewModels
     public class FacultyTreeViewModel : TreeViewModel
     {
         private readonly IRepository<Cathedra> _cathedraRepository;
-        private readonly IRepository<Professor> _professorRepository;
+        private readonly IRepository<Person> _professorRepository;
         private readonly Lazy<ObservableCollection<CathedraTreeItemViewModel>> _cathedras;
 
         private IEnumerator<ITreeItemViewModel> _searchEnumerator;
         private string _searchString;
 
-        public FacultyTreeViewModel(IRepository<Professor> professorRepository,
+        public FacultyTreeViewModel(IRepository<Person> professorRepository,
                                     IRepository<Cathedra> cathedraRepository)
         {
             if (professorRepository == null)

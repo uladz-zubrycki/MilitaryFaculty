@@ -6,6 +6,6 @@ namespace MilitaryFaculty.Reporting.Data
     {
         void SetFacultyModificator(TimeInterval interval);
         void SetCathedraModificator(Cathedra cathedra, TimeInterval interval);
-        void SetProfessorModificator(Professor professor, TimeInterval interval);
+        void SetPersonModificator(Person professor, TimeInterval interval);
     }
 }

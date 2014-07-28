@@ -26,7 +26,7 @@ namespace MilitaryFaculty.Logic.Tests
             var container = InjectionConfig.Register(new ContainerBuilder());
             var excelService = container.Resolve<IExcelReportingService>();
             var reportGenerator = container.Resolve<IReportGenerator>();
-            var professorRepository = container.Resolve<IRepository<Professor>>();
+            var professorRepository = container.Resolve<IRepository<Person>>();
 
             var interval = new TimeInterval(new DateTime(2000, 1, 1), DateTime.Now);
 

@@ -7,9 +7,9 @@ using MilitaryFaculty.Presentation.Widgets.TreeView;
 
 namespace MilitaryFaculty.Application.ViewModels
 {
-    public class ProfessorTreeItemViewModel : TreeItemViewModel<Professor>
+    public class ProfessorTreeItemViewModel : TreeItemViewModel<Person>
     {
-        public ProfessorTreeItemViewModel(Professor professor,
+        public ProfessorTreeItemViewModel(Person professor,
                                           TreeViewModel owner,
                                           ITreeItemViewModel parent)
             : base(professor, owner, parent, false)
@@ -27,7 +27,7 @@ namespace MilitaryFaculty.Application.ViewModels
             const string tooltip = "Удалить преподавателя";
             const string imageSource = @"\Content\images\remove.png";
 
-            return new ImagedCommandViewModel(GlobalCommands.Remove<Professor>(),
+            return new ImagedCommandViewModel(GlobalCommands.Remove<Person>(),
                                               Model,
                                               tooltip,
                                               imageSource);
@@ -38,14 +38,14 @@ namespace MilitaryFaculty.Application.ViewModels
             throw new NotSupportedException();
         }
 
-        public static ProfessorTreeItemViewModel FromModel(Professor model,
+        public static ProfessorTreeItemViewModel FromModel(Person model,
                                                            TreeViewModel owner,
                                                            ITreeItemViewModel parent)
         {
             return new ProfessorTreeItemViewModel(model, owner, parent);
         }
 
-        public static Func<Professor, ProfessorTreeItemViewModel> FromModel(TreeViewModel owner,
+        public static Func<Person, ProfessorTreeItemViewModel> FromModel(TreeViewModel owner,
                                                                             ITreeItemViewModel parent)
         {
             return professor => FromModel(professor, owner, parent);

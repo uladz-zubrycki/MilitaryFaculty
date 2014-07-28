@@ -38,11 +38,11 @@ namespace MilitaryFaculty.Application.Handlers
                 throw new ArgumentNullException("sink");
             }
 
-            commands.AddCommand<Professor>(GlobalCommands.BrowseAdd<Dissertation>(), OnBrowseDissertationAdd);
+            commands.AddCommand<Person>(GlobalCommands.BrowseAdd<Dissertation>(), OnBrowseDissertationAdd);
             commands.AddCommand<Dissertation>(GlobalCommands.BrowseDetails<Dissertation>(), OnBrowseDissertationDetails);
         }
 
-        private void OnBrowseDissertationAdd(Professor author)
+        private void OnBrowseDissertationAdd(Person author)
         {
             if (author == null)
             {

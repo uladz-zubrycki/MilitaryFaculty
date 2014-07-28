@@ -32,7 +32,7 @@ namespace MilitaryFaculty.Application.AppStartup
         private readonly IRepository<Cathedra> _cathedraRepository;
         private readonly IRepository<Conference> _conferenceRepository;
         private readonly IRepository<Exhibition> _exhibitionRepository;
-        private readonly IRepository<Professor> _professorRepository;
+        private readonly IRepository<Person> _professorRepository;
         private readonly IRepository<Publication> _publicationRepository;
         private readonly IRepository<CouncilParticipation> _councilParticipationRepository;
         private readonly IRepository<Dissertation> _dissertationRepository;
@@ -56,7 +56,7 @@ namespace MilitaryFaculty.Application.AppStartup
                              IRepository<Cathedra> cathedraRepository,
                              IRepository<Conference> conferenceRepository,
                              IRepository<Exhibition> exhibitionRepository,
-                             IRepository<Professor> professorRepository,
+                             IRepository<Person> professorRepository,
                              IRepository<Publication> publicationRepository,
                              IRepository<CouncilParticipation> councilParticipationRepository,
                              IRepository<Dissertation> dissertationRepository,
@@ -126,9 +126,9 @@ namespace MilitaryFaculty.Application.AppStartup
                 WorkWindow = new CathedraView.Root(model as Cathedra,
                     _scienceRankRepository);
             }
-            else if (model is Professor)
+            else if (model is Person)
             {
-                WorkWindow = new ProfessorView.Root(model as Professor,
+                WorkWindow = new ProfessorView.Root(model as Person,
                     _conferenceRepository,
                     _publicationRepository,
                     _exhibitionRepository,

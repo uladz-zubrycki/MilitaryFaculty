@@ -5,6 +5,7 @@ namespace MilitaryFaculty.Data
 {
     public class EntityContext : DbContext
     {
+        public DbSet<AcademicDegreePromotion> AcademicDegreePromotions { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Cathedra> Cathedras { get; set; }
         public DbSet<Conference> Conferences { get; set; }
@@ -13,7 +14,7 @@ namespace MilitaryFaculty.Data
         public DbSet<EfficiencyProposal> EfficiencyProposals { get; set; }
         public DbSet<Exhibition> Exhibitions { get; set; }
         public DbSet<InventiveApplication> InventiveApplications { get; set; }
-        public DbSet<Professor> Professors { get; set; }
+        public DbSet<Person> Professors { get; set; }
         public DbSet<Publication> Publications { get; set; }
         public DbSet<Research> Researches { get; set; }
         public DbSet<Review> Reviews { get; set; }

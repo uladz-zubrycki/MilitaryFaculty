@@ -40,11 +40,11 @@ namespace MilitaryFaculty.Reporting.Data
             }
         }
 
-        public void SetProfessorModificator(Professor professor, TimeInterval interval)
+        public void SetProfessorModificator(Person professor, TimeInterval interval)
         {
             foreach (var dataProvider in _dataProviders)
             {
-                dataProvider.SetProfessorModificator(professor, interval);
+                dataProvider.SetPersonModificator(professor, interval);
             }
         }
     }

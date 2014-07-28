@@ -37,11 +37,11 @@ namespace MilitaryFaculty.Application.Handlers
                 throw new ArgumentNullException("sink");
             }
 
-            commands.AddCommand<Professor>(GlobalCommands.BrowseAdd<Exhibition>(), OnBrowseExhibitionAdd);
+            commands.AddCommand<Person>(GlobalCommands.BrowseAdd<Exhibition>(), OnBrowseExhibitionAdd);
             commands.AddCommand<Exhibition>(GlobalCommands.BrowseDetails<Exhibition>(), OnBrowseExhibitionDetails);
         }
 
-        private void OnBrowseExhibitionAdd(Professor author)
+        private void OnBrowseExhibitionAdd(Person author)
         {
             if (author == null)
             {

@@ -38,14 +38,14 @@ namespace MilitaryFaculty.Application.Handlers
                 throw new ArgumentNullException("sink");
             }
 
-            commands.AddCommand<Professor>(GlobalCommands.BrowseAdd<EfficiencyProposal>(),
+            commands.AddCommand<Person>(GlobalCommands.BrowseAdd<EfficiencyProposal>(),
                                            OnBrowseEfficiencyProposalAdd);
 
             commands.AddCommand<EfficiencyProposal>(GlobalCommands.BrowseDetails<EfficiencyProposal>(),
                                                     OnBrowseEfficiencyProposalDetails);
         }
 
-        private void OnBrowseEfficiencyProposalAdd(Professor author)
+        private void OnBrowseEfficiencyProposalAdd(Person author)
         {
             if (author == null)
             {

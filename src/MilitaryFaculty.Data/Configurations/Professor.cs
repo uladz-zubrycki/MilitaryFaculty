@@ -3,7 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace MilitaryFaculty.Data.Configurations
 {
-    internal class Professor : EntityTypeConfiguration<Domain.Professor>
+    internal class Professor : EntityTypeConfiguration<Domain.Person>
     {
         public Professor()
         {

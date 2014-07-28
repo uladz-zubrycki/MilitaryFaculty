@@ -25,10 +25,10 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
                 && book.CreatedAt <= interval.To;
         }
 
-        public override void SetProfessorModificator(Professor professor, TimeInterval interval)
+        public override void SetPersonModificator(Person person, TimeInterval interval)
         {
             QueryModificator = book =>
-                book.Author.Id == professor.Id
+                book.Author.Id == person.Id
                 && book.CreatedAt >= interval.From
                 && book.CreatedAt <= interval.To;
         }

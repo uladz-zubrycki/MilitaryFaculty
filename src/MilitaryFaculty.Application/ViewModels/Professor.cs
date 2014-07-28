@@ -16,7 +16,7 @@ namespace MilitaryFaculty.Application.ViewModels
 {
     internal static class ProfessorView
     {
-        internal class Root : EntityRootViewModel<Professor>
+        internal class Root : EntityRootViewModel<Person>
         {
             private readonly IRepository<Book> _bookRepository;
             private readonly IRepository<Dissertation> _dissertationRepository;
@@ -28,7 +28,7 @@ namespace MilitaryFaculty.Application.ViewModels
             private readonly IRepository<EfficiencyProposal> _efficiencyProposalRepository;
             private readonly IRepository<Research> _researchRepository;
 
-            public Root(Professor model,
+            public Root(Person model,
                         IRepository<Conference> conferenceRepository,
                         IRepository<Publication> publicationRepository,
                         IRepository<Exhibition> exhibitionRepository,
@@ -93,9 +93,9 @@ namespace MilitaryFaculty.Application.ViewModels
                 HeaderViewModel = new Header(Model);
             }
 
-            protected override IEnumerable<ViewModel<Professor>> GetViewModels()
+            protected override IEnumerable<ViewModel<Person>> GetViewModels()
             {
-                return new ViewModel<Professor>[]
+                return new ViewModel<Person>[]
                        {
                            new ExtraInfo(Model),
                            new Conferences(Model, _conferenceRepository),
@@ -111,9 +111,9 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class Header : ViewModel<Professor>
+        internal class Header : ViewModel<Person>
         {
-            public Header(Professor model) : base(model)
+            public Header(Person model) : base(model)
             {
                 ProfessorMenu = CreateProfessorMenu();
             }
@@ -134,25 +134,25 @@ namespace MilitaryFaculty.Application.ViewModels
                     {
                         new MenuItemViewModel("Создать отчёт", GlobalCommands.GenerateReport, Model),
                         new MenuItemViewModel("Уволить", GlobalCommands.DismissProfessor, Model),
-                        new MenuItemViewModel("Удалить", GlobalCommands.Remove<Professor>(), Model)
+                        new MenuItemViewModel("Удалить", GlobalCommands.Remove<Person>(), Model)
                     };
 
                 return new MenuViewModel(menuItems);
             }
         }
      
-        internal class Add : AddEntityViewModel<Professor>
+        internal class Add : AddEntityViewModel<Person>
         {
-            public Add(Professor model): base(model) { }
+            public Add(Person model): base(model) { }
 
             public override string Title
             {
                 get { return "Добавить преподавателя:"; }
             }
 
-            protected override IEnumerable<ViewModel<Professor>> GetViewModels()
+            protected override IEnumerable<ViewModel<Person>> GetViewModels()
             {
-                return new ViewModel<Professor>[]
+                return new ViewModel<Person>[]
                        {
                            new MainInfo(Model),
                            new ExtraInfo(Model)
@@ -160,12 +160,12 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class MainInfo : EntityViewModel<Professor>
+        internal class MainInfo : EntityViewModel<Person>
         {
-            public MainInfo(Professor model)
+            public MainInfo(Person model)
                 : base(model)
             {
-                this.Editable(GlobalCommands.Save<Professor>());
+                this.Editable(GlobalCommands.Save<Person>());
             }
 
             public override string Title
@@ -195,12 +195,12 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class ExtraInfo : EntityViewModel<Professor>
+        internal class ExtraInfo : EntityViewModel<Person>
         {
-            public ExtraInfo(Professor model)
+            public ExtraInfo(Person model)
                 : base(model)
             {
-                this.Editable(GlobalCommands.Save<Professor>());
+                this.Editable(GlobalCommands.Save<Person>());
             }
 
             public override string Title
@@ -244,11 +244,11 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class Books : ViewModel<Professor>
+        internal class Books : ViewModel<Person>
         {
             private readonly Lazy<ObservableCollection<BookView.ListItem>> _items;
 
-            public Books(Professor model, IRepository<Book> bookRepository)
+            public Books(Person model, IRepository<Book> bookRepository)
                 : base(model)
             {
                 if (bookRepository == null)
@@ -327,11 +327,11 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class Conferences : ViewModel<Professor>
+        internal class Conferences : ViewModel<Person>
         {
             private readonly Lazy<ObservableCollection<ConferenceView.ListItem>> _items;
 
-            public Conferences(Professor model, IRepository<Conference> conferenceRepository)
+            public Conferences(Person model, IRepository<Conference> conferenceRepository)
                 : base(model)
             {
                 if (conferenceRepository == null)
@@ -396,11 +396,11 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class Exhibitions : ViewModel<Professor>
+        internal class Exhibitions : ViewModel<Person>
         {
             private readonly Lazy<ObservableCollection<ExhibitionView.ListItem>> _items;
 
-            public Exhibitions(Professor model, IRepository<Exhibition> exhibitionRepository)
+            public Exhibitions(Person model, IRepository<Exhibition> exhibitionRepository)
                 : base(model)
             {
                 if (exhibitionRepository == null)
@@ -464,11 +464,11 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class CouncilParticipations : ViewModel<Professor>
+        internal class CouncilParticipations : ViewModel<Person>
         {
             private readonly Lazy<ObservableCollection<CouncilParticipationView.ListItem>> _items;
 
-            public CouncilParticipations(Professor model, IRepository<CouncilParticipation> councilParticipationRepository)
+            public CouncilParticipations(Person model, IRepository<CouncilParticipation> councilParticipationRepository)
                 : base(model)
             {
                 if (councilParticipationRepository == null)
@@ -532,11 +532,11 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class Dissertations : ViewModel<Professor>
+        internal class Dissertations : ViewModel<Person>
         {
             private readonly Lazy<ObservableCollection<DissertationView.ListItem>> _items;
 
-            public Dissertations(Professor model, IRepository<Dissertation> dissertationRepository)
+            public Dissertations(Person model, IRepository<Dissertation> dissertationRepository)
                 : base(model)
             {
                 if (dissertationRepository == null)
@@ -616,11 +616,11 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class Publications : ViewModel<Professor>
+        internal class Publications : ViewModel<Person>
         {
             private readonly Lazy<ObservableCollection<PublicationView.ListItem>> _items;
 
-            public Publications(Professor model, IRepository<Publication> publicationRepository)
+            public Publications(Person model, IRepository<Publication> publicationRepository)
                 : base(model)
             {
                 if (publicationRepository == null)
@@ -711,11 +711,11 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class InventiveApplications : ViewModel<Professor>
+        internal class InventiveApplications : ViewModel<Person>
         {
             private readonly Lazy<ObservableCollection<InventiveApplicationView.ListItem>> _items;
 
-            public InventiveApplications(Professor model,
+            public InventiveApplications(Person model,
                                          IRepository<InventiveApplication> inventiveApplicationRepository)
                 : base(model)
             {
@@ -825,11 +825,11 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class EfficiencyProposals : ViewModel<Professor>
+        internal class EfficiencyProposals : ViewModel<Person>
         {
             private readonly Lazy<ObservableCollection<EfficiencyProposalView.ListItem>> _items;
 
-            public EfficiencyProposals(Professor model, IRepository<EfficiencyProposal> efficiencyProposalRepository)
+            public EfficiencyProposals(Person model, IRepository<EfficiencyProposal> efficiencyProposalRepository)
                 : base(model)
             {
                 if (efficiencyProposalRepository == null)
@@ -893,11 +893,11 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        internal class Researches : ViewModel<Professor>
+        internal class Researches : ViewModel<Person>
         {
             private readonly Lazy<ObservableCollection<ResearchView.ListItem>> _items;
 
-            public Researches(Professor model, IRepository<Research> researchRepository)
+            public Researches(Person model, IRepository<Research> researchRepository)
                 : base(model)
             {
                 if (researchRepository == null)

@@ -168,6 +168,12 @@
   <data name="CouncilType_SupremeCertificationCommissionCouncil" xml:space="preserve">
     <value>Экспертный совет ВАК Беларуси</value>
   </data>
+  <data name="DissertationState_Defenced" xml:space="preserve">
+    <value>Защищена</value>
+  </data>
+  <data name="DissertationState_Development" xml:space="preserve">
+    <value>Разрабатывается</value>
+  </data>
   <data name="EventLevel_International" xml:space="preserve">
     <value>Международная</value>
   </data>
@@ -189,28 +195,22 @@
   <data name="ExhibitionAward_ThirdDegree" xml:space="preserve">
     <value>Диплом третьей степени</value>
   </data>
-  <data name="HistoricalWorkOrganization_Custom" xml:space="preserve">
-    <value>Военно-историческая работа организована, но ведется с отдельными недостатками</value>
-  </data>
-  <data name="HistoricalWorkOrganization_Full" xml:space="preserve">
-    <value>Военно-историческая работа организована и ведется в соответствии с требованиями нормативных правовых актов</value>
-  </data>
-  <data name="HistoricalWorkOrganization_None" xml:space="preserve">
-    <value>Военно-историческая работа не организована</value>
-  </data>
   <data name="InventiveApplicationType_Invention" xml:space="preserve">
     <value>Заявка на изобретение</value>
   </data>
   <data name="InventiveApplicationType_UtilityModel" xml:space="preserve">
     <value>Заявка на полезную модель</value>
   </data>
-  <data name="JobPosition_Aspirant" xml:space="preserve">
-    <value>Аспирант</value>
+  <data name="JobPosition_AdjunctFullTime" xml:space="preserve">
+    <value>Адъюнкт очной формы обучения</value>
+  </data>
+  <data name="JobPosition_AdjunctPartTime" xml:space="preserve">
+    <value>Адъюнкт заочной формы обучения</value>
   </data>
   <data name="JobPosition_Docent" xml:space="preserve">
     <value>Доцент</value>
   </data>
-  <data name="JobPosition_Doctorant" xml:space="preserve">
+  <data name="JobPosition_Doctoral" xml:space="preserve">
     <value>Докторант</value>
   </data>
   <data name="JobPosition_HeadOfCathedra" xml:space="preserve">
@@ -228,11 +228,11 @@
   <data name="JobPosition_SeniorProfessor" xml:space="preserve">
     <value>Старший преподаватель</value>
   </data>
-  <data name="JobPosition_Student" xml:space="preserve">
-    <value>Курсант/Студент</value>
-  </data>
   <data name="JobPosition_Teacher" xml:space="preserve">
     <value>Преподаватель</value>
+  </data>
+  <data name="JobPosition_Сadet" xml:space="preserve">
+    <value>Курсант/Студент</value>
   </data>
   <data name="MilitaryRank_Captain" xml:space="preserve">
     <value>Капитан</value>
@@ -252,26 +252,11 @@
   <data name="MilitaryRank_Major" xml:space="preserve">
     <value>Майор</value>
   </data>
+  <data name="MilitaryRank_None" xml:space="preserve">
+    <value>Личный состав</value>
+  </data>
   <data name="MilitaryRank_SeniorLieutenant" xml:space="preserve">
     <value>Старший лейтенант</value>
-  </data>
-  <data name="MilitaryScientificSocietyOrganization_Custom" xml:space="preserve">
-    <value>Работа научного кружка курсантов (студентов) организована, но ведется с отдельными недостатками</value>
-  </data>
-  <data name="MilitaryScientificSocietyOrganization_Full" xml:space="preserve">
-    <value>Работа научного кружка курсантов (студентов) организована и ведется в соответствии с требованиями нормативных правовых актов</value>
-  </data>
-  <data name="MilitaryScientificSocietyOrganization_None" xml:space="preserve">
-    <value>Работа научного кружка курсантов (студентов) не организована</value>
-  </data>
-  <data name="ProfsOrganization_Custom" xml:space="preserve">
-    <value>Подготовка научно-педагогических работников высшей квалификации организована, но ведется с отдельными недостатками</value>
-  </data>
-  <data name="ProfsOrganization_Full" xml:space="preserve">
-    <value>Подготовка научно-педагогических работников высшей квалификации организована и ведется в соответствии с требованиями нормативных правовых актов</value>
-  </data>
-  <data name="ProfsOrganization_None" xml:space="preserve">
-    <value>Подготовка научно-педагогических работников высшей квалификации не организована</value>
   </data>
   <data name="PublicationType_Article" xml:space="preserve">
     <value>Нерецензируемая научная статья</value>

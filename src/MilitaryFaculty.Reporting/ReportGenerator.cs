@@ -34,10 +34,10 @@ namespace MilitaryFaculty.Reporting
                 _reportDataProvider);
         }
 
-        public Report GenerateProfessorReport(Professor professor, TimeInterval interval)
+        public Report GenerateProfessorReport(Person professor, TimeInterval interval)
         {
             _reportDataProvider.ReportDataProvidersContainer.SetProfessorModificator(professor, interval);
-            return new Report(professor.FullName.ToString(), _reportTableResolver(typeof (Professor)),
+            return new Report(professor.FullName.ToString(), _reportTableResolver(typeof (Person)),
                 _formulaProvider,
                 _reportDataProvider);
         }

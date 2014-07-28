@@ -12,6 +12,7 @@ namespace MilitaryFaculty.Data.Configurations
             Property(m => m.Name).IsRequired();
             Property(m => m.CreatedAt).IsRequired();
             Property(m => m.TargetAcademicRank).IsRequired();
+            Property(m => m.State).IsRequired();
 
             HasRequired(m => m.Author).WithMany(p => p.Dissertations);
         }

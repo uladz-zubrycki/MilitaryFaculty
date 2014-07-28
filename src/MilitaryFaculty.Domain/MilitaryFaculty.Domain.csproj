@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcademicDegreePromotion.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="CathedraRank .backup.cs" />
     <Compile Include="CommonEnums.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="FullName.cs" />
     <Compile Include="InventiveApplication.cs" />
     <Compile Include="CouncilParticipation.cs" />
-    <Compile Include="Professor.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cathedra.cs" />
     <Compile Include="Research.cs" />

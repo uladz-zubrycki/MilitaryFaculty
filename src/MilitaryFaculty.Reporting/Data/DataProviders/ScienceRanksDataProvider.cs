@@ -1,29 +1,47 @@
-﻿using MilitaryFaculty.Data;
+﻿using System.Linq;
+using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 
 namespace MilitaryFaculty.Reporting.Data.DataProviders
 {
-    public class CathedrasDataProvider : DataProvider<Cathedra>
+    public class ScienceRanksDataProvider : DataProvider<ScienceRank>
     {
-        public CathedrasDataProvider(IRepository<Cathedra> repository)
+        public ScienceRanksDataProvider(IRepository<ScienceRank> repository)
             : base(repository)
         {
         }
 
         public override void SetFacultyModificator(TimeInterval interval)
         {
-            QueryModificator = null;
+            QueryModificator = sr =>
+                sr.CreatedAt >= interval.From
+                && sr.CreatedAt <= interval.To;
         }
 
         public override void SetCathedraModificator(Cathedra cathedra, TimeInterval interval)
         {
-            QueryModificator = c =>
-                c.Id == cathedra.Id;
+            QueryModificator = sr =>
+                sr.Cathedra.Id == cathedra.Id
+                && sr.CreatedAt >= interval.From
+                && sr.CreatedAt <= interval.To;
         }
 
-        public override void SetProfessorModificator(Professor professor, TimeInterval interval)
+        public override void SetPersonModificator(Person person, TimeInterval interval)
         {
             QueryModificator = null;
+        }
+
+        private double MetricValuesCalculation(string sectionName)
+        {
+            var collection = QueryableCollection.Select(sr => sr.Metrics
+                                                                .FirstOrDefault(m => m.Definition
+                                                                                      .Name
+                                                                                      .StartsWith(
+                                                                                          sectionName))
+                                                                                          )
+                                                                .Select(m => m.Value);
+            if (!collection.Any()) return 0;
+            return collection.Sum() / (double)collection.Count();
         }
 
         /// <summary>
@@ -34,7 +52,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("PlanDocsOrg")]
         public double PlanningDocumentsOrganization()
         {
-            return 0;
+            return MetricValuesCalculation("Полнота разработки планирующих документов");
         }
 
         /// <summary>
@@ -44,7 +62,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ResTopicsOrg")]
         public double ResearchTopicsOrganization()
         {
-            return 0;
+            return MetricValuesCalculation("Уровень соответствия тематики исследований");
         }
 
         /// <summary>
@@ -56,7 +74,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ProfsOrg")]
         public double ProfessorsOrganization()
         {
-            return 0;
+            return MetricValuesCalculation("Уровень ознакомления лиц из числа ППС с требованиями правовых актов");
         }
 
         /// <summary>
@@ -66,7 +84,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("IntConfOrg")]
         public double InternationalConferencesOrganization()
         {
-            return 0;
+            return MetricValuesCalculation("Уровень организации международных конференций");
         }
 
         /// <summary>
@@ -76,7 +94,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("RepConfOrg")]
         public double RepublicanConferenceOrganization()
         {
-            return 0;
+            return MetricValuesCalculation("Уровень организации республиканских конференций");
         }
 
         /// <summary>
@@ -86,7 +104,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UnConfOrg")]
         public double UniversityConferenceOrganization()
         {
-            return 0;
+            return MetricValuesCalculation("Уровень организации вузовских конференций");
         }
 
         /// <summary>
@@ -96,7 +114,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("RepSemOrg")]
         public double RepablicanSeminarOrganization()
         {
-            return 0;
+            return MetricValuesCalculation("Уровень организации республиканских семинаров");
         }
 
         /// <summary>
@@ -106,70 +124,37 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("UnSemOrg")]
         public double UniversitySeminarOrganization()
         {
-            return 0;
+            return MetricValuesCalculation("Уровень организации вузовских семинаров");
         }
 
         /// <summary>
-        ///     Подготовка научно-педагогических работников высшей квалификации организована (разработаны годовой и перспективный
-        ///     планы подготовки научных работников высшей квалификации; имеются в налиии и выполнены индивидуальные планы
-        ///     соискателей)
+        ///     Подготовка научно-педагогических работников высшей квалификации
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("ProfsOrgFull")]
         public double ProfessorsOrganizationFull()
         {
-            return 0;
+            return MetricValuesCalculation("Уровень организации подготовки научно-педагогических работников");
         }
 
         /// <summary>
-        ///     Подготовка научно-педагогических работников высшей квалификации организована, но ведется с отдельными недостатками
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("ProfsOrgCust")]
-        public double ProfessorsOrganizationCustom()
-        {
-            return 0;
-        }
-
-        /// <summary>
-        ///     Военно-историческая работа организована и ведется в соответствии с требованиями нормативных правовых актов
+        ///     Военно-историческая работа
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("HistWorkFull")]
         public double HistoricalWorkOrganizationFull()
         {
-            return 0;
+            return MetricValuesCalculation("Уровень организации военно-исторической работы");
         }
 
         /// <summary>
-        ///     Военно-историческая работа органозована, но ведется с отдельными недостатками
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("HistWorkCust")]
-        public double HistoricalWorkOrganizationCustom()
-        {
-            return 0;
-        }
-
-        /// <summary>
-        ///     Работа научного кружка курсантов (студентов) организована и ведется в соответствии с требованиями нормативных
-        ///     правовых актов
+        ///     Работа научного кружка курсантов (студентов)
         /// </summary>
         /// <returns></returns>
         [FormulaArgument("MssFull")]
         public double MilitaryScientificSocietyOrganizationFull()
         {
-            return 0;
-        }
-
-        /// <summary>
-        ///     Работа научного кружка курсантов (стедентов) организована, но ведется с отдельными недостатками
-        /// </summary>
-        /// <returns></returns>
-        [FormulaArgument("MssCust")]
-        public double MilitaryScientificSocietyOrganizationCustom()
-        {
-            return 0;
+            return MetricValuesCalculation("Уровень организации работы научных кружков");
         }
 
         /// <summary>
@@ -179,7 +164,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("CustSwOrg")]
         public double CustomScientificWorkOrganizationRating()
         {
-            return 0;
+            return MetricValuesCalculation("Другие частные показатели, характеризующие качество организации");
         }
 
         /// <summary>
@@ -189,7 +174,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("CustSrOrg")]
         public double CustomScientificResearchOrganizationRating()
         {
-            return 0;
+            return MetricValuesCalculation("Другие частные показатели, характеризующие проведение");
         }
 
         /// <summary>
@@ -199,7 +184,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("CustArsrOrg")]
         public double CustomAprobationResultsOfScientificWork()
         {
-            return 0;
+            return MetricValuesCalculation("Другие частные показатели, характеризующие апробацию результатов");
         }
 
         /// <summary>
@@ -209,7 +194,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("CustTcSpHq")]
         public double CustomTcSpHq() //training and certification of scientific personnel of higher qualification
         {
-            return 0;
+            return MetricValuesCalculation("Другие частные показатели, характеризующие подготовку");
         }
     }
 }

@@ -106,7 +106,7 @@ namespace MilitaryFaculty.Application.AppStartup
             var tablesPath = Path.Combine(curPath, tablesRelPath);
 
             builder.RegisterType<ReportTableProvider>()
-                   .Keyed<IReportTableProvider>(typeof (Professor))
+                   .Keyed<IReportTableProvider>(typeof (Person))
                    .WithParameter("tablesPath", tablesPath)
                    .SingleInstance();
         }

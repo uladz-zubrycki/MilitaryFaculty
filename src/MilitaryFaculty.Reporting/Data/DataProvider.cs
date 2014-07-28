@@ -12,7 +12,7 @@ namespace MilitaryFaculty.Reporting.Data
     {
         public abstract void SetFacultyModificator(TimeInterval interval);
         public abstract void SetCathedraModificator(Cathedra cathedra, TimeInterval interval);
-        public abstract void SetProfessorModificator(Professor professor, TimeInterval interval);
+        public abstract void SetPersonModificator(Person person, TimeInterval interval);
 
         private readonly IQueryable<T> _queryableCollection;
         protected Expression<Func<T, bool>> QueryModificator;

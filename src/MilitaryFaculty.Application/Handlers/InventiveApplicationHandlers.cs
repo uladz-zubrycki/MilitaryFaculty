@@ -37,14 +37,14 @@ namespace MilitaryFaculty.Application.Handlers
                 throw new ArgumentNullException("sink");
             }
 
-            commands.AddCommand<Professor>(GlobalCommands.BrowseAdd<InventiveApplication>(), 
+            commands.AddCommand<Person>(GlobalCommands.BrowseAdd<InventiveApplication>(), 
                                            OnBrowseInventiveApplicationAdd);
 
             commands.AddCommand<InventiveApplication>(GlobalCommands.BrowseDetails<InventiveApplication>(), 
                                                       OnBrowseInventiveApplicationDetails);
         }
 
-        private void OnBrowseInventiveApplicationAdd(Professor author)
+        private void OnBrowseInventiveApplicationAdd(Person author)
         {
             if (author == null)
             {

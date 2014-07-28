@@ -20,7 +20,7 @@ namespace MilitaryFaculty.Domain
     {
         public virtual string Name { get; set; }
         public virtual CouncilType Type { get; set; }
-        public virtual Professor Participant { get; set; }
+        public virtual Person Participant { get; set; }
         public virtual DateTime StartDate { get; set; }
         public virtual DateTime? EndDate { get; set; }
 

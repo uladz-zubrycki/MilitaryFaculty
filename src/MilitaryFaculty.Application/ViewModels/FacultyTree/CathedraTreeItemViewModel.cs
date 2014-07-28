@@ -17,7 +17,7 @@ namespace MilitaryFaculty.Application.ViewModels
         public CathedraTreeItemViewModel(Cathedra cathedra,
                                          TreeViewModel owner,
                                          ITreeItemViewModel parent,
-                                         IRepository<Professor> professorRepository)
+                                         IRepository<Person> professorRepository)
             : base(cathedra, owner, parent, true)
         {
             if (professorRepository == null)
@@ -62,13 +62,13 @@ namespace MilitaryFaculty.Application.ViewModels
             const string tooltip = "Добавить преподавателя";
             const string imageSource = @"\Content\images\add-user.png";
 
-            return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Professor>(),
+            return new ImagedCommandViewModel(GlobalCommands.BrowseAdd<Person>(),
                                               Model,
                                               tooltip,
                                               imageSource);
         }
 
-        private void OnProfessorCreated(object sender, ModifiedEntityEventArgs<Professor> e)
+        private void OnProfessorCreated(object sender, ModifiedEntityEventArgs<Person> e)
         {
             var professor = e.ModifiedEntity;
 
@@ -78,7 +78,7 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
-        private void OnProfessorDeleted(object sender, ModifiedEntityEventArgs<Professor> e)
+        private void OnProfessorDeleted(object sender, ModifiedEntityEventArgs<Person> e)
         {
             var professor = e.ModifiedEntity;
 
@@ -90,7 +90,7 @@ namespace MilitaryFaculty.Application.ViewModels
 
         public static CathedraTreeItemViewModel FromModel(Cathedra model,
                                                           TreeViewModel owner,
-                                                          IRepository<Professor> professorRepository)
+                                                          IRepository<Person> professorRepository)
         {
             return new CathedraTreeItemViewModel(cathedra: model,
                                                  owner: owner,
@@ -99,7 +99,7 @@ namespace MilitaryFaculty.Application.ViewModels
         }
 
         public static Func<Cathedra, CathedraTreeItemViewModel> FromModel(TreeViewModel owner,
-                                                                          IRepository<Professor> professorRepository)
+                                                                          IRepository<Person> professorRepository)
         {
             return cathedra => FromModel(cathedra, owner, professorRepository);
         }

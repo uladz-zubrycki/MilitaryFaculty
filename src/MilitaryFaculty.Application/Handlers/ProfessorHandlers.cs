@@ -7,15 +7,15 @@ using MilitaryFaculty.Presentation.Commands;
 
 namespace MilitaryFaculty.Application.Handlers
 {
-    public class ProfessorHandlers : EntityCommandModule<Professor>
+    public class ProfessorHandlers : EntityCommandModule<Person>
     {
-        public ProfessorHandlers(IRepository<Professor> repository)
+        public ProfessorHandlers(IRepository<Person> repository)
             : base(repository)
         {
             // Empty
         }
 
-        protected override string GetRemovalMessage(Professor professor)
+        protected override string GetRemovalMessage(Person professor)
         {
             return ("Вы действительно хотите удалить преподавателя? " +
                     "Все данные будут утеряны.");
@@ -32,7 +32,7 @@ namespace MilitaryFaculty.Application.Handlers
 
         public override void LoadModule(RoutedCommands commands)
         {
-            commands.AddCommand<Cathedra>(GlobalCommands.BrowseAdd<Professor>(), OnBrowseProfessorAdd);
+            commands.AddCommand<Cathedra>(GlobalCommands.BrowseAdd<Person>(), OnBrowseProfessorAdd);
         }
 
         private void OnBrowseProfessorAdd(Cathedra cathedra)
@@ -42,7 +42,7 @@ namespace MilitaryFaculty.Application.Handlers
                 throw new ArgumentNullException("cathedra");
             }
 
-            var model = new Professor { Cathedra = cathedra };
+            var model = new Person { Cathedra = cathedra };
             ViewModel.WorkWindow = new ProfessorView.Add(model);
         }
     }

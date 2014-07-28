@@ -33,11 +33,11 @@ namespace MilitaryFaculty.Application.Handlers
                 throw new ArgumentNullException("container");
             }
 
-            commands.AddCommand<Professor>(GlobalCommands.BrowseAdd<Conference>(), OnBrowseConferenceAdd);
+            commands.AddCommand<Person>(GlobalCommands.BrowseAdd<Conference>(), OnBrowseConferenceAdd);
             commands.AddCommand<Conference>(GlobalCommands.BrowseDetails<Conference>(), OnBrowseConferenceDetails);
         }
 
-        private void OnBrowseConferenceAdd(Professor curator)
+        private void OnBrowseConferenceAdd(Person curator)
         {
             if (curator == null)
             {

@@ -27,7 +27,7 @@ namespace MilitaryFaculty.Domain
 
         public virtual string Name { get; set; }
         public virtual DateTime Date { get; set; }
-        public virtual Professor Participant { get; set; }
+        public virtual Person Participant { get; set; }
         public virtual ExhibitionAward Award { get; set; }
         public virtual EventLevel EventLevel { get; set; }
     }

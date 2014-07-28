@@ -214,6 +214,24 @@ namespace MilitaryFaculty.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Защищена.
+        /// </summary>
+        internal static string DissertationState_Defenced {
+            get {
+                return ResourceManager.GetString("DissertationState_Defenced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Разрабатывается.
+        /// </summary>
+        internal static string DissertationState_Development {
+            get {
+                return ResourceManager.GetString("DissertationState_Development", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Международная.
         /// </summary>
         internal static string EventLevel_International {
@@ -277,33 +295,6 @@ namespace MilitaryFaculty.Domain.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Военно-историческая работа организована, но ведется с отдельными недостатками.
-        /// </summary>
-        internal static string HistoricalWorkOrganization_Custom {
-            get {
-                return ResourceManager.GetString("HistoricalWorkOrganization_Custom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Военно-историческая работа организована и ведется в соответствии с требованиями нормативных правовых актов.
-        /// </summary>
-        internal static string HistoricalWorkOrganization_Full {
-            get {
-                return ResourceManager.GetString("HistoricalWorkOrganization_Full", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Военно-историческая работа не организована.
-        /// </summary>
-        internal static string HistoricalWorkOrganization_None {
-            get {
-                return ResourceManager.GetString("HistoricalWorkOrganization_None", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Заявка на изобретение.
         /// </summary>
         internal static string InventiveApplicationType_Invention {
@@ -322,11 +313,20 @@ namespace MilitaryFaculty.Domain.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Аспирант.
+        ///   Looks up a localized string similar to Адъюнкт очной формы обучения.
         /// </summary>
-        internal static string JobPosition_Aspirant {
+        internal static string JobPosition_AdjunctFullTime {
             get {
-                return ResourceManager.GetString("JobPosition_Aspirant", resourceCulture);
+                return ResourceManager.GetString("JobPosition_AdjunctFullTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Адъюнкт заочной формы обучения.
+        /// </summary>
+        internal static string JobPosition_AdjunctPartTime {
+            get {
+                return ResourceManager.GetString("JobPosition_AdjunctPartTime", resourceCulture);
             }
         }
         
@@ -342,9 +342,9 @@ namespace MilitaryFaculty.Domain.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Докторант.
         /// </summary>
-        internal static string JobPosition_Doctorant {
+        internal static string JobPosition_Doctoral {
             get {
-                return ResourceManager.GetString("JobPosition_Doctorant", resourceCulture);
+                return ResourceManager.GetString("JobPosition_Doctoral", resourceCulture);
             }
         }
         
@@ -394,20 +394,20 @@ namespace MilitaryFaculty.Domain.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Курсант/Студент.
-        /// </summary>
-        internal static string JobPosition_Student {
-            get {
-                return ResourceManager.GetString("JobPosition_Student", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Преподаватель.
         /// </summary>
         internal static string JobPosition_Teacher {
             get {
                 return ResourceManager.GetString("JobPosition_Teacher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Курсант/Студент.
+        /// </summary>
+        internal static string JobPosition_Сadet {
+            get {
+                return ResourceManager.GetString("JobPosition_Сadet", resourceCulture);
             }
         }
         
@@ -466,65 +466,20 @@ namespace MilitaryFaculty.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Личный состав.
+        /// </summary>
+        internal static string MilitaryRank_None {
+            get {
+                return ResourceManager.GetString("MilitaryRank_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Старший лейтенант.
         /// </summary>
         internal static string MilitaryRank_SeniorLieutenant {
             get {
                 return ResourceManager.GetString("MilitaryRank_SeniorLieutenant", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Работа научного кружка курсантов (студентов) организована, но ведется с отдельными недостатками.
-        /// </summary>
-        internal static string MilitaryScientificSocietyOrganization_Custom {
-            get {
-                return ResourceManager.GetString("MilitaryScientificSocietyOrganization_Custom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Работа научного кружка курсантов (студентов) организована и ведется в соответствии с требованиями нормативных правовых актов.
-        /// </summary>
-        internal static string MilitaryScientificSocietyOrganization_Full {
-            get {
-                return ResourceManager.GetString("MilitaryScientificSocietyOrganization_Full", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Работа научного кружка курсантов (студентов) не организована.
-        /// </summary>
-        internal static string MilitaryScientificSocietyOrganization_None {
-            get {
-                return ResourceManager.GetString("MilitaryScientificSocietyOrganization_None", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Подготовка научно-педагогических работников высшей квалификации организована, но ведется с отдельными недостатками.
-        /// </summary>
-        internal static string ProfsOrganization_Custom {
-            get {
-                return ResourceManager.GetString("ProfsOrganization_Custom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Подготовка научно-педагогических работников высшей квалификации организована и ведется в соответствии с требованиями нормативных правовых актов.
-        /// </summary>
-        internal static string ProfsOrganization_Full {
-            get {
-                return ResourceManager.GetString("ProfsOrganization_Full", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Подготовка научно-педагогических работников высшей квалификации не организована.
-        /// </summary>
-        internal static string ProfsOrganization_None {
-            get {
-                return ResourceManager.GetString("ProfsOrganization_None", resourceCulture);
             }
         }
         

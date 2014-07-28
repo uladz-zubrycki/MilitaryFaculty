@@ -1,6 +1,5 @@
 ﻿using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
-using Dissertation = MilitaryFaculty.Domain.Dissertation;
 
 namespace MilitaryFaculty.Reporting.Data.DataProviders
 {
@@ -26,10 +25,10 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
                 && dissertation.CreatedAt <= interval.To;
         }
 
-        public override void SetProfessorModificator(Professor professor, TimeInterval interval)
+        public override void SetPersonModificator(Person person, TimeInterval interval)
         {
             QueryModificator = dissertation =>
-                dissertation.Author.Id == professor.Id
+                dissertation.Author.Id == person.Id
                 && dissertation.CreatedAt >= interval.From
                 && dissertation.CreatedAt <= interval.To;
         }
@@ -42,7 +41,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DocThesisesCount")]
         public double DoctorThesisesCount()
         {
-            return CountOf(s => s.TargetAcademicRank == AcademicRank.DoctorOfScience);
+            return CountOf(s => s.TargetAcademicRank == AcademicRank.DoctorOfScience
+                                && s.State == DissertationState.Defenced);
         }
 
         /// <summary>
@@ -52,7 +52,30 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("CandThesisesCount")]
         public double CandidateThesisesCount()
         {
-            return CountOf(s => s.TargetAcademicRank == AcademicRank.CandidateOfScience);
+            return CountOf(s => s.TargetAcademicRank == AcademicRank.CandidateOfScience
+                                && s.State == DissertationState.Defenced);
+        }
+
+        /// <summary>
+        ///     Количество соискателей ученой степени доктора наук
+        /// </summary>
+        /// <returns></returns>
+        [FormulaArgument("ApplDoctCount")]
+        public double ApplicantForDoctorsCount()
+        {
+            return CountOf(d => d.TargetAcademicRank == AcademicRank.DoctorOfScience
+                                && d.State == DissertationState.Development);
+        }
+
+        /// <summary>
+        ///     Количество соискателей ученой степени кандидата наук
+        /// </summary>
+        /// <returns></returns>
+        [FormulaArgument("ApplCandCount")]
+        public double ApplicantForCandidatsCount()
+        {
+            return CountOf(d => d.TargetAcademicRank == AcademicRank.CandidateOfScience
+                                && d.State == DissertationState.Development);
         }
     }
 }

@@ -37,14 +37,14 @@ namespace MilitaryFaculty.Application.Handlers
                 throw new ArgumentNullException("sink");
             }
 
-            commands.AddCommand<Professor>(GlobalCommands.BrowseAdd<CouncilParticipation>(),
+            commands.AddCommand<Person>(GlobalCommands.BrowseAdd<CouncilParticipation>(),
                                            OnBrowseAdd);
 
             commands.AddCommand<CouncilParticipation>(GlobalCommands.BrowseDetails<CouncilParticipation>(),
                                                       OnBrowseDetails);
         }
 
-        private void OnBrowseAdd(Professor participant)
+        private void OnBrowseAdd(Person participant)
         {
             if (participant == null)
             {

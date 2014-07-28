@@ -53,7 +53,7 @@ namespace MilitaryFaculty.Domain
 
         public virtual string Name { get; set; }
         public virtual DateTime Date { get; set; }
-        public virtual Professor Curator { get; set; }
+        public virtual Person Curator { get; set; }
         public virtual ConferenceReport ConferenceReport { get; set; }
         public virtual EventLevel EventLevel { get; set; }
     }

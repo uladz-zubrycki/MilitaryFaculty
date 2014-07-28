@@ -6,6 +6,6 @@ namespace MilitaryFaculty.Reporting
     {
         Report GenerateFacultyReport(TimeInterval interval);
         Report GenerateCathedraReport(Cathedra cathedra, TimeInterval interval);
-        Report GenerateProfessorReport(Professor professor, TimeInterval interval);
+        Report GenerateProfessorReport(Person professor, TimeInterval interval);
     }
 }
