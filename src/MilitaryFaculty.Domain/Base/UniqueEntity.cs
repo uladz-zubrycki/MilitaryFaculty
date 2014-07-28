@@ -4,12 +4,12 @@ namespace MilitaryFaculty.Domain.Base
 {
     public interface IUniqueEntity : IEquatable<IUniqueEntity>
     {
-        Guid Id { get; }
+        Int32 Id { get; }
     }
 
     public abstract class UniqueEntity : IUniqueEntity
     {
-        public Guid Id { get; set; }
+        public Int32 Id { get; set; }
 
         /// <summary>
         ///     Indicates whether the current object is equal to another object of the same type.

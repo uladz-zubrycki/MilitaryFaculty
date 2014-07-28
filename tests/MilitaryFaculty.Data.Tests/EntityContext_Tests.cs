@@ -18,8 +18,7 @@ namespace MilitaryFaculty.Data.Tests
         {
             const string conName = "Current";
 
-            var connectionString = ConfigurationManager.ConnectionStrings[conName]
-                .ConnectionString;
+            var connectionString = ConfigurationManager.ConnectionStrings[conName].ConnectionString;
 
             Database.SetInitializer(new DropCreateDatabaseAlways<EntityContext>());
             context = new EntityContext(connectionString);

@@ -11,9 +11,9 @@ namespace MilitaryFaculty.Data
     {
         IQueryable<T> Table { get; }
         void Create(T entity);
-        T Read(Guid id);
+        T Read(Int32 id);
         void Update(T entity);
-        void Delete(Guid id);
+        void Delete(Int32 id);
 
         event EventHandler<ModifiedEntityEventArgs<T>> EntityCreated;
         event EventHandler<ModifiedEntityEventArgs<T>> EntityUpdated;

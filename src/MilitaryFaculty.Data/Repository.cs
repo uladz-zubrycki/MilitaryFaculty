@@ -48,7 +48,7 @@ namespace MilitaryFaculty.Data
             OnEntityCreated(entity);
         }
 
-        public T Read(Guid id)
+        public T Read(Int32 id)
         {
             return DbSet.Single(x => x.Id == id);
         }
@@ -68,7 +68,7 @@ namespace MilitaryFaculty.Data
             OnEntityUpdated(entity);
         }
 
-        public void Delete(Guid id)
+        public void Delete(Int32 id)
         {
             var entity = Read(id);
             OnEntityDeleted(entity);
