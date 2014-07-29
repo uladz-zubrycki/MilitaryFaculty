@@ -44,7 +44,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ProfsCount")]
         public double ProfessorsCount()
         {
-            return CountOf(p => p.JobPosition >= JobPosition.Professor);
+            return CountOf(p => p.JobPosition >= JobPosition.Teacher);
         }
 
         /// <summary>
