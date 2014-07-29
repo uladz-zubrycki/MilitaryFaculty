@@ -462,28 +462,28 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Formulas\Faculty\table1.xml">
+    <Resource Include="Content\formulas\tables\faculty\table1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Formulas\Faculty\table2.xml">
+    <Resource Include="Content\formulas\tables\faculty\table2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Formulas\Faculty\table3.xml">
+    <Resource Include="Content\formulas\tables\faculty\table3.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Formulas\Faculty\table4.xml">
+    <Resource Include="Content\formulas\tables\faculty\table4.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Formulas\formulas.xml">
+    <Resource Include="Content\formulas\formulas.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Formulas\Professor\table1.xml">
+    <Resource Include="Content\formulas\tables\professor\table1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Formulas\Professor\table2.xml">
+    <Resource Include="Content\formulas\tables\professor\table2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Formulas\Professor\table3.xml">
+    <Resource Include="Content\formulas\tables\professor\table3.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -515,13 +515,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
-    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8854.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
-    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
-    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8854.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
-  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
