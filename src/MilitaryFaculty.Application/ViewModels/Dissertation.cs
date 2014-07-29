@@ -95,10 +95,16 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return "Дополнительная информация"; }
             }
 
-            [EnumProperty(Label = "Защищённая научная степень:")]
+            [EnumProperty(Label = "Научная степень:")]
             public AcademicRank TargetAcademiceRank
             {
                 get { return Model.TargetAcademicRank; }
+            }
+            
+            [EnumProperty(Label = "Состояние работы:")]
+            public DissertationState State
+            {
+                get { return Model.State; }
             }
         }
 
