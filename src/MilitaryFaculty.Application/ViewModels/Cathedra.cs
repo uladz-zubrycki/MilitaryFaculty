@@ -4,10 +4,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
+using MilitaryFaculty.Application.Views.Entity;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Data.Events;
 using MilitaryFaculty.Domain;
+using MilitaryFaculty.Presentation.Attributes;
 using MilitaryFaculty.Presentation.ViewModels;
 using MilitaryFaculty.Presentation.Widgets.Menu;
 
@@ -36,6 +38,7 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 return new ViewModel<Cathedra>[]
                        {
+                           new ExtraInfo(Model), 
                            new ScienceRanks(Model, _scienceRankRepository),
                        };
             }
@@ -69,6 +72,62 @@ namespace MilitaryFaculty.Application.ViewModels
             }
         }
 
+        internal class ExtraInfo : EntityViewModel<Cathedra>
+        {
+            private readonly ICollection<Person> _persons;  
+
+            public ExtraInfo(Cathedra model) : base(model)
+            {
+                _persons = model.Professors.ToList();
+            }
+
+            public override string Title
+            {
+                get { return "Информация о кафедре"; }
+            }
+
+            [IntProperty(Label = "Количество студентов")]
+            public int StudentsCount
+            {
+                get { return CountOf(p => p.JobPosition < JobPosition.Teacher); }
+            }
+
+            [IntProperty(Label = "Количество преподавателей")]
+            public int TeachersCount
+            {
+                get { return CountOf(p => p.JobPosition >= JobPosition.Teacher); }
+            }
+
+            [IntProperty(Label = "Количество доцентов")]
+            public int DocentsCount
+            {
+                get { return CountOf(p => p.AcademicDegree >= AcademicDegree.Docent); }
+            }
+
+            [IntProperty(Label = "Количество профессоров")]
+            public int ProfessorsCount
+            {
+                get { return CountOf(p => p.AcademicDegree >= AcademicDegree.Professor); }
+            }
+
+            [IntProperty(Label = "Количество кандидатов наук")]
+            public int CandidatsCount
+            {
+                get { return CountOf(p => p.AcademicRank >= AcademicRank.CandidateOfScience); }
+            }
+
+            [IntProperty(Label = "Количество докторов наук")]
+            public int DoctorsCount
+            {
+                get { return Model.Professors.Count(p => p.AcademicRank >= AcademicRank.DoctorOfScience); }
+            }
+
+            private int CountOf(Func<Person, bool> predicate)
+            {
+                return _persons.Count(predicate);
+            }
+        }
+
         internal class ScienceRanks : ViewModel<Cathedra>
         {
             private readonly Lazy<ObservableCollection<ScienceRankView.ListItem>> _items;
@@ -78,7 +137,7 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 if (cathedraRankRepository == null)
                 {
-                    throw new ArgumentNullException("conferenceRepository");
+                    throw new ArgumentNullException("cathedraRankRepository");
                 }
 
                 _items = Lazy.Create(InitializeItems);
@@ -99,6 +158,8 @@ namespace MilitaryFaculty.Application.ViewModels
                 get { return _items.Value; }
             }
 
+            public int RanksCount { get { return Items.Count; } } 
+
             private ObservableCollection<ScienceRankView.ListItem> InitializeItems()
             {
                 var cathedraRanks = Model.ScienceRanks
@@ -106,6 +167,8 @@ namespace MilitaryFaculty.Application.ViewModels
                                          .ToList();
 
                 var result = new ObservableCollection<ScienceRankView.ListItem>(cathedraRanks);
+
+                result.CollectionChanged += (sender, args) =>  OnPropertyChanged("RanksCount");
 
                 return result;
             }
