@@ -88,7 +88,8 @@ namespace MilitaryFaculty.Reporting.Data
                 throw new ArgumentNullException("provider");
             }
 
-            return () => (double) info.Invoke(provider, null);
+            //return () => (double) info.Invoke(provider, null);
+            return Delegate.CreateDelegate(typeof(Func<double>), provider, info) as Func<double>;
         }
 
         private static bool IsEvaluator(MethodInfo info)

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain;
 
@@ -33,14 +34,16 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
 
         private double MetricValuesCalculation(string sectionName)
         {
-            var collection = QueryableCollection.Select(sr => sr.Metrics
-                                                                .FirstOrDefault(m => m.Definition
-                                                                                      .Name
-                                                                                      .StartsWith(
-                                                                                          sectionName))
-                                                                                          )
-                                                                .Select(m => m.Value);
-            if (!collection.Any()) return 0;
+            Func<ScienceRank, ScienceRankMetric> getMetric =
+                rank => rank.Metrics.FirstOrDefault(m => m.Definition
+                                                          .Name
+                                                          .StartsWith(sectionName));
+
+            var collection = QueryableCollection.Select(getMetric)
+                                                .Where(m => m != null)
+                                                .Select(m => m.Value)
+                                                .ToList();
+
             return collection.Sum() / (double)collection.Count();
         }
 
