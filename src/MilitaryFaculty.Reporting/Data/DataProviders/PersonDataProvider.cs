@@ -94,7 +94,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("ProfPostsSubsCount")]
         public double ProfessorPostsSubstitutionCount()
         {
-            return CountOf(p => p.JobPosition == JobPosition.Professor);
+            return CountOf(p => p.JobPosition == JobPosition.Professor
+                                && p.AcademicDegree != AcademicDegree.Professor);
         }
 
         /// <summary>
@@ -114,7 +115,8 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("DocentPostsSubsCount")]
         public double DocentPostsSubstitutionCount()
         {
-            return CountOf(p => p.JobPosition == JobPosition.Docent);
+            return CountOf(p => p.JobPosition == JobPosition.Docent
+                                && p.AcademicDegree != AcademicDegree.Docent);
         }
 
         /// <summary>
@@ -188,7 +190,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("SoHqA40")]
         public double StaffingOfHighQualificationAbove40()
         {
-            var ratio = HighQualificationProfsCount()/ProfessorsCount();
+            double ratio = HighQualificationProfsCount()/ProfessorsCount();
             return ratio > 0.4 && ratio <= 1.001 ? 1 : 0;
         }
 
@@ -200,7 +202,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("SoHqA20B40")]
         public double StaffingOfHighQualificationAbove20Below40()
         {
-            var ratio = HighQualificationProfsCount()/ProfessorsCount();
+            double ratio = HighQualificationProfsCount()/ProfessorsCount();
             return ratio > 0.2 && ratio <= 0.4 ? 1 : 0;
         }
 
@@ -212,7 +214,7 @@ namespace MilitaryFaculty.Reporting.Data.DataProviders
         [FormulaArgument("SoHqB20")]
         public double StaffingOfHighQualificatioBelow20()
         {
-            var ratio = HighQualificationProfsCount()/ProfessorsCount();
+            double ratio = HighQualificationProfsCount()/ProfessorsCount();
             return ratio > 0.0001 && ratio <= 0.2 ? 1 : 0;
         }
 
