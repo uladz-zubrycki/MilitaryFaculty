@@ -30,7 +30,7 @@ namespace MilitaryFaculty.Presentation.Widgets.Menu
         public bool IsOpen
         {
             get { return _isOpen; }
-            set { SetValue(() => _isOpen, value); }
+            set { SetValue("IsOpen", () => _isOpen, value); }
         }
 
         private void Show()

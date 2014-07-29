@@ -20,7 +20,7 @@ namespace MilitaryFaculty.Presentation.Widgets.TreeView
             {
                 var oldValue = _selected;
 
-                if (SetValue(() => _selected, value))
+                if (SetValue("Selected", () => _selected, value))
                 {
                     OnSelectedItemChanged(_selected, oldValue);
                 }

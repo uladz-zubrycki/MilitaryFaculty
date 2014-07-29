@@ -69,7 +69,7 @@ namespace MilitaryFaculty.Presentation.Widgets.TreeView
             get { return _isSelected; }
             set
             {
-                SetValue(() => _isSelected, value);
+                SetValue("IsSelected", () => _isSelected, value);
                 Owner.Selected = this;
 
                 if (_isSelected && Parent != null)
@@ -84,7 +84,7 @@ namespace MilitaryFaculty.Presentation.Widgets.TreeView
             get { return _isExpanded; }
             set
             {
-                SetValue(() => _isExpanded, value);
+                SetValue("IsSelected", () => _isExpanded, value);
 
                 if (!ChildrenLoaded)
                 {

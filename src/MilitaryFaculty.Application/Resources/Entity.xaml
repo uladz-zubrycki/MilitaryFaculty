@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:viewBehaviours="clr-namespace:MilitaryFaculty.Presentation.ViewBehaviours;assembly=MilitaryFaculty.Presentation"
-                    xmlns:views="clr-namespace:MilitaryFaculty.Application.Views"
                     xmlns:custom="clr-namespace:MilitaryFaculty.Application.Custom"
                     xmlns:properties="clr-namespace:MilitaryFaculty.Presentation.ViewModels.Properties;assembly=MilitaryFaculty.Presentation"
                     xmlns:entity="clr-namespace:MilitaryFaculty.Application.Views.Entity">

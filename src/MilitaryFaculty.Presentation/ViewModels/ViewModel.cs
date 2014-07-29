@@ -4,13 +4,14 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using MilitaryFaculty.Presentation.Annotations;
 using MilitaryFaculty.Presentation.Widgets.Command;
 
 namespace MilitaryFaculty.Presentation.ViewModels
 {
     public abstract class ViewModel : INotifyPropertyChanged
     {
-        private object _tag;
+        [UsedImplicitly] private object _tag;
 
         public ObservableCollection<CommandViewModel> Commands { get; private set; }
         public virtual string Title { get; protected set; }
@@ -25,15 +26,17 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return _tag; }
             set
             {
-                SetValue(() => _tag, null); // just some hack, for DataTrigger
-                SetValue(() => _tag, value);
+                SetValue("Tag", () => _tag, null); // just some hack, for DataTrigger
+                SetValue("Tag", () => _tag, value);
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected bool SetValue<TField>(Expression<Func<TField>> evaluator, TField value,
-                                        [CallerMemberName] string propertyName = null)
+        // TODO should use lambda in another way. no string property names
+        protected bool SetValue<TField>(string propertyName,
+                                        Expression<Func<TField>> evaluator,
+                                        TField value)
         {
             if (evaluator == null)
             {

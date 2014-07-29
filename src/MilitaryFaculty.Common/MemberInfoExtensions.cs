@@ -14,9 +14,28 @@ namespace MilitaryFaculty.Common
                 throw new ArgumentNullException("this");
             }
 
-            var attr = @this.GetCustomAttributes(typeof (TAttribute), true).FirstOrDefault();
+            var attr = @this.GetCustomAttributes(typeof (TAttribute), true)
+                            .FirstOrDefault();
 
-            return attr != null;
+            var result = attr != null;
+
+            return result;
+        }
+
+        public static TAttribute GetCustomAttribute<TAttribute>(this MemberInfo @this)
+            where TAttribute : Attribute
+        {
+            if (@this == null)
+            {
+                throw new ArgumentNullException("this");
+            }
+
+            var attr = @this.GetCustomAttributes(typeof (TAttribute), true)
+                            .FirstOrDefault();
+
+            var result = attr as TAttribute;
+            
+            return result;
         }
     }
 }

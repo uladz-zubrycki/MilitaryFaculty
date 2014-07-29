@@ -40,11 +40,11 @@ namespace MilitaryFaculty.Presentation.ViewModels
             var propInfo = (PropertyInfo) body.Member;
             var target = GetMember(body, Model);
 
-            var oldValue = (TProperty) propInfo.GetValue(target);
+            var oldValue = (TProperty) propInfo.GetValue(target, null);
 
             if (!value.Equals(oldValue))
             {
-                propInfo.SetValue(target, value);
+                propInfo.SetValue(target, value, null);
                 OnPropertyChanged(propInfo.Name);
 
                 return true;
@@ -71,7 +71,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             {
                 expression = (MemberExpression) expression.Expression;
                 var propInfo = (PropertyInfo) expression.Member;
-                member = propInfo.GetValue(member);
+                member = propInfo.GetValue(member, null);
             }
 
             return member;

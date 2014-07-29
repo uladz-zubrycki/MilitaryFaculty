@@ -27,7 +27,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             get { return _tag; }
             set
             {
-                SetValue(() => _tag, value);
+                SetValue("Tag", () => _tag, value);
                 ViewModels.ForEach(vm => vm.Tag = value);
             }
         }

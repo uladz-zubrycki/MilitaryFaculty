@@ -35,7 +35,7 @@ namespace MilitaryFaculty.Presentation.ViewModels
             set
             {
                 Properties.ForEach(p => p.Tag = value);
-                SetValue(() => _tag, value);
+                SetValue("Tag", () => _tag, value);
             }
         }
 
@@ -81,12 +81,12 @@ namespace MilitaryFaculty.Presentation.ViewModels
 
         private Func<object> CreatePropertyGetter(PropertyInfo property)
         {
-            return () => property.GetValue(this);
+            return () => property.GetValue(this, null);
         }
 
         private Action<object> CreatePropertySetter(PropertyInfo property)
         {
-            return x => property.SetValue(this, x);
+            return x => property.SetValue(this, x, null);
         }
     }
 }

@@ -30,14 +30,14 @@
                         <ItemsControl
                                 ItemsSource="{Binding Items}">
                             <ItemsControl.ItemTemplate>
-                                <ItemContainerTemplate>
+                                <DataTemplate>
                                     <Button Style="{StaticResource EntityMenuButton}"
                                                 Content="{Binding Text}"
                                                 IsEnabled="{Binding IsEnabled}"
                                                 Command="{Binding Command}"
                                                 CommandParameter="{Binding CommandParameter}">
                                     </Button>
-                                </ItemContainerTemplate>
+                                </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </StackPanel>

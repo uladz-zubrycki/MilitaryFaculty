@@ -100,7 +100,7 @@ namespace MilitaryFaculty.Application.AppStartup
             {
                 var oldValue = _workWindow;
 
-                if (SetValue(() => _workWindow, value))
+                if (SetValue("WorkWindow", () => _workWindow, value))
                 {
                     OnWorkWindowChanged(oldValue, value);
                 }

@@ -3,8 +3,6 @@
                     xmlns:vm="clr-namespace:MilitaryFaculty.Presentation.ViewModels;assembly=MilitaryFaculty.Presentation"
                     xmlns:markup="clr-namespace:MilitaryFaculty.Presentation.Markup;assembly=MilitaryFaculty.Presentation"
                     xmlns:custom="clr-namespace:MilitaryFaculty.Application.Custom"
-                    xmlns:views="clr-namespace:MilitaryFaculty.Application.Views"
-                    xmlns:menu="clr-namespace:MilitaryFaculty.Presentation.Widgets.Menu;assembly=MilitaryFaculty.Presentation"
                     xmlns:widgets="clr-namespace:MilitaryFaculty.Application.Views.Widgets"
                     xmlns:command="clr-namespace:MilitaryFaculty.Presentation.Widgets.Command;assembly=MilitaryFaculty.Presentation"
                     xmlns:entity="clr-namespace:MilitaryFaculty.Application.Views.Entity">
@@ -197,7 +195,7 @@
     <Style x:Key="ItemStyle" TargetType="ItemsControl">
         <Setter Property="ItemTemplate">
             <Setter.Value>
-                <ItemContainerTemplate>
+                <DataTemplate>
                     <Border Style="{StaticResource SimpleBorder}">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -214,7 +212,7 @@
                                 ContentTemplateSelector="{StaticResource TemplateSelector}" />
                         </Grid>
                     </Border>
-                </ItemContainerTemplate>
+                </DataTemplate>
             </Setter.Value>
         </Setter>
     </Style>
@@ -222,7 +220,7 @@
     <Style x:Key="ExpandItemStyle" TargetType="ItemsControl">
         <Setter Property="ItemTemplate">
             <Setter.Value>
-                <ItemContainerTemplate>
+                <DataTemplate>
                     <Border Style="{StaticResource SimpleBorder}">
                         <Expander Style="{StaticResource SimpleExpander}">
                             <Expander.Header>
@@ -261,7 +259,7 @@
                                               ContentTemplateSelector="{StaticResource TemplateSelector}" />
                         </Expander>
                     </Border>
-                </ItemContainerTemplate>
+                </DataTemplate>
             </Setter.Value>
         </Setter>
     </Style>
