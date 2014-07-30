@@ -37,8 +37,6 @@ namespace MilitaryFaculty.Application.ViewModels
 
             private readonly IRepository<Cathedra> _cathedraRepository;
             private readonly IRepository<Person> _personRepository;
-            private readonly IExcelReportingService _excelService;
-            private readonly IReportGenerator _reportGenerator;
 
             public CreateReport(IRepository<Cathedra> cathedraRepository,
                                 IRepository<Person> personRepository,
@@ -57,8 +55,6 @@ namespace MilitaryFaculty.Application.ViewModels
 
                 _cathedraRepository = cathedraRepository;
                 _personRepository = personRepository;
-                _excelService = excelService;
-                _reportGenerator = reportGenerator;
 
                 StartDate = DateTime.Now;
                 EndDate = DateTime.Now;

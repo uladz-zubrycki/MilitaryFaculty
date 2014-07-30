@@ -520,6 +520,33 @@ namespace MilitaryFaculty.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Кафедра.
+        /// </summary>
+        public static string ReportType_Cathedra {
+            get {
+                return ResourceManager.GetString("ReportType_Cathedra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Факультет.
+        /// </summary>
+        public static string ReportType_Faculty {
+            get {
+                return ResourceManager.GetString("ReportType_Faculty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Научный сотрудник.
+        /// </summary>
+        public static string ReportType_Person {
+            get {
+                return ResourceManager.GetString("ReportType_Person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Не проведено.
         /// </summary>
         public static string ResearchMaintainState_NotPerformed {

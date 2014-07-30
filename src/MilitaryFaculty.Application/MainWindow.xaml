@@ -37,12 +37,18 @@
 
             <Button Command="application:GlobalCommands.GenerateReport"
                     Padding="4"
-                    HorizontalAlignment="Right">
-                <TextBlock 
-                    FontFamily="/Content/fonts/#FontAwesome"
-                    FontSize="20">
-                    &#xf0f6;
-                </TextBlock>
+                    HorizontalAlignment="Right"
+                    Margin="10 0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <TextBlock 
+                            Style="{StaticResource FontAwesomeTextBlock}"
+                            FontSize="20"
+                            Margin="{TemplateBinding Property=Padding}">
+                            &#xf0f6;
+                        </TextBlock>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
         </Menu>
 

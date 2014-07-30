@@ -64,8 +64,10 @@
         <ListBox 
             Grid.Row="2"
             Margin="0 10"
+            Height="110"
             ItemsSource="{Binding ChoosenPersons}"
-            Style="{StaticResource ItemListStyle}" >
+            Style="{StaticResource ItemListStyle}"
+            ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid HorizontalAlignment="Stretch"

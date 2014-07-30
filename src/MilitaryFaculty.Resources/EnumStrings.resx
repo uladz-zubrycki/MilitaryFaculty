@@ -270,6 +270,15 @@
   <data name="PublicationType_Thesis" xml:space="preserve">
     <value>Тезис докладов</value>
   </data>
+  <data name="ReportType_Cathedra" xml:space="preserve">
+    <value>Кафедра</value>
+  </data>
+  <data name="ReportType_Faculty" xml:space="preserve">
+    <value>Факультет</value>
+  </data>
+  <data name="ReportType_Person" xml:space="preserve">
+    <value>Научный сотрудник</value>
+  </data>
   <data name="ResearchMaintainState_NotPerformed" xml:space="preserve">
     <value>Не проведено</value>
   </data>
