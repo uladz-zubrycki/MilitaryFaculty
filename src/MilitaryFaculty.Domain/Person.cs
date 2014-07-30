@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Domain.Base;
-using MilitaryFaculty.Domain.Resources;
+using MilitaryFaculty.Resources;
 
 namespace MilitaryFaculty.Domain
 {

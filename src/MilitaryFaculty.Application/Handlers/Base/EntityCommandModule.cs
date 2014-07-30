@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Domain.Base;
 using MilitaryFaculty.Presentation.Commands;
@@ -68,32 +69,59 @@ namespace MilitaryFaculty.Application.Handlers
 
         protected virtual bool CanAddEntity(T entity)
         {
+            //TODO add validation
             return true;
         }
 
         protected virtual bool CanSaveEntity(T entity)
         {
+            //TODO add validation
             return true;
         }
 
         protected virtual bool CanRemoveEntity(T entity)
         {
+            //TODO add validation
             return true;
         }
 
         protected virtual void AddEntity(T entity)
         {
-            Repository.Create(entity);
+            //TODO add normal validation
+            try
+            {
+                Repository.Create(entity);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка. Проверьте введённые данные.", "Ошибка");
+            }
         }
 
         protected virtual void SaveEntity(T entity)
         {
-            Repository.Update(entity);
+            //TODO add normal validation
+            try
+            {
+                Repository.Update(entity);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка. Проверьте введённые данные.", "Ошибка");
+            }
         }
 
         protected virtual void RemoveEntity(T entity)
         {
-            Repository.Delete(entity.Id);
+            //TODO add normal validation
+            try
+            {
+                Repository.Delete(entity.Id);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка. Проверьте введённые данные.", "Ошибка");
+            }
         }
 
         private void OnAddEntity(T entity)

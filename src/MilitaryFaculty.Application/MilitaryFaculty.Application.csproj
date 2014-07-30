@@ -131,6 +131,7 @@
     <Compile Include="ViewModels\Base\AddEntityViewModel.cs" />
     <Compile Include="ViewModels\Book.cs" />
     <Compile Include="ViewModels\Base\EntityRootViewModel.cs" />
+    <Compile Include="ViewModels\Report.cs" />
     <Compile Include="ViewModels\ScienceRank.cs" />
     <Compile Include="ViewModels\CouncilParticipation.cs" />
     <Compile Include="ViewModels\Dissertation.cs" />
@@ -188,6 +189,15 @@
     <Compile Include="Views\Entity\Add.xaml.cs">
       <DependentUpon>Add.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Reporting\CathedraReportParameters.xaml.cs">
+      <DependentUpon>CathedraReportParameters.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reporting\CreateReport.xaml.cs">
+      <DependentUpon>CreateReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reporting\PersonReportParameters.xaml.cs">
+      <DependentUpon>PersonReportParameters.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Widgets\EntityMenu.xaml.cs">
       <DependentUpon>EntityMenu.xaml</DependentUpon>
     </Compile>
@@ -232,6 +242,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Entity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Reporting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -314,6 +328,18 @@
     <Page Include="Views\Entity\Add.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Reporting\CathedraReportParameters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Reporting\CreateReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Reporting\PersonReportParameters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Widgets\EntityMenu.xaml">
       <SubType>Designer</SubType>
@@ -512,6 +538,10 @@
     <ProjectReference Include="..\MilitaryFaculty.Reporting\MilitaryFaculty.Reporting.csproj">
       <Project>{813e121e-1097-4a5a-b672-4ac98e21d4ee}</Project>
       <Name>MilitaryFaculty.Reporting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.Resources\MilitaryFaculty.Resources.csproj">
+      <Project>{5B64531B-07CF-44A2-8DA7-C454D6CAB62E}</Project>
+      <Name>MilitaryFaculty.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,11 +15,6 @@
             Grid.Column="0"
             Style="{StaticResource LabelTextBlock}"
             Text="{Binding Label}" />
-        <TextBox
-            x:Name="HiddenTextbox"
-            Grid.Column="1"
-            Style="{StaticResource ValueTextBox}"
-            Visibility="Collapsed" />
         <DatePicker
             Grid.Column="1"
             Style="{StaticResource ValueDatePicker}"

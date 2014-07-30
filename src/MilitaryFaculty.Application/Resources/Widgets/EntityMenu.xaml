@@ -21,11 +21,11 @@
                                   HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                   VerticalAlignment="{TemplateBinding VerticalAlignment}">
                         <TextBlock Text="{TemplateBinding Content}"
-                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                            Margin="{TemplateBinding Padding}"
-                                            Foreground="{TemplateBinding Foreground}"
-                                            Cursor="{TemplateBinding Property=Cursor}"/>
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Margin="{TemplateBinding Padding}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   Cursor="{TemplateBinding Property=Cursor}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">

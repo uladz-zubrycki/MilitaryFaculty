@@ -20,7 +20,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{93A22C77-3ECE-428F-8C94-6033BDBA45DB}"
 	ProjectSection(SolutionItems) = preProject
 		build.fsx = build.fsx
+		script.fsx = script.fsx
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DDFE0DB4-F64B-469A-B87D-A14EF8692848}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.Resources", "src\MilitaryFaculty.Resources\MilitaryFaculty.Resources.csproj", "{5B64531B-07CF-44A2-8DA7-C454D6CAB62E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +84,12 @@ Global
 		{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}.Release|x86.ActiveCfg = Release|x86
 		{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}.Release|x86.Build.0 = Release|x86
+		{5B64531B-07CF-44A2-8DA7-C454D6CAB62E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B64531B-07CF-44A2-8DA7-C454D6CAB62E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B64531B-07CF-44A2-8DA7-C454D6CAB62E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5B64531B-07CF-44A2-8DA7-C454D6CAB62E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B64531B-07CF-44A2-8DA7-C454D6CAB62E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B64531B-07CF-44A2-8DA7-C454D6CAB62E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,5 +101,6 @@ Global
 		{1F175083-DFF1-452F-AE20-C1C93D59765F} = {1D0E628B-DE62-4622-AEEF-6644F60C3EAC}
 		{605451BC-3748-4D32-8B5F-20915719894C} = {1D0E628B-DE62-4622-AEEF-6644F60C3EAC}
 		{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB} = {1D0E628B-DE62-4622-AEEF-6644F60C3EAC}
+		{5B64531B-07CF-44A2-8DA7-C454D6CAB62E} = {1D0E628B-DE62-4622-AEEF-6644F60C3EAC}
 	EndGlobalSection
 EndGlobal

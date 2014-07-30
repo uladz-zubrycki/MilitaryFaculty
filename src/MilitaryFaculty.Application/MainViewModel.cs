@@ -181,7 +181,10 @@ namespace MilitaryFaculty.Application.AppStartup
                               new ResearchHandlers(_researchRepository),
                               new ResearchNavigation(this),
                               new NavigationHistory(this),
-                              new ReportingHandlers(_excelReportingService, _reportGenerator)
+                              new ReportingHandlers(_cathedraRepository,
+                                                    _professorRepository,
+                                                    _excelReportingService,
+                                                    _reportGenerator)
                           };
 
             modules.ForEach(m => m.LoadModule(RoutedCommands));

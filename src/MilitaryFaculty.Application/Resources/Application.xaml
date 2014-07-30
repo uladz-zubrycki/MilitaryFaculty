@@ -6,6 +6,7 @@
         <ResourceDictionary Source="/Resources/Entity.xaml" />
         <ResourceDictionary Source="/Resources/Cathedra.xaml" />
         <ResourceDictionary Source="/Resources/Professor.xaml" />
+        <ResourceDictionary Source="/Resources/Reporting.xaml" />
         <ResourceDictionary Source="/Resources/Widgets/FacultyTree.xaml" />
         <ResourceDictionary Source="/Resources/Widgets/EntityMenu.xaml" />
     </ResourceDictionary.MergedDictionaries>

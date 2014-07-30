@@ -36,9 +36,13 @@
             </Button>
 
             <Button Command="application:GlobalCommands.GenerateReport"
-                    Margin="10, 0"
-                    Padding="2">
-                Создать отчёт
+                    Padding="4"
+                    HorizontalAlignment="Right">
+                <TextBlock 
+                    FontFamily="/Content/fonts/#FontAwesome"
+                    FontSize="20">
+                    &#xf0f6;
+                </TextBlock>
             </Button>
         </Menu>
 

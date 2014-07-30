@@ -75,11 +75,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cathedra.cs" />
     <Compile Include="Research.cs" />
-    <Compile Include="Resources\EnumStrings.Designer.cs">
-      <DependentUpon>EnumStrings.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Dissertation.cs" />
     <Compile Include="Base\UniqueEntity.cs" />
     <Compile Include="Publication.cs" />
@@ -91,12 +86,10 @@
       <Project>{E24CB60A-D2B9-41EE-9DA9-883ED119E9AB}</Project>
       <Name>MilitaryFaculty.Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\EnumStrings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>EnumStrings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <ProjectReference Include="..\MilitaryFaculty.Resources\MilitaryFaculty.Resources.csproj">
+      <Project>{5B64531B-07CF-44A2-8DA7-C454D6CAB62E}</Project>
+      <Name>MilitaryFaculty.Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

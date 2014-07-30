@@ -1,5 +1,5 @@
 ﻿using MilitaryFaculty.Common;
-using MilitaryFaculty.Domain.Resources;
+using MilitaryFaculty.Resources;
 
 namespace MilitaryFaculty.Domain
 {
