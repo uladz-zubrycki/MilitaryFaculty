@@ -97,9 +97,8 @@
         <Setter Property="Padding" Value="4 4" />
         <Setter Property="Margin" Value="2, 2" />
         <Setter Property="FontSize" Value="12" />
-        <Setter Property="BorderThickness" 
-                Value="1" />
-        <Setter Property="BorderBrush" Value="LightSteelBlue"   />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="LightSteelBlue" />
     </Style>
 
     <Style x:Key="ValueComboBox" TargetType="ComboBox">
@@ -264,7 +263,7 @@
                             <!--Item content-->
                             <ContentPresenter Content="{TemplateBinding Property=Content}"
                                               ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                              ContentTemplateSelector="{StaticResource TemplateSelector}" />
+                                              ContentTemplateSelector="{StaticResource TemplateSelector}"/>
                         </Expander>
                     </Border>
                 </DataTemplate>

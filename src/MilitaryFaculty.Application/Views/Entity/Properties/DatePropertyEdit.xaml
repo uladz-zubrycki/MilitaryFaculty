@@ -18,10 +18,6 @@
         <DatePicker
             Grid.Column="1"
             Style="{StaticResource ValueDatePicker}"
-            BorderThickness="{Binding ElementName=HiddenTextbox,
-                                      Path=BorderThickness}"
-            BorderBrush="{Binding ElementName=HiddenTextbox,
-                                  Path=BorderBrush}"
             SelectedDate="{Binding Property, Mode=TwoWay}" />
 
     </Grid>

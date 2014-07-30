@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using MilitaryFaculty.Application.Custom;
 using MilitaryFaculty.Application.ViewModels.Base;
+using MilitaryFaculty.Application.Views.Entity;
 using MilitaryFaculty.Common;
 using MilitaryFaculty.Data;
 using MilitaryFaculty.Data.Events;
@@ -37,7 +38,7 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 return new ViewModel<Cathedra>[]
                        {
-                           new ExtraInfo(Model), 
+                           //new ExtraInfo(Model), 
                            new ScienceRanks(Model, _scienceRankRepository),
                        };
             }
