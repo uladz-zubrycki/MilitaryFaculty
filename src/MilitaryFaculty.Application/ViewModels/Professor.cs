@@ -506,7 +506,7 @@ namespace MilitaryFaculty.Application.ViewModels
                                                  .ToList();
 
                 var result = new ObservableCollection<CouncilParticipationView.ListItem>(councilParticipations);
-                result.CollectionChanged += (sender, args) => OnPropertyChanged("CouncilParicipationsCount");
+                result.CollectionChanged += (sender, args) => OnPropertyChanged("CouncilParticipationsCount");
 
                 return result;
             }
@@ -812,7 +812,7 @@ namespace MilitaryFaculty.Application.ViewModels
             {
                 var inventiveApplication = e.ModifiedEntity;
 
-                if (inventiveApplication.Equals(Model))
+                if (inventiveApplication.Author.Equals(Model))
                 {
                     Items.RemoveSingle(c => c.Model.Equals(inventiveApplication));
                 }

@@ -15,7 +15,7 @@ namespace MilitaryFaculty.Application.Handlers
             // Empty
         }
 
-        protected override string GetRemovalMessage(InventiveApplication book)
+        protected override string GetRemovalMessage(InventiveApplication inventiveApplication)
         {
             return ("Вы действительно хотите удалить заявку? " +
                     "Все данные будут утеряны.");

@@ -99,12 +99,14 @@ namespace MilitaryFaculty.Application.ViewModels
             public AcademicRank TargetAcademiceRank
             {
                 get { return Model.TargetAcademicRank; }
+                set { SetModelProperty(m => m.TargetAcademicRank, value); }
             }
             
             [EnumProperty(Label = "Состояние работы:")]
             public DissertationState State
             {
                 get { return Model.State; }
+                set { SetModelProperty(m => m.State, value); }
             }
         }
 

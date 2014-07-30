@@ -8,7 +8,28 @@
              d:DesignWidth="300"
              Background="White">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="60"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Style="{StaticResource LabelTextBlock}"
+            Text="Сделано оценок:" />
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Style="{StaticResource ValueTextBlock}"
+            Text="{Binding RanksCount}" />
+
         <ListBox
+            Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
             ItemsSource="{Binding Items}"
             Style="{StaticResource ItemListStyle}" />
     </Grid>
