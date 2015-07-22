@@ -1,1 +1,4 @@
-another shitty app.
+WPF-based desktop application, written during study at military faculty of BSUIR. 
+Provides reporting possibilities for cathedral staff science work.
+
+See `/docs` for decree, which specifies required report data. 
